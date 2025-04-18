@@ -63,11 +63,11 @@
         }
 
         .left-column {
-            flex: 0 0 68%;
+            flex: 0 0 66%;
         }
 
         .right-column {
-            flex: 0 0 30%;
+            flex: 0 0 32%;
         }
 
         .left-column h3,
@@ -1431,7 +1431,7 @@
             font-size: 1.3rem;
             font-weight: 700;
             text-align: center;
-            padding: 10px;
+            padding: 8px;
             border-radius: 12px;
             margin-bottom: 16px;
             color: #fff;
@@ -1439,10 +1439,12 @@
 
         .team-name.lsg {
             background-color: #3D5CA5;
+            border-radius: 999px;
         }
 
         .team-name.csk {
             background-color: #E4443B;
+            border-radius: 999px;
         }
 
         .player-list {
@@ -2085,7 +2087,7 @@
 
 
 
-        .player-stats-compare {
+        /* .player-stats-compare {
             background: #fff;
             border-radius: 16px;
             padding: 24px;
@@ -2164,7 +2166,6 @@
             color: #E4443B;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .player-stats-compare {
                 padding: 18px;
@@ -2192,8 +2193,223 @@
             .player-numbers {
                 font-size: 0.84rem;
             }
+        } */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .top-stats-wrapper {
+            max-width: 1280px;
+            margin: auto;
+            padding: 24px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.05);
         }
 
+        .top-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .top-stats-card {
+            background: linear-gradient(145deg, #f7faff, #ffffff);
+            border-left: 5px solid #3D5CA5;
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+            position: relative;
+            transition: 0.3s ease-in-out;
+        }
+
+        .top-stats-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .stat-badge {
+            position: absolute;
+            top: -12px;
+            left: -12px;
+            background-color: #3D5CA5;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .bg-blue {
+            background-color: #3D5CA5;
+        }
+
+        .bg-orange {
+            background-color: #f97316;
+        }
+
+        .bg-green {
+            background-color: #10b981;
+        }
+
+        .top-player-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .top-player-head img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-player-head h5 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0;
+            color: #111827;
+        }
+
+        .team-label {
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+
+        .stat-block {
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        .stat-block div strong {
+            font-size: 1.2rem;
+            color: #E4443B;
+        }
+
+        .stat-block div small {
+            display: block;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+
+
+
+        .player-stats-tabs-section {}
+
+        .player-stats-tabs {
+            display: flex;
+
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            scroll-behavior: smooth;
+        }
+
+        .stats-tab-btn {
+            flex: 1 1 calc(25% - 12px);
+            min-width: 80px;
+
+            text-align: center;
+            padding: 10px 14px;
+            background: #f1f3f9;
+            color: #3D5CA5;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .stats-tab-btn.active,
+        .stats-tab-btn:hover {
+            background: linear-gradient(145deg, #3D5CA5, #E4443B);
+            color: #fff;
+            border-radius: 999px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-tab-btn {
+            border-radius: 999px;
+        }
+
+        .stats-tab-labels {
+            display: flex;
+
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+            font-size: 0.85rem;
+            color: #444;
+            text-align: center;
+        }
+
+        .stats-tab-labels strong {
+            color: #3D5CA5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .stats-tab-btn {
+                flex: 1 1 45%;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-tab-btn {
+                flex: 1 1 100%;
+            }
+
+            .stats-tab-labels {
+                align-items: center;
+            }
+        }
+
+
+        @media (max-width: 992px) {
+            .top-stats-wrapper {
+                padding: 18px;
+                margin-top: 16px;
+                border-radius: 0px;
+            }
+
+            .top-player-head h5 {
+                font-size: 0.9rem;
+            }
+
+            .stat-block div strong {
+                font-size: 1rem;
+            }
+        }
 
 
 
@@ -3948,12 +4164,11 @@
             <!-- Right Section (30%) -->
             <div class="right-column">
 
-                <div class="player-stats-compare top-players-stats">
+                <!-- <div class="player-stats-compare top-players-stats">
                     <div class="venue-header">📊 Top Player Stats – LSG vs CSK</div>
                     <div class="venue-subtitle">(Based on recent matches, runs, wickets & strike rates)</div>
 
                     <div class="player-stats-grid">
-                        <!-- Example Player - Batsman -->
                         <div class="player-stat-card">
                             <div class="player-basic">
                                 <img src="https://randomuser.me/api/portraits/men/11.jpg" />
@@ -3970,7 +4185,6 @@
                             </div>
                         </div>
 
-                        <!-- All-Rounder -->
                         <div class="player-stat-card">
                             <div class="player-basic">
                                 <img src="https://randomuser.me/api/portraits/men/12.jpg" />
@@ -3987,7 +4201,6 @@
                             </div>
                         </div>
 
-                        <!-- Bowler -->
                         <div class="player-stat-card">
                             <div class="player-basic">
                                 <img src="https://randomuser.me/api/portraits/men/13.jpg" />
@@ -4005,7 +4218,141 @@
                         </div>
 
                     </div>
+                </div> -->
+
+
+
+
+
+
+
+                <div class="top-stats-wrapper">
+                    <div class="venue-header">📊 Top Player Stats</div>
+                    <div class="venue-subtitle">(Based on recent match performances)</div>
+
+
+                    <div class="player-stats-tabs-section">
+                        <div class="player-stats-tabs">
+                            <button class="stats-tab-btn active">Runs</button>
+                            <button class="stats-tab-btn">S/R</button>
+                            <button class="stats-tab-btn">Wkts</button>
+                            <button class="stats-tab-btn">Eco</button>
+                        </div>
+
+                        <div class="stats-tab-labels">
+                            <span><strong>Runs</strong>: Most Runs</span>
+                            <span><strong>S/R</strong>: Best Strike Rate</span>
+                            <span><strong>Wkts</strong>: Most Wickets</span>
+                            <span><strong>Eco</strong>: Best Economy Rate</span>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div class="top-stats-grid">
+                        <!-- Player Card -->
+                        <div class="top-stats-card">
+                            <div class="stat-badge bg-blue">1</div>
+                            <div class="top-player-head">
+                                <img src="https://randomuser.me/api/portraits/men/12.jpg" alt="Player">
+                                <div>
+                                    <h5>Nicholas Pooran</h5>
+                                    <span class="team-label">LSG – WK</span>
+                                </div>
+                            </div>
+                            <div class="stat-block">
+                                <div><strong>357</strong><small>Runs</small></div>
+                                <div><strong>0</strong><small>Wickets</small></div>
+                                <div><strong>7</strong><small>Matches</small></div>
+                            </div>
+                        </div>
+
+                        <div class="top-stats-card">
+                            <div class="stat-badge bg-orange">2</div>
+                            <div class="top-player-head">
+                                <img src="https://randomuser.me/api/portraits/men/15.jpg" alt="Player">
+                                <div>
+                                    <h5>Rachin Ravindra</h5>
+                                    <span class="team-label">CSK – All</span>
+                                </div>
+                            </div>
+                            <div class="stat-block">
+                                <div><strong>198</strong><small>Runs</small></div>
+                                <div><strong>2</strong><small>Wickets</small></div>
+                                <div><strong>6</strong><small>Matches</small></div>
+                            </div>
+                        </div>
+
+                        <div class="top-stats-card">
+                            <div class="stat-badge bg-green">3</div>
+                            <div class="top-player-head">
+                                <img src="https://randomuser.me/api/portraits/men/18.jpg" alt="Player">
+                                <div>
+                                    <h5>David Miller</h5>
+                                    <span class="team-label">LSG – BAT</span>
+                                </div>
+                            </div>
+                            <div class="stat-block">
+                                <div><strong>173</strong><small>Runs</small></div>
+                                <div><strong>0</strong><small>Wickets</small></div>
+                                <div><strong>5</strong><small>Matches</small></div>
+                            </div>
+                        </div>
+
+                        <div class="top-stats-card">
+                            <div class="stat-badge bg-blue">4</div>
+                            <div class="top-player-head">
+                                <img src="https://randomuser.me/api/portraits/men/25.jpg" alt="Player">
+                                <div>
+                                    <h5>Shivam Dube</h5>
+                                    <span class="team-label">CSK – AR</span>
+                                </div>
+                            </div>
+                            <div class="stat-block">
+                                <div><strong>140</strong><small>Runs</small></div>
+                                <div><strong>3</strong><small>Wickets</small></div>
+                                <div><strong>6</strong><small>Matches</small></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             </div>
         </div>
