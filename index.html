@@ -583,7 +583,7 @@
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(8px);
             border-radius: 20px;
-            padding: 28px;
+            padding: 24px;
             border: 1px solid rgba(210, 222, 240, 0.6);
             box-shadow: 0 16px 40px rgba(0, 0, 0, 0.05);
             max-width: 1280px;
@@ -2062,6 +2062,117 @@
 
 
 
+
+
+
+
+        .injury-heading-bar {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .injury-heading-bar i {
+            font-size: 1.6rem;
+            color: #E4443B;
+            background: #ffe9e9;
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+        }
+
+        .injury-heading-bar h4 {
+            margin: 0;
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #111827;
+        }
+
+        .injury-heading-bar p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+
+        .injury-update-item {
+            display: flex;
+            align-items: center;
+            background: #f9fafc;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            border-radius: 14px;
+            border: 1px solid #e5eaf1;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+            transition: 0.25s ease;
+        }
+
+        .injury-update-item:hover {
+            background: #f0f5ff;
+            transform: scale(1.01);
+        }
+
+        .team-badge {
+            min-width: 46px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 6px 12px;
+            border-radius: 999px;
+            color: #fff;
+            text-align: center;
+            margin-right: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .team-badge.rcb {
+            background: #3D5CA5;
+        }
+
+        .team-badge.pbks {
+            background: #E4443B;
+        }
+
+        .update-text {
+            font-size: 0.92rem;
+            color: #1f2937;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         .analysis-pro-wrapper {
             background: rgba(255, 255, 255, 0.8);
             border-radius: 20px;
@@ -2311,7 +2422,7 @@
 
 
         .top-stats-wrapper {
-            max-width: 1280px;
+            max-width: 400px;
             margin: auto;
             padding: 24px;
             background: #ffffff;
@@ -2433,13 +2544,44 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         .player-stats-tabs-section {}
+
+        .player-stats-tabs-scroll {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        /* .player-stats-tabs-scroll::-webkit-scrollbar {
+            display: none;
+        } */
 
         .player-stats-tabs {
             display: flex;
-
             gap: 8px;
-            overflow-x: auto;
+            min-width: max-content;
             padding-bottom: 10px;
             scroll-behavior: smooth;
         }
@@ -2447,13 +2589,12 @@
         .stats-tab-btn {
             flex: 1 1 calc(25% - 12px);
             min-width: 80px;
-
             text-align: center;
             padding: 10px 14px;
             background: #f1f3f9;
             color: #3D5CA5;
             border: none;
-            border-radius: 12px;
+            border-radius: 999px;
             font-weight: 600;
             font-size: 0.95rem;
             cursor: pointer;
@@ -2464,17 +2605,11 @@
         .stats-tab-btn:hover {
             background: linear-gradient(145deg, #3D5CA5, #E4443B);
             color: #fff;
-            border-radius: 999px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .stats-tab-btn {
-            border-radius: 999px;
         }
 
         .stats-tab-labels {
             display: flex;
-
             flex-wrap: wrap;
             gap: 10px;
             margin-top: 16px;
@@ -2487,7 +2622,6 @@
             color: #3D5CA5;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .stats-tab-btn {
                 flex: 1 1 45%;
@@ -2505,12 +2639,12 @@
             }
         }
 
-
         @media (max-width: 992px) {
             .top-stats-wrapper {
                 padding: 18px;
                 margin-top: 16px;
                 border-radius: 0px;
+                max-width: none !important;
             }
 
             .top-player-head h5 {
@@ -2521,6 +2655,7 @@
                 font-size: 1rem;
             }
         }
+
 
 
 
@@ -2874,6 +3009,174 @@
                 font-size: 0.86rem;
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .venue-header {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #1f2937;
+            margin-bottom: 6px;
+        }
+
+        .venue-subtitle {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-bottom: 16px;
+        }
+
+        .budget-pick-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .budget-pick-list li {
+            padding: 10px 12px;
+            border-left: 4px solid #3D5CA5;
+            background: #f8fbff;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.03);
+        }
+
+        .player-name {
+            font-weight: 700;
+            color: #3D5CA5;
+            display: block;
+        }
+
+        .player-note {
+            font-size: 0.88rem;
+            color: #444;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .gl-diff-picks-box {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+            border: 1px solid #dbe3ed;
+            padding: 20px;
+            margin: 24px auto;
+            transition: 0.3s ease;
+        }
+
+        .gl-diff-picks-box:hover {
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+            transform: translateY(-3px);
+        }
+
+        .venue-header {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 6px;
+        }
+
+        .venue-subtitle {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-bottom: 16px;
+        }
+
+        .gl-diff-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .gl-diff-list li {
+            padding: 10px 12px;
+            border-left: 4px solid #E4443B;
+            background: #fef7f6;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.03);
+        }
+
+        .player-name {
+            font-weight: 700;
+            color: #E4443B;
+            display: block;
+        }
+
+        .player-note {
+            font-size: 0.88rem;
+            color: #374151;
+        }
+
+
+        @media (max-width: 768px) {
+            .gl-diff-picks-box {
+                padding: 16px;
+                gap: 14px;
+                flex-direction: row;
+                margin-top: 16px;
+                margin-left: 16px;
+                margin-right: 16px;
+                margin-bottom: 0;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3493,6 +3796,322 @@
 
 
 
+
+
+
+
+        .pitch-card-container {
+            background: #ffffff;
+            border: 1px solid #e0e7ff;
+            border-left: 6px solid #3D5CA5;
+            border-radius: 18px;
+            box-shadow: 0 8px 26px rgba(0, 0, 0, 0.06);
+            padding: 20px;
+            margin-bottom: 24px;
+            margin-top: 24px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+
+
+
+        .pitch-points-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px;
+        }
+
+        .pitch-points-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #374151;
+        }
+
+        .pitch-points-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #E4443B;
+            font-size: 1rem;
+            line-height: 1;
+        }
+
+        .pitch-stats-highlight {
+            display: flex;
+            justify-content: space-between;
+            background: #f9fafb;
+            padding: 12px 16px;
+            border-radius: 12px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
+            margin-bottom: 16px;
+        }
+
+        .pitch-stats-highlight h5 {
+            margin: 0;
+            font-size: 1.4rem;
+            color: #3D5CA5;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .pitch-stats-highlight span {
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-align: center;
+            display: block;
+            margin-top: 4px;
+        }
+
+        .pitch-quote {
+            font-size: 0.92rem;
+            color: #78350f;
+            background: #fff7ed;
+            padding: 12px 14px;
+            border-left: 4px solid #f97316;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(249, 115, 22, 0.12);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .pitch-card-container {
+                padding: 16px;
+                gap: 14px;
+                flex-direction: row;
+                margin-top: 16px;
+                margin-left: 16px;
+                margin-right: 16px;
+                margin-bottom: 0;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* FAQ SECTION  */
+
+
+        .modern-faq-wrapper {
+            background: #fff;
+            border-radius: 18px;
+            padding: 24px;
+            max-width: 100%;
+            /* width: 95%; */
+            margin: 30px auto;
+            border: 1px solid #e0e7ff;
+            box-shadow: 0 8px 24px rgba(61, 92, 165, 0.07);
+            transition: 0.3s ease-in-out;
+        }
+
+        .modern-faq-wrapper:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(61, 92, 165, 0.12);
+        }
+
+        .faq-heading {
+            font-size: 1.4rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            color: #1e293b;
+            margin-bottom: 6px;
+            gap: 8px;
+        }
+
+        .faq-icon {
+            background: linear-gradient(135deg, #3D5CA5, #E4443B);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .faq-subtitle {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 18px;
+        }
+
+        .modern-faq-item {
+            background: #f9faff;
+            padding: 16px 20px;
+            border-left: 5px solid #3D5CA5;
+            border-radius: 12px;
+            margin-bottom: 14px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            transition: 0.3s ease;
+        }
+
+        .modern-faq-item:hover {
+            box-shadow: 0 6px 18px rgba(61, 92, 165, 0.08);
+        }
+
+        .faq-q {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #1e40af;
+        }
+
+        .faq-a {
+            font-size: 0.88rem;
+            line-height: 1.5;
+            color: #374151;
+        }
+
+        /* Responsive */
+        @media (max-width: 576px) {
+            .faq-heading {
+                font-size: 1.15rem;
+            }
+
+            .faq-subtitle {
+                font-size: 0.85rem;
+            }
+
+            .faq-q {
+                font-size: 0.88rem;
+            }
+
+            .faq-a {
+                font-size: 0.8rem;
+            }
+
+            .modern-faq-wrapper {
+                padding: 18px;
+                margin-top: 16px;
+                border-radius: 0px;
+            }
+
+            .faq-icon {
+                font-size: 0.85rem;
+                padding: 4px 8px;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* STAY UPDATE CRICKET ADDICTOR  */
+        .stay-updated-box {
+            background: linear-gradient(145deg, #f9fbff, #ffffff);
+            border-left: 6px solid #3D5CA5;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+            margin: 24px auto;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .stay-updated-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(61, 92, 165, 0.12);
+        }
+
+        .stay-updated-heading {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stay-updated-text {
+            font-size: 0.95rem;
+            color: #374151;
+            line-height: 1.5;
+        }
+
+        .stay-updated-text strong {
+            color: #E4443B;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 576px) {
+            .stay-updated-box {
+                padding: 16px;
+                gap: 14px;
+                flex-direction: row;
+                margin-top: 16px;
+                margin-left: 16px;
+                margin-right: 16px;
+                margin-bottom: 0;
+            }
+
+            .stay-updated-heading {
+                font-size: 1rem;
+            }
+
+            .stay-updated-text {
+                font-size: 0.88rem;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         /* DISCLAIMER SECTION  */
         .disclaimer-box {
             max-width: 1280px;
@@ -3704,6 +4323,14 @@
                         <!-- <i class="fas fa-bullseye"></i> -->
                         <img src="Icons/new_bullseye.svg" alt="">
                         <span>Prediction</span></button>
+
+                    <button class="quick-link-btn" data-section=".pitch-report-box">
+                        <!-- <i class="fas fa-bullhorn"></i> -->
+                        <img src="Icons/bullhorn2.svg" alt="">
+                        <img src="" alt="">
+                        <span>Pitch</span>
+                    </button>
+
                     <button class="quick-link-btn" data-section=".key-stats-wrapper">
                         <!-- <i class="fas fa-thumbtack"></i> -->
                         <img src="Icons/new_thumbtack.svg" alt="">
@@ -3724,6 +4351,12 @@
                         <!-- <i class="fas fa-exchange-alt"></i> -->
                         <img src="Icons/new_arrow-right-arrow-left.svg" alt="">
                         <span>H2H</span></button>
+
+                    <button class="quick-link-btn" data-section=".injury-report-box">
+                        <!-- <i class="fas fa-ambulance"></i> -->
+                        <img src="Icons/truck-medical2.svg" alt="">
+                        <span>Injury</span>
+                    </button>
                     <button class="quick-link-btn" data-section=".predicted-xi-card">
                         <!-- <i class="fas fa-users"></i> -->
                         <img src="Icons/new_users.svg" alt="">
@@ -3736,6 +4369,16 @@
                         <!-- <i class="fas fa-lightbulb"></i> -->
                         <img src="Icons/new_lightbulb.svg" alt="">
                         <span>Tips</span></button>
+                    <button class="quick-link-btn" data-section=".budget-picks-box">
+                        <!-- <i class="fas fa-wallet"></i> -->
+                        <img src="Icons/wallet4.svg" alt="">
+                        <span>Budget</span>
+                    </button>
+                    <button class="quick-link-btn" data-section=".differential-picks-box">
+                        <!-- <i class="fas fa-bullseye"></i> -->
+                        <img src="Icons/bullseye4.svg" alt="">
+                        <span>GL Picks</span>
+                    </button>
                     <button class="quick-link-btn" data-section=".analysis-pro-wrapper">
                         <!-- <i class="fas fa-chart-pie"></i> -->
                         <img src="Icons/new_chart-pie.svg" alt="">
@@ -3744,6 +4387,11 @@
                         <!-- <i class="fas fa-users"></i> -->
                         <img src="Icons/new_users.svg" alt="">
                         <span>Dream11</span></button>
+                    <button class="quick-link-btn" data-section=".faq-box">
+                        <!-- <i class="fas fa-question-circle"></i> -->
+                        <img src="Icons/circle-question1.svg" alt="">
+                        <span>FAQs</span>
+                    </button>
                 </div>
 
             </div>
@@ -3918,6 +4566,47 @@
             <div class="left-column">
 
 
+
+
+
+
+
+
+                <!-- PITCH REPORT SECTION  -->
+
+                <div class="pitch-card-container pitch-report-box">
+                    <div class="venue-header">🏟️ Pitch Report – M. Chinnaswamy Stadium</div>
+                    <p class="venue-subtitle">(Short & sharp insights to boost your fantasy strategy)</p>
+
+                    <div class="pitch-card-body">
+                        <ul class="pitch-points-list">
+                            <li>Short boundaries + flat deck = high-scoring affair.</li>
+                            <li>Pacers often go expensive at the death.</li>
+                            <li>Spinners may get turn if they vary pace smartly.</li>
+                        </ul>
+
+                        <div class="pitch-stats-highlight">
+                            <div>
+                                <h5>192</h5>
+                                <span>Avg 1st Innings</span>
+                            </div>
+                            <div>
+                                <h5>58%</h5>
+                                <span>Chasing Win %</span>
+                            </div>
+                        </div>
+
+                        <div class="pitch-quote">
+                            “Expect a run-fest. Prioritize top-order batters & death-over bowlers.”
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <!-- KEY MATCH STATS SECTION  -->
                 <div class="key-stats-compact key-stats-wrapper">
                     <div class="venue-header">📌 Key Match Stats</div>
                     <div class="venue-subtitle">(Quick insights to guide your fantasy picks)</div>
@@ -4024,6 +4713,23 @@
                         </div>
                     </div>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 <!-- VENUE RECORDS SECTION  -->
@@ -4197,6 +4903,36 @@
                     </div>
                 </div>
 
+
+
+                <!-- INJURY & AVAILABILITY UPDATES SECTION  -->
+                <div class="pitch-card-container injury-report-box">
+                    <div class="injury-heading-bar">
+                        <div>
+                            <h4> 🚑 Injury & Availability</h4>
+                            <p>(Latest player fitness & lineup updates)</p>
+                        </div>
+                    </div>
+
+                    <div class="injury-update-item">
+                        <div class="team-badge rcb">LSG</div>
+                        <div class="update-text">✅ Full squad available</div>
+                    </div>
+
+                    <div class="injury-update-item">
+                        <div class="team-badge pbks">CSK</div>
+                        <div class="update-text">🩺 Sam Curran declared fit and ready to play</div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
             </div>
         </div>
 
@@ -4334,13 +5070,15 @@
                     <div class="venue-header">📊 Top Player Stats</div>
                     <div class="venue-subtitle">(Based on recent match performances)</div>
 
-
                     <div class="player-stats-tabs-section">
-                        <div class="player-stats-tabs">
-                            <button class="stats-tab-btn active">Runs</button>
-                            <button class="stats-tab-btn">S/R</button>
-                            <button class="stats-tab-btn">Wkts</button>
-                            <button class="stats-tab-btn">Eco</button>
+                        <div class="player-stats-tabs-scroll">
+                            <div class="player-stats-tabs">
+                                <button class="stats-tab-btn active">Runs</button>
+                                <button class="stats-tab-btn">S/R</button>
+                                <button class="stats-tab-btn">Wkts</button>
+                                <button class="stats-tab-btn">Eco</button>
+                                <button class="stats-tab-btn">FPts</button>
+                            </div>
                         </div>
 
                         <div class="stats-tab-labels">
@@ -4348,16 +5086,13 @@
                             <span><strong>S/R</strong>: Best Strike Rate</span>
                             <span><strong>Wkts</strong>: Most Wickets</span>
                             <span><strong>Eco</strong>: Best Economy Rate</span>
+                            <span><strong>FPts</strong>: Fantasy Points</span>
                         </div>
                     </div>
 
-
-
-
-
+                    <!-- Player Cards -->
                     <div class="top-player-pro">
                         <div class="player-rank-badge">1</div>
-
                         <div class="player-info">
                             <img src="https://randomuser.me/api/portraits/men/12.jpg" alt="Nicholas Pooran">
                             <div class="player-meta">
@@ -4365,13 +5100,12 @@
                                 <span class="player-team lsg">LSG • WK</span>
                             </div>
                         </div>
-
                         <div class="player-stats">
                             <div><strong>357</strong><small>Runs</small></div>
                             <div><strong>7</strong><small>Matches</small></div>
                         </div>
                     </div>
-                    <!-- Player 2 -->
+
                     <div class="top-player-pro">
                         <div class="player-rank-badge">2</div>
                         <div class="player-info">
@@ -4387,7 +5121,6 @@
                         </div>
                     </div>
 
-                    <!-- Player 3 -->
                     <div class="top-player-pro">
                         <div class="player-rank-badge">3</div>
                         <div class="player-info">
@@ -4403,7 +5136,6 @@
                         </div>
                     </div>
 
-                    <!-- Player 4 -->
                     <div class="top-player-pro">
                         <div class="player-rank-badge">4</div>
                         <div class="player-info">
@@ -4419,7 +5151,6 @@
                         </div>
                     </div>
 
-                    <!-- Player 5 -->
                     <div class="top-player-pro">
                         <div class="player-rank-badge">5</div>
                         <div class="player-info">
@@ -4434,10 +5165,8 @@
                             <div><strong>5</strong><small>Matches</small></div>
                         </div>
                     </div>
-
-
-
                 </div>
+
 
 
 
@@ -4709,6 +5438,64 @@
                     </div>
                 </div>
 
+
+
+
+
+
+
+
+
+
+
+                <!-- BSt bUdGEt PICKS SECTION  -->
+                <div class="pitch-card-container budget-picks-box">
+                    <div class="venue-header">💸 Best Budget Picks</div>
+                    <div class="venue-subtitle">(Smart value players for Dream11 teams)</div>
+
+                    <ul class="budget-pick-list">
+                        <li>
+                            <span class="player-name">Jitesh Sharma</span>
+                            <span class="player-note">– Can deliver 40+ points at low credit.</span>
+                        </li>
+                        <li>
+                            <span class="player-name">Karn Sharma</span>
+                            <span class="player-note">– Might surprise with 1-2 wickets.</span>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="gl-diff-picks-box differential-picks-box">
+                    <div class="venue-header">🎯 Grand League Differential Picks</div>
+                    <div class="venue-subtitle">(Low-owned players with high upside)</div>
+
+                    <ul class="gl-diff-list">
+                        <li>
+                            <span class="player-name">Mahipal Lomror</span>
+                            <span class="player-note">– Value if he bats in top 5.</span>
+                        </li>
+                        <li>
+                            <span class="player-name">Shahrukh Khan</span>
+                            <span class="player-note">– Explosive if PBKS bats second.</span>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+
             </div>
         </div>
 
@@ -4746,56 +5533,7 @@
 
 
 
-        <!-- <div class="team-box">
-            <div class="prediction-title">📊 Dream11 Prediction Team</div>
-            <div class="prediction-subtitle">Based on stats, form & recent performances</div>
-            <div class="scroll-x d-flex tab-buttons mb-3">
-                <button class="btn active">Grand League</button>
-                <button class="btn">Mega League</button>
-                <button class="btn">CA Expert</button>
-            </div>
-            <div class="role-section">Wicket Keepers</div>
-            <div class="d-flex scroll-x mb-2">
-                <div class="player-card">
-                    <img src="https://randomuser.me/api/portraits/men/11.jpg" />
-                    <div>Rishabh Pant<br /><span class="label">WK/C – 9</span></div>
-                </div>
-            </div>
-            <div class="role-section">Batsmen</div>
-            <div class="d-flex scroll-x mb-2">
-                <div class="player-card">
-                    <img src="https://randomuser.me/api/portraits/men/12.jpg" />
-                    <div>David Miller<br /><span class="label">BAT – 9</span></div>
-                </div>
-            </div>
-            <div class="role-section">All Rounders</div>
-            <div class="d-flex scroll-x mb-2">
-                <div class="player-card">
-                    <img src="https://randomuser.me/api/portraits/men/13.jpg" />
-                    <div>Shivam Dube<br /><span class="label">AR – 9</span></div>
-                </div>
-            </div>
-            <div class="role-section">Bowlers</div>
-            <div class="d-flex scroll-x mb-2">
-                <div class="player-card">
-                    <img src="https://randomuser.me/api/portraits/men/14.jpg" />
-                    <div>Pathirana<br /><span class="label">BL – 8.5</span></div>
-                </div>
-            </div>
-            <div class="distribution-box">
-                <h6>Team Distribution</h6>
-                <p><span style="color: #3D5CA5;">●</span> LSG – 4 Players</p>
-                <p><span style="color: #E4443B;">●</span> CSK – 7 Players</p>
-                <hr />
-                <h6>Player Types</h6>
-                <ul>
-                    <li>Batsmen – 2</li>
-                    <li>All-rounders – 2</li>
-                    <li>Wicket-keepers – 2</li>
-                    <li>Bowlers – 2</li>
-                </ul>
-            </div>
-        </div> -->
+
 
         <!-- Modal -->
         <div class="modal fade" id="playerModal" tabindex="-1" aria-labelledby="playerModalLabel" aria-hidden="true">
@@ -4975,34 +5713,6 @@
 
 
 
-
-        <!-- <div class="batting-performers-section">
-            <div class="venue-header">
-                Top Batting Performers
-            </div>
-            <div class="venue-subtitle">(Based on recent match stats & fantasy points)</div>
-
-            <div class="batting-team-grid">
-                <div class="batting-team-col ">
-                    <div class=" team-name1 lsg">LSG</div>
-                    <div class="batting-player-item">Nicholas Pooran – 327 runs</div>
-                    <div class="batting-player-item">David Miller – 298 runs</div>
-                    <div class="batting-player-item">Rishabh Pant – 272 runs</div>
-                </div>
-
-                <div class="batting-team-col">
-                    <div class="team-name1 csk">CSK</div>
-                    <div class="batting-player-item">Devon Conway – 340 runs</div>
-                    <div class="batting-player-item">Rachin Ravindra – 305 runs</div>
-                    <div class="batting-player-item">MS Dhoni – 260 runs</div>
-                </div>
-            </div>
-
-            <div class="batting-highlight-box mt-3">
-                <i class="fas fa-trophy"></i>
-                Highest Individual Score: Devon Conway – 97* vs LSG
-            </div>
-        </div> -->
 
 
 
@@ -5228,6 +5938,112 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- FAQ SECTION  -->
+
+
+
+        <div class="modern-faq-wrapper faq-box">
+            <div class="faq-heading">
+                <span class="faq-icon">❓</span> FAQs – RCB vs PBKS, Match 34
+            </div>
+            <div class="faq-subtitle">(Everything you need to know before the match)</div>
+
+            <div class="modern-faq-item">
+                <h4 class="faq-q">Q1: Best captain pick today?</h4>
+                <p class="faq-a">Virat Kohli – top run-scorer, in prime form.</p>
+            </div>
+
+            <div class="modern-faq-item">
+                <h4 class="faq-q">Q2: Ideal combo for small leagues?</h4>
+                <p class="faq-a">2-3 batters, 3-4 all-rounders, and 3 bowlers.</p>
+            </div>
+
+            <div class="modern-faq-item">
+                <h4 class="faq-q">Q3: Will Sam Curran play today?</h4>
+                <p class="faq-a">Yes, he’s declared fit and available for selection.</p>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- STAY UPDATE CRICKET ADDICTOR  -->
+
+        <div class="stay-updated-box">
+            <div class="stay-updated-heading">
+                📣 Stay Updated
+            </div>
+            <p class="stay-updated-text">
+                Stay updated with <strong>Cricket Addictor</strong> for more expert fantasy predictions and match
+                analysis during <strong>IPL 2025</strong>!
+            </p>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <!-- DISCLAIMER SECTION  -->
         <div class="disclaimer-box">
             <div class="disclaimer-icon">
@@ -5303,7 +6119,7 @@
 
 
             // TAP AND SCROLL CONTENT 
-            const OFFSET_HEIGHT = 90; // adjust this based on your sticky header height
+            const OFFSET_HEIGHT = 104; // adjust this based on your sticky header height
 
             document.querySelectorAll('.quick-link-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
