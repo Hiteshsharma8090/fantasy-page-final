@@ -1533,7 +1533,7 @@
         .playing11-compact {
             display: flex;
             justify-content: space-between;
-            flex-wrap: wrap;
+            /* flex-wrap: wrap; */
             border-radius: 16px;
             gap: 24px;
         }
@@ -1581,9 +1581,24 @@
             transition: 0.2s;
         }
 
+
+
         .mini-list li:hover {
             transform: scale(1.02);
             background: #f1f5f9;
+        }
+
+        .player-name1 {
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .player-name1:hover {
+            text-decoration: underline;
         }
 
         .tag {
@@ -1618,15 +1633,37 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-
-            .playing11-compact {
-                flex-direction: column;
-                gap: 16px;
+            .mini-list li {
+                display: grid;
+                gap: 8px;
             }
 
+            .playing11-compact {
+                /* flex-direction: column; */
+                gap: 8px;
+            }
+
+            .player-name {
+                margin-top: 2px;
+                font-size: 0.8rem;
+                width: 100%;
+            }
+
+            .tag {
+                font-size: 0.5rem;
+                font-weight: 500;
+                padding: 1px 5px;
+                opacity: 0.85;
+                width: 24px;
+                display: flex;
+                align-items: center;
+                text-align: center;
+                justify-content: center;
+            }
 
             .team-mini {
                 flex: 1 1 100%;
+                padding: 12px;
             }
         }
 
@@ -5003,17 +5040,28 @@
                         <div class="team-mini">
                             <div class="team-title lsg">LSG Playing XI</div>
                             <ul class="mini-list">
-                                <li><span class="tag bat">BAT</span> David Miller</li>
-                                <li><span class="tag wk">WK</span> Nicholas Pooran</li>
-                                <li><span class="tag ar">AR</span> Deepak Hooda</li>
-                                <li><span class="tag bwl">BWL</span> Ravi Bishnoi</li>
-                                <li><span class="tag bwl">BWL</span> Mark Wood</li>
-                                <li><span class="tag ar">AR</span> Krunal Pandya</li>
-                                <li><span class="tag wk">WK</span> Nicholas Pooran</li>
-                                <li><span class="tag ar">AR</span> Deepak Hooda</li>
-                                <li><span class="tag bwl">BWL</span> Ravi Bishnoi</li>
-                                <li><span class="tag bwl">BWL</span> Mark Wood</li>
-                                <li><span class="tag ar">AR</span> Krunal Pandya</li>
+                                <li><span class="tag bat">BAT</span> <a href="/player/david-miller"
+                                        class="player-name1">David Miller</a></li>
+                                <li><span class="tag wk">WK</span> <a href="/player/nicholas-pooran"
+                                        class="player-name1">Nicholas Pooran</a></li>
+                                <li><span class="tag ar">AR</span> <a href="/player/deepak-hooda"
+                                        class="player-name1">Deepak Hooda</a></li>
+                                <li><span class="tag bwl">BWL</span> <a href="/player/ravi-bishnoi"
+                                        class="player-name1">Ravi Bishnoi</a></li>
+                                <li><span class="tag bwl">BWL</span> <a href="/player/mark-wood"
+                                        class="player-name1">Mark Wood</a></li>
+                                <li><span class="tag ar">AR</span> <a href="/player/krunal-pandya"
+                                        class="player-name1">Krunal Pandya</a></li>
+                                <li><span class="tag wk">WK</span> <a href="/player/nicholas-pooran"
+                                        class="player-name1">Nicholas Pooran</a></li>
+                                <li><span class="tag ar">AR</span> <a href="/player/deepak-hooda"
+                                        class="player-name1">Deepak Hooda</a></li>
+                                <li><span class="tag bwl">BWL</span> <a href="/player/ravi-bishnoi"
+                                        class="player-name1">Ravi Bishnoi</a></li>
+                                <li><span class="tag bwl">BWL</span> <a href="/player/mark-wood"
+                                        class="player-name1">Mark Wood</a></li>
+                                <li><span class="tag ar">AR</span> <a href="/player/krunal-pandya"
+                                        class="player-name1">Krunal Pandya</a></li>
                             </ul>
                             <div class="bench">Bench: Ayush Badoni, Mohsin Khan</div>
                         </div>
@@ -5022,17 +5070,28 @@
                         <div class="team-mini">
                             <div class="team-title csk">CSK Playing XI</div>
                             <ul class="mini-list">
-                                <li><span class="tag bat">BAT</span> Ruturaj Gaikwad</li>
-                                <li><span class="tag wk">WK</span> MS Dhoni</li>
-                                <li><span class="tag ar">AR</span> Jadeja</li>
-                                <li><span class="tag bwl">BWL</span> Theekshana</li>
-                                <li><span class="tag ar">AR</span> Moeen Ali</li>
-                                <li><span class="tag bwl">BWL</span> Pathirana</li>
-                                <li><span class="tag wk">WK</span> MS Dhoni</li>
-                                <li><span class="tag ar">AR</span> Jadeja</li>
-                                <li><span class="tag bwl">BWL</span> Theekshana</li>
-                                <li><span class="tag ar">AR</span> Moeen Ali</li>
-                                <li><span class="tag bwl">BWL</span> Pathirana</li>
+                                <li><span class="tag bat">BAT</span> <a href="/player/ruturaj-gaikwad"
+                                        class="player-name1">Ruturaj Gaikwad</a></li>
+                                <li><span class="tag wk">WK</span> <a href="/player/ms-dhoni" class="player-name1">MS
+                                        Dhoni</a></li>
+                                <li><span class="tag ar">AR</span> <a href="/player/jadeja"
+                                        class="player-name1">Jadeja</a></li>
+                                <li><span class="tag bwl">BWL</span> <a href="/player/theekshana"
+                                        class="player-name1">Theekshana</a></li>
+                                <li><span class="tag ar">AR</span> <a href="/player/moeen-ali"
+                                        class="player-name1">Moeen Ali</a></li>
+                                <li><span class="tag bwl">BWL</span> <a href="/player/pathirana"
+                                        class="player-name1">Pathirana</a></li>
+                                <li><span class="tag wk">WK</span> <a href="/player/ms-dhoni" class="player-name1">MS
+                                        Dhoni</a></li>
+                                <li><span class="tag ar">AR</span> <a href="/player/jadeja"
+                                        class="player-name1">Jadeja</a></li>
+                                <li><span class="tag bwl">BWL</span> <a href="/player/theekshana"
+                                        class="player-name1">Theekshana</a></li>
+                                <li><span class="tag ar">AR</span> <a href="/player/moeen-ali"
+                                        class="player-name1">Moeen Ali</a></li>
+                                <li><span class="tag bwl">BWL</span> <a href="/player/pathirana"
+                                        class="player-name1">Pathirana</a></li>
                             </ul>
                             <div class="bench">Bench: Rayudu, Nishant Sindhu</div>
                         </div>
