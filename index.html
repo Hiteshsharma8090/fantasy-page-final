@@ -2522,7 +2522,14 @@
         }
 
         /* Mobile Friendly */
-        @media (max-width: 576px) {
+        @media (max-width: 992px) {
+            .top-stats-wrapper {
+                padding: 18px;
+                margin-top: 16px;
+                border-radius: 0px;
+                max-width: none;
+            }
+
             .top-player-pro {
                 padding: 14px;
                 gap: 10px;
@@ -2565,30 +2572,26 @@
 
 
 
-        .player-stats-tabs-section {}
-
-        .player-stats-tabs-scroll {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            /* Firefox */
+        .player-stats-tabs-section {
+            margin-top: 10px;
+            width: 100%;
         }
 
-        /* .player-stats-tabs-scroll::-webkit-scrollbar {
-            display: none;
-        } */
+        .player-stats-tabs-scroll {
+            overflow-x: hidden;
+            /* scroll hat gaya */
+            width: 100%;
+        }
 
         .player-stats-tabs {
             display: flex;
             gap: 8px;
-            min-width: max-content;
-            padding-bottom: 10px;
-            scroll-behavior: smooth;
+            width: 100%;
         }
 
         .stats-tab-btn {
-            flex: 1 1 calc(25% - 12px);
-            min-width: 80px;
+            flex: 1 1 30%;
+            min-width: 0;
             text-align: center;
             padding: 10px 14px;
             background: #f1f3f9;
@@ -2599,6 +2602,7 @@
             font-size: 0.95rem;
             cursor: pointer;
             transition: 0.3s ease;
+            white-space: nowrap;
         }
 
         .stats-tab-btn.active,
@@ -2615,13 +2619,15 @@
             margin-top: 16px;
             font-size: 0.85rem;
             color: #444;
-            text-align: center;
+            text-align: left;
+            justify-content: left;
         }
 
         .stats-tab-labels strong {
             color: #3D5CA5;
         }
 
+        /* Mobile responsive */
         @media (max-width: 768px) {
             .stats-tab-btn {
                 flex: 1 1 45%;
@@ -2632,27 +2638,6 @@
         @media (max-width: 480px) {
             .stats-tab-btn {
                 flex: 1 1 100%;
-            }
-
-            .stats-tab-labels {
-                align-items: center;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .top-stats-wrapper {
-                padding: 18px;
-                margin-top: 16px;
-                border-radius: 0px;
-                max-width: none !important;
-            }
-
-            .top-player-head h5 {
-                font-size: 0.9rem;
-            }
-
-            .stat-block div strong {
-                font-size: 1rem;
             }
         }
 
