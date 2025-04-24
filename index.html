@@ -43,8 +43,6 @@
 
 
 
-
-
         .two-column-layout {
             display: flex;
             gap: 24px;
@@ -129,6 +127,89 @@
 
 
 
+        .two-column-layout {
+            display: flex;
+            gap: 24px;
+            max-width: 1280px;
+            background: #fff;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+
+        .left-section {
+            order: 1;
+        }
+
+        .right-section {
+            order: 2;
+        }
+
+        .left-column {
+            flex: 0 0 66%;
+        }
+
+        .right-column {
+            flex: 0 0 32%;
+        }
+
+        .left-column h3,
+        .right-column h4 {
+            color: #3D5CA5;
+            margin-bottom: 12px;
+        }
+
+        .left-column p,
+        .right-column ul {
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        .right-column ul {
+            padding-left: 18px;
+            list-style-type: disc;
+        }
+
+        @media (max-width: 1245px) {
+
+
+            .left-column,
+            .right-column {
+                flex: 0 0 100%;
+            }
+        }
+
+
+        @media (max-width: 768px) {
+            .two-column-layout {
+                margin-top: 0px;
+                gap: 0px;
+            }
+
+            .left-section {
+                order: 2;
+            }
+
+            .right-section {
+                order: 1;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -150,7 +231,6 @@
             background: #fff;
             max-width: 1280px;
             margin: auto;
-            /* border-bottom: 1px solid #e4eaf1; */
         }
 
         .hero-article-title {
@@ -237,11 +317,7 @@
             border-left: 1px solid #d0d6e1;
         }
 
-        /* .hero-follow img {
-            width: 20px;
-            height: 20px;
-            text-decoration: none;
-        } */
+
 
         @media (max-width: 768px) {
             .hero-article-container {
@@ -287,8 +363,6 @@
 
 
         .match-info-card-fancy {
-            /* max-width: 650px; */
-            /* margin: 32px auto; */
             margin-bottom: 8px;
             background: rgba(255, 255, 255, 0.85);
             border-radius: 22px;
@@ -374,7 +448,6 @@
             font-size: 1rem;
         }
 
-        /* Responsive */
         @media (max-width: 576px) {
             .match-info-card-fancy {
                 padding: 20px;
@@ -494,7 +567,6 @@
             color: white;
         }
 
-        /* Scrollbar hidden */
         .table-of-content-pro::-webkit-scrollbar {
             display: none;
         }
@@ -504,7 +576,6 @@
             scrollbar-width: none;
         }
 
-        /* Responsive */
         @media (max-width: 576px) {
             .quick-nav-section {
                 padding: 10px 12px;
@@ -617,7 +688,6 @@
             font-size: 0.95rem;
         }
 
-        /* Hide extra content only on mobile */
         @media (max-width: 768px) {
 
             .match-info-glass {
@@ -659,7 +729,6 @@
         /* Match Preview Styling */
         .match-preview-glass {
             background: rgba(255, 255, 255, 0.95);
-            /* Soft white */
             border-radius: 16px;
             padding: 20px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
@@ -705,7 +774,6 @@
             line-height: 1.6;
         }
 
-        /* Hide extra content only on mobile */
         @media (max-width: 768px) {
             .glass-body.collapsed-mobile {
                 max-height: 120px;
@@ -731,7 +799,6 @@
             }
         }
 
-        /* On desktop, show full and hide Read More */
         @media (min-width: 769px) {
             .glass-body.collapsed-mobile {
                 max-height: none;
@@ -781,7 +848,7 @@
         }
 
         .pitch-glass-box .glass-header h3 {
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 700;
             margin: 0;
             color: #1f2937;
@@ -1041,6 +1108,7 @@
             text-decoration: none;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
             transition: background 0.3s;
+
         }
 
         .h2h-result:hover {
@@ -1067,6 +1135,7 @@
 
         .h2h-result.show {
             display: block;
+            gap: 8px;
         }
 
         .toggle-btn-container {
@@ -1231,6 +1300,21 @@
             text-decoration: underline;
         }
 
+        .year-dropdown {
+            margin-bottom: 16px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .year-dropdown select {
+            padding: 6px 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
         @media (max-width: 768px) {
             .venue-glass {
                 padding: 18px;
@@ -1357,9 +1441,7 @@
         @media (min-width: 600px) {
 
 
-            .mkf-cards {
-                flex-direction: row;
-            }
+
 
             .mkf-card {
                 flex: 1;
@@ -1445,6 +1527,7 @@
 
         .lsg {
             background: #3B82F6;
+
         }
 
         .csk {
@@ -1467,9 +1550,7 @@
         }
 
         @media (min-width: 600px) {
-            .injury-items {
-                flex-direction: row;
-            }
+
 
             .injury-item {
                 flex: 1;
@@ -1533,7 +1614,7 @@
 
         .section-header p {
             margin: 0;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             color: #6b7280;
         }
 
@@ -1607,6 +1688,37 @@
             color: #6b7280;
         }
 
+        .bench-impact-box {
+            background: #eef4ff;
+            border-radius: 12px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .bench-block strong,
+        .impact-block strong {
+            font-size: 12px;
+            color: #1e40af;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .bench-block ul,
+        .impact-block ul {
+            padding-left: 16px;
+            margin: 0;
+        }
+
+        .bench-block li a,
+        .impact-block li a {
+            color: #374151;
+            font-size: 13px;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
         @media (max-width: 768px) {
             .predicted-xi-section {
                 padding: 18px;
@@ -1616,6 +1728,96 @@
                 gap: 8px;
             }
         }
+
+
+
+
+
+
+        /* IMPACT PLAYER SECTON  */
+
+        .impact-player-glass {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+            backdrop-filter: blur(8px);
+            margin: auto;
+            margin-bottom: 16px;
+        }
+
+        .impact-grid {
+            display: flex;
+            flex-direction: row;
+            gap: 24px;
+            /* justify-content: space-between; */
+            /* flex-wrap: wrap; */
+            margin-top: 16px;
+        }
+
+        .impact-team {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 16px;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .impact-team h4 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: #3D5CA5;
+            border-left: 4px solid #E4443B;
+            padding-left: 8px;
+        }
+
+        .impact-roles {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .impact-box {
+            background: #ffffff;
+            padding: 10px 14px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            font-size: 0.9rem;
+        }
+
+        .impact-box .label {
+            display: block;
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-bottom: 4px;
+        }
+
+        @media (max-width: 576px) {
+            .impact-player-glass {
+                padding: 18px;
+            }
+
+            .impact-grid {
+                /* flex-direction: column; */
+                gap: 8px;
+            }
+
+            .impact-team {
+                padding: 8px;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
 
 
         /* TOP PLAYERS STATS SECTION  */
@@ -1643,10 +1845,14 @@
         }
 
         .section-header i {
-            background: linear-gradient(135deg, #3D5CA5, #ef4444);
+            background: linear-gradient(145deg, #3D5CA5, #E4443B);
             color: #fff;
-            padding: 6px;
-            border-radius: 8px;
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         /* Tabs */
@@ -1755,15 +1961,14 @@
 
         /* Team Colors */
         .team.lsg {
-            color: #3D5CA5;
             font-weight: 600;
-            color: white;
+            color: #3D5CA5;
         }
 
         .team.csk {
-            color: #E4443B;
+
             font-weight: 600;
-            color: white;
+            color: #E4443B;
         }
 
         /* Role Colors */
@@ -2570,6 +2775,8 @@
                         class="fas fa-ambulance"></i><span>Injury</span></button>
                 <button class="toc-pro-btn" data-section=".predicted-xi-card"><i
                         class="fas fa-users"></i><span>XI</span></button>
+                <button class="toc-pro-btn" data-section=".impact-player-box"><i
+                        class="fas fa-crosshairs"></i><span>Impact</span></button>
                 <button class="toc-pro-btn" data-section=".top-players-stats"><i
                         class="fas fa-star"></i><span>Top</span></button>
                 <button class="toc-pro-btn" data-section=".fantasy-tips-box"><i
@@ -2580,6 +2787,7 @@
                         Picks</span></button>
                 <button class="toc-pro-btn" data-section=".analysis-pro-wrapper"><i
                         class="fas fa-chart-pie"></i><span>Analysis</span></button>
+
                 <button class="toc-pro-btn" data-section=".dream11-wrapper"><i
                         class="fas fa-users"></i><span>Dream11</span></button>
                 <button class="toc-pro-btn" data-section=".faq-box"><i
@@ -2618,8 +2826,10 @@
                 <div class="info-card"><i class="fas fa-map-marker-alt"></i><span>Ekana Stadium, Lucknow</span></div>
                 <div class="info-card"><i class="fas fa-trophy"></i><span>IPL 2025</span></div>
                 <div class="info-card"><i class="fas fa-tags"></i><span>Match 30, T20</span></div>
-                <div class="info-card"><i class="fas fa-tv"></i><span>Star Sports & JioHotstar App</span></div>
+                <div class="info-card"><i class="fas fa-tv"></i><span>Star Sports</span></div>
+                <div class="info-card"><i class="fas fa-mobile-alt"></i><span>JioHotstar App</span></div>
             </div>
+
         </div>
 
 
@@ -2672,462 +2882,209 @@
 
 
 
-
-
-
-
-
-
-
-        <!-- PITCH REPORT SECTION  -->
-
-
-        <div class="pitch-glass-box">
-            <div class="glass-header">
-                <div class="glass-icon"><i class="fas fa-archway"></i></div>
-                <div>
-                    <h3>Pitch Report – M. Chinnaswamy Stadium</h3>
-                    <p>(Short & sharp insights to boost your fantasy strategy)</p>
-                </div>
-            </div>
-
-            <ul class="pitch-points">
-                <li>Short boundaries + flat deck = high-scoring affair.</li>
-                <li>Pacers often go expensive at the death.</li>
-                <li>Spinners may get turn if they vary pace smartly.</li>
-            </ul>
-
-            <div class="pitch-stats">
-                <div class="stat-box">
-                    <span class="value">192</span>
-                    <span class="label">Avg 1st Innings</span>
-                </div>
-                <div class="stat-box">
-                    <span class="value">58%</span>
-                    <span class="label">Chasing Win %</span>
-                </div>
-            </div>
-
-            <div class="pitch-highlight">
-                “<strong>Expect a run-fest. Prioritize top-order batters & death-over bowlers.</strong>”
-            </div>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <!-- FINAL PREDICTION & ANALYSIS SECTION  -->
-        <div class="prediction-analysis-box">
-            <div class="prediction-icon">
-                <i class="fas fa-bullseye"></i>
-            </div>
-            <div class="prediction-text">
-                <h3>Final Prediction & Analysis</h3>
-                <p>
-                    With key players returning to form and a stronger bowling lineup,
-                    <span class="highlight">Chennai Super Kings</span> are predicted to edge out a close win today.
-                </p>
-            </div>
-        </div>
-
-
-
-
-
-        <div class="h2h-glass-box">
-            <div class="glass-header">
-                <div class="glass-icon"><i class="fas fa-retweet"></i></div>
-                <div>
-                    <h3>LSG vs CSK – Head to Head</h3>
-                    <p>(Last Encounters)</p>
-                </div>
-            </div>
-
-            <div class="h2h-mini-summary">
-                <div><strong>4</strong><span>Total</span></div>
-                <div><strong>3</strong><span>LSG</span></div>
-                <div><strong>1</strong><span>CSK</span></div>
-                <div><strong>0</strong><span>Tied</span></div>
-            </div>
-
-            <div class="h2h-quick-results-wrapper">
-                <div class="h2h-quick-results" id="h2hResults">
-                    <a href="/match/1" class="h2h-result"><span>1</span>LSG by 6 wkts</a>
-                    <a href="/match/2" class="h2h-result"><span>2</span>LSG by 8 wkts</a>
-                    <a href="/match/3" class="h2h-result"><span>3</span>CSK by 12 runs</a>
-                    <a href="/match/4" class="h2h-result"><span>4</span>LSG by 6 wkts</a>
-
-                    <!-- Hidden by default -->
-                    <a href="/match/5" class="h2h-result extra"><span>5</span>CSK by 5 wkts</a>
-                    <a href="/match/6" class="h2h-result extra"><span>6</span>LSG by 3 wkts</a>
-                </div>
-
-                <div class="toggle-btn-container">
-                    <button class="h2h-toggle-btn" onclick="toggleH2HResults()" id="toggleBtn">
-                        View More <i class="fas fa-chevron-down"></i>
-                    </button>
-                </div>
-            </div>
-
-
-
-
-            <div class="h2h-footer">
-                <i class="fas fa-trophy"></i>
-                <span>Highest: <strong>CSK – 217/7</strong></span>
-                <span class="divider">|</span>
-                <span>Lowest: <strong>LSG – 112/9</strong></span>
-            </div>
-
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <!-- RECENT VENUE RECORDS SECTION  -->
-        <div class="venue-glass">
-            <div class="glass-header">
-                <div class="glass-icon"><i class="fas fa-map-marker-alt"></i></div>
-                <div>
-                    <h3>Recent Venue Records</h3>
-                    <p>(Last 5 matches at this venue)</p>
-                </div>
-            </div>
-
-            <div class="venue-stats-grid">
-                <div class="stat-box1">
-                    <span>Avg 1st Inn</span>
-                    <strong>191</strong>
-                </div>
-                <div class="stat-box1">
-                    <span>Highest Chase</span>
-                    <strong>177</strong>
-                </div>
-                <div class="stat-box1">
-                    <span>Toss Impact</span>
-                    <strong class="red">48.97%</strong>
-                </div>
-            </div>
-
-            <ul class="venue-results">
-                <li><a href="#">LSG vs GT – LSG won by 6 wkts</a></li>
-                <li><a href="#">LSG vs MI – LSG won by 12 runs</a></li>
-                <li><a href="#">LSG vs PBKS – PBKS won by 8 wkts</a></li>
-                <li><a href="#">LSG vs KKR – KKR won by 98 runs</a></li>
-                <li><a href="#">LSG vs MI – LSG won by 4 wkts</a></li>
-            </ul>
-        </div>
-
-
-
-
-
-
-        <!-- MATCH KEY FACTORS SECTION  -->
-        <div class="match-key-factors-glass">
-            <div class="mkf-header">
-                <div class="mkf-icon"><i class="fas fa-cloud-sun-rain"></i></div>
-                <div>
-                    <h3>Match Key Factors</h3>
-                    <p>(Weather & pitch insights to influence your fantasy picks)</p>
-                </div>
-            </div>
-
-            <div class="mkf-cards">
-                <div class="mkf-card glass-glow weather">
-                    <div class="mkf-card-icon"><i class="fas fa-cloud-sun"></i></div>
-                    <div class="mkf-card-text">
-                        <strong>Weather</strong>
-                        <p>27°C, light showers & winds 9–11 km/hr. Slight interruption possible.</p>
+        <div class="two-column-layout match-preview">
+            <!-- Left Section (70%) -->
+            <div class="left-column">
+                <!-- PITCH REPORT SECTION  -->
+
+
+                <div class="pitch-glass-box">
+                    <div class="glass-header">
+                        <div class="glass-icon"><i class="fas fa-archway"></i></div>
+                        <div>
+                            <h3>Pitch Report – M. Chinnaswamy Stadium</h3>
+                            <p>(Quick Fantasy Boosts)</p>
+                        </div>
                     </div>
-                </div>
-                <div class="mkf-card glass-glow pitch">
-                    <div class="mkf-card-icon"><i class="fas fa-drumstick-bite"></i></div>
-                    <div class="mkf-card-text">
-                        <strong>Pitch</strong>
-                        <p>Early bounce for pacers, spin in middle. Dew helps chasing later.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-
-
-
-        <!-- INJURY & AVAILABILITY SECTION  -->
-
-        <div class="injury-update-glass">
-            <div class="injury-header">
-                <div class="injury-icon"><i class="fas fa-ambulance"></i></div>
-                <div>
-                    <h3>Injury & Availability</h3>
-                    <p>(Latest player fitness & lineup updates)</p>
-                </div>
-            </div>
-
-            <div class="injury-items">
-                <div class="injury-item available">
-                    <span class="team-tag lsg">LSG</span>
-                    <span class="injury-text"><i class="fas fa-check-circle"></i> Full squad available</span>
-                </div>
-                <div class="injury-item update">
-                    <span class="team-tag csk">CSK</span>
-                    <span class="injury-text"><i class="fas fa-user-md"></i> Sam Curran declared fit and ready to
-                        play</span>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-        <!-- PREDICTED PLAYING11 SECTION  -->
-        <div class="predicted-xi-section">
-            <div class="section-header">
-                <i class="fas fa-clipboard-list"></i>
-                <div>
-                    <h3>Predicted Playing XI</h3>
-                    <p>(Based on team balance & recent matches)</p>
-                </div>
-            </div>
-
-            <div class="xi-wrapper">
-                <!-- LSG Team -->
-                <div class="team-column">
-                    <h4 class="team-lsg">LSG</h4>
-                    <ul class="player-list">
-                        <li><i class="fas fa-baseball-ball bat"></i> <a href="#">David Miller</a></li>
-                        <li><i class="fas fa-user-shield wk"></i> <a href="#">Nicholas Pooran</a></li>
-                        <li><i class="fas fa-recycle ar"></i> <a href="#">Deepak Hooda</a></li>
-                        <li><i class="fas fa-bowling-ball bwl"></i> <a href="#">Ravi Bishnoi</a></li>
-                        <li><i class="fas fa-bowling-ball bwl"></i> <a href="#">Mark Wood</a></li>
-                        <li><i class="fas fa-recycle ar"></i> <a href="#">Krunal Pandya</a></li>
+                    <ul class="pitch-points">
+                        <li>Short boundaries + flat deck = high-scoring affair.</li>
+                        <li>Pacers often go expensive at the death.</li>
+                        <li>Spinners may get turn if they vary pace smartly.</li>
                     </ul>
-                    <p class="bench">Bench: Ayush Badoni, Mohsin Khan</p>
-                </div>
 
-                <!-- CSK Team -->
-                <div class="team-column">
-                    <h4 class="team-csk">CSK</h4>
-                    <ul class="player-list">
-                        <li><i class="fas fa-baseball-ball bat"></i> <a href="#">Ruturaj Gaikwad</a></li>
-                        <li><i class="fas fa-user-shield wk"></i> <a href="#">MS Dhoni</a></li>
-                        <li><i class="fas fa-recycle ar"></i> <a href="#">Jadeja</a></li>
-                        <li><i class="fas fa-bowling-ball bwl"></i> <a href="#">Theekshana</a></li>
-                        <li><i class="fas fa-recycle ar"></i> <a href="#">Moeen Ali</a></li>
-                        <li><i class="fas fa-bowling-ball bwl"></i> <a href="#">Pathirana</a></li>
-                    </ul>
-                    <p class="bench">Bench: Rayudu, Nishant Sindhu</p>
-                </div>
-            </div>
-        </div>
-
-
-
-
-        <!-- TOP PALYES STATS SECTION  -->
-        <div class="compact-player-stats">
-            <!-- Section Heading -->
-
-            <div class="section-header">
-                <i class="fas fas fa-star"></i>
-                <div>
-                    <h3>Top Player Stats</h3>
-                    <p>(Based on recent match performances)</p>
-                </div>
-            </div>
-
-            <!-- Tabs -->
-            <div class="compact-tabs">
-                <button class="active">Most Runs</button>
-                <button>S/R</button>
-                <button>Wkts</button>
-                <button>Eco</button>
-                <button>FPts</button>
-            </div>
-
-
-
-            <!-- Cards Wrapper -->
-            <div class="compact-cards" id="playerCards">
-                <!-- 5 Initial Cards -->
-                <div class="compact-card">
-                    <div class="rank-badge">1</div>
-                    <img src="images/profile.svg" alt="Player" />
-                    <div class="compact-info">
-                        <a href="#" class="player-name">N. Pooran</a>
-                        <span class="team-role"><span class="team lsg">LSG</span> · <span
-                                class="role wk">WK</span></span>
-                    </div>
-                    <div class="stat-right">
-                        <strong>357</strong><small>Runs</small>
-                        <span class="matches">7 Matches</span>
-                    </div>
-                </div>
-
-                <div class="compact-card">
-                    <div class="rank-badge">2</div>
-                    <img src="images/profile.svg" alt="Player" />
-                    <div class="compact-info">
-                        <a href="#" class="player-name">R. Ravindra</a>
-                        <span class="team-role"><span class="team csk">CSK</span> · <span
-                                class="role ar">AR</span></span>
-                    </div>
-                    <div class="stat-right">
-                        <strong>198</strong><small>Runs</small>
-                        <span class="matches">6 Matches</span>
-                    </div>
-                </div>
-
-                <div class="compact-card">
-                    <div class="rank-badge">3</div>
-                    <img src="images/profile.svg" alt="Player" />
-                    <div class="compact-info">
-                        <a href="#" class="player-name">D. Miller</a>
-                        <span class="team-role"><span class="team lsg">LSG</span> · <span
-                                class="role bat">BAT</span></span>
-                    </div>
-                    <div class="stat-right">
-                        <strong>173</strong><small>Runs</small>
-                        <span class="matches">5 Matches</span>
-                    </div>
-                </div>
-
-                <div class="compact-card">
-                    <div class="rank-badge">4</div>
-                    <img src="images/profile.svg" alt="Player" />
-                    <div class="compact-info">
-                        <a href="#" class="player-name">S. Dube</a>
-                        <span class="team-role"><span class="team csk">CSK</span> · <span
-                                class="role ar">AR</span></span>
-                    </div>
-                    <div class="stat-right">
-                        <strong>140</strong><small>Runs</small>
-                        <span class="matches">6 Matches</span>
-                    </div>
-                </div>
-
-                <div class="compact-card">
-                    <div class="rank-badge">5</div>
-                    <img src="images/profile.svg" alt="Player" />
-                    <div class="compact-info">
-                        <a href="#" class="player-name">R. Tripathi</a>
-                        <span class="team-role"><span class="team lsg">LSG</span> · <span
-                                class="role bat">BAT</span></span>
-                    </div>
-                    <div class="stat-right">
-                        <strong>122</strong><small>Runs</small>
-                        <span class="matches">5 Matches</span>
-                    </div>
-                </div>
-
-                <!-- Hidden Extra Cards -->
-                <div id="morePlayers" style="display: none;">
-                    <div class="compact-card">
-                        <div class="rank-badge">6</div>
-                        <img src="images/profile.svg" alt="Player" />
-                        <div class="compact-info">
-                            <a href="#" class="player-name">M. Ali</a>
-                            <span class="team-role"><span class="team csk">CSK</span> · <span
-                                    class="role ar">AR</span></span>
+                    <div class="pitch-stats">
+                        <div class="stat-box">
+                            <span class="value">192</span>
+                            <span class="label">Avg 1st Innings</span>
                         </div>
-                        <div class="stat-right">
-                            <strong>100</strong><small>Runs</small>
-                            <span class="matches">4 Matches</span>
+                        <div class="stat-box">
+                            <span class="value">58%</span>
+                            <span class="label">Chasing Win %</span>
                         </div>
                     </div>
 
-                    <div class="compact-card">
-                        <div class="rank-badge">7</div>
-                        <img src="images/profile.svg" alt="Player" />
-                        <div class="compact-info">
-                            <a href="#" class="player-name">K. Pandya</a>
-                            <span class="team-role"><span class="team lsg">LSG</span> · <span
-                                    class="role ar">AR</span></span>
+                    <div class="pitch-highlight">
+                        “<strong>Expect a run-fest. Prioritize top-order batters & death-over bowlers.</strong>”
+                    </div>
+                </div>
+
+                <!-- HEAD TO HEAD SECTION  -->
+                <div class="h2h-glass-box">
+                    <div class="glass-header">
+                        <div class="glass-icon"><i class="fas fa-retweet"></i></div>
+                        <div>
+                            <h3>LSG vs CSK – Head to Head</h3>
+                            <p>(Last Encounters)</p>
                         </div>
-                        <div class="stat-right">
-                            <strong>88</strong><small>Runs</small>
-                            <span class="matches">5 Matches</span>
+                    </div>
+
+                    <div class="h2h-mini-summary">
+                        <div><strong>4</strong><span>Total</span></div>
+                        <div><strong>3</strong><span>LSG</span></div>
+                        <div><strong>1</strong><span>CSK</span></div>
+                        <div><strong>0</strong><span>Tied</span></div>
+                    </div>
+
+                    <div class="h2h-quick-results-wrapper">
+                        <div class="h2h-quick-results" id="h2hResults">
+                            <a href="/match/1" class="h2h-result"><span>1</span>LSG by 6 wkts</a>
+                            <a href="/match/2" class="h2h-result"><span>2</span>LSG by 8 wkts</a>
+                            <a href="/match/3" class="h2h-result"><span>3</span>CSK by 12 runs</a>
+                            <a href="/match/4" class="h2h-result"><span>4</span>LSG by 6 wkts</a>
+
+                            <!-- Hidden by default -->
+                            <a href="/match/5" class="h2h-result extra"><span>5</span>CSK by 5 wkts</a>
+                            <a href="/match/6" class="h2h-result extra"><span>6</span>LSG by 3 wkts</a>
+                        </div>
+
+                        <div class="toggle-btn-container">
+                            <button class="h2h-toggle-btn" onclick="toggleH2HResults()" id="toggleBtn">
+                                View More <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="h2h-footer">
+                        <i class="fas fa-trophy"></i>
+                        <span>Highest: <strong>CSK – 217/7</strong></span>
+                        <span class="divider">|</span>
+                        <span>Lowest: <strong>LSG – 112/9</strong></span>
+                    </div>
+
+                </div>
+
+                <!-- RECENT VENUE RECORDS SECTION  -->
+                <div class="venue-glass">
+                    <div class="glass-header">
+                        <div class="glass-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h3>Recent Venue Records</h3>
+                            <p>(Last 5 matches at this venue)</p>
+                        </div>
+                    </div>
+
+                    <div class="year-dropdown">
+                        <label for="venueYear"><i class="fas fa-calendar-alt"></i> Filter by Year:</label>
+                        <select id="venueYear">
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                        </select>
+                    </div>
+
+                    <div class="venue-stats-grid">
+                        <div class="stat-box1">
+                            <span>Avg 1st Inn</span>
+                            <strong>191</strong>
+                        </div>
+                        <div class="stat-box1">
+                            <span>Highest Chase</span>
+                            <strong>177</strong>
+                        </div>
+                        <div class="stat-box1">
+                            <span>Toss Impact</span>
+                            <strong class="red">48.97%</strong>
+                        </div>
+                    </div>
+
+                    <div class="h2h-quick-results-wrapper">
+                        <div class="h2h-quick-results" id="h2hResults">
+                            <a href="/match/1" class="h2h-result" data-year="2025"><span>1</span>LSG vs GT – LSG won by
+                                6
+                                wkts</a>
+                            <a href="/match/2" class="h2h-result" data-year="2025"><span>2</span>LSG vs MI – LSG won by
+                                12
+                                runs</a>
+                            <a href="/match/3" class="h2h-result" data-year="2024"><span>3</span>LSG vs PBKS – PBKS won
+                                by 8
+                                wkts</a>
+                            <a href="/match/4" class="h2h-result" data-year="2024"><span>4</span>LSG vs KKR – KKR won by
+                                98
+                                runs</a>
+                            <a href="/match/5" class="h2h-result" data-year="2023"><span>5</span>LSG vs MI – LSG won by
+                                4
+                                wkts</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+            <!-- Right Section (30%) -->
+            <div class="right-column final-prediction-wrapper1">
+                <!-- MATCH KEY FACTORS SECTION  -->
+                <div class="match-key-factors-glass">
+                    <div class="mkf-header">
+                        <div class="mkf-icon"><i class="fas fa-cloud-sun-rain"></i></div>
+                        <div>
+                            <h3>Match Key Factors</h3>
+                            <p>(Weather & pitch insights to influence your fantasy picks)</p>
+                        </div>
+                    </div>
+
+                    <div class="mkf-cards">
+                        <div class="mkf-card glass-glow weather">
+                            <div class="mkf-card-icon"><i class="fas fa-cloud-sun"></i></div>
+                            <div class="mkf-card-text">
+                                <strong>Weather</strong>
+                                <p>27°C, light showers & winds 9–11 km/hr. Slight interruption possible.</p>
+                            </div>
+                        </div>
+                        <div class="mkf-card glass-glow pitch">
+                            <div class="mkf-card-icon"><i class="fas fa-drumstick-bite"></i></div>
+                            <div class="mkf-card-text">
+                                <strong>Pitch</strong>
+                                <p>Early bounce for pacers, spin in middle. Dew helps chasing later.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <!-- INJURY & AVAILABILITY SECTION  -->
+
+                <div class="injury-update-glass">
+                    <div class="injury-header">
+                        <div class="injury-icon"><i class="fas fa-ambulance"></i></div>
+                        <div>
+                            <h3>Injury & Availability</h3>
+                            <p>(Latest player fitness & lineup updates)</p>
+                        </div>
+                    </div>
+
+                    <div class="injury-items">
+                        <div class="injury-item available">
+                            <span class="team-tag lsg">LSG</span>
+                            <span class="injury-text"><i class="fas fa-check-circle"></i> Full squad available</span>
+                        </div>
+                        <div class="injury-item update">
+                            <span class="team-tag csk">CSK</span>
+                            <span class="injury-text"><i class="fas fa-user-md"></i> Sam Curran declared fit and ready
+                                to
+                                play</span>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="view-more-btn" onclick="toggleMorePlayers()">
-                <span id="moreText">View More</span>
-                <i class="fas fa-chevron-down"></i>
-            </div>
-        </div>
-
-
-
-
-        <!-- FANTASY TIPS SECTION -->
-        <div class="fantasy-tips-glass">
-            <div class="glass-header">
-                <div class="glass-icon"><i class="fas fa-bullseye"></i></div>
-                <div>
-                    <h3>Fantasy Tips</h3>
-                    <p>(Smart picks to help you build a winning Dream11 team)</p>
-                </div>
-
-            </div>
-
-
-            <!-- CAPTAIN PICKS -->
-            <div class="tips-subsection">
-                <div class="subheader"><i class="fas fa-chess-king"></i> Captain Picks</div>
-                <div class="tips-cards">
-                    <div class="tip-card">
-                        <h4>Nicholas Pooran <span>Avg Points: <strong>9</strong></span></h4>
-                        <p>Top-scorer, known for aggressive play and boundary-hitting.</p>
-                    </div>
-                    <div class="tip-card">
-                        <h4>Rachin Ravindra <span>Avg Points: <strong>7.5</strong></span></h4>
-                        <p>Opener with high strike rate & ability to set foundation.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- VICE-CAPTAIN PICKS -->
-            <div class="tips-subsection">
-                <div class="subheader"><i class="fas fa-chess-knight"></i> Vice-Captain Picks</div>
-                <div class="tips-cards">
-                    <div class="tip-card">
-                        <h4>Aiden Markram <span>Avg Points: <strong>9</strong></span></h4>
-                        <p>Middle-order batter with off-spin bowling option — great balance.</p>
-                    </div>
-                    <div class="tip-card">
-                        <h4>Devon Conway <span>Avg Points: <strong>8.5</strong></span></h4>
-                        <p>Performer with strong average & technical shot play.</p>
-                    </div>
-                </div>
-            </div>
         </div>
 
 
@@ -3137,61 +3094,370 @@
 
 
 
+        <div class="two-column-layout match-preview">
+            <!-- Left Section (70%) -->
+            <div class="left-column">
+                <!-- PREDICTED PLAYING11 SECTION  -->
+                <div class="predicted-xi-section">
+                    <div class="section-header">
+                        <i class="fas fa-clipboard-list"></i>
+                        <div>
+                            <h3>Predicted Playing XI</h3>
+                            <p>(Based on team balance & recent matches)</p>
+                        </div>
+                    </div>
+
+                    <div class="xi-wrapper">
+                        <!-- LSG Team -->
+                        <div class="team-column">
+                            <h4 class="team-lsg">LSG</h4>
+                            <ul class="player-list">
+                                <li> <a href="#">David Miller</a></li>
+                                <li> <a href="#">Nicholas Pooran</a></li>
+                                <li> <a href="#">Deepak Hooda</a></li>
+                                <li><a href="#">Ravi Bishnoi</a></li>
+                                <li><a href="#">Mark Wood</a></li>
+                                <li> <a href="#">Krunal Pandya</a></li>
+                            </ul>
+
+                            <div class="bench-impact-box">
+                                <div class="bench-block">
+                                    <strong>Bench:</strong>
+                                    <ul>
+                                        <li><a href="#">Ayush Badoni</a></li>
+                                        <li><a href="#">Mohsin Khan</a></li>
+                                    </ul>
+                                </div>
+                                <div class="impact-block">
+                                    <strong>Impact Players:</strong>
+                                    <ul>
+                                        <li><a href="#">K Gowtham</a></li>
+                                        <li><a href="#">Yudhvir Singh</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CSK Team -->
+                        <div class="team-column">
+                            <h4 class="team-csk">CSK</h4>
+                            <ul class="player-list">
+                                <li><a href="#">Ruturaj Gaikwad</a></li>
+                                <li> <a href="#">MS Dhoni</a></li>
+                                <li> <a href="#">Jadeja</a></li>
+                                <li><a href="#">Theekshana</a></li>
+                                <li><a href="#">Moeen Ali</a></li>
+                                <li> <a href="#">Pathirana</a></li>
+                            </ul>
+                            <div class="bench-impact-box">
+                                <div class="bench-block">
+                                    <strong>Bench:</strong>
+                                    <ul>
+                                        <li><a href="#">Ambati Rayudu</a></li>
+                                        <li><a href="#">Nishant Sindhu</a></li>
+                                    </ul>
+                                </div>
+                                <div class="impact-block">
+                                    <strong>Impact Players:</strong>
+                                    <ul>
+                                        <li><a href="#">RJ Hangargekar</a></li>
+                                        <li><a href="#">SB Senapati</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IMPACT PLAYER SECTION -->
+                <div class="impact-player-glass">
+                    <div class="glass-header">
+                        <div class="glass-icon"><i class="fas fa-bolt"></i></div>
+                        <div>
+                            <h3>Impact Player Picks</h3>
+                            <p>(Strategic game-changers in batting & fielding)</p>
+                        </div>
+                    </div>
+
+                    <div class="impact-grid">
+                        <!-- Team 1 -->
+                        <div class="impact-team">
+                            <h4 class="team-lsg">LSG (Batting First)</h4>
+                            <div class="impact-roles">
+                                <div class="impact-box">
+                                    <span class="label">Batting Impact</span>
+                                    <strong>Ayush Badoni</strong>
+                                </div>
+                                <div class="impact-box">
+                                    <span class="label">Fielding Impact</span>
+                                    <strong>Mohsin Khan</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Team 2 -->
+                        <div class="impact-team">
+                            <h4 class="team-csk">CSK (Batting First)</h4>
+                            <div class="impact-roles">
+                                <div class="impact-box">
+                                    <span class="label">Batting Impact</span>
+                                    <strong>Shivam Dube</strong>
+                                </div>
+                                <div class="impact-box">
+                                    <span class="label">Fielding Impact</span>
+                                    <strong>Pathirana</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- TOP PALYES STATS SECTION  -->
+                <div class="compact-player-stats">
+                    <!-- Section Heading -->
+
+                    <div class="section-header">
+                        <i class="fas fas fa-star"></i>
+                        <div>
+                            <h3>Top Player Stats</h3>
+                            <p>(Based on recent match performances)</p>
+                        </div>
+                    </div>
+
+                    <!-- Tabs -->
+                    <div class="compact-tabs">
+                        <button class="active">Most Runs</button>
+                        <button>S/R</button>
+                        <button>Wkts</button>
+                        <button>Eco</button>
+                        <button>FPts</button>
+                    </div>
 
 
 
+                    <!-- Cards Wrapper -->
+                    <div class="compact-cards" id="playerCards">
+                        <!-- 5 Initial Cards -->
+                        <div class="compact-card">
+                            <div class="rank-badge">1</div>
+                            <img src="images/profile.svg" alt="Player" />
+                            <div class="compact-info">
+                                <a href="#" class="player-name">N. Pooran</a>
+                                <span class="team-role"><span class="team">LSG</span> · <span
+                                        class="role wk">WK</span></span>
+                            </div>
+                            <div class="stat-right">
+                                <strong>357</strong><small>Runs</small>
+                                <span class="matches">7 Matches</span>
+                            </div>
+                        </div>
 
+                        <div class="compact-card">
+                            <div class="rank-badge">2</div>
+                            <img src="images/profile.svg" alt="Player" />
+                            <div class="compact-info">
+                                <a href="#" class="player-name">R. Ravindra</a>
+                                <span class="team-role"><span class="team">CSK</span> · <span
+                                        class="role ar">AR</span></span>
+                            </div>
+                            <div class="stat-right">
+                                <strong>198</strong><small>Runs</small>
+                                <span class="matches">6 Matches</span>
+                            </div>
+                        </div>
 
+                        <div class="compact-card">
+                            <div class="rank-badge">3</div>
+                            <img src="images/profile.svg" alt="Player" />
+                            <div class="compact-info">
+                                <a href="#" class="player-name">D. Miller</a>
+                                <span class="team-role"><span class="team ">LSG</span> · <span
+                                        class="role bat">BAT</span></span>
+                            </div>
+                            <div class="stat-right">
+                                <strong>173</strong><small>Runs</small>
+                                <span class="matches">5 Matches</span>
+                            </div>
+                        </div>
 
+                        <div class="compact-card">
+                            <div class="rank-badge">4</div>
+                            <img src="images/profile.svg" alt="Player" />
+                            <div class="compact-info">
+                                <a href="#" class="player-name">S. Dube</a>
+                                <span class="team-role"><span class="team ">CSK</span> · <span
+                                        class="role ar">AR</span></span>
+                            </div>
+                            <div class="stat-right">
+                                <strong>140</strong><small>Runs</small>
+                                <span class="matches">6 Matches</span>
+                            </div>
+                        </div>
 
+                        <div class="compact-card">
+                            <div class="rank-badge">5</div>
+                            <img src="images/profile.svg" alt="Player" />
+                            <div class="compact-info">
+                                <a href="#" class="player-name">R. Tripathi</a>
+                                <span class="team-role"><span class="team ">LSG</span> · <span
+                                        class="role bat">BAT</span></span>
+                            </div>
+                            <div class="stat-right">
+                                <strong>122</strong><small>Runs</small>
+                                <span class="matches">5 Matches</span>
+                            </div>
+                        </div>
 
+                        <!-- Hidden Extra Cards -->
+                        <div id="morePlayers" style="display: none;">
+                            <div class="compact-card mb-3">
+                                <div class="rank-badge">6</div>
+                                <img src="images/profile.svg" alt="Player" />
+                                <div class="compact-info">
+                                    <a href="#" class="player-name">M. Ali</a>
+                                    <span class="team-role"><span class="team ">CSK</span> · <span
+                                            class="role ar">AR</span></span>
+                                </div>
+                                <div class="stat-right">
+                                    <strong>100</strong><small>Runs</small>
+                                    <span class="matches">4 Matches</span>
+                                </div>
+                            </div>
 
+                            <div class="compact-card mb-3">
+                                <div class="rank-badge">7</div>
+                                <img src="images/profile.svg" alt="Player" />
+                                <div class="compact-info">
+                                    <a href="#" class="player-name">K. Pandya</a>
+                                    <span class="team-role"><span class="team ">LSG</span> · <span
+                                            class="role ar">AR</span></span>
+                                </div>
+                                <div class="stat-right">
+                                    <strong>88</strong><small>Runs</small>
+                                    <span class="matches">5 Matches</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-
-
-
-
-
-
-
-
-
-        <!-- PICKS SECTION -->
-        <div class="smart-picks-glass">
-
-            <!-- Best Budget Picks -->
-            <div class="picks-group">
-                <div class="picks-header">
-                    <i class="fas fa-money-bill-wave"></i>
-                    <div>
-                        <h3>Best Budget Picks</h3>
-                        <p>(Smart value players for Dream11 teams)</p>
+                    <div class="view-more-btn" onclick="toggleMorePlayers()">
+                        <span id="moreText">View More</span>
+                        <i class="fas fa-chevron-down"></i>
                     </div>
                 </div>
 
 
-                <div class="pick-card budget">
-                    <span>• <strong>Jitesh Sharma</strong> – Can deliver 40+ points at low credit.</span>
-                    <span>• <strong>Karn Sharma</strong> – Might surprise with 1-2 wickets.</span>
-                </div>
+
             </div>
 
-            <!-- Grand League Differential Picks -->
-            <div class="picks-group">
-                <div class="picks-header">
-                    <i class="fas fa-bullseye"></i>
-                    <div>
-                        <h3>Grand League Differential Picks</h3>
-                        <p>(Low-owned players with high upside)</p>
+            <!-- Right Section (30%) -->
+            <div class="right-column final-prediction-wrapper1">
+                <!-- FANTASY TIPS SECTION -->
+                <div class="fantasy-tips-glass">
+                    <div class="glass-header">
+                        <div class="glass-icon"><i class="fas fa-bullseye"></i></div>
+                        <div>
+                            <h3>Fantasy Tips</h3>
+                            <p>(Smart picks to help you build a winning Dream11 team)</p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- CAPTAIN PICKS -->
+                    <div class="tips-subsection">
+                        <div class="subheader"><i class="fas fa-chess-king"></i> Captain Picks</div>
+                        <div class="tips-cards">
+                            <div class="tip-card">
+                                <h4>Nicholas Pooran <span>Avg Points: <strong>9</strong></span></h4>
+                                <p>Top-scorer, known for aggressive play and boundary-hitting.</p>
+                            </div>
+                            <div class="tip-card">
+                                <h4>Rachin Ravindra <span>Avg Points: <strong>7.5</strong></span></h4>
+                                <p>Opener with high strike rate & ability to set foundation.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VICE-CAPTAIN PICKS -->
+                    <div class="tips-subsection">
+                        <div class="subheader"><i class="fas fa-chess-knight"></i> Vice-Captain Picks</div>
+                        <div class="tips-cards">
+                            <div class="tip-card">
+                                <h4>Aiden Markram <span>Avg Points: <strong>9</strong></span></h4>
+                                <p>Middle-order batter with off-spin bowling option — great balance.</p>
+                            </div>
+                            <div class="tip-card">
+                                <h4>Devon Conway <span>Avg Points: <strong>8.5</strong></span></h4>
+                                <p>Performer with strong average & technical shot play.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="pick-card league">
-                    <span>• <strong>Mahipal Lomror</strong> – Value if he bats in top 5.</span>
-                    <span>• <strong>Shahrukh Khan</strong> – Explosive if PBKS bats second.</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- PICKS SECTION -->
+                <div class="smart-picks-glass">
+
+                    <!-- Best Budget Picks -->
+                    <div class="picks-group">
+                        <div class="picks-header">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <div>
+                                <h3>Best Budget Picks</h3>
+                                <p>(Smart value players for Dream11 teams)</p>
+                            </div>
+                        </div>
+
+
+                        <div class="pick-card budget">
+                            <span>• <strong>Jitesh Sharma</strong> – Can deliver 40+ points at low credit.</span>
+                            <span>• <strong>Karn Sharma</strong> – Might surprise with 1-2 wickets.</span>
+                        </div>
+                    </div>
+
+                    <!-- Grand League Differential Picks -->
+                    <div class="picks-group">
+                        <div class="picks-header">
+                            <i class="fas fa-bullseye"></i>
+                            <div>
+                                <h3>Grand League Differential Picks</h3>
+                                <p>(Low-owned players with high upside)</p>
+                            </div>
+                        </div>
+
+                        <div class="pick-card league">
+                            <span>• <strong>Mahipal Lomror</strong> – Value if he bats in top 5.</span>
+                            <span>• <strong>Shahrukh Khan</strong> – Explosive if PBKS bats second.</span>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-
         </div>
 
 
@@ -3199,152 +3465,274 @@
 
 
 
-        <!-- DREAM TEAM SECTION  -->
-        <div class="fantasy-tips-glass">
-            <div class="glass-header">
-                <div class="glass-icon"><i class="fas fa-users"></i></div>
-                <div>
-                    <h3>Dream11 Prediction Team</h3>
-                    <p>(Based on stats, form & recent performances)</p>
+
+
+
+
+
+
+        <div class="two-column-layout match-preview">
+            <!-- Left Section (70%) -->
+            <div class="left-column">
+
+                <!-- DREAM TEAM SECTION  -->
+                <div class="fantasy-tips-glass">
+                    <div class="glass-header">
+                        <div class="glass-icon"><i class="fas fa-users"></i></div>
+                        <div>
+                            <h3>Dream11 Prediction Team</h3>
+                            <p>(Based on stats, form & recent performances)</p>
+                        </div>
+                    </div>
+                    <div class="compact-tabs">
+                        <button class="active">Grand League </button>
+                        <button>Mega League</button>
+                        <button>CA Expert</button>
+                    </div>
+
+                    <div class="team-preview-wrapper">
+                        <div class="role-label">WICKET-KEEPERS</div>
+                        <div class="player-row">
+                            <div class="player-card" onclick="togglePlayerPopup()">
+                                <img class="player-img" src="images/profile.svg" />
+                                <div class="player-name">P Salt</div>
+                                <div class="player-credit">9 Cr</div>
+                            </div>
+                            <div class="player-card" onclick="togglePlayerPopup()">
+                                <img class="player-img" src="images/profile.svg" />
+                                <div class="player-name">P Singh</div>
+                                <div class="player-credit">7.5 Cr</div>
+                            </div>
+                        </div>
+
+                        <div class="role-label">BATTERS</div>
+                        <div class="player-row">
+                            <div class="player-card" onclick="togglePlayerPopup()">
+                                <span class="badge">C</span>
+                                <img class="player-img" src="images/profile.svg" />
+                                <div class="player-name">V Kohli</div>
+                                <div class="player-credit">9 Cr</div>
+                            </div>
+                            <div class="player-card" onclick="togglePlayerPopup()">
+                                <span class="badge vc">VC</span>
+                                <img class="player-img" src="images/profile.svg" />
+                                <div class="player-name">S Iyer</div>
+                                <div class="player-credit">9 Cr</div>
+                            </div>
+                            <div class="player-card" onclick="togglePlayerPopup()">
+                                <img class="player-img" src="images/profile.svg" />
+                                <div class="player-name">R Patidar</div>
+                                <div class="player-credit">8.5 Cr</div>
+                            </div>
+                            <div class="player-card" onclick="togglePlayerPopup()">
+                                <img class="player-img" src="images/profile.svg" />
+                                <div class="player-name">P Arya</div>
+                                <div class="player-credit">7.5 Cr</div>
+                            </div>
+                        </div>
+
+                        <div class="role-label">ALL-ROUNDERS</div>
+                        <div class="player-row">
+                            <div class="player-card" onclick="togglePlayerPopup()">
+                                <img class="player-img" src="images/profile.svg" />
+                                <div class="player-name">L Livingstone</div>
+                                <div class="player-credit">7.5 Cr</div>
+                            </div>
+                            <div class="player-card" onclick="togglePlayerPopup()">
+                                <img class="player-img" src="images/profile.svg" />
+                                <div class="player-name">K Pandya</div>
+                                <div class="player-credit">8 Cr</div>
+                            </div>
+                            <div class="player-card" onclick="togglePlayerPopup()">
+                                <img class="player-img" src="images/profile.svg" />
+                                <div class="player-name">M Jansen</div>
+                                <div class="player-credit">8 Cr</div>
+                            </div>
+                        </div>
+
+                        <div class="role-label">BOWLERS</div>
+                        <div class="player-row">
+                            <div class="player-card" onclick="togglePlayerPopup()">
+                                <img class="player-img" src="images/profile.svg" />
+                                <div class="player-name">J Hazlewood</div>
+                                <div class="player-credit">8.5 Cr</div>
+                            </div>
+                            <div class="player-card" onclick="togglePlayerPopup()">
+                                <img class="player-img" src="images/profile.svg" />
+                                <div class="player-name">A Singh</div>
+                                <div class="player-credit">8.5 Cr</div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
+                <div class="popup-overlay" onclick="togglePlayerPopup()"></div>
+                <div class="player-popup-glass" id="playerPopup">
+                    <div class="popup-close" onclick="togglePlayerPopup()">✖</div>
+                    <div class="popup-header">
+                        <img class="popup-player-img" src="images/profile.svg" />
+                        <div>
+                            <h3>Nicholas Pooran</h3>
+                            <div class="popup-sub">Wicket-Keeper | LSG</div>
+                        </div>
+                    </div>
+                    <div class="popup-stats-grid">
+                        <div class="popup-stat"><i class="fas fa-chart-line"></i><span>Matches:</span>
+                            <strong>7</strong>
+                        </div>
+                        <div class="popup-stat"><i class="fas fa-star"></i><span>Fantasy Pts:</span> <strong>56, 42, 77,
+                                34,
+                                60</strong></div>
+                        <div class="popup-stat"><i class="fas fa-bullseye"></i><span>Total Points:</span>
+                            <strong>269</strong>
+                        </div>
+                        <div class="popup-stat"><i class="fas fa-magic"></i><span>Dream Team:</span> <strong>3
+                                Times</strong>
+                        </div>
+                        <div class="popup-stat"><i class="fas fa-baseball-bat-ball"></i><span>Last Match Runs:</span>
+                            <strong>48</strong>
+                        </div>
+                        <div class="popup-stat"><i class="fas fa-bowling-ball"></i><span>Wickets:</span>
+                            <strong>0</strong>
+                        </div>
+                    </div>
+                </div>
+
+
+
             </div>
-            <div class="compact-tabs">
-                <button class="active">Grand League </button>
-                <button>Mega League</button>
-                <button>CA Expert</button>
+
+            <!-- Right Section (30%) -->
+            <div class="right-column final-prediction-wrapper1">
+
+
+                <!-- FINAL PREDICTION & ANALYSIS SECTION  -->
+                <div class="prediction-analysis-box">
+                    <div class="prediction-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <div class="prediction-text">
+                        <h3>Final Prediction & Analysis</h3>
+                        <p>
+                            With key players returning to form and a stronger bowling lineup,
+                            <span class="highlight">Chennai Super Kings</span> are predicted to edge out a close win
+                            today.
+                        </p>
+                    </div>
+                </div>
+                <!-- FAQ SECTION -->
+                <div class="faq-compact">
+
+                    <div class="glass-header">
+                        <div class="glass-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <div>
+                            <h3>FAQs – RCB vs PBKS, Match 34</h3>
+                            <p>Quick insights before you make your Dream11 team</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="question">Q1: Best captain pick today?</div>
+                        <div class="answer">🔥 <strong>Virat Kohli</strong> – top run-scorer, in prime form.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="question">Q2: Ideal combo for small leagues?</div>
+                        <div class="answer">🧩 2-3 batters, 3-4 all-rounders, and 3 bowlers.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="question">Q3: Will Sam Curran play today?</div>
+                        <div class="answer">✅ Yes, fit and available for selection.</div>
+                    </div>
+                </div>
+
             </div>
-
-            <div class="team-preview-wrapper">
-                <div class="role-label">WICKET-KEEPERS</div>
-                <div class="player-row">
-                    <div class="player-card" onclick="togglePlayerPopup()">
-                        <img class="player-img" src="images/profile.svg" />
-                        <div class="player-name">P Salt</div>
-                        <div class="player-credit">9 Cr</div>
-                    </div>
-                    <div class="player-card" onclick="togglePlayerPopup()">
-                        <img class="player-img" src="images/profile.svg" />
-                        <div class="player-name">P Singh</div>
-                        <div class="player-credit">7.5 Cr</div>
-                    </div>
-                </div>
-
-                <div class="role-label">BATTERS</div>
-                <div class="player-row">
-                    <div class="player-card" onclick="togglePlayerPopup()">
-                        <span class="badge">C</span>
-                        <img class="player-img" src="images/profile.svg" />
-                        <div class="player-name">V Kohli</div>
-                        <div class="player-credit">9 Cr</div>
-                    </div>
-                    <div class="player-card" onclick="togglePlayerPopup()">
-                        <span class="badge vc">VC</span>
-                        <img class="player-img" src="images/profile.svg" />
-                        <div class="player-name">S Iyer</div>
-                        <div class="player-credit">9 Cr</div>
-                    </div>
-                    <div class="player-card" onclick="togglePlayerPopup()">
-                        <img class="player-img" src="images/profile.svg" />
-                        <div class="player-name">R Patidar</div>
-                        <div class="player-credit">8.5 Cr</div>
-                    </div>
-                    <div class="player-card" onclick="togglePlayerPopup()">
-                        <img class="player-img" src="images/profile.svg" />
-                        <div class="player-name">P Arya</div>
-                        <div class="player-credit">7.5 Cr</div>
-                    </div>
-                </div>
-
-                <div class="role-label">ALL-ROUNDERS</div>
-                <div class="player-row">
-                    <div class="player-card" onclick="togglePlayerPopup()">
-                        <img class="player-img" src="images/profile.svg" />
-                        <div class="player-name">L Livingstone</div>
-                        <div class="player-credit">7.5 Cr</div>
-                    </div>
-                    <div class="player-card" onclick="togglePlayerPopup()">
-                        <img class="player-img" src="images/profile.svg" />
-                        <div class="player-name">K Pandya</div>
-                        <div class="player-credit">8 Cr</div>
-                    </div>
-                    <div class="player-card" onclick="togglePlayerPopup()">
-                        <img class="player-img" src="images/profile.svg" />
-                        <div class="player-name">M Jansen</div>
-                        <div class="player-credit">8 Cr</div>
-                    </div>
-                </div>
-
-                <div class="role-label">BOWLERS</div>
-                <div class="player-row">
-                    <div class="player-card" onclick="togglePlayerPopup()">
-                        <img class="player-img" src="images/profile.svg" />
-                        <div class="player-name">J Hazlewood</div>
-                        <div class="player-credit">8.5 Cr</div>
-                    </div>
-                    <div class="player-card" onclick="togglePlayerPopup()">
-                        <img class="player-img" src="images/profile.svg" />
-                        <div class="player-name">A Singh</div>
-                        <div class="player-credit">8.5 Cr</div>
-                    </div>
-                </div>
-            </div>
-
-
         </div>
-        <div class="popup-overlay" onclick="togglePlayerPopup()"></div>
-        <div class="player-popup-glass" id="playerPopup">
-            <div class="popup-close" onclick="togglePlayerPopup()">✖</div>
-            <div class="popup-header">
-                <img class="popup-player-img" src="images/profile.svg" />
-                <div>
-                    <h3>Nicholas Pooran</h3>
-                    <div class="popup-sub">Wicket-Keeper | LSG</div>
-                </div>
-            </div>
-            <div class="popup-stats-grid">
-                <div class="popup-stat"><i class="fas fa-chart-line"></i><span>Matches:</span> <strong>7</strong></div>
-                <div class="popup-stat"><i class="fas fa-star"></i><span>Fantasy Pts:</span> <strong>56, 42, 77, 34,
-                        60</strong></div>
-                <div class="popup-stat"><i class="fas fa-bullseye"></i><span>Total Points:</span> <strong>269</strong>
-                </div>
-                <div class="popup-stat"><i class="fas fa-magic"></i><span>Dream Team:</span> <strong>3 Times</strong>
-                </div>
-                <div class="popup-stat"><i class="fas fa-baseball-bat-ball"></i><span>Last Match Runs:</span>
-                    <strong>48</strong>
-                </div>
-                <div class="popup-stat"><i class="fas fa-bowling-ball"></i><span>Wickets:</span> <strong>0</strong>
-                </div>
-            </div>
-        </div>
 
 
 
-        <!-- FAQ SECTION -->
-        <div class="faq-compact">
 
-            <div class="glass-header">
-                <div class="glass-icon"><i class="fas fa-calendar-alt"></i></div>
-                <div>
-                    <h3>FAQs – RCB vs PBKS, Match 34</h3>
-                    <p>Quick insights before you make your Dream11 team</p>
-                </div>
-            </div>
 
-            <div class="faq-item">
-                <div class="question">Q1: Best captain pick today?</div>
-                <div class="answer">🔥 <strong>Virat Kohli</strong> – top run-scorer, in prime form.</div>
-            </div>
 
-            <div class="faq-item">
-                <div class="question">Q2: Ideal combo for small leagues?</div>
-                <div class="answer">🧩 2-3 batters, 3-4 all-rounders, and 3 bowlers.</div>
-            </div>
 
-            <div class="faq-item">
-                <div class="question">Q3: Will Sam Curran play today?</div>
-                <div class="answer">✅ Yes, fit and available for selection.</div>
-            </div>
-        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
