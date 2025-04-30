@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartAI Sidebar Final Fixed</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #eef2f7, #ffffff);
+        }
+
+        .sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .sidebar-hidden {
+            transform: translateX(-100%);
+        }
+
+        .overlay {
+            backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.3);
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 10px 30px rgba(93, 135, 255, 0.2);
+        }
+    </style>
+</head>
+
+<body class="flex min-h-screen relative bg-gradient-to-br from-blue-50 to-white">
+
+    <!-- Sidebar -->
+    <div id="sidebar"
+        class="sidebar fixed top-0 left-0 bottom-0 w-64 bg-white/90 backdrop-blur-md z-40 p-6 shadow-md lg:translate-x-0 lg:flex flex-col sidebar-hidden">
+
+        <!-- Title and Close Button -->
+        <div class="flex justify-between items-center mb-6">
+            <div class="text-2xl font-extrabold text-blue-600">SmartAI</div>
+            <button id="sidebarClose" class="block lg:hidden text-2xl font-bold">✖</button>
+        </div>
+
+        <!-- Search and Add New -->
+        <div class="flex flex-col space-y-4 mb-8">
+
+            <!-- Search Box (light shadow) -->
+            <div>
+                <input type="text" placeholder="Search..."
+                    class="w-full p-3 rounded-full text-sm bg-white/60 backdrop-blur-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm placeholder-gray-500" />
+            </div>
+
+            <!-- Add New Button (same as View Plans) -->
+            <button
+                class="w-full bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-indigo-500 hover:to-blue-500 text-white font-semibold py-3 rounded-full text-sm shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                Add New
+            </button>
+        </div>
+
+        <!-- Collapsible Sections -->
+        <nav class="flex flex-col space-y-6">
+
+            <!-- Recent -->
+            <div>
+                <button onclick="toggleSection('recentContent','recentIcon')"
+                    class="flex items-center justify-between w-full text-sm font-semibold text-gray-700 hover:bg-blue-100 p-2 rounded">
+                    <span>Recent</span>
+                    <span id="recentIcon">➖</span>
+                </button>
+                <div id="recentContent" class="space-y-2 mt-2 ml-4">
+                    <div class="hover:bg-gray-100 p-2 rounded text-sm">Build AI Search ✨</div>
+                    <div class="hover:bg-gray-100 p-2 rounded text-sm">Next.js Animation Guide</div>
+                </div>
+            </div>
+
+            <!-- Yesterday -->
+            <div>
+                <button onclick="toggleSection('yesterdayContent','yesterdayIcon')"
+                    class="flex items-center justify-between w-full text-sm font-semibold text-gray-700 hover:bg-blue-100 p-2 rounded">
+                    <span>Yesterday</span>
+                    <span id="yesterdayIcon">➕</span>
+                </button>
+                <div id="yesterdayContent" class="hidden space-y-2 mt-2 ml-4">
+                    <div class="hover:bg-gray-100 p-2 rounded text-sm">Fixed sidebar UX</div>
+                    <div class="hover:bg-gray-100 p-2 rounded text-sm">Improved mobile view</div>
+                    <div class="hover:bg-gray-100 p-2 rounded text-sm">Tested animation flow</div>
+                </div>
+            </div>
+
+            <!-- Previous 30 Days -->
+            <div>
+                <button onclick="toggleSection('previousContent','previousIcon')"
+                    class="flex items-center justify-between w-full text-sm font-semibold text-gray-700 hover:bg-blue-100 p-2 rounded">
+                    <span>Previous 30 Days</span>
+                    <span id="previousIcon">➕</span>
+                </button>
+                <div id="previousContent" class="hidden space-y-2 mt-2 ml-4">
+                    <div class="hover:bg-gray-100 p-2 rounded text-sm">Launched SmartAI Site</div>
+                    <div class="hover:bg-gray-100 p-2 rounded text-sm">Optimized Tailwind CSS</div>
+                    <div class="hover:bg-gray-100 p-2 rounded text-sm">Added landing pages</div>
+                </div>
+            </div>
+
+        </nav>
+
+        <!-- View Plans Button -->
+        <div class="mt-auto pt-6">
+            <button
+                class="w-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white p-3 rounded-xl text-sm font-semibold hover:opacity-90">
+                View Plans
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="overlay fixed inset-0 hidden z-30"></div>
+
+    <!-- Hamburger Button -->
+    <button id="sidebarToggle"
+        class="fixed top-4 left-4 z-50 bg-white border p-2 rounded-full shadow text-lg block lg:hidden">
+        ☰
+    </button>
+
+    <!-- Main Content -->
+    <main class="flex-1 ml-0 lg:ml-64  justify-center items-center flex flex-col">
+
+
+
+        <!-- Fixed Top Right Bar (hidden on mobile) -->
+        <div
+            class="fixed top-3 right-3 z-50 flex items-center gap-2 bg-white border border-gray-200 rounded-full px-1.5 sm:px-3 py-1.5 shadow-md">
+
+            <!-- Share Button (Desktop Only) -->
+            <button
+                class="hidden sm:flex items-center gap-1.5 px-3 py-1 border rounded-full text-sm font-medium bg-white hover:bg-gray-100 shadow-sm text-gray-800">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 12v.01M12 12v.01M20 12v.01" />
+                </svg>
+                Share
+            </button>
+
+            <!-- 3-dot menu (Desktop Only) -->
+            <div class="relative hidden sm:block">
+                <button id="menuToggle" class="text-lg p-1.5 rounded-full hover:bg-gray-100">
+                    ⋮
+                </button>
+
+                <!-- Dropdown -->
+                <div id="menuDropdown"
+                    class="hidden absolute right-0 top-10 w-52 bg-white border rounded-xl shadow-lg z-50 text-sm">
+                    <button class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-50">
+                        <span class="flex items-center gap-2">📁 Add to project</span>
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                    <hr class="my-1 border-gray-200" />
+                    <button class="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-50">🗃️ Archive</button>
+                    <button class="flex items-center gap-2 w-full px-4 py-2 text-red-500 hover:bg-red-50">🗑️
+                        Delete</button>
+                </div>
+            </div>
+
+            <!-- Profile Icon (Always Visible) -->
+            <div
+                class="w-8 h-8 rounded-full bg-green-700 text-white flex items-center justify-center font-bold text-xs">
+                S
+            </div>
+
+        </div>
+        <div>
+
+            <!-- Full Unique Responsive SmartAI Homepage -->
+            <section class="text-center px-4 md:px-6 py-16 mt-16 space-y-4">
+                <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight tracking-tight">
+                    Ask Smarter. Search Faster.<br class="hidden sm:block">Get Better Answers.
+                </h1>
+                <p class="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+                    An AI-first search engine that finds real answers, not just links.
+                </p>
+            </section>
+
+
+            <!-- Search Bar with Embedded Actions -->
+            <section class="flex justify-center px-4 md:px-6">
+                <div
+                    class="relative w-full max-w-3xl bg-white/70 backdrop-blur-md rounded-3xl border border-gray-300 shadow-lg p-6">
+
+                    <!-- Input Field -->
+                    <input type="text" placeholder="What do you want to know today?"
+                        class="w-full text-base bg-transparent focus:outline-none placeholder-gray-500 mb-12">
+
+                    <!-- Bottom Left Buttons -->
+                    <div class="absolute bottom-4 left-6 flex flex-wrap gap-2">
+
+                        <!-- Plus Button (same everywhere) -->
+                        <button
+                            class="w-9 h-9 flex items-center justify-center border border-gray-300 rounded-full text-base hover:bg-gray-100 transition-all">
+                            +
+                        </button>
+
+                        <!-- Search Button -->
+                        <button
+                            class="flex items-center gap-1 px-4 py-1.5 border border-gray-300 rounded-full text-xs font-medium text-gray-700 hover:bg-gray-100 transition-all">
+                            <span class="inline sm:hidden text-base">🌐</span> <!-- Mobile Small Icon -->
+                            <span class="hidden sm:inline">🌐 Search</span> <!-- Desktop Full Text -->
+                        </button>
+
+                        <!-- Deep Research Button -->
+                        <button
+                            class="flex items-center gap-1 px-4 py-1.5 border border-gray-300 rounded-full text-xs font-medium text-gray-700 hover:bg-gray-100 transition-all">
+                            <span class="inline sm:hidden text-base">📡</span> <!-- Mobile Small Icon -->
+                            <span class="hidden sm:inline">📡 Deep Research</span> <!-- Desktop Full Text -->
+                        </button>
+
+                        <!-- Create Image Button -->
+                        <button
+                            class="flex items-center gap-1 px-4 py-1.5 border border-gray-300 rounded-full text-xs font-medium text-gray-700 hover:bg-gray-100 transition-all">
+                            <span class="inline sm:hidden text-base">🎨</span> <!-- Mobile Small Icon -->
+                            <span class="hidden sm:inline">🎨 Create Image</span> <!-- Desktop Full Text -->
+                        </button>
+
+                    </div>
+
+
+                    <!-- Bottom Right Buttons -->
+                    <div class="absolute bottom-4 right-6 flex items-center gap-2">
+                        <button
+                            class="w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100">
+                            <svg class="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 1v10m0 0a4 4 0 01-4-4V5a4 4 0 018 0v2a4 4 0 01-4 4zm0 0v4m0 4h-3m6 0h-3" />
+                            </svg>
+                        </button>
+                        <button
+                            class="w-9 h-9 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-indigo-500 hover:to-blue-500 text-white flex items-center justify-center hover:opacity-80">
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-7-7l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Suggested Prompts -->
+            <section class="px-4 md:px-6 py-10">
+                <div class="flex flex-wrap justify-center gap-3">
+                    <span
+                        class="bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-xs hover:bg-blue-200 cursor-pointer transition">What's
+                        the future of AI?</span>
+                    <span
+                        class="bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-xs hover:bg-blue-200 cursor-pointer transition">Best
+                        travel destinations for solo trips?</span>
+                    <span
+                        class="bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-xs hover:bg-blue-200 cursor-pointer transition">Summarize
+                        the latest climate news.</span>
+                </div>
+            </section>
+
+            <!-- Trending Now -->
+            <section class="px-4 md:px-6 py-10">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">What's Trending Right Now 🚀
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-md">
+                        <h3 class="text-sm md:text-base font-semibold">Top AI startups 2025</h3>
+                        <div class="flex justify-end gap-2 mt-3">
+                            <button class="text-blue-600 hover:text-blue-800">🔗</button>
+                            <button class="text-green-600 hover:text-green-800">➕</button>
+                        </div>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-md">
+                        <h3 class="text-sm md:text-base font-semibold">Easy side hustles for beginners</h3>
+                        <div class="flex justify-end gap-2 mt-3">
+                            <button class="text-blue-600 hover:text-blue-800">🔗</button>
+                            <button class="text-green-600 hover:text-green-800">➕</button>
+                        </div>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-md">
+                        <h3 class="text-sm md:text-base font-semibold">SpaceX Mars Mission timeline</h3>
+                        <div class="flex justify-end gap-2 mt-3">
+                            <button class="text-blue-600 hover:text-blue-800">🔗</button>
+                            <button class="text-green-600 hover:text-green-800">➕</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Explore by Category -->
+            <section class="px-4 md:px-6 py-10">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">Explore by Category ✨</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-md">
+                        <h3 class="text-base font-semibold mb-2">Artificial Intelligence</h3>
+                        <p class="text-gray-600 text-sm">Breakthroughs, debates, and future possibilities.</p>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-md">
+                        <h3 class="text-base font-semibold mb-2">Science & Space</h3>
+                        <p class="text-gray-600 text-sm">Beyond Earth — discover new worlds.</p>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-md">
+                        <h3 class="text-base font-semibold mb-2">Business & Money</h3>
+                        <p class="text-gray-600 text-sm">Smart strategies for real-world growth.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="text-center text-xs text-gray-500 py-8">
+                Built for curious minds. Powered by <span class="text-blue-500 font-bold">SmartAI</span> • © 2025
+            </footer>
+        </div>
+
+
+
+
+
+
+    </main>
+
+
+
+
+
+
+    <!-- Scripts -->
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebarClose = document.getElementById('sidebarClose');
+
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.remove('sidebar-hidden');
+            overlay.classList.remove('hidden');
+            sidebarToggle.classList.add('hidden');
+        });
+
+        sidebarClose.addEventListener('click', () => {
+            sidebar.classList.add('sidebar-hidden');
+            overlay.classList.add('hidden');
+            sidebarToggle.classList.remove('hidden');
+        });
+
+        overlay.addEventListener('click', () => {
+            sidebar.classList.add('sidebar-hidden');
+            overlay.classList.add('hidden');
+            sidebarToggle.classList.remove('hidden');
+        });
+
+        function toggleSection(contentId, iconId) {
+            const content = document.getElementById(contentId);
+            const icon = document.getElementById(iconId);
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.innerText = '➖';
+            } else {
+                content.classList.add('hidden');
+                icon.innerText = '➕';
+            }
+        }
+
+
+
+
+
+
+
+        // right side fix content 
+        const menuToggle = document.getElementById('menuToggle');
+        const menuDropdown = document.getElementById('menuDropdown');
+
+        menuToggle.addEventListener('click', () => {
+            menuDropdown.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !menuDropdown.contains(e.target)) {
+                menuDropdown.classList.add('hidden');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
