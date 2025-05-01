@@ -51,7 +51,7 @@
         <!-- Title and Close Button -->
         <div class="flex justify-between items-center mb-6">
             <div class="text-2xl font-extrabold text-blue-600">SmartAI</div>
-            <button id="sidebarClose" class="block lg:hidden text-2xl font-bold">✖</button>
+            <button id="sidebarClose" class="block lg:hidden text-xl font-medium">⨯</button>
         </div>
 
         <!-- Search and Add New -->
@@ -71,6 +71,7 @@
         </div>
 
         <!-- Collapsible Sections -->
+
         <nav class="flex flex-col space-y-6">
 
             <!-- Recent -->
@@ -78,7 +79,7 @@
                 <button onclick="toggleSection('recentContent','recentIcon')"
                     class="flex items-center justify-between w-full text-sm font-semibold text-gray-700 hover:bg-blue-100 p-2 rounded">
                     <span>Recent</span>
-                    <span id="recentIcon">➖</span>
+                    <span id="recentIcon">-</span>
                 </button>
                 <div id="recentContent" class="space-y-2 mt-2 ml-4">
                     <div class="hover:bg-gray-100 p-2 rounded text-sm">Build AI Search ✨</div>
@@ -91,12 +92,13 @@
                 <button onclick="toggleSection('yesterdayContent','yesterdayIcon')"
                     class="flex items-center justify-between w-full text-sm font-semibold text-gray-700 hover:bg-blue-100 p-2 rounded">
                     <span>Yesterday</span>
-                    <span id="yesterdayIcon">➕</span>
+                    <span id="yesterdayIcon">+</span>
                 </button>
                 <div id="yesterdayContent" class="hidden space-y-2 mt-2 ml-4">
                     <div class="hover:bg-gray-100 p-2 rounded text-sm">Fixed sidebar UX</div>
                     <div class="hover:bg-gray-100 p-2 rounded text-sm">Improved mobile view</div>
                     <div class="hover:bg-gray-100 p-2 rounded text-sm">Tested animation flow</div>
+
                 </div>
             </div>
 
@@ -105,7 +107,7 @@
                 <button onclick="toggleSection('previousContent','previousIcon')"
                     class="flex items-center justify-between w-full text-sm font-semibold text-gray-700 hover:bg-blue-100 p-2 rounded">
                     <span>Previous 30 Days</span>
-                    <span id="previousIcon">➕</span>
+                    <span id="previousIcon">+</span>
                 </button>
                 <div id="previousContent" class="hidden space-y-2 mt-2 ml-4">
                     <div class="hover:bg-gray-100 p-2 rounded text-sm">Launched SmartAI Site</div>
@@ -117,7 +119,7 @@
         </nav>
 
         <!-- View Plans Button -->
-        <div class="mt-auto pt-6">
+        <div class="absolute bottom-6 left-0 w-full px-6">
             <button
                 class="w-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white p-3 rounded-xl text-sm font-semibold hover:opacity-90">
                 View Plans
@@ -142,11 +144,11 @@
 
         <!-- Fixed Top Right Bar (hidden on mobile) -->
         <div
-            class="fixed top-3 right-3 z-50 flex items-center gap-2 bg-white border border-gray-200 rounded-full px-1.5 sm:px-3 py-1.5 shadow-md">
+            class="fixed top-3 right-3 z-32 flex items-center gap-2 bg-white border border-gray-200 rounded-full px-1.5 sm:px-3 py-1.5 shadow-md">
 
             <!-- Share Button (Desktop Only) -->
             <button
-                class="hidden sm:flex items-center gap-1.5 px-3 py-1 border rounded-full text-sm font-medium bg-white hover:bg-gray-100 shadow-sm text-gray-800">
+                class="flex items-center gap-1.5 px-3 py-1 border rounded-full text-sm font-medium bg-white hover:bg-gray-100 shadow-sm text-gray-800">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 12v.01M12 12v.01M20 12v.01" />
                 </svg>
@@ -154,8 +156,8 @@
             </button>
 
             <!-- 3-dot menu (Desktop Only) -->
-            <div class="relative hidden sm:block">
-                <button id="menuToggle" class="text-lg p-1.5 rounded-full hover:bg-gray-100">
+            <div class="relative ">
+                <button id="menuToggle" class="text-lg px-2 sm:p-1.5 rounded-full hover:bg-gray-100">
                     ⋮
                 </button>
 
@@ -196,9 +198,9 @@
 
 
             <!-- Search Bar with Embedded Actions -->
-            <section class="flex justify-center px-4 md:px-6">
+            <section class="flex justify-center px-4 md:px-6 ">
                 <div
-                    class="relative w-full max-w-3xl bg-white/70 backdrop-blur-md rounded-3xl border border-gray-300 shadow-lg p-6">
+                    class="relative w-full max-w-3xl  bg-white/70 backdrop-blur-md rounded-3xl border border-gray-300 shadow-lg p-6">
 
                     <!-- Input Field -->
                     <input type="text" placeholder="What do you want to know today?"
@@ -283,21 +285,21 @@
                         <h3 class="text-sm md:text-base font-semibold">Top AI startups 2025</h3>
                         <div class="flex justify-end gap-2 mt-3">
                             <button class="text-blue-600 hover:text-blue-800">🔗</button>
-                            <button class="text-green-600 hover:text-green-800">➕</button>
+                            <button class="text-green-600 hover:text-green-800 text-2xl">+</button>
                         </div>
                     </div>
                     <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-md">
                         <h3 class="text-sm md:text-base font-semibold">Easy side hustles for beginners</h3>
                         <div class="flex justify-end gap-2 mt-3">
                             <button class="text-blue-600 hover:text-blue-800">🔗</button>
-                            <button class="text-green-600 hover:text-green-800">➕</button>
+                            <button class="text-green-600 hover:text-green-800 text-2xl">+</button>
                         </div>
                     </div>
                     <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-md">
                         <h3 class="text-sm md:text-base font-semibold">SpaceX Mars Mission timeline</h3>
                         <div class="flex justify-end gap-2 mt-3">
                             <button class="text-blue-600 hover:text-blue-800">🔗</button>
-                            <button class="text-green-600 hover:text-green-800">➕</button>
+                            <button class="text-green-600 hover:text-green-800 text-2xl">+</button>
                         </div>
                     </div>
                 </div>
@@ -371,12 +373,13 @@
 
             if (content.classList.contains('hidden')) {
                 content.classList.remove('hidden');
-                icon.innerText = '➖';
+                icon.innerText = '-';
             } else {
                 content.classList.add('hidden');
-                icon.innerText = '➕';
+                icon.innerText = '+';
             }
         }
+
 
 
 
