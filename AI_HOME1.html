@@ -39,103 +39,111 @@
             transform: translateY(-5px);
             box-shadow: 0px 10px 30px rgba(93, 135, 255, 0.2);
         }
+
+        .no-scroll {
+            position: fixed;
+            width: 100%;
+            overflow: hidden;
+        }
     </style>
 </head>
 
 <body class="flex min-h-screen relative bg-gradient-to-br from-blue-50 to-white">
 
+
+    <!-- Toggle Button (visible only on mobile) -->
+    <button id="sidebarToggle" class="fixed top-4 left-4 z-50 p-2 bg-blue-600 text-white rounded-full lg:hidden">
+        ☰
+    </button>
+
+    <!-- Overlay (mobile only) -->
+    <div id="overlay" class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden"></div>
+
     <!-- Sidebar -->
-    <div id="sidebar"
-        class="sidebar fixed top-0 left-0 bottom-0 w-64 bg-white/90 backdrop-blur-md z-40 p-6 shadow-md lg:translate-x-0 lg:flex flex-col sidebar-hidden">
+    <div id="sidebar" class="fixed top-0 left-0 bottom-0 w-64 h-screen bg-white z-40 shadow-md 
+    transform transition-transform duration-300 
+    -translate-x-full lg:translate-x-0 
+    flex flex-col">
 
-        <!-- Title and Close Button -->
-        <div class="flex justify-between items-center mb-6">
-            <div class="text-2xl font-extrabold text-blue-600">SmartAI</div>
-            <button id="sidebarClose" class="block lg:hidden text-xl font-medium">⨯</button>
-        </div>
+        <!-- Top Section -->
+        <div class="p-6 flex-shrink-0">
+            <div class="flex justify-between items-center mb-6">
+                <div class="text-2xl font-extrabold text-blue-600">SmartAI</div>
+                <button id="sidebarClose" class="block lg:hidden text-xl font-semibold text-gray-700">⨯</button>
+            </div>
 
-        <!-- Search and Add New -->
-        <div class="flex flex-col space-y-4 mb-8">
-
-            <!-- Search Box (light shadow) -->
-            <div>
+            <div class="flex flex-col space-y-4">
                 <input type="text" placeholder="Search..."
-                    class="w-full p-3 rounded-full text-sm bg-white/60 backdrop-blur-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm placeholder-gray-500" />
+                    class="w-full p-3 rounded-full text-sm bg-white/60 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-500 shadow-sm" />
+                <button
+                    class="w-full bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-indigo-500 hover:to-blue-500 text-white font-semibold py-3 rounded-full text-sm shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                    Add New
+                </button>
             </div>
-
-            <!-- Add New Button (same as View Plans) -->
-            <button
-                class="w-full bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-indigo-500 hover:to-blue-500 text-white font-semibold py-3 rounded-full text-sm shadow-md transition-all hover:scale-105 hover:shadow-lg">
-                Add New
-            </button>
         </div>
 
-        <!-- Collapsible Sections -->
+        <!-- Scrollable Section -->
+        <div class="flex-1 overflow-y-auto px-4 space-y-6">
+            <nav class="flex flex-col space-y-4 pb-6">
 
-        <nav class="flex flex-col space-y-6">
-
-            <!-- Recent -->
-            <div>
-                <button onclick="toggleSection('recentContent','recentIcon')"
-                    class="flex items-center justify-between w-full text-sm font-semibold text-gray-700 hover:bg-blue-100 p-2 rounded">
-                    <span>Recent</span>
-                    <span id="recentIcon">-</span>
-                </button>
-                <div id="recentContent" class="space-y-2 mt-2 ml-4">
-                    <div class="hover:bg-gray-100 p-2 rounded text-sm">Build AI Search ✨</div>
-                    <div class="hover:bg-gray-100 p-2 rounded text-sm">Next.js Animation Guide</div>
+                <!-- Today -->
+                <div>
+                    <button onclick="toggleSection('todayContent','todayIcon')"
+                        class="sticky top-0 z-10 bg-white flex items-center justify-between w-full text-sm font-semibold text-gray-700 py-2 px-6  shadow-sm">
+                        <span>Today</span>
+                        <span id="todayIcon">-</span>
+                    </button>
+                    <div id="todayContent" class="space-y-1 ml-2">
+                        <div class="hover:bg-gray-100 p-2 px-4 rounded text-sm ">Scalable Web Crawler Guide</div>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Yesterday -->
-            <div>
-                <button onclick="toggleSection('yesterdayContent','yesterdayIcon')"
-                    class="flex items-center justify-between w-full text-sm font-semibold text-gray-700 hover:bg-blue-100 p-2 rounded">
-                    <span>Yesterday</span>
-                    <span id="yesterdayIcon">+</span>
-                </button>
-                <div id="yesterdayContent" class="hidden space-y-2 mt-2 ml-4">
-                    <div class="hover:bg-gray-100 p-2 rounded text-sm">Fixed sidebar UX</div>
-                    <div class="hover:bg-gray-100 p-2 rounded text-sm">Improved mobile view</div>
-                    <div class="hover:bg-gray-100 p-2 rounded text-sm">Tested animation flow</div>
-
+                <!-- Yesterday -->
+                <div>
+                    <button onclick="toggleSection('yesterdayContent','yesterdayIcon')"
+                        class="sticky top-0 z-10 bg-white flex items-center justify-between w-full text-sm font-semibold text-gray-700 py-2 px-6  shadow-sm">
+                        <span>Yesterday</span>
+                        <span id="yesterdayIcon">+</span>
+                    </button>
+                    <div id="yesterdayContent" class="hidden space-y-1 ml-2">
+                        <div class="hover:bg-gray-100 p-2 px-4 rounded text-sm ">How ChatGPT Works</div>
+                        <div class="hover:bg-gray-100 p-2 px-4 rounded text-sm ">Search Engine Build</div>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Previous 30 Days -->
-            <div>
-                <button onclick="toggleSection('previousContent','previousIcon')"
-                    class="flex items-center justify-between w-full text-sm font-semibold text-gray-700 hover:bg-blue-100 p-2 rounded">
-                    <span>Previous 30 Days</span>
-                    <span id="previousIcon">+</span>
-                </button>
-                <div id="previousContent" class="hidden space-y-2 mt-2 ml-4">
-                    <div class="hover:bg-gray-100 p-2 rounded text-sm">Launched SmartAI Site</div>
-                    <div class="hover:bg-gray-100 p-2 rounded text-sm">Optimized Tailwind CSS</div>
-                    <div class="hover:bg-gray-100 p-2 rounded text-sm">Added landing pages</div>
+                <!-- Previous 30 Days -->
+                <div>
+                    <button onclick="toggleSection('previousContent','previousIcon')"
+                        class="sticky top-0 z-10 bg-white flex items-center justify-between w-full text-sm font-semibold text-gray-700 py-2 px-6  shadow-sm">
+                        <span>Previous 30 Days</span>
+                        <span id="previousIcon">+</span>
+                    </button>
+                    <div id="previousContent" class="hidden space-y-1 ml-2">
+                        <div class="hover:bg-gray-100 p-2 px-4 rounded text-sm ">Launched SmartAI Site</div>
+                        <div class="hover:bg-gray-100 p-2 px-4 rounded text-sm ">Added landing pages</div>
+                    </div>
                 </div>
-            </div>
 
-        </nav>
+            </nav>
+        </div>
 
-        <!-- View Plans Button -->
-        <div class="absolute bottom-6 left-0 w-full px-6">
+        <!-- Bottom Button -->
+        <div class="p-6 flex-shrink-0">
             <button
                 class="w-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white p-3 rounded-xl text-sm font-semibold hover:opacity-90">
                 View Plans
             </button>
         </div>
-
     </div>
+
 
     <!-- Overlay -->
     <div id="overlay" class="overlay fixed inset-0 hidden z-30"></div>
 
-    <!-- Hamburger Button -->
-    <button id="sidebarToggle"
+    <!-- <button id="sidebarToggle"
         class="fixed top-4 left-4 z-50 bg-white border p-2 rounded-full shadow text-lg block lg:hidden">
         ☰
-    </button>
+    </button> -->
 
     <!-- Main Content -->
     <main class="flex-1 ml-0 lg:ml-64  justify-center items-center flex flex-col">
@@ -177,11 +185,50 @@
                 </div>
             </div>
 
-            <!-- Profile Icon (Always Visible) -->
-            <div
-                class="w-8 h-8 rounded-full bg-green-700 text-white flex items-center justify-center font-bold text-xs">
-                S
+            <!-- Profile Icon + Dropdown -->
+            <div class="relative">
+                <!-- Profile Button -->
+                <button onclick="toggleProfileMenu()"
+                    class="w-8 h-8 rounded-full bg-green-700 text-white flex items-center justify-center font-bold text-xs">
+                    S
+                </button>
+
+                <!-- Dropdown Menu -->
+                <div id="profileDropdown"
+                    class="hidden absolute right-0 mt-2 w-64 bg-white shadow-xl rounded-xl p-2 z-50">
+
+                    <div class="space-y-1 text-sm">
+
+
+
+
+                        <button class="flex items-center w-full gap-2 px-3 py-2 rounded hover:bg-gray-100">
+                            <span>🎛️</span> Customize SmartAI
+                        </button>
+
+                        <button class="flex items-center w-full gap-2 px-3 py-2 rounded hover:bg-gray-100">
+                            <span>⚙️</span> Settings
+                        </button>
+
+                        <hr class="my-1 border-gray-200" />
+
+                        <button class="flex items-center w-full gap-2 px-3 py-2 rounded hover:bg-gray-100">
+                            <span>💎</span> Upgrade Plan
+                        </button>
+
+                        <button class="flex items-center w-full gap-2 px-3 py-2 rounded hover:bg-gray-100">
+                            <span>🧩</span> Get SmartAI extension
+                        </button>
+
+                        <hr class="my-1 border-gray-200" />
+
+                        <button class="flex items-center w-full gap-2 px-3 py-2 rounded text-red-600 hover:bg-red-50">
+                            <span>↩️</span> Log out
+                        </button>
+                    </div>
+                </div>
             </div>
+
 
         </div>
         <div>
@@ -344,43 +391,52 @@
 
     <!-- Scripts -->
     <script>
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('overlay');
-        const sidebarToggle = document.getElementById('sidebarToggle');
-        const sidebarClose = document.getElementById('sidebarClose');
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebarClose = document.getElementById('sidebarClose');
+            const body = document.body;
 
-        sidebarToggle.addEventListener('click', () => {
-            sidebar.classList.remove('sidebar-hidden');
-            overlay.classList.remove('hidden');
-            sidebarToggle.classList.add('hidden');
+            // ✅ Open sidebar on mobile
+            sidebarToggle?.addEventListener('click', () => {
+                sidebar?.classList.remove('-translate-x-full');
+                overlay?.classList.remove('hidden');
+                sidebarToggle?.classList.add('hidden');
+                body.classList.add('no-scroll'); // disable background scroll
+            });
+
+            // ✅ Close sidebar (used in two places)
+            function closeSidebar() {
+                sidebar?.classList.add('-translate-x-full');
+                overlay?.classList.add('hidden');
+                sidebarToggle?.classList.remove('hidden');
+                body.classList.remove('no-scroll'); // enable scroll again
+            }
+
+            sidebarClose?.addEventListener('click', closeSidebar);
+            overlay?.addEventListener('click', closeSidebar);
         });
 
-        sidebarClose.addEventListener('click', () => {
-            sidebar.classList.add('sidebar-hidden');
-            overlay.classList.add('hidden');
-            sidebarToggle.classList.remove('hidden');
-        });
-
-        overlay.addEventListener('click', () => {
-            sidebar.classList.add('sidebar-hidden');
-            overlay.classList.add('hidden');
-            sidebarToggle.classList.remove('hidden');
-        });
-
+        // ✅ Collapsible section toggle logic
         function toggleSection(contentId, iconId) {
             const content = document.getElementById(contentId);
             const icon = document.getElementById(iconId);
 
-            if (content.classList.contains('hidden')) {
-                content.classList.remove('hidden');
-                icon.innerText = '-';
-            } else {
-                content.classList.add('hidden');
-                icon.innerText = '+';
-            }
+            if (!content || !icon) return;
+
+            content.classList.toggle('hidden');
+            icon.textContent = content.classList.contains('hidden') ? '+' : '-'; // ✅ Correct hyphen
         }
 
 
+        function toggleSection(contentId, iconId) {
+            const content = document.getElementById(contentId);
+            const icon = document.getElementById(iconId);
+            if (!content || !icon) return;
+            content.classList.toggle('hidden');
+            icon.textContent = content.classList.contains('hidden') ? '+' : '-';
+        }
 
 
 
@@ -398,6 +454,25 @@
         document.addEventListener('click', (e) => {
             if (!menuToggle.contains(e.target) && !menuDropdown.contains(e.target)) {
                 menuDropdown.classList.add('hidden');
+            }
+        });
+
+
+
+
+
+        // PROFILE DROPDOWN 
+        function toggleProfileMenu() {
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        // Optional: Hide when clicking outside
+        document.addEventListener('click', function (e) {
+            const button = document.querySelector('button[onclick="toggleProfileMenu()"]');
+            const dropdown = document.getElementById('profileDropdown');
+            if (!button.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.add('hidden');
             }
         });
     </script>
