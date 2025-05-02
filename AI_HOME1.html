@@ -2,376 +2,440 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BharatSeek.ai – Mandala UI</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartAI Sidebar Final Fixed</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: radial-gradient(circle at center, #001f3f 30%, #000814);
-            color: #fff;
+            background: linear-gradient(135deg, #eef2f7, #ffffff);
         }
 
-        .pulse-ring {
-            animation: pulse 5s infinite ease-in-out;
+        .sidebar {
+            transition: transform 0.3s ease-in-out;
         }
 
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(0, 128, 0, 0.3);
-            }
+        .sidebar-hidden {
+            transform: translateX(-100%);
+        }
 
-            70% {
-                box-shadow: 0 0 0 50px rgba(0, 128, 0, 0);
-            }
+        .overlay {
+            backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.3);
+            transition: opacity 0.3s ease-in-out;
+        }
 
-            100% {
-                box-shadow: 0 0 0 0 rgba(0, 128, 0, 0);
-            }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 10px 30px rgba(93, 135, 255, 0.2);
+        }
+
+        .no-scroll {
+            position: fixed;
+            width: 100%;
+            overflow: hidden;
         }
     </style>
 </head>
 
-<body class="flex items-center justify-center min-h-screen relative overflow-x-hidden overflow-y-auto">
-
-    <!-- 🔁 Vanta Animated Background -->
-    <div id="vanta-bg" class="fixed inset-0 -z-20"></div>
-
-    <!-- 🔳 Overlay to reduce opacity effect -->
-    <div class="fixed inset-0 bg-[#001f3f]/90 sm:bg-[#001f3f]/80 -z-20 pointer-events-none"></div>
+<body class="flex min-h-screen relative bg-gradient-to-br from-blue-50 to-white">
 
 
+    <!-- Toggle Button (visible only on mobile) -->
+    <button id="sidebarToggle" class="fixed top-4 left-4 z-50 p-2 bg-blue-600 text-white rounded-full lg:hidden">
+        ☰
+    </button>
 
+    <!-- Overlay (mobile only) -->
+    <div id="overlay" class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden"></div>
 
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed top-0 left-0 bottom-0 w-64 h-screen bg-white z-40 shadow-md 
+    transform transition-transform duration-300 
+    -translate-x-full lg:translate-x-0 
+    flex flex-col">
 
+        <!-- Top Section -->
+        <div class="p-6 flex-shrink-0">
+            <div class="flex justify-between items-center mb-6">
+                <div class="text-2xl font-extrabold text-blue-600">SmartAI</div>
+                <button id="sidebarClose" class="block lg:hidden text-xl font-semibold text-gray-700">⨯</button>
+            </div>
 
-
-
-    <!-- Top Centered Logo (clean, lower, no bg) -->
-    <header class="fixed top-12 left-1/2 transform -translate-x-1/2 z-50 flex justify-center items-center">
-        <div class="text-white text-xl sm:text-2xl font-bold tracking-wide">
-            <span class="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">BharatSeek</span>
+            <div class="flex flex-col space-y-4">
+                <input type="text" placeholder="Search..."
+                    class="w-full p-3 rounded-full text-sm bg-white/60 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-500 shadow-sm" />
+                <button
+                    class="w-full bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-indigo-500 hover:to-blue-500 text-white font-semibold py-3 rounded-full text-sm shadow-md transition-all hover:scale-105 hover:shadow-lg">
+                    Add New
+                </button>
+            </div>
         </div>
-    </header>
-    <!-- <header class="fixed top-12 left-1/2 transform -translate-x-1/2 z-50 flex justify-center items-center">
-        <div class="w-40 sm:w-48">
-          <img src="/path/to/your-logo.png" alt="BharatSeek Logo" class="w-full object-contain" />
+
+        <!-- Scrollable Section -->
+        <div class="flex-1 overflow-y-auto px-4 space-y-6">
+            <nav class="flex flex-col space-y-4 pb-6">
+
+                <!-- Today -->
+                <div>
+                    <button onclick="toggleSection('todayContent','todayIcon')"
+                        class="sticky top-0 z-10 bg-white flex items-center justify-between w-full text-sm font-semibold text-gray-700 py-2 px-6  shadow-sm">
+                        <span>Today</span>
+                        <span id="todayIcon">-</span>
+                    </button>
+                    <div id="todayContent" class="space-y-1 ml-2">
+                        <div class="hover:bg-gray-100 p-2 px-4 rounded text-sm ">Scalable Web Crawler Guide</div>
+                    </div>
+                </div>
+
+                <!-- Yesterday -->
+                <div>
+                    <button onclick="toggleSection('yesterdayContent','yesterdayIcon')"
+                        class="sticky top-0 z-10 bg-white flex items-center justify-between w-full text-sm font-semibold text-gray-700 py-2 px-6  shadow-sm">
+                        <span>Yesterday</span>
+                        <span id="yesterdayIcon">+</span>
+                    </button>
+                    <div id="yesterdayContent" class="hidden space-y-1 ml-2">
+                        <div class="hover:bg-gray-100 p-2 px-4 rounded text-sm ">How ChatGPT Works</div>
+                        <div class="hover:bg-gray-100 p-2 px-4 rounded text-sm ">Search Engine Build</div>
+                    </div>
+                </div>
+
+                <!-- Previous 30 Days -->
+                <div>
+                    <button onclick="toggleSection('previousContent','previousIcon')"
+                        class="sticky top-0 z-10 bg-white flex items-center justify-between w-full text-sm font-semibold text-gray-700 py-2 px-6  shadow-sm">
+                        <span>Previous 30 Days</span>
+                        <span id="previousIcon">+</span>
+                    </button>
+                    <div id="previousContent" class="hidden space-y-1 ml-2">
+                        <div class="hover:bg-gray-100 p-2 px-4 rounded text-sm ">Launched SmartAI Site</div>
+                        <div class="hover:bg-gray-100 p-2 px-4 rounded text-sm ">Added landing pages</div>
+                    </div>
+                </div>
+
+            </nav>
         </div>
-      </header> -->
 
-    <!-- Spacer to offset logo from top content -->
-    <div class="h-20"></div>
+        <!-- Bottom Button -->
+        <div class="p-6 flex-shrink-0">
+            <button
+                class="w-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white p-3 rounded-xl text-sm font-semibold hover:opacity-90">
+                View Plans
+            </button>
+        </div>
+    </div>
 
-    <!-- Bottom Center Floating Section (Fixed Clean Layout) -->
-    <div class="fixed bottom-16 left-1/2 transform -translate-x-1/2 z-50 flex items-center gap-3">
 
-        <!-- Pill: Share + Menu -->
-        <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full shadow-md">
-            <!-- Share Button -->
-            <button onclick="alert('Share functionality coming soon!')"
-                class="flex items-center gap-2 px-4 py-1.5 border border-white/30 text-white text-sm rounded-full hover:bg-white/20 transition">
-                <span>🔗</span>
-                <span>Share</span>
+    <!-- Overlay -->
+    <div id="overlay" class="overlay fixed inset-0 hidden z-30"></div>
+
+    <!-- <button id="sidebarToggle"
+        class="fixed top-4 left-4 z-50 bg-white border p-2 rounded-full shadow text-lg block lg:hidden">
+        ☰
+    </button> -->
+
+    <!-- Main Content -->
+    <main class="flex-1 ml-0 lg:ml-64  justify-center items-center flex flex-col">
+
+
+
+        <!-- Fixed Top Right Bar (hidden on mobile) -->
+        <div
+            class="fixed top-3 right-3 z-32 flex items-center gap-2 bg-white border border-gray-200 rounded-full px-1.5 sm:px-3 py-1.5 shadow-md">
+
+            <!-- Share Button (Desktop Only) -->
+            <button
+                class="flex items-center gap-1.5 px-3 py-1 border rounded-full text-sm font-medium bg-white hover:bg-gray-100 shadow-sm text-gray-800">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 12v.01M12 12v.01M20 12v.01" />
+                </svg>
+                Share
             </button>
 
-            <!-- Menu Dots with Dropdown -->
-            <div class="relative">
-                <!-- Dots Button -->
-                <button onclick="toggleMenuDropdown()" class="text-white text-xl hover:text-gray-300">
+            <!-- 3-dot menu (Desktop Only) -->
+            <div class="relative ">
+                <button id="menuToggle" class="text-lg px-2 sm:p-1.5 rounded-full hover:bg-gray-100">
                     ⋮
                 </button>
 
                 <!-- Dropdown -->
                 <div id="menuDropdown"
-                    class="hidden absolute bottom-12 right-0 w-56 bg-white rounded-xl shadow-xl text-sm text-gray-800 py-2 z-50">
-                    <button class="w-full flex items-center justify-between px-4 py-2 hover:bg-gray-100">
-                        <span class="flex items-center gap-2">
-                            🗂️ <span>Add to project</span>
-                        </span>
-                        <span>›</span>
+                    class="hidden absolute right-0 top-10 w-52 bg-white border rounded-xl shadow-lg z-50 text-sm">
+                    <button class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-50">
+                        <span class="flex items-center gap-2">📁 Add to project</span>
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
                     </button>
-                    <hr class="my-1" />
-                    <button class="w-full flex items-center gap-2 px-4 py-2 hover:bg-gray-100">
-                        📦 <span>Archive</span>
-                    </button>
-                    <button class="w-full flex items-center gap-2 px-4 py-2 text-red-600 hover:bg-red-50">
-                        🗑️ <span>Delete</span>
-                    </button>
+                    <hr class="my-1 border-gray-200" />
+                    <button class="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-50">🗃️ Archive</button>
+                    <button class="flex items-center gap-2 w-full px-4 py-2 text-red-500 hover:bg-red-50">🗑️
+                        Delete</button>
                 </div>
             </div>
+
+            <!-- Profile Icon + Dropdown -->
+            <div class="relative">
+                <!-- Profile Button -->
+                <button onclick="toggleProfileMenu()"
+                    class="w-8 h-8 rounded-full bg-green-700 text-white flex items-center justify-center font-bold text-xs">
+                    S
+                </button>
+
+                <!-- Dropdown Menu -->
+                <div id="profileDropdown"
+                    class="hidden absolute right-0 mt-2 w-64 bg-white shadow-xl rounded-xl p-2 z-50">
+
+                    <div class="space-y-1 text-sm">
+
+
+
+
+                        <button class="flex items-center w-full gap-2 px-3 py-2 rounded hover:bg-gray-100">
+                            <span>🎛️</span> Customize SmartAI
+                        </button>
+
+                        <button class="flex items-center w-full gap-2 px-3 py-2 rounded hover:bg-gray-100">
+                            <span>⚙️</span> Settings
+                        </button>
+
+                        <hr class="my-1 border-gray-200" />
+
+                        <button class="flex items-center w-full gap-2 px-3 py-2 rounded hover:bg-gray-100">
+                            <span>💎</span> Upgrade Plan
+                        </button>
+
+                        <button class="flex items-center w-full gap-2 px-3 py-2 rounded hover:bg-gray-100">
+                            <span>🧩</span> Get SmartAI extension
+                        </button>
+
+                        <hr class="my-1 border-gray-200" />
+
+                        <button class="flex items-center w-full gap-2 px-3 py-2 rounded text-red-600 hover:bg-red-50">
+                            <span>↩️</span> Log out
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div>
+
+            <!-- Full Unique Responsive SmartAI Homepage -->
+            <section class="text-center px-4 md:px-6 py-16 mt-16 space-y-4">
+                <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight tracking-tight">
+                    Ask Smarter. Search Faster.<br class="hidden sm:block">Get Better Answers.
+                </h1>
+                <p class="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+                    An AI-first search engine that finds real answers, not just links.
+                </p>
+            </section>
+
+
+            <!-- Search Bar with Embedded Actions -->
+            <section class="flex justify-center px-4 md:px-6 ">
+                <div
+                    class="relative w-full max-w-3xl  bg-white/70 backdrop-blur-md rounded-3xl border border-gray-300 shadow-lg p-6">
+
+                    <!-- Input Field -->
+                    <input type="text" placeholder="What do you want to know today?"
+                        class="w-full text-base bg-transparent focus:outline-none placeholder-gray-500 mb-12">
+
+                    <!-- Bottom Left Buttons -->
+                    <div class="absolute bottom-4 left-6 flex flex-wrap gap-2">
+
+                        <!-- Plus Button (same everywhere) -->
+                        <button
+                            class="w-9 h-9 flex items-center justify-center border border-gray-300 rounded-full text-base hover:bg-gray-100 transition-all">
+                            +
+                        </button>
+
+                        <!-- Search Button -->
+                        <button
+                            class="flex items-center gap-1 px-4 py-1.5 border border-gray-300 rounded-full text-xs font-medium text-gray-700 hover:bg-gray-100 transition-all">
+                            <span class="inline sm:hidden text-base">🌐</span> <!-- Mobile Small Icon -->
+                            <span class="hidden sm:inline">🌐 Search</span> <!-- Desktop Full Text -->
+                        </button>
+
+                        <!-- Deep Research Button -->
+                        <button
+                            class="flex items-center gap-1 px-4 py-1.5 border border-gray-300 rounded-full text-xs font-medium text-gray-700 hover:bg-gray-100 transition-all">
+                            <span class="inline sm:hidden text-base">📡</span> <!-- Mobile Small Icon -->
+                            <span class="hidden sm:inline">📡 Deep Research</span> <!-- Desktop Full Text -->
+                        </button>
+
+                        <!-- Create Image Button -->
+                        <button
+                            class="flex items-center gap-1 px-4 py-1.5 border border-gray-300 rounded-full text-xs font-medium text-gray-700 hover:bg-gray-100 transition-all">
+                            <span class="inline sm:hidden text-base">🎨</span> <!-- Mobile Small Icon -->
+                            <span class="hidden sm:inline">🎨 Create Image</span> <!-- Desktop Full Text -->
+                        </button>
+
+                    </div>
+
+
+                    <!-- Bottom Right Buttons -->
+                    <div class="absolute bottom-4 right-6 flex items-center gap-2">
+                        <button
+                            class="w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100">
+                            <svg class="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 1v10m0 0a4 4 0 01-4-4V5a4 4 0 018 0v2a4 4 0 01-4 4zm0 0v4m0 4h-3m6 0h-3" />
+                            </svg>
+                        </button>
+                        <button
+                            class="w-9 h-9 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-indigo-500 hover:to-blue-500 text-white flex items-center justify-center hover:opacity-80">
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-7-7l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Suggested Prompts -->
+            <section class="px-4 md:px-6 py-10">
+                <div class="flex flex-wrap justify-center gap-3">
+                    <span
+                        class="bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-xs hover:bg-blue-200 cursor-pointer transition">What's
+                        the future of AI?</span>
+                    <span
+                        class="bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-xs hover:bg-blue-200 cursor-pointer transition">Best
+                        travel destinations for solo trips?</span>
+                    <span
+                        class="bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-xs hover:bg-blue-200 cursor-pointer transition">Summarize
+                        the latest climate news.</span>
+                </div>
+            </section>
+
+            <!-- Trending Now -->
+            <section class="px-4 md:px-6 py-10">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">What's Trending Right Now 🚀
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-md">
+                        <h3 class="text-sm md:text-base font-semibold">Top AI startups 2025</h3>
+                        <div class="flex justify-end gap-2 mt-3">
+                            <button class="text-blue-600 hover:text-blue-800">🔗</button>
+                            <button class="text-green-600 hover:text-green-800 text-2xl">+</button>
+                        </div>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-md">
+                        <h3 class="text-sm md:text-base font-semibold">Easy side hustles for beginners</h3>
+                        <div class="flex justify-end gap-2 mt-3">
+                            <button class="text-blue-600 hover:text-blue-800">🔗</button>
+                            <button class="text-green-600 hover:text-green-800 text-2xl">+</button>
+                        </div>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-md">
+                        <h3 class="text-sm md:text-base font-semibold">SpaceX Mars Mission timeline</h3>
+                        <div class="flex justify-end gap-2 mt-3">
+                            <button class="text-blue-600 hover:text-blue-800">🔗</button>
+                            <button class="text-green-600 hover:text-green-800 text-2xl">+</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Explore by Category -->
+            <section class="px-4 md:px-6 py-10">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">Explore by Category ✨</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-md">
+                        <h3 class="text-base font-semibold mb-2">Artificial Intelligence</h3>
+                        <p class="text-gray-600 text-sm">Breakthroughs, debates, and future possibilities.</p>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-md">
+                        <h3 class="text-base font-semibold mb-2">Science & Space</h3>
+                        <p class="text-gray-600 text-sm">Beyond Earth — discover new worlds.</p>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-md">
+                        <h3 class="text-base font-semibold mb-2">Business & Money</h3>
+                        <p class="text-gray-600 text-sm">Smart strategies for real-world growth.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="text-center text-xs text-gray-500 py-8">
+                Built for curious minds. Powered by <span class="text-blue-500 font-bold">SmartAI</span> • © 2025
+            </footer>
         </div>
 
-        <!-- Profile Avatar with Dropdown (outside pill) -->
-        <div class="relative">
-            <!-- Avatar Button -->
-            <button onclick="toggleDropdown()"
-                class="w-9 h-9 rounded-full bg-emerald-800 text-white flex items-center justify-center text-sm font-semibold shadow-md">
-                S
-            </button>
-            <!-- PLUS Badge -->
-            <div
-                class="absolute -bottom-1 -right-2 bg-white text-[10px] font-semibold text-black px-1.5 py-0.5 rounded-full shadow-sm">
-                PLUS
-            </div>
-
-            <!-- Dropdown Menu -->
-            <div id="profileDropdown"
-                class="hidden absolute bottom-12 right-0 w-60 bg-white rounded-xl shadow-xl text-sm text-gray-800 py-2 overflow-hidden z-50">
-                <button class="w-full text-left px-4 py-2 hover:bg-gray-100">📝 Tasks</button>
-                <button class="w-full text-left px-4 py-2 hover:bg-gray-100">👥 My GPTs</button>
-                <button class="w-full text-left px-4 py-2 hover:bg-gray-100">⚙️ Customize BharatSeek</button>
-                <button class="w-full text-left px-4 py-2 hover:bg-gray-100">🔧 Settings</button>
-                <hr class="my-1" />
-                <button class="w-full text-left px-4 py-2 hover:bg-gray-100">💎 Upgrade Plan</button>
-                <button class="w-full text-left px-4 py-2 hover:bg-gray-100">🧩 Get Search Extension</button>
-                <hr class="my-1" />
-                <button class="w-full text-left px-4 py-2 hover:bg-gray-100 text-red-600">🚪 Log out</button>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Central Core -->
-    <div class="relative z-10 text-center">
-        <div
-            class="w-40 h-40 mx-auto rounded-full bg-white/10 border-4 border-white pulse-ring flex items-center justify-center">
-            <input type="text" placeholder="Ask Bharat…" onclick="openPromptModal('Ask Bharat', '🤖')" readonly
-                class="text-white placeholder-white text-center bg-transparent outline-none text-lg cursor-pointer" />
-        </div>
-        <p class="text-sm text-green-300 mt-4">Bharat’s Mind at your Fingertips</p>
-    </div>
-
-    <!-- Radial Buttons -->
-    <div class="absolute w-[90vw] max-w-[450px] h-[90vw] max-h-[450px] rounded-full border-2 border-white/20">
-        <button onclick="openPromptModal('Explore', '🧭')"
-            class="absolute top-0 left-1/2 transform -translate-x-1/2 bg-green-600 hover:bg-green-700 text-white text-xs sm:text-sm px-3 py-1.5 rounded-full shadow-lg">🧭
-            Explore</button>
-        <button onclick="openPromptModal('Deep Dive', '📡')"
-            class="absolute top-10 right-3 bg-yellow-500 hover:bg-yellow-600 text-white text-xs sm:text-sm px-3 py-1.5 rounded-full shadow-lg">📡
-            Deep Dive</button>
-        <button onclick="openPromptModal('Image Gen', '🎨')"
-            class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-blue-700 hover:bg-blue-800 text-white text-xs sm:text-sm px-3 py-1.5 rounded-full shadow-lg">🎨
-            Img Gen</button>
-        <button onclick="openPromptModal('Trending', '📈')"
-            class="absolute bottom-10 right-3 bg-green-500 hover:bg-green-600 text-white text-xs sm:text-sm px-3 py-1.5 rounded-full shadow-lg">📈
-            Trending</button>
-        <button onclick="openCategoriesModal()"
-            class="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-white text-blue-900 text-xs sm:text-sm px-3 py-1.5 rounded-full shadow-lg">🧠
-            Categories</button>
-        <button onclick="openPromptModal('Knowledge', '📚')"
-            class="absolute bottom-10 left-3 bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm px-3 py-1.5 rounded-full shadow-lg">📚
-            Knowledge</button>
-        <button onclick="openSavedModal()"
-            class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-yellow-400 hover:bg-yellow-500 text-white text-xs sm:text-sm px-3 py-1.5 rounded-full shadow-lg">🔖
-            Saved</button>
-        <button onclick="openPromptModal('Tools', '🛠')"
-            class="absolute top-10 left-3 bg-blue-500 hover:bg-blue-600 text-white text-xs sm:text-sm px-3 py-1.5 rounded-full shadow-lg">🛠
-            Tools</button>
-    </div>
-
-    <!-- Prompt Modal -->
-    <div id="promptModal"
-        class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 px-4">
-        <div class="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-lg text-gray-900 relative">
-            <button onclick="closeModals()"
-                class="absolute top-3 right-4 text-gray-600 hover:text-red-500 text-xl font-bold">×</button>
-            <div class="flex items-center mb-4">
-                <div id="modal-icon" class="text-2xl mr-3">✨</div>
-                <h2 id="modal-title" class="text-xl font-semibold">Prompt Interaction</h2>
-            </div>
-            <div id="tabInfo" class="text-sm text-gray-600 mb-3 italic">You're interacting with...</div>
-            <textarea id="userPrompt" rows="5" placeholder="Type your prompt here..."
-                class="w-full p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800 text-sm resize-none shadow mb-4"></textarea>
-            <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Upload an image (optional)</label>
-                <input type="file" accept="image/*"
-                    class="block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
-            </div>
-            <button
-                class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:opacity-90 text-white py-2 rounded-xl font-semibold text-sm shadow-lg">🚀
-                Submit Prompt</button>
-        </div>
-    </div>
-
-    <!-- Saved Modal -->
-    <div id="savedModal"
-        class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 px-2 sm:px-4">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] relative flex flex-col text-gray-900">
-
-            <!-- ❌ Close Button -->
-            <button onclick="closeModals()"
-                class="absolute top-3 right-4 text-gray-600 hover:text-red-500 text-xl font-bold z-10">×</button>
-
-            <!-- 🗂️ Header -->
-            <div class="px-6 pt-6 pb-2">
-                <h2 class="text-xl font-semibold flex items-center gap-2">🔖 Saved Files</h2>
-            </div>
-
-            <!-- 📁 Scrollable File List -->
-            <div class="px-6 pb-6 overflow-y-auto space-y-4" style="max-height: 75vh;">
-                <div onclick="alert('Opening Image_Gen_Results_01.png')"
-                    class="p-4 border rounded-xl hover:bg-gray-50 cursor-pointer transition">
-                    <div class="flex justify-between items-center">
-                        <span class="font-medium">📁 Image_Gen.png</span>
-                        <span class="text-xs text-gray-500">Apr 30, 2025</span>
-                    </div>
-                    <p class="text-xs text-gray-600 mt-1">Generated using Image Gen tab.</p>
-                </div>
-
-                <div onclick="alert('Opening DeepDive_Report.pdf')"
-                    class="p-4 border rounded-xl hover:bg-gray-50 cursor-pointer transition">
-                    <div class="flex justify-between items-center">
-                        <span class="font-medium">📁 DeepDive_Report.pdf</span>
-                        <span class="text-xs text-gray-500">Apr 28, 2025</span>
-                    </div>
-                    <p class="text-xs text-gray-600 mt-1">A saved deep-dive result.</p>
-                </div>
-                <div onclick="alert('Opening DeepDive_Report.pdf')"
-                    class="p-4 border rounded-xl hover:bg-gray-50 cursor-pointer transition">
-                    <div class="flex justify-between items-center">
-                        <span class="font-medium">📁 DeepDive_Report.pdf</span>
-                        <span class="text-xs text-gray-500">Apr 28, 2025</span>
-                    </div>
-                    <p class="text-xs text-gray-600 mt-1">A saved deep-dive result.</p>
-                </div>
-                <div onclick="alert('Opening DeepDive_Report.pdf')"
-                    class="p-4 border rounded-xl hover:bg-gray-50 cursor-pointer transition">
-                    <div class="flex justify-between items-center">
-                        <span class="font-medium">📁 DeepDive_Report.pdf</span>
-                        <span class="text-xs text-gray-500">Apr 28, 2025</span>
-                    </div>
-                    <p class="text-xs text-gray-600 mt-1">A saved deep-dive result.</p>
-                </div>
-                <div onclick="alert('Opening DeepDive_Report.pdf')"
-                    class="p-4 border rounded-xl hover:bg-gray-50 cursor-pointer transition">
-                    <div class="flex justify-between items-center">
-                        <span class="font-medium">📁 DeepDive_Report.pdf</span>
-                        <span class="text-xs text-gray-500">Apr 28, 2025</span>
-                    </div>
-                    <p class="text-xs text-gray-600 mt-1">A saved deep-dive result.</p>
-                </div>
-                <div onclick="alert('Opening DeepDive_Report.pdf')"
-                    class="p-4 border rounded-xl hover:bg-gray-50 cursor-pointer transition">
-                    <div class="flex justify-between items-center">
-                        <span class="font-medium">📁 DeepDive_Report.pdf</span>
-                        <span class="text-xs text-gray-500">Apr 28, 2025</span>
-                    </div>
-                    <p class="text-xs text-gray-600 mt-1">A saved deep-dive result.</p>
-                </div>
-                <div onclick="alert('Opening DeepDive_Report.pdf')"
-                    class="p-4 border rounded-xl hover:bg-gray-50 cursor-pointer transition">
-                    <div class="flex justify-between items-center">
-                        <span class="font-medium">📁 DeepDive_Report.pdf</span>
-                        <span class="text-xs text-gray-500">Apr 28, 2025</span>
-                    </div>
-                    <p class="text-xs text-gray-600 mt-1">A saved deep-dive result.</p>
-                </div>
-                <div onclick="alert('Opening DeepDive_Report.pdf')"
-                    class="p-4 border rounded-xl hover:bg-gray-50 cursor-pointer transition">
-                    <div class="flex justify-between items-center">
-                        <span class="font-medium">📁 DeepDive_Report.pdf</span>
-                        <span class="text-xs text-gray-500">Apr 28, 2025</span>
-                    </div>
-                    <p class="text-xs text-gray-600 mt-1">A saved deep-dive result.</p>
-                </div>
 
 
 
-                <!-- Additional files can scroll below -->
-                <div class="text-center text-sm text-gray-400 italic pt-4">
-                    More saved files will appear here...
-                </div>
-            </div>
-        </div>
-    </div>
 
 
-    <!-- Categories Modal -->
-    <div id="categoriesModal"
-        class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 px-2 sm:px-4">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] relative flex flex-col text-gray-900">
-
-            <!-- ❌ Close Button -->
-            <button onclick="closeModals()"
-                class="absolute top-3 right-4 text-gray-600 hover:text-red-500 text-xl font-bold z-10">×</button>
-
-            <!-- 🧠 Header -->
-            <div class="px-6 pt-6 pb-2">
-                <h2 class="text-xl font-semibold flex items-center gap-2">🧠 Saved Categories</h2>
-            </div>
-
-            <!-- 📂 Scrollable Category List -->
-            <div class="px-6 pb-6 overflow-y-auto space-y-4" style="max-height: 75vh;">
-                <div onclick="alert('Opening AI & Robotics')"
-                    class="p-4 border rounded-xl hover:bg-gray-50 cursor-pointer transition">
-                    <div class="flex justify-between items-center">
-                        <span class="font-medium">📂 AI & Robotics</span>
-                        <span class="text-xs text-gray-500">Apr 30, 2025</span>
-                    </div>
-                    <p class="text-xs text-gray-600 mt-1">Your saved insights on artificial intelligence.</p>
-                </div>
-
-                <div onclick="alert('Opening Indian History')"
-                    class="p-4 border rounded-xl hover:bg-gray-50 cursor-pointer transition">
-                    <div class="flex justify-between items-center">
-                        <span class="font-medium">📂 Indian History</span>
-                        <span class="text-xs text-gray-500">Apr 28, 2025</span>
-                    </div>
-                    <p class="text-xs text-gray-600 mt-1">Chapters and notes from Bharat’s past.</p>
-                </div>
-
-                <div onclick="alert('Opening Space & ISRO')"
-                    class="p-4 border rounded-xl hover:bg-gray-50 cursor-pointer transition">
-                    <div class="flex justify-between items-center">
-                        <span class="font-medium">📂 Space & ISRO</span>
-                        <span class="text-xs text-gray-500">Apr 26, 2025</span>
-                    </div>
-                    <p class="text-xs text-gray-600 mt-1">Everything you saved about India’s space missions.</p>
-                </div>
-
-                <!-- More Categories -->
-                <div class="text-center text-sm text-gray-400 italic pt-4">
-                    More categories will appear here...
-                </div>
-            </div>
-        </div>
-    </div>
+    </main>
 
 
-    <!-- Footer -->
-    <footer class="absolute bottom-4 text-sm text-white/60 text-center w-full">
-        Powered by <span class="text-yellow-400 font-bold">BharatSeek.ai</span> • Discover. Learn. Rise. 🇮🇳
-    </footer>
+
+
+
 
     <!-- Scripts -->
     <script>
-        function openPromptModal(tabName, icon) {
-            closeModals();
-            document.getElementById('modal-title').innerText = `${tabName} – Prompt`;
-            document.getElementById('modal-icon').innerText = icon;
-            document.getElementById('tabInfo').innerText = `You're interacting with the "${tabName}" section.`;
-            document.getElementById('promptModal').classList.remove('hidden');
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebarClose = document.getElementById('sidebarClose');
+            const body = document.body;
+
+            // ✅ Open sidebar on mobile
+            sidebarToggle?.addEventListener('click', () => {
+                sidebar?.classList.remove('-translate-x-full');
+                overlay?.classList.remove('hidden');
+                sidebarToggle?.classList.add('hidden');
+                body.classList.add('no-scroll'); // disable background scroll
+            });
+
+            // ✅ Close sidebar (used in two places)
+            function closeSidebar() {
+                sidebar?.classList.add('-translate-x-full');
+                overlay?.classList.add('hidden');
+                sidebarToggle?.classList.remove('hidden');
+                body.classList.remove('no-scroll'); // enable scroll again
+            }
+
+            sidebarClose?.addEventListener('click', closeSidebar);
+            overlay?.addEventListener('click', closeSidebar);
+        });
+
+        // ✅ Collapsible section toggle logic
+        function toggleSection(contentId, iconId) {
+            const content = document.getElementById(contentId);
+            const icon = document.getElementById(iconId);
+
+            if (!content || !icon) return;
+
+            content.classList.toggle('hidden');
+            icon.textContent = content.classList.contains('hidden') ? '+' : '-'; // ✅ Correct hyphen
         }
 
-        function openSavedModal() {
-            closeModals();
-            document.getElementById('savedModal').classList.remove('hidden');
-        }
 
-        function openCategoriesModal() {
-            closeModals();
-            document.getElementById('categoriesModal').classList.remove('hidden');
-        }
-
-        function closeModals() {
-            document.getElementById('promptModal').classList.add('hidden');
-            document.getElementById('savedModal').classList.add('hidden');
-            document.getElementById('categoriesModal').classList.add('hidden');
-            document.getElementById('userPrompt').value = "";
+        function toggleSection(contentId, iconId) {
+            const content = document.getElementById(contentId);
+            const icon = document.getElementById(iconId);
+            if (!content || !icon) return;
+            content.classList.toggle('hidden');
+            icon.textContent = content.classList.contains('hidden') ? '+' : '-';
         }
 
 
@@ -379,21 +443,17 @@
 
 
 
+        // right side fix content 
+        const menuToggle = document.getElementById('menuToggle');
+        const menuDropdown = document.getElementById('menuDropdown');
 
+        menuToggle.addEventListener('click', () => {
+            menuDropdown.classList.toggle('hidden');
+        });
 
-
-
-
-        function toggleDropdown() {
-            const dropdown = document.getElementById("profileDropdown");
-            dropdown.classList.toggle("hidden");
-        }
-
-        document.addEventListener("click", function (e) {
-            const profileBtn = document.querySelector("button[onclick='toggleDropdown()']");
-            const dropdown = document.getElementById("profileDropdown");
-            if (!profileBtn.contains(e.target) && !dropdown.contains(e.target)) {
-                dropdown.classList.add("hidden");
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !menuDropdown.contains(e.target)) {
+                menuDropdown.classList.add('hidden');
             }
         });
 
@@ -401,56 +461,23 @@
 
 
 
-
-
-
-
-
-
-        function toggleDropdown() {
-            document.getElementById("profileDropdown").classList.toggle("hidden");
-            document.getElementById("menuDropdown").classList.add("hidden");
+        // PROFILE DROPDOWN 
+        function toggleProfileMenu() {
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.classList.toggle('hidden');
         }
 
-        function toggleMenuDropdown() {
-            document.getElementById("menuDropdown").classList.toggle("hidden");
-            document.getElementById("profileDropdown").classList.add("hidden");
-        }
-
-        // Auto-close both on outside click
-        document.addEventListener("click", function (e) {
-            const profileBtn = document.querySelector("button[onclick='toggleDropdown()']");
-            const menuBtn = document.querySelector("button[onclick='toggleMenuDropdown()']");
-            const profileDropdown = document.getElementById("profileDropdown");
-            const menuDropdown = document.getElementById("menuDropdown");
-
-            if (!profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
-                profileDropdown.classList.add("hidden");
-            }
-            if (!menuBtn.contains(e.target) && !menuDropdown.contains(e.target)) {
-                menuDropdown.classList.add("hidden");
+        // Optional: Hide when clicking outside
+        document.addEventListener('click', function (e) {
+            const button = document.querySelector('button[onclick="toggleProfileMenu()"]');
+            const dropdown = document.getElementById('profileDropdown');
+            if (!button.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.add('hidden');
             }
         });
-
-
-
-
-
-        VANTA.NET({
-            el: "#vanta-bg",
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            color: 0x00ffcc,
-            backgroundColor: 0x000814
-        });
-
     </script>
 
 </body>
 
 </html>
+
