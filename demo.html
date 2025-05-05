@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
@@ -825,195 +825,108 @@
 
 
 
-        /* PITCH REPORT SECTION  */
-        .pitch-glass-box {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
-            backdrop-filter: blur(8px);
+        .pitch-report-glass {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 18px;
+            padding: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            max-width: 360px;
             margin: auto;
-            margin-bottom: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
-        .pitch-glass-box .glass-header {
+        .pitch-header {
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
-        .pitch-glass-box .glass-icon {
-            background: linear-gradient(145deg, #3D5CA5, #E4443B);
-            color: #fff;
+        .pitch-icon {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #3b82f6, #9333ea);
+            color: white;
             padding: 10px;
-            border-radius: 10px;
-            font-size: 1rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
         }
 
-        .pitch-glass-box .glass-header h3 {
+        .pitch-title h3 {
             font-size: 1rem;
             font-weight: 700;
             margin: 0;
-            color: #1f2937;
+            color: #111827;
         }
 
-        .pitch-glass-box .glass-header p {
-            font-size: 0.85rem;
+        .pitch-title p {
+            margin: 2px 0 0;
+            font-size: 0.75rem;
             color: #6b7280;
-            margin: 3px 0 0;
         }
 
-        .pitch-points {
-            padding-left: 20px;
-            color: #374151;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .pitch-points li {
-            margin-bottom: 6px;
-            list-style: disc;
-        }
-
-        .pitch-stats {
+        .pitch-tags {
             display: flex;
-            justify-content: space-between;
-            background: #f9fafb;
-            border-radius: 14px;
-            padding: 12px 18px;
+            flex-wrap: wrap;
+            gap: 8px;
             margin-bottom: 16px;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02);
-            flex-wrap: wrap;
-            gap: 12px;
         }
 
-        .stat-box {
-            text-align: center;
-            flex: 1;
-        }
-
-        .stat-box .value {
-            font-weight: 700;
-            font-size: 1.4rem;
-            color: #3D5CA5;
-        }
-
-        .stat-box .label {
-            font-size: 0.8rem;
-            color: #6b7280;
-        }
-
-        .pitch-highlight {
-            background: #fff7ed;
-            color: #92400e;
-            font-size: 0.9rem;
-            font-weight: 600;
-            padding: 10px 14px;
-            border-left: 5px solid #fb923c;
-            border-radius: 12px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-        }
-
-        .pitch-visual-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 12px;
-            margin: 20px 0;
-        }
-
-        .pitch-visual-box {
-            flex: 1 1 100px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 12px;
-            padding: 12px 10px;
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .pitch-visual-box:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
-        }
-
-        .pitch-visual-box img {
-            width: 36px;
-            height: 36px;
-            margin-bottom: 8px;
-        }
-
-        .pitch-visual-box .label {
+        .tag {
             font-size: 0.75rem;
-            color: #374151;
             font-weight: 600;
+            padding: 6px 10px;
+            border-radius: 999px;
+            color: white;
         }
 
-        .pitch-visual-grid {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin: 20px 0;
-        }
-
-        .pitch-visual-box {
-            flex: 1 1 100px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 16px;
-            padding: 12px 10px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .pitch-visual-box:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .icon-circle {
-            width: 42px;
-            height: 42px;
-            margin: 0 auto 6px;
-            background: linear-gradient(135deg, #3D5CA5, #E4443B);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 18px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-        }
-
-        .label {
-            font-size: 0.75rem;
-            font-weight: 700;
+        .tag-runfest {
+            background: #facc15;
             color: #1f2937;
         }
 
-        .sub-label {
+        .tag-death {
+            background: #f87171;
+        }
+
+        .tag-spin {
+            background: #34d399;
+        }
+
+        .pitch-stats-box {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            padding: 12px;
+            border-radius: 14px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-card .stat-value {
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .stat-card .stat-label {
             font-size: 0.7rem;
-            font-weight: 500;
-            color: #6b7280;
-            margin-top: 2px;
+            margin-top: 4px;
+            opacity: 0.85;
         }
 
 
-        /* Responsive Tweak */
-        @media (max-width: 768px) {
-            .pitch-stats {
-                /* flex-direction: column; */
-                align-items: center;
-            }
 
-            .pitch-glass-box {
-                padding: 18px;
-            }
-        }
+
+
+
+
+
+
 
 
 
@@ -1464,105 +1377,64 @@
             margin: 0;
         }
 
-        .mkf-compact-cards {
+        .mkf-cards {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 16px;
         }
 
-        .mkf-compact-card {
+        .mkf-card {
             display: flex;
             align-items: flex-start;
-            background: #f9fafb;
-            border-radius: 14px;
-            padding: 10px 14px;
-            gap: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            background: #f1f5f9;
+            border-radius: 16px;
+            padding: 16px;
+            gap: 14px;
             transition: transform 0.3s ease;
         }
 
-        .mkf-compact-card:hover {
-            transform: scale(1.02);
+        .mkf-card:hover {
+            transform: scale(1.015);
         }
 
-        .mkf-compact-icon {
-            font-size: 1.2rem;
-            color: white;
-            background: #3B82F6;
-            border-radius: 50%;
-            padding: 8px;
-            width: 36px;
-            height: 36px;
+        .glass-glow {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+        }
+
+        .mkf-card-icon {
+            font-size: 1.4rem;
+            /* padding: 8px; */
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 40px;
+            width: 40px;
+            border-radius: 100%;
+            color: white;
+            background: #3B82F6;
+            flex-shrink: 0;
         }
 
-        .mkf-weather-card .mkf-compact-icon {
+        .weather .mkf-card-icon {
             background: linear-gradient(to right, #60a5fa, #2563eb);
         }
 
-        .mkf-pitch-card .mkf-compact-icon {
+        .pitch .mkf-card-icon {
             background: linear-gradient(to right, #f87171, #dc2626);
         }
 
-        .mkf-compact-text {
-            flex: 1;
-        }
-
-        .mkf-compact-text strong {
-            font-size: 0.85rem;
+        .mkf-card-text strong {
+            font-size: 0.95rem;
             color: #1f2937;
+            display: block;
+            margin-bottom: 4px;
         }
 
-        .mkf-tag-wrap {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 4px;
-        }
-
-        .mkf-tag {
-            font-size: 0.68rem;
-            padding: 3px 7px;
-            border-radius: 9999px;
-            font-weight: 500;
-        }
-
-        .mkf-tag.mkf-blue {
-            background: #dbeafe;
-            color: #2563eb;
-        }
-
-        .mkf-tag.mkf-red {
-            background: #fee2e2;
-            color: #dc2626;
-        }
-
-        .mkf-tag.mkf-green {
-            background: #dcfce7;
-            color: #16a34a;
-        }
-
-        .mkf-tag.mkf-orange {
-            background: #fef3c7;
-            color: #d97706;
-        }
-
-        .mkf-tag.mkf-gray {
-            background: #e5e7eb;
+        .mkf-card-text p {
+            font-size: 0.8rem;
             color: #374151;
+            margin: 0;
         }
-
-        /* Mobile View */
-        @media (max-width: 600px) {
-
-
-            .mkf-compact-icon {
-                margin-bottom: 6px;
-            }
-        }
-
 
         @media (max-width: 768px) {
             .match-key-factors-glass {
@@ -1680,7 +1552,6 @@
         .update .injury-text i {
             color: #eab308;
         }
-
 
         @media (min-width: 600px) {
 
@@ -2234,7 +2105,7 @@
         }
 
         .tips-cards {
-            display: flex;
+            display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 10px;
         }
@@ -2267,53 +2138,6 @@
             font-size: 0.85rem;
             color: #4b5563;
             margin: 0;
-        }
-
-        .tip-card-minimal {
-            display: flex;
-            width: 100%;
-            align-items: center;
-            background: #f1f5f9;
-            padding: 6px 10px;
-            border-radius: 12px;
-            gap: 10px;
-            border-left: 3px solid #3D5CA5;
-            transition: 0.3s ease;
-        }
-
-        .tip-card-minimal:hover {
-            background: #e5e7eb;
-        }
-
-        .tip-img {
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #3D5CA5;
-        }
-
-        .tip-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            width: 100%;
-        }
-
-        .tip-name {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #111827;
-            margin-bottom: 2px;
-        }
-
-        .tip-badge {
-            font-size: 0.75rem;
-            background: #e0e7ff;
-            color: #3D5CA5;
-            border-radius: 10px;
-            padding: 2px 6px;
-            width: fit-content;
         }
 
         @media (max-width: 480px) {
@@ -2400,7 +2224,7 @@
             padding: 14px;
             border-radius: 12px;
             display: flex;
-            /* flex-direction: column; */
+            flex-direction: column;
             gap: 10px;
             font-size: 0.9rem;
             line-height: 1.4;
@@ -3359,73 +3183,34 @@
         <div class="two-column-layout match-preview">
             <!-- Left Section (70%) -->
             <div class="left-column">
-                <!-- PITCH REPORT SECTION  -->
-
-
-                <div id="pitch-report-box" class="pitch-glass-box">
-                    <div class="glass-header">
-                        <div class="glass-icon">
-
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="18" viewBox="0 0 64 64"
-                                fill="currentColor">
-                                <rect x="20" y="8" width="24" height="48" rx="2" ry="2" fill="currentColor" />
-
-                                <line x1="24" y1="12" x2="40" y2="12" stroke="#ffffff" stroke-width="2" />
-                                <line x1="24" y1="52" x2="40" y2="52" stroke="#ffffff" stroke-width="2" />
-
-                                <line x1="28" y1="9" x2="28" y2="15" stroke="#ffffff" stroke-width="1.5" />
-                                <line x1="32" y1="9" x2="32" y2="15" stroke="#ffffff" stroke-width="1.5" />
-                                <line x1="36" y1="9" x2="36" y2="15" stroke="#ffffff" stroke-width="1.5" />
-
-                                <line x1="28" y1="49" x2="28" y2="55" stroke="#ffffff" stroke-width="1.5" />
-                                <line x1="32" y1="49" x2="32" y2="55" stroke="#ffffff" stroke-width="1.5" />
-                                <line x1="36" y1="49" x2="36" y2="55" stroke="#ffffff" stroke-width="1.5" />
-                            </svg>
-                        </div>
-                        <div>
-                            <h3>Pitch Report – M. Chinnaswamy Stadium</h3>
-                            <p>(Quick Fantasy Boosts)</p>
+                <div class="pitch-report-glass">
+                    <div class="pitch-header">
+                        <div class="pitch-icon">🏟️</div>
+                        <div class="pitch-title">
+                            <h3>M. Chinnaswamy</h3>
+                            <p>Fantasy Boost ⚡</p>
                         </div>
                     </div>
 
-                    <div class="pitch-visual-grid">
-                        <div class="pitch-visual-box">
-                            <div class="icon-circle"><i class="fas fa-fire"></i></div>
-                            <div class="label">High Scores</div>
-                            <div class="sub-label">Batters Friendly</div>
-                        </div>
-
-                        <div class="pitch-visual-box">
-                            <div class="icon-circle"><i class="fas fa-bowling-ball"></i></div>
-                            <div class="label">Death Overs</div>
-                            <div class="sub-label">Tough for Pacers</div>
-                        </div>
-
-                        <div class="pitch-visual-box">
-                            <div class="icon-circle"><i class="fas fa-undo-alt"></i></div>
-                            <div class="label">Spin Impact</div>
-                            <div class="sub-label">Good for Spinners</div>
-                        </div>
+                    <div class="pitch-tags">
+                        <span class="tag tag-runfest">💥 Run-Fest</span>
+                        <span class="tag tag-death">🛑 Tough Death Overs</span>
+                        <span class="tag tag-spin">🌀 Smart Spin Zone</span>
                     </div>
 
-
-
-
-                    <div class="pitch-stats">
-                        <div class="stat-box">
-                            <span class="value">192</span>
-                            <span class="label">Avg 1st Innings</span>
+                    <div class="pitch-stats-box">
+                        <div class="stat-card">
+                            <div class="stat-value">192</div>
+                            <div class="stat-label">Avg 1st Inn</div>
                         </div>
-                        <div class="stat-box">
-                            <span class="value">58%</span>
-                            <span class="label">Chasing Win %</span>
+                        <div class="stat-card">
+                            <div class="stat-value">58%</div>
+                            <div class="stat-label">Chase Win%</div>
                         </div>
                     </div>
-
-                    <!-- <div class="pitch-highlight">
-                        “<strong>Expect a run-fest. Prioritize top-order batters & death-over bowlers.</strong>”
-                    </div> -->
                 </div>
+
+
 
                 <!-- HEAD TO HEAD SECTION  -->
                 <div id="h2h-pro-box" class="h2h-glass-box">
@@ -3598,34 +3383,26 @@
                         </div>
                     </div>
 
-                    <div class="mkf-compact-cards">
-                        <!-- Weather Insight -->
-                        <div class="mkf-compact-card mkf-weather-card">
-                            <i class="fas fa-cloud-sun mkf-compact-icon"></i>
-                            <div class="mkf-compact-text">
+                    <div class="mkf-cards">
+                        <div class="mkf-card glass-glow weather">
+                            <div class="mkf-card-icon">
+                                <img src="Icons/cloud-sun-solid1.svg" alt="">
+                            </div>
+                            <div class="mkf-card-text">
                                 <strong>Weather</strong>
-                                <div class="mkf-tag-wrap">
-                                    <span class="mkf-tag mkf-blue">🌦️ Light Showers</span>
-                                    <span class="mkf-tag mkf-gray">🌬️ 9–11 km/h</span>
-                                    <span class="mkf-tag mkf-orange">⚠️ Possible Delay</span>
-                                </div>
+                                <p>27°C, light showers & winds 9–11 km/hr. Slight interruption possible.</p>
                             </div>
                         </div>
-
-                        <!-- Pitch Insight -->
-                        <div class="mkf-compact-card mkf-pitch-card">
-                            <i class="fas fa-drumstick-bite mkf-compact-icon"></i>
-                            <div class="mkf-compact-text">
+                        <div class="mkf-card glass-glow pitch">
+                            <div class="mkf-card-icon">
+                                <img src="Icons/drumstick-bite-solid1.svg" alt="">
+                            </div>
+                            <div class="mkf-card-text">
                                 <strong>Pitch</strong>
-                                <div class="mkf-tag-wrap">
-                                    <span class="mkf-tag mkf-red">🧨 Bounce Early</span>
-                                    <span class="mkf-tag mkf-green">🌀 Mid-Spin</span>
-                                    <span class="mkf-tag mkf-blue">💧 Dew Later</span>
-                                </div>
+                                <p>Early bounce for pacers, spin in middle. Dew helps chasing later.</p>
                             </div>
                         </div>
                     </div>
-
                 </div>
 
 
@@ -4004,25 +3781,15 @@
                             Captain Picks
                         </div>
                         <div class="tips-cards">
-                            <!-- Player 1 -->
-                            <div class="tip-card-minimal">
-                                <img src="images/profile.svg" alt="Nicholas Pooran" class="tip-img" />
-                                <div class="tip-info">
-                                    <div class="tip-name">Pooran</div>
-                                    <div class="tip-badge">9 Avg</div>
-                                </div>
+                            <div class="tip-card">
+                                <h4>Nicholas Pooran <span>Avg Points: <strong>9</strong></span></h4>
+                                <p>Top-scorer, known for aggressive play and boundary-hitting.</p>
                             </div>
-
-                            <!-- Player 2 -->
-                            <div class="tip-card-minimal">
-                                <img src="images/profile.svg" alt="Rachin Ravindra" class="tip-img" />
-                                <div class="tip-info">
-                                    <div class="tip-name">Ravindra</div>
-                                    <div class="tip-badge">7.5 Avg</div>
-                                </div>
+                            <div class="tip-card">
+                                <h4>Rachin Ravindra <span>Avg Points: <strong>7.5</strong></span></h4>
+                                <p>Opener with high strike rate & ability to set foundation.</p>
                             </div>
                         </div>
-
                     </div>
 
                     <!-- VICE-CAPTAIN PICKS -->
@@ -4033,25 +3800,15 @@
                             Vice-Captain Picks
                         </div>
                         <div class="tips-cards">
-                            <!-- Aiden Markram -->
-                            <div class="tip-card-minimal">
-                                <img src="images/profile.svg" alt="Aiden Markram" class="tip-img" />
-                                <div class="tip-info">
-                                    <div class="tip-name">Markram</div>
-                                    <div class="tip-badge">Avg</div> <!-- All-rounder vibe -->
-                                </div>
+                            <div class="tip-card">
+                                <h4>Aiden Markram <span>Avg Points: <strong>9</strong></span></h4>
+                                <p>Middle-order batter with off-spin bowling option — great balance.</p>
                             </div>
-
-                            <!-- Devon Conway -->
-                            <div class="tip-card-minimal">
-                                <img src="images/profile.svg" alt="Devon Conway" class="tip-img" />
-                                <div class="tip-info">
-                                    <div class="tip-name">Conway</div>
-                                    <div class="tip-badge">8.5 Avg</div> <!-- Consistent performer -->
-                                </div>
+                            <div class="tip-card">
+                                <h4>Devon Conway <span>Avg Points: <strong>8.5</strong></span></h4>
+                                <p>Performer with strong average & technical shot play.</p>
                             </div>
                         </div>
-
                     </div>
                 </div>
 
@@ -4105,14 +3862,8 @@
 
 
                         <div class="pick-card budget">
-                            <div class="tip-info">
-                                <div class="tip-name">Jitesh Sharma</div>
-                                <div class="tip-badge">40+ Points • Budget Pick</div>
-                            </div>
-                            <div class="tip-info">
-                                <div class="tip-name">Karn Sharma</div>
-                                <div class="tip-badge">Wicket Taker • Budget Pick</div>
-                            </div>
+                            <span>• <strong>Jitesh Sharma</strong> – Can deliver 40+ points at low credit.</span>
+                            <span>• <strong>Karn Sharma</strong> – Might surprise with 1-2 wickets.</span>
                         </div>
                     </div>
 
@@ -4136,14 +3887,8 @@
                         </div>
 
                         <div class="pick-card league">
-                            <div class="tip-info">
-                                <div class="tip-name">Mahipal Lomror</div>
-                                <div class="tip-badge">Top 5 Bat • GL Pick</div>
-                            </div>
-                            <div class="tip-info">
-                                <div class="tip-name">Shahrukh Khan</div>
-                                <div class="tip-badge">Finisher • GL Pick</div>
-                            </div>
+                            <span>• <strong>Mahipal Lomror</strong> – Value if he bats in top 5.</span>
+                            <span>• <strong>Shahrukh Khan</strong> – Explosive if PBKS bats second.</span>
                         </div>
                     </div>
 
