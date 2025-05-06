@@ -1822,9 +1822,10 @@
         }
 
         .bench-impact-box {
-            background: #eef4ff;
+            /* background: #eef4ff; */
             border-radius: 12px;
-            padding: 12px;
+            padding-top: 12px;
+            /* padding: 12px; */
             display: flex;
             flex-direction: column;
             gap: 10px;
@@ -1850,6 +1851,99 @@
             font-size: 13px;
             text-decoration: none;
             line-height: 1.6;
+        }
+
+        .role {
+            margin-left: 6px;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .bat {
+            background: #3b82f6;
+        }
+
+        .wk {
+            background: #0ea5e9;
+        }
+
+        .ar {
+            background: #10b981;
+        }
+
+        .toggle-section strong {
+            cursor: pointer;
+            user-select: none;
+            display: inline-block;
+            margin-bottom: 6px;
+            font-size: 13px;
+            color: #1e40af;
+        }
+
+        .toggle-list {
+            display: none;
+            list-style: none;
+            padding-left: 16px;
+        }
+
+        .toggle-list li a {
+            font-size: 13px;
+            color: #374151;
+            text-decoration: none;
+        }
+
+        .fancy-toggle {
+            background: #f8fafc;
+            border-radius: 12px;
+            /* margin-bottom: 12px; */
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+            overflow: hidden;
+        }
+
+        .toggle-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            background: #e0e7ff;
+            color: #1e3a8a;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .toggle-header:hover {
+            background: #c7d2fe;
+        }
+
+        .toggle-header i {
+            transition: transform 0.3s ease;
+        }
+
+        .fancy-toggle.open .toggle-header i {
+            transform: rotate(180deg);
+        }
+
+        .fancy-list {
+            display: none;
+            list-style: none;
+            padding: 10px 16px;
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .fancy-list li {
+            margin-bottom: 6px;
+        }
+
+        .fancy-list li a {
+            text-decoration: none;
+            font-size: 0.85rem;
+            color: #374151;
         }
 
         @media (max-width: 768px) {
@@ -2106,20 +2200,18 @@
 
         /* Role Colors */
         .role.bat {
-            color: #10b981;
+            color: white;
         }
 
         .role.wk {
-            color: #3b82f6;
+            color: white;
         }
 
         .role.bwl {
-            color: #ef4444;
+            color: white;
         }
 
-        .role.ar {
-            color: #9333ea;
-        }
+
 
         /* Add this CSS */
         .view-more-btn {
@@ -2185,6 +2277,14 @@
             margin-bottom: 16px;
         }
 
+        .tip-desc {
+            font-size: 0.85rem;
+            color: #4b5563;
+            margin-top: 2px;
+            line-height: 1.5;
+            margin-top: 4px;
+        }
+
         .glass-header {
             display: flex;
             align-items: center;
@@ -2234,7 +2334,7 @@
         }
 
         .tips-cards {
-            display: flex;
+            display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 10px;
         }
@@ -2400,7 +2500,7 @@
             padding: 14px;
             border-radius: 12px;
             display: flex;
-            /* flex-direction: column; */
+            flex-direction: column;
             gap: 10px;
             font-size: 0.9rem;
             line-height: 1.4;
@@ -3717,30 +3817,38 @@
                         <div class="team-column">
                             <h4 class="team-lsg">LSG</h4>
                             <ul class="player-list">
-                                <li> <a href="#">David Miller</a></li>
-                                <li> <a href="#">Nicholas Pooran</a></li>
-                                <li> <a href="#">Deepak Hooda</a></li>
+                                <li><a href="#">David Miller</a> <span class="role bat">C</span></li>
+                                <li><a href="#">Nicholas Pooran</a> <span class="role wk">WK</span></li>
+                                <li><a href="#">Deepak Hooda</a></li>
                                 <li><a href="#">Ravi Bishnoi</a></li>
                                 <li><a href="#">Mark Wood</a></li>
-                                <li> <a href="#">Krunal Pandya</a></li>
+                                <li><a href="#">Krunal Pandya</a></li>
                             </ul>
 
                             <div class="bench-impact-box">
-                                <div class="bench-block">
-                                    <strong>Bench:</strong>
-                                    <ul>
+                                <div class="bench-block fancy-toggle">
+                                    <div class="toggle-header" onclick="toggleFancyList(this)">
+                                        <span>🪑 Bench Players</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <ul class="fancy-list">
                                         <li><a href="#">Ayush Badoni</a></li>
                                         <li><a href="#">Mohsin Khan</a></li>
                                     </ul>
                                 </div>
-                                <div class="impact-block">
-                                    <strong>Impact Players:</strong>
-                                    <ul>
+
+                                <div class="impact-block fancy-toggle">
+                                    <div class="toggle-header" onclick="toggleFancyList(this)">
+                                        <span>💥 Impact Players</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <ul class="fancy-list">
                                         <li><a href="#">K Gowtham</a></li>
                                         <li><a href="#">Yudhvir Singh</a></li>
                                     </ul>
                                 </div>
                             </div>
+
                         </div>
 
                         <!-- CSK Team -->
@@ -3748,30 +3856,39 @@
                             <h4 class="team-csk">CSK</h4>
                             <ul class="player-list">
                                 <li><a href="#">Ruturaj Gaikwad</a></li>
-                                <li> <a href="#">MS Dhoni</a></li>
-                                <li> <a href="#">Jadeja</a></li>
+                                <li><a href="#">MS Dhoni</a> <span class="role wk">WK</span></li>
+                                <li><a href="#">Jadeja</a> <span class="role bat">C</span></li>
                                 <li><a href="#">Theekshana</a></li>
                                 <li><a href="#">Moeen Ali</a></li>
-                                <li> <a href="#">Pathirana</a></li>
+                                <li><a href="#">Pathirana</a></li>
                             </ul>
+
                             <div class="bench-impact-box">
-                                <div class="bench-block">
-                                    <strong>Bench:</strong>
-                                    <ul>
-                                        <li><a href="#">Ambati Rayudu</a></li>
-                                        <li><a href="#">Nishant Sindhu</a></li>
+                                <div class="bench-block fancy-toggle">
+                                    <div class="toggle-header" onclick="toggleFancyList(this)">
+                                        <span>🪑 Bench Players</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <ul class="fancy-list">
+                                        <li><a href="#">Ayush Badoni</a></li>
+                                        <li><a href="#">Mohsin Khan</a></li>
                                     </ul>
                                 </div>
-                                <div class="impact-block">
-                                    <strong>Impact Players:</strong>
-                                    <ul>
-                                        <li><a href="#">RJ Hangargekar</a></li>
-                                        <li><a href="#">SB Senapati</a></li>
+
+                                <div class="impact-block fancy-toggle">
+                                    <div class="toggle-header" onclick="toggleFancyList(this)">
+                                        <span>💥 Impact Players</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <ul class="fancy-list">
+                                        <li><a href="#">K Gowtham</a></li>
+                                        <li><a href="#">Yudhvir Singh</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
                 <!-- IMPACT PLAYER SECTION -->
@@ -4011,6 +4128,7 @@
                                 <div class="tip-info">
                                     <div class="tip-name">Pooran</div>
                                     <div class="tip-badge">9 Avg</div>
+                                    <div class="tip-desc">Aggressive middle-order hitter, high boundary rate.</div>
                                 </div>
                             </div>
 
@@ -4020,6 +4138,7 @@
                                 <div class="tip-info">
                                     <div class="tip-name">Ravindra</div>
                                     <div class="tip-badge">7.5 Avg</div>
+                                    <div class="tip-desc">Solid anchor, consistent scorer in top order.</div>
                                 </div>
                             </div>
                         </div>
@@ -4039,7 +4158,8 @@
                                 <img src="images/profile.svg" alt="Aiden Markram" class="tip-img" />
                                 <div class="tip-info">
                                     <div class="tip-name">Markram</div>
-                                    <div class="tip-badge">Avg</div> <!-- All-rounder vibe -->
+                                    <div class="tip-badge">Avg</div>
+                                    <div class="tip-desc">Solid anchor, consistent scorer in top order.</div>
                                 </div>
                             </div>
 
@@ -4048,7 +4168,8 @@
                                 <img src="images/profile.svg" alt="Devon Conway" class="tip-img" />
                                 <div class="tip-info">
                                     <div class="tip-name">Conway</div>
-                                    <div class="tip-badge">8.5 Avg</div> <!-- Consistent performer -->
+                                    <div class="tip-badge">8.5 Avg</div>
+                                    <div class="tip-desc">Solid anchor, consistent scorer in top order.</div>
                                 </div>
                             </div>
                         </div>
@@ -4109,10 +4230,12 @@
                             <div class="tip-info">
                                 <div class="tip-name">Jitesh Sharma</div>
                                 <div class="tip-badge">40+ Points • Budget Pick</div>
+                                <div class="tip-desc">Solid anchor, consistent scorer in top order.</div>
                             </div>
                             <div class="tip-info">
                                 <div class="tip-name">Karn Sharma</div>
                                 <div class="tip-badge">Wicket Taker • Budget Pick</div>
+                                <div class="tip-desc">Solid anchor, consistent scorer in top order.</div>
                             </div>
                         </div>
                     </div>
@@ -4140,10 +4263,12 @@
                             <div class="tip-info">
                                 <div class="tip-name">Mahipal Lomror</div>
                                 <div class="tip-badge">Top 5 Bat • GL Pick</div>
+                                <div class="tip-desc">Solid anchor, consistent scorer in top order.</div>
                             </div>
                             <div class="tip-info">
                                 <div class="tip-name">Shahrukh Khan</div>
                                 <div class="tip-badge">Finisher • GL Pick</div>
+                                <div class="tip-desc">Solid anchor, consistent scorer in top order.</div>
                             </div>
                         </div>
                     </div>
@@ -4614,17 +4739,14 @@
 
 
 
-        document.querySelectorAll('.toc-pro-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                const sectionClass = button.getAttribute('data-section'); // e.g. ".match-info"
-                const sectionId = sectionClass.replace('.', ''); // convert to "match-info"
+        function toggleFancyList(header) {
+            const wrapper = header.parentElement;
+            const list = wrapper.querySelector(".fancy-list");
+            const isOpen = wrapper.classList.contains("open");
 
-                const target = document.getElementById(sectionId);
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
+            list.style.display = isOpen ? "none" : "block";
+            wrapper.classList.toggle("open");
+        }
 
     </script>
 </body>
