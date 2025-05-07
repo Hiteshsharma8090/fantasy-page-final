@@ -4733,7 +4733,17 @@
 
 
 
+        document.querySelectorAll('.toc-pro-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const sectionClass = button.getAttribute('data-section'); // e.g. ".match-info"
+                const sectionId = sectionClass.replace('.', ''); // convert to "match-info"
 
+                const target = document.getElementById(sectionId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
 
 
 
