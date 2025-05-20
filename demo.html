@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <title>Daily News</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Hide scrollbar for horizontal carousel */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .animate-marquee {
+            animation: marquee 20s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(50%);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-[#0F0F0F] text-white font-sans">
+    <!-- Header -->
+    <header class="flex justify-between items-center px-6 py-4 bg-[#1A1A1A]">
+        <h1 class="text-2xl font-bold text-white">Daily News</h1>
+
+        <div class="flex items-center gap-4">
+            <!-- Change Language Dropdown -->
+            <div class="relative">
+                <select
+                    class="bg-[#2A2A2A] text-white text-sm rounded-md py-1 pl-2 pr-6 appearance-none focus:outline-none">
+                    <option value="en">EN</option>
+                    <option value="hi">हिंदी</option>
+                    <option value="es">ES</option>
+                    <option value="fr">FR</option>
+                </select>
+                <svg class="absolute right-2 top-1.5 w-4 h-4 text-gray-400 pointer-events-none" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </div>
+            <!-- Notification Bell -->
+            <button class="text-red-400 relative">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 00-9.33-4.76A1.992 1.992 0 018 7v7.159c0 .538-.214 1.055-.595 1.436L6 17h9z" />
+                </svg>
+                <span class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500 animate-ping"></span>
+            </button>
+
+            <!-- Menu Button -->
+            <button class="text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h18M3 12h18m-9 9h9" />
+                </svg>
+            </button>
+
+
+        </div>
+    </header>
+
+
+    <!-- Breaking News Ticker -->
+    <div class="bg-red-600 py-2 overflow-hidden whitespace-nowrap">
+        <div class="animate-marquee inline-block text-sm text-white font-medium space-x-4">
+            <a href="https://example.com/google-gemini" class="hover:underline">🚨 Google Unveils Gemini</a>
+            <a href="https://example.com/meta-threads" class="hover:underline">Meta Launches Threads</a>
+            <a href="https://example.com/gpt5-launch" class="hover:underline">GPT-5 Coming in 2025</a>
+            <a href="https://example.com/chandrayaan-3" class="hover:underline">India’s Moon Mission Success</a>
+            <a href="https://example.com/bitcoin-high" class="hover:underline">Bitcoin Hits New High</a>
+        </div>
+    </div>
+
+
+
+
+    <!-- Search -->
+    <div class="px-6 py-4">
+        <div class="relative flex items-center bg-[#1E1E1E] border border-[#333] rounded-lg px-4 py-2">
+            <svg class="h-4 w-4 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z" />
+            </svg>
+            <input type="text" placeholder="Search..."
+                class="flex-1 bg-transparent text-sm text-white placeholder-gray-400 focus:outline-none" />
+            <svg class="h-5 w-5 text-red-500 ml-2 cursor-pointer" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M10 2a2 2 0 00-2 2v6a2 2 0 104 0V4a2 2 0 00-2-2zM5 10a5 5 0 0010 0h-2a3 3 0 11-6 0H5zm5 8a7 7 0 007-7h-2a5 5 0 01-10 0H3a7 7 0 007 7z"
+                    clip-rule="evenodd" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- Trending News -->
+    <section class="px-6">
+        <div class="flex justify-between items-center mb-3">
+            <h2 class="text-lg font-semibold text-white">Trending News</h2>
+            <a href="#" class="text-sm text-red-400">See all</a>
+        </div>
+        <div class="bg-cover bg-center rounded-lg h-52 relative overflow-hidden"
+            style="background-image: url('images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp');">
+            <div
+                class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent p-4 flex flex-col justify-end">
+                <p class="text-sm text-white font-bold">Lorem Ipsum is simply dummy text of the printing</p>
+                <button class="mt-2 bg-red-500 text-sm px-4 py-1 rounded-full text-white w-max">Read Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breaking News -->
+    <section class="px-6 py-6">
+        <div class="flex justify-between items-center mb-3">
+            <h2 class="text-lg font-semibold text-white">Breaking News</h2>
+            <a href="#" class="text-sm text-red-400">See all</a>
+        </div>
+        <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-red-600 text-white text-xs px-3 py-1 rounded-full">Trending</span>
+            <span class="bg-[#2B2B2B] text-white text-xs px-3 py-1 rounded-full">Sports</span>
+            <span class="bg-[#2B2B2B] text-white text-xs px-3 py-1 rounded-full">Stocks</span>
+            <span class="bg-[#2B2B2B] text-white text-xs px-3 py-1 rounded-full">Politics</span>
+        </div>
+        <!-- Include Heroicons CDN or install the SVGs if using React/Next -->
+        <script src="https://unpkg.com/feather-icons"></script>
+
+        <div class="space-y-4">
+            <!-- News Cards Section -->
+            <div class="space-y-4">
+                <!-- News Card 1 -->
+                <div class="bg-[#1E1E1E] p-3 rounded-xl flex items-start gap-3 shadow-md max-w-full">
+                    <img src="images/Doug-AP-in-the-News-416x252-f50_50.webp" alt="news"
+                        class="w-20 h-20 object-cover rounded-md shrink-0" />
+                    <div class="flex-1 space-y-1">
+                        <div>
+                            <p class="text-white text-sm font-semibold leading-snug">What is Web 3.0? Everything You
+                                Need...</p>
+                            <p class="text-xs text-gray-400 mt-0.5">The Economic Times</p>
+                        </div>
+                        <div class="flex gap-1.5 mt-1 text-white">
+                            <a href="https://wa.me/?text=https://example.com" target="_blank"
+                                class="bg-green-600 w-6 h-6 flex items-center justify-center rounded-full hover:bg-green-700 transition text-xs"><i
+                                    class="fab fa-whatsapp"></i></a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com" target="_blank"
+                                class="bg-blue-600 w-6 h-6 flex items-center justify-center rounded-full hover:bg-blue-700 transition text-xs"><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a href="https://twitter.com/intent/tweet?url=https://example.com" target="_blank"
+                                class="bg-[#1DA1F2] w-6 h-6 flex items-center justify-center rounded-full hover:bg-blue-500 transition text-xs"><i
+                                    class="fab fa-twitter"></i></a>
+                            <a href="https://www.linkedin.com/shareArticle?url=https://example.com" target="_blank"
+                                class="bg-blue-800 w-6 h-6 flex items-center justify-center rounded-full hover:bg-blue-900 transition text-xs"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                            <a href="https://t.me/share/url?url=https://example.com" target="_blank"
+                                class="bg-[#0088cc] w-6 h-6 flex items-center justify-center rounded-full hover:bg-[#007ab8] transition text-xs"><i
+                                    class="fab fa-telegram-plane"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News Card 2 -->
+                <div class="bg-[#1E1E1E] p-3 rounded-xl flex items-start gap-3 shadow-md max-w-full">
+                    <img src="images/cricket-ground.svg" alt="news"
+                        class="w-20 h-20 object-cover rounded-md shrink-0" />
+                    <div class="flex-1 space-y-1">
+                        <div>
+                            <p class="text-white text-sm font-semibold leading-snug">Google Unveils Gemini: The Future
+                                of AI Assistants</p>
+                            <p class="text-xs text-gray-400 mt-0.5">TechCrunch</p>
+                        </div>
+                        <div class="flex gap-1.5 mt-1 text-white">
+                            <!-- Same icons as above -->
+                            <a href="https://wa.me/?text=https://example.com" target="_blank"
+                                class="bg-green-600 w-6 h-6 flex items-center justify-center rounded-full hover:bg-green-700 transition text-xs"><i
+                                    class="fab fa-whatsapp"></i></a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com" target="_blank"
+                                class="bg-blue-600 w-6 h-6 flex items-center justify-center rounded-full hover:bg-blue-700 transition text-xs"><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a href="https://twitter.com/intent/tweet?url=https://example.com" target="_blank"
+                                class="bg-[#1DA1F2] w-6 h-6 flex items-center justify-center rounded-full hover:bg-blue-500 transition text-xs"><i
+                                    class="fab fa-twitter"></i></a>
+                            <a href="https://www.linkedin.com/shareArticle?url=https://example.com" target="_blank"
+                                class="bg-blue-800 w-6 h-6 flex items-center justify-center rounded-full hover:bg-blue-900 transition text-xs"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                            <a href="https://t.me/share/url?url=https://example.com" target="_blank"
+                                class="bg-[#0088cc] w-6 h-6 flex items-center justify-center rounded-full hover:bg-[#007ab8] transition text-xs"><i
+                                    class="fab fa-telegram-plane"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News Card 3 -->
+                <div class="bg-[#1E1E1E] p-3 rounded-xl flex items-start gap-3 shadow-md max-w-full">
+                    <img src="images/u-s-deputy-secretary-of-state-in-tokyo.webp" alt="news"
+                        class="w-20 h-20 object-cover rounded-md shrink-0" />
+                    <div class="flex-1 space-y-1">
+                        <div>
+                            <p class="text-white text-sm font-semibold leading-snug">Meta Launches Threads to Rival
+                                Twitter</p>
+                            <p class="text-xs text-gray-400 mt-0.5">BBC News</p>
+                        </div>
+                        <div class="flex gap-1.5 mt-1 text-white">
+                            <!-- Icons -->
+                            <a href="https://wa.me/?text=https://example.com" target="_blank"
+                                class="bg-green-600 w-6 h-6 flex items-center justify-center rounded-full hover:bg-green-700 transition text-xs"><i
+                                    class="fab fa-whatsapp"></i></a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com" target="_blank"
+                                class="bg-blue-600 w-6 h-6 flex items-center justify-center rounded-full hover:bg-blue-700 transition text-xs"><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a href="https://twitter.com/intent/tweet?url=https://example.com" target="_blank"
+                                class="bg-[#1DA1F2] w-6 h-6 flex items-center justify-center rounded-full hover:bg-blue-500 transition text-xs"><i
+                                    class="fab fa-twitter"></i></a>
+                            <a href="https://www.linkedin.com/shareArticle?url=https://example.com" target="_blank"
+                                class="bg-blue-800 w-6 h-6 flex items-center justify-center rounded-full hover:bg-blue-900 transition text-xs"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                            <a href="https://t.me/share/url?url=https://example.com" target="_blank"
+                                class="bg-[#0088cc] w-6 h-6 flex items-center justify-center rounded-full hover:bg-[#007ab8] transition text-xs"><i
+                                    class="fab fa-telegram-plane"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News Card 4 -->
+                <div class="bg-[#1E1E1E] p-3 rounded-xl flex items-start gap-3 shadow-md max-w-full">
+                    <img src="images/Doug-AP-in-the-News-416x252-f50_50.webp" alt="news"
+                        class="w-20 h-20 object-cover rounded-md shrink-0" />
+                    <div class="flex-1 space-y-1">
+                        <div>
+                            <p class="text-white text-sm font-semibold leading-snug">India’s Moon Mission: Chandrayaan-3
+                                Makes History</p>
+                            <p class="text-xs text-gray-400 mt-0.5">NDTV</p>
+                        </div>
+                        <div class="flex gap-1.5 mt-1 text-white">
+                            <!-- Icons -->
+                            <a href="https://wa.me/?text=https://example.com" target="_blank"
+                                class="bg-green-600 w-6 h-6 flex items-center justify-center rounded-full hover:bg-green-700 transition text-xs"><i
+                                    class="fab fa-whatsapp"></i></a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com" target="_blank"
+                                class="bg-blue-600 w-6 h-6 flex items-center justify-center rounded-full hover:bg-blue-700 transition text-xs"><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a href="https://twitter.com/intent/tweet?url=https://example.com" target="_blank"
+                                class="bg-[#1DA1F2] w-6 h-6 flex items-center justify-center rounded-full hover:bg-blue-500 transition text-xs"><i
+                                    class="fab fa-twitter"></i></a>
+                            <a href="https://www.linkedin.com/shareArticle?url=https://example.com" target="_blank"
+                                class="bg-blue-800 w-6 h-6 flex items-center justify-center rounded-full hover:bg-blue-900 transition text-xs"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                            <a href="https://t.me/share/url?url=https://example.com" target="_blank"
+                                class="bg-[#0088cc] w-6 h-6 flex items-center justify-center rounded-full hover:bg-[#007ab8] transition text-xs"><i
+                                    class="fab fa-telegram-plane"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News Card 5 -->
+                <div class="bg-[#1E1E1E] p-3 rounded-xl flex items-start gap-3 shadow-md max-w-full">
+                    <img src="images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp" alt="news"
+                        class="w-20 h-20 object-cover rounded-md shrink-0" />
+                    <div class="flex-1 space-y-1">
+                        <div>
+                            <p class="text-white text-sm font-semibold leading-snug">OpenAI’s GPT-5 is Rumored to Launch
+                                in 2025</p>
+                            <p class="text-xs text-gray-400 mt-0.5">Wired</p>
+                        </div>
+                        <div class="flex gap-1.5 mt-1 text-white">
+                            <!-- Icons -->
+                            <a href="https://wa.me/?text=https://example.com" target="_blank"
+                                class="bg-green-600 w-6 h-6 flex items-center justify-center rounded-full hover:bg-green-700 transition text-xs"><i
+                                    class="fab fa-whatsapp"></i></a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com" target="_blank"
+                                class="bg-blue-600 w-6 h-6 flex items-center justify-center rounded-full hover:bg-blue-700 transition text-xs"><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a href="https://twitter.com/intent/tweet?url=https://example.com" target="_blank"
+                                class="bg-[#1DA1F2] w-6 h-6 flex items-center justify-center rounded-full hover:bg-blue-500 transition text-xs"><i
+                                    class="fab fa-twitter"></i></a>
+                            <a href="https://www.linkedin.com/shareArticle?url=https://example.com" target="_blank"
+                                class="bg-blue-800 w-6 h-6 flex items-center justify-center rounded-full hover:bg-blue-900 transition text-xs"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                            <a href="https://t.me/share/url?url=https://example.com" target="_blank"
+                                class="bg-[#0088cc] w-6 h-6 flex items-center justify-center rounded-full hover:bg-[#007ab8] transition text-xs"><i
+                                    class="fab fa-telegram-plane"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </section>
+
+    <!-- Categories -->
+    <section class="px-6 pb-6">
+        <h2 class="text-lg font-semibold mb-3">Explore by Category</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <button class="bg-[#2B2B2B] text-white py-2 rounded-lg">Technology</button>
+            <button class="bg-[#2B2B2B] text-white py-2 rounded-lg">World</button>
+            <button class="bg-[#2B2B2B] text-white py-2 rounded-lg">Entertainment</button>
+            <button class="bg-[#2B2B2B] text-white py-2 rounded-lg">Finance</button>
+        </div>
+    </section>
+
+    <!-- Top Stories Carousel -->
+    <section class="px-6 pb-6">
+        <h2 class="text-lg font-semibold mb-3">Top Stories</h2>
+        <div class="flex space-x-4 overflow-x-auto scrollbar-hide">
+            <div class="min-w-[250px] bg-[#1E1E1E] p-3 rounded-lg">
+                <img src="images/Doug-AP-in-the-News-416x252-f50_50.webp" class="rounded-md mb-2" />
+                <p class="text-sm font-semibold">India’s Tech Boom Explained in 60 Seconds</p>
+            </div>
+            <div class="min-w-[250px] bg-[#1E1E1E] p-3 rounded-lg">
+                <img src="images/Doug-AP-in-the-News-416x252-f50_50.webp" class="rounded-md mb-2" />
+                <p class="text-sm font-semibold">US Elections: What to Expect in 2025</p>
+            </div>
+            <div class="min-w-[250px] bg-[#1E1E1E] p-3 rounded-lg">
+                <img src="images/Doug-AP-in-the-News-416x252-f50_50.webp" class="rounded-md mb-2" />
+                <p class="text-sm font-semibold">Bitcoin Hits New High Amid Market Frenzy</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Sleek Bottom Navbar -->
+    <nav class="fixed bottom-0 left-0 right-0 z-50 bg-[#1A1A1A] border-t border-[#333] rounded-t-xl">
+        <div class="flex justify-around items-center h-14 px-3">
+
+            <a href="#" class="flex flex-col items-center text-red-500 text-[11px] font-semibold">
+                <div class="w-6 h-6 mb-0.5 flex items-center justify-center border-2 border-red-500 rounded-full">
+                    <i class="fas fa-home text-xs"></i>
+                </div>
+                Home
+            </a>
+
+            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-red-400 text-[11px] transition">
+                <div class="w-6 h-6 mb-0.5 flex items-center justify-center">
+                    <i class="fas fa-fire text-xs"></i>
+                </div>
+                Trending
+            </a>
+
+            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-red-400 text-[11px] transition">
+                <div class="w-6 h-6 mb-0.5 flex items-center justify-center">
+                    <i class="fas fa-layer-group text-xs"></i>
+                </div>
+                Categories
+            </a>
+
+            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-red-400 text-[11px] transition">
+                <div class="w-6 h-6 mb-0.5 flex items-center justify-center">
+                    <i class="fas fa-user text-xs"></i>
+                </div>
+                Profile
+            </a>
+
+        </div>
+    </nav>
+
+
+
+
+</body>
+
+</html>
