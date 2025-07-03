@@ -3,523 +3,298 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>AI Fantasy Team Wizard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fantasy Team Wizard</title>
 
-    <!-- Font + Tailwind -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                fontFamily: { sans: ['Inter', 'sans-serif'] },
-                extend: {
-                    colors: {
-                        accent: '#2563eb',
-                        accent2: '#3b82f6',
-                        danger: '#ef4444',
-                        pillA: '#dbeafe',
-                        pillB: '#fef3c7',
-                        glass: 'rgba(255,255,255,.65)'
-                    },
-                    borderRadius: { smooth: '18px' },
-                    boxShadow: { soft: '0 2px 12px rgba(0,0,0,.05)' },
-                    keyframes: { fade: { '0%': { opacity: 0, translateY: 6 }, '100%': { opacity: 1, translateY: 0 } } },
-                    animation: { fade: 'fade .35s ease-out' }
-                }
-            }
-        }
-    </script>
 
+    <!-- ===== Custom Styles ===== -->
     <style>
-        body {
-            background: radial-gradient(circle at 25% 25%, #eef2ff 0%, #f8fafc 60%);
+        :root {
+            --blue: #3D5CA5;
+            --red: #DA3A31;
+            --ghost: #F9FAFF;
+            --wk: #1d4ed8;
+            --bat: #dc2626;
+            --all: #059669;
+            --bowl: #7c3aed;
         }
 
-        .scrollbar-hide::-webkit-scrollbar {
+        /* cards */
+        .card {
+            background: linear-gradient(135deg, #fff 0%, #F4F7FF 100%);
+            border-radius: 22px;
+            box-shadow: 0 8px 20px -12px rgba(0, 0, 0, .15);
+        }
+
+        .brand-grad {
+            background-image: linear-gradient(135deg, var(--blue), var(--red));
+        }
+
+        /* slim slider */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 4px;
+            border-radius: 2px;
+            background: #d1d5db;
+            cursor: pointer;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            background: #fff;
+            border: 3px solid var(--red);
+            box-shadow: 0 0 3px rgba(0, 0, 0, .25);
+            transition: transform .1s;
+        }
+
+        input[type=range]:active::-webkit-slider-thumb {
+            transform: scale(1.08);
+        }
+
+        /* role card */
+        .role-card {
+            position: relative;
+            border-radius: 16px;
+            padding: .55rem .75rem;
+            background: var(--ghost);
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            min-height: 64px;
+            transition: transform .15s, box-shadow .15s;
+        }
+
+        .role-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px -4px rgba(0, 0, 0, .14);
+        }
+
+        .role-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            padding: .8px;
+            border-radius: inherit;
+            background: linear-gradient(135deg, var(--blue), var(--red));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .badge {
+            flex-shrink: 0;
+            height: 32px;
+            width: 32px;
+            border-radius: 50%;
+            display: grid;
+            place-content: center;
+            font-size: .65rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .role-input {
+            width: 50px;
+            margin-left: auto;
+        }
+
+        /* bigger W/L tokens */
+        .perf-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 6px;
+        }
+
+        details summary::-webkit-details-marker {
             display: none;
         }
 
-        .scrollbar-hide {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            opacity: .12;
-            background-image: url("data:image/svg+xml,%3Csvg width='52' height='52' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23cbd5e1'/%3E%3C/svg%3E")
+        .team-logo {
+            background: url('https://via.placeholder.com/48/ccc/fff?text=?') center/cover no-repeat;
         }
     </style>
 </head>
 
-<body class="text-slate-800 font-sans selection:bg-accent/20">
+<body class="bg-[#eef2ff] min-h-screen flex flex-col items-center selection:bg-[var(--red)]/20">
 
+    <div class="w-full max-w-lg px-3 sm:px-0">
 
-    <!-- HEADER PART -->
-    <header class="bg-white border-b shadow-sm">
-        <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <div class="flex items-center space-x-2">
-                    <img src="images/logo.svg" alt="Logo" class="h-8" />
-                    <!-- <span class="text-xl font-bold text-blue-700">On Cricket</span> -->
-                </div>
-
-                <nav class="hidden md:flex items-center space-x-6 text-blue-800 font-semibold text-sm">
-                    <a href="#" class="hover:text-blue-500">LIVE SCORE</a>
-                    <a href="#" class="hover:text-blue-500">SCHEDULE</a>
-
-                    <div class="relative group">
-                        <button class="hover:text-blue-500">NEWS ▾</button>
-                        <div class="absolute hidden group-hover:block bg-white shadow-md rounded-md mt-2 z-10">
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Latest News</a>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Match Updates</a>
-                        </div>
-                    </div>
-
-                    <div class="relative group">
-                        <button class="hover:text-blue-500">SERIES ▾</button>
-                        <div class="absolute hidden group-hover:block bg-white shadow-md rounded-md mt-2 z-10">
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">World Cup</a>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">IPL</a>
-                        </div>
-                    </div>
-
-                    <div class="relative group">
-                        <button class="hover:text-blue-500">TEAMS ▾</button>
-                        <div class="absolute hidden group-hover:block bg-white shadow-md rounded-md mt-2 z-10">
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">India</a>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Australia</a>
-                        </div>
-                    </div>
-
-                    <div class="relative group">
-                        <button class="hover:text-blue-500">PLAYERS ▾</button>
-                        <div class="absolute hidden group-hover:block bg-white shadow-md rounded-md mt-2 z-10">
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Top Batters</a>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Top Bowlers</a>
-                        </div>
-                    </div>
-
-                    <div class="relative group">
-                        <button class="hover:text-blue-500">RANKINGS ▾</button>
-                        <div class="absolute hidden group-hover:block bg-white shadow-md rounded-md mt-2 z-10">
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">ICC ODI</a>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">T20I</a>
-                        </div>
-                    </div>
-
-                    <a href="#" class="hover:text-blue-500">VIDEOS</a>
-                    <a href="#" class="hover:text-blue-500">FANTASY</a>
-
-                    <div class="relative group">
-                        <button class="hover:text-blue-500">MORE ▾</button>
-                        <div class="absolute hidden group-hover:block bg-white shadow-md rounded-md mt-2 z-10">
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Stats</a>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Archives</a>
-                        </div>
-                    </div>
-                </nav>
-
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-blue-800">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div id="mobile-menu"
-            class="md:hidden hidden px-4 pb-4 bg-white text-blue-800 font-medium text-sm space-y-2 border-t">
-            <a href="#" class="block">LIVE SCORE</a>
-            <a href="#" class="block">SCHEDULE</a>
-            <a href="#" class="block">NEWS</a>
-            <a href="#" class="block">SERIES</a>
-            <a href="#" class="block">TEAMS</a>
-            <a href="#" class="block">PLAYERS</a>
-            <a href="#" class="block">RANKINGS</a>
-            <a href="#" class="block">VIDEOS</a>
-            <a href="#" class="block">FANTASY</a>
-            <a href="#" class="block">MORE</a>
-        </div>
-    </header>
-    <section class="bg-white border-b">
-        <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="overflow-x-auto">
-                <nav class="flex whitespace-nowrap gap-x-6 gap-y-2 py-3 text-sm font-semibold text-blue-800">
-                    <a href="#" class="hover:text-blue-600">IPL 2025</a>
-                    <a href="#" class="hover:text-blue-600">TEAMS</a>
-                    <a href="#" class="hover:text-blue-600">POINTS TABLE</a>
-                    <a href="#" class="hover:text-blue-600">SCHEDULE</a>
-                    <a href="#" class="hover:text-blue-600">STATS</a>
-                    <a href="#" class="hover:text-blue-600">NEWS</a>
-                    <a href="#" class="hover:text-blue-600">DREAM11 PREDICTION</a>
-                    <a href="#" class="hover:text-blue-600">MATCH PREDICTION</a>
-                    <a href="#" class="hover:text-blue-600">FANTASY TIPS</a>
-                </nav>
-            </div>
-        </div>
-    </section>
-
-
-
-
-    <!-- BREADCRUMB SECTION  -->
-    <section class="bg-gray-50 ">
-        <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-6">
-            <nav class="text-sm text-gray-600 flex flex-wrap items-center space-x-2">
-                <a href="#" class="hover:text-blue-600 font-medium">Home</a>
-                <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd"
-                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                        clip-rule="evenodd" />
-                </svg>
-                <a href="#" class="hover:text-blue-600 font-medium">News</a>
-                <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd"
-                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                        clip-rule="evenodd" />
-                </svg>
-                <span class="text-gray-500">Match Updates</span>
-            </nav>
-        </div>
-    </section>
-
-
-
-
-    <div class="flex flex-col gap-4
-              lg:grid lg:grid-cols-[320px_1fr] lg:gap-8
-              max-w-7xl mx-auto px-4 sm:px-6 py-8">
-
-        <!-- WIZARD -->
-        <aside id="wizard" class="
-        w-full max-w-md mx-auto        /* full width on phones, centered */
-        static                         /* mobile: normal flow */
-        lg:sticky lg:top-8             /* desktop: sticks 2 rem below header */
-        lg:self-start                  /* start at top of column */
-        overflow-visible               /* mobile: no inner scroll */
-        lg:overflow-y-auto             /* desktop: scroll if tall */
-        lg:h-fit                       /* desktop: grow naturally */
-        bg-glass backdrop-blur-md rounded-smooth shadow-soft
-        ring-1 ring-slate-200/70 p-6 mb-8 lg:mb-0 animate-fade
-      ">
-            <h1 class="text-2xl font-semibold mb-6 text-center lg:text-left">
-                Build Your <span class="text-accent">AI Fantasy Teams</span>
+        <!-- ========= Header ========= -->
+        <header class="brand-grad text-white sticky top-0 z-20 py-3 rounded-b-3xl shadow-sm shadow-[var(--red)]/30">
+            <h1 class="text-center font-semibold text-base sm:text-lg leading-snug">
+                Generate Fantasy Team – AMW&nbsp;vs&nbsp;WTS
             </h1>
+        </header>
 
-            <div class="grid gap-6 text-[15px]">
-                <!-- League -->
+        <!-- ========= Match Summary ========= -->
+        <section class="card mt-5 px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <img src="images/image_india.svg" class="h-12 w-12 rounded-full ring-2 ring-white team-logo">
+                <p class="text-[var(--blue)] font-bold">AMW</p>
+            </div>
+            <div class="text-center">
+                <p class="font-semibold text-[var(--red)] text-sm">Completed</p>
+                <p class="text-[11px] text-slate-700 opacity-80">AMW beat WTS by 5 wkts</p>
+            </div>
+            <div class="flex items-center gap-2">
+                <p class="text-[var(--blue)] font-bold">WTS</p>
+                <img src="images/image_nz.svg" class="h-12 w-12 rounded-full ring-2 ring-white team-logo">
+            </div>
+        </section>
+
+        <!-- ========= Tabs ========= -->
+        <nav class="mt-4 grid grid-cols-2 rounded-full overflow-hidden text-xs sm:text-sm font-medium shadow">
+            <button class="py-3 bg-[var(--blue)] text-white">Create Team</button>
+            <button class="py-3 bg-white text-[var(--blue)] hover:bg-slate-100 transition">My Teams</button>
+        </nav>
+
+        <!-- ========= Wizard ========= -->
+        <section class="card mt-5 px-4 py-5 space-y-7">
+
+            <!-- --- Team Combination --- -->
+            <h2 class="text-base font-semibold text-slate-800">Select Team Combination</h2>
+
+            <div class="space-y-2">
+                <div class="flex justify-between text-xs font-medium">
+                    <div class="flex items-center gap-1">
+                        <span class="h-2 w-2 rounded-full bg-[var(--blue)]"></span>
+                        <span class="font-semibold text-[var(--blue)]">AMW</span>
+                        <span id="amwBadge"
+                            class="px-2 py-0.5 rounded-full bg-[var(--blue)]/10 text-[var(--blue)] font-semibold">5</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <span class="h-2 w-2 rounded-full bg-[var(--red)]"></span>
+                        <span class="font-semibold text-[var(--red)]">WTS</span>
+                        <span id="wtsBadge"
+                            class="px-2 py-0.5 rounded-full bg-[var(--red)]/10 text-[var(--red)] font-semibold">6</span>
+                    </div>
+                </div>
+                <input id="teamSlider" type="range" min="1" max="10" value="5">
+            </div>
+
+            <!-- --- Advanced Config --- -->
+            <details class="group">
+                <summary
+                    class="w-full flex items-center justify-between bg-[var(--ghost)] border border-slate-200 rounded-xl px-3 py-2 cursor-pointer select-none">
+                    <div class="flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[var(--blue)]" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 6.75a.75.75 0 00-1.5 0V9H3.75a.75.75 0 000 1.5H10.5v2.25a.75.75 0 001.5 0V10.5h7.5a.75.75 0 000-1.5H12V6.75zM3.75 15a.75.75 0 00-.75.75v.75a.75.75 0 00.75.75H9v2.25a.75.75 0 001.5 0V17.25h9a.75.75 0 000-1.5H10.5v-2.25a.75.75 0 00-1.5 0V15H3.75z" />
+                        </svg>
+                        <span class="font-semibold text-sm text-slate-800">Advanced Config</span>
+                    </div>
+                    <svg class="w-4 h-4 text-[var(--red)] transition-transform duration-200 group-open:rotate-180"
+                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M6 8l4 4 4-4" />
+                    </svg>
+                </summary>
+
+                <div class="grid grid-cols-2 gap-3 mt-4">
+                    <div class="role-card"><span class="badge" style="background:var(--wk)">WK</span><input
+                            class="role-input bg-transparent outline-none text-right placeholder-slate-400 font-semibold text-xs"
+                            placeholder="Auto"></div>
+                    <div class="role-card"><span class="badge" style="background:var(--bat)">BAT</span><input
+                            class="role-input bg-transparent outline-none text-right placeholder-slate-400 font-semibold text-xs"
+                            placeholder="Auto"></div>
+                    <div class="role-card"><span class="badge" style="background:var(--all)">ALL</span><input
+                            class="role-input bg-transparent outline-none text-right placeholder-slate-400 font-semibold text-xs"
+                            placeholder="Auto"></div>
+                    <div class="role-card"><span class="badge" style="background:var(--bowl)">BWL</span><input
+                            class="role-input bg-transparent outline-none text-right placeholder-slate-400 font-semibold text-xs"
+                            placeholder="Auto"></div>
+                </div>
+            </details>
+
+            <!-- --- Number of Teams --- -->
+            <div>
+                <label class="block font-semibold text-sm text-slate-800 mb-1">
+                    Number of Teams:
+                    <span id="teamCntLabel" class="font-bold text-[var(--red)]">18</span>
+                </label>
+                <input id="numTeams" type="range" min="1" max="20" value="18">
+            </div>
+
+            <button
+                class="w-full py-2.5 rounded-xl brand-grad text-white font-semibold text-sm shadow-md hover:opacity-95 active:scale-[0.98] transition">
+                Next – Choose C/VC
+            </button>
+        </section>
+
+        <!-- ========= Team Performance ========= -->
+        <section class="card mt-5 px-4 py-5 space-y-5">
+            <h3 class="text-sm font-semibold text-slate-800">Team Performance</h3>
+            <div class="flex justify-between text-[11px]">
                 <div>
-                    <label class="block mb-1 font-medium">League</label>
-                    <select id="leagueSelect" class="w-full h-10 rounded-md border border-slate-300/70 px-3 bg-glass
-               focus:outline-none focus:ring-2 focus:ring-accent">
-                        <option value="small">Small League</option>
-                        <option value="grand">Grand League</option>
-                    </select>
+                    <p class="font-bold text-[var(--blue)] mb-1 text-xs">AMW</p>
+                    <div class="flex gap-1.5 mb-1">
+                        <span class="perf-badge bg-green-500/20 text-green-700">W</span>
+                        <span class="perf-badge bg-green-500/20 text-green-700">W</span>
+                        <span class="perf-badge bg-green-500/20 text-green-700">W</span>
+                        <span class="perf-badge bg-red-500/20 text-red-600">L</span>
+                        <span class="perf-badge bg-red-500/20 text-red-600">L</span>
+                    </div>
+                    <p class="text-[10px] text-slate-600">1 Win (H2H)</p>
                 </div>
-
-                <!-- Teams needed -->
-                <div>
-                    <label class="block mb-1 font-medium">Teams needed</label>
-                    <input id="teamCount" type="number" min="1" max="20" value="3" class="w-full h-10 rounded-md border border-slate-300/70 px-3 bg-glass
-               focus:outline-none focus:ring-2 focus:ring-accent" />
-                </div>
-
-                <!-- Distribution slider -->
-                <div>
-                    <label class="block mb-1 font-medium">
-                        IND <span id="teamACount" class="font-semibold text-accent">5</span> /
-                        AUS <span id="teamBCount" class="font-semibold text-accent">6</span>
-                    </label>
-                    <input id="distSlider" type="range" min="0" max="11" value="5" class="w-full accent-accent" />
-                </div>
-
-                <!-- Buttons -->
-                <div class="flex gap-3">
-                    <button id="generateBtn" class="flex-1 h-10 rounded-md bg-accent/90 hover:bg-accent transition
-               text-white font-medium active:scale-95">
-                        Generate
-                    </button>
-                    <button id="clearBtn" class="flex-1 h-10 rounded-md border border-danger text-danger
-               hover:bg-danger hover:text-white transition font-medium active:scale-95">
-                        Clear
-                    </button>
+                <div class="text-right">
+                    <p class="font-bold text-[var(--blue)] mb-1 text-xs">WTS</p>
+                    <div class="flex justify-end gap-1.5 mb-1">
+                        <span class="perf-badge bg-green-500/20 text-green-700">W</span>
+                        <span class="perf-badge bg-red-500/20 text-red-600">L</span>
+                        <span class="perf-badge bg-green-500/20 text-green-700">W</span>
+                        <span class="perf-badge bg-red-500/20 text-red-600">L</span>
+                        <span class="perf-badge bg-red-500/20 text-red-600">L</span>
+                    </div>
+                    <p class="text-[10px] text-slate-600">0 Wins (H2H)</p>
                 </div>
             </div>
-        </aside>
+        </section>
 
-
-        <!-- CARDS + placeholder -->
-        <main class="w-full  justify-center">
-            <section id="resultArea" class="grid gap-6 auto-rows-fr"
-                style="grid-template-columns:repeat(auto-fill,minmax(18rem,1fr))"></section>
-
-            <p id="emptyState" class="text-center text-slate-500 sm:mt-44">
-                No teams yet. Tap <strong>Generate</strong> to create your fantasy lineup.
-            </p>
-        </main>
-    </div>
-
-    <!-- CARD TEMPLATE -->
-    <template id="cardTmpl">
-        <div class="bg-glass backdrop-blur-xl border border-slate-200/70 rounded-smooth
-             shadow-soft ring-1 ring-transparent hover:ring-accent/40
-             transition-transform animate-fade hover:-translate-y-[3px]">
-            <div class="p-6 flex flex-col h-full">
-                <div class="flex justify-between items-center mb-5">
-                    <h2 class="font-semibold text-accent text-[15px] flex items-center gap-1">
-                        <span class="inline-block w-2 h-2 rounded-full bg-accent"></span>
-                        Team&nbsp;<span data-i></span>
-                    </h2>
-                    <button data-reg
-                        class="text-[13px] text-accent hover:text-accent2 underline underline-offset-2 decoration-dashed">
-                        Re-roll
-                    </button>
+        <!-- ========= Venue Stats ========= -->
+        <section class="card mt-5 px-4 py-5 mb-14">
+            <h3 class="text-sm font-semibold text-slate-800 mb-3">Venue Stats</h3>
+            <div class="grid grid-cols-3 gap-2 text-center">
+                <div class="py-3 bg-white/60 rounded-xl">
+                    <p class="text-[10px] text-slate-600">Avg 1st Inn</p>
+                    <p class="text-lg font-extrabold text-[var(--blue)]">106</p>
                 </div>
-
-                <div class="flex-1 grid gap-6">
-                    <div>
-                        <h3 class="font-medium text-slate-600 mb-2">India</h3>
-                        <div data-list-a class="flex flex-wrap gap-2"></div>
-                    </div>
-                    <div>
-                        <h3 class="font-medium text-slate-600 mb-2">Australia</h3>
-                        <div data-list-b class="flex flex-wrap gap-2"></div>
-                    </div>
+                <div class="py-3 bg-white/60 rounded-xl">
+                    <p class="text-[10px] text-slate-600">Matches</p>
+                    <p class="text-lg font-extrabold text-[var(--red)]">29</p>
                 </div>
-
-                <div class="mt-6 flex flex-wrap gap-4 text-[15px]">
-                    <span class="flex items-center gap-1">
-                        <span class="inline-block w-2.5 h-2.5 rounded-full bg-accent"></span>
-                        <span class="font-medium">C:</span><span data-cap class="pl-1"></span>
-                    </span>
-                    <span class="flex items-center gap-1">
-                        <span class="inline-block w-2.5 h-2.5 rounded-full bg-purple-500"></span>
-                        <span class="font-medium">VC:</span><span data-vc class="pl-1"></span>
-                    </span>
+                <div class="py-3 bg-white/60 rounded-xl">
+                    <p class="text-[10px] text-slate-600">Chasing Wins</p>
+                    <p class="text-lg font-extrabold text-[var(--red)]">10</p>
                 </div>
             </div>
-        </div>
-    </template>
+        </section>
 
+    </div><!-- /container -->
 
-
-
-
-    <!-- FOTTER SECTION  -->
-    <footer class="bg-[#222] text-white text-sm">
-        <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
-            <div class="grid grid-cols-1 md:grid-cols-6 gap-8">
-                <!-- Logo & Language -->
-                <div class="md:col-span-1 space-y-4">
-                    <img src="/logo.svg" alt="Logo" class="h-6">
-                    <div class="flex items-center space-x-2 text-gray-300">
-                        <span>English</span>
-                        <span>/</span>
-                        <span>हिन्दी</span>
-                    </div>
-                </div>
-
-                <!-- Columns -->
-                <div class="md:col-span-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
-                    <!-- Top IPL Teams -->
-                    <div>
-                        <h3 class="font-bold mb-2">TOP IPL TEAMS</h3>
-                        <ul class="space-y-2 text-gray-300">
-                            <li>Kolkata Knight Riders</li>
-                            <li>Mumbai Indians</li>
-                            <li>Chennai Super Kings</li>
-                            <li>Delhi Capitals</li>
-                            <li>Punjab Kings</li>
-                            <li>Rajasthan Royals</li>
-                            <li>RCB</li>
-                            <li>Sunrisers Hyderabad</li>
-                            <li>Lucknow Super Giants</li>
-                            <li>Gujarat Titans</li>
-                        </ul>
-                    </div>
-
-                    <!-- Top Players -->
-                    <div>
-                        <h3 class="font-bold mb-2">TOP PLAYERS</h3>
-                        <ul class="space-y-2 text-gray-300">
-                            <li>Rishabh Pant</li>
-                            <li>MS Dhoni</li>
-                            <li>Rohit Sharma</li>
-                            <li>Virat Kohli</li>
-                            <li>Hardik Pandya</li>
-                            <li>Ravindra Jadeja</li>
-                            <li>Jasprit Bumrah</li>
-                            <li>Tilak Varma</li>
-                            <li>SuryaKumar Yadav</li>
-                            <li>Mohammed Shami</li>
-                        </ul>
-                    </div>
-
-                    <!-- International Series -->
-                    <div>
-                        <h3 class="font-bold mb-2">INTERNATIONAL SERIES</h3>
-                        <ul class="space-y-2 text-gray-300">
-                            <li>IND vs AFG</li>
-                            <li>IND vs AUS</li>
-                            <li>IND vs BAN</li>
-                            <li>IND vs ENG</li>
-                            <li>IND vs NZ</li>
-                            <li>IND vs SA</li>
-                            <li>IND vs SL</li>
-                            <li>IND vs WI</li>
-                            <li>IND vs ZIM</li>
-                            <li>IND vs IRE</li>
-                        </ul>
-                    </div>
-
-                    <!-- Top Leagues -->
-                    <div>
-                        <h3 class="font-bold mb-2">TOP LEAGUES</h3>
-                        <ul class="space-y-2 text-gray-300">
-                            <li>IPL 2025</li>
-                            <li>BBL 2025</li>
-                            <li>CPL 2025</li>
-                            <li>PSL 2025</li>
-                            <li>WPL 2025</li>
-                            <li>BPL 2025</li>
-                            <li>WBBL 2025</li>
-                            <li>LPL 2025</li>
-                            <li>LLC 2025</li>
-                        </ul>
-                    </div>
-
-                    <!-- Quick Links -->
-                    <div>
-                        <h3 class="font-bold mb-2">QUICK LINKS</h3>
-                        <ul class="space-y-2 text-gray-300">
-                            <li>Live Score</li>
-                            <li>Schedule</li>
-                            <li>Series</li>
-                            <li>Recent Matches</li>
-                            <li>Upcoming Matches</li>
-                            <li>Match Prediction</li>
-                            <li>Fantasy Tips</li>
-                            <li>Cricket News</li>
-                            <li>Videos</li>
-                            <li>Teams</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Divider -->
-            <div class="border-t border-gray-600 my-6"></div>
-
-            <!-- Social & Utility Links -->
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                <!-- Social Icons -->
-                <div class="flex items-center gap-4 text-white">
-                    <span class="font-semibold">CONNECT US:</span>
-                    <a href="#"><i class="fab fa-facebook text-lg"></i></a>
-                    <a href="#"><i class="fab fa-instagram text-lg"></i></a>
-                    <a href="#"><i class="fab fa-youtube text-lg"></i></a>
-                    <a href="#"><i class="fab fa-x-twitter text-lg"></i></a>
-                </div>
-
-                <!-- Links -->
-                <div class="text-gray-300 flex flex-wrap justify-center gap-4 text-xs">
-                    <a href="#">CONTACT US</a>
-                    <a href="#">ABOUT US</a>
-                    <a href="#">DISCLAIMER</a>
-                    <a href="#">COPYRIGHT NOTICE</a>
-                    <a href="#">ONLINE PRIVACY POLICY</a>
-                    <a href="#">SITEMAP</a>
-                    <a href="#">GOOGLE NEWS SITEMAP</a>
-                </div>
-            </div>
-
-            <!-- Divider -->
-            <div class="border-t border-gray-600 my-4"></div>
-
-            <!-- Bottom Note -->
-            <div class="text-gray-400 text-xs text-center space-y-2">
-                <div class="space-x-2">
-                    <span>Editorial Policy</span> /
-                    <span>Fact Check Policy</span> /
-                    <span>Non-Partisanship Policy</span> /
-                    <span>Correction Policy</span> /
-                    <span>Code Of Ethics</span> /
-                    <span>Sponsored Content Policy</span>
-                </div>
-                <p>© 2025 OnCricket Media. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-    <!-- SCRIPT -->
+    <!-- ========== JavaScript ========== -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            /* pools */
-            const poolA = ['Virat', 'Rohit', 'Gill', 'Hardik', 'Rahul', 'Bumrah', 'Jadeja', 'Surya', 'Thakur', 'Chahal', 'Siraj'];
-            const poolB = ['Warner', 'Smith', 'Head', 'Maxwell', 'Cummins', 'Starc', 'Stoinis', 'Inglis', 'Zampa', 'Green', 'Hazlewood'];
-            const pick = (arr, k) => { const a = [...arr], o = []; while (o.length < k && a.length) o.push(...a.splice(Math.random() * a.length | 0, 1)); return o };
+        function paintTrack(el, pct, left, right) { el.style.background = `linear-gradient(90deg,${left} 0%,${left} ${pct}%,${right} ${pct}%,${right} 100%)`; }
 
-            /* helpers */
-            const $ = q => document.querySelector(q);
-            const tpl = id => document.getElementById(id).content.firstElementChild.cloneNode(true);
-            const res = $('#resultArea');
-            const empty = $('#emptyState');
+        const TOTAL = 11, sCombo = document.getElementById('teamSlider'),
+            bA = document.getElementById('amwBadge'), bW = document.getElementById('wtsBadge');
+        function syncCombo(v) { const a = +v, w = TOTAL - a; bA.textContent = a; bW.textContent = w; paintTrack(sCombo, (a / TOTAL) * 100, 'var(--blue)', 'var(--red)'); }
+        syncCombo(sCombo.value); sCombo.addEventListener('input', e => syncCombo(e.target.value));
 
-            const chip = (n, t) => {
-                const s = document.createElement('span');
-                s.textContent = n;
-                s.className = `px-3 py-[5px] rounded-full text-[13px] font-medium text-slate-700 ${t === 'A' ? 'bg-pillA' : 'bg-pillB'}`;
-                return s;
-            };
-
-            const makeTeam = aCnt => {
-                const A = pick(poolA, aCnt), B = pick(poolB, 11 - aCnt), all = [...A, ...B];
-                const cap = all[Math.random() * all.length | 0]; let vc; do { vc = all[Math.random() * all.length | 0] } while (vc === cap);
-                return { A, B, cap, vc };
-            };
-
-            const card = (team, i) => {
-                const c = tpl('cardTmpl');
-                c.querySelector('[data-i]').textContent = i;
-                const colA = c.querySelector('[data-list-a]'), colB = c.querySelector('[data-list-b]');
-                team.A.forEach(p => colA.append(chip(p, 'A')));
-                team.B.forEach(p => colB.append(chip(p, 'B')));
-                c.querySelector('[data-cap]').textContent = team.cap;
-                c.querySelector('[data-vc]').textContent = team.vc;
-                c.querySelector('[data-reg]').onclick = () => {
-                    const fresh = makeTeam(+$('#distSlider').value);
-                    colA.innerHTML = colB.innerHTML = '';
-                    fresh.A.forEach(p => colA.append(chip(p, 'A')));
-                    fresh.B.forEach(p => colB.append(chip(p, 'B')));
-                    c.querySelector('[data-cap]').textContent = fresh.cap;
-                    c.querySelector('[data-vc]').textContent = fresh.vc;
-                };
-                return c;
-            };
-
-            const render = (n, aCnt) => {
-                res.innerHTML = '';
-                Array.from({ length: n }, (_, i) => res.append(card(makeTeam(aCnt), i + 1)));
-                empty.style.display = n ? 'none' : 'block';
-            };
-
-            /* slider counters */
-            const slider = $('#distSlider'), a = $('#teamACount'), b = $('#teamBCount');
-            slider.oninput = () => { a.textContent = slider.value; b.textContent = 11 - slider.value };
-            slider.dispatchEvent(new Event('input'));
-
-            /* buttons */
-            $('#generateBtn').onclick = () => render(+$('#teamCount').value, +slider.value);
-            $('#clearBtn').onclick = () => { res.innerHTML = ''; empty.style.display = 'block' };
-        });
+        const sTeams = document.getElementById('numTeams'), lbl = document.getElementById('teamCntLabel');
+        function syncTeams(v) { lbl.textContent = v; paintTrack(sTeams, ((v - 1) / (sTeams.max - 1)) * 100, 'var(--red)', '#e5e7eb'); }
+        syncTeams(sTeams.value); sTeams.addEventListener('input', e => syncTeams(e.target.value));
     </script>
 </body>
 
