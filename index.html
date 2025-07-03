@@ -2,343 +2,411 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Fantasy Team Wizard</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fantasy Team Wizard</title>
 
-    <!-- Tailwind CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- ===== Custom Styles ===== -->
-    <style>
-        :root {
-            --blue: #3D5CA5;
-            --red: #DA3A31;
-            --ghost: #F9FAFF;
-            --wk: #1d4ed8;
-            --bat: #dc2626;
-            --all: #059669;
-            --bowl: #7c3aed;
-        }
+  <!-- custom styles -->
+  <style>
+    :root {
+      --blue: #3D5CA5;
+      --red: #DA3A31;
+    }
 
-        /* cards */
-        .card {
-            background: linear-gradient(135deg, #fff 0%, #F4F7FF 100%);
-            border-radius: 22px;
-            box-shadow: 0 8px 20px -12px rgba(0, 0, 0, .15);
-        }
+    /* card bg + shadow */
+    .card {
+      @apply rounded-3xl bg-gradient-to-br from-white to-slate-50 shadow-lg;
+    }
 
-        .brand-grad {
-            background-image: linear-gradient(135deg, var(--blue), var(--red));
-        }
+    /* slim slider track & thumb */
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 4px;
+      border-radius: 2px;
+      background: #cbd5e1;
+    }
 
-        /* slim slider */
-        input[type=range] {
-            -webkit-appearance: none;
-            width: 100%;
-            height: 4px;
-            border-radius: 2px;
-            background: #d1d5db;
-            cursor: pointer;
-        }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 18px;
+      width: 18px;
+      border-radius: 50%;
+      background: #fff;
+      border: 3px solid var(--red);
+      box-shadow: 0 0 2px rgba(0, 0, 0, .3);
+    }
 
-        input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            height: 18px;
-            width: 18px;
-            border-radius: 50%;
-            background: #fff;
-            border: 3px solid var(--red);
-            box-shadow: 0 0 3px rgba(0, 0, 0, .25);
-            transition: transform .1s;
-        }
+    /* prettier pill-tabs */
+    .tab {
+      @apply px-4 py-1.5 rounded-full bg-white text-[var(--blue)]
+      transition whitespace-nowrap shadow-sm hover:shadow;
+    }
 
-        input[type=range]:active::-webkit-slider-thumb {
-            transform: scale(1.08);
-        }
-
-        /* role card */
-        .role-card {
-            position: relative;
-            border-radius: 16px;
-            padding: .55rem .75rem;
-            background: var(--ghost);
-            display: flex;
-            align-items: center;
-            gap: .75rem;
-            min-height: 64px;
-            transition: transform .15s, box-shadow .15s;
-        }
-
-        .role-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 3px 8px -4px rgba(0, 0, 0, .14);
-        }
-
-        .role-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            padding: .8px;
-            border-radius: inherit;
-            background: linear-gradient(135deg, var(--blue), var(--red));
-            -webkit-mask:
-                linear-gradient(#fff 0 0) content-box,
-                linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
-        }
-
-        .badge {
-            flex-shrink: 0;
-            height: 32px;
-            width: 32px;
-            border-radius: 50%;
-            display: grid;
-            place-content: center;
-            font-size: .65rem;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        .role-input {
-            width: 50px;
-            margin-left: auto;
-        }
-
-        /* bigger W/L tokens */
-        .perf-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 22px;
-            height: 22px;
-            font-size: 11px;
-            font-weight: 700;
-            border-radius: 6px;
-        }
-
-        details summary::-webkit-details-marker {
-            display: none;
-        }
-
-        .team-logo {
-            background: url('https://via.placeholder.com/48/ccc/fff?text=?') center/cover no-repeat;
-        }
-
-        /* ── NEW: tiny round logo for combo header ── */
-        .mini-logo {
-            height: 14px;
-            width: 14px;
-            border-radius: 50%;
-            object-fit: cover;
-            flex-shrink: 0;
-            border: 1px solid #fff;
-        }
-    </style>
+    .tab.is-active {
+      @apply bg-gradient-to-r from-[var(--blue)] to-[var(--red)]
+      text-white shadow-md;
+    }
+  </style>
 </head>
 
-<body class="bg-[#eef2ff] min-h-screen flex flex-col items-center selection:bg-[var(--red)]/20">
+<body class="bg-indigo-50 min-h-screen flex flex-col items-center selection:bg-[var(--red)]/20">
 
-    <div class="w-full max-w-lg px-3 sm:px-0">
+  <div class="w-full max-w-lg">
 
-        <!-- ========= Header ========= -->
-        <header class="brand-grad text-white sticky top-0 z-20 py-3 rounded-b-3xl shadow-sm shadow-[var(--red)]/30">
-            <h1 class="text-center font-semibold text-base sm:text-lg leading-snug">
-                Generate Fantasy Team – AMW&nbsp;vs&nbsp;WTS
-            </h1>
-        </header>
+    <!-- Header -->
+    <header
+      class="sticky top-0 z-20 bg-gradient-to-r from-[var(--blue)] to-[var(--red)] text-white py-3 rounded-b-3xl shadow-md">
+      <h1 class="text-center font-semibold text-base sm:text-lg">Fantasy Team – AMW vs WTS</h1>
+    </header>
 
-        <!-- ========= Match Summary ========= -->
-        <section class="card mt-5 px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <img src="images/image_india.svg" class="h-12 w-12 rounded-full ring-2 ring-white team-logo">
-                <p class="text-[var(--blue)] font-bold">AMW</p>
+    <!-- ========== STEP 1 ========== -->
+    <section id="step1">
+
+      <!-- Match summary -->
+      <div class="card mt-5 px-4 py-4 bg-white flex justify-between items-center">
+        <div class="flex items-center gap-2">
+          <img src="images/image_india.svg" class="h-12 w-12 rounded-full ring-2 ring-white" />
+          <p class="font-bold text-[var(--blue)]">AMW</p>
+        </div>
+        <div class="text-center text-xs">
+          <p class="font-semibold text-[var(--red)]">Completed</p>
+          <p class="text-slate-600 opacity-80">AMW beat WTS by 5 wkts</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <p class="font-bold text-[var(--blue)]">WTS</p>
+          <img src="images/image_nz.svg" class="h-12 w-12 rounded-full ring-2 ring-white" />
+        </div>
+      </div>
+
+      <!-- Tabs (static) -->
+      <nav class="grid grid-cols-2 mt-4 text-sm font-medium mx-4 rounded-full shadow overflow-hidden">
+        <button class="py-2 bg-[var(--blue)] text-white">Create Team</button>
+        <button class="py-2 bg-white text-[var(--blue)] hover:bg-slate-100">My Teams</button>
+      </nav>
+
+      <!-- Wizard card -->
+      <div class="card mt-4 px-4 py-4 space-y-7 bg-white">
+
+        <!-- Team combination slider -->
+        <div class="space-y-2">
+          <h2 class="font-semibold text-slate-800 text-sm">Select Team Combination</h2>
+          <div class="flex justify-between text-xs font-medium">
+            <div class="flex items-center gap-1">
+              <img src="images/image_india.svg" class="h-5 w-5 rounded-full border border-white" />
+              <span class="text-[var(--blue)] font-semibold">AMW</span>
+              <span id="amwBadge"
+                class="px-1 rounded-full bg-[var(--blue)]/10 text-[var(--blue)] font-semibold">5</span>
             </div>
-            <div class="text-center">
-                <p class="font-semibold text-[var(--red)] text-sm">Completed</p>
-                <p class="text-[11px] text-slate-700 opacity-80">AMW beat WTS by 5 wkts</p>
+            <div class="flex items-center gap-1">
+              <span id="wtsBadge"
+                class="px-1 rounded-full bg-[var(--red)]/10 text-[var(--red)] font-semibold">6</span>
+              <span class="text-[var(--red)] font-semibold">WTS</span>
+              <img src="images/image_nz.svg" class="h-5 w-5 rounded-full border border-white" />
             </div>
-            <div class="flex items-center gap-2">
-                <p class="text-[var(--blue)] font-bold">WTS</p>
-                <img src="images/image_nz.svg" class="h-12 w-12 rounded-full ring-2 ring-white team-logo">
+          </div>
+          <input id="teamSlider" type="range" min="1" max="10" value="5" />
+        </div>
+
+        <!-- Advanced Config -->
+        <details class="group">
+          <summary
+            class="flex justify-between items-center bg-slate-100 rounded-xl px-3 py-2 cursor-pointer select-none">
+            <div class="flex items-center gap-2 text-sm font-semibold text-slate-800">
+              <svg class="w-4 h-4 text-[var(--blue)]" fill="none" stroke="currentColor" stroke-width="2"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 6.75v6m0 4.5h0M6.75 12h6m4.5 0h0" />
+              </svg>
+              Advanced Config
             </div>
-        </section>
+            <svg class="w-4 h-4 text-[var(--red)] transition-transform group-open:rotate-180" fill="currentColor"
+              viewBox="0 0 20 20">
+              <path d="M6 8l4 4 4-4"></path>
+            </svg>
+          </summary>
+          <div class="grid grid-cols-2 gap-3 mt-4 text-xs">
+            <div class="flex items-center bg-slate-50 rounded-lg px-3 py-2 gap-2"><span
+                class="h-7 w-7 rounded-full grid place-content-center text-white font-bold" style="background:#1d4ed8">WK</span><input
+                class="ml-auto w-12 text-right bg-transparent outline-none" placeholder="Auto" /></div>
+            <div class="flex items-center bg-slate-50 rounded-lg px-3 py-2 gap-2"><span
+                class="h-7 w-7 rounded-full grid place-content-center text-white font-bold" style="background:#dc2626">BAT</span><input
+                class="ml-auto w-12 text-right bg-transparent outline-none" placeholder="Auto" /></div>
+            <div class="flex items-center bg-slate-50 rounded-lg px-3 py-2 gap-2"><span
+                class="h-7 w-7 rounded-full grid place-content-center text-white font-bold" style="background:#059669">ALL</span><input
+                class="ml-auto w-12 text-right bg-transparent outline-none" placeholder="Auto" /></div>
+            <div class="flex items-center bg-slate-50 rounded-lg px-3 py-2 gap-2"><span
+                class="h-7 w-7 rounded-full grid place-content-center text-white font-bold" style="background:#7c3aed">BWL</span><input
+                class="ml-auto w-12 text-right bg-transparent outline-none" placeholder="Auto" /></div>
+          </div>
+        </details>
 
-        <!-- ========= Tabs ========= -->
-        <nav class="mt-4 grid grid-cols-2 rounded-full overflow-hidden text-xs sm:text-sm font-medium shadow">
-            <button class="py-3 bg-[var(--blue)] text-white">Create Team</button>
-            <button class="py-3 bg-white text-[var(--blue)] hover:bg-slate-100 transition">My Teams</button>
-        </nav>
+        <!-- Number of teams slider -->
+        <div>
+          <label class="text-sm font-semibold text-slate-800 block mb-1">Number of Teams: <span id="teamCntLabel"
+              class="text-[var(--red)] font-bold">10</span></label>
+          <input id="numTeams" type="range" min="1" max="20" value="10" />
+        </div>
 
-        <!-- ========= Wizard ========= -->
-        <section class="card mt-5 px-4 py-5 space-y-7">
+        <button id="toStep2"
+          class="w-full py-2.5 rounded-xl bg-gradient-to-r from-[var(--blue)] to-[var(--red)] text-white font-semibold text-sm shadow-md hover:opacity-95">Next
+          – Choose C/VC</button>
+      </div>
 
-            <!-- --- Team Combination --- -->
-            <h2 class="text-base font-semibold text-slate-800">Select Team Combination</h2>
-
-            <div class="space-y-2">
-                <div class="flex justify-between text-xs font-medium">
-                    <div class="flex items-center gap-1">
-                        <!-- logo + name + badge -->
-                        <img class="h-6 w-6 rounded-full object-cover border border-white" src="images/image_india.svg"
-                            alt="AMW" class="mini-logo">
-                        <span class="font-semibold text-[var(--blue)]">AMW</span>
-                        <span id="amwBadge"
-                            class=" py-0.5 rounded-full bg-[var(--blue)]/10 text-[var(--blue)] font-semibold">5</span>
-                    </div>
-                    <div class="flex items-center gap-1">
-                        <!-- logo + name + badge -->
-                        <span id="wtsBadge"
-                            class=" py-0.5 rounded-full bg-[var(--red)]/10 text-[var(--red)] font-semibold">6</span>
-                        <span class="font-semibold text-[var(--red)]">WTS</span>
-
-                        <img class="h-6 w-6 rounded-full object-cover border border-white" src="images/image_nz.svg"
-                            alt="WTS " class="mini-logo">
-                    </div>
-                </div>
-                <input id="teamSlider" type="range" min="1" max="10" value="5">
+      <!-- Performance -->
+      <div class="card mt-4 px-4 py-4 bg-white">
+        <h3 class="font-semibold text-sm text-slate-800 mb-3">Team Performance</h3>
+        <div class="flex justify-between text-[11px]">
+          <div>
+            <p class="font-bold text-[var(--blue)] mb-1 text-xs">AMW</p>
+            <div class="flex gap-1.5 mb-1">
+              <span class="bg-green-500/20 text-green-600 px-1.5 rounded font-bold">W</span>
+              <span class="bg-green-500/20 text-green-600 px-1.5 rounded font-bold">W</span>
+              <span class="bg-green-500/20 text-green-600 px-1.5 rounded font-bold">W</span>
+              <span class="bg-red-500/20 text-red-600 px-1.5 rounded font-bold">L</span>
+              <span class="bg-red-500/20 text-red-600 px-1.5 rounded font-bold">L</span>
             </div>
-
-            <!-- --- Advanced Config --- -->
-            <details class="group">
-                <summary
-                    class="w-full flex items-center justify-between bg-[var(--ghost)] border border-slate-200 rounded-xl px-3 py-2 cursor-pointer select-none">
-                    <div class="flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[var(--blue)]" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 6.75a.75.75 0 00-1.5 0V9H3.75a.75.75 0 000 1.5H10.5v2.25a.75.75 0 001.5 0V10.5h7.5a.75.75 0 000-1.5H12V6.75zM3.75 15a.75.75 0 00-.75.75v.75a.75.75 0 00.75.75H9v2.25a.75.75 0 001.5 0V17.25h9a.75.75 0 000-1.5H10.5v-2.25a.75.75 0 00-1.5 0V15H3.75z" />
-                        </svg>
-                        <span class="font-semibold text-sm text-slate-800">Advanced Config</span>
-                    </div>
-                    <svg class="w-4 h-4 text-[var(--red)] transition-transform duration-200 group-open:rotate-180"
-                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M6 8l4 4 4-4" />
-                    </svg>
-                </summary>
-
-                <div class="grid grid-cols-2 gap-3 mt-4">
-                    <div class="role-card"><span class="badge" style="background:var(--wk)">WK</span><input
-                            class="role-input bg-transparent outline-none text-right placeholder-slate-400 font-semibold text-xs"
-                            placeholder="Auto"></div>
-                    <div class="role-card"><span class="badge" style="background:var(--bat)">BAT</span><input
-                            class="role-input bg-transparent outline-none text-right placeholder-slate-400 font-semibold text-xs"
-                            placeholder="Auto"></div>
-                    <div class="role-card"><span class="badge" style="background:var(--all)">ALL</span><input
-                            class="role-input bg-transparent outline-none text-right placeholder-slate-400 font-semibold text-xs"
-                            placeholder="Auto"></div>
-                    <div class="role-card"><span class="badge" style="background:var(--bowl)">BWL</span><input
-                            class="role-input bg-transparent outline-none text-right placeholder-slate-400 font-semibold text-xs"
-                            placeholder="Auto"></div>
-                </div>
-            </details>
-
-            <!-- --- Number of Teams --- -->
-            <div>
-                <label class="block font-semibold text-sm text-slate-800 mb-1">
-                    Number of Teams:
-                    <span id="teamCntLabel" class="font-bold text-[var(--red)]">18</span>
-                </label>
-                <input id="numTeams" type="range" min="1" max="20" value="18">
+            <p class="text-[10px] text-slate-600">1 Win (H2H)</p>
+          </div>
+          <div class="text-right">
+            <p class="font-bold text-[var(--blue)] mb-1 text-xs">WTS</p>
+            <div class="flex gap-1.5 justify-end mb-1">
+              <span class="bg-green-500/20 text-green-600 px-1.5 rounded font-bold">W</span>
+              <span class="bg-red-500/20 text-red-600 px-1.5 rounded font-bold">L</span>
+              <span class="bg-green-500/20 text-green-600 px-1.5 rounded font-bold">W</span>
+              <span class="bg-red-500/20 text-red-600 px-1.5 rounded font-bold">L</span>
+              <span class="bg-red-500/20 text-red-600 px-1.5 rounded font-bold">L</span>
             </div>
+            <p class="text-[10px] text-slate-600">0 Wins (H2H)</p>
+          </div>
+        </div>
+      </div>
 
-            <button
-                class="w-full py-2.5 rounded-xl brand-grad text-white font-semibold text-sm shadow-md hover:opacity-95 active:scale-[0.98] transition">
-                Next – Choose C/VC
-            </button>
-        </section>
+      <!-- Venue stats -->
+      <div class="card mt-4 px-4 py-4 mb-10 bg-white">
+        <h3 class="font-semibold text-sm text-slate-800 mb-3">Venue Stats</h3>
+        <div class="grid grid-cols-3 gap-2 text-center text-[10px]">
+          <div class="bg-white/60 rounded-xl border border-slate-200 py-3">
+            <p class="text-slate-600">Avg 1st Inn</p>
+            <p class="text-lg font-extrabold text-[var(--blue)]">106</p>
+          </div>
+          <div class="bg-white/60 rounded-xl border border-slate-200 py-3">
+            <p class="text-slate-600">Matches</p>
+            <p class="text-lg font-extrabold text-[var(--red)]">29</p>
+          </div>
+          <div class="bg-white/60 rounded-xl border border-slate-200 py-3">
+            <p class="text-slate-600">Chasing Wins</p>
+            <p class="text-lg font-extrabold text-[var(--red)]">10</p>
+          </div>
+        </div>
+      </div>
+    </section><!-- /step1 -->
 
-        <!-- ========= Team Performance ========= -->
-        <section class="card mt-5 px-4 py-5 space-y-5">
-            <h3 class="text-sm font-semibold text-slate-800">Team Performance</h3>
-            <div class="flex justify-between text-[11px]">
-                <div>
-                    <p class="font-bold text-[var(--blue)] mb-1 text-xs">AMW</p>
-                    <div class="flex gap-1.5 mb-1">
-                        <span class="perf-badge bg-green-500/20 text-green-700">W</span>
-                        <span class="perf-badge bg-green-500/20 text-green-700">W</span>
-                        <span class="perf-badge bg-green-500/20 text-green-700">W</span>
-                        <span class="perf-badge bg-red-500/20 text-red-600">L</span>
-                        <span class="perf-badge bg-red-500/20 text-red-600">L</span>
-                    </div>
-                    <p class="text-[10px] text-slate-600">1 Win (H2H)</p>
-                </div>
-                <div class="text-right">
-                    <p class="font-bold text-[var(--blue)] mb-1 text-xs">WTS</p>
-                    <div class="flex justify-end gap-1.5 mb-1">
-                        <span class="perf-badge bg-green-500/20 text-green-700">W</span>
-                        <span class="perf-badge bg-red-500/20 text-red-600">L</span>
-                        <span class="perf-badge bg-green-500/20 text-green-700">W</span>
-                        <span class="perf-badge bg-red-500/20 text-red-600">L</span>
-                        <span class="perf-badge bg-red-500/20 text-red-600">L</span>
-                    </div>
-                    <p class="text-[10px] text-slate-600">0 Wins (H2H)</p>
-                </div>
-            </div>
-        </section>
+    <!-- ========== STEP 2 (redesigned) ========== -->
+    <section id="step2" class="hidden">
 
-        <!-- ========= Venue Stats ========= -->
-        <section class="card mt-5 px-4 py-5 mb-14">
-            <h3 class="text-sm font-semibold text-slate-800 mb-3">Venue Stats</h3>
-            <div class="grid grid-cols-3 gap-2 text-center">
-                <div class="py-3 bg-white/60 rounded-xl border border-slate-200">
-                    <p class="text-[10px] text-slate-600">Avg 1st Inn</p>
-                    <p class="text-lg font-extrabold text-[var(--blue)]">106</p>
-                </div>
-                <div class="py-3 bg-white/60 rounded-xl border border-slate-200">
-                    <p class="text-[10px] text-slate-600">Matches</p>
-                    <p class="text-lg font-extrabold text-[var(--red)]">29</p>
-                </div>
-                <div class="py-3 bg-white/60 rounded-xl border border-slate-200">
-                    <p class="text-[10px] text-slate-600">Chasing Wins</p>
-                    <p class="text-lg font-extrabold text-[var(--red)]">10</p>
-                </div>
-            </div>
-        </section>
+      <div class="card mt-5 px-4 py-6 bg-white">
+        <h2 class="text-base font-semibold text-slate-800 mb-8">
+          Choose your Captains &amp; Vice-Captains
+        </h2>
 
-    </div><!-- /container -->
+        <!-- Filter Tabs -->
+        <div
+          class="flex justify-between items-center border-b border-slate-200 pb-3 mb-4 text-xs font-medium overflow-x-auto">
 
-    <!-- ========== JavaScript ========== -->
-    <script>
-        // paint gradient track helper
-        function paintTrack(el, pct, left, right) {
-            el.style.background = `linear-gradient(90deg,${left} 0%,${left} ${pct}%,${right} ${pct}%,${right} 100%)`;
-        }
+          <!-- Role tabs -->
+          <div class="flex gap-2">
+            <button class="tab is-active" data-role="All">All</button>
+            <button class="tab" data-role="WK">WK</button>
+            <button class="tab" data-role="BAT">BAT</button>
+            <button class="tab" data-role="AR">AR</button>
+            <button class="tab" data-role="BOWL">BOWL</button>
+          </div>
 
-        /* --- team combo slider --- */
-        const TOTAL = 11,
-            sCombo = document.getElementById('teamSlider'),
-            bA = document.getElementById('amwBadge'),
-            bW = document.getElementById('wtsBadge');
+          <!-- Team tabs -->
+          <div class="flex gap-2 pl-6">
+            <button class="tab is-active" data-team="All">All</button>
+            <button class="tab" data-team="AMW">AMW</button>
+            <button class="tab" data-team="WTS">WTS</button>
+          </div>
+        </div>
 
-        function syncCombo(v) {
-            const a = +v,
-                w = TOTAL - a;
-            bA.textContent = a;
-            bW.textContent = w;
-            paintTrack(sCombo, (a / TOTAL) * 100, 'var(--blue)', 'var(--red)');
-        }
-        syncCombo(sCombo.value);
-        sCombo.addEventListener('input', e => syncCombo(e.target.value));
+        <!-- Players list -->
+        <div id="list" class="divide-y divide-slate-200 text-sm"></div>
 
-        /* --- number-of-teams slider --- */
-        const sTeams = document.getElementById('numTeams'),
-            lbl = document.getElementById('teamCntLabel');
+        <!-- Navigation -->
+        <div class="flex justify-between pt-8">
+          <button id="back"
+            class="px-8 py-2 rounded-xl bg-slate-600/80 text-white font-semibold shadow hover:opacity-90 text-sm">
+            BACK
+          </button>
+          <button id="next"
+            class="px-8 py-2 rounded-xl bg-slate-300/70 text-slate-600 font-semibold text-sm" disabled>
+            NEXT
+          </button>
+        </div>
+      </div>
 
-        function syncTeams(v) {
-            lbl.textContent = v;
-            paintTrack(
-                sTeams,
-                ((v - 1) / (sTeams.max - 1)) * 100,
-                'var(--red)',
-                '#e5e7eb'
-            );
-        }
-        syncTeams(sTeams.value);
-        sTeams.addEventListener('input', e => syncTeams(e.target.value));
-    </script>
+      <div class="mb-14"></div>
+    </section><!-- /step2 -->
+
+  </div><!-- container -->
+
+  <!-- ================= JS ================= -->
+  <script>
+    /* gradient track paint */
+    function grad(el, pct, left, right) {
+      if (!el) return;
+      el.style.background =
+        `linear-gradient(90deg,${left} 0%,${left} ${pct}%,${right} ${pct}%,${right} 100%)`;
+    }
+
+    /* step-toggle */
+    const s1 = document.getElementById('step1'),
+      s2 = document.getElementById('step2');
+    document.getElementById('toStep2').onclick = () => {
+      s1.classList.add('hidden');
+      s2.classList.remove('hidden');
+      scrollTo({ top: 0, behavior: "smooth" });
+    };
+    document.getElementById('back').onclick = () => {
+      s2.classList.add('hidden');
+      s1.classList.remove('hidden');
+      scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    /* sliders */
+    const TOTAL = 11,
+      sl = document.getElementById('teamSlider'),
+      ba = document.getElementById('amwBadge'),
+      bw = document.getElementById('wtsBadge'),
+      num = document.getElementById('numTeams'),
+      lbl = document.getElementById('teamCntLabel');
+    if (sl) {
+      const f = v => {
+        const a = +v, w = TOTAL - a;
+        ba.textContent = a; bw.textContent = w;
+        grad(sl, (a / TOTAL) * 100, 'var(--blue)', 'var(--red)');
+      };
+      f(sl.value);
+      sl.oninput = e => f(e.target.value);
+    }
+    if (num) {
+      const g = v => {
+        lbl.textContent = v;
+        grad(num, ((v - 1) / (num.max - 1)) * 100, 'var(--red)', '#e5e7eb');
+      };
+      g(num.value);
+      num.oninput = e => g(e.target.value);
+    }
+
+    /* demo players */
+    const players = [
+      { id: 3, team: 'AMW', img: 'https://via.placeholder.com/48?text=A', name: 'A Joseph', role: 'WK', pt: 116, avg: 23, sel: '96.6' },
+      { id: 4, team: 'WTS', img: 'https://via.placeholder.com/48?text=B', name: 'A Alexander', role: 'WK', pt: 28, avg: 6, sel: '9.8' }
+    ];
+
+    /* ---------- STEP-2 Tabs ---------- */
+    let roleF = 'All', teamF = 'All';
+    const list = document.getElementById('list');
+    const nextBtn = document.getElementById('next');
+
+    const roleTabs = document.querySelectorAll('.tab[data-role]');
+    const teamTabs = document.querySelectorAll('.tab[data-team]');
+
+    function setActive(target, group) {
+      group.forEach(t => t.classList.remove('is-active'));
+      target.classList.add('is-active');
+    }
+
+    roleTabs.forEach(btn => btn.onclick = () => {
+      roleF = btn.dataset.role;
+      setActive(btn, roleTabs);
+      render();
+    });
+    teamTabs.forEach(btn => btn.onclick = () => {
+      teamF = btn.dataset.team;
+      setActive(btn, teamTabs);
+      render();
+    });
+
+    /* render list */
+    function render() {
+      list.innerHTML = '';
+      players
+        .filter(p => (roleF === 'All' || p.role === roleF) &&
+          (teamF === 'All' || p.team === teamF))
+        .forEach(p => {
+          list.insertAdjacentHTML('beforeend', `
+        <div class="flex items-center gap-3 py-3">
+          <span class="w-6 text-right text-[11px] font-semibold">${p.id}</span>
+          <img src="${p.img}" class="h-10 w-10 rounded-md object-cover" />
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+
+          <div class="flex-1">
+            <p class="font-semibold text-slate-800">${p.name}</p>
+            <p class="text-[11px] text-slate-500">Sel by ${p.sel}%</p>
+          </div>
+
+          <div class="mr-4 text-center">
+            <p class="uppercase text-[10px] text-slate-500">${p.role}</p>
+            <p class="text-[var(--blue)] font-bold text-sm">${p.pt}</p>
+            <p class="text-[10px] text-slate-500">Avg: ${p.avg}</p>
+          </div>
+
+          <label>
+            <input type="radio" name="c" value="${p.id}" class="sr-only peer" />
+            <span
+              class="h-8 w-8 rounded-full border-2 border-slate-500 grid place-content-center text-[11px] font-bold
+              text-slate-600 peer-checked:bg-[var(--blue)] peer-checked:border-[var(--blue)] peer-checked:text-white">C</span>
+          </label>
+
+          <label class="ml-4">
+            <input type="radio" name="vc" value="${p.id}" class="sr-only peer" />
+            <span
+              class="h-8 w-8 rounded-full border-2 border-slate-500 grid place-content-center text-[11px] font-bold
+              text-slate-600 peer-checked:bg-[var(--red)] peer-checked:border-[var(--red)] peer-checked:text-white">VC</span>
+          </label>
+        </div>`);
+        });
+      addSelectLogic();
+      updateNext();
+    }
+
+    function addSelectLogic() {
+      document.querySelectorAll('input[name="c"],input[name="vc"]').forEach(i =>
+        i.onchange = () => { lockSame(); updateNext(); });
+    }
+
+    function lockSame() {
+      const c = document.querySelector('input[name="c"]:checked')?.value;
+      const v = document.querySelector('input[name="vc"]:checked')?.value;
+      document.querySelectorAll('input[name="vc"]').forEach(i => {
+        i.disabled = (i.value === c);
+        if (i.disabled) i.checked = false;
+      });
+      document.querySelectorAll('input[name="c"]').forEach(i => {
+        i.disabled = (i.value === v);
+        if (i.disabled) i.checked = false;
+      });
+    }
+
+    function updateNext() {
+      const c = document.querySelector('input[name="c"]:checked')?.value;
+      const v = document.querySelector('input[name="vc"]:checked')?.value;
+      const ok = c && v && c !== v;
+      nextBtn.disabled = !ok;
+      nextBtn.className = ok
+        ? 'px-8 py-2 rounded-xl bg-gradient-to-r from-[var(--blue)] to-[var(--red)] text-white font-semibold shadow'
+        : 'px-8 py-2 rounded-xl bg-slate-300/70 text-slate-600 font-semibold';
+    }
+
+    /* initial render */
+    render();
+  </script>
 </body>
 
 </html>
