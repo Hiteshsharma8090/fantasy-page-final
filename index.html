@@ -82,7 +82,9 @@
             padding: .8px;
             border-radius: inherit;
             background: linear-gradient(135deg, var(--blue), var(--red));
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
             pointer-events: none;
@@ -123,6 +125,16 @@
 
         .team-logo {
             background: url('https://via.placeholder.com/48/ccc/fff?text=?') center/cover no-repeat;
+        }
+
+        /* ── NEW: tiny round logo for combo header ── */
+        .mini-logo {
+            height: 14px;
+            width: 14px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 1px solid #fff;
         }
     </style>
 </head>
@@ -169,16 +181,21 @@
             <div class="space-y-2">
                 <div class="flex justify-between text-xs font-medium">
                     <div class="flex items-center gap-1">
-                        <span class="h-2 w-2 rounded-full bg-[var(--blue)]"></span>
+                        <!-- logo + name + badge -->
+                        <img class="h-6 w-6 rounded-full object-cover border border-white" src="images/image_india.svg"
+                            alt="AMW" class="mini-logo">
                         <span class="font-semibold text-[var(--blue)]">AMW</span>
                         <span id="amwBadge"
-                            class="px-2 py-0.5 rounded-full bg-[var(--blue)]/10 text-[var(--blue)] font-semibold">5</span>
+                            class=" py-0.5 rounded-full bg-[var(--blue)]/10 text-[var(--blue)] font-semibold">5</span>
                     </div>
                     <div class="flex items-center gap-1">
-                        <span class="h-2 w-2 rounded-full bg-[var(--red)]"></span>
-                        <span class="font-semibold text-[var(--red)]">WTS</span>
+                        <!-- logo + name + badge -->
                         <span id="wtsBadge"
-                            class="px-2 py-0.5 rounded-full bg-[var(--red)]/10 text-[var(--red)] font-semibold">6</span>
+                            class=" py-0.5 rounded-full bg-[var(--red)]/10 text-[var(--red)] font-semibold">6</span>
+                        <span class="font-semibold text-[var(--red)]">WTS</span>
+
+                        <img class="h-6 w-6 rounded-full object-cover border border-white" src="images/image_nz.svg"
+                            alt="WTS " class="mini-logo">
                     </div>
                 </div>
                 <input id="teamSlider" type="range" min="1" max="10" value="5">
@@ -285,16 +302,42 @@
 
     <!-- ========== JavaScript ========== -->
     <script>
-        function paintTrack(el, pct, left, right) { el.style.background = `linear-gradient(90deg,${left} 0%,${left} ${pct}%,${right} ${pct}%,${right} 100%)`; }
+        // paint gradient track helper
+        function paintTrack(el, pct, left, right) {
+            el.style.background = `linear-gradient(90deg,${left} 0%,${left} ${pct}%,${right} ${pct}%,${right} 100%)`;
+        }
 
-        const TOTAL = 11, sCombo = document.getElementById('teamSlider'),
-            bA = document.getElementById('amwBadge'), bW = document.getElementById('wtsBadge');
-        function syncCombo(v) { const a = +v, w = TOTAL - a; bA.textContent = a; bW.textContent = w; paintTrack(sCombo, (a / TOTAL) * 100, 'var(--blue)', 'var(--red)'); }
-        syncCombo(sCombo.value); sCombo.addEventListener('input', e => syncCombo(e.target.value));
+        /* --- team combo slider --- */
+        const TOTAL = 11,
+            sCombo = document.getElementById('teamSlider'),
+            bA = document.getElementById('amwBadge'),
+            bW = document.getElementById('wtsBadge');
 
-        const sTeams = document.getElementById('numTeams'), lbl = document.getElementById('teamCntLabel');
-        function syncTeams(v) { lbl.textContent = v; paintTrack(sTeams, ((v - 1) / (sTeams.max - 1)) * 100, 'var(--red)', '#e5e7eb'); }
-        syncTeams(sTeams.value); sTeams.addEventListener('input', e => syncTeams(e.target.value));
+        function syncCombo(v) {
+            const a = +v,
+                w = TOTAL - a;
+            bA.textContent = a;
+            bW.textContent = w;
+            paintTrack(sCombo, (a / TOTAL) * 100, 'var(--blue)', 'var(--red)');
+        }
+        syncCombo(sCombo.value);
+        sCombo.addEventListener('input', e => syncCombo(e.target.value));
+
+        /* --- number-of-teams slider --- */
+        const sTeams = document.getElementById('numTeams'),
+            lbl = document.getElementById('teamCntLabel');
+
+        function syncTeams(v) {
+            lbl.textContent = v;
+            paintTrack(
+                sTeams,
+                ((v - 1) / (sTeams.max - 1)) * 100,
+                'var(--red)',
+                '#e5e7eb'
+            );
+        }
+        syncTeams(sTeams.value);
+        sTeams.addEventListener('input', e => syncTeams(e.target.value));
     </script>
 </body>
 
