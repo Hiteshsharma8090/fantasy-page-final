@@ -196,7 +196,7 @@
 
 
     <!-- ▾ Create-Team Panel -->
-    <main id="panelCreate" class="mx-auto max-w-3xl  space-y-10">
+    <main id="panelCreate" class="mx-auto max-w-3xl  space-y-4">
 
 
 
@@ -350,15 +350,89 @@
             </section>
 
 
-
-
-
-
-
         </div>
 
 
 
+
+
+
+
+
+
+        <!-- ▼ Team Performance – dropdown card (no mt-8) ▼ -->
+        <div id="perfWrap" class="sm:rounded-glass bg-white/70 p-4 backdrop-blur-md
+       ring-1 ring-[#3D5CA5]/20 shadow-glass">
+
+            <!-- clickable header -->
+            <button id="perfToggle" class="w-full flex items-center justify-between px-4 py-3
+            bg-slate-100 text-sm font-semibold text-slate-800 rounded-xl">
+                <span>Team Performance</span>
+                <svg class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
+                    stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6" />
+                </svg>
+            </button>
+
+            <!-- dropdown body -->
+            <div id="perfBody" class="px-4 py-4 hidden">
+                <!-- teams row -->
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-2">
+                        <img src="https://flagcdn.com/24x18/gb-eng.png"
+                            class="h-6 w-6 rounded-full ring-1 ring-slate-300" />
+                        <span class="font-semibold text-slate-800">EN-W</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-semibold text-slate-800">IN-W</span>
+                        <img src="https://flagcdn.com/24x18/in.png"
+                            class="h-6 w-6 rounded-full ring-1 ring-slate-300" />
+                    </div>
+                </div>
+
+                <!-- last-5 sequence -->
+                <p class="text-[13px] text-slate-600 mb-2">Last 5 T20 performance</p>
+                <div class="flex  items-center gap-3 mb-4 text-xs">
+                    <!-- EN-W -->
+                    <div class="flex gap-2">
+                        <span class="h-5 w-5 grid place-content-center rounded-md border-2 border-red-600
+                bg-red-50 text-red-600 font-bold leading-none">L</span>
+                        <span class="h-5 w-5 grid place-content-center rounded-md border-2 border-red-600
+                bg-red-50 text-red-600 font-bold leading-none">L</span>
+                        <span class="h-5 w-5 grid place-content-center rounded-md border-2 border-emerald-600
+                bg-emerald-50 text-emerald-600 font-bold leading-none">W</span>
+                        <span class="h-5 w-5 grid place-content-center rounded-md border-2 border-emerald-600
+                bg-emerald-50 text-emerald-600 font-bold leading-none">W</span>
+                        <span class="h-5 w-5 grid place-content-center rounded-md border-2 border-emerald-600
+                bg-emerald-50 text-emerald-600 font-bold leading-none">W</span>
+                    </div>
+
+                    <div class="flex-1"></div><!-- spacer -->
+
+                    <!-- IN-W -->
+                    <div class="flex gap-2">
+                        <span class="h-5 w-5 grid place-content-center rounded-md border-2 border-emerald-600
+                bg-emerald-50 text-emerald-600 font-bold leading-none">W</span>
+                        <span class="h-5 w-5 grid place-content-center rounded-md border-2 border-emerald-600
+                bg-emerald-50 text-emerald-600 font-bold leading-none">W</span>
+                        <span class="h-5 w-5 grid place-content-center rounded-md border-2 border-emerald-600
+                bg-emerald-50 text-emerald-600 font-bold leading-none">W</span>
+                        <span class="h-5 w-5 grid place-content-center rounded-md border-2 border-red-600
+                bg-red-50 text-red-600 font-bold leading-none">L</span>
+                        <span class="h-5 w-5 grid place-content-center rounded-md border-2 border-emerald-600
+                bg-emerald-50 text-emerald-600 font-bold leading-none">W</span>
+                    </div>
+                </div>
+
+                <!-- H2H -->
+                <p class="text-[13px] text-slate-600 mb-1">
+                    Last 5 years Head&nbsp;to&nbsp;Head in T20
+                </p>
+                <div class="flex justify-between font-bold text-slate-900">
+                    <span>8 Win</span><span>7 Win</span>
+                </div>
+            </div>
+        </div>
 
 
 
@@ -475,8 +549,11 @@
 
 
 
-
-
+        /* dropdown toggle */
+        document.getElementById('perfToggle').addEventListener('click', () => {
+            document.getElementById('perfBody').classList.toggle('hidden');
+            document.querySelector('#perfToggle svg').classList.toggle('rotate-180');
+        });
     </script>
 
 
