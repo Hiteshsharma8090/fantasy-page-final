@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Fantasy Team – MLR vs MLB</title>
+
+    <!-- Tailwind (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                extend: {
+                    colors: {
+                        primary: '#5A73B3',   /* classy indigo-blue  */
+                        primary2: '#415890',   /* darker tint for gradient */
+                        accent: '#DA3A30',   /* vivid vermilion-red      */
+                        page: '#F3F6FF',   /* very light backdrop      */
+                        ink: '#1C2337',
+                        win: '#22c55e',
+                        loss: '#ef4444',
+                    },
+                    borderRadius: { glass: '18px' },
+                    boxShadow: { glass: '0 8px 24px rgba(90,115,179,.18)' },
+                }
+            }
+        };
+    </script>
+
+    <!-- instant font → avoids FOIT -->
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .num-range {
+            appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 9999px;
+            border: none;
+            /* default fill (JS बदल देगा) */
+            background: linear-gradient(to right, #E4443B 45%, #d1d5db 0);
+        }
+
+        /* Chrome / Edge / Safari thumb */
+        .num-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #E4443B;
+            cursor: pointer;
+            border: 3px solid #fff;
+            margin-top: -8px;
+            /* 24/2 - 8/2 ==> सटीक centering */
+        }
+
+        /* Firefox thumb */
+        .num-range::-moz-range-thumb {
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #E4443B;
+            border: 3px solid #fff;
+            cursor: pointer;
+        }
+
+        /* Firefox track height बराबर करना */
+        .num-range::-moz-range-track {
+            height: 8px;
+            border-radius: 9999px;
+            background: transparent;
+        }
+
+        .roleBox {
+            @apply w-full rounded border border-slate-300 bg-white py-1 px-2 text-center text-xs font-medium text-slate-700 placeholder-slate-400;
+        }
+    </style>
+
+    <!-- range styling -->
+    <style>
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+            cursor: pointer
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border: 3px solid white;
+            border-radius: 9999px;
+            background: #DA3A30;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .15)
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            height: 5px;
+            background: #dbe0ff;
+            border-radius: 9999px
+        }
+    </style>
+</head>
+
+<body class="min-h-full  bg-[#F8F8FB]  ">
+
+    <!-- ▾ Header -->
+    <header class="bg-gradient-to-r from-[#E4443B] to-[#3D5CA5] py-3 text-center
+       text-sm sm:text-base md:text-lg font-extrabold tracking-wide
+       text-white shadow-md">
+        Generate Fantasy Team · <span class="uppercase">MLR vs MLB</span>
+    </header>
+
+
+
+    <!-- ▾ Match summary card -->
+    <section class="mx-auto max-w-3xl  mt-4">
+        <article class="sm:rounded-glass border border-white/50 bg-white/70 backdrop-blur-md p-5 shadow-glass
+             hover:shadow-xl transition">
+            <header class="flex items-start justify-between text-xs font-medium">
+                <span class="truncate max-w-[60%] text-primary font-semibold">Malaysia T20 Tri-Series</span>
+                <span class="text-[11px] font-semibold text-green-600">Line-up Announced</span>
+            </header>
+
+            <div class="mt-3 flex items-center justify-between">
+                <!-- team A -->
+                <div class="flex w-[120px] items-center gap-2">
+                    <img src="images/image_india.svg" alt="MLR" class="h-10 w-10 rounded-full ring-2 ring-primary/20" />
+                    <div class="min-w-0">
+                        <div class="truncate font-semibold">MLR</div>
+                        <div class="truncate text-[11px] text-slate-500">Malaysia Reds</div>
+                    </div>
+                </div>
+
+                <!-- live -->
+                <div class="flex flex-col items-center text-center w-[80px]">
+                    <span class="animate-pulse text-red-600 font-semibold text-[11px]">• Live</span>
+                    <time class="text-[10px] font-medium">01 : 01 PM</time>
+                </div>
+
+                <!-- team B -->
+                <div class="flex w-[120px] flex-row-reverse items-center gap-2 text-right">
+                    <img src="images/image_nz.svg" alt="MLB" class="h-10 w-10 rounded-full ring-2 ring-primary/20" />
+                    <div class="min-w-0">
+                        <div class="truncate font-semibold">MLB</div>
+                        <div class="truncate text-[11px] text-slate-500">Malaysia Blues</div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="mt-4 flex items-center gap-2 text-[11px]">
+                <span class="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 font-semibold text-primary">
+                    🏆 ₹ 13.1 Lakhs
+                </span>
+                <span class="truncate text-slate-600">MLB elected to bat first</span>
+            </footer>
+        </article>
+    </section>
+
+
+
+
+    <!-- ▾ Tabs (new) -->
+    <nav class="mx-auto max-w-3xl px-4 mt-4">
+        <!-- wrapper -->
+        <div class="relative flex overflow-hidden rounded-full bg-white/70 backdrop-blur-md
+                 ring-1 ring-[#3D5CA5]/20 shadow-glass">
+
+            <!-- indicator pill -->
+            <span id="tabIndicator" class="absolute inset-y-0 left-0 w-1/2 rounded-full
+                       bg-gradient-to-r from-[#E4443B] to-[#3D5CA5]/80
+                       transition-transform duration-300"></span>
+
+            <!-- CREATE -->
+            <button id="tabCreate" class="relative z-10 flex-1 py-2 text-center text-sm sm:text-base font-semibold
+                         transition-colors text-white">
+                Create Team
+            </button>
+
+            <!-- MY TEAMS -->
+            <button id="tabMine" class="relative z-10 flex-1 py-2 text-center text-sm sm:text-base font-semibold
+                         transition-colors text-[#3D5CA5]/70 hover:text-[#3D5CA5]">
+                My Teams
+            </button>
+        </div>
+    </nav>
+
+
+
+
+
+
+    <!-- ▾ Create-Team Panel -->
+    <main id="panelCreate" class="mx-auto max-w-3xl  space-y-10">
+
+
+
+        <!-- ▾ Team Combination Card (auto-complement to 11) -->
+        <div class=" mt-4 sm:px-4">
+            <section class=" sm:rounded-glass bg-white/70  p-4 backdrop-blur-md
+     ring-1 ring-[#3D5CA5]/20 shadow-glass">
+
+                <h3 class="mb-4 text-base sm:text-lg md:text-xl font-semibold text-[#1C2337]">
+                    Select Team Combination
+                </h3>
+
+
+                <!-- Teams & dropdowns -->
+                <div class="flex items-center justify-between gap-4">
+                    <!-- MLR -->
+                    <div class="flex items-center gap-2">
+                        <img src="images/image_india.svg" class="h-9 w-9 rounded-full ring-1 ring-slate-200" />
+                        <span class="text-sm font-bold text-[#1C2337]">MLR</span>
+                    </div>
+
+                    <select id="mlrSel" class="grow rounded-md border border-[#3D5CA5]/40 bg-white px-3 py-1
+               text-sm font-semibold text-[#3D5CA5] focus:border-[#3D5CA5] focus:ring-0">
+                    </select>
+
+                    <!-- MLB -->
+
+
+                    <select id="mlbSel" class="grow rounded-md border border-[#3D5CA5]/40 bg-white px-3 py-1
+               text-sm font-semibold text-[#3D5CA5] focus:border-[#3D5CA5] focus:ring-0">
+                    </select>
+                    <div class="flex items-center gap-2">
+                        <span class="text-sm font-bold text-[#1C2337]">MLB</span>
+                        <img src="images/image_nz.svg" class="h-9 w-9 rounded-full ring-1 ring-slate-200" />
+                    </div>
+                </div>
+
+
+
+                <!-- live counts -->
+                <div class="mt-3 flex justify-between text-2xl font-bold mx-3">
+                    <span id="mlrCnt" class="text-[#E4443B]">5</span>
+                    <p class="mt-1 text-center text-xs font-medium text-slate-500">
+                        Min 1 – Max 10 Players per team (Total 11)
+                    </p>
+                    <span id="mlbCnt" class="text-[#E4443B]">6</span>
+                </div>
+
+
+                <!-- ▾ Advance Config (collapsed by default, subtle corners) -->
+                <button id="advToggle" class="mt-5 flex w-full items-center justify-center gap-1 
+                        border border-[#3D5CA5]/40 bg-white rounded-lg
+                       px-3 py-2 text-sm font-semibold tracking-wide text-indigo-900
+                       ">
+                    <span>Advance Config</span>
+
+                    <!-- caret icon -->
+                    <svg id="advIcon" xmlns="http://www.w3.org/2000/svg"
+                        class="h-4 w-4 transition-transform fill-current" viewBox="0 0 24 24">
+                        <path d="M6 9l6 6 6-6" />
+                    </svg>
+                </button>
+
+
+                <!-- Advance Config Section -->
+                <div id="advPanel"
+                    class="hidden mt-4 rounded-lg bg-white/60 backdrop-blur-md p-4 ring-1 ring-[#3D5CA5]/20 shadow">
+                    <p class="text-xs text-center text-slate-600 mb-3">
+                        Specify number of players for each role (leave blank for auto)
+                    </p>
+
+                    <div class="grid grid-cols-3 gap-4 text-center items-start">
+                        <!-- MLR Inputs -->
+                        <div>
+                            <div class="text-[#E4443B] text-sm font-semibold mb-2">MLR</div>
+                            <div class="space-y-2">
+                                <input placeholder="Auto" class="w-full rounded border border-slate-300 bg-white/90
+        py-1 px-2 text-center text-xs font-medium text-gray-600 placeholder-gray-400 shadow-sm
+        focus:outline-none focus:border-[#3D5CA5] focus:ring-1 focus:ring-[#3D5CA5]/40" />
+                                <input placeholder="Auto" class="w-full rounded border border-slate-300 bg-white/90
+        py-1 px-2 text-center text-xs font-medium text-gray-600 placeholder-gray-400 shadow-sm
+        focus:outline-none focus:border-[#3D5CA5] focus:ring-1 focus:ring-[#3D5CA5]/40" />
+                                <input placeholder="Auto" class="w-full rounded border border-slate-300 bg-white/90
+        py-1 px-2 text-center text-xs font-medium text-gray-600 placeholder-gray-400 shadow-sm
+        focus:outline-none focus:border-[#3D5CA5] focus:ring-1 focus:ring-[#3D5CA5]/40" />
+                                <input placeholder="Auto" class="w-full rounded border border-slate-300 bg-white/90
+        py-1 px-2 text-center text-xs font-medium text-gray-600 placeholder-gray-400 shadow-sm
+        focus:outline-none focus:border-[#3D5CA5] focus:ring-1 focus:ring-[#3D5CA5]/40" />
+                            </div>
+                        </div>
+
+                        <!-- Labels -->
+                        <div
+                            class="space-y-2 text-primary text-sm font-semibold flex flex-col justify-center space-y-4 mt-8">
+                            <span>WK</span>
+                            <span>BAT</span>
+                            <span>ALL</span>
+                            <span>BOWL</span>
+                        </div>
+
+                        <!-- MLB Inputs -->
+                        <div>
+                            <div class="text-[#3D5CA5] text-sm font-semibold mb-2">MLB</div>
+                            <div class="space-y-2">
+                                <input placeholder="Auto" class="w-full rounded border border-slate-300 bg-white/90
+        py-1 px-2 text-center text-xs font-medium text-gray-600 placeholder-gray-400 shadow-sm
+        focus:outline-none focus:border-[#3D5CA5] focus:ring-1 focus:ring-[#3D5CA5]/40" />
+                                <input placeholder="Auto" class="w-full rounded border border-slate-300 bg-white/90
+        py-1 px-2 text-center text-xs font-medium text-gray-600 placeholder-gray-400 shadow-sm
+        focus:outline-none focus:border-[#3D5CA5] focus:ring-1 focus:ring-[#3D5CA5]/40" />
+                                <input placeholder="Auto" class="w-full rounded border border-slate-300 bg-white/90
+        py-1 px-2 text-center text-xs font-medium text-gray-600 placeholder-gray-400 shadow-sm
+        focus:outline-none focus:border-[#3D5CA5] focus:ring-1 focus:ring-[#3D5CA5]/40" />
+                                <input placeholder="Auto" class="w-full rounded border border-slate-300 bg-white/90
+        py-1 px-2 text-center text-xs font-medium text-gray-600 placeholder-gray-400 shadow-sm
+        focus:outline-none focus:border-[#3D5CA5] focus:ring-1 focus:ring-[#3D5CA5]/40" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="border border-gray-200 mt-4 rounded-xl p-4 bg-white shadow-sm max-w-sm mx-auto">
+                    <!-- label -->
+                    <label class="font-semibold text-base text-gray-900 block mb-4">
+                        Number of Teams:
+                        <span id="numVal" class="text-[#E4443B] font-semibold">10</span>
+                    </label>
+
+                    <!-- range -->
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs text-gray-700 select-none">1</span>
+
+                        <input id="numRange" type="range" min="1" max="20" value="10" class="num-range flex-1" />
+
+                        <span class="text-xs text-gray-700 select-none">20</span>
+                    </div>
+
+                    <!-- next -->
+                    <button id="nextBtn" class="w-full mt-7 py-2 rounded-lg font-semibold text-white
+                                   bg-gradient-to-r from-[#E4443B] to-[#3D5CA5]/80
+                                   transition-transform duration-300">
+                        Next&nbsp;(Choose&nbsp;C/VC)
+                    </button>
+                </div>
+
+
+            </section>
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+    </main>
+
+    <!-- ▾ My-Teams placeholder -->
+    <section id="panelMine" class="hidden mx-auto max-w-3xl px-4 py-16 text-center text-slate-500">
+        You haven’t generated any teams yet.
+    </section>
+
+    <!-- ▾ JS interactivity -->
+    <script>
+        const createBtn = document.getElementById('tabCreate');
+        const mineBtn = document.getElementById('tabMine');
+        const indicator = document.getElementById('tabIndicator');
+
+        const panelCreate = document.getElementById('panelCreate');
+        const panelMine = document.getElementById('panelMine');
+
+        function activate(isCreate) {
+            /* move the coloured pill */
+            indicator.style.transform = isCreate ? 'translateX(0)' : 'translateX(100%)';
+
+            /* text colour flip */
+            createBtn.classList.toggle('text-white', isCreate);
+            createBtn.classList.toggle('text-primary/70', !isCreate);
+
+            mineBtn.classList.toggle('text-white', !isCreate);
+            mineBtn.classList.toggle('text-primary/70', isCreate);
+
+            /* show / hide panels */
+            panelCreate.classList.toggle('hidden', !isCreate);
+            panelMine.classList.toggle('hidden', isCreate);
+        }
+
+        /* initial state */
+        activate(true);
+
+        /* listeners */
+        createBtn.onclick = () => activate(true);
+        mineBtn.onclick = () => activate(false);
+
+
+
+
+
+
+
+
+
+        const TOTAL = 11;                 // fixed total
+        const mlrSel = document.getElementById('mlrSel');
+        const mlbSel = document.getElementById('mlbSel');
+        const mlrCnt = document.getElementById('mlrCnt');
+        const mlbCnt = document.getElementById('mlbCnt');
+
+        // populate both selects 1-10
+        for (let i = 1; i <= 10; i++) {
+            mlrSel.insertAdjacentHTML('beforeend', `<option ${i === 5 ? 'selected' : ''}>${i}</option>`);
+            mlbSel.insertAdjacentHTML('beforeend', `<option ${i === 6 ? 'selected' : ''}>${i}</option>`);
+        }
+
+        function clamp(val) { return Math.min(10, Math.max(1, val)); }
+
+        function syncFrom(src, dest) {
+            const v = parseInt(src.value, 10) || 1;
+            dest.value = clamp(TOTAL - v);
+            mlrCnt.textContent = mlrSel.value;
+            mlbCnt.textContent = mlbSel.value;
+        }
+
+        mlrSel.onchange = () => syncFrom(mlrSel, mlbSel);
+        mlbSel.onchange = () => syncFrom(mlbSel, mlrSel);
+
+
+
+
+
+        const advToggle = document.getElementById('advToggle');
+        const advPanel = document.getElementById('advPanel');
+        const advIcon = document.getElementById('advIcon');
+
+        advToggle.onclick = () => {
+            advPanel.classList.toggle('hidden');
+            advIcon.classList.toggle('rotate-180');
+        };
+
+
+
+
+
+
+        const range = document.getElementById('numRange');
+        const label = document.getElementById('numVal');
+
+        function paintTrack(val) {
+            const pct = (val - 1) / (range.max - 1) * 100;   /* 0–100% */
+            range.style.background =
+                `linear-gradient(to right,#E4443B ${pct}%,#d1d5db 0)`;
+        }
+        paintTrack(range.value);                   /* initial paint */
+
+        range.addEventListener('input', e => {
+            label.textContent = e.target.value;
+            paintTrack(e.target.value);
+        });
+
+        document.getElementById('nextBtn').onclick =
+            () => alert(`Proceeding with ${range.value} teams`);
+
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

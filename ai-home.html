@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Cricket Addictor – Matches</title>
+
+    <!-- Tailwind (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                extend: {
+                    colors: {
+                        primary: '#5A73B3',
+                        primary2: '#415890',
+                        accent: '#DA3A30',
+                    },
+                    borderRadius: { glass: '18px' },
+                    boxShadow: { glass: '0 3px 10px rgba(90,115,179,.10)' },
+                }
+            }
+        };
+    </script>
+
+    <style>
+        .tab-indicator {
+            transition: transform .3s cubic-bezier(.4, 0, .2, 1)
+        }
+    </style>
+</head>
+
+<body class="min-h-full text-[15px]  bg-[#F8F8FB] ">
+
+    <!-- ▾ Header -->
+    <header class="bg-gradient-to-r from-[#E4443B] to-[#3D5CA5]
+                 px-4 py-3 text-white font-extrabold tracking-wide text-lg">
+        Cricket Addictor
+    </header>
+
+    <!-- ▾ Tabs (mobile-friendly) -->
+    <nav class="mx-auto max-w-md px-4 mt-6 sm:max-w-xl">
+        <div class="relative flex rounded-full overflow-hidden bg-white ring-1 ring-primary/30">
+
+            <span id="tabIndicator" class="tab-indicator absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-[#E4443B] to-[#3D5CA5]/80 rounded-full
+                   transition-transform"></span>
+
+            <button id="tabUpcoming" class="relative z-10 flex-1 py-2.5 text-center font-semibold text-xs text-white
+                     sm:py-2 sm:text-base">
+                Upcoming
+            </button>
+
+            <button id="tabPast" class="relative z-10 flex-1 py-2.5 text-center font-semibold text-xs text-primary
+                     sm:py-2 sm:text-base">
+                Past
+            </button>
+        </div>
+    </nav>
+
+
+    <!-- ▾ Intro -->
+    <section class="px-4 mt-6 mb-4 max-w-md mx-auto sm:mt-8 sm:mb-5">
+        <h2 class="text-lg leading-tight font-extrabold sm:text-xl">
+            Create your Cricket Addictor fantasy XI
+        </h2>
+
+        <p class="mt-1 text-[13px] text-slate-700 sm:text-sm">
+            Select an upcoming match and let our AI wizard craft the perfect team for you.
+        </p>
+    </section>
+
+    <!-- ▾ Match lists -->
+    <main class="mx-auto max-w-xl px-4 space-y-4 pb-16">
+
+        <!-- ▸ UPCOMING -->
+        <div id="listUpcoming" class="space-y-4">
+
+            <!-- ######## MATCH CARD ######## -->
+            <article class="upcoming-card rounded-glass p-4 sm:p-5 ring-1 ring-primary/10 bg-white/70 backdrop-blur-md
+                      shadow-glass flex items-center justify-between sm:hover:shadow-xl transition"
+                data-start="2025-07-04T15:15:00+05:30">
+                <!-- Team A -->
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px]">
+                    <img src="images/image_india.svg" alt="BCCS"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">BCCS</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            BCC Spartan
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timer -->
+                <div class="text-center w-[80px] sm:w-[88px] shrink-0">
+                    <span class="status inline-block rounded-full bg-accent text-white text-[10px] sm:text-[11px]
+                       font-semibold px-1.5 py-0.5">40&nbsp;m</span>
+                    <time class="time block mt-1 text-[10px] sm:text-[11px] font-medium">03 : 15 pm</time>
+                </div>
+
+                <!-- Team B -->
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px] flex-row-reverse text-right">
+                    <img src="images/image_nz.svg" alt="SFS"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">SFS</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            Sofia Stars
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+
+            <!-- Malaysia T20 -->
+            <article class="upcoming-card rounded-glass p-4 sm:p-5 ring-1 ring-primary/10 bg-white/70 backdrop-blur-md
+                      shadow-glass flex items-center justify-between sm:hover:shadow-xl transition"
+                data-start="2025-07-04T13:01:00+05:30">
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px]">
+                    <img src="images/image_india.svg" alt="MLR"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">MLR</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            Malaysia Reds
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center w-[80px] sm:w-[88px] shrink-0">
+                    <span class="status inline-block rounded-full text-red-600 text-[10px] sm:text-[11px]
+                       font-semibold animate-pulse">· Live</span>
+                    <time class="time block mt-1 text-[10px] sm:text-[11px] font-medium">01 : 01 pm</time>
+                </div>
+
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px] flex-row-reverse text-right">
+                    <img src="images/image_nz.svg" alt="MLB"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">MLB</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            Malaysia Blues
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Ireland T20 -->
+            <article class="upcoming-card rounded-glass p-4 sm:p-5 ring-1 ring-primary/10 bg-white/70 backdrop-blur-md
+                      shadow-glass flex items-center justify-between sm:hover:shadow-xl transition"
+                data-start="2025-07-04T17:30:00+05:30">
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px]">
+                    <img src="images/image_india.svg" alt="LLG"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">LLG</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            Leinster Lightning
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center w-[80px] sm:w-[88px] shrink-0">
+                    <span class="status inline-block rounded-full bg-accent text-white text-[10px] sm:text-[11px]
+                       font-semibold px-1.5 py-0.5">36&nbsp;m</span>
+                    <time class="time block mt-1 text-[10px] sm:text-[11px] font-medium">05 : 30 pm</time>
+                </div>
+
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px] flex-row-reverse text-right">
+                    <img src="images/image_nz.svg" alt="MUR"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">MUR</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            Munster Reds
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- World Cup -->
+            <article class="upcoming-card rounded-glass p-4 sm:p-5 ring-1 ring-primary/10 bg-white/70 backdrop-blur-md
+                      shadow-glass flex items-center justify-between sm:hover:shadow-xl transition"
+                data-start="2025-07-04T19:30:00+05:30">
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px]">
+                    <img src="images/image_india.svg" alt="IND"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">IND</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            India
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center w-[80px] sm:w-[88px] shrink-0">
+                    <span class="status inline-block rounded-full bg-accent text-white text-[10px] sm:text-[11px]
+                       font-semibold px-1.5 py-0.5">8h&nbsp;0m</span>
+                    <time class="time block mt-1 text-[10px] sm:text-[11px] font-medium">07 : 30 pm</time>
+                </div>
+
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px] flex-row-reverse text-right">
+                    <img src="images/image_nz.svg" alt="PAK"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">PAK</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            Pakistan
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="upcoming-card rounded-glass p-4 sm:p-5 ring-1 ring-primary/10 bg-white/70 backdrop-blur-md
+                      shadow-glass flex items-center justify-between sm:hover:shadow-xl transition"
+                data-start="2025-07-04T15:15:00+05:30">
+                <!-- Team A -->
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px]">
+                    <img src="images/image_india.svg" alt="BCCS"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">BCCS</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            BCC Spartan
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timer -->
+                <div class="text-center w-[80px] sm:w-[88px] shrink-0">
+                    <span class="status inline-block rounded-full bg-accent text-white text-[10px] sm:text-[11px]
+                       font-semibold px-1.5 py-0.5">40&nbsp;m</span>
+                    <time class="time block mt-1 text-[10px] sm:text-[11px] font-medium">03 : 15 pm</time>
+                </div>
+
+                <!-- Team B -->
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px] flex-row-reverse text-right">
+                    <img src="images/image_nz.svg" alt="SFS"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">SFS</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            Sofia Stars
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+
+            <!-- Malaysia T20 -->
+            <article class="upcoming-card rounded-glass p-4 sm:p-5 ring-1 ring-primary/10 bg-white/70 backdrop-blur-md
+                      shadow-glass flex items-center justify-between sm:hover:shadow-xl transition"
+                data-start="2025-07-04T13:01:00+05:30">
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px]">
+                    <img src="images/image_india.svg" alt="MLR"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">MLR</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            Malaysia Reds
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center w-[80px] sm:w-[88px] shrink-0">
+                    <span class="status inline-block rounded-full text-red-600 text-[10px] sm:text-[11px]
+                       font-semibold animate-pulse">· Live</span>
+                    <time class="time block mt-1 text-[10px] sm:text-[11px] font-medium">01 : 01 pm</time>
+                </div>
+
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px] flex-row-reverse text-right">
+                    <img src="images/image_nz.svg" alt="MLB"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">MLB</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            Malaysia Blues
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Ireland T20 -->
+            <article class="upcoming-card rounded-glass p-4 sm:p-5 ring-1 ring-primary/10 bg-white/70 backdrop-blur-md
+                      shadow-glass flex items-center justify-between sm:hover:shadow-xl transition"
+                data-start="2025-07-04T17:30:00+05:30">
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px]">
+                    <img src="images/image_india.svg" alt="LLG"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">LLG</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            Leinster Lightning
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center w-[80px] sm:w-[88px] shrink-0">
+                    <span class="status inline-block rounded-full bg-accent text-white text-[10px] sm:text-[11px]
+                       font-semibold px-1.5 py-0.5">36&nbsp;m</span>
+                    <time class="time block mt-1 text-[10px] sm:text-[11px] font-medium">05 : 30 pm</time>
+                </div>
+
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px] flex-row-reverse text-right">
+                    <img src="images/image_nz.svg" alt="MUR"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">MUR</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            Munster Reds
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- World Cup -->
+            <article class="upcoming-card rounded-glass p-4 sm:p-5 ring-1 ring-primary/10 bg-white/70 backdrop-blur-md
+                      shadow-glass flex items-center justify-between sm:hover:shadow-xl transition"
+                data-start="2025-07-04T19:30:00+05:30">
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px]">
+                    <img src="images/image_india.svg" alt="IND"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">IND</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            India
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center w-[80px] sm:w-[88px] shrink-0">
+                    <span class="status inline-block rounded-full bg-accent text-white text-[10px] sm:text-[11px]
+                       font-semibold px-1.5 py-0.5">8h&nbsp;0m</span>
+                    <time class="time block mt-1 text-[10px] sm:text-[11px] font-medium">07 : 30 pm</time>
+                </div>
+
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px] flex-row-reverse text-right">
+                    <img src="images/image_nz.svg" alt="PAK"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">PAK</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            Pakistan
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </div><!-- /Upcoming list -->
+
+        <!-- ▸ PAST -->
+        <div id="listPast" class="space-y-4 hidden">
+
+            <article class="rounded-glass p-4 sm:p-5 ring-1 ring-primary/10 bg-white/70 backdrop-blur-md
+                      shadow-glass flex items-center justify-between sm:hover:shadow-xl transition">
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px]">
+                    <img src="images/image_india.svg" alt="BAN"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">BAN</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            Bangladesh
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center w-[80px] sm:w-[88px] shrink-0">
+                    <span class="inline-block rounded-full bg-slate-400 text-white text-[10px] sm:text-[11px]
+                       font-semibold px-1.5 py-0.5">Finished</span>
+                    <time class="block mt-1 text-[10px] sm:text-[11px] font-medium">28 Jun</time>
+                </div>
+
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px] flex-row-reverse text-right">
+                    <img src="images/image_nz.svg" alt="SL"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">SL</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            Sri Lanka
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="rounded-glass p-4 sm:p-5 ring-1 ring-primary/10 bg-white/70 backdrop-blur-md
+                      shadow-glass flex items-center justify-between sm:hover:shadow-xl transition">
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px]">
+                    <img src="images/image_india.svg" alt="ENG"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">ENG</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            England
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center w-[80px] sm:w-[88px] shrink-0">
+                    <span class="inline-block rounded-full bg-slate-400 text-white text-[10px] sm:text-[11px]
+                       font-semibold px-1.5 py-0.5">Finished</span>
+                    <time class="block mt-1 text-[10px] sm:text-[11px] font-medium">25 Jun</time>
+                </div>
+
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px] flex-row-reverse text-right">
+                    <img src="images/image_nz.svg" alt="AUS"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">AUS</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            Australia
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="rounded-glass p-4 sm:p-5 ring-1 ring-primary/10 bg-white/70 backdrop-blur-md
+            shadow-glass flex items-center justify-between sm:hover:shadow-xl transition">
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px]">
+                    <img src="images/image_india.svg" alt="BAN"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">BAN</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            Bangladesh
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center w-[80px] sm:w-[88px] shrink-0">
+                    <span class="inline-block rounded-full bg-slate-400 text-white text-[10px] sm:text-[11px]
+             font-semibold px-1.5 py-0.5">Finished</span>
+                    <time class="block mt-1 text-[10px] sm:text-[11px] font-medium">28 Jun</time>
+                </div>
+
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px] flex-row-reverse text-right">
+                    <img src="images/image_nz.svg" alt="SL"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">SL</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            Sri Lanka
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="rounded-glass p-4 sm:p-5 ring-1 ring-primary/10 bg-white/70 backdrop-blur-md
+            shadow-glass flex items-center justify-between sm:hover:shadow-xl transition">
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px]">
+                    <img src="images/image_india.svg" alt="ENG"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">ENG</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            England
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center w-[80px] sm:w-[88px] shrink-0">
+                    <span class="inline-block rounded-full bg-slate-400 text-white text-[10px] sm:text-[11px]
+             font-semibold px-1.5 py-0.5">Finished</span>
+                    <time class="block mt-1 text-[10px] sm:text-[11px] font-medium">25 Jun</time>
+                </div>
+
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px] flex-row-reverse text-right">
+                    <img src="images/image_nz.svg" alt="AUS"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">AUS</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            Australia
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="rounded-glass p-4 sm:p-5 ring-1 ring-primary/10 bg-white/70 backdrop-blur-md
+  shadow-glass flex items-center justify-between sm:hover:shadow-xl transition">
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px]">
+                    <img src="images/image_india.svg" alt="BAN"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">BAN</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            Bangladesh
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center w-[80px] sm:w-[88px] shrink-0">
+                    <span class="inline-block rounded-full bg-slate-400 text-white text-[10px] sm:text-[11px]
+   font-semibold px-1.5 py-0.5">Finished</span>
+                    <time class="block mt-1 text-[10px] sm:text-[11px] font-medium">28 Jun</time>
+                </div>
+
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px] flex-row-reverse text-right">
+                    <img src="images/image_nz.svg" alt="SL"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">SL</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            Sri Lanka
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="rounded-glass p-4 sm:p-5 ring-1 ring-primary/10 bg-white/70 backdrop-blur-md
+  shadow-glass flex items-center justify-between sm:hover:shadow-xl transition">
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px]">
+                    <img src="images/image_india.svg" alt="ENG"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">ENG</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            England
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center w-[80px] sm:w-[88px] shrink-0">
+                    <span class="inline-block rounded-full bg-slate-400 text-white text-[10px] sm:text-[11px]
+   font-semibold px-1.5 py-0.5">Finished</span>
+                    <time class="block mt-1 text-[10px] sm:text-[11px] font-medium">25 Jun</time>
+                </div>
+
+                <div class="flex items-center gap-2 w-[44%] sm:w-[120px] flex-row-reverse text-right">
+                    <img src="images/image_nz.svg" alt="AUS"
+                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary/10 shrink-0">
+                    <div class="min-w-0">
+                        <div class="font-extrabold text-[13px] sm:text-base leading-none">AUS</div>
+                        <div class="text-[11px] text-slate-500 max-w-[90px] sm:max-w-none truncate select-none">
+                            Australia
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </div><!-- /Past list -->
+
+    </main>
+
+    <!-- ▾ JavaScript -->
+    <script>
+        /* ----- TAB SWITCH ----- */
+        const pill = document.getElementById('tabIndicator');
+        const tUp = document.getElementById('tabUpcoming');
+        const tPa = document.getElementById('tabPast');
+        const up = document.getElementById('listUpcoming');
+        const pa = document.getElementById('listPast');
+
+        function switchTab(isUp) {
+            pill.style.transform = `translateX(${isUp ? 0 : 100}%)`;
+            tUp.classList.toggle('text-white', isUp);
+            tUp.classList.toggle('text-primary', !isUp);
+            tPa.classList.toggle('text-white', !isUp);
+            tPa.classList.toggle('text-primary', isUp);
+            up.classList.toggle('hidden', !isUp);
+            pa.classList.toggle('hidden', isUp);
+        }
+        tUp.onclick = () => switchTab(true);
+        tPa.onclick = () => switchTab(false);
+
+        /* ----- COUNTDOWN ----- */
+        document.querySelectorAll('.upcoming-card').forEach(card => {
+            const start = new Date(card.dataset.start).getTime();
+            const status = card.querySelector('.status');
+            const timeEl = card.querySelector('.time');
+
+            function tick() {
+                const diff = start - Date.now();
+                if (diff <= 0) {
+                    status.textContent = '· Live';
+                    status.className = 'status inline-block text-red-600 font-semibold animate-pulse text-[10px] sm:text-[11px]';
+                    clearInterval(int);
+                } else {
+                    const h = Math.floor(diff / 3600000);
+                    const m = Math.floor((diff % 3600000) / 60000);
+                    const s = Math.floor((diff % 60000) / 1000);
+                    status.textContent =
+                        (h ? `${h}h ` : '') + `${m.toString().padStart(2, '0')}m ${s.toString().padStart(2, '0')}s`;
+                }
+            }
+            tick();
+            const int = setInterval(tick, 1000);
+            timeEl.textContent = new Date(start)
+                .toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })
+                .replace('AM', 'am').replace('PM', 'pm');
+        });
+    </script>
+
+</body>
+
+</html>
