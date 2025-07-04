@@ -33,7 +33,7 @@
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
-           
+
         }
 
         .num-range {
@@ -79,7 +79,8 @@
         .roleBox {
             @apply w-full rounded border border-slate-300 bg-white py-1 px-2 text-center text-xs font-medium text-slate-700 placeholder-slate-400;
         }
-    input[type=range] {
+
+        input[type=range] {
             -webkit-appearance: none;
             width: 100%;
             background: transparent;
@@ -101,7 +102,6 @@
             background: #dbe0ff;
             border-radius: 9999px
         }
-      
     </style>
 </head>
 
@@ -194,7 +194,7 @@
 
 
     <!-- ▾ Create-Team Panel -->
-    <main id="panelCreate" class="mx-auto max-w-3xl  space-y-4">
+    <main id="panelCreate" class="mx-auto max-w-3xl  ">
 
 
 
@@ -243,22 +243,22 @@
                     <span id="mlbCnt" class="text-[#E4443B]">6</span>
                 </div>
 
-<div class="grid justify-center items-center">
-                <!-- ▾ Advance Config (collapsed by default, subtle corners) -->
-                <button id="advToggle" class="mt-5 flex w-44 sm:w-full items-center justify-center gap-1 
+                <div class="grid justify-center items-center">
+                    <!-- ▾ Advance Config (collapsed by default, subtle corners) -->
+                    <button id="advToggle" class="mt-5 flex w-44 sm:w-full items-center justify-center gap-1 
                         border border-[#3D5CA5]/40 bg-white rounded-lg
                        px-3 py-2 text-sm font-semibold tracking-wide text-indigo-900
                        ">
-                    <span>Advance Config</span>
+                        <span>Advance Config</span>
 
-                    <!-- caret icon -->
-                    <svg id="advIcon" xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 transition-transform fill-current" viewBox="0 0 24 24">
-                        <path d="M6 9l6 6 6-6" />
-                    </svg>
-                </button>
+                        <!-- caret icon -->
+                        <svg id="advIcon" xmlns="http://www.w3.org/2000/svg"
+                            class="h-4 w-4 transition-transform fill-current" viewBox="0 0 24 24">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </button>
 
-            </div>
+                </div>
                 <!-- Advance Config Section -->
                 <div id="advPanel"
                     class="hidden mt-4 rounded-lg bg-white/60 backdrop-blur-md p-4 ring-1 ring-[#3D5CA5]/20 shadow">
@@ -358,7 +358,7 @@
 
 
 
-        <!-- ▼ Team Performance – dropdown card (no mt-8) ▼ -->
+        <!-- ▼ Team Performance -->
         <div id="perfWrap" class="sm:rounded-glass bg-white/70 p-4 backdrop-blur-md
        ring-1 ring-[#3D5CA5]/20 shadow-glass">
 
@@ -431,6 +431,66 @@
                 </div>
             </div>
         </div>
+
+        <!-- ▼▼ Venue Stats – dropdown glass card ▼▼ -->
+        <div id="venueWrap" class="sm:rounded-glass bg-white/70 p-4 backdrop-blur-md
+            ring-1 ring-[#3D5CA5]/20 shadow-glass mb-6">
+
+            <!-- clickable header -->
+            <button id="venueToggle" class="w-full flex items-center justify-between px-4 py-3
+                 bg-slate-100 text-sm font-semibold text-slate-800 rounded-xl">
+                <span>Venue Stats</span>
+                <svg class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
+                    stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6" />
+                </svg>
+            </button>
+
+            <!-- dropdown body (initially hidden) -->
+            <div id="venueBody" class="px-2 py-4 hidden">
+
+                <!-- Avg 1st Innings -->
+                <div class="mb-3">
+                    <div class="flex justify-between text-xs mb-1">
+                        <span class="text-slate-600">Avg&nbsp;1st&nbsp;Inns</span>
+                        <span class="font-semibold text-indigo-600">106</span>
+                    </div>
+                    <div class="h-2 w-full bg-slate-200 rounded-full overflow-hidden">
+                        <div class="h-full bg-indigo-500" style="width:65%"></div>
+                    </div>
+                </div>
+
+                <!-- Matches -->
+                <div class="mb-3">
+                    <div class="flex justify-between text-xs mb-1">
+                        <span class="text-slate-600">Matches</span>
+                        <span class="font-semibold text-rose-600">29</span>
+                    </div>
+                    <div class="h-2 w-full bg-slate-200 rounded-full overflow-hidden">
+                        <div class="h-full bg-rose-500" style="width:85%"></div>
+                    </div>
+                </div>
+
+                <!-- Chasing Wins -->
+                <div>
+                    <div class="flex justify-between text-xs mb-1">
+                        <span class="text-slate-600">Chasing&nbsp;Wins</span>
+                        <span class="font-semibold text-emerald-600">10</span>
+                    </div>
+                    <div class="h-2 w-full bg-slate-200 rounded-full overflow-hidden">
+                        <div class="h-full bg-emerald-500" style="width:40%"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
 
 
 
@@ -551,6 +611,22 @@
         document.getElementById('perfToggle').addEventListener('click', () => {
             document.getElementById('perfBody').classList.toggle('hidden');
             document.querySelector('#perfToggle svg').classList.toggle('rotate-180');
+        });
+
+
+
+
+
+
+
+        /* dropdown toggle */
+        const vToggle = document.getElementById('venueToggle');
+        const vBody = document.getElementById('venueBody');
+        const vChev = vToggle.querySelector('svg');
+
+        vToggle.addEventListener('click', () => {
+            vBody.classList.toggle('hidden');
+            vChev.classList.toggle('rotate-180');
         });
     </script>
 
