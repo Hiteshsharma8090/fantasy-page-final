@@ -240,311 +240,506 @@
 
 
 
-      <section class="relative w-full border border-white/40 bg-white/60 shadow-glass backdrop-blur-md pb-28 mt-4">
-    
-    <!-- sentinel for sticky detection -->
-    <div id="headerSentinel"></div>
+        <section class="relative w-full border border-white/40 bg-white/60 shadow-glass backdrop-blur-md pb-28 mt-4">
 
-    <!-- sticky header -->
-    <header id="stickyHeader"
-            class="sticky top-0 z-10 bg-white px-4 py-2 border-b border-slate-200
+            <!-- sentinel for sticky detection -->
+            <div id="headerSentinel"></div>
+
+            <!-- sticky header -->
+            <header id="stickyHeader" class="sticky top-0 z-10 bg-white px-4 py-2 border-b border-slate-200
                    text-sm font-semibold text-slate-700 transition-colors duration-300">
-      Choose your Captains &amp; Vice-Captains
-    </header>
+                Choose your Captains &amp; Vice-Captains
+            </header>
 
-    <!-- filters -->
-    <nav class="sticky top-[36px] z-10 flex overflow-x-auto bg-white/80 px-4 py-3 backdrop-blur-lg">
-      <div class="flex gap-4 text-sm font-semibold text-slate-500">
-        <button class="tab" data-sel>All</button><button class="tab">WK</button>
-        <button class="tab">BAT</button><button class="tab">AR</button>
-        <button class="tab">BOWL</button>
-      </div>
-      <span class="mx-3 h-5 w-px flex-shrink-0 bg-slate-300"></span>
-      <div class="flex gap-4 text-sm font-semibold text-slate-500">
-        <button class="tab">ENG-W</button><button class="tab">IND-W</button>
-      </div>
-    </nav>
+            <!-- prettier filter bar (pills visible even before JS) -->
+            <nav class="sticky top-[36px] z-10 bg-white/70 backdrop-blur px-4 py-3">
+                <ul id="filterBar" class="flex items-center overflow-x-auto text-sm font-semibold whitespace-nowrap">
 
-    <!-- legend -->
-    <div class="grid-tbl bg-white/80 px-4 py-2 text-xs font-semibold text-slate-600 backdrop-blur-lg">
-      <span>CR</span><span>PLAYER</span>
-      <span class="text-center">ROLE</span>
-      <span class="text-center">PTS</span>
-      <span class="text-center">C</span>
-      <span class="text-center">VC</span>
-    </div>
+                    <!-- role pills -->
+                    <li>
+                        <button data-role="all" class="filter-btn inline-flex items-center justify-center
+                                   bg-gradient-to-r from-[#E4443B] to-[#3D5CA5]
+                                   px-3 py-1 rounded-full text-white shadow shadow-blue-600/40">
+                            All
+                        </button>
+                    </li>
 
-    <!-- player list -->
-    <ul id="playerList" class="divide-y divide-slate-200">
+                    <li><button data-role="wk"
+                            class="filter-btn inline-flex items-center justify-center px-3 py-1 rounded-full">WK</button>
+                    </li>
+                    <li><button data-role="bat"
+                            class="filter-btn inline-flex items-center justify-center px-3 py-1 rounded-full">BAT</button>
+                    </li>
+                    <li><button data-role="ar"
+                            class="filter-btn inline-flex items-center justify-center px-3 py-1 rounded-full">AR</button>
+                    </li>
+                    <li><button data-role="bowl"
+                            class="filter-btn inline-flex items-center justify-center px-3 py-1 rounded-full">BOWL</button>
+                    </li>
 
-      <!-- 01 -->
-      <li data-player="p-singh"
-          class="grid-tbl items-center bg-white/70 px-4 py-3 text-[13px] sm:text-sm backdrop-blur-xl transition hover:bg-white">
-        <span class="inline-block w-10 py-0.5 text-[11px] font-bold text-slate-700">10</span>
-        <div class="flex items-center gap-2 min-w-0">
-          <div class="relative shrink-0">
-            <img src="images/profile.svg" alt="P Singh"
-                 class="h-9 w-9 rounded-full ring-2 ring-primary/20 object-cover">
-            <span class="absolute bottom-0 right-0 h-1.5 w-1.5 rounded-full bg-sky-500 ring-2 ring-white"></span>
-          </div>
-          <div class="min-w-0">
-            <p class="truncate max-w-[120px] font-medium text-ink">P Singh</p>
-            <p class="truncate-1 text-[10px] text-slate-500">Sel by <strong>64.5%</strong></p>
-          </div>
-        </div>
-        <span class="text-center font-semibold text-primary">BAT</span>
-        <div class="text-center leading-tight">
-          <p class="font-bold text-ink">175</p>
-          <p class="text-[10px] text-slate-500">Avg 58</p>
-        </div>
-        <button type="button" data-type="c" class="pick btn-c h-8 w-8 rounded-full border border-slate-400 font-extrabold text-slate-600 transition hover:border-primary hover:text-primary" aria-pressed="false">C</button>
-        <button type="button" data-type="v" class="pick btn-v h-8 w-8 rounded-full border border-slate-400 font-extrabold text-slate-600 transition hover:border-primary hover:text-primary" aria-pressed="false">VC</button>
-      </li>
+                    <!-- full-height divider -->
+                    <li class="flex">
+                        <span class="w-px bg-slate-300 self-stretch"></span>
+                    </li>
 
-      <!-- 02 -->
-      <li data-player="k-brown" class="grid-tbl items-center bg-white/70 px-4 py-3 text-[13px] sm:text-sm backdrop-blur-xl transition hover:bg-white">
-        <span class="inline-block w-10 py-0.5 text-[11px] font-bold text-slate-700">9</span>
-        <div class="flex items-center gap-2 min-w-0">
-          <div class="relative shrink-0">
-            <img src="images/profile.svg" alt="K Brown" class="h-9 w-9 rounded-full ring-2 ring-primary/20 object-cover">
-            <span class="absolute bottom-0 right-0 h-1.5 w-1.5 rounded-full bg-sky-500 ring-2 ring-white"></span>
-          </div>
-          <div class="min-w-0">
-            <p class="truncate max-w-[120px] font-medium text-ink">K Brown</p>
-            <p class="truncate-1 text-[10px] text-slate-500">Sel by <strong>59.0%</strong></p>
-          </div>
-        </div>
-        <span class="text-center font-semibold text-primary">AR</span>
-        <div class="text-center leading-tight">
-          <p class="font-bold text-ink">160</p>
-          <p class="text-[10px] text-slate-500">Avg 53</p>
-        </div>
-        <button type="button" data-type="c" class="pick btn-c h-8 w-8 rounded-full border border-slate-400 font-extrabold text-slate-600 transition hover:border-primary hover:text-primary" aria-pressed="false">C</button>
-        <button type="button" data-type="v" class="pick btn-v h-8 w-8 rounded-full border border-slate-400 font-extrabold text-slate-600 transition hover:border-primary hover:text-primary" aria-pressed="false">VC</button>
-      </li>
+                    <!-- team pills -->
+                    <li><button data-role="engw"
+                            class="filter-btn inline-flex items-center justify-center px-3 py-1 rounded-full">ENG-W</button>
+                    </li>
+                    <li><button data-role="indw"
+                            class="filter-btn inline-flex items-center justify-center px-3 py-1 rounded-full">IND-W</button>
+                    </li>
+                </ul>
+            </nav>
 
-      <!-- 03 -->
-      <li data-player="m-rahman" class="grid-tbl items-center bg-white/70 px-4 py-3 text-[13px] sm:text-sm backdrop-blur-xl transition hover:bg-white">
-        <span class="inline-block w-10 py-0.5 text-[11px] font-bold text-slate-700">8</span>
-        <div class="flex items-center gap-2 min-w-0">
-          <div class="relative shrink-0">
-            <img src="images/profile.svg" alt="M Rahman" class="h-9 w-9 rounded-full ring-2 ring-primary/20 object-cover">
-            <span class="absolute bottom-0 right-0 h-1.5 w-1.5 rounded-full bg-sky-500 ring-2 ring-white"></span>
-          </div>
-          <div class="min-w-0">
-            <p class="truncate max-w-[120px] font-medium text-ink">M Rahman</p>
-            <p class="truncate-1 text-[10px] text-slate-500">Sel by <strong>41.8%</strong></p>
-          </div>
-        </div>
-        <span class="text-center font-semibold text-primary">BOWL</span>
-        <div class="text-center leading-tight">
-          <p class="font-bold text-ink">142</p>
-          <p class="text-[10px] text-slate-500">Avg 47</p>
-        </div>
-        <button type="button" data-type="c" class="pick btn-c h-8 w-8 rounded-full border border-slate-400 font-extrabold text-slate-600 transition hover:border-primary hover:text-primary" aria-pressed="false">C</button>
-        <button type="button" data-type="v" class="pick btn-v h-8 w-8 rounded-full border border-slate-400 font-extrabold text-slate-600 transition hover:border-primary hover:text-primary" aria-pressed="false">VC</button>
-      </li>
 
-      <!-- 04 -->
-      <li data-player="l-wang" class="grid-tbl items-center bg-white/70 px-4 py-3 text-[13px] sm:text-sm backdrop-blur-xl transition hover:bg-white">
-        <span class="inline-block w-10 py-0.5 text-[11px] font-bold text-slate-700">7</span>
-        <div class="flex items-center gap-2 min-w-0">
-          <div class="relative shrink-0">
-            <img src="images/profile.svg" alt="L Wang" class="h-9 w-9 rounded-full ring-2 ring-primary/20 object-cover">
-            <span class="absolute bottom-0 right-0 h-1.5 w-1.5 rounded-full bg-sky-500 ring-2 ring-white"></span>
-          </div>
-          <div class="min-w-0">
-            <p class="truncate max-w-[120px] font-medium text-ink">L Wang</p>
-            <p class="truncate-1 text-[10px] text-slate-500">Sel by <strong>38.6%</strong></p>
-          </div>
-        </div>
-        <span class="text-center font-semibold text-primary">BAT</span>
-        <div class="text-center leading-tight">
-          <p class="font-bold text-ink">131</p>
-          <p class="text-[10px] text-slate-500">Avg 44</p>
-        </div>
-        <button type="button" data-type="c" class="pick btn-c h-8 w-8 rounded-full border border-slate-400 font-extrabold text-slate-600 transition hover:border-primary hover:text-primary" aria-pressed="false">C</button>
-        <button type="button" data-type="v" class="pick btn-v h-8 w-8 rounded-full border border-slate-400 font-extrabold text-slate-600 transition hover:border-primary hover:text-primary" aria-pressed="false">VC</button>
-      </li>
 
-      <!-- 05 -->
-      <li data-player="s-patel" class="grid-tbl items-center bg-white/70 px-4 py-3 text-[13px] sm:text-sm backdrop-blur-xl transition hover:bg-white">
-        <span class="inline-block w-10 py-0.5 text-[11px] font-bold text-slate-700">6</span>
-        <div class="flex items-center gap-2 min-w-0">
-          <div class="relative shrink-0">
-            <img src="images/profile.svg" alt="S Patel" class="h-9 w-9 rounded-full ring-2 ring-primary/20 object-cover">
-            <span class="absolute bottom-0 right-0 h-1.5 w-1.5 rounded-full bg-sky-500 ring-2 ring-white"></span>
-          </div>
-          <div class="min-w-0">
-            <p class="truncate max-w-[120px] font-medium text-ink">S Patel</p>
-            <p class="truncate-1 text-[10px] text-slate-500">Sel by <strong>30.4%</strong></p>
-          </div>
-        </div>
-        <span class="text-center font-semibold text-primary">AR</span>
-        <div class="text-center leading-tight">
-          <p class="font-bold text-ink">118</p>
-          <p class="text-[10px] text-slate-500">Avg 39</p>
-        </div>
-        <button type="button" data-type="c" class="pick btn-c h-8 w-8 rounded-full border border-slate-400 font-extrabold text-slate-600 transition hover:border-primary hover:text-primary" aria-pressed="false">C</button>
-        <button type="button" data-type="v" class="pick btn-v h-8 w-8 rounded-full border border-slate-400 font-extrabold text-slate-600 transition hover:border-primary hover:text-primary" aria-pressed="false">VC</button>
-      </li>
+            <!-- legend -->
+            <div class="grid-tbl bg-white/80 px-4 py-2 text-xs font-semibold text-slate-600 backdrop-blur-lg">
+                <span>CR</span><span>PLAYER</span>
+                <span class="text-center">ROLE</span>
+                <span class="text-center">PTS</span>
+                <span class="text-center">C</span>
+                <span class="text-center">VC</span>
+            </div>
 
-      <!-- 06 -->
-      <li data-player="d-garcia" class="grid-tbl items-center bg-white/70 px-4 py-3 text-[13px] sm:text-sm backdrop-blur-xl transition hover:bg-white">
-        <span class="inline-block w-10 py-0.5 text-[11px] font-bold text-slate-700">5</span>
-        <div class="flex items-center gap-2 min-w-0">
-          <div class="relative shrink-0">
-            <img src="images/profile.svg" alt="D Garcia" class="h-9 w-9 rounded-full ring-2 ring-primary/20 object-cover">
-            <span class="absolute bottom-0 right-0 h-1.5 w-1.5 rounded-full bg-sky-500 ring-2 ring-white"></span>
-          </div>
-          <div class="min-w-0">
-            <p class="truncate max-w-[120px] font-medium text-ink">D Garcia</p>
-            <p class="truncate-1 text-[10px] text-slate-500">Sel by <strong>28.0%</strong></p>
-          </div>
-        </div>
-        <span class="text-center font-semibold text-primary">BOWL</span>
-        <div class="text-center leading-tight">
-          <p class="font-bold text-ink">110</p>
-          <p class="text-[10px] text-slate-500">Avg 37</p>
-        </div>
-        <button type="button" data-type="c" class="pick btn-c h-8 w-8 rounded-full border border-slate-400 font-extrabold text-slate-600 transition hover:border-primary hover:text-primary" aria-pressed="false">C</button>
-        <button type="button" data-type="v" class="pick btn-v h-8 w-8 rounded-full border border-slate-400 font-extrabold text-slate-600 transition hover:border-primary hover:text-primary" aria-pressed="false">VC</button>
-      </li>
+            <!-- player list -->
+            <ul id="playerList" class="divide-y divide-slate-200">
 
-      <!-- 07 -->
-      <li data-player="e-kim" class="grid-tbl items-center bg-white/70 px-4 py-3 text-[13px] sm:text-sm backdrop-blur-xl transition hover:bg-white">
-        <span class="inline-block w-10 py-0.5 text-[11px] font-bold text-slate-700">4</span>
-        <div class="flex items-center gap-2 min-w-0">
-          <div class="relative shrink-0">
-            <img src="images/profile.svg" alt="E Kim" class="h-9 w-9 rounded-full ring-2 ring-primary/20 object-cover">
-            <span class="absolute bottom-0 right-0 h-1.5 w-1.5 rounded-full bg-sky-500 ring-2 ring-white"></span>
-          </div>
-          <div class="min-w-0">
-            <p class="truncate max-w-[120px] font-medium text-ink">E Kim</p>
-            <p class="truncate-1 text-[10px] text-slate-500">Sel by <strong>21.7%</strong></p>
-          </div>
-        </div>
-        <span class="text-center font-semibold text-primary">BAT</span>
-        <div class="text-center leading-tight">
-          <p class="font-bold text-ink">97</p>
-          <p class="text-[10px] text-slate-500">Avg 32</p>
-        </div>
-        <button type="button" data-type="c" class="pick btn-c h-8 w-8 rounded-full border border-slate-400 font-extrabold text-slate-600 transition hover:border-primary hover:text-primary" aria-pressed="false">C</button>
-        <button type="button" data-type="v" class="pick btn-v h-8 w-8 rounded-full border border-slate-400 font-extrabold text-slate-600 transition hover:border-primary hover:text-primary" aria-pressed="false">VC</button>
-      </li>
+                <!-- 01 -->
+                <li data-player="p-singh"
+                    class="grid-tbl items-center bg-white/70 px-4 py-3 text-[13px] sm:text-sm backdrop-blur-xl transition hover:bg-white">
+                    <span class="inline-block w-10 py-0.5 text-[11px] font-bold text-slate-700">10</span>
+                    <div class="flex items-center gap-2 min-w-0">
+                        <div class="relative shrink-0">
+                            <img src="images/profile.svg" alt="P Singh"
+                                class="h-9 w-9 rounded-full ring-2 ring-primary/20 object-cover">
+                            <span
+                                class="absolute bottom-0 right-0 h-1.5 w-1.5 rounded-full bg-sky-500 ring-2 ring-white"></span>
+                        </div>
+                        <div class="min-w-0">
+                            <p class="truncate max-w-[120px] font-medium text-ink">P Singh</p>
+                            <p class="truncate-1 text-[10px] text-slate-500">Sel by <strong>64.5%</strong></p>
+                        </div>
+                    </div>
+                    <span class="text-center font-semibold text-primary">BAT</span>
+                    <div class="text-center leading-tight">
+                        <p class="font-bold text-ink">175</p>
+                        <p class="text-[10px] text-slate-500">Avg 58</p>
+                    </div>
+                    <button type="button" data-type="c"
+        class="pick btn-c h-8 w-8 rounded-full border border-slate-400
+               font-extrabold text-slate-600 transition hover:border-primary hover:text-primary
+               justify-self-center">   <!-- 👈 this -->
+  C
+</button>
 
-      <!-- 08 -->
-      <li data-player="f-ahmed" class="grid-tbl items-center bg-white/70 px-4 py-3 text-[13px] sm:text-sm backdrop-blur-xl transition hover:bg-white">
-        <span class="inline-block w-10 py-0.5 text-[11px] font-bold text-slate-700">3</span>
-        <div class="flex items-center gap-2 min-w-0">
-          <div class="relative shrink-0">
-            <img src="images/profile.svg" alt="F Ahmed" class="h-9 w-9 rounded-full ring-2 ring-primary/20 object-cover">
-            <span class="absolute bottom-0 right-0 h-1.5 w-1.5 rounded-full bg-sky-500 ring-2 ring-white"></span>
-          </div>
-          <div class="min-w-0">
-            <p class="truncate max-w-[120px] font-medium text-ink">F Ahmed</p>
-            <p class="truncate-1 text-[10px] text-slate-500">Sel by <strong>18.4%</strong></p>
-          </div>
-        </div>
-        <span class="text-center font-semibold text-primary">AR</span>
-        <div class="text-center leading-tight">
-          <p class="font-bold text-ink">86</p>
-          <p class="text-[10px] text-slate-500">Avg 29</p>
-        </div>
-        <button type="button" data-type="c" class="pick btn-c h-8 w-8 rounded-full border border-slate-400 font-extrabold text-slate-600 transition hover:border-primary hover:text-primary" aria-pressed="false">C</button>
-        <button type="button" data-type="v" class="pick btn-v h-8 w-8 rounded-full border border-slate-400 font-extrabold text-slate-600 transition hover:border-primary hover:text-primary" aria-pressed="false">VC</button>
-      </li>
+<button type="button" data-type="v"
+        class="pick btn-v h-8 w-8 rounded-full border border-slate-400
+               font-extrabold text-slate-600 transition hover:border-primary hover:text-primary
+               justify-self-center">   <!-- 👈 and this -->
+  VC
+</button>
+                </li>
 
-      <!-- 09 -->
-      <li data-player="g-clark" class="grid-tbl items-center bg-white/70 px-4 py-3 text-[13px] sm:text-sm backdrop-blur-xl transition hover:bg-white">
-        <span class="inline-block w-10 py-0.5 text-[11px] font-bold text-slate-700">2</span>
-        <div class="flex items-center gap-2 min-w-0">
-          <div class="relative shrink-0">
-            <img src="images/profile.svg" alt="G Clark" class="h-9 w-9 rounded-full ring-2 ring-primary/20 object-cover">
-            <span class="absolute bottom-0 right-0 h-1.5 w-1.5 rounded-full bg-sky-500 ring-2 ring-white"></span>
-          </div>
-          <div class="min-w-0">
-            <p class="truncate max-w-[120px] font-medium text-ink">G Clark</p>
-            <p class="truncate-1 text-[10px] text-slate-500">Sel by <strong>14.9%</strong></p>
-          </div>
-        </div>
-        <span class="text-center font-semibold text-primary">BOWL</span>
-        <div class="text-center leading-tight">
-          <p class="font-bold text-ink">78</p>
-          <p class="text-[10px] text-slate-500">Avg 26</p>
-        </div>
-        <button type="button" data-type="c" class="pick btn-c h-8 w-8 rounded-full border border-slate-400 font-extrabold text-slate-600 transition hover:border-primary hover:text-primary" aria-pressed="false">C</button>
-        <button type="button" data-type="v" class="pick btn-v h-8 w-8 rounded-full border border-slate-400 font-extrabold text-slate-600 transition hover:border-primary hover:text-primary" aria-pressed="false">VC</button>
-      </li>
+                <!-- 02 -->
+                <li data-player="k-brown"
+                    class="grid-tbl items-center bg-white/70 px-4 py-3 text-[13px] sm:text-sm backdrop-blur-xl transition hover:bg-white">
+                    <span class="inline-block w-10 py-0.5 text-[11px] font-bold text-slate-700">9</span>
+                    <div class="flex items-center gap-2 min-w-0">
+                        <div class="relative shrink-0">
+                            <img src="images/profile.svg" alt="K Brown"
+                                class="h-9 w-9 rounded-full ring-2 ring-primary/20 object-cover">
+                            <span
+                                class="absolute bottom-0 right-0 h-1.5 w-1.5 rounded-full bg-sky-500 ring-2 ring-white"></span>
+                        </div>
+                        <div class="min-w-0">
+                            <p class="truncate max-w-[120px] font-medium text-ink">K Brown</p>
+                            <p class="truncate-1 text-[10px] text-slate-500">Sel by <strong>59.0%</strong></p>
+                        </div>
+                    </div>
+                    <span class="text-center font-semibold text-primary">AR</span>
+                    <div class="text-center leading-tight">
+                        <p class="font-bold text-ink">160</p>
+                        <p class="text-[10px] text-slate-500">Avg 53</p>
+                    </div>
+                    <button type="button" data-type="c"
+        class="pick btn-c h-8 w-8 rounded-full border border-slate-400
+               font-extrabold text-slate-600 transition hover:border-primary hover:text-primary
+               justify-self-center">   <!-- 👈 this -->
+  C
+</button>
 
-      <!-- 10 -->
-      <li data-player="h-ito" class="grid-tbl items-center bg-white/70 px-4 py-3 text-[13px] sm:text-sm backdrop-blur-xl transition hover:bg-white">
-        <span class="inline-block w-10 py-0.5 text-[11px] font-bold text-slate-700">1</span>
-        <div class="flex items-center gap-2 min-w-0">
-          <div class="relative shrink-0">
-            <img src="images/profile.svg" alt="H Ito" class="h-9 w-9 rounded-full ring-2 ring-primary/20 object-cover">
-            <span class="absolute bottom-0 right-0 h-1.5 w-1.5 rounded-full bg-sky-500 ring-2 ring-white"></span>
-          </div>
-          <div class="min-w-0">
-            <p class="truncate max-w-[120px] font-medium text-ink">H Ito</p>
-            <p class="truncate-1 text-[10px] text-slate-500">Sel by <strong>12.5%</strong></p>
-          </div>
-        </div>
-        <span class="text-center font-semibold text-primary">BAT</span>
-        <div class="text-center leading-tight">
-          <p class="font-bold text-ink">70</p>
-          <p class="text-[10px] text-slate-500">Avg 23</p>
-        </div>
-        <button type="button" data-type="c" class="pick btn-c h-8 w-8 rounded-full border border-slate-400 font-extrabold text-slate-600 transition hover:border-primary hover:text-primary" aria-pressed="false">C</button>
-        <button type="button" data-type="v" class="pick btn-v h-8 w-8 rounded-full border border-slate-400 font-extrabold text-slate-600 transition hover:border-primary hover:text-primary" aria-pressed="false">VC</button>
-      </li>
+<button type="button" data-type="v"
+        class="pick btn-v h-8 w-8 rounded-full border border-slate-400
+               font-extrabold text-slate-600 transition hover:border-primary hover:text-primary
+               justify-self-center">   <!-- 👈 and this -->
+  VC
+</button>
+                </li>
 
-      <!-- 11 -->
-      <li data-player="i-lopez" class="grid-tbl items-center bg-white/70 px-4 py-3 text-[13px] sm:text-sm backdrop-blur-xl transition hover:bg-white">
-        <span class="inline-block w-10 py-0.5 text-[11px] font-bold text-slate-700">9</span>
-        <div class="flex items-center gap-2 min-w-0">
-          <div class="relative shrink-0">
-            <img src="images/profile.svg" alt="I Lopez" class="h-9 w-9 rounded-full ring-2 ring-primary/20 object-cover">
-            <span class="absolute bottom-0 right-0 h-1.5 w-1.5 rounded-full bg-sky-500 ring-2 ring-white"></span>
-          </div>
-          <div class="min-w-0">
-            <p class="truncate max-w-[120px] font-medium text-ink">I Lopez</p>
-            <p class="truncate-1 text-[10px] text-slate-500">Sel by <strong>11.2%</strong></p>
-          </div>
-        </div>
-        <span class="text-center font-semibold text-primary">AR</span>
-        <div class="text-center leading-tight">
-          <p class="font-bold text-ink">65</p>
-          <p class="text-[10px] text-slate-500">Avg 22</p>
-        </div>
-        <button type="button" data-type="c" class="pick btn-c h-8 w-8 rounded-full border border-slate-400 font-extrabold text-slate-600 transition hover:border-primary hover:text-primary" aria-pressed="false">C</button>
-        <button type="button" data-type="v" class="pick btn-v h-8 w-8 rounded-full border border-slate-400 font-extrabold text-slate-600 transition hover:border-primary hover:text-primary" aria-pressed="false">VC</button>
-      </li>
+                <!-- 03 -->
+                <li data-player="m-rahman"
+                    class="grid-tbl items-center bg-white/70 px-4 py-3 text-[13px] sm:text-sm backdrop-blur-xl transition hover:bg-white">
+                    <span class="inline-block w-10 py-0.5 text-[11px] font-bold text-slate-700">8</span>
+                    <div class="flex items-center gap-2 min-w-0">
+                        <div class="relative shrink-0">
+                            <img src="images/profile.svg" alt="M Rahman"
+                                class="h-9 w-9 rounded-full ring-2 ring-primary/20 object-cover">
+                            <span
+                                class="absolute bottom-0 right-0 h-1.5 w-1.5 rounded-full bg-sky-500 ring-2 ring-white"></span>
+                        </div>
+                        <div class="min-w-0">
+                            <p class="truncate max-w-[120px] font-medium text-ink">M Rahman</p>
+                            <p class="truncate-1 text-[10px] text-slate-500">Sel by <strong>41.8%</strong></p>
+                        </div>
+                    </div>
+                    <span class="text-center font-semibold text-primary">BOWL</span>
+                    <div class="text-center leading-tight">
+                        <p class="font-bold text-ink">142</p>
+                        <p class="text-[10px] text-slate-500">Avg 47</p>
+                    </div>
+                    <button type="button" data-type="c"
+        class="pick btn-c h-8 w-8 rounded-full border border-slate-400
+               font-extrabold text-slate-600 transition hover:border-primary hover:text-primary
+               justify-self-center">   <!-- 👈 this -->
+  C
+</button>
 
-      <!-- 12 -->
-      <li data-player="j-nguyen" class="grid-tbl items-center bg-white/70 px-4 py-3 text-[13px] sm:text-sm backdrop-blur-xl transition hover:bg-white">
-        <span class="inline-block w-10 py-0.5 text-[11px] font-bold text-slate-700">8</span>
-        <div class="flex items-center gap-2 min-w-0">
-          <div class="relative shrink-0">
-            <img src="images/profile.svg" alt="J Nguyen" class="h-9 w-9 rounded-full ring-2 ring-primary/20 object-cover">
-            <span class="absolute bottom-0 right-0 h-1.5 w-1.5 rounded-full bg-sky-500 ring-2 ring-white"></span>
-          </div>
-          <div class="min-w-0">
-            <p class="truncate max-w-[120px] font-medium text-ink">J Nguyen</p>
-            <p class="truncate-1 text-[10px] text-slate-500">Sel by <strong>9.8%</strong></p>
-          </div>
-        </div>
-        <span class="text-center font-semibold text-primary">BOWL</span>
-        <div class="text-center leading-tight">
-          <p class="font-bold text-ink">60</p>
-          <p class="text-[10px] text-slate-500">Avg 20</p>
-        </div>
-        <button type="button" data-type="c" class="pick btn-c h-8 w-8 rounded-full border border-slate-400 font-extrabold text-slate-600 transition hover:border-primary hover:text-primary" aria-pressed="false">C</button>
-        <button type="button" data-type="v" class="pick btn-v h-8 w-8 rounded-full border border-slate-400 font-extrabold text-slate-600 transition hover:border-primary hover:text-primary" aria-pressed="false">VC</button>
-      </li>
+<button type="button" data-type="v"
+        class="pick btn-v h-8 w-8 rounded-full border border-slate-400
+               font-extrabold text-slate-600 transition hover:border-primary hover:text-primary
+               justify-self-center">   <!-- 👈 and this -->
+  VC
+</button>
+                </li>
 
-    </ul>
-  </section>
+                <!-- 04 -->
+                <li data-player="l-wang"
+                    class="grid-tbl items-center bg-white/70 px-4 py-3 text-[13px] sm:text-sm backdrop-blur-xl transition hover:bg-white">
+                    <span class="inline-block w-10 py-0.5 text-[11px] font-bold text-slate-700">7</span>
+                    <div class="flex items-center gap-2 min-w-0">
+                        <div class="relative shrink-0">
+                            <img src="images/profile.svg" alt="L Wang"
+                                class="h-9 w-9 rounded-full ring-2 ring-primary/20 object-cover">
+                            <span
+                                class="absolute bottom-0 right-0 h-1.5 w-1.5 rounded-full bg-sky-500 ring-2 ring-white"></span>
+                        </div>
+                        <div class="min-w-0">
+                            <p class="truncate max-w-[120px] font-medium text-ink">L Wang</p>
+                            <p class="truncate-1 text-[10px] text-slate-500">Sel by <strong>38.6%</strong></p>
+                        </div>
+                    </div>
+                    <span class="text-center font-semibold text-primary">BAT</span>
+                    <div class="text-center leading-tight">
+                        <p class="font-bold text-ink">131</p>
+                        <p class="text-[10px] text-slate-500">Avg 44</p>
+                    </div>
+                    <button type="button" data-type="c"
+        class="pick btn-c h-8 w-8 rounded-full border border-slate-400
+               font-extrabold text-slate-600 transition hover:border-primary hover:text-primary
+               justify-self-center">   <!-- 👈 this -->
+  C
+</button>
+
+<button type="button" data-type="v"
+        class="pick btn-v h-8 w-8 rounded-full border border-slate-400
+               font-extrabold text-slate-600 transition hover:border-primary hover:text-primary
+               justify-self-center">   <!-- 👈 and this -->
+  VC
+</button>
+                </li>
+
+                <!-- 05 -->
+                <li data-player="s-patel"
+                    class="grid-tbl items-center bg-white/70 px-4 py-3 text-[13px] sm:text-sm backdrop-blur-xl transition hover:bg-white">
+                    <span class="inline-block w-10 py-0.5 text-[11px] font-bold text-slate-700">6</span>
+                    <div class="flex items-center gap-2 min-w-0">
+                        <div class="relative shrink-0">
+                            <img src="images/profile.svg" alt="S Patel"
+                                class="h-9 w-9 rounded-full ring-2 ring-primary/20 object-cover">
+                            <span
+                                class="absolute bottom-0 right-0 h-1.5 w-1.5 rounded-full bg-sky-500 ring-2 ring-white"></span>
+                        </div>
+                        <div class="min-w-0">
+                            <p class="truncate max-w-[120px] font-medium text-ink">S Patel</p>
+                            <p class="truncate-1 text-[10px] text-slate-500">Sel by <strong>30.4%</strong></p>
+                        </div>
+                    </div>
+                    <span class="text-center font-semibold text-primary">AR</span>
+                    <div class="text-center leading-tight">
+                        <p class="font-bold text-ink">118</p>
+                        <p class="text-[10px] text-slate-500">Avg 39</p>
+                    </div>
+                    <button type="button" data-type="c"
+        class="pick btn-c h-8 w-8 rounded-full border border-slate-400
+               font-extrabold text-slate-600 transition hover:border-primary hover:text-primary
+               justify-self-center">   <!-- 👈 this -->
+  C
+</button>
+
+<button type="button" data-type="v"
+        class="pick btn-v h-8 w-8 rounded-full border border-slate-400
+               font-extrabold text-slate-600 transition hover:border-primary hover:text-primary
+               justify-self-center">   <!-- 👈 and this -->
+  VC
+</button>
+                </li>
+
+                <!-- 06 -->
+                <li data-player="d-garcia"
+                    class="grid-tbl items-center bg-white/70 px-4 py-3 text-[13px] sm:text-sm backdrop-blur-xl transition hover:bg-white">
+                    <span class="inline-block w-10 py-0.5 text-[11px] font-bold text-slate-700">5</span>
+                    <div class="flex items-center gap-2 min-w-0">
+                        <div class="relative shrink-0">
+                            <img src="images/profile.svg" alt="D Garcia"
+                                class="h-9 w-9 rounded-full ring-2 ring-primary/20 object-cover">
+                            <span
+                                class="absolute bottom-0 right-0 h-1.5 w-1.5 rounded-full bg-sky-500 ring-2 ring-white"></span>
+                        </div>
+                        <div class="min-w-0">
+                            <p class="truncate max-w-[120px] font-medium text-ink">D Garcia</p>
+                            <p class="truncate-1 text-[10px] text-slate-500">Sel by <strong>28.0%</strong></p>
+                        </div>
+                    </div>
+                    <span class="text-center font-semibold text-primary">BOWL</span>
+                    <div class="text-center leading-tight">
+                        <p class="font-bold text-ink">110</p>
+                        <p class="text-[10px] text-slate-500">Avg 37</p>
+                    </div>
+                    <button type="button" data-type="c"
+        class="pick btn-c h-8 w-8 rounded-full border border-slate-400
+               font-extrabold text-slate-600 transition hover:border-primary hover:text-primary
+               justify-self-center">   <!-- 👈 this -->
+  C
+</button>
+
+<button type="button" data-type="v"
+        class="pick btn-v h-8 w-8 rounded-full border border-slate-400
+               font-extrabold text-slate-600 transition hover:border-primary hover:text-primary
+               justify-self-center">   <!-- 👈 and this -->
+  VC
+</button>
+                </li>
+
+                <!-- 07 -->
+                <li data-player="e-kim"
+                    class="grid-tbl items-center bg-white/70 px-4 py-3 text-[13px] sm:text-sm backdrop-blur-xl transition hover:bg-white">
+                    <span class="inline-block w-10 py-0.5 text-[11px] font-bold text-slate-700">4</span>
+                    <div class="flex items-center gap-2 min-w-0">
+                        <div class="relative shrink-0">
+                            <img src="images/profile.svg" alt="E Kim"
+                                class="h-9 w-9 rounded-full ring-2 ring-primary/20 object-cover">
+                            <span
+                                class="absolute bottom-0 right-0 h-1.5 w-1.5 rounded-full bg-sky-500 ring-2 ring-white"></span>
+                        </div>
+                        <div class="min-w-0">
+                            <p class="truncate max-w-[120px] font-medium text-ink">E Kim</p>
+                            <p class="truncate-1 text-[10px] text-slate-500">Sel by <strong>21.7%</strong></p>
+                        </div>
+                    </div>
+                    <span class="text-center font-semibold text-primary">BAT</span>
+                    <div class="text-center leading-tight">
+                        <p class="font-bold text-ink">97</p>
+                        <p class="text-[10px] text-slate-500">Avg 32</p>
+                    </div>
+                    <button type="button" data-type="c"
+        class="pick btn-c h-8 w-8 rounded-full border border-slate-400
+               font-extrabold text-slate-600 transition hover:border-primary hover:text-primary
+               justify-self-center">   <!-- 👈 this -->
+  C
+</button>
+
+<button type="button" data-type="v"
+        class="pick btn-v h-8 w-8 rounded-full border border-slate-400
+               font-extrabold text-slate-600 transition hover:border-primary hover:text-primary
+               justify-self-center">   <!-- 👈 and this -->
+  VC
+</button>
+                </li>
+
+                <!-- 08 -->
+                <li data-player="f-ahmed"
+                    class="grid-tbl items-center bg-white/70 px-4 py-3 text-[13px] sm:text-sm backdrop-blur-xl transition hover:bg-white">
+                    <span class="inline-block w-10 py-0.5 text-[11px] font-bold text-slate-700">3</span>
+                    <div class="flex items-center gap-2 min-w-0">
+                        <div class="relative shrink-0">
+                            <img src="images/profile.svg" alt="F Ahmed"
+                                class="h-9 w-9 rounded-full ring-2 ring-primary/20 object-cover">
+                            <span
+                                class="absolute bottom-0 right-0 h-1.5 w-1.5 rounded-full bg-sky-500 ring-2 ring-white"></span>
+                        </div>
+                        <div class="min-w-0">
+                            <p class="truncate max-w-[120px] font-medium text-ink">F Ahmed</p>
+                            <p class="truncate-1 text-[10px] text-slate-500">Sel by <strong>18.4%</strong></p>
+                        </div>
+                    </div>
+                    <span class="text-center font-semibold text-primary">AR</span>
+                    <div class="text-center leading-tight">
+                        <p class="font-bold text-ink">86</p>
+                        <p class="text-[10px] text-slate-500">Avg 29</p>
+                    </div>
+                    <button type="button" data-type="c"
+        class="pick btn-c h-8 w-8 rounded-full border border-slate-400
+               font-extrabold text-slate-600 transition hover:border-primary hover:text-primary
+               justify-self-center">   <!-- 👈 this -->
+  C
+</button>
+
+<button type="button" data-type="v"
+        class="pick btn-v h-8 w-8 rounded-full border border-slate-400
+               font-extrabold text-slate-600 transition hover:border-primary hover:text-primary
+               justify-self-center">   <!-- 👈 and this -->
+  VC
+</button>
+                </li>
+
+                <!-- 09 -->
+                <li data-player="g-clark"
+                    class="grid-tbl items-center bg-white/70 px-4 py-3 text-[13px] sm:text-sm backdrop-blur-xl transition hover:bg-white">
+                    <span class="inline-block w-10 py-0.5 text-[11px] font-bold text-slate-700">2</span>
+                    <div class="flex items-center gap-2 min-w-0">
+                        <div class="relative shrink-0">
+                            <img src="images/profile.svg" alt="G Clark"
+                                class="h-9 w-9 rounded-full ring-2 ring-primary/20 object-cover">
+                            <span
+                                class="absolute bottom-0 right-0 h-1.5 w-1.5 rounded-full bg-sky-500 ring-2 ring-white"></span>
+                        </div>
+                        <div class="min-w-0">
+                            <p class="truncate max-w-[120px] font-medium text-ink">G Clark</p>
+                            <p class="truncate-1 text-[10px] text-slate-500">Sel by <strong>14.9%</strong></p>
+                        </div>
+                    </div>
+                    <span class="text-center font-semibold text-primary">BOWL</span>
+                    <div class="text-center leading-tight">
+                        <p class="font-bold text-ink">78</p>
+                        <p class="text-[10px] text-slate-500">Avg 26</p>
+                    </div>
+                    <button type="button" data-type="c"
+        class="pick btn-c h-8 w-8 rounded-full border border-slate-400
+               font-extrabold text-slate-600 transition hover:border-primary hover:text-primary
+               justify-self-center">   <!-- 👈 this -->
+  C
+</button>
+
+<button type="button" data-type="v"
+        class="pick btn-v h-8 w-8 rounded-full border border-slate-400
+               font-extrabold text-slate-600 transition hover:border-primary hover:text-primary
+               justify-self-center">   <!-- 👈 and this -->
+  VC
+</button>
+                </li>
+
+                <!-- 10 -->
+                <li data-player="h-ito"
+                    class="grid-tbl items-center bg-white/70 px-4 py-3 text-[13px] sm:text-sm backdrop-blur-xl transition hover:bg-white">
+                    <span class="inline-block w-10 py-0.5 text-[11px] font-bold text-slate-700">1</span>
+                    <div class="flex items-center gap-2 min-w-0">
+                        <div class="relative shrink-0">
+                            <img src="images/profile.svg" alt="H Ito"
+                                class="h-9 w-9 rounded-full ring-2 ring-primary/20 object-cover">
+                            <span
+                                class="absolute bottom-0 right-0 h-1.5 w-1.5 rounded-full bg-sky-500 ring-2 ring-white"></span>
+                        </div>
+                        <div class="min-w-0">
+                            <p class="truncate max-w-[120px] font-medium text-ink">H Ito</p>
+                            <p class="truncate-1 text-[10px] text-slate-500">Sel by <strong>12.5%</strong></p>
+                        </div>
+                    </div>
+                    <span class="text-center font-semibold text-primary">BAT</span>
+                    <div class="text-center leading-tight">
+                        <p class="font-bold text-ink">70</p>
+                        <p class="text-[10px] text-slate-500">Avg 23</p>
+                    </div>
+                    <button type="button" data-type="c"
+        class="pick btn-c h-8 w-8 rounded-full border border-slate-400
+               font-extrabold text-slate-600 transition hover:border-primary hover:text-primary
+               justify-self-center">   <!-- 👈 this -->
+  C
+</button>
+
+<button type="button" data-type="v"
+        class="pick btn-v h-8 w-8 rounded-full border border-slate-400
+               font-extrabold text-slate-600 transition hover:border-primary hover:text-primary
+               justify-self-center">   <!-- 👈 and this -->
+  VC
+</button>
+                </li>
+
+                <!-- 11 -->
+                <li data-player="i-lopez"
+                    class="grid-tbl items-center bg-white/70 px-4 py-3 text-[13px] sm:text-sm backdrop-blur-xl transition hover:bg-white">
+                    <span class="inline-block w-10 py-0.5 text-[11px] font-bold text-slate-700">9</span>
+                    <div class="flex items-center gap-2 min-w-0">
+                        <div class="relative shrink-0">
+                            <img src="images/profile.svg" alt="I Lopez"
+                                class="h-9 w-9 rounded-full ring-2 ring-primary/20 object-cover">
+                            <span
+                                class="absolute bottom-0 right-0 h-1.5 w-1.5 rounded-full bg-sky-500 ring-2 ring-white"></span>
+                        </div>
+                        <div class="min-w-0">
+                            <p class="truncate max-w-[120px] font-medium text-ink">I Lopez</p>
+                            <p class="truncate-1 text-[10px] text-slate-500">Sel by <strong>11.2%</strong></p>
+                        </div>
+                    </div>
+                    <span class="text-center font-semibold text-primary">AR</span>
+                    <div class="text-center leading-tight">
+                        <p class="font-bold text-ink">65</p>
+                        <p class="text-[10px] text-slate-500">Avg 22</p>
+                    </div>
+                    <button type="button" data-type="c"
+        class="pick btn-c h-8 w-8 rounded-full border border-slate-400
+               font-extrabold text-slate-600 transition hover:border-primary hover:text-primary
+               justify-self-center">   <!-- 👈 this -->
+  C
+</button>
+
+<button type="button" data-type="v"
+        class="pick btn-v h-8 w-8 rounded-full border border-slate-400
+               font-extrabold text-slate-600 transition hover:border-primary hover:text-primary
+               justify-self-center">   <!-- 👈 and this -->
+  VC
+</button>
+                </li>
+
+                <!-- 12 -->
+                <li data-player="j-nguyen"
+                    class="grid-tbl items-center bg-white/70 px-4 py-3 text-[13px] sm:text-sm backdrop-blur-xl transition hover:bg-white">
+                    <span class="inline-block w-10 py-0.5 text-[11px] font-bold text-slate-700">8</span>
+                    <div class="flex items-center gap-2 min-w-0">
+                        <div class="relative shrink-0">
+                            <img src="images/profile.svg" alt="J Nguyen"
+                                class="h-9 w-9 rounded-full ring-2 ring-primary/20 object-cover">
+                            <span
+                                class="absolute bottom-0 right-0 h-1.5 w-1.5 rounded-full bg-sky-500 ring-2 ring-white"></span>
+                        </div>
+                        <div class="min-w-0">
+                            <p class="truncate max-w-[120px] font-medium text-ink">J Nguyen</p>
+                            <p class="truncate-1 text-[10px] text-slate-500">Sel by <strong>9.8%</strong></p>
+                        </div>
+                    </div>
+                    <span class="text-center font-semibold text-primary">BOWL</span>
+                    <div class="text-center leading-tight">
+                        <p class="font-bold text-ink">60</p>
+                        <p class="text-[10px] text-slate-500">Avg 20</p>
+                    </div>
+                    <button type="button" data-type="c"
+        class="pick btn-c h-8 w-8 rounded-full border border-slate-400
+               font-extrabold text-slate-600 transition hover:border-primary hover:text-primary
+               justify-self-center">   <!-- 👈 this -->
+  C
+</button>
+
+<button type="button" data-type="v"
+        class="pick btn-v h-8 w-8 rounded-full border border-slate-400
+               font-extrabold text-slate-600 transition hover:border-primary hover:text-primary
+               justify-self-center">   <!-- 👈 and this -->
+  VC
+</button>
+                </li>
+
+            </ul>
+        </section>
 
         <!-- ▾ fixed bottom action bar (full-width) -->
         <footer class="fixed inset-x-0 bottom-0 z-30 bg-white/90 border-t border-slate-200
@@ -671,13 +866,7 @@
 
 
 
-        /* tab highlight */
-        document.querySelectorAll('.tab').forEach(t =>
-            t.addEventListener('click', () => {
-                t.closest('nav').querySelectorAll('.tab').forEach(b => b.removeAttribute('data-sel'));
-                t.setAttribute('data-sel', '');
-            })
-        );
+
 
         /* single-select C / VC */
         document.querySelectorAll('.pick').forEach(btn =>
@@ -687,6 +876,35 @@
                 btn.classList.add('pick--on');
             })
         );
+
+
+
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // base & active classes as plain strings (easier to toggle)
+            const base = 'px-4 py-1.5 rounded-full border border-slate-300 ' +
+                'bg-slate-100 text-slate-600 hover:bg-slate-200 transition';
+            const active = 'bg-blue-600 text-white shadow shadow-blue-600/40';
+
+            // ensure every pill has base classes once
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.add(...base.split(' '));
+            });
+
+            // bar click → swap active classes
+            document.getElementById('filterBar').addEventListener('click', e => {
+                const btn = e.target.closest('.filter-btn');
+                if (!btn) return;
+
+                const prev = document.querySelector('#filterBar .filter-btn.' + active.split(' ')[0]); // bg-blue-600
+                if (prev) prev.classList.remove(...active.split(' '));
+
+                btn.classList.add(...active.split(' '));
+
+                /* 👉  TODO: filter the player list here, using btn.dataset.role  👈 */
+            });
+        });
     </script>
 
 
