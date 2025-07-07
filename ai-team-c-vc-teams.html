@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Fantasy Team – MLR vs MLB</title>
+
+    <!-- Tailwind (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                extend: {
+                    colors: {
+                        primary: '#5A73B3',   /* classy indigo-blue  */
+                        primary2: '#415890',   /* darker tint for gradient */
+                        accent: '#DA3A30',   /* vivid vermilion-red      */
+                        page: '#F3F6FF',   /* very light backdrop      */
+                        ink: '#1C2337',
+                        win: '#22c55e',
+                        loss: '#ef4444',
+                    },
+                    borderRadius: { glass: '18px' },
+                    boxShadow: { glass: '0 8px 24px rgba(90,115,179,.18)' },
+                }
+            }
+        };
+    </script>
+
+    <!-- instant font → avoids FOIT -->
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+
+        }
+
+        .num-range {
+            appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 9999px;
+            border: none;
+            /* default fill (JS बदल देगा) */
+            background: linear-gradient(to right, #E4443B 45%, #d1d5db 0);
+        }
+
+        /* Chrome / Edge / Safari thumb */
+        .num-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #E4443B;
+            cursor: pointer;
+            border: 3px solid #fff;
+            margin-top: -8px;
+            /* 24/2 - 8/2 ==> सटीक centering */
+        }
+
+        /* Firefox thumb */
+        .num-range::-moz-range-thumb {
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #E4443B;
+            border: 3px solid #fff;
+            cursor: pointer;
+        }
+
+        /* Firefox track height बराबर करना */
+        .num-range::-moz-range-track {
+            height: 8px;
+            border-radius: 9999px;
+            background: transparent;
+        }
+
+        .roleBox {
+            @apply w-full rounded border border-slate-300 bg-white py-1 px-2 text-center text-xs font-medium text-slate-700 placeholder-slate-400;
+        }
+
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+            cursor: pointer
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border: 3px solid white;
+            border-radius: 9999px;
+            background: #DA3A30;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .15)
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            height: 5px;
+            background: #dbe0ff;
+            border-radius: 9999px
+        }
+
+
+        :root {
+            --cols: 40px 1fr 44px 52px 48px 48px;
+        }
+
+        /* CR | PLAYER | … */
+        .grid-tbl {
+            display: grid;
+            grid-template-columns: var(--cols);
+            gap: .5rem;
+        }
+
+        .truncate-1 {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .tab[data-sel] {
+            color: var(--tw-accent);
+            position: relative;
+        }
+
+        .tab[data-sel]::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -5px;
+            height: 2px;
+            border-radius: 9999px;
+            background: currentColor;
+        }
+
+        .pick.pick--on {
+            background: linear-gradient(90deg, #DA3A30, #5A73B3);
+            color: #fff;
+            border-color: transparent;
+        }
+
+        .bg-pitch {
+            /* two greens, 24 px stripes */
+            background-image: repeating-linear-gradient(90deg,
+                    #0f9d58 0 12px,
+                    #0b944f 12px 24px);
+
+            .team-header {
+                font-size: 0.875rem;
+            }
+
+            /* 14 px */
+            .team-abbr {
+                font-size: 0.9375rem;
+            }
+
+            /* 15 px */
+            .team-count {
+                font-size: 0.8125rem;
+            }
+
+            /* 13 px */
+            .role-strip span {
+                font-size: 0.6875rem;
+            }
+
+            /* 11 px */
+        }
+    </style>
+</head>
+
+<body class="min-h-full  bg-[#F8F8FB]  ">
+
+    <!-- ▾ Header -->
+    <header class="bg-gradient-to-r from-[#E4443B] to-[#3D5CA5] py-3 text-center
+       text-sm sm:text-base md:text-lg font-extrabold tracking-wide
+       text-white shadow-md">
+        Generate Fantasy Team · <span class="uppercase">MLR vs MLB</span>
+    </header>
+
+
+
+    <!-- ▾ Match summary card -->
+    <section class="mx-auto max-w-3xl  mt-4 ">
+        <article class="sm:rounded-glass border border-white/50 bg-white/70 backdrop-blur-md p-5 shadow-glass
+             hover:shadow-xl transition">
+            <header class="flex items-start justify-between text-xs font-medium">
+                <span class="truncate max-w-[60%] text-primary font-semibold">Malaysia T20 Tri-Series</span>
+                <span class="text-[11px] font-semibold text-green-600">Line-up Announced</span>
+            </header>
+
+            <div class="mt-3 flex items-center justify-between">
+                <!-- team A -->
+                <div class="flex w-[120px] items-center gap-2">
+                    <img src="images/image_india.svg" alt="MLR" class="h-10 w-10 rounded-full ring-2 ring-primary/20" />
+                    <div class="min-w-0">
+                        <div class="truncate font-semibold">MLR</div>
+                        <div class="truncate text-[11px] text-slate-500">Malaysia Reds</div>
+                    </div>
+                </div>
+
+                <!-- live -->
+                <div class="flex flex-col items-center text-center w-[80px]">
+                    <span class="animate-pulse text-red-600 font-semibold text-[11px]">• Live</span>
+                    <time class="text-[10px] font-medium">01 : 01 PM</time>
+                </div>
+
+                <!-- team B -->
+                <div class="flex w-[120px] flex-row-reverse items-center gap-2 text-right">
+                    <img src="images/image_nz.svg" alt="MLB" class="h-10 w-10 rounded-full ring-2 ring-primary/20" />
+                    <div class="min-w-0">
+                        <div class="truncate font-semibold">MLB</div>
+                        <div class="truncate text-[11px] text-slate-500">Malaysia Blues</div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="mt-4 flex items-center gap-2 text-[11px]">
+                <span class="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 font-semibold text-primary">
+                    🏆 ₹ 13.1 Lakhs
+                </span>
+                <span class="truncate text-slate-600">MLB elected to bat first</span>
+            </footer>
+        </article>
+    </section>
+
+
+
+
+    <!-- ▾ Tabs (new) -->
+    <nav class="mx-auto max-w-3xl px-4 mt-4">
+        <!-- wrapper -->
+        <div class="relative flex overflow-hidden rounded-full bg-white/70 backdrop-blur-md
+                 ring-1 ring-[#3D5CA5]/20 shadow-glass">
+
+            <!-- indicator pill -->
+            <span id="tabIndicator" class="absolute inset-y-0 left-0 w-1/2 rounded-full
+                       bg-gradient-to-r from-[#E4443B] to-[#3D5CA5]/80
+                       transition-transform duration-300"></span>
+
+            <!-- CREATE -->
+            <button id="tabCreate" class="relative z-10 flex-1 py-2 text-center text-sm sm:text-base font-semibold
+                         transition-colors text-white">
+                Create Team
+            </button>
+
+            <!-- MY TEAMS -->
+            <button id="tabMine" class="relative z-10 flex-1 py-2 text-center text-sm sm:text-base font-semibold
+                         transition-colors text-[#3D5CA5]/70 ">
+                My Teams
+            </button>
+        </div>
+    </nav>
+
+
+
+
+
+
+    <!-- ▾ Create-Team Panel -->
+    <main id="panelCreate" class="mx-auto max-w-3xl  ">
+
+
+
+
+
+        <section class="min-h-full pt-6 pb-28">
+            <ul class="space-y-5 px-4">
+
+                <!-- ▾— TEAM 1 —▾ -->
+                <li class="rounded-2xl ring-1 ring-white/30 shadow-md overflow-hidden">
+                    <div class="flex items-center justify-between bg-slate-900 text-white px-4 py-2">
+                        <span class="team-header font-semibold">Team&nbsp;1</span>
+                        <button class="text-[11px] font-bold tracking-wide hover:underline">SAVE</button>
+                    </div>
+                    <div class="bg-pitch relative flex justify-between px-5 py-3">
+                        <div class="flex gap-6">
+                            <div class="flex flex-col items-center text-white">
+                                <span class="team-abbr font-extrabold">EN-W</span>
+                                <span class="team-count font-semibold">5</span>
+                            </div>
+                            <div class="flex flex-col items-center text-white">
+                                <span class="team-abbr font-extrabold">IN-W</span>
+                                <span class="team-count font-semibold">6</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <!-- C -->
+                            <div class="relative">
+                                <img src="images/profile.svg"
+                                    class="h-11 w-11 rounded-full ring-2 ring-white object-cover" alt="">
+                                <span
+                                    class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-black text-white text-[9px] font-bold ring-1 ring-white">C</span>
+                                <span
+                                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded bg-black px-1 text-[9px] text-white text-center">R
+                                    Ghosh</span>
+                            </div>
+                            <!-- VC -->
+                            <div class="relative">
+                                <img src="images/profile.svg"
+                                    class="h-11 w-11 rounded-full ring-2 ring-white object-cover" alt="">
+                                <span
+                                    class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-black text-[9px] font-bold ring-1 ring-black">V</span>
+                                <span
+                                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded bg-white px-1 text-[9px] text-black text-center">A
+                                    Jones</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="role-strip flex justify-around bg-white py-1.5 font-semibold text-slate-800 text-[12px]">
+                        <span>WK 2</span><span>BAT 3</span><span>BOWL 3</span><span>AR 3</span>
+                    </div>
+                </li>
+
+                <!-- TEAM 2 → simply numbers tweaked -->
+                <li class="rounded-2xl ring-1 ring-white/30 shadow-md overflow-hidden">
+                    <div class="flex items-center justify-between bg-slate-900 text-white px-4 py-2">
+                        <span class="team-header font-semibold">Team&nbsp;2</span>
+                        <button class="text-[11px] font-bold tracking-wide hover:underline">SAVE</button>
+                    </div>
+                    <div class="bg-pitch relative flex justify-between px-5 py-3">
+                        <div class="flex gap-6">
+                            <div class="flex flex-col items-center text-white"><span
+                                    class="team-abbr font-extrabold">EN-W</span><span class="team-count">4</span></div>
+                            <div class="flex flex-col items-center text-white"><span
+                                    class="team-abbr font-extrabold">IN-W</span><span class="team-count">7</span></div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="relative"><img src="images/profile.svg"
+                                    class="h-11 w-11 rounded-full ring-2 ring-white object-cover" alt=""><span
+                                    class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-black text-white text-[9px] font-bold ring-1 ring-white">C</span><span
+                                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded bg-black px-1 text-[9px] text-white text-center">S
+                                    Patel</span></div>
+                            <div class="relative"><img src="images/profile.svg"
+                                    class="h-11 w-11 rounded-full ring-2 ring-white object-cover" alt=""><span
+                                    class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-black text-[9px] font-bold ring-1 ring-black">V</span><span
+                                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded bg-white px-1 text-[9px] text-black text-center">K
+                                    Brown</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="role-strip flex justify-around bg-white py-1.5 font-semibold text-slate-800 text-[12px]">
+                        <span>WK 1</span><span>BAT 4</span><span>BOWL 3</span><span>AR 4</span>
+                    </div>
+                </li>
+
+                <!-- TEAM 3 -->
+                <li class="rounded-2xl ring-1 ring-white/30 shadow-md overflow-hidden">
+                    <div class="flex items-center justify-between bg-slate-900 text-white px-4 py-2">
+                        <span class="team-header font-semibold">Team&nbsp;3</span>
+                        <button class="text-[11px] font-bold tracking-wide hover:underline">SAVE</button>
+                    </div>
+                    <div class="bg-pitch relative flex justify-between px-5 py-3">
+                        <div class="flex gap-6">
+                            <div class="flex flex-col items-center text-white"><span
+                                    class="team-abbr font-extrabold">EN-W</span><span class="team-count">6</span></div>
+                            <div class="flex flex-col items-center text-white"><span
+                                    class="team-abbr font-extrabold">IN-W</span><span class="team-count">5</span></div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="relative"><img src="images/profile.svg"
+                                    class="h-11 w-11 rounded-full ring-2 ring-white object-cover" alt=""><span
+                                    class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-black text-white text-[9px] font-bold ring-1 ring-white">C</span><span
+                                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded bg-black px-1 text-[9px] text-white text-center">E
+                                    Kim</span></div>
+                            <div class="relative"><img src="images/profile.svg"
+                                    class="h-11 w-11 rounded-full ring-2 ring-white object-cover" alt=""><span
+                                    class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-black text-[9px] font-bold ring-1 ring-black">V</span><span
+                                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded bg-white px-1 text-[9px] text-black text-center">M
+                                    Rahman</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="role-strip flex justify-around bg-white py-1.5 font-semibold text-slate-800 text-[12px]">
+                        <span>WK 2</span><span>BAT 2</span><span>BOWL 4</span><span>AR 4</span>
+                    </div>
+                </li>
+
+                <!-- TEAM 4 -->
+                <li class="rounded-2xl ring-1 ring-white/30 shadow-md overflow-hidden">
+                    <div class="flex items-center justify-between bg-slate-900 text-white px-4 py-2">
+                        <span class="team-header font-semibold">Team&nbsp;4</span>
+                        <button class="text-[11px] font-bold tracking-wide hover:underline">SAVE</button>
+                    </div>
+                    <div class="bg-pitch relative flex justify-between px-5 py-3">
+                        <div class="flex gap-6">
+                            <div class="flex flex-col items-center text-white"><span
+                                    class="team-abbr font-extrabold">EN-W</span><span class="team-count">5</span></div>
+                            <div class="flex flex-col items-center text-white"><span
+                                    class="team-abbr font-extrabold">IN-W</span><span class="team-count">6</span></div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="relative"><img src="images/profile.svg"
+                                    class="h-11 w-11 rounded-full ring-2 ring-white object-cover" alt=""><span
+                                    class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-black text-white text-[9px] font-bold ring-1 ring-white">C</span><span
+                                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded bg-black px-1 text-[9px] text-white text-center">P
+                                    Singh</span></div>
+                            <div class="relative"><img src="images/profile.svg"
+                                    class="h-11 w-11 rounded-full ring-2 ring-white object-cover" alt=""><span
+                                    class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-black text-[9px] font-bold ring-1 ring-black">V</span><span
+                                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded bg-white px-1 text-[9px] text-black text-center">D
+                                    Garcia</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="role-strip flex justify-around bg-white py-1.5 font-semibold text-slate-800 text-[12px]">
+                        <span>WK 3</span><span>BAT 3</span><span>BOWL 2</span><span>AR 3</span>
+                    </div>
+                </li>
+
+                <!-- TEAM 5 -->
+                <li class="rounded-2xl ring-1 ring-white/30 shadow-md overflow-hidden">
+                    <div class="flex items-center justify-between bg-slate-900 text-white px-4 py-2">
+                        <span class="team-header font-semibold">Team&nbsp;5</span>
+                        <button class="text-[11px] font-bold tracking-wide hover:underline">SAVE</button>
+                    </div>
+                    <div class="bg-pitch relative flex justify-between px-5 py-3">
+                        <div class="flex gap-6">
+                            <div class="flex flex-col items-center text-white"><span
+                                    class="team-abbr font-extrabold">EN-W</span><span class="team-count">4</span></div>
+                            <div class="flex flex-col items-center text-white"><span
+                                    class="team-abbr font-extrabold">IN-W</span><span class="team-count">7</span></div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="relative"><img src="images/profile.svg"
+                                    class="h-11 w-11 rounded-full ring-2 ring-white object-cover" alt=""><span
+                                    class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-black text-white text-[9px] font-bold ring-1 ring-white">C</span><span
+                                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded bg-black px-1 text-[9px] text-white text-center">I
+                                    Lopez</span></div>
+                            <div class="relative"><img src="images/profile.svg"
+                                    class="h-11 w-11 rounded-full ring-2 ring-white object-cover" alt=""><span
+                                    class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-black text-[9px] font-bold ring-1 ring-black">V</span><span
+                                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded bg-white px-1 text-[9px] text-black text-center">G
+                                    Clark</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="role-strip flex justify-around bg-white py-1.5 font-semibold text-slate-800 text-[12px]">
+                        <span>WK 1</span><span>BAT 5</span><span>BOWL 3</span><span>AR 3</span>
+                    </div>
+                </li>
+
+                <!-- TEAM 6 -->
+                <li class="rounded-2xl ring-1 ring-white/30 shadow-md overflow-hidden">
+                    <div class="flex items-center justify-between bg-slate-900 text-white px-4 py-2">
+                        <span class="team-header font-semibold">Team&nbsp;6</span>
+                        <button class="text-[11px] font-bold tracking-wide hover:underline">SAVE</button>
+                    </div>
+                    <div class="bg-pitch relative flex justify-between px-5 py-3">
+                        <div class="flex gap-6">
+                            <div class="flex flex-col items-center text-white"><span
+                                    class="team-abbr font-extrabold">EN-W</span><span class="team-count">6</span></div>
+                            <div class="flex flex-col items-center text-white"><span
+                                    class="team-abbr font-extrabold">IN-W</span><span class="team-count">5</span></div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="relative"><img src="images/profile.svg"
+                                    class="h-11 w-11 rounded-full ring-2 ring-white object-cover" alt=""><span
+                                    class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-black text-white text-[9px] font-bold ring-1 ring-white">C</span><span
+                                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded bg-black px-1 text-[9px] text-white text-center">J
+                                    Nguyen</span></div>
+                            <div class="relative"><img src="images/profile.svg"
+                                    class="h-11 w-11 rounded-full ring-2 ring-white object-cover" alt=""><span
+                                    class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-black text-[9px] font-bold ring-1 ring-black">V</span><span
+                                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded bg-white px-1 text-[9px] text-black text-center">H
+                                    Ito</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="role-strip flex justify-around bg-white py-1.5 font-semibold text-slate-800 text-[12px]">
+                        <span>WK 2</span><span>BAT 2</span><span>BOWL 5</span><span>AR 2</span>
+                    </div>
+                </li>
+
+                <!-- TEAM 7 -->
+                <li class="rounded-2xl ring-1 ring-white/30 shadow-md overflow-hidden">
+                    <div class="flex items-center justify-between bg-slate-900 text-white px-4 py-2">
+                        <span class="team-header font-semibold">Team&nbsp;7</span>
+                        <button class="text-[11px] font-bold tracking-wide hover:underline">SAVE</button>
+                    </div>
+                    <div class="bg-pitch relative flex justify-between px-5 py-3">
+                        <div class="flex gap-6">
+                            <div class="flex flex-col items-center text-white"><span
+                                    class="team-abbr font-extrabold">EN-W</span><span class="team-count">5</span></div>
+                            <div class="flex flex-col items-center text-white"><span
+                                    class="team-abbr font-extrabold">IN-W</span><span class="team-count">6</span></div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="relative"><img src="images/profile.svg"
+                                    class="h-11 w-11 rounded-full ring-2 ring-white object-cover" alt=""><span
+                                    class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-black text-white text-[9px] font-bold ring-1 ring-white">C</span><span
+                                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded bg-black px-1 text-[9px] text-white text-center">L
+                                    Wang</span></div>
+                            <div class="relative"><img src="images/profile.svg"
+                                    class="h-11 w-11 rounded-full ring-2 ring-white object-cover" alt=""><span
+                                    class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-black text-[9px] font-bold ring-1 ring-black">V</span><span
+                                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded bg-white px-1 text-[9px] text-black text-center">F
+                                    Ahmed</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="role-strip flex justify-around bg-white py-1.5 font-semibold text-slate-800 text-[12px]">
+                        <span>WK 2</span><span>BAT 3</span><span>BOWL 2</span><span>AR 4</span>
+                    </div>
+                </li>
+
+                <!-- TEAM 8 -->
+                <li class="rounded-2xl ring-1 ring-white/30 shadow-md overflow-hidden">
+                    <div class="flex items-center justify-between bg-slate-900 text-white px-4 py-2">
+                        <span class="team-header font-semibold">Team&nbsp;8</span>
+                        <button class="text-[11px] font-bold tracking-wide hover:underline">SAVE</button>
+                    </div>
+                    <div class="bg-pitch relative flex justify-between px-5 py-3">
+                        <div class="flex gap-6">
+                            <div class="flex flex-col items-center text-white"><span
+                                    class="team-abbr font-extrabold">EN-W</span><span class="team-count">4</span></div>
+                            <div class="flex flex-col items-center text-white"><span
+                                    class="team-abbr font-extrabold">IN-W</span><span class="team-count">7</span></div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="relative"><img src="images/profile.svg"
+                                    class="h-11 w-11 rounded-full ring-2 ring-white object-cover" alt=""><span
+                                    class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-black text-white text-[9px] font-bold ring-1 ring-white">C</span><span
+                                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded bg-black px-1 text-[9px] text-white text-center">S
+                                    Patel</span></div>
+                            <div class="relative"><img src="images/profile.svg"
+                                    class="h-11 w-11 rounded-full ring-2 ring-white object-cover" alt=""><span
+                                    class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-black text-[9px] font-bold ring-1 ring-black">V</span><span
+                                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded bg-white px-1 text-[9px] text-black text-center">P
+                                    Singh</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="role-strip flex justify-around bg-white py-1.5 font-semibold text-slate-800 text-[12px]">
+                        <span>WK 1</span><span>BAT 4</span><span>BOWL 4</span><span>AR 2</span>
+                    </div>
+                </li>
+
+                <!-- TEAM 9 -->
+                <li class="rounded-2xl ring-1 ring-white/30 shadow-md overflow-hidden">
+                    <div class="flex items-center justify-between bg-slate-900 text-white px-4 py-2">
+                        <span class="team-header font-semibold">Team&nbsp;9</span>
+                        <button class="text-[11px] font-bold tracking-wide hover:underline">SAVE</button>
+                    </div>
+                    <div class="bg-pitch relative flex justify-between px-5 py-3">
+                        <div class="flex gap-6">
+                            <div class="flex flex-col items-center text-white"><span
+                                    class="team-abbr font-extrabold">EN-W</span><span class="team-count">6</span></div>
+                            <div class="flex flex-col items-center text-white"><span
+                                    class="team-abbr font-extrabold">IN-W</span><span class="team-count">5</span></div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="relative"><img src="images/profile.svg"
+                                    class="h-11 w-11 rounded-full ring-2 ring-white object-cover" alt=""><span
+                                    class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-black text-white text-[9px] font-bold ring-1 ring-white">C</span><span
+                                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded bg-black px-1 text-[9px] text-white text-center">A
+                                    Jones</span></div>
+                            <div class="relative"><img src="images/profile.svg"
+                                    class="h-11 w-11 rounded-full ring-2 ring-white object-cover" alt=""><span
+                                    class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-black text-[9px] font-bold ring-1 ring-black">V</span><span
+                                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded bg-white px-1 text-[9px] text-black text-center">R
+                                    Ghosh</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="role-strip flex justify-around bg-white py-1.5 font-semibold text-slate-800 text-[12px]">
+                        <span>WK 2</span><span>BAT 3</span><span>BOWL 3</span><span>AR 3</span>
+                    </div>
+                </li>
+
+                <!-- TEAM 10 -->
+                <li class="rounded-2xl ring-1 ring-white/30 shadow-md overflow-hidden">
+                    <div class="flex items-center justify-between bg-slate-900 text-white px-4 py-2">
+                        <span class="team-header font-semibold">Team&nbsp;10</span>
+                        <button class="text-[11px] font-bold tracking-wide hover:underline">SAVE</button>
+                    </div>
+                    <div class="bg-pitch relative flex justify-between px-5 py-3">
+                        <div class="flex gap-6">
+                            <div class="flex flex-col items-center text-white"><span
+                                    class="team-abbr font-extrabold">EN-W</span><span class="team-count">5</span></div>
+                            <div class="flex flex-col items-center text-white"><span
+                                    class="team-abbr font-extrabold">IN-W</span><span class="team-count">6</span></div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="relative"><img src="images/profile.svg"
+                                    class="h-11 w-11 rounded-full ring-2 ring-white object-cover" alt=""><span
+                                    class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-black text-white text-[9px] font-bold ring-1 ring-white">C</span><span
+                                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded bg-black px-1 text-[9px] text-white text-center">K
+                                    Brown</span></div>
+                            <div class="relative"><img src="images/profile.svg"
+                                    class="h-11 w-11 rounded-full ring-2 ring-white object-cover" alt=""><span
+                                    class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-black text-[9px] font-bold ring-1 ring-black">V</span><span
+                                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded bg-white px-1 text-[9px] text-black text-center">E
+                                    Kim</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="role-strip flex justify-around bg-white py-1.5 font-semibold text-slate-800 text-[12px]">
+                        <span>WK 2</span><span>BAT 4</span><span>BOWL 2</span><span>AR 3</span>
+                    </div>
+                </li>
+
+                <!-- TEAM 11 -->
+                <li class="rounded-2xl ring-1 ring-white/30 shadow-md overflow-hidden">
+                    <div class="flex items-center justify-between bg-slate-900 text-white px-4 py-2">
+                        <span class="team-header font-semibold">Team&nbsp;11</span>
+                        <button class="text-[11px] font-bold tracking-wide hover:underline">SAVE</button>
+                    </div>
+                    <div class="bg-pitch relative flex justify-between px-5 py-3">
+                        <div class="flex gap-6">
+                            <div class="flex flex-col items-center text-white"><span
+                                    class="team-abbr font-extrabold">EN-W</span><span class="team-count">6</span></div>
+                            <div class="flex flex-col items-center text-white"><span
+                                    class="team-abbr font-extrabold">IN-W</span><span class="team-count">5</span></div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="relative"><img src="images/profile.svg"
+                                    class="h-11 w-11 rounded-full ring-2 ring-white object-cover" alt=""><span
+                                    class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-black text-white text-[9px] font-bold ring-1 ring-white">C</span><span
+                                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded bg-black px-1 text-[9px] text-white text-center">M
+                                    Rahman</span></div>
+                            <div class="relative"><img src="images/profile.svg"
+                                    class="h-11 w-11 rounded-full ring-2 ring-white object-cover" alt=""><span
+                                    class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-black text-[9px] font-bold ring-1 ring-black">V</span><span
+                                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded bg-white px-1 text-[9px] text-black text-center">S
+                                    Patel</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="role-strip flex justify-around bg-white py-1.5 font-semibold text-slate-800 text-[12px]">
+                        <span>WK 2</span><span>BAT 2</span><span>BOWL 4</span><span>AR 4</span>
+                    </div>
+                </li>
+
+                <!-- TEAM 12 -->
+                <li class="rounded-2xl ring-1 ring-white/30 shadow-md overflow-hidden">
+                    <div class="flex items-center justify-between bg-slate-900 text-white px-4 py-2">
+                        <span class="team-header font-semibold">Team&nbsp;12</span>
+                        <button class="text-[11px] font-bold tracking-wide hover:underline">SAVE</button>
+                    </div>
+                    <div class="bg-pitch relative flex justify-between px-5 py-3">
+                        <div class="flex gap-6">
+                            <div class="flex flex-col items-center text-white"><span
+                                    class="team-abbr font-extrabold">EN-W</span><span class="team-count">5</span></div>
+                            <div class="flex flex-col items-center text-white"><span
+                                    class="team-abbr font-extrabold">IN-W</span><span class="team-count">6</span></div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="relative"><img src="images/profile.svg"
+                                    class="h-11 w-11 rounded-full ring-2 ring-white object-cover" alt=""><span
+                                    class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-black text-white text-[9px] font-bold ring-1 ring-white">C</span><span
+                                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded bg-black px-1 text-[9px] text-white text-center">A
+                                    Jones</span></div>
+                            <div class="relative"><img src="images/profile.svg"
+                                    class="h-11 w-11 rounded-full ring-2 ring-white object-cover" alt=""><span
+                                    class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-black text-[9px] font-bold ring-1 ring-black">V</span><span
+                                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded bg-white px-1 text-[9px] text-black text-center">P
+                                    Singh</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="role-strip flex justify-around bg-white py-1.5 font-semibold text-slate-800 text-[12px]">
+                        <span>WK 3</span><span>BAT 3</span><span>BOWL 3</span><span>AR 2</span>
+                    </div>
+                </li>
+
+            </ul>
+        </section>
+
+
+
+
+
+
+
+
+
+        <!-- ▾ fixed bottom action bar (full-width) -->
+        <footer class="fixed inset-x-0 bottom-0 z-30 bg-white/90 border-t border-slate-200
+               backdrop-blur-lg shadow-lg">
+            <!-- centre content at max-w-lg -->
+            <div class="mx-auto flex max-w-lg gap-4 px-5 py-4">
+                <button
+                    class="flex-1 rounded-full bg-slate-700/90 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-slate-800">
+                    BACK
+                </button>
+                <button
+                    class="flex-1 rounded-full bg-gradient-to-r from-accent to-primary py-2 text-sm font-semibold text-white shadow-md transition hover:opacity-90">
+                    Save All
+                </button>
+            </div>
+        </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+
+    <!-- ▾ My-Teams placeholder -->
+    <section id="panelMine" class="hidden mx-auto max-w-3xl px-4 py-16 text-center text-slate-500">
+        You haven’t generated any teams yet.
+    </section>
+
+    <!-- ▾ JS interactivity -->
+    <script>
+        const createBtn = document.getElementById('tabCreate');
+        const mineBtn = document.getElementById('tabMine');
+        const indicator = document.getElementById('tabIndicator');
+
+        const panelCreate = document.getElementById('panelCreate');
+        const panelMine = document.getElementById('panelMine');
+
+        function activate(isCreate) {
+            /* move the coloured pill */
+            indicator.style.transform = isCreate ? 'translateX(0)' : 'translateX(100%)';
+
+            /* text colour flip */
+            createBtn.classList.toggle('text-white', isCreate);
+            createBtn.classList.toggle('text-primary/70', !isCreate);
+
+            mineBtn.classList.toggle('text-white', !isCreate);
+            mineBtn.classList.toggle('text-primary/70', isCreate);
+
+            /* show / hide panels */
+            panelCreate.classList.toggle('hidden', !isCreate);
+            panelMine.classList.toggle('hidden', isCreate);
+        }
+
+        /* initial state */
+        activate(true);
+
+        /* listeners */
+        createBtn.onclick = () => activate(true);
+        mineBtn.onclick = () => activate(false);
+
+
+
+
+
+
+
+
+
+        const TOTAL = 11;                 // fixed total
+        const mlrSel = document.getElementById('mlrSel');
+        const mlbSel = document.getElementById('mlbSel');
+        const mlrCnt = document.getElementById('mlrCnt');
+        const mlbCnt = document.getElementById('mlbCnt');
+
+        // populate both selects 1-10
+        for (let i = 1; i <= 10; i++) {
+            mlrSel.insertAdjacentHTML('beforeend', `<option ${i === 5 ? 'selected' : ''}>${i}</option>`);
+            mlbSel.insertAdjacentHTML('beforeend', `<option ${i === 6 ? 'selected' : ''}>${i}</option>`);
+        }
+
+        function clamp(val) { return Math.min(10, Math.max(1, val)); }
+
+        function syncFrom(src, dest) {
+            const v = parseInt(src.value, 10) || 1;
+            dest.value = clamp(TOTAL - v);
+            mlrCnt.textContent = mlrSel.value;
+            mlbCnt.textContent = mlbSel.value;
+        }
+
+        mlrSel.onchange = () => syncFrom(mlrSel, mlbSel);
+        mlbSel.onchange = () => syncFrom(mlbSel, mlrSel);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* single-select C / VC */
+        document.querySelectorAll('.pick').forEach(btn =>
+            btn.addEventListener('click', () => {
+                const type = btn.dataset.type;
+                document.querySelectorAll(`.pick[data-type="${type}"]`).forEach(b => b.classList.remove('pick--on'));
+                btn.classList.add('pick--on');
+            })
+        );
+
+
+
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // base & active classes as plain strings (easier to toggle)
+            const base = 'px-4 py-1.5 rounded-full border border-slate-300 ' +
+                'bg-slate-100 text-slate-600 hover:bg-slate-200 transition';
+            const active = 'bg-blue-600 text-white shadow shadow-blue-600/40';
+
+            // ensure every pill has base classes once
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.add(...base.split(' '));
+            });
+
+            // bar click → swap active classes
+            document.getElementById('filterBar').addEventListener('click', e => {
+                const btn = e.target.closest('.filter-btn');
+                if (!btn) return;
+
+                const prev = document.querySelector('#filterBar .filter-btn.' + active.split(' ')[0]); // bg-blue-600
+                if (prev) prev.classList.remove(...active.split(' '));
+
+                btn.classList.add(...active.split(' '));
+
+                /* 👉  TODO: filter the player list here, using btn.dataset.role  👈 */
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>
