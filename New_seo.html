@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GSC SEO Insights</title>
+    <style>
+        body {
+            background-color: #f9fafb;
+            color: #1f2937;
+            font-family: sans-serif;
+            padding: 16px;
+            margin: 0;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 800;
+            color: #4f46e5;
+            margin-bottom: 4px;
+        }
+
+        .header p {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 16px;
+            overflow-x: auto;
+        }
+
+        .card h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 16px;
+            margin-top: 4px;
+        }
+
+        .seo-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .seo-table th,
+        .seo-table td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        .seo-table th {
+            background-color: #eef2ff;
+            color: #4b5563;
+        }
+
+        .seo-table td a {
+            color: #2563eb;
+            text-decoration: underline;
+            display: block;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            max-width: 250px;
+            /* mobile default */
+        }
+
+        .seo-table tbody tr {
+            border-bottom: 1px solid #f3f4f6;
+            ;
+        }
+
+        .seo-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+
+        .seo-table tbody tr:hover {
+            background-color: #f9fafb;
+        }
+
+
+        @media (min-width: 768px) {
+            .seo-table td a {
+                max-width: 500px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .seo-table td a {
+                max-width: 700px;
+            }
+        }
+
+        .seo-table button {
+            color: #4f46e5;
+            background: none;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0px;
+        }
+
+        .dropdown-row.hidden {
+            display: none;
+        }
+
+        .dropdown-box {
+            background: white;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-box h2 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #7c3aed;
+            margin-bottom: 12px;
+        }
+
+        .dropdown-box p,
+        .dropdown-box a {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .dropdown-box a {
+            color: #2563eb;
+            text-decoration: underline;
+        }
+
+        .suggestions {
+            margin-top: 12px;
+        }
+
+        .suggestions h3 {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 6px;
+        }
+
+        .suggestions ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 16px;
+        }
+
+        .suggestions li {
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+
+<body class="body">
+
+    <div class="header">
+        <h1>📈 GSC AI Recommendations</h1>
+        <p>Based on Google Search Console + AI SEO Insights</p>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>Top Performing URLs</h2>
+            <table class="seo-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>URL</th>
+                        <th>Impr.</th>
+                        <th>Clicks</th>
+                        <th>CTR</th>
+                        <th>Pos</th>
+                        <th>Date</th>
+                        <th>More</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <!-- Row 1 -->
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <a href="https://cricketaddictor.com/fantasy-cricket/ban-e-vs-sa-e-dream11-prediction-today-3rd-od-south-africa-emerging-tour-of-bangladesh-2025-120236/"
+                                title="ban-e-vs-sa-e-dream11" target="_blank">
+                                https://cricketaddictor.com/fantasy-cricket/ban-e-vs-sa-e-dream11...
+                            </a>
+                        </td>
+                        <td>39674</td>
+                        <td>291</td>
+                        <td>0.73%</td>
+                        <td>10.23</td>
+                        <td>5/22/2025</td>
+                        <td><button onclick="toggleDropdown('dropdown1')">Details ⬇️</button></td>
+                    </tr>
+                    <tr id="dropdown1" class="dropdown-row hidden">
+                        <td colspan="8">
+                            <div class="dropdown-box">
+                                <h2>🔍 AI SEO Suggestions</h2>
+                                <p class="text-sm text-gray-500 mb-3">
+                                    URL:
+                                    <a href="https://cricketaddictor.com/fantasy-cricket/ban-e-vs-sa-e-dream11-prediction-today-3rd-od-south-africa-emerging-tour-of-bangladesh-2025-120236/"
+                                        target="_blank">
+                                        ban-e-vs-sa-e-dream11...
+                                    </a>
+                                </p>
+                                <div class="suggestions">
+                                    <div>
+                                        <h3>1. Queries Needing Optimization</h3>
+                                        <ul>
+                                            <li><strong>“bangladesh vs south africa emerging”</strong> – Improve meta &
+                                                H2 with “live score”, “today match”, “prediction”.</li>
+                                            <li><strong>“bangladesh emerging vs south africa emerging”</strong> – Add
+                                                FAQ + bolded keywords.</li>
+                                            <li><strong>“ban e vs sa e live score”</strong> – Embed widget or add "Live
+                                                Score Updates" H2.</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h3>2. New Keywords/Topics to Target</h3>
+                                        <ul>
+                                            <li>“BAN-E vs SA-E match dream11”</li>
+                                            <li>“Pitch Report: Shahid Kamruzzaman Stadium Rajshahi”</li>
+                                            <li>“Full Schedule & Results: BAN-E vs SA-E”</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h3>3. Meta Title & Description</h3>
+                                        <p><em>Use keywords like “prediction”, “live score”, “Dream11 tips” to improve
+                                                CTR.</em></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 2 -->
+                    <tr>
+                        <td>2</td>
+                        <td>
+                            <a href="https://cricketaddictor.com/fantasy-cricket/ind-vs-pak-dream11-prediction-asia-cup-final-2025-123456/"
+                                title="ind-vs-pak-dream11" target="_blank">
+                                https://cricketaddictor.com/fantasy-cricket/ind-vs-pak-dream11...
+                            </a>
+                        </td>
+                        <td>50212</td>
+                        <td>654</td>
+                        <td>1.30%</td>
+                        <td>6.89</td>
+                        <td>5/21/2025</td>
+                        <td><button onclick="toggleDropdown('dropdown2')">Details ⬇️</button></td>
+                    </tr>
+                    <tr id="dropdown2" class="dropdown-row hidden">
+                        <td colspan="8">
+                            <div class="dropdown-box">
+                                <h2>🔍 AI SEO Suggestions</h2>
+                                <p>URL:
+                                    <a href="https://cricketaddictor.com/fantasy-cricket/ind-vs-pak-dream11-prediction-asia-cup-final-2025-123456/"
+                                        target="_blank">
+                                        ind-vs-pak-dream11...
+                                    </a>
+                                </p>
+                                <div class="suggestions">
+                                    <div>
+                                        <h3>1. Queries Needing Optimization</h3>
+                                        <ul>
+                                            <li><strong>“india vs pakistan dream11 today”</strong> – Include in title,
+                                                H1, and structured data.</li>
+                                            <li><strong>“asia cup final prediction 2025”</strong> – Add prediction
+                                                tables.</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h3>2. New Keywords/Topics to Target</h3>
+                                        <ul>
+                                            <li>“IND vs PAK Toss Winner Prediction”</li>
+                                            <li>“Head-to-Head Stats India vs Pakistan”</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h3>3. Meta Title & Description</h3>
+                                        <p><em>Add terms like “Dream11 Grand League Team”, “Winner Tips”.</em></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 3–5 placeholder rows for now (you can replace them with actual content when ready) -->
+
+                    <tr>
+                        <td>3</td>
+                        <td>
+                            <a href="#" title="example3">https://cricketaddictor.com/fantasy-cricket/example3...</a>
+                        </td>
+                        <td>35100</td>
+                        <td>210</td>
+                        <td>0.60%</td>
+                        <td>11.5</td>
+                        <td>5/20/2025</td>
+                        <td><button onclick="toggleDropdown('dropdown3')">Details ⬇️</button></td>
+                    </tr>
+                    <tr id="dropdown3" class="dropdown-row hidden">
+                        <td colspan="8">
+                            <div class="dropdown-box">
+                                <h2>🔍 AI SEO Suggestions</h2>
+                                <p>URL: <a href="#">example3...</a></p>
+                                <div class="suggestions">
+                                    <div>
+                                        <h3>1. Queries Needing Optimization</h3>
+                                        <ul>
+                                            <li>Example improvement 3.1</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h3>2. New Keywords</h3>
+                                        <ul>
+                                            <li>Example keyword 3.2</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h3>3. Meta</h3>
+                                        <p><em>Example meta 3.3</em></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>4</td>
+                        <td>
+                            <a href="#" title="example4">https://cricketaddictor.com/fantasy-cricket/example4...</a>
+                        </td>
+                        <td>29800</td>
+                        <td>180</td>
+                        <td>0.55%</td>
+                        <td>12.8</td>
+                        <td>5/19/2025</td>
+                        <td><button onclick="toggleDropdown('dropdown4')">Details ⬇️</button></td>
+                    </tr>
+                    <tr id="dropdown4" class="dropdown-row hidden">
+                        <td colspan="8">
+                            <div class="dropdown-box">
+                                <h2>🔍 AI SEO Suggestions</h2>
+                                <p>URL: <a href="#">example4...</a></p>
+                                <div class="suggestions">
+                                    <div>
+                                        <h3>1. Queries Needing Optimization</h3>
+                                        <ul>
+                                            <li>Example improvement 4.1</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h3>2. New Keywords</h3>
+                                        <ul>
+                                            <li>Example keyword 4.2</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h3>3. Meta</h3>
+                                        <p><em>Example meta 4.3</em></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>5</td>
+                        <td>
+                            <a href="#" title="example5">https://cricketaddictor.com/fantasy-cricket/example5...</a>
+                        </td>
+                        <td>28900</td>
+                        <td>170</td>
+                        <td>0.59%</td>
+                        <td>13.3</td>
+                        <td>5/18/2025</td>
+                        <td><button onclick="toggleDropdown('dropdown5')">Details ⬇️</button></td>
+                    </tr>
+                    <tr id="dropdown5" class="dropdown-row hidden">
+                        <td colspan="8">
+                            <div class="dropdown-box">
+                                <h2>🔍 AI SEO Suggestions</h2>
+                                <p>URL: <a href="#">example5...</a></p>
+                                <div class="suggestions">
+                                    <div>
+                                        <h3>1. Queries Needing Optimization</h3>
+                                        <ul>
+                                            <li>Example improvement 5.1</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h3>2. New Keywords</h3>
+                                        <ul>
+                                            <li>Example keyword 5.2</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h3>3. Meta</h3>
+                                        <p><em>Example meta 5.3</em></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function toggleDropdown(id) {
+            document.querySelectorAll('.dropdown-row').forEach(row => {
+                if (row.id !== id) row.classList.add("hidden");
+            });
+            document.getElementById(id).classList.toggle("hidden");
+        }
+    </script>
+
+</body>
+
+</html>

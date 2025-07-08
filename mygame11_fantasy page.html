@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Match Predictions & News</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .glow-card:hover {
+            box-shadow: 0 0 12px rgba(228, 68, 59, 0.5);
+            transform: scale(1.01);
+            transition: all 0.3s ease;
+            background-color: rgba(1, 86, 209, 0.03);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #0156D1, #E4443B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        select {
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        button {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="  bg-[#F8F8FB]  ">
+
+
+    <!-- HEADER PART -->
+    <header class="bg-white border-b shadow-sm">
+        <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <img src="images/logo.svg" alt="Logo" class="h-8" />
+                    <!-- <span class="text-xl font-bold text-blue-700">On Cricket</span> -->
+                </div>
+
+                <nav class="hidden md:flex items-center space-x-6 text-blue-800 font-semibold text-sm">
+                    <a href="#" class="hover:text-blue-500">LIVE SCORE</a>
+                    <a href="#" class="hover:text-blue-500">SCHEDULE</a>
+
+                    <div class="relative group">
+                        <button class="hover:text-blue-500">NEWS ▾</button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-md rounded-md mt-2 z-10">
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Latest News</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Match Updates</a>
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <button class="hover:text-blue-500">SERIES ▾</button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-md rounded-md mt-2 z-10">
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">World Cup</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">IPL</a>
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <button class="hover:text-blue-500">TEAMS ▾</button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-md rounded-md mt-2 z-10">
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">India</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Australia</a>
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <button class="hover:text-blue-500">PLAYERS ▾</button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-md rounded-md mt-2 z-10">
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Top Batters</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Top Bowlers</a>
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <button class="hover:text-blue-500">RANKINGS ▾</button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-md rounded-md mt-2 z-10">
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">ICC ODI</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">T20I</a>
+                        </div>
+                    </div>
+
+                    <a href="#" class="hover:text-blue-500">VIDEOS</a>
+                    <a href="#" class="hover:text-blue-500">FANTASY</a>
+
+                    <div class="relative group">
+                        <button class="hover:text-blue-500">MORE ▾</button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-md rounded-md mt-2 z-10">
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Stats</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Archives</a>
+                        </div>
+                    </div>
+                </nav>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-blue-800">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu"
+            class="md:hidden hidden px-4 pb-4 bg-white text-blue-800 font-medium text-sm space-y-2 border-t">
+            <a href="#" class="block">LIVE SCORE</a>
+            <a href="#" class="block">SCHEDULE</a>
+            <a href="#" class="block">NEWS</a>
+            <a href="#" class="block">SERIES</a>
+            <a href="#" class="block">TEAMS</a>
+            <a href="#" class="block">PLAYERS</a>
+            <a href="#" class="block">RANKINGS</a>
+            <a href="#" class="block">VIDEOS</a>
+            <a href="#" class="block">FANTASY</a>
+            <a href="#" class="block">MORE</a>
+        </div>
+    </header>
+    <section class="bg-white border-b">
+        <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="overflow-x-auto">
+                <nav class="flex whitespace-nowrap gap-x-6 gap-y-2 py-3 text-sm font-semibold text-blue-800">
+                    <a href="#" class="hover:text-blue-600">IPL 2025</a>
+                    <a href="#" class="hover:text-blue-600">TEAMS</a>
+                    <a href="#" class="hover:text-blue-600">POINTS TABLE</a>
+                    <a href="#" class="hover:text-blue-600">SCHEDULE</a>
+                    <a href="#" class="hover:text-blue-600">STATS</a>
+                    <a href="#" class="hover:text-blue-600">NEWS</a>
+                    <a href="#" class="hover:text-blue-600">DREAM11 PREDICTION</a>
+                    <a href="#" class="hover:text-blue-600">MATCH PREDICTION</a>
+                    <a href="#" class="hover:text-blue-600">FANTASY TIPS</a>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- BREADCRUMB SECTION  -->
+    <section class="bg-gray-50 ">
+        <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+            <nav class="text-sm text-gray-600 flex flex-wrap items-center space-x-2">
+                <a href="#" class="hover:text-blue-600 font-medium">Home</a>
+                <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd" />
+                </svg>
+                <a href="#" class="hover:text-blue-600 font-medium">News</a>
+                <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd" />
+                </svg>
+                <span class="text-gray-500">Match Updates</span>
+            </nav>
+        </div>
+    </section>
+
+
+
+
+
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden bg-white px-4 pt-2 pb-4 space-y-2 text-blue-800 text-sm font-medium">
+        <a href="#" class="block">LIVE SCORE</a>
+        <a href="#" class="block">SCHEDULE</a>
+        <a href="#" class="block">NEWS</a>
+        <a href="#" class="block">SERIES</a>
+        <a href="#" class="block">TEAMS</a>
+        <a href="#" class="block">PLAYERS</a>
+        <a href="#" class="block">RANKINGS</a>
+        <a href="#" class="block">VIDEOS</a>
+        <a href="#" class="block">FANTASY</a>
+        <a href="#" class="block">MORE</a>
+    </div>
+
+
+
+
+
+    <div class="max-w-[1280px] mx-auto px-4 py-6 text-[#1F2937] bg-white mb-6 font-sans mt-4 rounded-2xl shadow-sm">
+
+        <!-- Title -->
+        <div class="mb-6 text-center">
+            <h1 class="text-3xl sm:text-4xl font-extrabold gradient-text">Fantasy Cricket Tips</h1>
+            <p class="text-lg text-gray-600 mt-2">Today's expert strategy, bold predictions & smart picks!</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="flex flex-col gap-4 mb-6 sm:flex-row sm:flex-wrap sm:justify-center sm:items-center sm:gap-4">
+            <div class="flex flex-row gap-4 w-full sm:w-auto">
+                <!-- Select Format -->
+                <div class="relative w-full sm:w-[180px]">
+                    <select id="formatSelect"
+                        class="w-full appearance-none px-4 py-2 rounded-full border border-gray-200 text-sm text-gray-700 focus:ring-2 focus:ring-[#0156D1]">
+                        <option value="">Select Format</option>
+                    </select>
+                    <svg class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none"
+                        fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </div>
+
+                <!-- Select Series -->
+                <div class="relative w-full sm:w-[180px]">
+                    <select id="seriesSelect"
+                        class="w-full appearance-none px-4 py-2 rounded-full border border-gray-200 text-sm text-gray-700 focus:ring-2 focus:ring-[#0156D1]">
+                        <option value="">Select Series</option>
+                    </select>
+                    <svg class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none"
+                        fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </div>
+
+                <!-- Select Team -->
+                <div class="relative w-full sm:w-[180px]">
+                    <select id="teamSelect"
+                        class="w-full appearance-none px-4 py-2 rounded-full border border-gray-200 text-sm text-gray-700 focus:ring-2 focus:ring-[#0156D1]">
+                        <option value="">Select Team</option>
+                    </select>
+                    <svg class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none"
+                        fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <button
+                class="w-full sm:w-auto text-white px-4 py-2 rounded-full text-sm bg-gradient-to-r from-[#0156D1] to-[#E4443B] hover:opacity-90">
+                Clear
+            </button>
+        </div>
+
+        <!-- Date Slider -->
+        <div class="flex items-center relative mb-6 pb-2">
+            <button onclick="scrollDates(-200)"
+                class="hidden sm:flex absolute left-0 z-10 bg-white shadow rounded-full w-8 h-8 items-center justify-center ml-1">
+                ‹
+            </button>
+            <div id="dateSlider"
+                class="flex gap-2 overflow-x-auto sm:mx-10 scrollbar-hide scroll-smooth whitespace-nowrap w-full">
+                <div class="inline-block rounded-full p-[2px] bg-gradient-to-r from-[#0156D1] to-[#E4443B]">
+                    <button class="bg-white text-sm font-semibold px-4 py-2 rounded-full">27 May</button>
+                </div>
+                <!-- Add your dates below -->
+                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">28 May</button>
+                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">29 May</button>
+                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">30 May</button>
+                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">31 May</button>
+                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">1 Jun</button>
+                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">2 Jun</button>
+                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">3 Jun</button>
+                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">4 Jun</button>
+                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">5 Jun</button>
+                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">6 Jun</button>
+                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">7 Jun</button>
+                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">8 Jun</button>
+                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">9 Jun</button>
+                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">10 Jun</button>
+            </div>
+            <button onclick="scrollDates(200)"
+                class="hidden sm:flex absolute right-0 z-10 bg-white shadow rounded-full w-8 h-8 items-center justify-center mr-1">
+                ›
+            </button>
+        </div>
+
+        <!-- Content Section -->
+        <div class="max-w-[1280px] mx-auto sm:px-4 py-6 flex flex-col md:flex-row gap-4">
+            <!-- Left Section -->
+            <div class="flex-1 space-y-4">
+                <a href="/match-details" class="block">
+                    <div class="relative rounded-xl overflow-hidden shadow-md hover:shadow-lg">
+                        <div class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#0156D1] to-[#E4443B]">
+                        </div>
+                        <div class="bg-white glow-card rounded-xl pl-4 pr-4 py-4 flex justify-between items-center">
+                            <div>
+                                <p class="text-sm text-gray-400">🕒 Match starts at 07:30 PM IST</p>
+                                <h2 class="text-xl font-bold">
+                                    <span
+                                        class="bg-gradient-to-r from-[#0156D1] to-[#E4443B] bg-clip-text text-transparent">LSG
+                                        vs RCB</span>
+                                </h2>
+                                <p class="text-sm text-gray-500">Match 70 · 📍 Lucknow</p>
+                            </div>
+                            <img src="images/dream11.webp" class="w-20 h-10 object-contain" alt="Dream 11" />
+                        </div>
+                    </div>
+                </a>
+                <a href="/match-details" class="block">
+                    <div class="relative rounded-xl overflow-hidden shadow-md hover:shadow-lg">
+                        <div class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#0156D1] to-[#E4443B]">
+                        </div>
+                        <div class="bg-white glow-card rounded-xl pl-4 pr-4 py-4 flex justify-between items-center">
+                            <div>
+                                <p class="text-sm text-gray-400">🕒 Match starts at 07:30 PM IST</p>
+                                <h2 class="text-xl font-bold">
+                                    <span
+                                        class="bg-gradient-to-r from-[#0156D1] to-[#E4443B] bg-clip-text text-transparent">DC
+                                        vs RR</span>
+                                </h2>
+                                <p class="text-sm text-gray-500">Match 71 · 📍 Lucknow</p>
+                            </div>
+                            <img src="images/dream11.webp" class="w-20 h-10 object-contain" alt="Dream 11" />
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Right Sidebar -->
+            <aside class="w-full md:w-80 space-y-4">
+                <div class="w-full mx-auto bg-white rounded-2xl border border-gray-100 px-4 py-4 shadow-md">
+                    <h2
+                        class="text-md font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#0156D1] to-[#E4443B] mb-4">
+                        Current Series
+                    </h2>
+
+                    <div class="space-y-4 sm:text-sm">
+                        <a href="#" class="group block">
+                            <div class="text-[#39215B] font-semibold transition">India vs England</div>
+                            <div class="text-gray-500">Test Series • <span
+                                    class="text-green-600 font-medium">Live</span></div>
+                        </a>
+                        <hr class="border-gray-200" />
+                        <a href="#" class="group block">
+                            <div class="text-[#39215B] font-semibold transition">Australia vs New Zealand</div>
+                            <div class="text-gray-500">T20 Series • <span class="text-yellow-600">Upcoming</span>
+                            </div>
+                        </a>
+                        <hr class="border-gray-200" />
+                        <a href="#" class="group block">
+                            <div class="text-[#39215B] font-semibold transition">IPL 2024</div>
+                            <div class="text-gray-500">T20 League • <span class="text-yellow-600">Starting
+                                    Soon</span>
+                            </div>
+                        </a>
+                        <hr class="border-gray-200" />
+                    </div>
+
+                    <div class="mt-4 text-center">
+                        <a href="#" class="text-sm font-semibold text-[#E4443B] hover:underline">View Complete
+                            Series
+                            →</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- FOTTER SECTION  -->
+    <footer class="bg-[#222] text-white text-sm">
+        <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-6 gap-8">
+                <!-- Logo & Language -->
+                <div class="md:col-span-1 space-y-4">
+                    <img src="/logo.svg" alt="Logo" class="h-6">
+                    <div class="flex items-center space-x-2 text-gray-300">
+                        <span>English</span>
+                        <span>/</span>
+                        <span>हिन्दी</span>
+                    </div>
+                </div>
+
+                <!-- Columns -->
+                <div class="md:col-span-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+                    <!-- Top IPL Teams -->
+                    <div>
+                        <h3 class="font-bold mb-2">TOP IPL TEAMS</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li>Kolkata Knight Riders</li>
+                            <li>Mumbai Indians</li>
+                            <li>Chennai Super Kings</li>
+                            <li>Delhi Capitals</li>
+                            <li>Punjab Kings</li>
+                            <li>Rajasthan Royals</li>
+                            <li>RCB</li>
+                            <li>Sunrisers Hyderabad</li>
+                            <li>Lucknow Super Giants</li>
+                            <li>Gujarat Titans</li>
+                        </ul>
+                    </div>
+
+                    <!-- Top Players -->
+                    <div>
+                        <h3 class="font-bold mb-2">TOP PLAYERS</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li>Rishabh Pant</li>
+                            <li>MS Dhoni</li>
+                            <li>Rohit Sharma</li>
+                            <li>Virat Kohli</li>
+                            <li>Hardik Pandya</li>
+                            <li>Ravindra Jadeja</li>
+                            <li>Jasprit Bumrah</li>
+                            <li>Tilak Varma</li>
+                            <li>SuryaKumar Yadav</li>
+                            <li>Mohammed Shami</li>
+                        </ul>
+                    </div>
+
+                    <!-- International Series -->
+                    <div>
+                        <h3 class="font-bold mb-2">INTERNATIONAL SERIES</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li>IND vs AFG</li>
+                            <li>IND vs AUS</li>
+                            <li>IND vs BAN</li>
+                            <li>IND vs ENG</li>
+                            <li>IND vs NZ</li>
+                            <li>IND vs SA</li>
+                            <li>IND vs SL</li>
+                            <li>IND vs WI</li>
+                            <li>IND vs ZIM</li>
+                            <li>IND vs IRE</li>
+                        </ul>
+                    </div>
+
+                    <!-- Top Leagues -->
+                    <div>
+                        <h3 class="font-bold mb-2">TOP LEAGUES</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li>IPL 2025</li>
+                            <li>BBL 2025</li>
+                            <li>CPL 2025</li>
+                            <li>PSL 2025</li>
+                            <li>WPL 2025</li>
+                            <li>BPL 2025</li>
+                            <li>WBBL 2025</li>
+                            <li>LPL 2025</li>
+                            <li>LLC 2025</li>
+                        </ul>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div>
+                        <h3 class="font-bold mb-2">QUICK LINKS</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li>Live Score</li>
+                            <li>Schedule</li>
+                            <li>Series</li>
+                            <li>Recent Matches</li>
+                            <li>Upcoming Matches</li>
+                            <li>Match Prediction</li>
+                            <li>Fantasy Tips</li>
+                            <li>Cricket News</li>
+                            <li>Videos</li>
+                            <li>Teams</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="border-t border-gray-600 my-6"></div>
+
+            <!-- Social & Utility Links -->
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <!-- Social Icons -->
+                <div class="flex items-center gap-4 text-white">
+                    <span class="font-semibold">CONNECT US:</span>
+                    <a href="#"><i class="fab fa-facebook text-lg"></i></a>
+                    <a href="#"><i class="fab fa-instagram text-lg"></i></a>
+                    <a href="#"><i class="fab fa-youtube text-lg"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter text-lg"></i></a>
+                </div>
+
+                <!-- Links -->
+                <div class="text-gray-300 flex flex-wrap justify-center gap-4 text-xs">
+                    <a href="#">CONTACT US</a>
+                    <a href="#">ABOUT US</a>
+                    <a href="#">DISCLAIMER</a>
+                    <a href="#">COPYRIGHT NOTICE</a>
+                    <a href="#">ONLINE PRIVACY POLICY</a>
+                    <a href="#">SITEMAP</a>
+                    <a href="#">GOOGLE NEWS SITEMAP</a>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="border-t border-gray-600 my-4"></div>
+
+            <!-- Bottom Note -->
+            <div class="text-gray-400 text-xs text-center space-y-2">
+                <div class="space-x-2">
+                    <span>Editorial Policy</span> /
+                    <span>Fact Check Policy</span> /
+                    <span>Non-Partisanship Policy</span> /
+                    <span>Correction Policy</span> /
+                    <span>Code Of Ethics</span> /
+                    <span>Sponsored Content Policy</span>
+                </div>
+                <p>© 2025 OnCricket Media. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+
+        // MOBILE HAMBURGERMENU 
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+
+
+
+
+
+
+
+
+
+
+        function scrollDates(offset) {
+            document.getElementById('dateSlider').scrollLeft += offset;
+        }
+
+        const isMobile = window.innerWidth <= 640;
+
+        const formatSelect = document.getElementById("formatSelect");
+        const seriesSelect = document.getElementById("seriesSelect");
+        const teamSelect = document.getElementById("teamSelect");
+
+        formatSelect.options[0].text = isMobile ? "Format" : "Select Format";
+        seriesSelect.options[0].text = isMobile ? "Series" : "Select Series";
+        teamSelect.options[0].text = isMobile ? "Team" : "Select Team";
+
+        window.addEventListener("resize", () => {
+            const isMobileNow = window.innerWidth <= 640;
+            formatSelect.options[0].text = isMobileNow ? "Format" : "Select Format";
+            seriesSelect.options[0].text = isMobileNow ? "Series" : "Select Series";
+            teamSelect.options[0].text = isMobileNow ? "Team" : "Select Team";
+        });
+
+
+
+
+
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+
+</html>

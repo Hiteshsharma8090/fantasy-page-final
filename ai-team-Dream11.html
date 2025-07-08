@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fantasy Team – Team 2 Preview</title>
+
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+        extend: {
+          colors: {
+            primary: '#5A73B3',
+            primary2: '#415890',
+            accent: '#DA3A30',
+            page: '#F3F6FF',
+            ink: '#1C2337',
+          },
+          borderRadius: { glass: '18px' },
+          boxShadow: { glass: '0 8px 24px rgba(90,115,179,.18)' },
+        }
+      }
+    };
+  </script>
+
+  <!-- extra CSS (pitch stripes, etc.) -->
+  <style>
+    .bg-pitch {
+      background-image:
+        repeating-linear-gradient(90deg,
+          #0f9d58 0 12px,
+          #0b944f 12px 24px);
+    }
+  </style>
+</head>
+
+<body class="h-full bg-page text-sm font-sans">
+
+  <!-- ▾ Team-detail / preview screen (single-viewport, max-width 500 px) -->
+  <section class="h-screen w-full max-w-[500px] mx-auto flex flex-col bg-pitch text-white overflow-hidden">
+
+    <!-- Top bar -->
+    <header class="flex items-center justify-between px-4 pt-4">
+      <!-- Back -->
+      <button class="flex items-center gap-1 text-base font-semibold">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+        Back
+      </button>
+
+      <!-- ‹ Team 2 › carousel -->
+      <div class="flex items-center">
+        <button class="p-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <h2 class="mx-4 text-lg font-bold">Team&nbsp;2</h2>
+
+        <button class="p-2 rotate-180">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Players -->
+    <main class="flex-1 flex flex-col justify-evenly space-y-4 px-2">
+
+      <!-- Wicket-keepers -->
+      <div class="flex flex-col items-center gap-2">
+        <span class="text-[10px] tracking-wider">WICKET-KEEPERS</span>
+        <div class="flex justify-center gap-6 flex-wrap">
+
+          <!-- Vice-captain -->
+          <div class="relative flex flex-col items-center gap-0.5">
+            <img src="images/profile.svg" alt="Y Bhatia"
+              class="h-16 w-16 rounded-full ring-2 ring-white object-cover" />
+            <span class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center
+                   rounded-full bg-black text-white text-[10px] font-bold ring-2 ring-white">V</span>
+            <span class="inline-block rounded px-1.5 py-0.5 text-[10px] font-medium bg-black/90">
+              Y&nbsp;Bhatia
+            </span>
+          </div>
+
+          <!-- Captain -->
+          <div class="relative flex flex-col items-center gap-0.5">
+            <img src="images/profile.svg" alt="A Jones" class="h-16 w-16 rounded-full ring-2 ring-white object-cover" />
+            <span class="absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center
+                   rounded-full bg-white text-black text-[10px] font-bold ring-2 ring-white">C</span>
+            <span class="inline-block rounded px-1.5 py-0.5 text-[10px] font-medium bg-white text-black">
+              A&nbsp;Jones
+            </span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Batters -->
+      <div class="flex flex-col items-center gap-2">
+        <span class="text-[10px] tracking-wider">BATTERS</span>
+        <div class="flex justify-center gap-5 flex-wrap">
+
+          <div class="relative flex flex-col items-center gap-0.5">
+            <img src="images/profile.svg" alt="J Rodrigues"
+              class="h-16 w-16 rounded-full ring-2 ring-white object-cover" />
+            <span class="inline-block rounded px-1.5 py-0.5 text-[10px] font-medium bg-black/90">
+              J&nbsp;Rodrigues
+            </span>
+          </div>
+
+          <div class="relative flex flex-col items-center gap-0.5">
+            <img src="images/profile.svg" alt="D Wyatt" class="h-16 w-16 rounded-full ring-2 ring-white object-cover" />
+            <span class="inline-block rounded px-1.5 py-0.5 text-[10px] font-medium bg-white text-black">
+              D&nbsp;Wyatt
+            </span>
+          </div>
+
+          <div class="relative flex flex-col items-center gap-0.5">
+            <img src="images/profile.svg" alt="T Beaumont"
+              class="h-16 w-16 rounded-full ring-2 ring-white object-cover" />
+            <span class="inline-block rounded px-1.5 py-0.5 text-[10px] font-medium bg-black/90">
+              T&nbsp;Beaumont
+            </span>
+          </div>
+
+          <div class="relative flex flex-col items-center gap-0.5">
+            <img src="images/profile.svg" alt="S Dunkley"
+              class="h-16 w-16 rounded-full ring-2 ring-white object-cover" />
+            <span class="inline-block rounded px-1.5 py-0.5 text-[10px] font-medium bg-white text-black">
+              S&nbsp;Dunkley
+            </span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- All-rounders -->
+      <div class="flex flex-col items-center gap-2">
+        <span class="text-[10px] tracking-wider">ALL-ROUNDERS</span>
+        <div class="flex justify-center gap-6 flex-wrap">
+
+          <div class="relative flex flex-col items-center gap-0.5">
+            <img src="images/profile.svg" alt="A Kaur" class="h-16 w-16 rounded-full ring-2 ring-white object-cover" />
+            <span class="inline-block rounded px-1.5 py-0.5 text-[10px] font-medium bg-black/90">
+              A&nbsp;Kaur
+            </span>
+          </div>
+
+          <div class="relative flex flex-col items-center gap-0.5">
+            <img src="images/profile.svg" alt="D Sharma"
+              class="h-16 w-16 rounded-full ring-2 ring-white object-cover" />
+            <span class="inline-block rounded px-1.5 py-0.5 text-[10px] font-medium bg-white text-black">
+              D&nbsp;Sharma
+            </span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Bowlers -->
+      <div class="flex flex-col items-center gap-2">
+        <span class="text-[10px] tracking-wider">BOWLERS</span>
+        <div class="flex justify-center gap-6 flex-wrap">
+
+          <div class="relative flex flex-col items-center gap-0.5">
+            <img src="images/profile.svg" alt="N Charani"
+              class="h-16 w-16 rounded-full ring-2 ring-white object-cover" />
+            <span class="inline-block rounded px-1.5 py-0.5 text-[10px] font-medium bg-black/90">
+              N&nbsp;Charani
+            </span>
+          </div>
+
+          <div class="relative flex flex-col items-center gap-0.5">
+            <img src="images/profile.svg" alt="S Ecclestone"
+              class="h-16 w-16 rounded-full ring-2 ring-white object-cover" />
+            <span class="inline-block rounded px-1.5 py-0.5 text-[10px] font-medium bg-white text-black">
+              S&nbsp;Ecclestone
+            </span>
+          </div>
+
+          <div class="relative flex flex-col items-center gap-0.5">
+            <img src="images/profile.svg" alt="A Reddy" class="h-16 w-16 rounded-full ring-2 ring-white object-cover" />
+            <span class="inline-block rounded px-1.5 py-0.5 text-[10px] font-medium bg-black/90">
+              A&nbsp;Reddy
+            </span>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Bottom SAVE button -->
+    <footer class="pointer-events-none">
+      <div class="fixed bottom-5 inset-x-0 flex justify-center">
+        <button class="pointer-events-auto rounded-full bg-gradient-to-r from-[#E4443B] to-[#3D5CA5]/70 px-12 py-2.5
+               text-xs font-semibold tracking-wide shadow-xl
+               hover:opacity-90 transition">
+          SAVE
+        </button>
+      </div>
+    </footer>
+
+  </section>
+
+</body>
+
+</html>

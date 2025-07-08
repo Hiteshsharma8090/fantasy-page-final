@@ -1,412 +1,480 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fantasy Team Wizard</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Fantasy Team Wizard</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root{--blue:#3D5CA5;--red:#DA3A31}
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- custom styles -->
-  <style>
-    :root {
-      --blue: #3D5CA5;
-      --red: #DA3A31;
-    }
-
-    /* card bg + shadow */
-    .card {
-      @apply rounded-3xl bg-gradient-to-br from-white to-slate-50 shadow-lg;
-    }
-
-    /* slim slider track & thumb */
-    input[type=range] {
-      -webkit-appearance: none;
-      width: 100%;
-      height: 4px;
-      border-radius: 2px;
-      background: #cbd5e1;
-    }
-
-    input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      height: 18px;
-      width: 18px;
-      border-radius: 50%;
-      background: #fff;
-      border: 3px solid var(--red);
-      box-shadow: 0 0 2px rgba(0, 0, 0, .3);
-    }
-
-    /* prettier pill-tabs */
-    .tab {
-      @apply px-4 py-1.5 rounded-full bg-white text-[var(--blue)]
-      transition whitespace-nowrap shadow-sm hover:shadow;
-    }
-
-    .tab.is-active {
-      @apply bg-gradient-to-r from-[var(--blue)] to-[var(--red)]
-      text-white shadow-md;
-    }
-  </style>
+/* cards */
+.card{border-radius:1.5rem;background:linear-gradient(135deg,#fff 0%,#f1f5f9 100%);
+      box-shadow:0 10px 25px -12px rgba(0,0,0,.15)}
+/* thin sliders */
+input[type=range]{-webkit-appearance:none;width:100%;height:4px;border-radius:2px;background:#cbd5e1}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;height:18px;width:18px;border-radius:50%;
+  background:#fff;border:3px solid var(--red);box-shadow:0 0 2px rgba(0,0,0,.3)}
+/* pill tabs */
+.tab{display:inline-block;padding:.45rem 1rem;font-size:.75rem;font-weight:600;
+     background:#fff;color:var(--blue);border-radius:9999px;white-space:nowrap;
+     transition:.2s;box-shadow:0 0 0 1px rgba(0,0,0,.05)}
+.tab:hover{box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.tab.is-active{background:linear-gradient(to right,var(--blue),var(--red));
+               color:#fff;box-shadow:0 3px 8px rgba(0,0,0,.18)}
+</style>
 </head>
 
 <body class="bg-indigo-50 min-h-screen flex flex-col items-center selection:bg-[var(--red)]/20">
 
-  <div class="w-full max-w-lg">
+<div class="w-full max-w-lg">
 
-    <!-- Header -->
-    <header
-      class="sticky top-0 z-20 bg-gradient-to-r from-[var(--blue)] to-[var(--red)] text-white py-3 rounded-b-3xl shadow-md">
-      <h1 class="text-center font-semibold text-base sm:text-lg">Fantasy Team – AMW vs WTS</h1>
-    </header>
+<!-- ─── HEADER ───────────────────────────────────────────── -->
+<header class="sticky top-0 z-20 bg-gradient-to-r from-[var(--blue)] to-[var(--red)]
+               text-white py-3 rounded-b-3xl shadow-md">
+  <h1 class="text-center font-semibold text-base sm:text-lg">
+    Fantasy Team – AMW&nbsp;vs&nbsp;WTS
+  </h1>
+</header>
 
-    <!-- ========== STEP 1 ========== -->
-    <section id="step1">
+<!-- ================ STEP 1 ================ -->
+<section id="step1">
 
-      <!-- Match summary -->
-      <div class="card mt-5 px-4 py-4 bg-white flex justify-between items-center">
-        <div class="flex items-center gap-2">
-          <img src="images/image_india.svg" class="h-12 w-12 rounded-full ring-2 ring-white" />
-          <p class="font-bold text-[var(--blue)]">AMW</p>
+  <!-- match summary -->
+  <div class="card mt-5 px-4 py-4 flex justify-between items-center">
+    <div class="flex items-center gap-2">
+      <img src="images/image_india.svg" class="h-12 w-12 rounded-full ring-2 ring-white">
+      <p class="font-bold text-[var(--blue)]">AMW</p>
+    </div>
+    <div class="text-center text-xs">
+      <p class="font-semibold text-[var(--red)]">Completed</p>
+      <p class="text-slate-600 opacity-80">AMW beat WTS by 5 wkts</p>
+    </div>
+    <div class="flex items-center gap-2">
+      <p class="font-bold text-[var(--blue)]">WTS</p>
+      <img src="images/image_nz.svg" class="h-12 w-12 rounded-full ring-2 ring-white">
+    </div>
+  </div>
+
+  <!-- create / my teams -->
+  <nav class="grid grid-cols-2 mt-4 text-sm font-medium mx-4 rounded-full shadow overflow-hidden">
+    <button class="py-2 bg-[var(--blue)] text-white">Create Team</button>
+    <button class="py-2 bg-white text-[var(--blue)] hover:bg-slate-100">My Teams</button>
+  </nav>
+
+  <!-- wizard -->
+  <div class="card mt-4 px-4 py-4 space-y-7">
+
+    <!-- combination -->
+    <div class="space-y-2">
+      <h2 class="font-semibold text-slate-800 text-sm">Select Team Combination</h2>
+      <div class="flex justify-between text-xs font-medium">
+        <div class="flex items-center gap-1">
+          <img src="images/image_india.svg" class="h-5 w-5 rounded-full border border-white">
+          <span class="text-[var(--blue)] font-semibold">AMW</span>
+          <span id="amwBadge" class="px-1 rounded-full bg-[var(--blue)]/10 text-[var(--blue)] font-semibold">5</span>
         </div>
-        <div class="text-center text-xs">
-          <p class="font-semibold text-[var(--red)]">Completed</p>
-          <p class="text-slate-600 opacity-80">AMW beat WTS by 5 wkts</p>
-        </div>
-        <div class="flex items-center gap-2">
-          <p class="font-bold text-[var(--blue)]">WTS</p>
-          <img src="images/image_nz.svg" class="h-12 w-12 rounded-full ring-2 ring-white" />
-        </div>
-      </div>
-
-      <!-- Tabs (static) -->
-      <nav class="grid grid-cols-2 mt-4 text-sm font-medium mx-4 rounded-full shadow overflow-hidden">
-        <button class="py-2 bg-[var(--blue)] text-white">Create Team</button>
-        <button class="py-2 bg-white text-[var(--blue)] hover:bg-slate-100">My Teams</button>
-      </nav>
-
-      <!-- Wizard card -->
-      <div class="card mt-4 px-4 py-4 space-y-7 bg-white">
-
-        <!-- Team combination slider -->
-        <div class="space-y-2">
-          <h2 class="font-semibold text-slate-800 text-sm">Select Team Combination</h2>
-          <div class="flex justify-between text-xs font-medium">
-            <div class="flex items-center gap-1">
-              <img src="images/image_india.svg" class="h-5 w-5 rounded-full border border-white" />
-              <span class="text-[var(--blue)] font-semibold">AMW</span>
-              <span id="amwBadge"
-                class="px-1 rounded-full bg-[var(--blue)]/10 text-[var(--blue)] font-semibold">5</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <span id="wtsBadge"
-                class="px-1 rounded-full bg-[var(--red)]/10 text-[var(--red)] font-semibold">6</span>
-              <span class="text-[var(--red)] font-semibold">WTS</span>
-              <img src="images/image_nz.svg" class="h-5 w-5 rounded-full border border-white" />
-            </div>
-          </div>
-          <input id="teamSlider" type="range" min="1" max="10" value="5" />
-        </div>
-
-        <!-- Advanced Config -->
-        <details class="group">
-          <summary
-            class="flex justify-between items-center bg-slate-100 rounded-xl px-3 py-2 cursor-pointer select-none">
-            <div class="flex items-center gap-2 text-sm font-semibold text-slate-800">
-              <svg class="w-4 h-4 text-[var(--blue)]" fill="none" stroke="currentColor" stroke-width="2"
-                viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M12 6.75v6m0 4.5h0M6.75 12h6m4.5 0h0" />
-              </svg>
-              Advanced Config
-            </div>
-            <svg class="w-4 h-4 text-[var(--red)] transition-transform group-open:rotate-180" fill="currentColor"
-              viewBox="0 0 20 20">
-              <path d="M6 8l4 4 4-4"></path>
-            </svg>
-          </summary>
-          <div class="grid grid-cols-2 gap-3 mt-4 text-xs">
-            <div class="flex items-center bg-slate-50 rounded-lg px-3 py-2 gap-2"><span
-                class="h-7 w-7 rounded-full grid place-content-center text-white font-bold" style="background:#1d4ed8">WK</span><input
-                class="ml-auto w-12 text-right bg-transparent outline-none" placeholder="Auto" /></div>
-            <div class="flex items-center bg-slate-50 rounded-lg px-3 py-2 gap-2"><span
-                class="h-7 w-7 rounded-full grid place-content-center text-white font-bold" style="background:#dc2626">BAT</span><input
-                class="ml-auto w-12 text-right bg-transparent outline-none" placeholder="Auto" /></div>
-            <div class="flex items-center bg-slate-50 rounded-lg px-3 py-2 gap-2"><span
-                class="h-7 w-7 rounded-full grid place-content-center text-white font-bold" style="background:#059669">ALL</span><input
-                class="ml-auto w-12 text-right bg-transparent outline-none" placeholder="Auto" /></div>
-            <div class="flex items-center bg-slate-50 rounded-lg px-3 py-2 gap-2"><span
-                class="h-7 w-7 rounded-full grid place-content-center text-white font-bold" style="background:#7c3aed">BWL</span><input
-                class="ml-auto w-12 text-right bg-transparent outline-none" placeholder="Auto" /></div>
-          </div>
-        </details>
-
-        <!-- Number of teams slider -->
-        <div>
-          <label class="text-sm font-semibold text-slate-800 block mb-1">Number of Teams: <span id="teamCntLabel"
-              class="text-[var(--red)] font-bold">10</span></label>
-          <input id="numTeams" type="range" min="1" max="20" value="10" />
-        </div>
-
-        <button id="toStep2"
-          class="w-full py-2.5 rounded-xl bg-gradient-to-r from-[var(--blue)] to-[var(--red)] text-white font-semibold text-sm shadow-md hover:opacity-95">Next
-          – Choose C/VC</button>
-      </div>
-
-      <!-- Performance -->
-      <div class="card mt-4 px-4 py-4 bg-white">
-        <h3 class="font-semibold text-sm text-slate-800 mb-3">Team Performance</h3>
-        <div class="flex justify-between text-[11px]">
-          <div>
-            <p class="font-bold text-[var(--blue)] mb-1 text-xs">AMW</p>
-            <div class="flex gap-1.5 mb-1">
-              <span class="bg-green-500/20 text-green-600 px-1.5 rounded font-bold">W</span>
-              <span class="bg-green-500/20 text-green-600 px-1.5 rounded font-bold">W</span>
-              <span class="bg-green-500/20 text-green-600 px-1.5 rounded font-bold">W</span>
-              <span class="bg-red-500/20 text-red-600 px-1.5 rounded font-bold">L</span>
-              <span class="bg-red-500/20 text-red-600 px-1.5 rounded font-bold">L</span>
-            </div>
-            <p class="text-[10px] text-slate-600">1 Win (H2H)</p>
-          </div>
-          <div class="text-right">
-            <p class="font-bold text-[var(--blue)] mb-1 text-xs">WTS</p>
-            <div class="flex gap-1.5 justify-end mb-1">
-              <span class="bg-green-500/20 text-green-600 px-1.5 rounded font-bold">W</span>
-              <span class="bg-red-500/20 text-red-600 px-1.5 rounded font-bold">L</span>
-              <span class="bg-green-500/20 text-green-600 px-1.5 rounded font-bold">W</span>
-              <span class="bg-red-500/20 text-red-600 px-1.5 rounded font-bold">L</span>
-              <span class="bg-red-500/20 text-red-600 px-1.5 rounded font-bold">L</span>
-            </div>
-            <p class="text-[10px] text-slate-600">0 Wins (H2H)</p>
-          </div>
+        <div class="flex items-center gap-1">
+          <span id="wtsBadge" class="px-1 rounded-full bg-[var(--red)]/10 text-[var(--red)] font-semibold">6</span>
+          <span class="text-[var(--red)] font-semibold">WTS</span>
+          <img src="images/image_nz.svg" class="h-5 w-5 rounded-full border border-white">
         </div>
       </div>
+      <input id="teamSlider" type="range" min="1" max="10" value="5">
+    </div>
 
-      <!-- Venue stats -->
-      <div class="card mt-4 px-4 py-4 mb-10 bg-white">
-        <h3 class="font-semibold text-sm text-slate-800 mb-3">Venue Stats</h3>
-        <div class="grid grid-cols-3 gap-2 text-center text-[10px]">
-          <div class="bg-white/60 rounded-xl border border-slate-200 py-3">
-            <p class="text-slate-600">Avg 1st Inn</p>
-            <p class="text-lg font-extrabold text-[var(--blue)]">106</p>
-          </div>
-          <div class="bg-white/60 rounded-xl border border-slate-200 py-3">
-            <p class="text-slate-600">Matches</p>
-            <p class="text-lg font-extrabold text-[var(--red)]">29</p>
-          </div>
-          <div class="bg-white/60 rounded-xl border border-slate-200 py-3">
-            <p class="text-slate-600">Chasing Wins</p>
-            <p class="text-lg font-extrabold text-[var(--red)]">10</p>
-          </div>
+    <!-- advanced -->
+    <details class="group">
+      <summary class="flex justify-between items-center bg-slate-100 rounded-xl px-3 py-2 cursor-pointer select-none">
+        <div class="flex items-center gap-2 text-sm font-semibold text-slate-800">
+          <svg class="w-4 h-4 text-[var(--blue)]" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
+               d="M12 6.75v6m0 4.5h0M6.75 12h6m4.5 0h0"/></svg>
+          Advanced Config
+        </div>
+        <svg class="w-4 h-4 text-[var(--red)] transition-transform group-open:rotate-180"
+             fill="currentColor" viewBox="0 0 20 20"><path d="M6 8l4 4 4-4"/></svg>
+      </summary>
+      <div class="grid grid-cols-2 gap-3 mt-4 text-xs">
+        <div class="flex items-center bg-slate-50 rounded-lg px-3 py-2 gap-2">
+          <span class="h-7 w-7 rounded-full grid place-content-center text-white font-bold"
+                style="background:#1d4ed8">WK</span><input
+                class="ml-auto w-12 text-right bg-transparent outline-none" placeholder="Auto">
+        </div>
+        <div class="flex items-center bg-slate-50 rounded-lg px-3 py-2 gap-2">
+          <span class="h-7 w-7 rounded-full grid place-content-center text-white font-bold"
+                style="background:#dc2626">BAT</span><input
+                class="ml-auto w-12 text-right bg-transparent outline-none" placeholder="Auto">
+        </div>
+        <div class="flex items-center bg-slate-50 rounded-lg px-3 py-2 gap-2">
+          <span class="h-7 w-7 rounded-full grid place-content-center text-white font-bold"
+                style="background:#059669">ALL</span><input
+                class="ml-auto w-12 text-right bg-transparent outline-none" placeholder="Auto">
+        </div>
+        <div class="flex items-center bg-slate-50 rounded-lg px-3 py-2 gap-2">
+          <span class="h-7 w-7 rounded-full grid place-content-center text-white font-bold"
+                style="background:#7c3aed">BWL</span><input
+                class="ml-auto w-12 text-right bg-transparent outline-none" placeholder="Auto">
         </div>
       </div>
-    </section><!-- /step1 -->
+    </details>
 
-    <!-- ========== STEP 2 (redesigned) ========== -->
-    <section id="step2" class="hidden">
+    <!-- num teams -->
+    <div>
+      <label class="text-sm font-semibold text-slate-800 block mb-1">
+        Number of Teams: <span id="teamCntLabel" class="text-[var(--red)] font-bold">10</span>
+      </label>
+      <input id="numTeams" type="range" min="1" max="20" value="10">
+    </div>
 
-      <div class="card mt-5 px-4 py-6 bg-white">
-        <h2 class="text-base font-semibold text-slate-800 mb-8">
-          Choose your Captains &amp; Vice-Captains
-        </h2>
+    <button id="toStep2"
+            class="w-full py-2.5 rounded-xl bg-gradient-to-r from-[var(--blue)] to-[var(--red)]
+                   text-white font-semibold text-sm shadow-md hover:opacity-95">
+      Next – Choose C/VC
+    </button>
+  </div>
 
-        <!-- Filter Tabs -->
-        <div
-          class="flex justify-between items-center border-b border-slate-200 pb-3 mb-4 text-xs font-medium overflow-x-auto">
-
-          <!-- Role tabs -->
-          <div class="flex gap-2">
-            <button class="tab is-active" data-role="All">All</button>
-            <button class="tab" data-role="WK">WK</button>
-            <button class="tab" data-role="BAT">BAT</button>
-            <button class="tab" data-role="AR">AR</button>
-            <button class="tab" data-role="BOWL">BOWL</button>
-          </div>
-
-          <!-- Team tabs -->
-          <div class="flex gap-2 pl-6">
-            <button class="tab is-active" data-team="All">All</button>
-            <button class="tab" data-team="AMW">AMW</button>
-            <button class="tab" data-team="WTS">WTS</button>
-          </div>
+  <!-- performance -->
+  <div class="card mt-4 px-4 py-4">
+    <h3 class="font-semibold text-sm text-slate-800 mb-3">Team Performance</h3>
+    <div class="flex justify-between text-[11px]">
+      <div>
+        <p class="font-bold text-[var(--blue)] mb-1 text-xs">AMW</p>
+        <div class="flex gap-1.5 mb-1">
+          <span class="bg-green-500/20 text-green-600 px-1.5 rounded font-bold">W</span>
+          <span class="bg-green-500/20 text-green-600 px-1.5 rounded font-bold">W</span>
+          <span class="bg-green-500/20 text-green-600 px-1.5 rounded font-bold">W</span>
+          <span class="bg-red-500/20 text-red-600 px-1.5 rounded font-bold">L</span>
+          <span class="bg-red-500/20 text-red-600 px-1.5 rounded font-bold">L</span>
         </div>
-
-        <!-- Players list -->
-        <div id="list" class="divide-y divide-slate-200 text-sm"></div>
-
-        <!-- Navigation -->
-        <div class="flex justify-between pt-8">
-          <button id="back"
-            class="px-8 py-2 rounded-xl bg-slate-600/80 text-white font-semibold shadow hover:opacity-90 text-sm">
-            BACK
-          </button>
-          <button id="next"
-            class="px-8 py-2 rounded-xl bg-slate-300/70 text-slate-600 font-semibold text-sm" disabled>
-            NEXT
-          </button>
-        </div>
+        <p class="text-[10px] text-slate-600">1 Win (H2H)</p>
       </div>
+      <div class="text-right">
+        <p class="font-bold text-[var(--blue)] mb-1 text-xs">WTS</p>
+        <div class="flex gap-1.5 justify-end mb-1">
+          <span class="bg-green-500/20 text-green-600 px-1.5 rounded font-bold">W</span>
+          <span class="bg-red-500/20 text-red-600 px-1.5 rounded font-bold">L</span>
+          <span class="bg-green-500/20 text-green-600 px-1.5 rounded font-bold">W</span>
+          <span class="bg-red-500/20 text-red-600 px-1.5 rounded font-bold">L</span>
+          <span class="bg-red-500/20 text-red-600 px-1.5 rounded font-bold">L</span>
+        </div>
+        <p class="text-[10px] text-slate-600">0 Wins (H2H)</p>
+      </div>
+    </div>
+  </div>
 
-      <div class="mb-14"></div>
-    </section><!-- /step2 -->
+  <!-- venue -->
+  <div class="card mt-4 px-4 py-4 mb-10">
+    <h3 class="font-semibold text-sm text-slate-800 mb-3">Venue Stats</h3>
+    <div class="grid grid-cols-3 gap-2 text-center text-[10px]">
+      <div class="bg-white/60 rounded-xl border border-slate-200 py-3">
+        <p class="text-slate-600">Avg 1st Inn</p>
+        <p class="text-lg font-extrabold text-[var(--blue)]">106</p>
+      </div>
+      <div class="bg-white/60 rounded-xl border border-slate-200 py-3">
+        <p class="text-slate-600">Matches</p>
+        <p class="text-lg font-extrabold text-[var(--red)]">29</p>
+      </div>
+      <div class="bg-white/60 rounded-xl border border-slate-200 py-3">
+        <p class="text-slate-600">Chasing Wins</p>
+        <p class="text-lg font-extrabold text-[var(--red)]">10</p>
+      </div>
+    </div>
+  </div>
 
-  </div><!-- container -->
+</section><!-- /step1 -->
 
-  <!-- ================= JS ================= -->
-  <script>
-    /* gradient track paint */
-    function grad(el, pct, left, right) {
-      if (!el) return;
-      el.style.background =
-        `linear-gradient(90deg,${left} 0%,${left} ${pct}%,${right} ${pct}%,${right} 100%)`;
-    }
+<!-- ================ STEP 2 ================ -->
+<section id="step2" class="hidden pb-24">
 
-    /* step-toggle */
-    const s1 = document.getElementById('step1'),
-      s2 = document.getElementById('step2');
-    document.getElementById('toStep2').onclick = () => {
-      s1.classList.add('hidden');
-      s2.classList.remove('hidden');
-      scrollTo({ top: 0, behavior: "smooth" });
-    };
-    document.getElementById('back').onclick = () => {
-      s2.classList.add('hidden');
-      s1.classList.remove('hidden');
-      scrollTo({ top: 0, behavior: "smooth" });
-    };
+  <div class="card mt-5 px-4 py-6">
+    <h2 class="text-base font-semibold text-slate-800 mb-6">
+      Choose your Captains &amp; Vice-Captains
+    </h2>
 
-    /* sliders */
-    const TOTAL = 11,
-      sl = document.getElementById('teamSlider'),
-      ba = document.getElementById('amwBadge'),
-      bw = document.getElementById('wtsBadge'),
-      num = document.getElementById('numTeams'),
-      lbl = document.getElementById('teamCntLabel');
-    if (sl) {
-      const f = v => {
-        const a = +v, w = TOTAL - a;
-        ba.textContent = a; bw.textContent = w;
-        grad(sl, (a / TOTAL) * 100, 'var(--blue)', 'var(--red)');
-      };
-      f(sl.value);
-      sl.oninput = e => f(e.target.value);
-    }
-    if (num) {
-      const g = v => {
-        lbl.textContent = v;
-        grad(num, ((v - 1) / (num.max - 1)) * 100, 'var(--red)', '#e5e7eb');
-      };
-      g(num.value);
-      num.oninput = e => g(e.target.value);
-    }
+    <!-- filters -->
+    <div class="flex justify-between items-center border-b border-slate-200 pb-3 mb-4
+                text-xs font-medium overflow-x-auto">
+      <div class="flex gap-2">
+        <button class="tab is-active" data-role="All">All</button>
+        <button class="tab" data-role="WK">WK</button>
+        <button class="tab" data-role="BAT">BAT</button>
+        <button class="tab" data-role="AR">AR</button>
+        <button class="tab" data-role="BOWL">BOWL</button>
+      </div>
+      <div class="flex gap-2 pl-6">
+        <button class="tab is-active" data-team="All">All</button>
+        <button class="tab" data-team="AMW">AMW</button>
+        <button class="tab" data-team="WTS">WTS</button>
+      </div>
+    </div>
 
-    /* demo players */
-    const players = [
-      { id: 3, team: 'AMW', img: 'https://via.placeholder.com/48?text=A', name: 'A Joseph', role: 'WK', pt: 116, avg: 23, sel: '96.6' },
-      { id: 4, team: 'WTS', img: 'https://via.placeholder.com/48?text=B', name: 'A Alexander', role: 'WK', pt: 28, avg: 6, sel: '9.8' }
-    ];
+    <!-- players -->
+    <div id="list" class="divide-y divide-slate-200 text-sm"></div>
 
-    /* ---------- STEP-2 Tabs ---------- */
-    let roleF = 'All', teamF = 'All';
-    const list = document.getElementById('list');
-    const nextBtn = document.getElementById('next');
+  </div>
+</section><!-- /step2 -->
 
-    const roleTabs = document.querySelectorAll('.tab[data-role]');
-    const teamTabs = document.querySelectorAll('.tab[data-team]');
+<!-- ================ STEP 3 ================ -->
+<section id="step3" class="hidden pb-24">
+  <button id="genBtn"
+          class="mx-auto mt-6 block px-8 py-3 rounded-xl bg-gradient-to-r
+                 from-[var(--blue)] to-[var(--red)] text-white font-semibold shadow hover:opacity-95">
+    Generate Teams
+  </button>
 
-    function setActive(target, group) {
-      group.forEach(t => t.classList.remove('is-active'));
-      target.classList.add('is-active');
-    }
+  <div id="teamWrap" class="mt-6 space-y-5"></div>
+</section><!-- /step3 -->
 
-    roleTabs.forEach(btn => btn.onclick = () => {
-      roleF = btn.dataset.role;
-      setActive(btn, roleTabs);
-      render();
+</div><!-- /container -->
+
+<!-- nav bar (BACK / NEXT) -->
+<div id="navBar"
+     class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-lg
+            bg-white border-t border-slate-200 shadow-[0_-2px_10px_rgba(0,0,0,0.08)]
+            flex justify-between items-center px-4 py-3 z-30 hidden">
+  <button id="back"
+          class="px-8 py-2 rounded-xl bg-slate-600/80 text-white font-semibold shadow hover:opacity-90 text-sm">
+    BACK
+  </button>
+  <button id="next"
+          class="px-8 py-2 rounded-xl bg-slate-300/70 text-slate-600 font-semibold text-sm" disabled>
+    NEXT
+  </button>
+</div>
+
+<!-- ============== SCRIPT ============== -->
+<script>
+/* helper */
+function grad(el,pct,l,r){if(!el)return;
+  el.style.background=`linear-gradient(90deg,${l} 0%,${l} ${pct}%,${r} ${pct}%,${r} 100%)`;}
+
+/* step refs */
+const s1=document.getElementById('step1'),
+      s2=document.getElementById('step2'),
+      s3=document.getElementById('step3'),
+      nav=document.getElementById('navBar'),
+      nextBtn=document.getElementById('next'),
+      backBtn=document.getElementById('back');
+
+/* step toggling */
+document.getElementById('toStep2').onclick=()=>{
+  s1.classList.add('hidden');s2.classList.remove('hidden');
+  nav.classList.remove('hidden');
+  scrollTo({top:0,behavior:'smooth'});
+};
+backBtn.onclick=()=>{
+  if(!s2.classList.contains('hidden')){            // from Step2 -> Step1
+    s2.classList.add('hidden');s1.classList.remove('hidden');nav.classList.add('hidden');
+  }else if(!s3.classList.contains('hidden')){      // from Step3 -> Step2
+    s3.classList.add('hidden');s2.classList.remove('hidden');
+    nav.classList.remove('hidden');
+  }
+  scrollTo({top:0,behavior:'smooth'});
+};
+
+/* sliders setup */
+const TOTAL=11,sl=document.getElementById('teamSlider'),ba=document.getElementById('amwBadge'),
+      bw=document.getElementById('wtsBadge'),num=document.getElementById('numTeams'),
+      lbl=document.getElementById('teamCntLabel');
+if(sl){const f=v=>{ba.textContent=v;bw.textContent=TOTAL-v;
+  grad(sl,(v/TOTAL)*100,'var(--blue)','var(--red)');};f(sl.value);sl.oninput=e=>f(+e.target.value);}
+if(num){const g=v=>{lbl.textContent=v;
+  grad(num,((v-1)/(num.max-1))*100,'var(--red)','#e5e7eb');};g(num.value);num.oninput=e=>g(+e.target.value);}
+
+/* demo players */
+const players=[
+ {id:3,team:'AMW',img:'https://via.placeholder.com/48?text=A',name:'A Joseph',role:'WK',pt:116,avg:23,sel:'96.6'},
+ {id:4,team:'WTS',img:'https://via.placeholder.com/48?text=B',name:'A Alexander',role:'WK',pt:28, avg: 6,sel:'9.8'}
+];
+
+/* filters + list render */
+let roleF='All',teamF='All';
+const list=document.getElementById('list'),
+      roleTabs=document.querySelectorAll('.tab[data-role]'),
+      teamTabs=document.querySelectorAll('.tab[data-team]');
+function setActive(b,g){g.forEach(x=>x.classList.remove('is-active'));b.classList.add('is-active');}
+roleTabs.forEach(b=>b.onclick=()=>{roleF=b.dataset.role;setActive(b,roleTabs);render();});
+teamTabs.forEach(b=>b.onclick=()=>{teamF=b.dataset.team;setActive(b,teamTabs);render();});
+
+function render(){
+  list.innerHTML='';
+  players.filter(p=>(roleF==='All'||p.role===roleF)&&(teamF==='All'||p.team===teamF))
+         .forEach(p=>{
+    list.insertAdjacentHTML('beforeend',`
+      <div class="flex items-center gap-3 py-3">
+        <span class="w-6 text-right text-[11px] font-semibold">${p.id}</span>
+        <img src="${p.img}" class="h-10 w-10 rounded-md object-cover">
+        <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+
+        <div class="flex-1">
+          <p class="font-semibold text-slate-800">${p.name}</p>
+          <p class="text-[11px] text-slate-500">Sel by ${p.sel}%</p>
+        </div>
+
+        <div class="mr-4 text-center">
+          <p class="uppercase text-[10px] text-slate-500">${p.role}</p>
+          <p class="text-[var(--blue)] font-bold text-sm">${p.pt}</p>
+          <p class="text-[10px] text-slate-500">Avg: ${p.avg}</p>
+        </div>
+
+        <label>
+          <input type="radio" name="c" value="${p.id}" class="sr-only peer">
+          <span class="h-8 w-8 rounded-full border-2 border-slate-500 grid place-content-center text-[11px] font-bold
+                       text-slate-600 peer-checked:bg-[var(--blue)]
+                       peer-checked:border-[var(--blue)] peer-checked:text-white">C</span>
+        </label>
+
+        <label class="ml-4">
+          <input type="radio" name="vc" value="${p.id}" class="sr-only peer">
+          <span class="h-8 w-8 rounded-full border-2 border-slate-500 grid place-content-center text-[11px] font-bold
+                       text-slate-600 peer-checked:bg-[var(--red)]
+                       peer-checked:border-[var(--red)] peer-checked:text-white">VC</span>
+        </label>
+      </div>`);});
+  attachSelectionLogic();updateNext();}
+render();
+
+/* deselect toggle + mutual disable */
+function attachSelectionLogic(){
+  document.querySelectorAll('input[name="c"],input[name="vc"]').forEach(inp=>{
+    inp.addEventListener('click',e=>{
+      if(inp.dataset.checked==="true"){inp.checked=false;inp.dataset.checked="false";
+        lockSame();updateNext();e.preventDefault();return;}
+      document.querySelectorAll(`input[name="${inp.name}"]`).forEach(x=>x.dataset.checked="false");
+      inp.dataset.checked="true";
     });
-    teamTabs.forEach(btn => btn.onclick = () => {
-      teamF = btn.dataset.team;
-      setActive(btn, teamTabs);
-      render();
-    });
+    inp.onchange=()=>{lockSame();updateNext();};
+  });
+}
+function lockSame(){
+  const c=document.querySelector('input[name="c"]:checked')?.value,
+        v=document.querySelector('input[name="vc"]:checked')?.value;
+  document.querySelectorAll('input[name="vc"]').forEach(i=>{i.disabled=(i.value===c);if(i.disabled)i.checked=false;});
+  document.querySelectorAll('input[name="c"]').forEach(i=>{i.disabled=(i.value===v);if(i.disabled)i.checked=false;});
+}
+function updateNext(){
+  const c=document.querySelector('input[name="c"]:checked')?.value,
+        v=document.querySelector('input[name="vc"]:checked')?.value,
+        ok=c&&v&&c!==v;
+  nextBtn.disabled=!ok;
+  nextBtn.className= ok
+     ?'px-8 py-2 rounded-xl bg-gradient-to-r from-[var(--blue)] to-[var(--red)] text-white font-semibold shadow'
+     :'px-8 py-2 rounded-xl bg-slate-300/70 text-slate-600 font-semibold';
+}
 
-    /* render list */
-    function render() {
-      list.innerHTML = '';
-      players
-        .filter(p => (roleF === 'All' || p.role === roleF) &&
-          (teamF === 'All' || p.team === teamF))
-        .forEach(p => {
-          list.insertAdjacentHTML('beforeend', `
-        <div class="flex items-center gap-3 py-3">
-          <span class="w-6 text-right text-[11px] font-semibold">${p.id}</span>
-          <img src="${p.img}" class="h-10 w-10 rounded-md object-cover" />
-          <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+/* NEXT → Step3 */
+nextBtn.onclick=()=>{
+  if(nextBtn.disabled)return;
+  s2.classList.add('hidden');nav.classList.add('hidden');s3.classList.remove('hidden');
+  scrollTo({top:0,behavior:'smooth'});
+};
 
-          <div class="flex-1">
-            <p class="font-semibold text-slate-800">${p.name}</p>
-            <p class="text-[11px] text-slate-500">Sel by ${p.sel}%</p>
-          </div>
+/* ---------- Generate Teams ---------- */
+const genBtn=document.getElementById('genBtn'),
+      teamWrap=document.getElementById('teamWrap');
+genBtn.onclick=()=>{
+  teamWrap.innerHTML='';
+  const teams=[
+    {no:1,amw:5,wts:6,wk:2,bat:2,bowl:2,ar:5,total:450,c:players[0],vc:players[1]},
+    {no:2,amw:5,wts:6,wk:2,bat:2,bowl:1,ar:6,total:633,c:players[0],vc:players[1]},
+    {no:3,amw:5,wts:6,wk:2,bat:4,bowl:2,ar:3,total:367,c:players[0],vc:players[1]},
+  ];
+  teams.forEach(t=>{
+    teamWrap.insertAdjacentHTML('beforeend',teamCard(t));
+  });
+  genBtn.classList.add('hidden');     // hide button after generation
+};
 
-          <div class="mr-4 text-center">
-            <p class="uppercase text-[10px] text-slate-500">${p.role}</p>
-            <p class="text-[var(--blue)] font-bold text-sm">${p.pt}</p>
-            <p class="text-[10px] text-slate-500">Avg: ${p.avg}</p>
-          </div>
+/* create team card html */
+function teamCard(t){
+return `
+<div class="card overflow-hidden text-white">
+  <!-- header -->
+  <div class="bg-slate-900/80 px-4 py-2 flex justify-between items-center">
+    <span class="font-semibold">Team ${t.no}</span>
+    <button class="text-xs font-semibold uppercase tracking-wide">Save</button>
+  </div>
+  <!-- body -->
+  <div class="px-4 py-4 bg-gradient-to-br from-green-700 via-green-600 to-green-800">
+    <div class="flex items-start justify-between">
+      <!-- split -->
+      <div class="text-center text-xs">
+        <p class="font-semibold">AMW</p><p class="text-lg font-bold">${t.amw}</p>
+        <p class="mt-2 font-semibold">WTS</p><p class="text-lg font-bold">${t.wts}</p>
+      </div>
+      <!-- total -->
+      <p class="text-4xl font-extrabold">${t.total}</p>
+      <!-- C / VC -->
+      <div class="flex flex-col items-end gap-3">
+        <div class="relative">
+          <span class="absolute -top-1 -left-1 bg-white text-black text-[9px] font-bold px-1.5 rounded-full">C</span>
+          <img src="${t.c.img}" class="h-10 w-10 rounded-full border-2 border-white">
+        </div>
+        <div class="relative">
+          <span class="absolute -top-1 -left-1 bg-white text-black text-[9px] font-bold px-1 rounded-full">V</span>
+          <img src="${t.vc.img}" class="h-10 w-10 rounded-full border-2 border-white">
+        </div>
+      </div>
+    </div>
 
-          <label>
-            <input type="radio" name="c" value="${p.id}" class="sr-only peer" />
-            <span
-              class="h-8 w-8 rounded-full border-2 border-slate-500 grid place-content-center text-[11px] font-bold
-              text-slate-600 peer-checked:bg-[var(--blue)] peer-checked:border-[var(--blue)] peer-checked:text-white">C</span>
-          </label>
+    <!-- C / VC names -->
+    <div class="flex justify-end gap-4 mt-1 text-[11px]">
+      <div class="text-center">
+        <p class="bg-black/60 px-1 rounded">${t.c.name}</p>
+        <p class="opacity-80">${t.c.pt}Pts</p>
+      </div>
+      <div class="text-center">
+        <p class="bg-black/60 px-1 rounded">${t.vc.name}</p>
+        <p class="opacity-80">${t.vc.pt}Pts</p>
+      </div>
+    </div>
 
-          <label class="ml-4">
-            <input type="radio" name="vc" value="${p.id}" class="sr-only peer" />
-            <span
-              class="h-8 w-8 rounded-full border-2 border-slate-500 grid place-content-center text-[11px] font-bold
-              text-slate-600 peer-checked:bg-[var(--red)] peer-checked:border-[var(--red)] peer-checked:text-white">VC</span>
-          </label>
-        </div>`);
-        });
-      addSelectLogic();
-      updateNext();
-    }
-
-    function addSelectLogic() {
-      document.querySelectorAll('input[name="c"],input[name="vc"]').forEach(i =>
-        i.onchange = () => { lockSame(); updateNext(); });
-    }
-
-    function lockSame() {
-      const c = document.querySelector('input[name="c"]:checked')?.value;
-      const v = document.querySelector('input[name="vc"]:checked')?.value;
-      document.querySelectorAll('input[name="vc"]').forEach(i => {
-        i.disabled = (i.value === c);
-        if (i.disabled) i.checked = false;
-      });
-      document.querySelectorAll('input[name="c"]').forEach(i => {
-        i.disabled = (i.value === v);
-        if (i.disabled) i.checked = false;
-      });
-    }
-
-    function updateNext() {
-      const c = document.querySelector('input[name="c"]:checked')?.value;
-      const v = document.querySelector('input[name="vc"]:checked')?.value;
-      const ok = c && v && c !== v;
-      nextBtn.disabled = !ok;
-      nextBtn.className = ok
-        ? 'px-8 py-2 rounded-xl bg-gradient-to-r from-[var(--blue)] to-[var(--red)] text-white font-semibold shadow'
-        : 'px-8 py-2 rounded-xl bg-slate-300/70 text-slate-600 font-semibold';
-    }
-
-    /* initial render */
-    render();
-  </script>
+    <!-- roles row -->
+    <div class="flex justify-between mt-4 text-[11px] font-medium">
+      <span>WK  ${t.wk}</span>
+      <span>BAT  ${t.bat}</span>
+      <span>BOWL ${t.bowl}</span>
+      <span>AR  ${t.ar}</span>
+    </div>
+  </div>
+</div>`}
+</script>
 </body>
-
 </html>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
