@@ -41,10 +41,11 @@
 <body class="h-full bg-page text-sm font-sans">
 
   <!-- ▾ Team-detail / preview screen (single-viewport, max-width 500 px) -->
-  <section class="h-screen w-full max-w-[500px] mx-auto flex flex-col bg-pitch text-white overflow-hidden">
+  <section
+    class="h-screen w-full max-w-[500px] mx-auto flex flex-col bg-pitch text-white overflow-hidden lg:border lg:border-gray/15 lg:rounded-lg">
 
     <!-- Top bar -->
-    <header class="flex items-center justify-between px-4 pt-4">
+    <header class="flex items-center justify-between px-4 py-2 bg-gradient-to-r from-[#E4443B] to-[#3D5CA5]">
       <!-- Back -->
       <button class="flex items-center gap-1 text-base font-semibold">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -203,7 +204,7 @@
 
     <!-- Bottom SAVE button -->
     <footer class="pointer-events-none">
-      <div class="fixed bottom-5 inset-x-0 flex justify-center">
+      <div class="fixed bottom-3 inset-x-0 flex justify-center">
         <button class="pointer-events-auto rounded-full bg-gradient-to-r from-[#E4443B] to-[#3D5CA5]/70 px-12 py-2.5
                text-xs font-semibold tracking-wide shadow-xl
                hover:opacity-90 transition">
