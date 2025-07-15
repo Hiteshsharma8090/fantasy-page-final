@@ -35,6 +35,10 @@
 
 <body class="bg-gray-100 text-black transition-colors duration-300 relative">
 
+
+
+    <!-- SECTION 1  -->
+
     <!-- 🔝 Top Ad Banner -->
     <div class="ad-top w-full flex justify-center fixed top-4 z-50">
         <div
@@ -209,15 +213,262 @@
             </a>
         </div>
 
+
+
+
+
+
+        <!-- SECTION 2  -->
+
+
+        <!-- Filter Tabs -->
+        <div class="overflow-x-auto hide-scrollbar px-4 mt-6 mb-3">
+            <div class="inline-flex space-x-3 text-sm whitespace-nowrap font-semibold">
+                <button class="bg-[#3E5DA6] text-white px-4 py-1 rounded-full">All Matches</button>
+                <button class="bg-gray-200 text-gray-800 px-4 py-1 rounded-full">T20</button>
+                <button class="bg-gray-200 text-gray-800 px-4 py-1 rounded-full">ODI</button>
+                <button class="bg-gray-200 text-gray-800 px-4 py-1 rounded-full">Test</button>
+                <button class="bg-gray-200 text-gray-800 px-4 py-1 rounded-full">League</button>
+                <button class="bg-gray-200 text-gray-800 px-4 py-1 rounded-full">Knockouts</button>
+                <button class="bg-gray-200 text-gray-800 px-4 py-1 rounded-full">Women's</button>
+                <button class="bg-gray-200 text-gray-800 px-4 py-1 rounded-full">Upcoming</button>
+                <button class="bg-gray-200 text-gray-800 px-4 py-1 rounded-full">Completed</button>
+            </div>
+
+        </div>
+
+        <!-- Scrollable Match Cards Section -->
+        <div class="relative px-2 sm:px-4">
+            <!-- Left Arrow -->
+            <button id="cardScrollLeft"
+                class="hidden sm:flex absolute left-0 top-1/2 transform -translate-y-1/2 z-10 w-8 h-8 bg-white shadow rounded-full text-[#3E5DA6] hover:text-[#BD3C34] justify-center items-center">
+                ‹
+            </button>
+
+            <!-- Card List -->
+            <div id="matchCards" class="flex overflow-x-auto scroll-smooth hide-scrollbar gap-x-4 pb-4 pt-1">
+
+                <!-- LIVE Match -->
+                <div
+                    class="min-w-[290px] bg-white rounded-xl shadow border border-gray-200 hover:shadow-lg transition flex-shrink-0">
+                    <div class="p-4 space-y-2">
+                        <div class="flex justify-between text-xs text-gray-500">
+                            <span class="truncate w-44 leading-tight">Final · ICC Champions Trophy</span>
+                            <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-[10px]">ODI</span>
+                        </div>
+                        <div class="text-red-600 text-xs font-semibold leading-tight">● LIVE</div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm font-semibold text-gray-800">
+                                <span class="truncate w-32">🇳🇿 New Zealand</span><span>251-7</span>
+                            </div>
+                            <div class="flex justify-between text-sm font-semibold text-gray-800">
+                                <span class="truncate w-32">🇮🇳 India</span><span>254-6</span>
+                            </div>
+                        </div>
+                        <div class="text-xs text-[#3E5DA6] font-medium truncate w-full">India won by 4 wickets</div>
+                    </div>
+                    <div class="grid grid-cols-3 border-t text-xs text-center text-gray-700 divide-x">
+                        <a href="#" class="py-2 flex flex items-center justify-center gap-1 hover:text-[#BD3C34]">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.167c.969 0 1.371 1.24.588 1.81l-3.37 2.448a1 1 0 00-.364 1.118l1.286 3.958c.3.921-.755 1.688-1.54 1.118l-3.37-2.448a1 1 0 00-1.176 0l-3.37 2.448c-.785.57-1.84-.197-1.54-1.118l1.286-3.958a1 1 0 00-.364-1.118L2.049 9.385c-.783-.57-.38-1.81.588-1.81h4.167a1 1 0 00.95-.69l1.286-3.958z" />
+                            </svg>
+                            Fantasy
+                        </a>
+                        <a href="#" class="py-2 flex flex items-center justify-center gap-1 hover:text-[#BD3C34]">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 10h16M4 14h10M4 18h6" />
+                            </svg>
+                            Points
+                        </a>
+                        <a href="#" class="py-2 flex flex items-center justify-center gap-1 hover:text-[#BD3C34]">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7V3m8 4V3m-9 8h10m-12 8h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            Schedule
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- UPCOMING Match -->
+                <div
+                    class="min-w-[290px] bg-white rounded-xl shadow border border-gray-200 hover:shadow-lg transition flex-shrink-0">
+                    <div class="p-4 space-y-2">
+                        <div class="flex justify-between text-xs text-gray-500">
+                            <span class="truncate w-44 leading-tight">Qualifier · IPL 2025 Super Round</span>
+                            <span class="bg-gray-200 text-gray-800 px-2 py-0.5 rounded text-[10px]">T20</span>
+                        </div>
+                        <div class="text-orange-500 text-xs font-semibold leading-tight">Upcoming</div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm font-semibold text-gray-800">
+                                <span class="truncate w-32">🟡 CSK</span><span>-</span>
+                            </div>
+                            <div class="flex justify-between text-sm font-semibold text-gray-800">
+                                <span class="truncate w-32">🔴 RCB</span><span>-</span>
+                            </div>
+                        </div>
+                        <div class="text-xs text-gray-600 truncate w-full">Tue, 12 Mar, 07:30 PM - MA Chidambaram</div>
+                    </div>
+                    <div class="grid grid-cols-3 border-t text-xs text-center text-gray-700 divide-x">
+                        <a href="#" class="py-2 flex flex items-center justify-center gap-1 hover:text-[#BD3C34]">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.167c.969 0 1.371 1.24.588 1.81l-3.37 2.448a1 1 0 00-.364 1.118l1.286 3.958c.3.921-.755 1.688-1.54 1.118l-3.37-2.448a1 1 0 00-1.176 0l-3.37 2.448c-.785.57-1.84-.197-1.54-1.118l1.286-3.958a1 1 0 00-.364-1.118L2.049 9.385c-.783-.57-.38-1.81.588-1.81h4.167a1 1 0 00.95-.69l1.286-3.958z" />
+                            </svg>
+                            Fantasy
+                        </a>
+                        <a href="#" class="py-2 flex flex items-center justify-center gap-1 hover:text-[#BD3C34]">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 10h16M4 14h10M4 18h6" />
+                            </svg>
+                            Points
+                        </a>
+                        <a href="#" class="py-2 flex flex items-center justify-center gap-1 hover:text-[#BD3C34]">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7V3m8 4V3m-9 8h10m-12 8h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            Schedule
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- COMPLETED Match -->
+                <div
+                    class="min-w-[290px] bg-white rounded-xl shadow border border-gray-200 hover:shadow-lg transition flex-shrink-0">
+                    <div class="p-4 space-y-2">
+                        <div class="flex justify-between text-xs text-gray-500">
+                            <span class="truncate w-44 leading-tight">Group Match · Asia Cup Final 2025</span>
+                            <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-[10px]">ODI</span>
+                        </div>
+                        <div class="text-blue-600 text-xs font-semibold leading-tight">Completed</div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm font-semibold text-gray-800">
+                                <span class="truncate w-32">🇵🇰 Pakistan</span><span>289-9</span>
+                            </div>
+                            <div class="flex justify-between text-sm font-semibold text-gray-800">
+                                <span class="truncate w-32">🇱🇰 Sri Lanka</span><span>290-7</span>
+                            </div>
+                        </div>
+                        <div class="text-xs text-[#3E5DA6] font-medium truncate w-full">Sri Lanka won by 3 wickets in
+                            last over</div>
+                    </div>
+                    <div class="grid grid-cols-3 border-t text-xs text-center text-gray-700 divide-x">
+                        <a href="#" class="py-2 flex flex items-center justify-center gap-1 hover:text-[#BD3C34]">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.167c.969 0 1.371 1.24.588 1.81l-3.37 2.448a1 1 0 00-.364 1.118l1.286 3.958c.3.921-.755 1.688-1.54 1.118l-3.37-2.448a1 1 0 00-1.176 0l-3.37 2.448c-.785.57-1.84-.197-1.54-1.118l1.286-3.958a1 1 0 00-.364-1.118L2.049 9.385c-.783-.57-.38-1.81.588-1.81h4.167a1 1 0 00.95-.69l1.286-3.958z" />
+                            </svg>
+                            Fantasy
+                        </a>
+                        <a href="#" class="py-2 flex flex items-center justify-center gap-1 hover:text-[#BD3C34]">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 10h16M4 14h10M4 18h6" />
+                            </svg>
+                            Points
+                        </a>
+                        <a href="#" class="py-2 flex flex items-center justify-center gap-1 hover:text-[#BD3C34]">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7V3m8 4V3m-9 8h10m-12 8h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            Schedule
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- COMPLETED Draw -->
+                <div
+                    class="min-w-[290px] bg-white rounded-xl shadow border border-gray-200 hover:shadow-lg transition flex-shrink-0">
+                    <div class="p-4 space-y-2">
+                        <div class="flex justify-between text-xs text-gray-500">
+                            <span class="truncate w-44 leading-tight">Test Match · Border-Gavaskar Trophy</span>
+                            <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-[10px]">Test</span>
+                        </div>
+                        <div class="text-blue-600 text-xs font-semibold leading-tight">Completed</div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm font-semibold text-gray-800">
+                                <span class="truncate w-32">🇮🇳 India</span><span>327 & 234</span>
+                            </div>
+                            <div class="flex justify-between text-sm font-semibold text-gray-800">
+                                <span class="truncate w-32">🇦🇺 Australia</span><span>328 & 233</span>
+                            </div>
+                        </div>
+                        <div class="text-xs text-[#3E5DA6] font-medium truncate w-full">Match ended in a draw</div>
+                    </div>
+                    <div class="grid grid-cols-3 border-t text-xs text-center text-gray-700 divide-x">
+                        <a href="#" class="py-2 flex flex items-center justify-center gap-1 hover:text-[#BD3C34]">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.167c.969 0 1.371 1.24.588 1.81l-3.37 2.448a1 1 0 00-.364 1.118l1.286 3.958c.3.921-.755 1.688-1.54 1.118l-3.37-2.448a1 1 0 00-1.176 0l-3.37 2.448c-.785.57-1.84-.197-1.54-1.118l1.286-3.958a1 1 0 00-.364-1.118L2.049 9.385c-.783-.57-.38-1.81.588-1.81h4.167a1 1 0 00.95-.69l1.286-3.958z" />
+                            </svg>
+                            Fantasy
+                        </a>
+                        <a href="#" class="py-2 flex flex items-center justify-center gap-1 hover:text-[#BD3C34]">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 10h16M4 14h10M4 18h6" />
+                            </svg>
+                            Points
+                        </a>
+                        <a href="#" class="py-2 flex flex items-center justify-center gap-1 hover:text-[#BD3C34]">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7V3m8 4V3m-9 8h10m-12 8h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            Schedule
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- Right Arrow -->
+            <button id="cardScrollRight"
+                class="hidden sm:flex absolute right-0 top-1/2 transform -translate-y-1/2 z-10 w-8 h-8 bg-white shadow rounded-full text-[#3E5DA6] hover:text-[#BD3C34] justify-center items-center">
+                ›
+            </button>
+        </div>
+
+
+    </div>
+
+
+
+
+
     </div>
 
     <!-- JS -->
     <script>
+
+        // mobile menus 
         const menuBtn = document.getElementById("menuBtn");
         const mobileMenu = document.getElementById("mobileMenu");
         menuBtn.addEventListener("click", () => {
             mobileMenu.classList.toggle("hidden");
         });
+
+        // theme color change section 
 
         const toggleBtn = document.getElementById("darkToggle");
         const darkIcon = document.getElementById("darkIcon");
