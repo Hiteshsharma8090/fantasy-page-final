@@ -40,7 +40,7 @@
     <!-- SECTION 1  -->
 
     <!-- 🔝 Top Ad Banner -->
-    <div class="ad-top w-full flex justify-center fixed top-4 z-50">
+    <div class="ad-top w-full flex justify-center fixed top-4 z-50 hidden">
         <div
             class="max-w-[1080px] w-full mx-auto bg-white shadow-md rounded-xl p-2 flex items-center justify-center h-[90px]">
             <img src="https://via.placeholder.com/1000x80?text=Top+Ad" alt="Top Ad"
@@ -49,7 +49,7 @@
     </div>
 
     <!-- ⬅️ Left Ad Box -->
-    <div class="ad-left fixed top-28 left-4 z-40 hidden lg:flex">
+    <div class="ad-left fixed top-28 left-4 z-40 hidden ">
         <div class="w-[120px] h-[calc(100vh-180px)] bg-white rounded-xl shadow-lg p-2 flex flex-col items-center">
             <h2 class="text-xs font-bold text-gray-800 mb-2 text-center">Advertisement</h2>
             <img src="https://via.placeholder.com/120x600?text=Left+Ad" alt="Left Ad"
@@ -58,7 +58,7 @@
     </div>
 
     <!-- ➡️ Right Ad Box -->
-    <div class="ad-right fixed top-28 right-4 z-40 hidden lg:flex">
+    <div class="ad-right fixed top-28 right-4 z-40 hidden ">
         <div class="w-[120px] h-[calc(100vh-180px)] bg-white rounded-xl shadow-lg p-2 flex flex-col items-center">
             <h2 class="text-xs font-bold text-gray-800 mb-2 text-center">Advertisement</h2>
             <img src="https://via.placeholder.com/120x600?text=Right+Ad" alt="Right Ad"
@@ -459,16 +459,15 @@
 
         <!-- SECTION 3 -->
         <!-- Quick Access Section -->
-        <div class="bg-white py-4 px-4 shadow-sm">
+        <div class="bg-white py-4 px-2 sm:px-4 shadow-sm">
             <div class="mb-3 text-sm font-semibold text-black">Quick Access</div>
 
             <!-- Responsive Wrapper -->
             <div class="overflow-x-auto overflow-visible hide-scrollbar">
-                <div class="flex  sgap-3 gap-2 w-max ">
+                <div class="flex sm:gap-3 gap-2 w-max ">
 
                     <!-- Button Item Example -->
-                    <a href="#"
-                        class="flex items-center gap-2 px-4 py-1 sm:py-2 rounded-full text-white bg-[#3E5DA6] whitespace-nowrap text-sm sm:text-xs
+                    <a href="#" class="flex items-center gap-2 px-4 py-1 sm:py-2 rounded-full text-white bg-[#3E5DA6] whitespace-nowrap text-sm sm:text-xs
                         sm:justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                             <path
@@ -477,8 +476,7 @@
                         CT 2025
                     </a>
 
-                    <a href="#"
-                        class="flex items-center gap-2 px-4 py-1 rounded-full text-white bg-[#BD3C34] whitespace-nowrap text-sm sm:text-xs
+                    <a href="#" class="flex items-center gap-2 px-4 py-1 rounded-full text-white bg-[#BD3C34] whitespace-nowrap text-sm sm:text-xs
                         sm:justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
@@ -488,8 +486,7 @@
                         Fantasy Handbook
                     </a>
 
-                    <a href="#"
-                        class="flex items-center gap-2 px-4 py-1 sm:py-2 rounded-full text-white bg-[#3E5DA6] whitespace-nowrap text-sm sm:text-xs
+                    <a href="#" class="flex items-center gap-2 px-4 py-1 sm:py-2 rounded-full text-white bg-[#3E5DA6] whitespace-nowrap text-sm sm:text-xs
 qq                          sm:justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
@@ -551,6 +548,194 @@ qq                          sm:justify-center">
                 </div>
             </div>
         </div>
+
+
+
+
+        <!-- SECTION 4  -->
+        <section class="px-4 py-6 bg-white relative">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-semibold text-black">Your daily dose of cricket!</h2>
+                <a href="#" class="text-[#3E5DA6] text-sm font-medium flex items-center gap-1 hover:underline">
+                    View More
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Video Card Wrapper -->
+            <div class="relative">
+                <!-- Left Arrow -->
+                <button id="scrollLeft"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-[#3E5DA6] text-white w-8 h-8 rounded-full flex items-center justify-center shadow-md">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+
+                <!-- Scrollable Row -->
+                <div id="videoRow" class="flex overflow-x-auto gap-4 scroll-smooth hide-scrollbar px-2">
+                    <!-- Repeatable Video Cards -->
+                    <!-- Card Template -->
+                    <!-- Use different images and titles -->
+                    <!-- Card 1 -->
+                    <div class="w-[180px] flex-shrink-0 bg-white rounded-xl shadow p-2">
+                        <div class="relative rounded-xl overflow-hidden">
+                            <img src="images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp"
+                                alt="Video Thumbnail" class="w-full h-[220px] object-cover rounded-xl">
+                            <div class="absolute bottom-2 right-2 bg-white text-[#3E5DA6] p-1 rounded-full">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M4.5 3.5v13l11-6.5-11-6.5z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <p class="text-sm font-semibold text-black leading-snug line-clamp-2">Impact Player Rules
+                                Explained</p>
+                            <p class="text-xs text-gray-500 mt-1">245K views</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="w-[180px] flex-shrink-0 bg-white rounded-xl shadow p-2">
+                        <div class="relative rounded-xl overflow-hidden">
+                            <img src="images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp" alt="Video Thumbnail"
+                                class="w-full h-[220px] object-cover rounded-xl">
+                            <div class="absolute bottom-2 right-2 bg-white text-[#3E5DA6] p-1 rounded-full">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M4.5 3.5v13l11-6.5-11-6.5z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <p class="text-sm font-semibold text-black leading-snug line-clamp-2">Expert Analysis: Match
+                                Preview</p>
+                            <p class="text-xs text-gray-500 mt-1">182K views</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="w-[180px] flex-shrink-0 bg-white rounded-xl shadow p-2">
+                        <div class="relative rounded-xl overflow-hidden">
+                            <img src="images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp" alt="Video Thumbnail"
+                                class="w-full h-[220px] object-cover rounded-xl">
+                            <div class="absolute bottom-2 right-2 bg-white text-[#3E5DA6] p-1 rounded-full">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M4.5 3.5v13l11-6.5-11-6.5z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <p class="text-sm font-semibold text-black leading-snug line-clamp-2">Best Shots of the Week
+                            </p>
+                            <p class="text-xs text-gray-500 mt-1">328K views</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="w-[180px] flex-shrink-0 bg-white rounded-xl shadow p-2">
+                        <div class="relative rounded-xl overflow-hidden">
+                            <img src="images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp"
+                                alt="Video Thumbnail" class="w-full h-[220px] object-cover rounded-xl">
+                            <div class="absolute bottom-2 right-2 bg-white text-[#3E5DA6] p-1 rounded-full">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M4.5 3.5v13l11-6.5-11-6.5z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <p class="text-sm font-semibold text-black leading-snug line-clamp-2">Match Highlights:
+                                Final Over</p>
+                            <p class="text-xs text-gray-500 mt-1">456K views</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="w-[180px] flex-shrink-0 bg-white rounded-xl shadow p-2">
+                        <div class="relative rounded-xl overflow-hidden">
+                            <img src="images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp" alt="Video Thumbnail"
+                                class="w-full h-[220px] object-cover rounded-xl">
+                            <div class="absolute bottom-2 right-2 bg-white text-[#3E5DA6] p-1 rounded-full">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M4.5 3.5v13l11-6.5-11-6.5z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <p class="text-sm font-semibold text-black leading-snug line-clamp-2">Top Bowling Spells</p>
+                            <p class="text-xs text-gray-500 mt-1">289K views</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="w-[180px] flex-shrink-0 bg-white rounded-xl shadow p-2">
+                        <div class="relative rounded-xl overflow-hidden">
+                            <img src="images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp" alt="Video Thumbnail"
+                                class="w-full h-[220px] object-cover rounded-xl">
+                            <div class="absolute bottom-2 right-2 bg-white text-[#3E5DA6] p-1 rounded-full">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M4.5 3.5v13l11-6.5-11-6.5z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <p class="text-sm font-semibold text-black leading-snug line-clamp-2">Behind the Scenes
+                                Training</p>
+                            <p class="text-xs text-gray-500 mt-1">167K views</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 7 -->
+                    <div class="w-[180px] flex-shrink-0 bg-white rounded-xl shadow p-2">
+                        <div class="relative rounded-xl overflow-hidden">
+                            <img src="images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp" alt="Video Thumbnail"
+                                class="w-full h-[220px] object-cover rounded-xl">
+                            <div class="absolute bottom-2 right-2 bg-white text-[#3E5DA6] p-1 rounded-full">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M4.5 3.5v13l11-6.5-11-6.5z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <p class="text-sm font-semibold text-black leading-snug line-clamp-2">Crowd Reactions to
+                                Thrilling Finish</p>
+                            <p class="text-xs text-gray-500 mt-1">193K views</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 8 -->
+                    <div class="w-[180px] flex-shrink-0 bg-white rounded-xl shadow p-2">
+                        <div class="relative rounded-xl overflow-hidden">
+                            <img src="images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp" alt="Video Thumbnail"
+                                class="w-full h-[220px] object-cover rounded-xl">
+                            <div class="absolute bottom-2 right-2 bg-white text-[#3E5DA6] p-1 rounded-full">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M4.5 3.5v13l11-6.5-11-6.5z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <p class="text-sm font-semibold text-black leading-snug line-clamp-2">Controversial
+                                Decisions Explained</p>
+                            <p class="text-xs text-gray-500 mt-1">211K views</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Arrow -->
+                <button id="scrollRight"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-[#3E5DA6] text-white w-8 h-8 rounded-full flex items-center justify-center shadow-md">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+
+
+
 
 
 
@@ -627,6 +812,16 @@ qq                          sm:justify-center">
 
         window.addEventListener("resize", toggleCardArrows);
         window.addEventListener("load", toggleCardArrows);
+
+
+
+
+
+        // SHORT SCROLLER 
+
+        const row = document.getElementById('videoRow');
+        document.getElementById('scrollLeft').onclick = () => row.scrollBy({ left: -220, behavior: 'smooth' });
+        document.getElementById('scrollRight').onclick = () => row.scrollBy({ left: 220, behavior: 'smooth' });
     </script>
 </body>
 
