@@ -784,41 +784,89 @@ qq                          sm:justify-center">
 
         <!-- 📰 3-Column Homepage Layout using your theme (Polished Professional Design) -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 px-2 sm:px-4 py-2 sm:py-4 bg-white">
-            <!-- Latest News Sidebar -->
-            <div class="lg:col-span-3 bg-[#f9fafb] p-4 sm:p-5 rounded-2xl shadow-sm border border-gray-100">
-                <h2 class="text-lg font-semibold text-[#3E5DA6] mb-4">Latest News</h2>
-                <ul class="space-y-4 text-sm text-[#1f2937]">
-                    <li>
-                        <a href="#" class="block font-medium leading-snug hover:text-[#BD3C34] transition">Rohit Sharma
-                            confirms he's not retiring from ODIs</a>
-                        <span class="text-xs text-gray-400">17 minutes ago</span>
-                    </li>
-                    <li>
-                        <a href="#" class="block font-medium leading-snug hover:text-[#BD3C34] transition">Team
-                            performance impresses captain in crucial match</a>
-                        <span class="text-xs text-gray-400">54 minutes ago</span>
-                    </li>
-                    <li>
-                        <a href="#" class="block font-medium leading-snug hover:text-[#BD3C34] transition">New cricket
-                            format proposed for upcoming season</a>
-                        <span class="text-xs text-gray-400">2 hours ago</span>
-                    </li>
-                    <li>
-                        <a href="#" class="block font-medium leading-snug hover:text-[#BD3C34] transition">ICC announces
-                            new T20 World Cup qualification process</a>
-                        <span class="text-xs text-gray-400">3 hours ago</span>
-                    </li>
-                    <li>
-                        <a href="#" class="block font-medium leading-snug hover:text-[#BD3C34] transition">Cricket
-                            Australia reveals summer schedule</a>
-                        <span class="text-xs text-gray-400">4 hours ago</span>
-                    </li>
-                    <li>
-                        <a href="#" class="block font-medium leading-snug hover:text-[#BD3C34] transition">England
-                            announces squad for upcoming series</a>
-                        <span class="text-xs text-gray-400">5 hours ago</span>
-                    </li>
-                </ul>
+            <div class="lg:col-span-3 flex flex-col gap-4">
+                <div class="bg-[#f9fafb] p-4 sm:p-5 rounded-2xl shadow-sm border border-gray-100">
+                    <h2 class="text-lg font-semibold text-[#3E5DA6] mb-4">Latest News</h2>
+                    <ul class="space-y-4 text-sm text-[#1f2937]">
+                        <li>
+                            <a href="#" class="block font-medium leading-snug hover:text-[#BD3C34] transition">Rohit
+                                Sharma
+                                confirms he's not retiring from ODIs</a>
+                            <span class="text-xs text-gray-400">17 minutes ago</span>
+                        </li>
+                        <li>
+                            <a href="#" class="block font-medium leading-snug hover:text-[#BD3C34] transition">Team
+                                performance impresses captain in crucial match</a>
+                            <span class="text-xs text-gray-400">54 minutes ago</span>
+                        </li>
+                        <li>
+                            <a href="#" class="block font-medium leading-snug hover:text-[#BD3C34] transition">New
+                                cricket
+                                format proposed for upcoming season</a>
+                            <span class="text-xs text-gray-400">2 hours ago</span>
+                        </li>
+                        <li>
+                            <a href="#" class="block font-medium leading-snug hover:text-[#BD3C34] transition">ICC
+                                announces
+                                new T20 World Cup qualification process</a>
+                            <span class="text-xs text-gray-400">3 hours ago</span>
+                        </li>
+                        <li>
+                            <a href="#" class="block font-medium leading-snug hover:text-[#BD3C34] transition">Cricket
+                                Australia reveals summer schedule</a>
+                            <span class="text-xs text-gray-400">4 hours ago</span>
+                        </li>
+                        <li>
+                            <a href="#" class="block font-medium leading-snug hover:text-[#BD3C34] transition">England
+                                announces squad for upcoming series</a>
+                            <span class="text-xs text-gray-400">5 hours ago</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-[#f9fafb] p-4 sm:p-5 rounded-2xl shadow-sm border border-gray-100 mb-6">
+                    <h2 class="text-lg font-semibold text-[#3E5DA6] mb-4">Top Teams</h2>
+                    <ul class="space-y-3">
+                        <li class="flex items-center justify-between bg-[#eff6ff] rounded-xl px-4 py-2">
+                            <div class="flex items-center gap-3">
+                                <img src="https://flagcdn.com/in.svg" alt="India" class="w-6 h-6 rounded-full">
+                                <span class="font-medium text-[#1f2937]">India</span>
+                            </div>
+                            <span class="text-[#3E5DA6] font-semibold">#1</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-[#eff6ff] rounded-xl px-4 py-2">
+                            <div class="flex items-center gap-3">
+                                <img src="https://flagcdn.com/au.svg" alt="Australia" class="w-6 h-6 rounded-full">
+                                <span class="font-medium text-[#1f2937]">Australia</span>
+                            </div>
+                            <span class="text-[#3E5DA6] font-semibold">#2</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-[#eff6ff] rounded-xl px-4 py-2">
+                            <div class="flex items-center gap-3">
+                                <img src="https://flagcdn.com/gb-eng.svg" alt="England" class="w-6 h-6 rounded-full">
+                                <span class="font-medium text-[#1f2937]">England</span>
+                            </div>
+                            <span class="text-[#3E5DA6] font-semibold">#3</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-[#eff6ff] rounded-xl px-4 py-2">
+                            <div class="flex items-center gap-3">
+                                <img src="https://flagcdn.com/nz.svg" alt="New Zealand" class="w-6 h-6 rounded-full">
+                                <span class="font-medium text-[#1f2937]">New Zealand</span>
+                            </div>
+                            <span class="text-[#3E5DA6] font-semibold">#4</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-[#eff6ff] rounded-xl px-4 py-2">
+                            <div class="flex items-center gap-3">
+                                <img src="https://flagcdn.com/pk.svg" alt="Pakistan" class="w-6 h-6 rounded-full">
+                                <span class="font-medium text-[#1f2937]">Pakistan</span>
+                            </div>
+                            <span class="text-[#3E5DA6] font-semibold">#5</span>
+                        </li>
+                    </ul>
+                    <div class="mt-4 text-center">
+                        <a href="#" class="text-[#3E5DA6] font-medium hover:underline">View All Rankings</a>
+                    </div>
+                </div>
+
             </div>
 
             <!-- Main Article Column -->
@@ -860,46 +908,69 @@ qq                          sm:justify-center">
                             <p class="text-xs text-gray-500 mt-1">⏱ 6 hours ago</p>
                         </div>
                     </div>
+                    <div class="bg-white rounded-xl shadow border border-gray-100 overflow-hidden">
+                        <img src="images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp"
+                            alt="Training" class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-base font-semibold text-[#1f2937]">Team Preparation: Inside the Training
+                                Camp</h3>
+                            <p class="text-xs text-gray-500 mt-1">⏱ 5 hours ago</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow border border-gray-100 overflow-hidden">
+                        <img src="images/u-s-deputy-secretary-of-state-in-tokyo.webp" alt="Coach"
+                            class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-base font-semibold text-[#1f2937]">Strategic Masterclass: Coach's
+                                Perspective</h3>
+                            <p class="text-xs text-gray-500 mt-1">⏱ 6 hours ago</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
             <!-- Featured Videos Sidebar -->
-            <div class="lg:col-span-3 bg-[#f9fafb] p-4 sm:p-5 rounded-2xl shadow-sm border border-gray-100">
-                <h2 class="text-lg font-semibold text-[#3E5DA6] mb-4">Featured Videos</h2>
-                <div class="space-y-4 text-sm">
-                    <a href="#" class="block group">
-                        <div class="overflow-hidden rounded-xl shadow">
-                            <img src="images/Doug-AP-in-the-News-416x252-f50_50.webp" alt="Video"
-                                class="group-hover:scale-105 transition duration-300 w-full h-32 object-cover">
-                        </div>
-                        <p class="mt-2 text-[#1f2937] font-medium group-hover:text-[#BD3C34] transition">Match
-                            Highlights: Final Moments</p>
-                    </a>
-                    <a href="#" class="block group">
-                        <div class="overflow-hidden rounded-xl shadow">
-                            <img src="images/Doug-AP-in-the-News-416x252-f50_50.webp" alt="Post Match"
-                                class="group-hover:scale-105 transition duration-300 w-full h-32 object-cover">
-                        </div>
-                        <p class="mt-2 text-[#1f2937] font-medium group-hover:text-[#BD3C34] transition">Post-Match
-                            Analysis</p>
-                    </a>
-                    <a href="#" class="block group">
-                        <div class="overflow-hidden rounded-xl shadow">
-                            <img src="images/u-s-deputy-secretary-of-state-in-tokyo.webp" alt="Team Prep"
-                                class="group-hover:scale-105 transition duration-300 w-full h-32 object-cover">
-                        </div>
-                        <p class="mt-2 text-[#1f2937] font-medium group-hover:text-[#BD3C34] transition">Championship
-                            Winning Moments</p>
-                    </a>
-                    <a href="#" class="block group">
-                        <div class="overflow-hidden rounded-xl shadow">
-                            <img src="images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp"
-                                alt="Behind the Scenes"
-                                class="group-hover:scale-105 transition duration-300 w-full h-32 object-cover">
-                        </div>
-                        <p class="mt-2 text-[#1f2937] font-medium group-hover:text-[#BD3C34] transition">Behind the
-                            Scenes: Team Preparation</p>
-                    </a>
+            <div class="lg:col-span-3">
+                <div class=" bg-[#f9fafb] p-4 sm:p-5 rounded-2xl shadow-sm border border-gray-100">
+                    <h2 class="text-lg font-semibold text-[#3E5DA6] mb-4">Featured Videos</h2>
+                    <div class="space-y-4 text-sm">
+                        <a href="#" class="block group">
+                            <div class="overflow-hidden rounded-xl shadow">
+                                <img src="images/Doug-AP-in-the-News-416x252-f50_50.webp" alt="Video"
+                                    class="group-hover:scale-105 transition duration-300 w-full h-32 object-cover">
+                            </div>
+                            <p class="mt-2 text-[#1f2937] font-medium group-hover:text-[#BD3C34] transition">Match
+                                Highlights: Final Moments</p>
+                        </a>
+                        <a href="#" class="block group">
+                            <div class="overflow-hidden rounded-xl shadow">
+                                <img src="images/Doug-AP-in-the-News-416x252-f50_50.webp" alt="Post Match"
+                                    class="group-hover:scale-105 transition duration-300 w-full h-32 object-cover">
+                            </div>
+                            <p class="mt-2 text-[#1f2937] font-medium group-hover:text-[#BD3C34] transition">Post-Match
+                                Analysis</p>
+                        </a>
+                        <a href="#" class="block group">
+                            <div class="overflow-hidden rounded-xl shadow">
+                                <img src="images/u-s-deputy-secretary-of-state-in-tokyo.webp" alt="Team Prep"
+                                    class="group-hover:scale-105 transition duration-300 w-full h-32 object-cover">
+                            </div>
+                            <p class="mt-2 text-[#1f2937] font-medium group-hover:text-[#BD3C34] transition">
+                                Championship
+                                Winning Moments</p>
+                        </a>
+                        <a href="#" class="block group">
+                            <div class="overflow-hidden rounded-xl shadow">
+                                <img src="images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp"
+                                    alt="Behind the Scenes"
+                                    class="group-hover:scale-105 transition duration-300 w-full h-32 object-cover">
+                            </div>
+                            <p class="mt-2 text-[#1f2937] font-medium group-hover:text-[#BD3C34] transition">Behind the
+                                Scenes: Team Preparation</p>
+                        </a>
+
+                    </div>
                 </div>
             </div>
         </div>
