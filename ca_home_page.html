@@ -184,20 +184,29 @@
 
 
         <!-- Live Ticker -->
-        <div
-            class="bg-[#BD3C34] text-white text-sm py-2 px-4 flex items-center space-x-4 sm:space-x-6 overflow-x-auto whitespace-nowrap hide-scrollbar font-medium">
-            <a href="#" class="flex items-center gap-1"><span
-                    class="w-2 h-2 bg-green-300 rounded-full animate-pulse"></span> NZ vs IND - Live</a>
-            <a href="#">MIW vs GGTW - Preview</a>
-            <a href="#">SLM vs ENGM - Preview</a>
-            <a href="#">CAN vs NAM - Complete</a>
-            <a href="#">PAK vs AUS - Live</a>
-            <a href="#">SA vs WI - Preview</a>
-            <a href="#">BAN vs AFG - Complete</a>
-            <a href="#"
-                class="ml-auto bg-white text-[#BD3C34] px-3 py-1 rounded-full hover:bg-[#3E5DA6] hover:text-white transition">View
-                All →</a>
-        </div>
+       <!-- Live Ticker Wrapper -->
+<div class="bg-[#BD3C34] text-white text-sm py-2 px-4 flex items-center justify-between overflow-hidden font-medium relative">
+
+    <!-- Scrollable Ticker -->
+    <div class="flex items-center space-x-4 sm:space-x-6 overflow-x-auto whitespace-nowrap hide-scrollbar flex-1 pr-4">
+      <a href="#" class="flex items-center gap-1">
+        <span class="w-2 h-2 bg-green-300 rounded-full animate-pulse"></span> NZ vs IND - Live
+      </a>
+      <a href="#">MIW vs GGTW - Preview</a>
+      <a href="#">SLM vs ENGM - Preview</a>
+      <a href="#">CAN vs NAM - Complete</a>
+      <a href="#">PAK vs AUS - Live</a>
+      <a href="#">SA vs WI - Preview</a>
+      <a href="#">BAN vs AFG - Complete</a>
+    </div>
+  
+    <!-- View All Button -->
+    <a href="#"
+      class="flex-shrink-0 bg-white text-[#BD3C34] px-3 py-1 rounded-full hover:bg-[#3E5DA6] hover:text-white transition ml-4">
+      View All →
+    </a>
+  </div>
+  
     </div>
 
     <!-- JS -->
