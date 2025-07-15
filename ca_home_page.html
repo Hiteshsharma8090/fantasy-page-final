@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cricket Addictor Full Layout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        @media (max-width: 1080px) {
+
+            .ad-left,
+            .ad-right,
+            .ad-top {
+                display: none !important;
+            }
+
+            .main-wrapper {
+                max-width: 100% !important;
+                margin-top: 0 !important;
+                border-radius: 0 !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-black transition-colors duration-300 relative">
+
+    <!-- 🔝 Top Ad Banner -->
+    <div class="ad-top w-full flex justify-center fixed top-4 z-50">
+        <div
+            class="max-w-[1080px] w-full mx-auto bg-white shadow-md rounded-xl p-2 flex items-center justify-center h-[90px]">
+            <img src="https://via.placeholder.com/1000x80?text=Top+Ad" alt="Top Ad"
+                class="h-full object-contain rounded" />
+        </div>
+    </div>
+
+    <!-- ⬅️ Left Ad Box -->
+    <div class="ad-left fixed top-28 left-4 z-40 hidden lg:flex">
+        <div class="w-[120px] h-[calc(100vh-180px)] bg-white rounded-xl shadow-lg p-2 flex flex-col items-center">
+            <h2 class="text-xs font-bold text-gray-800 mb-2 text-center">Advertisement</h2>
+            <img src="https://via.placeholder.com/120x600?text=Left+Ad" alt="Left Ad"
+                class="rounded-md object-contain h-full" />
+        </div>
+    </div>
+
+    <!-- ➡️ Right Ad Box -->
+    <div class="ad-right fixed top-28 right-4 z-40 hidden lg:flex">
+        <div class="w-[120px] h-[calc(100vh-180px)] bg-white rounded-xl shadow-lg p-2 flex flex-col items-center">
+            <h2 class="text-xs font-bold text-gray-800 mb-2 text-center">Advertisement</h2>
+            <img src="https://via.placeholder.com/120x600?text=Right+Ad" alt="Right Ad"
+                class="rounded-md object-contain h-full" />
+        </div>
+    </div>
+
+    <!-- 🧱 Main Wrapper -->
+    <div
+        class="main-wrapper max-w-[1080px] mx-auto mt-32 font-sans overflow-hidden shadow-lg bg-white rounded-lg lg:rounded-xl">
+
+        <!-- Header -->
+        <div class="flex justify-between items-center px-4 py-3 bg-[#3E5DA6] text-white relative">
+            <a href="/" class="flex items-center gap-2">
+                <img src="Icons/CA_logo.svg" alt="Logo" class="">
+            </a>
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                <a href="#">Live Scores</a>
+                <a href="#">Schedule</a>
+                <div class="relative group">
+                    <button class="flex items-center gap-1">Series <svg class="w-3 h-3" fill="none"
+                            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" />
+                        </svg></button>
+                    <div
+                        class="absolute hidden group-hover:block top-6 left-0 bg-white text-black shadow-md rounded w-40 z-10">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">IPL 2025</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">World Cup</a>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <button class="flex items-center gap-1">Teams <svg class="w-3 h-3" fill="none" stroke="currentColor"
+                            stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" />
+                        </svg></button>
+                    <div
+                        class="absolute hidden group-hover:block top-6 left-0 bg-white text-black shadow-md rounded w-40 z-10">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">India</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Australia</a>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <button class="flex items-center gap-1">More <svg class="w-3 h-3" fill="none" stroke="currentColor"
+                            stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" />
+                        </svg></button>
+                    <div
+                        class="absolute hidden group-hover:block top-6 left-0 bg-white text-black shadow-md rounded w-44 z-10">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Cricket News</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Photos</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Videos</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Stats</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">ICC Rankings</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="flex items-center gap-3">
+                <div class="relative hidden md:block h-8">
+                    <input type="text" placeholder="Search..."
+                        class="h-8 rounded-full pl-10 pr-4 text-sm text-black outline-none w-48" />
+                    <svg class="absolute left-3 top-2 w-4 h-4 text-gray-500" fill="none" stroke="currentColor"
+                        stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                </div>
+                <button id="darkToggle"
+                    class="w-8 h-8 flex items-center justify-center rounded-full bg-white text-[#3E5DA6] hover:bg-gray-200 transition">
+                    <svg id="darkIcon" class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path d="M17.293 13.293a8 8 0 01-10.586-10.586A8.001 8.001 0 1017.293 13.293z" />
+                    </svg>
+                </button>
+                <button
+                    class="bg-white text-[#3E5DA6] h-8 px-4 rounded-full hidden md:block font-semibold hover:bg-[#BD3C34] hover:text-white transition text-sm">Sign
+                    In</button>
+                <button id="menuBtn"
+                    class="md:hidden flex items-center justify-center w-8 h-8 rounded-full border border-white text-white">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- 🧭 Mobile Menu -->
+        <div id="mobileMenu"
+            class="md:hidden bg-[#3E5DA6] text-white px-4 py-5 hidden animate-slide-down origin-top transform transition duration-300 ease-in-out space-y-4 text-sm">
+            <a href="#" class="block hover:text-[#FFD700]">🏏 Live Scores</a>
+            <a href="#" class="block hover:text-[#FFD700]">🗓️ Schedule</a>
+
+            <div>
+                <p class="font-semibold">📋 Series</p>
+                <a href="#" class="block pl-5 hover:text-[#FFD700]">IPL 2025</a>
+                <a href="#" class="block pl-5 hover:text-[#FFD700]">World Cup</a>
+            </div>
+
+            <div>
+                <p class="font-semibold">🏳️ Teams</p>
+                <a href="#" class="block pl-5 hover:text-[#FFD700]">India</a>
+                <a href="#" class="block pl-5 hover:text-[#FFD700]">Australia</a>
+            </div>
+
+            <div>
+                <p class="font-semibold">📚 More</p>
+                <a href="#" class="block pl-5 hover:text-[#FFD700]">Cricket News</a>
+                <a href="#" class="block pl-5 hover:text-[#FFD700]">Photos</a>
+                <a href="#" class="block pl-5 hover:text-[#FFD700]">Videos</a>
+                <a href="#" class="block pl-5 hover:text-[#FFD700]">Stats</a>
+                <a href="#" class="block pl-5 hover:text-[#FFD700]">ICC Rankings</a>
+            </div>
+
+            <div>
+                <label for="lang" class="block font-semibold mt-3 mb-1">🌐 Language</label>
+                <select id="lang" class="w-full bg-white text-[#3E5DA6] text-sm rounded-full px-4 py-2">
+                    <option value="en">English</option>
+                    <option value="hi">Hindi</option>
+                </select>
+            </div>
+
+            <div class="mt-4">
+                <button
+                    class="bg-white text-[#3E5DA6] w-full py-2 rounded-full font-semibold hover:bg-[#BD3C34] hover:text-white transition">Sign
+                    In</button>
+            </div>
+        </div>
+
+
+        <!-- Live Ticker -->
+        <div
+            class="bg-[#BD3C34] text-white text-sm py-2 px-4 flex items-center space-x-6 overflow-x-auto whitespace-nowrap hide-scrollbar font-medium">
+            <a href="#" class="flex items-center gap-1"><span
+                    class="w-2 h-2 bg-green-300 rounded-full animate-pulse"></span> NZ vs IND - Live</a>
+            <a href="#">MIW vs GGTW - Preview</a>
+            <a href="#">SLM vs ENGM - Preview</a>
+            <a href="#">CAN vs NAM - Complete</a>
+            <a href="#">PAK vs AUS - Live</a>
+            <a href="#">SA vs WI - Preview</a>
+            <a href="#">BAN vs AFG - Complete</a>
+            <a href="#"
+                class="ml-auto bg-white text-[#BD3C34] px-3 py-1 rounded-full hover:bg-[#3E5DA6] hover:text-white transition">View
+                All →</a>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script>
+        const menuBtn = document.getElementById("menuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+
+        const toggleBtn = document.getElementById("darkToggle");
+        const darkIcon = document.getElementById("darkIcon");
+        darkIcon.setAttribute("data-theme", "moon");
+        toggleBtn?.addEventListener("click", () => {
+            document.body.classList.toggle("bg-gray-900");
+            document.body.classList.toggle("text-white");
+            if (darkIcon.getAttribute("data-theme") === "moon") {
+                darkIcon.setAttribute("data-theme", "sun");
+                darkIcon.innerHTML = `<path fill-rule="evenodd" d="M10 2a.75.75 0 01.75.75V4a.75.75 0 01-1.5 0V2.75A.75.75 0 0110 2zm5.657 2.343a.75.75 0 011.06 1.06l-1.061 1.06a.75.75 0 01-1.06-1.06l1.06-1.06zM18 10a.75.75 0 01-.75.75H16.5a.75.75 0 010-1.5h.75A.75.75 0 0118 10zm-2.343 5.657a.75.75 0 00-1.06-1.06l-1.06 1.06a.75.75 0 101.06 1.06l1.06-1.06zM10 16a.75.75 0 01.75.75V18a.75.75 0 01-1.5 0v-.75A.75.75 0 0110 16zm-5.657-1.343a.75.75 0 011.06 1.06l-1.06 1.06a.75.75 0 01-1.06-1.06l1.06-1.06zM4 10a.75.75 0 01.75-.75H6a.75.75 0 010 1.5H4.75A.75.75 0 014 10zm2.343-5.657a.75.75 0 00-1.06 1.06L6.343 6.46a.75.75 0 001.06-1.06L6.343 4.343zM10 6.25a3.75 3.75 0 100 7.5 3.75 3.75 0 000-7.5z" clip-rule="evenodd"/>`;
+            } else {
+                darkIcon.setAttribute("data-theme", "moon");
+                darkIcon.innerHTML = `<path d="M17.293 13.293a8 8 0 01-10.586-10.586A8.001 8.001 0 1017.293 13.293z"/>`;
+            }
+        });
+    </script>
+</body>
+
+</html>
