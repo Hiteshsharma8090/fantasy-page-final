@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>Cricket Addictor - Hover Dropdown</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <style>
+        html {
+            font-size: 15px;
+        }
+
+        @media (min-width: 768px) {
+            html {
+                font-size: 16px;
+            }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+        }
+
+        .hover-underline-animation {
+            position: relative;
+        }
+
+        .hover-underline-animation::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #BD3C34;
+            transition: width 0.3s ease-in-out;
+        }
+
+        .hover-underline-animation:hover::after {
+            width: 100%;
+        }
+
+        ::-webkit-scrollbar {
+            height: 0px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: transparent;
+        }
+
+        .line-clamp-2 {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-[#3E5DA6]">
+    <!-- HEADER -->
+    <header class="shadow-md border-b border-gray-100 bg-white sticky top-0 z-50">
+        <div class="max-w-[1320px] mx-auto px-2 sm:px-4 py-3 flex justify-between items-center flex-wrap gap-3">
+
+            <!-- Logo + Language -->
+            <div class="flex items-center gap-4">
+                <a href="/" class="flex items-center gap-1">
+                    <span class="text-2xl font-extrabold text-[#3E5DA6]">Cricket</span>
+                    <span class="bg-[#BD3C34] text-white px-2 py-1 text-sm font-bold rounded shadow">Addictor</span>
+                </a>
+                <select
+                    class="hidden md:block text-sm border border-gray-300 rounded px-2 py-1 outline-none focus:ring-2 focus:ring-[#BD3C34]">
+                    <option>English</option>
+                    <option>Hindi</option>
+                </select>
+
+            </div>
+
+            <!-- Nav Links -->
+            <nav class="hidden md:flex gap-4 text-sm font-semibold">
+                <!-- LIVE SCORES Dropdown -->
+                <div class="relative group">
+                    <div class="flex items-center gap-1 cursor-pointer hover:text-[#BD3C34] hover-underline-animation">
+                        LIVE SCORES
+                        <svg class="w-4 h-4 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                    <div
+                        class="absolute left-0 mt-2 w-64 bg-white border border-gray-200 rounded-xl shadow-2xl z-20 opacity-0 group-hover:opacity-100 invisible group-hover:visible transition duration-300 pointer-events-none group-hover:pointer-events-auto">
+                        <div class="py-2 divide-y divide-gray-100">
+                            <a href="#" class="flex gap-3 px-4 py-3 hover:bg-gray-50">
+                                <span class="text-xl">🟢</span>
+                                <div>
+                                    <p class="text-sm font-medium">Live Matches</p>
+                                    <p class="text-xs text-gray-500">Real-time scores</p>
+                                </div>
+                            </a>
+                            <a href="#" class="flex gap-3 px-4 py-3 hover:bg-gray-50">
+                                <span class="text-xl">📊</span>
+                                <div>
+                                    <p class="text-sm font-medium">Scorecard</p>
+                                    <p class="text-xs text-gray-500">Match summary</p>
+                                </div>
+                            </a>
+                            <a href="#" class="flex gap-3 px-4 py-3 hover:bg-gray-50">
+                                <span class="text-xl">🎙️</span>
+                                <div>
+                                    <p class="text-sm font-medium">Commentary</p>
+                                    <p class="text-xs text-gray-500">Ball-by-ball</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SERIES Dropdown -->
+                <div class="relative group">
+                    <div class="flex items-center gap-1 cursor-pointer hover:text-[#BD3C34] hover-underline-animation">
+                        SERIES
+                        <svg class="w-4 h-4 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                    <div
+                        class="absolute left-0 mt-2 w-64 bg-white border border-gray-200 rounded-xl shadow-2xl z-20 opacity-0 group-hover:opacity-100 invisible group-hover:visible transition duration-300 pointer-events-none group-hover:pointer-events-auto">
+                        <div class="py-2 divide-y divide-gray-100">
+                            <a href="#" class="flex gap-3 px-4 py-3 hover:bg-gray-50">
+                                <span class="text-xl">🇮🇳</span>
+                                <div>
+                                    <p class="text-sm font-medium">India Tour</p>
+                                    <p class="text-xs text-gray-500">Fixtures and squads</p>
+                                </div>
+                            </a>
+                            <a href="#" class="flex gap-3 px-4 py-3 hover:bg-gray-50">
+                                <span class="text-xl">🏆</span>
+                                <div>
+                                    <p class="text-sm font-medium">World Cup</p>
+                                    <p class="text-xs text-gray-500">2025 Schedule</p>
+                                </div>
+                            </a>
+                            <a href="#" class="flex gap-3 px-4 py-3 hover:bg-gray-50">
+                                <span class="text-xl">🌏</span>
+                                <div>
+                                    <p class="text-sm font-medium">Asia Cup</p>
+                                    <p class="text-xs text-gray-500">Team details</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TEAMS Dropdown -->
+                <div class="relative group">
+                    <div class="flex items-center gap-1 cursor-pointer hover:text-[#BD3C34] hover-underline-animation">
+                        TEAMS
+                        <svg class="w-4 h-4 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                    <div
+                        class="absolute left-0 mt-2 w-64 bg-white border border-gray-200 rounded-xl shadow-2xl z-20 opacity-0 group-hover:opacity-100 invisible group-hover:visible transition duration-300 pointer-events-none group-hover:pointer-events-auto">
+                        <div class="py-2 divide-y divide-gray-100">
+                            <a href="#" class="flex gap-3 px-4 py-3 hover:bg-gray-50">
+                                <span class="text-xl">🇮🇳</span>
+                                <div>
+                                    <p class="text-sm font-medium">India</p>
+                                    <p class="text-xs text-gray-500">Players, stats, schedule</p>
+                                </div>
+                            </a>
+                            <a href="#" class="flex gap-3 px-4 py-3 hover:bg-gray-50">
+                                <span class="text-xl">🇦🇺</span>
+                                <div>
+                                    <p class="text-sm font-medium">Australia</p>
+                                    <p class="text-xs text-gray-500">Team overview</p>
+                                </div>
+                            </a>
+                            <a href="#" class="flex gap-3 px-4 py-3 hover:bg-gray-50">
+                                <span class="text-xl">🏴</span>
+                                <div>
+                                    <p class="text-sm font-medium">England</p>
+                                    <p class="text-xs text-gray-500">Squad details</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Static Nav Links -->
+                <a href="#" class="hover:text-[#BD3C34] hover-underline-animation">CRICKET NEWS</a>
+                <a href="#" class="hover:text-[#BD3C34] hover-underline-animation hidden sm:inline">PHOTOS</a>
+                <a href="#" class="hover:text-[#BD3C34] hover-underline-animation hidden sm:inline">VIDEOS</a>
+                <a href="#" class="hover:text-[#BD3C34] hover-underline-animation">STATS</a>
+                <a href="#" class="hover:text-[#BD3C34] hover-underline-animation">ICC RANKINGS</a>
+            </nav>
+
+            <!-- Login + Search -->
+            <div class="flex items-center gap-3">
+                <button
+                    class="hidden md:inline-flex bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:scale-105 transition duration-300 shadow">
+                    Login
+                </button>
+             
+
+                <div class="relative group">
+                    <div title="Search"
+                        class="w-10 h-10 rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] flex items-center justify-center cursor-pointer shadow hover:scale-105 transition duration-300">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z" />
+                        </svg>
+                    </div>
+                </div>
+                   <!-- Mobile Hamburger (Only on small screens) -->
+                   <button id="mobileMenuBtn"
+                   class="md:hidden bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] text-white w-10 h-10 flex items-center justify-center rounded-full shadow">
+                   <!-- Hamburger icon -->
+                   <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                       <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                   </svg>
+               </button>
+            </div>
+        </div>
+
+        <!-- Sub Navigation -->
+        <div class="bg-[#3E5DA6]">
+            <div class="max-w-[1320px] mx-auto px-2 sm:px-4 py-2 overflow-x-auto whitespace-nowrap">
+                <div class="flex space-x-6 text-sm font-medium text-white">
+                    <a href="#" class=" hover:underline">IPL 2025</a>
+                    <a href="#" class=" hover:underline">TEAMS</a>
+                    <a href="#" class=" hover:underline">POINTS TABLE</a>
+                    <a href="#" class=" hover:underline">SCHEDULE</a>
+                    <a href="#" class=" hover:underline">STATS</a>
+                    <a href="#" class=" hover:underline">NEWS</a>
+                    <a href="#" class=" hover:underline">DREAM11 PREDICTION</a>
+                    <a href="#" class=" hover:underline">MATCH PREDICTION</a>
+                    <a href="#" class=" hover:underline">FANTASY TIPS</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <section class="bg-[#F1F4FD] py-6">
+        <div class="max-w-[1320px] mx-auto px-2 sm:px-4 relative">
+
+            <!-- Scrollable Tabs -->
+            <div class="relative">
+                <div class="flex flex-nowrap gap-2 overflow-x-auto pb-3 scrollbar-hide">
+                    <button
+                        class="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] text-white shadow-sm shrink-0">
+                        MATCHES
+                    </button>
+                    <button
+                        class="px-3 py-1 text-xs font-semibold rounded-full border border-[#3E5DA6] text-[#3E5DA6] hover:bg-[#3E5DA6] hover:text-white transition shrink-0">
+                        AUS A VS SL A
+                    </button>
+                    <button
+                        class="px-3 py-1 text-xs font-semibold rounded-full border border-[#3E5DA6] text-[#3E5DA6] hover:bg-[#3E5DA6] hover:text-white transition shrink-0">
+                        SL VS BAN
+                    </button>
+                    <button
+                        class="px-3 py-1 text-xs font-semibold rounded-full border border-[#3E5DA6] text-[#3E5DA6] hover:bg-[#3E5DA6] hover:text-white transition shrink-0">
+                        VITALITY BLAST WOMEN
+                    </button>
+                    <button
+                        class="px-3 py-1 text-xs font-semibold rounded-full border border-[#3E5DA6] text-[#3E5DA6] hover:bg-[#3E5DA6] hover:text-white transition shrink-0">
+                        ENG-W VS IND-W
+                    </button>
+                    <button
+                        class="px-3 py-1 text-xs font-semibold rounded-full border border-[#3E5DA6] text-[#3E5DA6] hover:bg-[#3E5DA6] hover:text-white transition shrink-0">
+                        KCC T20 LEAGUE
+                    </button>
+                    <button
+                        class="px-3 py-1 text-xs font-semibold rounded-full border border-[#3E5DA6] text-[#3E5DA6] hover:bg-[#3E5DA6] hover:text-white transition shrink-0">
+                        ALL FIXTURES
+                    </button>
+                </div>
+            </div>
+
+            <!-- Scroll Buttons -->
+            <button onclick="scrollLeft()"
+                class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-[#3E5DA6] text-white rounded-full w-8 h-8 items-center justify-center shadow hover:bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] transition">
+                ‹
+            </button>
+
+            <button onclick="scrollRight()"
+                class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-[#3E5DA6] text-white rounded-full w-8 h-8 items-center justify-center shadow hover:bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] transition">
+                ›
+            </button>
+
+            <!-- Match Cards -->
+            <div id="matchCards" class="flex overflow-x-auto gap-4 scroll-smooth  mt-2">
+
+                <!-- Card 1 - LIVE -->
+                <div
+                    class="bg-white rounded-lg shadow-sm px-4 py-3 min-w-[260px] flex-shrink-0 border border-gray-200 hover:shadow-md transition">
+                    <div class="flex items-center gap-1 mb-1">
+                        <span
+                            class="text-[10px] bg-[#BD3C34] text-white font-bold px-1.5 py-0.5 rounded-full">LIVE</span>
+                        <p class="text-[11px] text-gray-600">1st Unofficial • MCG</p>
+                    </div>
+                    <div class="text-[13px] font-medium space-y-1">
+                        <div class="flex justify-between">
+                            <span>🇦🇺 AUS-A</span>
+                            <span class="text-[#3E5DA6] font-semibold">486/10</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>🇱🇰 SL-A</span>
+                            <span class="text-[#3E5DA6] font-semibold">272/10 & *127/2</span>
+                        </div>
+                    </div>
+                    <p class="text-[11px] text-[#BD3C34] mt-1">Lunch: SL-A trail by 87</p>
+                    <a href="#"
+                        class="text-[11px] font-semibold text-[#3E5DA6] mt-2 inline-block hover:underline">FIXTURES
+                        &gt;</a>
+                </div>
+
+                <!-- Card 2 - CANCELLED -->
+                <div
+                    class="bg-white rounded-lg shadow-sm px-4 py-3 min-w-[260px] flex-shrink-0 border border-gray-200 hover:shadow-md transition">
+                    <div class="flex items-center gap-1 mb-1">
+                        <span
+                            class="text-[10px] bg-gray-400 text-white font-bold px-1.5 py-0.5 rounded-full">CANCELLED</span>
+                        <p class="text-[11px] text-gray-600">Match 51 • Riverside</p>
+                    </div>
+                    <div class="text-[13px] font-medium space-y-1">
+                        <div>DW</div>
+                        <div>SUR-W</div>
+                    </div>
+                    <p class="text-[11px] text-green-600 mt-1">Match Abandoned</p>
+                    <div class="flex justify-between mt-2 text-[11px] font-semibold text-[#3E5DA6]">
+                        <a href="#" class="hover:underline">FIXTURES &gt;</a>
+                        <a href="#" class="hover:underline">POINTS &gt;</a>
+                    </div>
+                </div>
+
+                <!-- Card 3 - COMPLETED -->
+                <div
+                    class="bg-white rounded-lg shadow-sm px-4 py-3 min-w-[260px] flex-shrink-0 border border-gray-200 hover:shadow-md transition">
+                    <div class="flex items-center gap-1 mb-1">
+                        <span
+                            class="text-[10px] bg-green-600 text-white font-bold px-1.5 py-0.5 rounded-full">COMPLETED</span>
+                        <p class="text-[11px] text-gray-600">Match 13 • Sulaibiya</p>
+                    </div>
+                    <div class="text-[13px] font-medium space-y-1">
+                        <div class="flex justify-between">
+                            <span>CEC-A</span>
+                            <span class="text-[#3E5DA6] font-semibold">130/2</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>MEC</span>
+                            <span class="text-[#3E5DA6] font-semibold">129/8</span>
+                        </div>
+                    </div>
+                    <p class="text-[11px] text-green-600 mt-1">CEC-A won by 8 wickets</p>
+                    <div class="flex justify-between mt-2 text-[11px] font-semibold text-[#3E5DA6]">
+                        <a href="#" class="hover:underline">FIXTURES &gt;</a>
+                        <a href="#" class="hover:underline">POINTS &gt;</a>
+                    </div>
+                </div>
+
+                <!-- Card 4 - COMPLETED -->
+                <div
+                    class="bg-white rounded-lg shadow-sm px-4 py-3 min-w-[260px] flex-shrink-0 border border-gray-200 hover:shadow-md transition">
+                    <div class="flex items-center gap-1 mb-1">
+                        <span
+                            class="text-[10px] bg-green-600 text-white font-bold px-1.5 py-0.5 rounded-full">COMPLETED</span>
+                        <p class="text-[11px] text-gray-600">Match 17 • Cricket Association</p>
+                    </div>
+                    <div class="text-[13px] font-medium space-y-1">
+                        <div class="flex justify-between">
+                            <span>YAR</span>
+                            <span class="text-[#3E5DA6] font-semibold">198/2</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>OAW</span>
+                            <span class="text-[#3E5DA6] font-semibold">192/9</span>
+                        </div>
+                    </div>
+                    <p class="text-[11px] text-green-600 mt-1">YAR won by 6 runs</p>
+                    <div class="flex justify-between mt-2 text-[11px] font-semibold text-[#3E5DA6]">
+                        <a href="#" class="hover:underline">FIXTURES &gt;</a>
+                        <a href="#" class="hover:underline">POINTS &gt;</a>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white rounded-lg shadow-sm px-4 py-3 min-w-[260px] flex-shrink-0 border border-gray-200 hover:shadow-md transition">
+                    <div class="flex items-center gap-1 mb-1">
+                        <span
+                            class="text-[10px] bg-green-600 text-white font-bold px-1.5 py-0.5 rounded-full">COMPLETED</span>
+                        <p class="text-[11px] text-gray-600">Match 17 • Cricket Association</p>
+                    </div>
+                    <div class="text-[13px] font-medium space-y-1">
+                        <div class="flex justify-between">
+                            <span>YAR</span>
+                            <span class="text-[#3E5DA6] font-semibold">198/2</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>OAW</span>
+                            <span class="text-[#3E5DA6] font-semibold">192/9</span>
+                        </div>
+                    </div>
+                    <p class="text-[11px] text-green-600 mt-1">YAR won by 6 runs</p>
+                    <div class="flex justify-between mt-2 text-[11px] font-semibold text-[#3E5DA6]">
+                        <a href="#" class="hover:underline">FIXTURES &gt;</a>
+                        <a href="#" class="hover:underline">POINTS &gt;</a>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white rounded-lg shadow-sm px-4 py-3 min-w-[260px] flex-shrink-0 border border-gray-200 hover:shadow-md transition">
+                    <div class="flex items-center gap-1 mb-1">
+                        <span
+                            class="text-[10px] bg-green-600 text-white font-bold px-1.5 py-0.5 rounded-full">COMPLETED</span>
+                        <p class="text-[11px] text-gray-600">Match 17 • Cricket Association</p>
+                    </div>
+                    <div class="text-[13px] font-medium space-y-1">
+                        <div class="flex justify-between">
+                            <span>YAR</span>
+                            <span class="text-[#3E5DA6] font-semibold">198/2</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>OAW</span>
+                            <span class="text-[#3E5DA6] font-semibold">192/9</span>
+                        </div>
+                    </div>
+                    <p class="text-[11px] text-green-600 mt-1">YAR won by 6 runs</p>
+                    <div class="flex justify-between mt-2 text-[11px] font-semibold text-[#3E5DA6]">
+                        <a href="#" class="hover:underline">FIXTURES &gt;</a>
+                        <a href="#" class="hover:underline">POINTS &gt;</a>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white rounded-lg shadow-sm px-4 py-3 min-w-[260px] flex-shrink-0 border border-gray-200 hover:shadow-md transition">
+                    <div class="flex items-center gap-1 mb-1">
+                        <span
+                            class="text-[10px] bg-green-600 text-white font-bold px-1.5 py-0.5 rounded-full">COMPLETED</span>
+                        <p class="text-[11px] text-gray-600">Match 17 • Cricket Association</p>
+                    </div>
+                    <div class="text-[13px] font-medium space-y-1">
+                        <div class="flex justify-between">
+                            <span>YAR</span>
+                            <span class="text-[#3E5DA6] font-semibold">198/2</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>OAW</span>
+                            <span class="text-[#3E5DA6] font-semibold">192/9</span>
+                        </div>
+                    </div>
+                    <p class="text-[11px] text-green-600 mt-1">YAR won by 6 runs</p>
+                    <div class="flex justify-between mt-2 text-[11px] font-semibold text-[#3E5DA6]">
+                        <a href="#" class="hover:underline">FIXTURES &gt;</a>
+                        <a href="#" class="hover:underline">POINTS &gt;</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section class="bg-white py-6">
+        <div class="max-w-[1320px] mx-auto px-2 sm:px-4">
+
+            <!-- Section Title -->
+            <h2 class="text-[#3E5DA6] font-extrabold text-sm sm:text-base tracking-wide mb-4 uppercase">Quick Links</h2>
+
+            <!-- Scrollable Quick Links -->
+            <div class="overflow-x-auto whitespace-nowrap pb-1">
+                <div class="inline-flex gap-2 sm:gap-3 text-[13px]">
+                    <a href="#"
+                        class="px-3 py-1 rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] font-medium hover:bg-[#BD3C34] text-white transition">IND
+                        VS AFG</a>
+                    <a href="#"
+                        class="px-3 py-1 rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] font-medium hover:bg-[#BD3C34] text-white transition">IND
+                        VS AUS</a>
+                    <a href="#"
+                        class="px-3 py-1 rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] font-medium hover:bg-[#BD3C34] text-white transition">IND
+                        VS BAN</a>
+                    <a href="#"
+                        class="px-3 py-1 rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] font-medium hover:bg-[#BD3C34] text-white transition">IND
+                        VS ENG</a>
+                    <a href="#"
+                        class="px-3 py-1 rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] font-medium hover:bg-[#BD3C34] text-white transition">IND
+                        VS NZ</a>
+                    <a href="#"
+                        class="px-3 py-1 rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] font-medium hover:bg-[#BD3C34] text-white transition">IND
+                        VS SA</a>
+                    <a href="#"
+                        class="px-3 py-1 rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] font-medium hover:bg-[#BD3C34] text-white transition">IND
+                        VS SL</a>
+                    <a href="#"
+                        class="px-3 py-1 rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] font-medium hover:bg-[#BD3C34] text-white transition">IND
+                        VS WI</a>
+                    <a href="#"
+                        class="px-3 py-1 rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] font-medium hover:bg-[#BD3C34] text-white transition">IND
+                        VS ZIM</a>
+                    <a href="#"
+                        class="px-3 py-1 rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] font-medium hover:bg-[#BD3C34] text-white transition">IND
+                        VS IRE</a>
+                    <a href="#"
+                        class="px-3 py-1 rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] font-medium hover:bg-[#BD3C34] text-white transition">IPL</a>
+                    <a href="#"
+                        class="px-3 py-1 rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] font-medium hover:bg-[#BD3C34] text-white transition">BBL</a>
+                    <a href="#"
+                        class="px-3 py-1 rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] font-medium hover:bg-[#BD3C34] text-white transition">CPL</a>
+                    <a href="#"
+                        class="px-3 py-1 rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] font-medium hover:bg-[#BD3C34] text-white transition">PSL</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+
+    <section class="bg-white py-6">
+        <div class="max-w-[1320px] mx-auto px-2 sm:px-4 relative">
+
+            <!-- Header -->
+            <div class="flex items-center justify-between mb-3">
+                <div>
+                    <h2 class="text-[#3E5DA6] font-extrabold text-sm sm:text-base uppercase">Shorts</h2>
+                    <p class="text-xs text-gray-500 mt-0.5">Your daily dose of cricket!</p>
+                </div>
+                <a href="#" class="text-sm font-medium text-[#3E5DA6] hover:underline">View More</a>
+            </div>
+
+            <!-- Scroll Buttons -->
+            <!-- Scroll Left Button -->
+            <button onclick="scrollShortsLeft()"
+                class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-[#3E5DA6] text-white w-8 h-8 rounded-full items-center justify-center shadow hover:bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] transition">
+                ‹
+            </button>
+
+            <!-- Scroll Right Button -->
+            <button onclick="scrollShortsRight()"
+                class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-[#3E5DA6] text-white w-8 h-8 rounded-full items-center justify-center shadow hover:bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] transition">
+                ›
+            </button>
+
+
+            <!-- Scrollable Shorts List -->
+            <div id="shortsContainer" class="flex overflow-x-auto gap-3 scroll-smooth  mt-2 pb-2">
+
+                <!-- 12 Scrollable Cards -->
+                <a href="#"
+                    class="relative w-[120px] h-[210px] flex-shrink-0 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
+                    <img src="images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp" Short 1"
+                        class="w-full h-full object-cover" />
+                    <span
+                        class="absolute top-2 left-2 bg-white/90 text-black text-xs font-bold px-1.5 py-0.5 rounded-full">▶</span>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent text-white text-xs px-2 py-1 truncate">
+                        Lord's saw a fight...</div>
+                </a>
+
+                <a href="#"
+                    class="relative w-[120px] h-[210px] flex-shrink-0 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
+                    <img src="images/Doug-AP-in-the-News-416x252-f50_50.webp" alt="Short 2"
+                        class="w-full h-full object-cover" />
+                    <span
+                        class="absolute top-2 left-2 bg-white/90 text-black text-xs font-bold px-1.5 py-0.5 rounded-full">▶</span>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent text-white text-xs px-2 py-1 truncate">
+                        #VarunAaron reflects</div>
+                </a>
+
+                <a href="#"
+                    class="relative w-[120px] h-[210px] flex-shrink-0 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
+                    <img src="images/u-s-deputy-secretary-of-state-in-tokyo.webp" alt="Short 3"
+                        class="w-full h-full object-cover" />
+                    <span
+                        class="absolute top-2 left-2 bg-white/90 text-black text-xs font-bold px-1.5 py-0.5 rounded-full">▶</span>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent text-white text-xs px-2 py-1 truncate">
+                        Shreyas spotted at airport</div>
+                </a>
+
+                <a href="#"
+                    class="relative w-[120px] h-[210px] flex-shrink-0 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
+                    <img src="images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp" alt="Short 4"
+                        class="w-full h-full object-cover" />
+                    <span
+                        class="absolute top-2 left-2 bg-white/90 text-black text-xs font-bold px-1.5 py-0.5 rounded-full">▶</span>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent text-white text-xs px-2 py-1 truncate">
+                        People’s man moment</div>
+                </a>
+
+                <a href="#"
+                    class="relative w-[120px] h-[210px] flex-shrink-0 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
+                    <img src="images/Doug-AP-in-the-News-416x252-f50_50.webp" alt="Short 5"
+                        class="w-full h-full object-cover" />
+                    <span
+                        class="absolute top-2 left-2 bg-white/90 text-black text-xs font-bold px-1.5 py-0.5 rounded-full">▶</span>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent text-white text-xs px-2 py-1 truncate">
+                        Sorry Pyla, we have...</div>
+                </a>
+
+                <a href="#"
+                    class="relative w-[120px] h-[210px] flex-shrink-0 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
+                    <img src="images/u-s-deputy-secretary-of-state-in-tokyo.webp" alt="Short 6"
+                        class="w-full h-full object-cover" />
+                    <span
+                        class="absolute top-2 left-2 bg-white/90 text-black text-xs font-bold px-1.5 py-0.5 rounded-full">▶</span>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent text-white text-xs px-2 py-1 truncate">
+                        Tu samjha nahi tu...</div>
+                </a>
+
+                <a href="#"
+                    class="relative w-[120px] h-[210px] flex-shrink-0 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
+                    <img src="images/Doug-AP-in-the-News-416x252-f50_50.webp" alt="Short 7"
+                        class="w-full h-full object-cover" />
+                    <span
+                        class="absolute top-2 left-2 bg-white/90 text-black text-xs font-bold px-1.5 py-0.5 rounded-full">▶</span>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent text-white text-xs px-2 py-1 truncate">
+                        Never ever miss...</div>
+                </a>
+
+                <a href="#"
+                    class="relative w-[120px] h-[210px] flex-shrink-0 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
+                    <img src="images/u-s-deputy-secretary-of-state-in-tokyo.webp" alt="Short 8"
+                        class="w-full h-full object-cover" />
+                    <span
+                        class="absolute top-2 left-2 bg-white/90 text-black text-xs font-bold px-1.5 py-0.5 rounded-full">▶</span>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent text-white text-xs px-2 py-1 truncate">
+                        Wishing you pace...</div>
+                </a>
+
+                <a href="#"
+                    class="relative w-[120px] h-[210px] flex-shrink-0 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
+                    <img src="images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp" alt="Short 9"
+                        class="w-full h-full object-cover" />
+                    <span
+                        class="absolute top-2 left-2 bg-white/90 text-black text-xs font-bold px-1.5 py-0.5 rounded-full">▶</span>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent text-white text-xs px-2 py-1 truncate">
+                        Just a banger finish</div>
+                </a>
+
+                <a href="#"
+                    class="relative w-[120px] h-[210px] flex-shrink-0 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
+                    <img src="images/Doug-AP-in-the-News-416x252-f50_50.webp" alt="Short 10"
+                        class="w-full h-full object-cover" />
+                    <span
+                        class="absolute top-2 left-2 bg-white/90 text-black text-xs font-bold px-1.5 py-0.5 rounded-full">▶</span>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent text-white text-xs px-2 py-1 truncate">
+                        Insane celebration</div>
+                </a>
+
+                <a href="#"
+                    class="relative w-[120px] h-[210px] flex-shrink-0 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
+                    <img src="images/u-s-deputy-secretary-of-state-in-tokyo.webp" alt="Short 11"
+                        class="w-full h-full object-cover" />
+                    <span
+                        class="absolute top-2 left-2 bg-white/90 text-black text-xs font-bold px-1.5 py-0.5 rounded-full">▶</span>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent text-white text-xs px-2 py-1 truncate">
+                        Legendary knock 💯</div>
+                </a>
+
+                <a href="#"
+                    class="relative w-[120px] h-[210px] flex-shrink-0 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
+                    <img src="images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp" alt="Short 12"
+                        class="w-full h-full object-cover" />
+                    <span
+                        class="absolute top-2 left-2 bg-white/90 text-black text-xs font-bold px-1.5 py-0.5 rounded-full">▶</span>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent text-white text-xs px-2 py-1 truncate">
+                        Captain cool moment</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="bg-white py-6">
+        <div class="max-w-[1320px] mx-auto px-2 sm:px-4">
+
+            <!-- Section Title -->
+            <h2 class="text-[#3E5DA6] font-extrabold text-sm sm:text-base tracking-wide mb-4 uppercase">Latest News</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+                <!-- Left Featured News (Fixed height) -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="relative rounded-2xl overflow-hidden shadow-md group h-[300px]">
+                        <img src="images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp"
+                            alt="featured"
+                            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                        <div
+                            class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent text-white">
+                            <span
+                                class="inline-block bg-[#BD3C34] text-white text-xs px-3 py-1 rounded-full font-semibold mb-2">LATEST
+                                CRICKET NEWS</span>
+                            <h3 class="text-lg font-bold leading-tight">New Zealand Playing 11 vs South Africa – Match
+                                2, Zimbabwe T20I Tri Series 2025</h3>
+                            <p class="text-xs mt-1">3 Mins</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side News Cards -->
+                <div class="flex flex-col gap-4">
+
+                    <!-- Card 1 -->
+                    <a href="#"
+                        class="flex items-start gap-3 bg-[#F9FAFB] p-3 rounded-2xl shadow-sm hover:shadow-md transition">
+                        <img src="images/Doug-AP-in-the-News-416x252-f50_50.webp"
+                            class="w-24 h-16 rounded-lg object-cover" />
+                        <div class="flex flex-col justify-center">
+                            <p class="text-xs text-[#BD3C34] font-semibold mb-0.5">Latest Cricket News <span
+                                    class="text-gray-400 font-normal">/ 3 Mins</span></p>
+                            <p class="text-sm font-semibold text-gray-800 leading-snug">South Africa Playing 11 vs New
+                                Zealand – Match 2, Zimbabwe T20I Tri Series 2025</p>
+                        </div>
+                    </a>
+
+                    <!-- Card 2 -->
+                    <a href="#"
+                        class="flex items-start gap-3 bg-[#F9FAFB] p-3 rounded-2xl shadow-sm hover:shadow-md transition">
+                        <img src="images/u-s-deputy-secretary-of-state-in-tokyo.webp"
+                            class="w-24 h-16 rounded-lg object-cover" />
+                        <div class="flex flex-col justify-center">
+                            <p class="text-xs text-[#BD3C34] font-semibold mb-0.5">Latest Cricket News <span
+                                    class="text-gray-400 font-normal">/ 3 Mins</span></p>
+                            <p class="text-sm font-semibold text-gray-800 leading-snug">Sri Lanka Playing 11 vs
+                                Bangladesh – 3rd T20I, Bangladesh Tour of Sri Lanka 2025</p>
+                        </div>
+                    </a>
+
+                    <!-- Card 3 -->
+                    <a href="#"
+                        class="flex items-start gap-3 bg-[#F9FAFB] p-3 rounded-2xl shadow-sm hover:shadow-md transition">
+                        <img src="images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp"
+                            class="w-24 h-16 rounded-lg object-cover" />
+                        <div class="flex flex-col justify-center">
+                            <p class="text-xs text-[#BD3C34] font-semibold mb-0.5">Latest Cricket News <span
+                                    class="text-gray-400 font-normal">/ 3 Mins</span></p>
+                            <p class="text-sm font-semibold text-gray-800 leading-snug">Bangladesh Playing 11 vs Sri
+                                Lanka – 3rd T20I, Bangladesh Tour of Sri Lanka 2025</p>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- View More Button -->
+            <div class="mt-4 text-center">
+                <a href="#"
+                    class="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-[#3E5DA6] text-[#3E5DA6] text-sm font-medium hover:bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] hover:text-white transition">
+                    View More →
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <section class="bg-white py-6">
+        <div class="max-w-[1320px] mx-auto px-2 sm:px-4">
+
+            <!-- Section Title -->
+            <h2
+                class="text-[#3E5DA6] font-extrabold text-sm sm:text-base tracking-wide mb-4 flex items-center gap-2 uppercase">
+                Trending
+            </h2>
+
+            <!-- Scrollable News Cards -->
+            <div class="overflow-x-auto whitespace-nowrap pb-1">
+                <div class="inline-flex gap-4">
+
+                    <!-- Card 1 -->
+                    <a href="#" class="w-[200px] flex-shrink-0">
+                        <div class="rounded-xl overflow-hidden shadow hover:shadow-md transition">
+                            <img src="images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp"
+                                class="w-full h-[120px] object-cover" />
+                        </div>
+                        <div class="mt-2 text-[12px] text-[#BD3C34] font-semibold">Latest Cricket News <span
+                                class="text-gray-400 font-normal">/ 4 Mins</span></div>
+                        <p class="text-[13px] font-semibold text-gray-800 leading-snug mt-1 line-clamp-2">
+                            'He waits for Joe Root…': Irfan Pathan slams India’s Jasprit Bumrah strategy...
+                        </p>
+                    </a>
+
+                    <!-- Card 2 -->
+                    <a href="#" class="w-[200px] flex-shrink-0">
+                        <div class="rounded-xl overflow-hidden shadow hover:shadow-md transition">
+                            <img src="images/Doug-AP-in-the-News-416x252-f50_50.webp"
+                                class="w-full h-[120px] object-cover" />
+                        </div>
+                        <div class="mt-2 text-[12px] text-[#BD3C34] font-semibold">Latest Cricket News <span
+                                class="text-gray-400 font-normal">/ 4 Mins</span></div>
+                        <p class="text-[13px] font-semibold text-gray-800 leading-snug mt-1 line-clamp-2">
+                            Shubman Gill leaks private chat with King Charles III after Lord’s Test defeat
+                        </p>
+                    </a>
+
+                    <!-- Card 3 -->
+                    <a href="#" class="w-[200px] flex-shrink-0">
+                        <div class="rounded-xl overflow-hidden shadow hover:shadow-md transition">
+                            <img src="images/u-s-deputy-secretary-of-state-in-tokyo.webp"
+                                class="w-full h-[120px] object-cover" />
+                        </div>
+                        <div class="mt-2 text-[12px] text-[#BD3C34] font-semibold">Latest Cricket News <span
+                                class="text-gray-400 font-normal">/ 3 Mins</span></div>
+                        <p class="text-[13px] font-semibold text-gray-800 leading-snug mt-1 line-clamp-2">
+                            Ashwin and Jadeja's clash exposed after Lord’s Test...
+                        </p>
+                    </a>
+
+                    <!-- Card 4 -->
+                    <a href="#" class="w-[200px] flex-shrink-0">
+                        <div class="rounded-xl overflow-hidden shadow hover:shadow-md transition">
+                            <img src="images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp"
+                                class="w-full h-[120px] object-cover" />
+                        </div>
+                        <div class="mt-2 text-[12px] text-[#BD3C34] font-semibold">Latest Cricket News <span
+                                class="text-gray-400 font-normal">/ 3 Mins</span></div>
+                        <p class="text-[13px] font-semibold text-gray-800 leading-snug mt-1 line-clamp-2">
+                            Jasprit Bumrah ruled out of Manchester Test? Big setback ahead!
+                        </p>
+                    </a>
+                    <a href="#" class="w-[200px] flex-shrink-0">
+                        <div class="rounded-xl overflow-hidden shadow hover:shadow-md transition">
+                            <img src="images/Doug-AP-in-the-News-416x252-f50_50.webp"
+                                class="w-full h-[120px] object-cover" />
+                        </div>
+                        <div class="mt-2 text-[12px] text-[#BD3C34] font-semibold">Latest Cricket News <span
+                                class="text-gray-400 font-normal">/ 3 Mins</span></div>
+                        <p class="text-[13px] font-semibold text-gray-800 leading-snug mt-1 line-clamp-2">
+                            Ashwin and Jadeja's clash exposed after Lord’s Test...
+                        </p>
+                    </a>
+
+                    <!-- Card 4 -->
+                    <a href="#" class="w-[200px] flex-shrink-0">
+                        <div class="rounded-xl overflow-hidden shadow hover:shadow-md transition">
+                            <img src="images/u-s-deputy-secretary-of-state-in-tokyo.webp"
+                                class="w-full h-[120px] object-cover" />
+                        </div>
+                        <div class="mt-2 text-[12px] text-[#BD3C34] font-semibold">Latest Cricket News <span
+                                class="text-gray-400 font-normal">/ 3 Mins</span></div>
+                        <p class="text-[13px] font-semibold text-gray-800 leading-snug mt-1 line-clamp-2">
+                            Jasprit Bumrah ruled out of Manchester Test? Big setback ahead!
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Scroll JS -->
+    <script>
+        function scrollLeft() {
+            document.getElementById('matchCards').scrollBy({ left: -300, behavior: 'smooth' });
+        }
+
+        function scrollRight() {
+            document.getElementById('matchCards').scrollBy({ left: 300, behavior: 'smooth' });
+        }
+
+
+
+
+
+
+        // SHORT SCROLL 
+        function scrollShortsLeft() {
+            document.getElementById('shortsContainer').scrollBy({ left: -300, behavior: 'smooth' });
+        }
+
+        function scrollShortsRight() {
+            document.getElementById('shortsContainer').scrollBy({ left: 300, behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+
+</html>
