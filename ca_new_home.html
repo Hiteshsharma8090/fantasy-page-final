@@ -362,8 +362,8 @@
 
 
 
-    <!-- 🌟 Featured News & Top Stories Section - Modernized -->
-<section class="max-w-[1320px] mx-auto px-4 py-4 sm:py-6">
+   <!-- 🌟 Featured News & Top Stories Section - Modernized -->
+<section class="max-w-[1320px] mx-auto px-4 py-4 sm:py-10 bg-[#f9fafe] dark:bg-gray-900 rounded-xl">
     <!-- 🏷️ Section Label -->
     <div class="flex items-center gap-2 mb-2">
       <div class="w-2 h-2 rounded-full bg-[#BD3C34]"></div>
@@ -373,15 +373,36 @@
     <!-- 📰 Heading -->
     <h2 class="text-lg md:text-xl font-bold text-[#3E5DA6] border-b border-[#3E5DA6]/30 inline-block pb-1 mb-6">Featured News & Top Stories</h2>
   
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
       <!-- 🔷 Featured News -->
-      <div class="md:col-span-2 space-y-6">
+      <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <style>
+      .hover-zoom img {
+        transition: transform 0.4s ease;
+      }
+      .hover-zoom:hover img {
+        transform: scale(1.05);
+      }
+      @media (max-width: 768px) {
+        .top-stories-scroll {
+          display: flex;
+          overflow-x: auto;
+          gap: 1rem;
+          scroll-snap-type: x mandatory;
+        }
+        .top-stories-scroll > div {
+          min-width: 220px;
+          flex-shrink: 0;
+          scroll-snap-align: start;
+        }
+      }
+    </style>
         <!-- Article 1 -->
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row hover:shadow-xl transition">
-          <img src="images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp" class="w-full md:w-1/3 h-48 object-cover" alt="News">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden flex flex-col hover:shadow-xl transition hover-zoom">
+          <img src="images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp" class="w-full h-48 object-cover rounded-t-xl sm:rounded-t-xl sm:rounded-b-none" alt="News">
           <div class="p-4 flex flex-col justify-between">
             <div>
-              <span class="inline-block text-xs bg-blue-100 text-blue-700 dark:bg-blue-800 dark:text-blue-100 px-2 py-0.5 rounded-full mb-2">Analysis</span>
+              <span class="inline-flex items-center gap-1 text-xs bg-blue-100 text-blue-700 dark:bg-blue-800 dark:text-blue-100 px-2 py-0.5 rounded-full mb-2">🧠 Analysis</span>
               <h3 class="text-base md:text-lg font-bold text-[#3E5DA6] leading-snug">India’s Middle Order Masterclass Secures Another Thriller</h3>
               <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">India clinched a final-over win against Australia. Here's how the middle order held its nerve...</p>
             </div>
@@ -396,11 +417,11 @@
         </div>
   
         <!-- Article 2 -->
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row hover:shadow-xl transition">
-          <img src="images/u-s-deputy-secretary-of-state-in-tokyo.webp" class="w-full md:w-1/3 h-48 object-cover" alt="News">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden flex flex-col hover:shadow-xl transition hover-zoom">
+          <img src="images/u-s-deputy-secretary-of-state-in-tokyo.webp" class="w-full h-48 object-cover rounded-t-xl sm:rounded-t-xl sm:rounded-b-none" alt="News">
           <div class="p-4 flex flex-col justify-between">
             <div>
-              <span class="inline-block text-xs bg-red-100 text-red-700 dark:bg-red-800 dark:text-red-100 px-2 py-0.5 rounded-full mb-2">Injury Update</span>
+              <span class="inline-flex items-center gap-1 text-xs bg-red-100 text-red-700 dark:bg-red-800 dark:text-red-100 px-2 py-0.5 rounded-full mb-2">❗ Injury</span>
               <h3 class="text-base md:text-lg font-bold text-[#3E5DA6] leading-snug">Jasprit Bumrah ruled out of T20 World Cup</h3>
               <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">India suffer a blow as ace pacer Bumrah is declared unfit for the upcoming mega tournament.</p>
             </div>
@@ -421,7 +442,7 @@
       </div>
   
       <!-- 🔶 Top Stories Sidebar -->
-      <aside class="space-y-5">
+      <aside class="lg:col-span-4 space-y-4 top-stories-scroll bg-white dark:bg-gray-800 p-4 rounded-xl shadow-md">
         <h4 class="text-base font-bold text-[#BD3C34] mb-1">Top Stories</h4>
   
         <!-- Repeated Story Items -->
@@ -467,6 +488,16 @@
   
 
 
+
+
+
+
+
+<!-- 🔝 Back to Top Button -->
+<button onclick="window.scrollTo({ top: 0, behavior: 'smooth' });" 
+  class="fixed bottom-5 right-5 z-50 bg-[#3E5DA6] text-white p-3 rounded-full shadow-lg hover:bg-[#2B4162] transition hidden md:block">
+  ↑
+</button>
 
 
 
