@@ -274,7 +274,7 @@
 
             <div class="relative">
                 <div id="matchContainer"
-                    class="flex gap-4 overflow-x-auto no-scrollbar snap-x scroll-smooth px-1 md:px-2">
+                    class="flex gap-2 sm:gap-4 overflow-x-auto no-scrollbar snap-x scroll-smooth px-1 md:px-2">
 
                     <!-- 🔴 LIVE -->
                     <div data-type="live" class="match-card snap-start min-w-[260px] sm:min-w-[280px] md:min-w-[300px]
@@ -590,12 +590,14 @@
                     </div>
 
                     <!-- View More -->
-                    <div class="text-right">
-                        <a href="#"
-                            class="text-xs sm:text-sm text-white bg-[#BD3C34] hover:bg-[#9e2d29] px-4 py-2 rounded-full transition">
-                            View More Stories
-                        </a>
-                    </div>
+                   <!-- 📱 Responsive Button: Mobile Center, Desktop Right -->
+<div class="text-center sm:text-right mt-2">
+    <a href="#"
+      class="w-full sm:w-auto text-xs sm:text-sm text-white bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] hover:bg-[#9e2d29] px-4 py-2 rounded-full text-center transition">
+      View More Stories
+    </a>
+  </div>
+  
                 </aside>
             </div>
         </section>
