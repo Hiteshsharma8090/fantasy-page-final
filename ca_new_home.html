@@ -177,8 +177,7 @@
 
 
     <!-- 🏏 Match Center Section - Fully Mobile Optimized -->
-    <section
-    class="max-w-[1320px] mx-auto px-4 py-6 
+    <section class="max-w-[1320px] mx-auto px-4 py-6 
     bg-gradient-to-br from-white via-blue-50 to-white 
     dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 
     rounded-xl shadow-sm
@@ -186,43 +185,42 @@
         <!-- Heading -->
         <div class="flex items-center gap-2 mb-4">
             <div class="w-2 h-2 bg-[#BD3C34] rounded-full animate-pulse shadow-md"></div>
-            <h2 class="text-base sm:text-lg md:text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34]">
-                Match Center <span class="inline sm:hidden">· Matches</span><span class="hidden sm:inline">· Live, Upcoming & Completed</span>
-              </h2>
-              
+            <h2
+                class="text-base sm:text-lg md:text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34]">
+                Match Center <span class="inline sm:hidden">· Matches</span><span class="hidden sm:inline">· Live,
+                    Upcoming & Completed</span>
+            </h2>
+
         </div>
 
         <!-- Tabs -->
         <div id="tabs"
-  class="flex flex-row sm:overflow-x-auto gap-2 no-scrollbar mb-4 text-xs font-semibold whitespace-nowrap">
-  
-  <button onclick="setTab('all')"
-    class="tab-btn w-full sm:w-auto px-4 py-1.5 rounded-full bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white shadow-md tab-active">
-    All
-  </button>
-  
-  <button onclick="setTab('live')"
-  class="tab-btn w-full sm:w-auto px-4 py-1.5 rounded-full
-  bg-white sm:bg-transparent
-  border border-[#3E5DA6] text-[#3E5DA6] hover:bg-[#3E5DA6]/10">
-  Live
-</button>
+            class="flex flex-row sm:overflow-x-auto gap-2 no-scrollbar mb-4 text-xs font-semibold whitespace-nowrap">
 
-<button onclick="setTab('upcoming')"
-  class="tab-btn w-full sm:w-auto px-4 py-1.5 rounded-full
-  bg-white sm:bg-transparent
-  border border-[#3E5DA6] text-[#3E5DA6] hover:bg-[#3E5DA6]/10">
-  Upcoming
-</button>
+            <button onclick="setTab('all')"
+                class="tab-btn w-full sm:w-auto px-4 py-1.5 rounded-full bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white shadow-md tab-active">
+                All
+            </button>
 
-<button onclick="setTab('completed')"
-  class="tab-btn w-full sm:w-auto px-4 py-1.5 rounded-full
+            <button onclick="setTab('live')" class="tab-btn w-full sm:w-auto px-4 py-1.5 rounded-full
   bg-white sm:bg-transparent
   border border-[#3E5DA6] text-[#3E5DA6] hover:bg-[#3E5DA6]/10">
-  Completed
-</button>
-    
-</div>
+                Live
+            </button>
+
+            <button onclick="setTab('upcoming')" class="tab-btn w-full sm:w-auto px-4 py-1.5 rounded-full
+  bg-white sm:bg-transparent
+  border border-[#3E5DA6] text-[#3E5DA6] hover:bg-[#3E5DA6]/10">
+                Upcoming
+            </button>
+
+            <button onclick="setTab('completed')" class="tab-btn w-full sm:w-auto px-4 py-1.5 rounded-full
+  bg-white sm:bg-transparent
+  border border-[#3E5DA6] text-[#3E5DA6] hover:bg-[#3E5DA6]/10">
+                Completed
+            </button>
+
+        </div>
 
 
 
@@ -235,177 +233,174 @@
 
             <div class="relative">
                 <div id="matchContainer"
-                class="flex gap-4 overflow-x-auto no-scrollbar snap-x scroll-smooth px-1 md:px-2">
-              
-                <!-- 🔴 LIVE -->
-                <div data-type="live"
-                  class="match-card snap-start min-w-[260px] sm:min-w-[280px] md:min-w-[300px]
+                    class="flex gap-4 overflow-x-auto no-scrollbar snap-x scroll-smooth px-1 md:px-2">
+
+                    <!-- 🔴 LIVE -->
+                    <div data-type="live" class="match-card snap-start min-w-[260px] sm:min-w-[280px] md:min-w-[300px]
                   bg-white sm:bg-white/30 dark:bg-gray-800/30
                   backdrop-blur-xl rounded-xl border border-[#E2E8F0] dark:border-[#2D3748]
                   shadow-md p-3 sm:p-4 flex-shrink-0 flex flex-col justify-between
                   hover:scale-[1.01] transition">
-                  
-                  <div class="flex justify-between text-[11px] sm:text-xs font-semibold text-[#3E5DA6] mb-1">
-                    <span class="animate-pulse">🟢 LIVE</span>
-                    <span class="text-gray-500">T20 · Mumbai</span>
-                  </div>
-              
-                  <div class="text-sm md:text-base space-y-1">
-                    <div class="flex justify-between">
-                      <span>India</span>
-                      <span class="text-[#3E5DA6] font-bold">178/4</span>
+
+                        <div class="flex justify-between text-[11px] sm:text-xs font-semibold text-[#3E5DA6] mb-1">
+                            <span class="animate-pulse">🟢 LIVE</span>
+                            <span class="text-gray-500">T20 · Mumbai</span>
+                        </div>
+
+                        <div class="text-sm md:text-base space-y-1">
+                            <div class="flex justify-between">
+                                <span>India</span>
+                                <span class="text-[#3E5DA6] font-bold">178/4</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Australia</span>
+                                <span class="text-gray-400">—</span>
+                            </div>
+                        </div>
+
+                        <p class="text-xs text-gray-600 mt-1">Ov: 17.2 · RR: 10.3</p>
+                        <p class="text-xs italic text-gray-700 dark:text-gray-300 truncate">"Hardik smashes a six!"</p>
+                        <p class="text-xs text-[#3E5DA6] mt-1">Win%: <b>IND 65%</b></p>
+
+                        <a href="#"
+                            class="mt-2 text-xs py-1 rounded bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white text-center hover:brightness-110 transition">
+                            Commentary →
+                        </a>
                     </div>
-                    <div class="flex justify-between">
-                      <span>Australia</span>
-                      <span class="text-gray-400">—</span>
-                    </div>
-                  </div>
-              
-                  <p class="text-xs text-gray-600 mt-1">Ov: 17.2 · RR: 10.3</p>
-                  <p class="text-xs italic text-gray-700 dark:text-gray-300 truncate">"Hardik smashes a six!"</p>
-                  <p class="text-xs text-[#3E5DA6] mt-1">Win%: <b>IND 65%</b></p>
-              
-                  <a href="#"
-                    class="mt-2 text-xs py-1 rounded bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white text-center hover:brightness-110 transition">
-                    Commentary →
-                  </a>
-                </div>
-              
-                <!-- 🟡 UPCOMING -->
-                <div data-type="upcoming"
-                  class="match-card snap-start min-w-[260px] sm:min-w-[280px] md:min-w-[300px]
+
+                    <!-- 🟡 UPCOMING -->
+                    <div data-type="upcoming" class="match-card snap-start min-w-[260px] sm:min-w-[280px] md:min-w-[300px]
                   bg-white sm:bg-white/30 dark:bg-gray-800/30
                   backdrop-blur-xl rounded-xl border border-[#E2E8F0] dark:border-[#2D3748]
                   shadow-md p-3 sm:p-4 flex-shrink-0 flex flex-col justify-between
                   hover:scale-[1.01] transition">
-                  
-                  <div class="flex justify-between text-[11px] sm:text-xs font-semibold text-[#3E5DA6] mb-1">
-                    <span>🕓 UPCOMING</span>
-                    <span class="text-gray-500">ODI · Delhi</span>
-                  </div>
-              
-                  <div class="text-sm md:text-base space-y-1">
-                    <div class="flex justify-between">
-                      <span>Pakistan</span>
-                      <span class="text-[#3E5DA6] font-bold">vs</span>
-                      <span>New Zealand</span>
+
+                        <div class="flex justify-between text-[11px] sm:text-xs font-semibold text-[#3E5DA6] mb-1">
+                            <span>🕓 UPCOMING</span>
+                            <span class="text-gray-500">ODI · Delhi</span>
+                        </div>
+
+                        <div class="text-sm md:text-base space-y-1">
+                            <div class="flex justify-between">
+                                <span>Pakistan</span>
+                                <span class="text-[#3E5DA6] font-bold">vs</span>
+                                <span>New Zealand</span>
+                            </div>
+                        </div>
+
+                        <p class="text-xs text-gray-600 mt-1">Starts in: 3h 15m</p>
+                        <p class="text-xs italic text-gray-700 dark:text-gray-300 truncate">"Babar to lead the side"</p>
+
+                        <a href="#"
+                            class="mt-2 text-xs py-1 rounded bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white text-center hover:brightness-110 transition">
+                            Preview →
+                        </a>
                     </div>
-                  </div>
-              
-                  <p class="text-xs text-gray-600 mt-1">Starts in: 3h 15m</p>
-                  <p class="text-xs italic text-gray-700 dark:text-gray-300 truncate">"Babar to lead the side"</p>
-              
-                  <a href="#"
-                    class="mt-2 text-xs py-1 rounded bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white text-center hover:brightness-110 transition">
-                    Preview →
-                  </a>
-                </div>
-              
-                <!-- ✅ COMPLETED 1 -->
-                <div data-type="completed"
-                  class="match-card snap-start min-w-[260px] sm:min-w-[280px] md:min-w-[300px]
+
+                    <!-- ✅ COMPLETED 1 -->
+                    <div data-type="completed" class="match-card snap-start min-w-[260px] sm:min-w-[280px] md:min-w-[300px]
                   bg-white sm:bg-white/30 dark:bg-gray-800/30
                   backdrop-blur-xl rounded-xl border border-[#E2E8F0] dark:border-[#2D3748]
                   shadow-md p-3 sm:p-4 flex-shrink-0 flex flex-col justify-between
                   hover:scale-[1.01] transition">
-                  
-                  <div class="flex justify-between text-[11px] sm:text-xs font-semibold text-[#3E5DA6] mb-1">
-                    <span>✅ COMPLETED</span>
-                    <span class="text-gray-500">Test · London</span>
-                  </div>
-              
-                  <div class="text-sm md:text-base space-y-1">
-                    <div class="flex justify-between">
-                      <span>England</span>
-                      <span class="text-[#3E5DA6] font-bold">325 & 210</span>
+
+                        <div class="flex justify-between text-[11px] sm:text-xs font-semibold text-[#3E5DA6] mb-1">
+                            <span>✅ COMPLETED</span>
+                            <span class="text-gray-500">Test · London</span>
+                        </div>
+
+                        <div class="text-sm md:text-base space-y-1">
+                            <div class="flex justify-between">
+                                <span>England</span>
+                                <span class="text-[#3E5DA6] font-bold">325 & 210</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>South Africa</span>
+                                <span class="text-gray-400">287 & 190</span>
+                            </div>
+                        </div>
+
+                        <p class="text-xs text-gray-600 mt-1">Result: ENG won by 58 runs</p>
+                        <p class="text-xs italic text-gray-700 dark:text-gray-300 truncate">"Root bags Player of the
+                            Match"</p>
+
+                        <a href="#"
+                            class="mt-2 text-xs py-1 rounded bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white text-center hover:brightness-110 transition">
+                            Summary →
+                        </a>
                     </div>
-                    <div class="flex justify-between">
-                      <span>South Africa</span>
-                      <span class="text-gray-400">287 & 190</span>
-                    </div>
-                  </div>
-              
-                  <p class="text-xs text-gray-600 mt-1">Result: ENG won by 58 runs</p>
-                  <p class="text-xs italic text-gray-700 dark:text-gray-300 truncate">"Root bags Player of the Match"</p>
-              
-                  <a href="#"
-                    class="mt-2 text-xs py-1 rounded bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white text-center hover:brightness-110 transition">
-                    Summary →
-                  </a>
-                </div>
-              
-                <!-- ✅ COMPLETED 2 -->
-                <div data-type="completed"
-                  class="match-card snap-start min-w-[260px] sm:min-w-[280px] md:min-w-[300px]
+
+                    <!-- ✅ COMPLETED 2 -->
+                    <div data-type="completed" class="match-card snap-start min-w-[260px] sm:min-w-[280px] md:min-w-[300px]
                   bg-white sm:bg-white/30 dark:bg-gray-800/30
                   backdrop-blur-xl rounded-xl border border-[#E2E8F0] dark:border-[#2D3748]
                   shadow-md p-3 sm:p-4 flex-shrink-0 flex flex-col justify-between
                   hover:scale-[1.01] transition">
-                  
-                  <div class="flex justify-between text-[11px] sm:text-xs font-semibold text-[#3E5DA6] mb-1">
-                    <span>✅ COMPLETED</span>
-                    <span class="text-gray-500">T20 · Dubai</span>
-                  </div>
-              
-                  <div class="text-sm md:text-base space-y-1">
-                    <div class="flex justify-between">
-                      <span>India</span>
-                      <span class="text-[#3E5DA6] font-bold">160/6</span>
+
+                        <div class="flex justify-between text-[11px] sm:text-xs font-semibold text-[#3E5DA6] mb-1">
+                            <span>✅ COMPLETED</span>
+                            <span class="text-gray-500">T20 · Dubai</span>
+                        </div>
+
+                        <div class="text-sm md:text-base space-y-1">
+                            <div class="flex justify-between">
+                                <span>India</span>
+                                <span class="text-[#3E5DA6] font-bold">160/6</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Bangladesh</span>
+                                <span class="text-gray-400">148/9</span>
+                            </div>
+                        </div>
+
+                        <p class="text-xs text-gray-600 mt-1">Result: IND won by 12 runs</p>
+                        <p class="text-xs italic text-gray-700 dark:text-gray-300 truncate">"Suryakumar shines under
+                            pressure"</p>
+
+                        <a href="#"
+                            class="mt-2 text-xs py-1 rounded bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white text-center hover:brightness-110 transition">
+                            Summary →
+                        </a>
                     </div>
-                    <div class="flex justify-between">
-                      <span>Bangladesh</span>
-                      <span class="text-gray-400">148/9</span>
-                    </div>
-                  </div>
-              
-                  <p class="text-xs text-gray-600 mt-1">Result: IND won by 12 runs</p>
-                  <p class="text-xs italic text-gray-700 dark:text-gray-300 truncate">"Suryakumar shines under pressure"</p>
-              
-                  <a href="#"
-                    class="mt-2 text-xs py-1 rounded bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white text-center hover:brightness-110 transition">
-                    Summary →
-                  </a>
-                </div>
-              
-                <!-- ✅ COMPLETED 3 -->
-                <div data-type="completed"
-                  class="match-card snap-start min-w-[260px] sm:min-w-[280px] md:min-w-[300px]
+
+                    <!-- ✅ COMPLETED 3 -->
+                    <div data-type="completed" class="match-card snap-start min-w-[260px] sm:min-w-[280px] md:min-w-[300px]
                   bg-white sm:bg-white/30 dark:bg-gray-800/30
                   backdrop-blur-xl rounded-xl border border-[#E2E8F0] dark:border-[#2D3748]
                   shadow-md p-3 sm:p-4 flex-shrink-0 flex flex-col justify-between
                   hover:scale-[1.01] transition">
-                  
-                  <div class="flex justify-between text-[11px] sm:text-xs font-semibold text-[#3E5DA6] mb-1">
-                    <span>✅ COMPLETED</span>
-                    <span class="text-gray-500">ODI · Colombo</span>
-                  </div>
-              
-                  <div class="text-sm md:text-base space-y-1">
-                    <div class="flex justify-between">
-                      <span>Sri Lanka</span>
-                      <span class="text-[#3E5DA6] font-bold">248/10</span>
+
+                        <div class="flex justify-between text-[11px] sm:text-xs font-semibold text-[#3E5DA6] mb-1">
+                            <span>✅ COMPLETED</span>
+                            <span class="text-gray-500">ODI · Colombo</span>
+                        </div>
+
+                        <div class="text-sm md:text-base space-y-1">
+                            <div class="flex justify-between">
+                                <span>Sri Lanka</span>
+                                <span class="text-[#3E5DA6] font-bold">248/10</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Afghanistan</span>
+                                <span class="text-gray-400">251/7</span>
+                            </div>
+                        </div>
+
+                        <p class="text-xs text-gray-600 mt-1">Result: AFG won by 3 wickets</p>
+                        <p class="text-xs italic text-gray-700 dark:text-gray-300 truncate">"Nabi anchors the chase"</p>
+
+                        <a href="#"
+                            class="mt-2 text-xs py-1 rounded bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white text-center hover:brightness-110 transition">
+                            Summary →
+                        </a>
                     </div>
-                    <div class="flex justify-between">
-                      <span>Afghanistan</span>
-                      <span class="text-gray-400">251/7</span>
-                    </div>
-                  </div>
-              
-                  <p class="text-xs text-gray-600 mt-1">Result: AFG won by 3 wickets</p>
-                  <p class="text-xs italic text-gray-700 dark:text-gray-300 truncate">"Nabi anchors the chase"</p>
-              
-                  <a href="#"
-                    class="mt-2 text-xs py-1 rounded bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white text-center hover:brightness-110 transition">
-                    Summary →
-                  </a>
+
                 </div>
-              
-              </div>
-              
-              
-              
-              
-              
+
+
+
+
+
             </div>
     </section>
     </div>
@@ -425,173 +420,144 @@
 
 
 
-    <!-- 🌟 Featured News & Top Stories Section - Modernized -->
-    <div class="max-w-[1320px] mx-auto  sm:px-4 ">
-        <section class=" px-4 py-10 bg-[#f9fafe] dark:bg-gray-900  rounded-xl">
-            <!-- 🏷️ Section Label -->
+    <div class="max-w-[1320px] mx-auto sm:px-4 ">
+        <section
+            class="bg-white sm:bg-white/30 dark:bg-gray-800 sm:dark:bg-gray-800/30 backdrop-blur-sm rounded-xl shadow-md sm:shadow-lg px-4 py-6">
+
+            <!-- 🏷️ Label -->
             <div class="flex items-center gap-2 mb-2">
-                <div class="w-2 h-2 rounded-full bg-[#BD3C34]"></div>
+                <div class="w-2 h-2 rounded-full bg-[#BD3C34] animate-pulse shadow-md"></div>
                 <span class="uppercase text-xs font-bold tracking-widest text-[#BD3C34]">Editor's Pick</span>
             </div>
+            <div class="flex items-center gap-2 mb-4">
 
-            <!-- 📰 Heading -->
-            <h2 class="text-lg md:text-xl font-bold text-[#3E5DA6] border-b border-[#3E5DA6]/30 inline-block pb-1 mb-6">
-                Featured News & Top Stories</h2>
+                <h2
+                    class="text-base sm:text-lg md:text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34]">
+                    Featured News & Top Stories</span>
+                </h2>
+
+            </div>
+
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+
                 <!-- 🔷 Featured News -->
                 <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <style>
-                        .hover-zoom img {
-                            transition: transform 0.4s ease;
-                        }
 
-                        .hover-zoom:hover img {
-                            transform: scale(1.05);
-                        }
-
-                        @media (max-width: 768px) {
-                            .top-stories-scroll {
-                                display: flex;
-                                overflow-x: auto;
-                                gap: 1rem;
-                                scroll-snap-type: x mandatory;
-                            }
-
-                            .top-stories-scroll>div {
-                                min-width: 220px;
-                                flex-shrink: 0;
-                                scroll-snap-align: start;
-                            }
-                        }
-                    </style>
                     <!-- Article 1 -->
                     <div
-                        class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden flex flex-col hover:shadow-xl transition hover-zoom">
+                        class="bg-white dark:bg-gray-900 sm:bg-white/20 dark:sm:bg-gray-800/40 border border-[#E2E8F0] dark:border-[#2D3748] rounded-xl shadow-md hover:shadow-lg transition hover:scale-[1.01] overflow-hidden">
                         <img src="images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp"
-                            class="w-full h-48 object-cover rounded-t-xl sm:rounded-t-xl sm:rounded-b-none" alt="News">
-                        <div class="p-4 flex flex-col justify-between">
-                            <div>
-                                <span
-                                    class="inline-flex items-center gap-1 text-xs bg-blue-100 text-blue-700 dark:bg-blue-800 dark:text-blue-100 px-2 py-0.5 rounded-full mb-2">🧠
-                                    Analysis</span>
-                                <h3 class="text-base md:text-lg font-bold text-[#3E5DA6] leading-snug">India’s Middle
-                                    Order
-                                    Masterclass Secures Another Thriller</h3>
-                                <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">India clinched a final-over win
-                                    against Australia. Here's how the middle order held its nerve...</p>
-                            </div>
-                            <div
-                                class="flex justify-between items-center mt-3 text-xs text-gray-500 dark:text-gray-400">
-                                <div>By <span class="font-semibold text-gray-800 dark:text-gray-100">Rahul Joshi</span>
-                                    • 2
-                                    hrs ago</div>
-                                <div class="space-x-2 hidden md:flex">
-                                    <span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded-full">#India</span>
-                                    <span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded-full">#AUS</span>
-                                </div>
+                            class="w-full h-40 sm:h-48 object-cover rounded-t-xl" alt="News">
+                        <div class="p-4 space-y-1">
+                            <span
+                                class="text-xs bg-blue-100 text-blue-700 dark:bg-blue-800 dark:text-blue-100 px-2 py-0.5 rounded-full inline-block">🧠
+                                Analysis</span>
+                            <h3 class="text-sm sm:text-base font-bold text-[#3E5DA6] leading-tight">India’s Middle Order
+                                Masterclass Secures Another Thriller</h3>
+                            <p class="text-xs text-gray-600 dark:text-gray-300">India clinched a final-over win against
+                                Australia. Here's how the middle order held its nerve...</p>
+                            <div class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">
+                                By <span class="font-semibold text-gray-800 dark:text-white">Rahul Joshi</span> • 2 hrs
+                                ago
                             </div>
                         </div>
                     </div>
 
                     <!-- Article 2 -->
                     <div
-                        class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden flex flex-col hover:shadow-xl transition hover-zoom">
+                        class="bg-white dark:bg-gray-900 sm:bg-white/20 dark:sm:bg-gray-800/40 border border-[#E2E8F0] dark:border-[#2D3748] rounded-xl shadow-md hover:shadow-lg transition hover:scale-[1.01] overflow-hidden">
                         <img src="images/u-s-deputy-secretary-of-state-in-tokyo.webp"
-                            class="w-full h-48 object-cover rounded-t-xl sm:rounded-t-xl sm:rounded-b-none" alt="News">
-                        <div class="p-4 flex flex-col justify-between">
-                            <div>
-                                <span
-                                    class="inline-flex items-center gap-1 text-xs bg-red-100 text-red-700 dark:bg-red-800 dark:text-red-100 px-2 py-0.5 rounded-full mb-2">❗
-                                    Injury</span>
-                                <h3 class="text-base md:text-lg font-bold text-[#3E5DA6] leading-snug">Jasprit Bumrah
-                                    ruled
-                                    out of T20 World Cup</h3>
-                                <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">India suffer a blow as ace
-                                    pacer
-                                    Bumrah is declared unfit for the upcoming mega tournament.</p>
-                            </div>
-                            <div
-                                class="flex justify-between items-center mt-3 text-xs text-gray-500 dark:text-gray-400">
-                                <div>By <span class="font-semibold text-gray-800 dark:text-gray-100">Meera Patel</span>
-                                    • 5
-                                    hrs ago</div>
-                                <div class="space-x-2 hidden md:flex">
-                                    <span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded-full">#Injury</span>
-                                    <span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded-full">#WorldCup</span>
-                                </div>
+                            class="w-full h-40 sm:h-48 object-cover rounded-t-xl" alt="News">
+                        <div class="p-4 space-y-1">
+                            <span
+                                class="text-xs bg-red-100 text-red-700 dark:bg-red-800 dark:text-red-100 px-2 py-0.5 rounded-full inline-block">❗
+                                Injury</span>
+                            <h3 class="text-sm sm:text-base font-bold text-[#3E5DA6] leading-tight">Jasprit Bumrah ruled
+                                out of T20 World Cup</h3>
+                            <p class="text-xs text-gray-600 dark:text-gray-300">India suffer a blow as ace pacer Bumrah
+                                is declared unfit for the upcoming mega tournament.</p>
+                            <div class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">
+                                By <span class="font-semibold text-gray-800 dark:text-white">Meera Patel</span> • 5 hrs
+                                ago
                             </div>
                         </div>
                     </div>
 
-                    <!-- 🔽 View More -->
-
-                    <div class="text-right mt-4">
+                    <!-- View More -->
+                    <div class="col-span-full text-right mt-2">
                         <a href="#"
-                            class="text-sm text-white bg-[#3E5DA6] hover:bg-[#2B4162] px-4 py-2 rounded-full transition">View
-                            More News</a>
+                            class="text-xs sm:text-sm text-white bg-[#3E5DA6] hover:bg-[#2B4162] px-4 py-2 rounded-full transition">
+                            View More News
+                        </a>
                     </div>
                 </div>
 
-                <!-- 🔶 Top Stories Sidebar -->
+                <!-- 🔶 Sidebar Top Stories -->
                 <aside
-                    class="lg:col-span-4 space-y-4 top-stories-scroll bg-white dark:bg-gray-800 p-4 rounded-xl shadow-md">
-                    <h4 class="text-base font-bold text-[#BD3C34] mb-1">Top Stories</h4>
+                    class="lg:col-span-4 bg-white dark:bg-gray-900 sm:bg-white/20 dark:sm:bg-gray-800/40 border border-[#E2E8F0] dark:border-[#2D3748] rounded-xl shadow-md p-4 space-y-4">
+                    <h4 class="text-sm sm:text-base font-bold text-[#BD3C34] mb-1">Top Stories</h4>
 
-                    <!-- Repeated Story Items -->
+                    <!-- Item 1 -->
                     <div class="flex items-start gap-3 border-b pb-3">
                         <img src="images/Doug-AP-in-the-News-416x252-f50_50.webp"
-                            class="w-16 h-16 object-cover rounded-md" alt="">
+                            class="w-14 h-14 object-cover rounded-md" alt="">
                         <div class="text-sm">
-                            <a href="#" class="font-semibold text-[#3E5DA6] hover:underline block leading-tight">England
-                                seal semifinal spot with Stokes’ heroics</a>
+                            <a href="#" class="font-semibold text-[#3E5DA6] hover:underline block leading-tight">
+                                England seal semifinal spot with Stokes’ heroics
+                            </a>
                             <div class="text-xs text-gray-500 mt-1">3 min read • T20</div>
                         </div>
                     </div>
 
+                    <!-- Item 2 -->
                     <div class="flex items-start gap-3 border-b pb-3">
                         <img src="images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp"
-                            class="w-16 h-16 object-cover rounded-md" alt="">
+                            class="w-14 h-14 object-cover rounded-md" alt="">
                         <div class="text-sm">
-                            <a href="#" class="font-semibold text-[#3E5DA6] hover:underline block leading-tight">Kohli’s
-                                chase game: Why he thrives under pressure</a>
+                            <a href="#" class="font-semibold text-[#3E5DA6] hover:underline block leading-tight">
+                                Kohli’s chase game: Why he thrives under pressure
+                            </a>
                             <div class="text-xs text-gray-500 mt-1">2 hrs ago • Analysis</div>
                         </div>
                     </div>
 
+                    <!-- Item 3 -->
                     <div class="flex items-start gap-3 border-b pb-3">
                         <img src="images/u-s-deputy-secretary-of-state-in-tokyo.webp"
-                            class="w-16 h-16 object-cover rounded-md" alt="">
+                            class="w-14 h-14 object-cover rounded-md" alt="">
                         <div class="text-sm">
-                            <a href="#" class="font-semibold text-[#3E5DA6] hover:underline block leading-tight">Rain
-                                expected ahead of India vs Pakistan clash</a>
+                            <a href="#" class="font-semibold text-[#3E5DA6] hover:underline block leading-tight">
+                                Rain expected ahead of India vs Pakistan clash
+                            </a>
                             <div class="text-xs text-gray-500 mt-1">6 hrs ago • Weather</div>
                         </div>
                     </div>
 
+                    <!-- Item 4 -->
                     <div class="flex items-start gap-3 border-b pb-3">
                         <img src="images/Doug-AP-in-the-News-416x252-f50_50.webp"
-                            class="w-16 h-16 object-cover rounded-md" alt="">
+                            class="w-14 h-14 object-cover rounded-md" alt="">
                         <div class="text-sm">
-                            <a href="#" class="font-semibold text-[#3E5DA6] hover:underline block leading-tight">Gill to
-                                lead India in Zimbabwe T20s, Rohit rested</a>
+                            <a href="#" class="font-semibold text-[#3E5DA6] hover:underline block leading-tight">
+                                Gill to lead India in Zimbabwe T20s, Rohit rested
+                            </a>
                             <div class="text-xs text-gray-500 mt-1">1 hr ago • Squad News</div>
                         </div>
                     </div>
 
-                    <!-- 🔽 View More -->
-                    <div class="text-right mt-2">
+                    <!-- View More -->
+                    <div class="text-right">
                         <a href="#"
-                            class="text-sm text-white bg-[#BD3C34] hover:bg-[#9e2d29] px-4 py-2 rounded-full transition">View
-                            More Stories</a>
+                            class="text-xs sm:text-sm text-white bg-[#BD3C34] hover:bg-[#9e2d29] px-4 py-2 rounded-full transition">
+                            View More Stories
+                        </a>
                     </div>
                 </aside>
             </div>
         </section>
-
-
-
     </div>
+
 
 
 
