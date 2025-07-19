@@ -470,6 +470,8 @@
                 <div class="w-2 h-2 rounded-full bg-[#BD3C34] animate-pulse shadow-md"></div>
                 <span class="uppercase text-xs font-bold tracking-widest text-[#BD3C34]">Editor's Pick</span>
             </div>
+
+
             <div class="flex items-center gap-2 mb-4">
 
                 <h2
@@ -590,14 +592,14 @@
                     </div>
 
                     <!-- View More -->
-                   <!-- 📱 Responsive Button: Mobile Center, Desktop Right -->
-<div class="text-center sm:text-right mt-2">
-    <a href="#"
-      class="w-full sm:w-auto text-xs sm:text-sm text-white bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] hover:bg-[#9e2d29] px-4 py-2 rounded-full text-center transition">
-      View More Stories
-    </a>
-  </div>
-  
+                    <!-- 📱 Responsive Button: Mobile Center, Desktop Right -->
+                    <div class="text-center sm:text-right mt-2">
+                        <a href="#"
+                            class="w-full sm:w-auto text-xs sm:text-sm text-white bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] hover:bg-[#9e2d29] px-4 py-2 rounded-full text-center transition">
+                            View More Stories
+                        </a>
+                    </div>
+
                 </aside>
             </div>
         </section>
@@ -609,147 +611,108 @@
 
 
 
+    <div class="max-w-[1320px] mx-auto sm:px-4 mt-8">
+        <section
+            class="bg-gradient-to-br from-white via-blue-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 rounded-2xl shadow-lg px-2 sm:px-4 py-3 sm:py-6 space-y-4">
 
-
-    <!-- 🔥 Redesigned Points Table & Fantasy Tips Section -->
-    <section class="max-w-[1320px] mx-auto px-4 py-10">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            <!-- 🏆 Tournament Standings - 2035 Design -->
-            <div
-                class="lg:col-span-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-5 overflow-x-auto border border-[#3E5DA6]/10">
-                <!-- Header -->
-                <div class="mb-5">
-                    <div class="flex items-center gap-2 mb-1">
-                        <span class="h-2 w-2 bg-[#BD3C34] rounded-full"></span>
-                        <span class="uppercase text-[11px] font-semibold text-[#BD3C34] tracking-wide">Tournament
-                            Standings</span>
-                    </div>
-                    <h2 class="text-xl md:text-2xl font-black text-[#3E5DA6] leading-tight">Tournament Standings</h2>
-                    <div class="w-full h-[1px] bg-[#3E5DA6]/20 mt-2"></div>
-                </div>
-
-                <!-- Table -->
-                <table class="min-w-[720px] w-full text-[13px] font-sans">
-                    <thead class="bg-[#3E5DA6] text-white text-xs">
-                        <tr>
-                            <th class="p-2 text-left">#</th>
-                            <th class="p-2 text-left">Team</th>
-                            <th class="p-2 text-center">Pts</th>
-                            <th class="p-2 text-center">NRR</th>
-                            <th class="p-2 text-center">Last 5</th>
-                            <th class="p-2 text-center">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-100 dark:divide-gray-700 text-gray-700 dark:text-gray-200">
-                        <!-- ROW: Example -->
-                        <tr
-                            class="hover:bg-gradient-to-r from-[#f9fafe] to-white dark:from-gray-800 dark:to-gray-900 transition-all">
-                            <td class="p-2 font-semibold">1</td>
-                            <td class="p-2 flex items-center gap-2"><img src="https://flagcdn.com/in.svg"
-                                    class="w-5 h-5 rounded-full" alt="IND">India (IND)</td>
-                            <td class="text-center font-bold text-[#3E5DA6]">14</td>
-                            <td class="text-center text-green-600">+1.45</td>
-                            <td class="text-center text-xs flex justify-center gap-1 font-mono">
-                                <span class="text-green-600">🟢 W</span>
-                                <span class="text-green-600">🟢 W</span>
-                                <span class="text-red-500">🔴 L</span>
-                                <span class="text-green-600">🟢 W</span>
-                                <span class="text-green-600">🟢 W</span>
-                            </td>
-                            <td class="text-center text-green-600 font-semibold">⭐ Qualified</td>
-                        </tr>
-                        <!-- Add more teams -->
-                        <tr
-                            class="hover:bg-gradient-to-r from-[#f9fafe] to-white dark:from-gray-800 dark:to-gray-900 transition-all">
-                            <td class="p-2 font-semibold">2</td>
-                            <td class="p-2 flex items-center gap-2"><img src="https://flagcdn.com/au.svg"
-                                    class="w-5 h-5 rounded-full">Australia (AUS)</td>
-                            <td class="text-center">12</td>
-                            <td class="text-center">+0.98</td>
-                            <td class="text-center text-xs flex justify-center gap-1 font-mono">
-                                <span class="text-red-500">🔴 L</span>
-                                <span class="text-green-600">🟢 W</span>
-                                <span class="text-green-600">🟢 W</span>
-                                <span class="text-green-600">🟢 W</span>
-                                <span class="text-red-500">🔴 L</span>
-                            </td>
-                            <td class="text-center text-green-600">⭐ Qualified</td>
-                        </tr>
-                        <tr
-                            class="hover:bg-gradient-to-r from-[#f9fafe] to-white dark:from-gray-800 dark:to-gray-900 transition-all">
-                            <td class="p-2 font-semibold">3</td>
-                            <td class="p-2 flex items-center gap-2"><img src="https://flagcdn.com/nz.svg"
-                                    class="w-5 h-5 rounded-full">New Zealand (NZ)</td>
-                            <td class="text-center">10</td>
-                            <td class="text-center">+0.34</td>
-                            <td class="text-center text-xs flex justify-center gap-1 font-mono">
-                                <span class="text-green-600">🟢 W</span>
-                                <span class="text-red-500">🔴 L</span>
-                                <span class="text-green-600">🟢 W</span>
-                                <span class="text-red-500">🔴 L</span>
-                                <span class="text-green-600">🟢 W</span>
-                            </td>
-                            <td class="text-center text-yellow-600">In Contention</td>
-                        </tr>
-                        <!-- Add more rows as needed -->
-                    </tbody>
-                </table>
-            </div>
-
-
-
-            <!-- 🧠 Fantasy Tips -->
-            <div class="lg:col-span-4 bg-white dark:bg-gray-800 rounded-xl shadow p-4">
-                <h2 class="text-lg md:text-xl font-bold text-[#BD3C34] mb-4 flex items-center gap-2">🎯 Dream Team Picks
+            <!-- Header -->
+            <div class="flex items-center gap-2">
+                <div class="w-2 h-2 bg-[#BD3C34] rounded-full animate-pulse shadow-md"></div>
+                <h2
+                    class="text-base sm:text-lg md:text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34]">
+                    Tournament Standings & Fantasy Tips
                 </h2>
-                <div class="space-y-4">
-                    <!-- Player Card -->
-                    <div class="bg-gray-50 dark:bg-gray-700 p-3 rounded-md">
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <p class="font-bold text-sm">Virat Kohli <span class="text-xs text-gray-400">(IND -
-                                        Batter)</span></p>
-                                <p class="text-xs text-gray-500 dark:text-gray-300">Pts: 368 | Avg: 73.6 | Picked: 92% |
-                                    Cr: 10 | 72(49)</p>
-                            </div>
-                            <span class="text-green-600 text-xs font-bold">🥇 C</span>
-                        </div>
+            </div>
+
+            <!-- Main Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+
+
+                <div
+                    class="lg:col-span-8 glass border border-[#E2E8F0] dark:border-[#2D3748] rounded-2xl p-4 shadow-md space-y-4 overflow-hidden transition-all duration-300">
+
+                    <!-- Header -->
+                    <div class="flex items-center justify-between mb-2">
+                        <h3
+                            class="text-base sm:text-lg md:text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] flex items-center gap-2">
+                            🏆 Points Table
+                        </h3>
+                        <a href="#"
+                            class="text-xs sm:text-sm font-medium text-[#3E5DA6] underline hover:text-[#BD3C34] transition duration-150">
+                            View Full Table
+                        </a>
                     </div>
-                    <div class="bg-gray-50 dark:bg-gray-700 p-3 rounded-md">
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <p class="font-bold text-sm">Hardik Pandya <span class="text-xs text-gray-400">(IND -
-                                        All-rounder)</span></p>
-                                <p class="text-xs text-gray-500 dark:text-gray-300">Pts: 291 | Avg: 58.2 | Picked: 76% |
-                                    Cr: 9 | 3/27</p>
-                            </div>
-                            <span class="text-blue-600 text-xs font-bold">🥈 VC</span>
-                        </div>
-                    </div>
-                    <!-- Team Composition -->
-                    <div class="text-xs">
-                        <h4 class="text-[#3E5DA6] font-bold mb-2">Team Composition</h4>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li><b>Batsmen:</b> Kohli, Gill, Warner</li>
-                            <li><b>All-rounders:</b> Pandya, Stoinis</li>
-                            <li><b>Bowlers:</b> Bumrah, Starc, Rashid</li>
-                            <li><b>Keepers:</b> Rahul</li>
-                        </ul>
-                    </div>
-                    <!-- Insights -->
-                    <div class="text-xs">
-                        <h4 class="text-[#BD3C34] font-bold mb-2">Venue / Match Insights</h4>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li>Kohli avg 60 vs AUS • Dream Team: 5 times</li>
-                            <li>Pandya thrives at Wankhede Stadium</li>
-                            <li>Starc picked 70% at this venue</li>
-                            <li>Warner frequently VC in 3 matches</li>
-                        </ul>
+
+                    <!-- Scrollable Table -->
+                    <div class="overflow-x-auto">
+                        <table class="min-w-[580px] w-full text-[13px] font-sans">
+                            <thead class="bg-[#3E5DA6] text-white text-xs">
+                                <tr>
+                                    <th class="p-2 text-left">#</th>
+                                    <th class="p-2 text-left">Team</th>
+                                    <th class="p-2 text-right">Pts</th>
+                                    <th class="p-2 text-center">NRR</th>
+                                    <th class="p-2 text-center">Last 5</th>
+                                    <th class="p-2 text-center">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="points-table-body"
+                                class="divide-y divide-gray-100 dark:divide-gray-700 text-gray-700 dark:text-gray-200">
+                                <!-- Rows will be inserted by JS -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+
+
+                <!-- 🎯 Fantasy Tips Card -->
+                <div
+                    class="lg:col-span-4 glass border border-[#E2E8F0] dark:border-[#2D3748] rounded-xl p-5 shadow-lg space-y-4 overflow-hidden">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-[#3E5DA6] font-bold text-base sm:text-lg">Fantasy Dream Picks</h3>
+                        <a href="#" class="text-xs text-[#BD3C34] underline hover:text-[#3E5DA6] transition">Explore
+                            Full Squad</a>
+                    </div>
+
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-yellow-500">👑</span>
+                            <div><b>Captain:</b> Rohit Sharma — top form, lethal in powerplays</div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-500">⭐</span>
+                            <div><b>Vice Captain:</b> Travis Head — 180+ SR in last 5 games</div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-600">💥</span>
+                            <div><b>X-Factor:</b> Kuldeep Yadav — ideal spinner on dry pitch</div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-purple-600">🎯</span>
+                            <div><b>Budget Pick:</b> Tilak Varma — aggressive middle-order gem</div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500">🚫</span>
+                            <div><b>Avoid:</b> Bumrah (injured) — ruled out of squad</div>
+                        </li>
+                    </ul>
+
+                    <div class="text-right">
+                        <a href="#"
+                            class="inline-block mt-2 text-xs sm:text-sm bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white px-4 py-2 rounded-full shadow hover:scale-105 transition">
+                            Create My Dream Team →
+                        </a>
+                    </div>
+                </div>
+
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
+
+
+
+
+
 
 
 
@@ -840,6 +803,81 @@
         function scrollRight() {
             const container = document.getElementById("matchContainer");
             container.scrollBy({ left: 280, behavior: 'smooth' });
+        }
+
+
+
+
+
+
+        const teams = [
+            { id: "ind", name: "India (IND)", flag: "in", pts: 14, nrr: "+1.45", last5: ["W", "W", "L", "W", "W"], status: "Qualified" },
+            { id: "aus", name: "Australia (AUS)", flag: "au", pts: 12, nrr: "+0.98", last5: ["W", "L", "W", "W", "W"], status: "Qualified" },
+            { id: "eng", name: "England (ENG)", flag: "gb", pts: 10, nrr: "+0.75", last5: ["L", "W", "W", "W", "L"], status: "In Contention" },
+            { id: "pak", name: "Pakistan (PAK)", flag: "pk", pts: 8, nrr: "+0.60", last5: ["W", "W", "L", "L", "W"], status: "In Contention" },
+            { id: "nz", name: "New Zealand (NZ)", flag: "nz", pts: 8, nrr: "+0.40", last5: ["L", "W", "L", "W", "W"], status: "In Contention" },
+            { id: "sa", name: "South Africa (SA)", flag: "za", pts: 6, nrr: "-0.10", last5: ["L", "L", "W", "W", "L"], status: "Eliminated" },
+            { id: "sl", name: "Sri Lanka (SL)", flag: "lk", pts: 4, nrr: "-0.45", last5: ["L", "L", "W", "L", "L"], status: "Eliminated" },
+            { id: "ban", name: "Bangladesh (BAN)", flag: "bd", pts: 4, nrr: "-0.80", last5: ["W", "L", "L", "L", "L"], status: "Eliminated" },
+            { id: "afg", name: "Afghanistan (AFG)", flag: "af", pts: 2, nrr: "-1.10", last5: ["L", "L", "L", "L", "W"], status: "Eliminated" },
+            { id: "ned", name: "Netherlands (NED)", flag: "nl", pts: 0, nrr: "-2.00", last5: ["L", "L", "L", "L", "L"], status: "Eliminated" },
+        ];
+
+        const tbody = document.getElementById("points-table-body");
+
+        teams.forEach((team, index) => {
+            const matchHTML = `
+      <tr class="hover:bg-[#f9fafe] dark:hover:bg-gray-700 transition">
+        <td class="p-2 font-semibold">${index + 1}</td>
+        <td class="p-2 flex items-center gap-2">
+          <img src="https://flagcdn.com/${team.flag}.svg" class="w-5 h-5 rounded-full" alt="${team.flag}">
+          ${team.name}
+        </td>
+        <td class="text-center font-bold text-[#3E5DA6]">${team.pts}</td>
+        <td class="text-center ${team.nrr.startsWith('+') ? 'text-green-600' : 'text-red-600'}">${team.nrr}</td>
+        <td class="text-right pr-2">
+          <div class="flex justify-center gap-1 flex-wrap text-[11px] font-semibold">
+            ${team.last5.map(result => `
+              <span class="px-2 py-0.5 rounded-full ${result === 'W' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-600'}">${result}</span>
+            `).join('')}
+          </div>
+        </td>
+        <td class="text-right pr-2">
+          <button onclick="toggleDropdown('${team.id}')"
+            class="text-sm text-[#3E5DA6]  hover:underline transition duration-150">
+            ⭐ ${team.status} ↓
+          </button>
+        </td>
+      </tr>
+      <tr id="expand-${team.id}" class="hidden bg-gray-50 dark:bg-gray-900">
+        <td colspan="6" class="p-3">
+          <div class="grid gap-2 text-xs text-gray-700 dark:text-gray-300">
+            <a href="#" class="flex justify-between items-center p-2 rounded-md border border-gray-200 dark:border-gray-700 hover:bg-[#f0f4ff] dark:hover:bg-gray-800 transition">
+              <span>🇮🇳 vs 🇦🇺 <span class="text-gray-500">182/6 (20)</span></span>
+              <span class="text-green-600 font-semibold">✅ Won by 10 runs</span>
+            </a>
+            <a href="#" class="flex justify-between items-center p-2 rounded-md border border-gray-200 dark:border-gray-700 hover:bg-[#f0f4ff] dark:hover:bg-gray-800 transition">
+              <span>🇮🇳 vs 🇵🇰 <span class="text-gray-500">175/8 (19.4)</span></span>
+              <span class="text-green-600 font-semibold">✅ Won by 2 wickets</span>
+            </a>
+            <a href="#" class="flex justify-between items-center p-2 rounded-md border border-gray-200 dark:border-gray-700 hover:bg-[#f0f4ff] dark:hover:bg-gray-800 transition">
+              <span>🇮🇳 vs 🇬🇧 <span class="text-gray-500">144/9 (20)</span></span>
+              <span class="text-red-600 font-semibold">❌ Lost by 4 wickets</span>
+            </a>
+          </div>
+        </td>
+      </tr>
+    `;
+            tbody.insertAdjacentHTML("beforeend", matchHTML);
+        });
+
+        function toggleDropdown(id) {
+            const allRows = document.querySelectorAll("tr[id^='expand-']");
+            allRows.forEach(row => {
+                if (row.id !== `expand-${id}`) row.classList.add("hidden");
+            });
+            const current = document.getElementById(`expand-${id}`);
+            current.classList.toggle("hidden");
         }
     </script>
 </body>
