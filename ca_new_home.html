@@ -665,45 +665,101 @@
                 </div>
 
 
-                <!-- 🎯 Fantasy Tips Card -->
+                <!-- 🎯 Fantasy Dream Picks – Full Section with Highlight Card -->
                 <div
-                    class="lg:col-span-4 glass border border-[#E2E8F0] dark:border-[#2D3748] rounded-xl p-5 shadow-lg space-y-4 overflow-hidden">
+                    class="lg:col-span-4 glass border border-[#E2E8F0] dark:border-[#2D3748] rounded-xl p-4 shadow-lg space-y-4 overflow-hidden">
+
+                    <!-- Header -->
                     <div class="flex items-center justify-between">
                         <h3 class="text-[#3E5DA6] font-bold text-base sm:text-lg">Fantasy Dream Picks</h3>
                         <a href="#" class="text-xs text-[#BD3C34] underline hover:text-[#3E5DA6] transition">Explore
                             Full Squad</a>
                     </div>
 
-                    <ul class="space-y-3 text-sm">
-                        <li class="flex items-start gap-2">
-                            <span class="text-yellow-500">👑</span>
-                            <div><b>Captain:</b> Rohit Sharma — top form, lethal in powerplays</div>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-blue-500">⭐</span>
-                            <div><b>Vice Captain:</b> Travis Head — 180+ SR in last 5 games</div>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-green-600">💥</span>
-                            <div><b>X-Factor:</b> Kuldeep Yadav — ideal spinner on dry pitch</div>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-purple-600">🎯</span>
-                            <div><b>Budget Pick:</b> Tilak Varma — aggressive middle-order gem</div>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-red-500">🚫</span>
-                            <div><b>Avoid:</b> Bumrah (injured) — ruled out of squad</div>
-                        </li>
-                    </ul>
+                    <!-- Two-Column Cards Grid -->
+                    <div class="grid grid-cols-2 gap-3 text-sm">
+                        <!-- Captain -->
+                        <div
+                            class="rounded-xl border border-gray-200 dark:border-gray-700 p-3 shadow-sm bg-white dark:bg-gray-800">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-yellow-500 text-xl">👑</span>
+                                <span
+                                    class="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white text-[11px] px-2 py-0.5 rounded-full font-bold">
+                                    Captain
+                                </span>
+                            </div>
+                            <div class="font-semibold">Rohit Sharma</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400">Top form, lethal in powerplays</div>
+                        </div>
 
-                    <div class="text-right">
+                        <!-- Vice Captain -->
+                        <div
+                            class="rounded-xl border border-gray-200 dark:border-gray-700 p-3 shadow-sm bg-white dark:bg-gray-800">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-blue-500 text-xl">⭐</span>
+                                <span
+                                    class="bg-gradient-to-r from-blue-400 to-blue-600 text-white text-[11px] px-2 py-0.5 rounded-full font-bold">
+                                    Vice Captain
+                                </span>
+                            </div>
+                            <div class="font-semibold">Travis Head</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400">180+ SR in last 5 games</div>
+                        </div>
+
+                        <!-- X-Factor -->
+                        <div
+                            class="rounded-xl border border-gray-200 dark:border-gray-700 p-3 shadow-sm bg-white dark:bg-gray-800">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-green-600 text-xl">💥</span>
+                                <span
+                                    class="bg-gradient-to-r from-green-400 to-green-600 text-white text-[11px] px-2 py-0.5 rounded-full font-bold">
+                                    X-Factor
+                                </span>
+                            </div>
+                            <div class="font-semibold">Kuldeep Yadav</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400">Ideal spinner on dry pitch</div>
+                        </div>
+
+                        <!-- Budget Pick -->
+                        <div
+                            class="rounded-xl border border-gray-200 dark:border-gray-700 p-3 shadow-sm bg-white dark:bg-gray-800">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-purple-600 text-xl">🎯</span>
+                                <span
+                                    class="bg-gradient-to-r from-purple-400 to-purple-600 text-white text-[11px] px-2 py-0.5 rounded-full font-bold">
+                                    Budget Pick
+                                </span>
+                            </div>
+                            <div class="font-semibold">Tilak Varma</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400">Aggressive middle-order gem</div>
+                        </div>
+
+                        <!-- Avoid -->
+                        <div
+                            class="rounded-xl border border-gray-200 dark:border-gray-700 p-3 shadow-sm bg-white dark:bg-gray-800 col-span-2">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-red-500 text-xl">🚫</span>
+                                <span
+                                    class="bg-gradient-to-r from-red-400 to-red-600 text-white text-[11px] px-2 py-0.5 rounded-full font-bold">
+                                    Avoid
+                                </span>
+                            </div>
+                            <div class="font-semibold">Jasprit Bumrah (injured)</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400">Ruled out of squad</div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- CTA Button -->
+                    <div class="text-center sm:text-right">
                         <a href="#"
-                            class="inline-block mt-2 text-xs sm:text-sm bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white px-4 py-2 rounded-full shadow hover:scale-105 transition">
+                            class="inline-block mt-3 text-xs sm:text-sm bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white px-4 py-2 rounded-full shadow hover:scale-105 transition">
                             Create My Dream Team →
                         </a>
                     </div>
                 </div>
+
 
             </div>
         </section>
