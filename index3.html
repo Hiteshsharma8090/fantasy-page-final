@@ -1,1086 +1,485 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
-    <title>Team Comparison - Elegant UI</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bihar Police Driver Constable 2025</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
-        body {
-            background: #F8F8FB;
-            font-family: 'Segoe UI', sans-serif;
-            color: #0D386E;
+        * {
+            box-sizing: border-box;
         }
 
-        .stats-container {
-            max-width: 900px;
-            margin: 40px auto;
-            background: rgba(255, 255, 255, 0.75);
-            border-radius: 10px;
-            padding: 28px;
-            box-shadow: 0 20px 40px rgba(13, 56, 110, 0.15);
-            backdrop-filter: blur(12px);
-            animation: fadeIn 1s ease;
+        body {
+            margin: 0;
+            font-family: "Roboto", Sans-serif;
+            background: #f5f6fa;
+            color: #222;
+            font-size: 15px;
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(90deg, #0d8af0, #20d3f3);
+            color: #fff;
+            text-align: center;
+            padding: 14px 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .accordion {
+            border-top: 1px solid #ddd;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid #eee;
+            overflow: hidden;
+        }
+
+        .accordion-title {
+            padding: 14px 18px;
+            cursor: pointer;
+            font-weight: 600;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: background 0.3s ease;
+            font-size: 15px;
+            border-left: 4px solid transparent;
+        }
+
+        .accordion-title:hover {
+            background: #e4eeff;
+        }
+
+        .accordion-title.active {
+            border-left: 4px solid #004aad;
+            background: #e4eeff;
+        }
+
+        .accordion-title::after {
+            content: '+';
+            position: absolute;
+            right: 18px;
+            font-size: 20px;
+            transition: transform 0.3s ease;
+            color: #004aad;
+        }
+
+        .accordion-title.active::after {
+            content: '−';
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 14px 20px;
+            background: #fdfdff;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .accordion-content ul,
+        .accordion-content ol {
+            margin: 0 0 1em 1.2em;
+            padding-left: 10px;
+        }
+
+        .accordion-content li {
+            margin-bottom: 6px;
+            line-height: 1.6;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .accordion-content li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-size: 14px;
+        }
+
+        .accordion-content p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .icon {
+            background-color: #e1ecfb;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #004aad;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        a.button {
+            display: block;
+            background: #28a745;
+            color: #fff;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 0 0 8px 8px;
+            margin-top: 5px;
         }
 
         @keyframes fadeIn {
-            0% {
+            from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(-6px);
             }
 
-            100% {
+            to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        .team-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 40px;
-        }
-
-        .left-team,
-        .right-team {
-            flex: 1;
-        }
-
-        .right-team {
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .center-badge {
-            flex-shrink: 0;
-            margin: 0 16px;
-        }
-
-        .match-badge {
-            background: #0D386E;
-            color: white;
-            padding: 10px 26px;
-            font-size: 1rem;
-            border-radius: 20px;
-            font-weight: bold;
-            box-shadow: 0 0 10px rgba(13, 56, 110, 0.4);
-        }
-
-        .dropdown .btn {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 18px;
-            font-weight: 600;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(6px);
-            border: 1px solid #0d386e50;
-        }
-
-        .dropdown-menu {
-            max-height: 300px;
-            overflow-y: auto;
-            border-radius: 10px;
-            padding: 6px 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            background: white;
-        }
-
-        .dropdown-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 20px;
-            font-weight: 500;
-            transition: background 0.25s, transform 0.2s;
-        }
-
-        .dropdown-item:hover {
-            background-color: #e6f0ff;
-            transform: translateX(4px);
-        }
-
-        .dropdown-item img {
-            width: 24px;
-            height: 24px;
-            object-fit: contain;
-        }
-
-        .stat-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            align-items: center;
-            padding: 16px 12px;
-            margin-bottom: 14px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.6);
-            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
-        }
-
-        .left-value,
-        .right-value {
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: #0d386e;
-        }
-
-        .left-value {
-            text-align: left;
-            margin-left: 12px;
-        }
-
-        .right-value {
-            text-align: right;
-            margin-right: 12px;
-        }
-
-        .center-label {
-            text-align: center;
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: #0D386E;
-            background: #eaf1fb;
-            border-radius: 12px;
-            padding: 6px 0px;
-            /* padding: 6px 10px; */
-            box-shadow: 0 1px 4px rgba(13, 56, 110, 0.08);
-            display: inline-block;
-        }
-
-        .dot {
-            width: 8px;
-            height: 8px;
-            background-color: #0D386E;
-            border-radius: 50%;
-            display: inline-block;
-            flex-shrink: 0;
-        }
-
-
-
-        @media (max-width: 768px) {
-            .team-header {
-                gap: 12px;
-                flex-direction: column;
-                text-align: center;
+        @media (max-width: 600px) {
+            body {
+                font-size: 14px;
             }
 
-            .left-team,
-            .right-team {
-                justify-content: center;
-            }
-
-            .dropdown .btn {
-                max-width: 100%;
-                justify-content: center;
-            }
-
-            .stat-row {
-                text-align: center;
-            }
-
-            .left-value,
-            .right-value {
-                padding-left: 8px;
-                padding-right: 8px;
-                margin: 0;
-            }
-
-            .stats-container {
-                padding: 20px;
-            }
-
-            .team-header {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                gap: 8px;
-                flex-wrap: wrap;
-            }
-
-            .left-team,
-            .right-team,
-            .center-badge {
-                flex: 0 0 auto;
-                width: auto;
-            }
-
-            .dropdown .btn {
-                font-size: 0.8rem;
-                padding: 6px 10px;
-                gap: 6px;
-            }
-
-            .match-badge {
-                font-size: 0.75rem;
-                padding: 6px 14px;
-                border-radius: 16px;
-            }
-
-            .stat-row {
-                grid-template-columns: 1fr 1fr 1fr;
-                padding: 10px 6px;
-                margin-bottom: 10px;
-                border-radius: 6px;
-            }
-
-            .left-value,
-            .right-value,
-            .center-label {
-                font-size: 0.85rem;
-            }
-
-            .stats-container {
-                padding: 16px;
-            }
-
-            .season-card {
-                padding: 1rem !important;
-                font-size: 0.9rem;
-            }
-
-            .season-card h5 {
-                font-size: 1.1rem;
-                margin-bottom: 0.75rem;
-            }
-
-            .season-card ul li {
-                gap: 0.5rem;
-                font-size: 0.9rem;
-            }
-
-            .season-card hr {
-                margin: 0.5rem 0 0.75rem;
+            .header {
+                font-size: 16px;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="stats-container">
-        <div class="team-header">
-            <div class="left-team">
-                <div class="dropdown">
-                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" id="leftTeamBtn">
-                        <img src="images/image_india.svg" width="20" /> KKR
-                    </button>
-                    <ul class="dropdown-menu" id="leftTeamList"></ul>
+
+    <div class="container">
+        <div class="header">Bihar Police Driver Constable 2025</div>
+
+        <div class="accordion">
+
+            <div class="accordion-item">
+                <div class="accordion-title active"><span class="icon"><i class="fas fa-info-circle"></i></span>Overview
+                </div>
+                <div class="accordion-content" style="display: block;">
+                    <p>The Bihar Police Department has officially released the Bihar Police Driver Constable Recruitment
+                        2025 notification for 4,361 posts. Eligible candidates can apply online through the official
+                        website. This recruitment drive aims to strengthen law enforcement by inducting qualified
+                        drivers into the Bihar Police force.</p>
                 </div>
             </div>
-       
-            <div class="right-team">
-                <div class="dropdown">
-                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" id="rightTeamBtn">
-                        <img src="images/image_india.svg" width="20" /> MI
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end" id="rightTeamList"></ul>
-                </div>
-            </div>
-        </div>
 
-        <div class="stat-row">
-            <div class="left-value">35</div>
-            <div class="center-label">Total Matches</div>
-            <div class="right-value">35</div>
-        </div>
-        <div class="stat-row">
-            <div class="left-value">11</div>
-            <div class="center-label">Won</div>
-            <div class="right-value">24</div>
-        </div>
-        <div class="stat-row">
-            <div class="left-value">24</div>
-            <div class="center-label">Lost</div>
-            <div class="right-value">11</div>
-        </div>
-        <div class="stat-row">
-            <div class="left-value">0</div>
-            <div class="center-label">No Result</div>
-            <div class="right-value">0</div>
-        </div>
-        <div class="stat-row">
-            <div class="left-value">232</div>
-            <div class="center-label">Highest Score</div>
-            <div class="right-value">210</div>
-        </div>
-        <div class="stat-row">
-            <div class="left-value">67</div>
-            <div class="center-label">Lowest Score</div>
-            <div class="right-value">68</div>
-        </div>
-        <div class="stat-row">
-            <div class="left-value">1</div>
-            <div class="center-label">Total Centuries</div>
-            <div class="right-value">1</div>
-        </div>
-        <div class="stat-row">
-            <div class="left-value">15</div>
-            <div class="center-label">Toss Won</div>
-            <div class="right-value">20</div>
-        </div>
-        <div class="stat-row">
-            <div class="left-value">6</div>
-            <div class="center-label">Won Batting First</div>
-            <div class="right-value">10</div>
-        </div>
-        <div class="stat-row">
-            <div class="left-value">5</div>
-            <div class="center-label">Elected to Bat</div>
-            <div class="right-value">5</div>
-        </div>
-        <div class="stat-row">
-            <div class="left-value">10</div>
-            <div class="center-label">Elected to Field</div>
-            <div class="right-value">15</div>
-        </div>
-        <div class="stat-row">
-            <div class="left-value">5</div>
-            <div class="center-label">Won Toss & Match</div>
-            <div class="right-value">14</div>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="row">
-
-            <h3 class="fw-bold mt-4 mb-3" style="font-size: 1rem;">RCB vs CSK in All Seasons</h3>
-
-            <div class="col-lg-6 col-12 mb-4">
-                <div class="p-4 rounded-4 border bg-white shadow-sm season-card h-100">
-                    <h5 class="fw-bold mb-3">2025</h5>
-                    <hr />
-                    <ul class="list-unstyled mb-0">
-                        <li class="d-flex align-items-start gap-2 mb-2">
-                            <span class="dot mt-1"></span>
-                            <a href="match-details.html?id=match1" class="text-decoration-none text-dark">
-                                Royal Challengers Bengaluru won by 50 runs
-                            </a>
-                        </li>
-                        <li class="d-flex align-items-start gap-2">
-                            <span class="dot mt-1"></span>
-                            <a href="match-details.html?id=match2" class="text-decoration-none text-dark">
-                                Royal Challengers Bengaluru won by 2 runs
-                            </a>
-                        </li>
+            <div class="accordion-item">
+                <div class="accordion-title"><span class="icon"><i class="fas fa-calendar-alt"></i></span>Important
+                    Dates</div>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>Application Start Date:</strong> 21st July 2025</li>
+                        <li><strong>Last Date to Apply:</strong> 20th August 2025</li>
+                        <li><strong>Admit Card Release:</strong> To be announced</li>
+                        <li><strong>Exam Date:</strong> Tentatively in September 2025</li>
                     </ul>
                 </div>
             </div>
 
-            <div class="col-lg-6 col-12 mb-4">
-                <div class="p-4 rounded-4 border bg-white shadow-sm season-card h-100">
-                    <h5 class="fw-bold mb-3">2024</h5>
-                    <hr />
-                    <ul class="list-unstyled mb-0">
-                        <li class="d-flex align-items-start gap-2 mb-2">
-                            <span class="dot mt-1"></span>
-                            <a href="match-details.html?id=match3" class="text-decoration-none text-dark">
-                                Royal Challengers Bengaluru won by 50 runs
-                            </a>
-                        </li>
-                        <li class="d-flex align-items-start gap-2">
-                            <span class="dot mt-1"></span>
-                            <a href="match-details.html?id=match4" class="text-decoration-none text-dark">
-                                Royal Challengers Bengaluru won by 2 runs
-                            </a>
-                        </li>
+            <div class="accordion-item">
+                <div class="accordion-title"><span class="icon"><i class="fas fa-money-bill-wave"></i></span>Application
+                    Fee</div>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>General / OBC / EWS:</strong> ₹675</li>
+                        <li><strong>SC / ST / Female (Bihar):</strong> ₹180</li>
+                        <li><strong>Payment Mode:</strong> Online via Net Banking, Debit/Credit Card</li>
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-6 col-12 mb-4">
-                <div class="p-4 rounded-4 border bg-white shadow-sm season-card h-100">
-                    <h5 class="fw-bold mb-3">2023</h5>
-                    <hr />
-                    <ul class="list-unstyled mb-0">
-                        <li class="d-flex align-items-start gap-2 mb-2">
-                            <span class="dot mt-1"></span>
-                            <a href="match-details.html?id=match3" class="text-decoration-none text-dark">
-                                Royal Challengers Bengaluru won by 50 runs
-                            </a>
-                        </li>
-                        <li class="d-flex align-items-start gap-2">
-                            <span class="dot mt-1"></span>
-                            <a href="match-details.html?id=match4" class="text-decoration-none text-dark">
-                                Royal Challengers Bengaluru won by 2 runs
-                            </a>
-                        </li>
+
+            <div class="accordion-item">
+                <div class="accordion-title"><span class="icon"><i class="fas fa-user-check"></i></span>Eligibility
+                    Criteria</div>
+                <div class="accordion-content">
+                    <ul>
+                        <li>Must have passed 10+2 (Intermediate) from a recognized board.</li>
+                        <li>Must possess a valid LMV/HMV Driving License.</li>
+                        <li>Should fulfill physical standards set by CSBC Bihar.</li>
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-6 col-12 mb-4">
-                <div class="p-4 rounded-4 border bg-white shadow-sm season-card h-100">
-                    <h5 class="fw-bold mb-3">2022</h5>
-                    <hr />
-                    <ul class="list-unstyled mb-0">
-                        <li class="d-flex align-items-start gap-2 mb-2">
-                            <span class="dot mt-1"></span>
-                            <a href="match-details.html?id=match3" class="text-decoration-none text-dark">
-                                Royal Challengers Bengaluru won by 50 runs
-                            </a>
-                        </li>
-                        <li class="d-flex align-items-start gap-2">
-                            <span class="dot mt-1"></span>
-                            <a href="match-details.html?id=match4" class="text-decoration-none text-dark">
-                                Royal Challengers Bengaluru won by 2 runs
-                            </a>
-                        </li>
+
+            <div class="accordion-item">
+                <div class="accordion-title"><span class="icon"><i class="fas fa-hourglass-half"></i></span>Age Limit
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>General Category:</strong> 20 to 25 years</li>
+                        <li><strong>OBC / EWS:</strong> 20 to 27 years</li>
+                        <li><strong>SC / ST:</strong> 20 to 30 years</li>
+                        <li>Age relaxation applicable as per Bihar Govt. rules.</li>
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-6 col-12 mb-4">
-                <div class="p-4 rounded-4 border bg-white shadow-sm season-card h-100">
-                    <h5 class="fw-bold mb-3">2021 </h5>
-                    <hr />
-                    <ul class="list-unstyled mb-0">
-                        <li class="d-flex align-items-start gap-2 mb-2">
-                            <span class="dot mt-1"></span>
-                            <a href="match-details.html?id=match3" class="text-decoration-none text-dark">
-                                Royal Challengers Bengaluru won by 50 runs
-                            </a>
-                        </li>
-                        <li class="d-flex align-items-start gap-2">
-                            <span class="dot mt-1"></span>
-                            <a href="match-details.html?id=match4" class="text-decoration-none text-dark">
-                                Royal Challengers Bengaluru won by 2 runs
-                            </a>
-                        </li>
+
+            <div class="accordion-item">
+                <div class="accordion-title"><span class="icon"><i class="fas fa-chart-pie"></i></span>Category-wise
+                    Post Distribution</div>
+                <div class="accordion-content">
+                    <p>The total 4,361 vacancies are divided among General, OBC, SC, ST, and EWS candidates. For
+                        detailed category-wise distribution, refer to the official notification PDF.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-title">
+                  <span class="icon"><i class="fas fa-map-marker-alt"></i></span>Posting Location & Department
+                </div>
+                <div class="accordion-content">
+                  <p>Below is a sample allocation of posting locations based on department needs:</p>
+                  <div style="overflow-x:auto;">
+                    <table style="width:100%; border-collapse: collapse; margin-top: 10px;">
+                      <thead>
+                        <tr style="background-color: #e4eeff; color: #004aad;">
+                          <th style="padding: 10px; border: 1px solid #ccc; text-align: left;">District</th>
+                          <th style="padding: 10px; border: 1px solid #ccc; text-align: left;">Zone</th>
+                          <th style="padding: 10px; border: 1px solid #ccc; text-align: left;">Department</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="padding: 8px; border: 1px solid #ccc;">Patna</td>
+                          <td style="padding: 8px; border: 1px solid #ccc;">Central</td>
+                          <td style="padding: 8px; border: 1px solid #ccc;">Traffic Police</td>
+                        </tr>
+                        <tr style="background-color: #f9f9f9;">
+                          <td style="padding: 8px; border: 1px solid #ccc;">Gaya</td>
+                          <td style="padding: 8px; border: 1px solid #ccc;">South</td>
+                          <td style="padding: 8px; border: 1px solid #ccc;">District Police</td>
+                        </tr>
+                        <tr>
+                          <td style="padding: 8px; border: 1px solid #ccc;">Muzaffarpur</td>
+                          <td style="padding: 8px; border: 1px solid #ccc;">North</td>
+                          <td style="padding: 8px; border: 1px solid #ccc;">Anti-Narcotics</td>
+                        </tr>
+                        <tr style="background-color: #f9f9f9;">
+                          <td style="padding: 8px; border: 1px solid #ccc;">Bhagalpur</td>
+                          <td style="padding: 8px; border: 1px solid #ccc;">East</td>
+                          <td style="padding: 8px; border: 1px solid #ccc;">Cyber Cell</td>
+                        </tr>
+                        <tr>
+                          <td style="padding: 8px; border: 1px solid #ccc;">Purnia</td>
+                          <td style="padding: 8px; border: 1px solid #ccc;">North-East</td>
+                          <td style="padding: 8px; border: 1px solid #ccc;">Special Branch</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <p style="margin-top:10px;"><strong>Note:</strong> Actual posting will be done based on availability and merit list after final selection.</p>
+                </div>
+              </div>
+              
+
+            <div class="accordion-item">
+                <div class="accordion-title"><span class="icon"><i class="fas fa-book-open"></i></span>Best Books</div>
+                <div class="accordion-content">
+                    <ul>
+                        <li>Lucent’s General Knowledge</li>
+                        <li>Arihant Bihar Police Constable Guide</li>
+                        <li>Wren & Martin English Grammar</li>
+                        <li>Quicker Mathematics by M. Tyra</li>
                     </ul>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-title">
+                  <span class="icon"><i class="fas fa-briefcase"></i></span>Work Profile & Responsibilities
+                </div>
+                <div class="accordion-content">
+                  <p>Below are the key duties and responsibilities expected from a Driver Constable in Bihar Police:</p>
+                  <div style="overflow-x:auto;">
+                    <table style="width:100%; border-collapse: collapse; margin-top: 10px;">
+                      <thead>
+                        <tr style="background-color: #e4eeff; color: #004aad;">
+                          <th style="padding: 10px; border: 1px solid #ccc; text-align: left;">Duty</th>
+                          <th style="padding: 10px; border: 1px solid #ccc; text-align: left;">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="padding: 8px; border: 1px solid #ccc;">Vehicle Operation</td>
+                          <td style="padding: 8px; border: 1px solid #ccc;">Drive official police vehicles for daily patrols, emergency calls, and transport duties.</td>
+                        </tr>
+                        <tr style="background-color: #f9f9f9;">
+                          <td style="padding: 8px; border: 1px solid #ccc;">Transport Personnel</td>
+                          <td style="padding: 8px; border: 1px solid #ccc;">Ensure safe and timely transportation of police officers and staff to required locations.</td>
+                        </tr>
+                        <tr>
+                          <td style="padding: 8px; border: 1px solid #ccc;">Vehicle Maintenance</td>
+                          <td style="padding: 8px; border: 1px solid #ccc;">Perform basic maintenance checks and report issues for timely repairs and servicing.</td>
+                        </tr>
+                        <tr style="background-color: #f9f9f9;">
+                          <td style="padding: 8px; border: 1px solid #ccc;">Emergency Response</td>
+                          <td style="padding: 8px; border: 1px solid #ccc;">Assist in rapid response during emergencies and coordinate quick transportation of personnel or victims.</td>
+                        </tr>
+                        <tr>
+                          <td style="padding: 8px; border: 1px solid #ccc;">Record Keeping</td>
+                          <td style="padding: 8px; border: 1px solid #ccc;">Maintain daily logbooks of vehicle usage, fuel consumption, and movements as per department protocol.</td>
+                        </tr>
+                        <tr style="background-color: #f9f9f9;">
+                          <td style="padding: 8px; border: 1px solid #ccc;">Support Duties</td>
+                          <td style="padding: 8px; border: 1px solid #ccc;">Help during traffic management, VIP movements, and other police operations when required.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <p style="margin-top:10px;"><strong>Note:</strong> Duties may vary slightly depending on location, department needs, and emergency situations.</p>
+                </div>
+              </div>
+              
+
+              <div class="accordion-item">
+                <div class="accordion-title">
+                  <span class="icon"><i class="fas fa-chart-line"></i></span>Previous Year PET Cut-Off
+                </div>
+                <div class="accordion-content">
+                  <p>The following table represents the qualifying PET standards from the previous recruitment cycle:</p>
+                  <div style="overflow-x:auto;">
+                    <table style="width:100%; border-collapse: collapse; margin-top: 10px;">
+                      <thead>
+                        <tr style="background-color: #e4eeff; color: #004aad;">
+                          <th style="padding: 10px; border: 1px solid #ccc;">Category</th>
+                          <th style="padding: 10px; border: 1px solid #ccc;">Distance</th>
+                          <th style="padding: 10px; border: 1px solid #ccc;">Time Limit</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="padding: 8px; border: 1px solid #ccc;">Male</td>
+                          <td style="padding: 8px; border: 1px solid #ccc;">1.6 KM</td>
+                          <td style="padding: 8px; border: 1px solid #ccc;">Under 7 minutes</td>
+                        </tr>
+                        <tr style="background-color: #f9f9f9;">
+                          <td style="padding: 8px; border: 1px solid #ccc;">Female</td>
+                          <td style="padding: 8px; border: 1px solid #ccc;">1 KM</td>
+                          <td style="padding: 8px; border: 1px solid #ccc;">Under 6 minutes</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <p style="margin-top:10px;"><strong>Note:</strong> PET standards are subject to change in the current recruitment based on official notification.</p>
+                </div>
+              </div>
+              
+
+            <div class="accordion-item">
+                <div class="accordion-title"><span class="icon"><i class="fas fa-id-card-alt"></i></span>How to Download
+                    Admit Card</div>
+                <div class="accordion-content">
+                    <ul>
+                        <li>Visit <a href="https://csbc.bihar.gov.in" target="_blank">csbc.bihar.gov.in</a></li>
+                        <li>Click on the “Download Admit Card” link</li>
+                        <li>Enter your Registration Number & DOB</li>
+                        <li>Download and take a printout</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-title"><span class="icon"><i class="fas fa-tasks"></i></span>Exam Pattern &
+                    Selection Process</div>
+                <div class="accordion-content">
+                    <ul>
+                        <li>Written Exam (OMR Based)</li>
+                        <li>Physical Efficiency Test (PET)</li>
+                        <li>Driving Test</li>
+                        <li>Document Verification</li>
+                        <li>Final Merit List</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-title">
+                  <span class="icon"><i class="fas fa-link"></i></span>Useful Links
+                </div>
+                <div class="accordion-content">
+                  <p>Below are the official and important links related to the Bihar Police Driver Constable 2025 recruitment:</p>
+                  <div style="overflow-x:auto;">
+                    <table style="width:100%; border-collapse: collapse; margin-top: 10px;">
+                      <thead>
+                        <tr style="background-color: #e4eeff; color: #004aad;">
+                          <th style="padding: 10px; border: 1px solid #ccc;">Link Name</th>
+                          <th style="padding: 10px; border: 1px solid #ccc;">URL</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="padding: 8px; border: 1px solid #ccc;">Official Website</td>
+                          <td style="padding: 8px; border: 1px solid #ccc;">
+                            <a href="https://csbc.bihar.gov.in" target="_blank">https://csbc.bihar.gov.in</a>
+                          </td>
+                        </tr>
+                        <tr style="background-color: #f9f9f9;">
+                          <td style="padding: 8px; border: 1px solid #ccc;">Apply Online</td>
+                          <td style="padding: 8px; border: 1px solid #ccc;">
+                            <a href="#" target="_blank">Click Here to Apply</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="padding: 8px; border: 1px solid #ccc;">Download Notification</td>
+                          <td style="padding: 8px; border: 1px solid #ccc;">
+                            <a href="#" target="_blank">View Official Notification</a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <p style="margin-top:10px;"><strong>Note:</strong> Please verify all links on the official CSBC website before proceeding.</p>
+                </div>
+              </div>
+              
+
+            <div class="accordion-item">
+                <div class="accordion-title"><span class="icon"><i class="fas fa-question-circle"></i></span>FAQs</div>
+                <div class="accordion-content">
+                    <p><strong>Q:</strong> Is a Driving License required?<br><strong>A:</strong> Yes, a valid LMV/HMV
+                        license is mandatory.</p>
+                    <p><strong>Q:</strong> What is the minimum educational qualification?<br><strong>A:</strong> 12th
+                        Pass (Intermediate)</p>
+                    <p><strong>Q:</strong> How can I apply for Bihar Police Driver Constable
+                        2025?<br><strong>A:</strong> You can apply online through the CSBC official website.</p>
                 </div>
             </div>
 
         </div>
 
-
-
-
+        <a href="https://csbc.bihar.gov.in" target="_blank" class="button">Apply Now</a>
     </div>
-    </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        const teams = {
-            KKR: { name: "Kolkata Knight Riders", short: "KKR", logo: "images/image_india.svg" },
-            MI: { name: "Mumbai Indians", short: "MI", logo: "images/image_india.svg" },
-            RCB: { name: "Royal Challengers Bangalore", short: "RCB", logo: "images/image_india.svg" },
-            CSK: { name: "Chennai Super Kings", short: "CSK", logo: "images/image_india.svg" },
-            GT: { name: "Gujarat Titans", short: "GT", logo: "images/image_india.svg" },
-            LSG: { name: "Lucknow Super Giants", short: "LSG", logo: "images/image_india.svg" }
-        };
-
-        const createDropdownItems = (side) => {
-            const list = document.getElementById(`${side}TeamList`);
-            list.innerHTML = '';
-            for (let key in teams) {
-                const item = document.createElement('li');
-                item.innerHTML = `
-          <a class="dropdown-item" href="#" onclick="selectTeam('${side}', '${key}')">
-            <img src="${teams[key].logo}" alt="${key}">${teams[key].short}
-          </a>`;
-                list.appendChild(item);
-            }
-        };
-
-        const selectTeam = (side, key) => {
-            document.getElementById(`${side}TeamBtn`).innerHTML =
-                `<img src="${teams[key].logo}" width="20" class="me-1"> ${teams[key].short}`;
-        };
-
-        createDropdownItems('left');
-        createDropdownItems('right');
-    </script>
-</body>
-
-</html> -->
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Match Predictions & News</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-
-        .scrollbar-hide {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        .glow-card:hover {
-            box-shadow: 0 0 12px rgba(228, 68, 59, 0.5);
-            transform: scale(1.01);
-            transition: all 0.3s ease;
-            background-color: rgba(1, 86, 209, 0.03);
-        }
-
-        .gradient-text {
-            background: linear-gradient(90deg, #0156D1, #E4443B);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        select {
-            transition: border 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        button {
-            transition: all 0.3s ease;
-        }
-    </style>
-</head>
-
-<body class=" bg-[#F8F8FB] ">
-
-
-    <!-- HEADER PART -->
-    <header class="bg-white border-b shadow-sm">
-        <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <div class="flex items-center space-x-2">
-                    <img src="images/logo.svg" alt="Logo" class="h-8" />
-                    <!-- <span class="text-xl font-bold text-blue-700">On Cricket</span> -->
-                </div>
-
-                <nav class="hidden md:flex items-center space-x-6 text-blue-800 font-semibold text-sm">
-                    <a href="#" class="hover:text-blue-500">LIVE SCORE</a>
-                    <a href="#" class="hover:text-blue-500">SCHEDULE</a>
-
-                    <div class="relative group">
-                        <button class="hover:text-blue-500">NEWS ▾</button>
-                        <div class="absolute hidden group-hover:block bg-white shadow-md rounded-md mt-2 z-10">
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Latest News</a>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Match Updates</a>
-                        </div>
-                    </div>
-
-                    <div class="relative group">
-                        <button class="hover:text-blue-500">SERIES ▾</button>
-                        <div class="absolute hidden group-hover:block bg-white shadow-md rounded-md mt-2 z-10">
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">World Cup</a>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">IPL</a>
-                        </div>
-                    </div>
-
-                    <div class="relative group">
-                        <button class="hover:text-blue-500">TEAMS ▾</button>
-                        <div class="absolute hidden group-hover:block bg-white shadow-md rounded-md mt-2 z-10">
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">India</a>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Australia</a>
-                        </div>
-                    </div>
-
-                    <div class="relative group">
-                        <button class="hover:text-blue-500">PLAYERS ▾</button>
-                        <div class="absolute hidden group-hover:block bg-white shadow-md rounded-md mt-2 z-10">
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Top Batters</a>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Top Bowlers</a>
-                        </div>
-                    </div>
-
-                    <div class="relative group">
-                        <button class="hover:text-blue-500">RANKINGS ▾</button>
-                        <div class="absolute hidden group-hover:block bg-white shadow-md rounded-md mt-2 z-10">
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">ICC ODI</a>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">T20I</a>
-                        </div>
-                    </div>
-
-                    <a href="#" class="hover:text-blue-500">VIDEOS</a>
-                    <a href="#" class="hover:text-blue-500">FANTASY</a>
-
-                    <div class="relative group">
-                        <button class="hover:text-blue-500">MORE ▾</button>
-                        <div class="absolute hidden group-hover:block bg-white shadow-md rounded-md mt-2 z-10">
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Stats</a>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Archives</a>
-                        </div>
-                    </div>
-                </nav>
-
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-blue-800">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div id="mobile-menu"
-            class="md:hidden hidden px-4 pb-4 bg-white text-blue-800 font-medium text-sm space-y-2 border-t">
-            <a href="#" class="block">LIVE SCORE</a>
-            <a href="#" class="block">SCHEDULE</a>
-            <a href="#" class="block">NEWS</a>
-            <a href="#" class="block">SERIES</a>
-            <a href="#" class="block">TEAMS</a>
-            <a href="#" class="block">PLAYERS</a>
-            <a href="#" class="block">RANKINGS</a>
-            <a href="#" class="block">VIDEOS</a>
-            <a href="#" class="block">FANTASY</a>
-            <a href="#" class="block">MORE</a>
-        </div>
-    </header>
-    <section class="bg-white border-b">
-        <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="overflow-x-auto">
-                <nav class="flex whitespace-nowrap gap-x-6 gap-y-2 py-3 text-sm font-semibold text-blue-800">
-                    <a href="#" class="hover:text-blue-600">IPL 2025</a>
-                    <a href="#" class="hover:text-blue-600">TEAMS</a>
-                    <a href="#" class="hover:text-blue-600">POINTS TABLE</a>
-                    <a href="#" class="hover:text-blue-600">SCHEDULE</a>
-                    <a href="#" class="hover:text-blue-600">STATS</a>
-                    <a href="#" class="hover:text-blue-600">NEWS</a>
-                    <a href="#" class="hover:text-blue-600">DREAM11 PREDICTION</a>
-                    <a href="#" class="hover:text-blue-600">MATCH PREDICTION</a>
-                    <a href="#" class="hover:text-blue-600">FANTASY TIPS</a>
-                </nav>
-            </div>
-        </div>
-    </section>
-
-
-
-
-    <!-- BREADCRUMB SECTION  -->
-    <section class="bg-gray-50 ">
-        <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-6">
-            <nav class="text-sm text-gray-600 flex flex-wrap items-center space-x-2">
-                <a href="#" class="hover:text-blue-600 font-medium">Home</a>
-                <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd"
-                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                        clip-rule="evenodd" />
-                </svg>
-                <a href="#" class="hover:text-blue-600 font-medium">News</a>
-                <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd"
-                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                        clip-rule="evenodd" />
-                </svg>
-                <span class="text-gray-500">Match Updates</span>
-            </nav>
-        </div>
-    </section>
-
-
-
-
-
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="md:hidden hidden bg-white px-4 pt-2 pb-4 space-y-2 text-blue-800 text-sm font-medium">
-        <a href="#" class="block">LIVE SCORE</a>
-        <a href="#" class="block">SCHEDULE</a>
-        <a href="#" class="block">NEWS</a>
-        <a href="#" class="block">SERIES</a>
-        <a href="#" class="block">TEAMS</a>
-        <a href="#" class="block">PLAYERS</a>
-        <a href="#" class="block">RANKINGS</a>
-        <a href="#" class="block">VIDEOS</a>
-        <a href="#" class="block">FANTASY</a>
-        <a href="#" class="block">MORE</a>
-    </div>
-
-
-
-
-
-    <div class="max-w-[1280px] mx-auto px-4 py-6 text-[#1F2937] bg-white mb-6 font-sans mt-4 rounded-2xl shadow-sm">
-
-        <!-- Title -->
-        <div class="mb-6 text-center">
-            <h1 class="text-3xl sm:text-4xl font-extrabold gradient-text">Fantasy Cricket Tips</h1>
-            <p class="text-lg text-gray-600 mt-2">Today's expert strategy, bold predictions & smart picks!</p>
-        </div>
-
-        <!-- Filters -->
-        <div class="flex flex-col gap-4 mb-6 sm:flex-row sm:flex-wrap sm:justify-center sm:items-center sm:gap-4">
-            <div class="flex flex-row gap-4 w-full sm:w-auto">
-                <!-- Select Format -->
-                <div class="relative w-full sm:w-[180px]">
-                    <select id="formatSelect"
-                        class="w-full appearance-none px-4 py-2 rounded-full border border-gray-200 text-sm text-gray-700 focus:ring-2 focus:ring-[#0156D1]">
-                        <option value="">Select Format</option>
-                    </select>
-                    <svg class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none"
-                        fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </div>
-
-                <!-- Select Series -->
-                <div class="relative w-full sm:w-[180px]">
-                    <select id="seriesSelect"
-                        class="w-full appearance-none px-4 py-2 rounded-full border border-gray-200 text-sm text-gray-700 focus:ring-2 focus:ring-[#0156D1]">
-                        <option value="">Select Series</option>
-                    </select>
-                    <svg class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none"
-                        fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </div>
-
-                <!-- Select Team -->
-                <div class="relative w-full sm:w-[180px]">
-                    <select id="teamSelect"
-                        class="w-full appearance-none px-4 py-2 rounded-full border border-gray-200 text-sm text-gray-700 focus:ring-2 focus:ring-[#0156D1]">
-                        <option value="">Select Team</option>
-                    </select>
-                    <svg class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none"
-                        fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </div>
-            </div>
-
-            <button
-                class="w-full sm:w-auto text-white px-4 py-2 rounded-full text-sm bg-gradient-to-r from-[#0156D1] to-[#E4443B] hover:opacity-90">
-                Clear
-            </button>
-        </div>
-
-        <!-- Date Slider -->
-        <div class="flex items-center relative mb-6 pb-2">
-            <button onclick="scrollDates(-200)"
-                class="hidden sm:flex absolute left-0 z-10 bg-white shadow rounded-full w-8 h-8 items-center justify-center ml-1">
-                ‹
-            </button>
-            <div id="dateSlider"
-                class="flex gap-2 overflow-x-auto sm:mx-10 scrollbar-hide scroll-smooth whitespace-nowrap w-full">
-                <div class="inline-block rounded-full p-[2px] bg-gradient-to-r from-[#0156D1] to-[#E4443B]">
-                    <button class="bg-white text-sm font-semibold px-4 py-2 rounded-full">27 May</button>
-                </div>
-                <!-- Add your dates below -->
-                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">28 May</button>
-                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">29 May</button>
-                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">30 May</button>
-                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">31 May</button>
-                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">1 Jun</button>
-                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">2 Jun</button>
-                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">3 Jun</button>
-                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">4 Jun</button>
-                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">5 Jun</button>
-                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">6 Jun</button>
-                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">7 Jun</button>
-                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">8 Jun</button>
-                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">9 Jun</button>
-                <button class="px-4 py-2 text-sm border border-gray-200 text-gray-600 rounded-full">10 Jun</button>
-            </div>
-            <button onclick="scrollDates(200)"
-                class="hidden sm:flex absolute right-0 z-10 bg-white shadow rounded-full w-8 h-8 items-center justify-center mr-1">
-                ›
-            </button>
-        </div>
-
-        <!-- Content Section -->
-        <div class="max-w-[1280px] mx-auto sm:px-4 py-6 flex flex-col md:flex-row gap-4">
-            <!-- Left Section -->
-            <div class="flex-1 space-y-4">
-                <a href="/match-details" class="block">
-                    <div class="relative rounded-xl overflow-hidden shadow-md hover:shadow-lg">
-                        <div class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#0156D1] to-[#E4443B]">
-                        </div>
-                        <div class="bg-white glow-card rounded-xl pl-4 pr-4 py-4 flex justify-between items-center">
-                            <div>
-                                <p class="text-sm text-gray-400">🕒 Match starts at 07:30 PM IST</p>
-                                <h2 class="text-xl font-bold">
-                                    <span
-                                        class="bg-gradient-to-r from-[#0156D1] to-[#E4443B] bg-clip-text text-transparent">LSG
-                                        vs RCB</span>
-                                </h2>
-                                <p class="text-sm text-gray-500">Match 70 · 📍 Lucknow</p>
-                            </div>
-                            <img src="images/dream11.webp" class="w-20 h-10 object-contain" alt="Dream 11" />
-                        </div>
-                    </div>
-                </a>
-                <a href="/match-details" class="block">
-                    <div class="relative rounded-xl overflow-hidden shadow-md hover:shadow-lg">
-                        <div class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#0156D1] to-[#E4443B]">
-                        </div>
-                        <div class="bg-white glow-card rounded-xl pl-4 pr-4 py-4 flex justify-between items-center">
-                            <div>
-                                <p class="text-sm text-gray-400">🕒 Match starts at 07:30 PM IST</p>
-                                <h2 class="text-xl font-bold">
-                                    <span
-                                        class="bg-gradient-to-r from-[#0156D1] to-[#E4443B] bg-clip-text text-transparent">DC
-                                        vs RR</span>
-                                </h2>
-                                <p class="text-sm text-gray-500">Match 71 · 📍 Lucknow</p>
-                            </div>
-                            <img src="images/dream11.webp" class="w-20 h-10 object-contain" alt="Dream 11" />
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Right Sidebar -->
-            <aside class="w-full md:w-80 space-y-4">
-                <div class="w-full mx-auto bg-white rounded-2xl border border-gray-100 px-4 py-4 shadow-md">
-                    <h2
-                        class="text-md font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#0156D1] to-[#E4443B] mb-4">
-                        Current Series
-                    </h2>
-
-                    <div class="space-y-4 sm:text-sm">
-                        <a href="#" class="group block">
-                            <div class="text-[#39215B] font-semibold transition">India vs England</div>
-                            <div class="text-gray-500">Test Series • <span
-                                    class="text-green-600 font-medium">Live</span></div>
-                        </a>
-                        <hr class="border-gray-200" />
-                        <a href="#" class="group block">
-                            <div class="text-[#39215B] font-semibold transition">Australia vs New Zealand</div>
-                            <div class="text-gray-500">T20 Series • <span class="text-yellow-600">Upcoming</span>
-                            </div>
-                        </a>
-                        <hr class="border-gray-200" />
-                        <a href="#" class="group block">
-                            <div class="text-[#39215B] font-semibold transition">IPL 2024</div>
-                            <div class="text-gray-500">T20 League • <span class="text-yellow-600">Starting
-                                    Soon</span>
-                            </div>
-                        </a>
-                        <hr class="border-gray-200" />
-                    </div>
-
-                    <div class="mt-4 text-center">
-                        <a href="#" class="text-sm font-semibold text-[#E4443B] hover:underline">View Complete
-                            Series
-                            →</a>
-                    </div>
-                </div>
-            </aside>
-        </div>
-    </div>
-
-
-
-
-
-    <!-- FOTTER SECTION  -->
-    <footer class="bg-[#222] text-white text-sm">
-        <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
-            <div class="grid grid-cols-1 md:grid-cols-6 gap-8">
-                <!-- Logo & Language -->
-                <div class="md:col-span-1 space-y-4">
-                    <img src="/logo.svg" alt="Logo" class="h-6">
-                    <div class="flex items-center space-x-2 text-gray-300">
-                        <span>English</span>
-                        <span>/</span>
-                        <span>हिन्दी</span>
-                    </div>
-                </div>
-
-                <!-- Columns -->
-                <div class="md:col-span-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
-                    <!-- Top IPL Teams -->
-                    <div>
-                        <h3 class="font-bold mb-2">TOP IPL TEAMS</h3>
-                        <ul class="space-y-2 text-gray-300">
-                            <li>Kolkata Knight Riders</li>
-                            <li>Mumbai Indians</li>
-                            <li>Chennai Super Kings</li>
-                            <li>Delhi Capitals</li>
-                            <li>Punjab Kings</li>
-                            <li>Rajasthan Royals</li>
-                            <li>RCB</li>
-                            <li>Sunrisers Hyderabad</li>
-                            <li>Lucknow Super Giants</li>
-                            <li>Gujarat Titans</li>
-                        </ul>
-                    </div>
-
-                    <!-- Top Players -->
-                    <div>
-                        <h3 class="font-bold mb-2">TOP PLAYERS</h3>
-                        <ul class="space-y-2 text-gray-300">
-                            <li>Rishabh Pant</li>
-                            <li>MS Dhoni</li>
-                            <li>Rohit Sharma</li>
-                            <li>Virat Kohli</li>
-                            <li>Hardik Pandya</li>
-                            <li>Ravindra Jadeja</li>
-                            <li>Jasprit Bumrah</li>
-                            <li>Tilak Varma</li>
-                            <li>SuryaKumar Yadav</li>
-                            <li>Mohammed Shami</li>
-                        </ul>
-                    </div>
-
-                    <!-- International Series -->
-                    <div>
-                        <h3 class="font-bold mb-2">INTERNATIONAL SERIES</h3>
-                        <ul class="space-y-2 text-gray-300">
-                            <li>IND vs AFG</li>
-                            <li>IND vs AUS</li>
-                            <li>IND vs BAN</li>
-                            <li>IND vs ENG</li>
-                            <li>IND vs NZ</li>
-                            <li>IND vs SA</li>
-                            <li>IND vs SL</li>
-                            <li>IND vs WI</li>
-                            <li>IND vs ZIM</li>
-                            <li>IND vs IRE</li>
-                        </ul>
-                    </div>
-
-                    <!-- Top Leagues -->
-                    <div>
-                        <h3 class="font-bold mb-2">TOP LEAGUES</h3>
-                        <ul class="space-y-2 text-gray-300">
-                            <li>IPL 2025</li>
-                            <li>BBL 2025</li>
-                            <li>CPL 2025</li>
-                            <li>PSL 2025</li>
-                            <li>WPL 2025</li>
-                            <li>BPL 2025</li>
-                            <li>WBBL 2025</li>
-                            <li>LPL 2025</li>
-                            <li>LLC 2025</li>
-                        </ul>
-                    </div>
-
-                    <!-- Quick Links -->
-                    <div>
-                        <h3 class="font-bold mb-2">QUICK LINKS</h3>
-                        <ul class="space-y-2 text-gray-300">
-                            <li>Live Score</li>
-                            <li>Schedule</li>
-                            <li>Series</li>
-                            <li>Recent Matches</li>
-                            <li>Upcoming Matches</li>
-                            <li>Match Prediction</li>
-                            <li>Fantasy Tips</li>
-                            <li>Cricket News</li>
-                            <li>Videos</li>
-                            <li>Teams</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Divider -->
-            <div class="border-t border-gray-600 my-6"></div>
-
-            <!-- Social & Utility Links -->
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                <!-- Social Icons -->
-                <div class="flex items-center gap-4 text-white">
-                    <span class="font-semibold">CONNECT US:</span>
-                    <a href="#"><i class="fab fa-facebook text-lg"></i></a>
-                    <a href="#"><i class="fab fa-instagram text-lg"></i></a>
-                    <a href="#"><i class="fab fa-youtube text-lg"></i></a>
-                    <a href="#"><i class="fab fa-x-twitter text-lg"></i></a>
-                </div>
-
-                <!-- Links -->
-                <div class="text-gray-300 flex flex-wrap justify-center gap-4 text-xs">
-                    <a href="#">CONTACT US</a>
-                    <a href="#">ABOUT US</a>
-                    <a href="#">DISCLAIMER</a>
-                    <a href="#">COPYRIGHT NOTICE</a>
-                    <a href="#">ONLINE PRIVACY POLICY</a>
-                    <a href="#">SITEMAP</a>
-                    <a href="#">GOOGLE NEWS SITEMAP</a>
-                </div>
-            </div>
-
-            <!-- Divider -->
-            <div class="border-t border-gray-600 my-4"></div>
-
-            <!-- Bottom Note -->
-            <div class="text-gray-400 text-xs text-center space-y-2">
-                <div class="space-x-2">
-                    <span>Editorial Policy</span> /
-                    <span>Fact Check Policy</span> /
-                    <span>Non-Partisanship Policy</span> /
-                    <span>Correction Policy</span> /
-                    <span>Code Of Ethics</span> /
-                    <span>Sponsored Content Policy</span>
-                </div>
-                <p>© 2025 OnCricket Media. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-    <script>
-
-        // MOBILE HAMBURGERMENU 
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-
-
-
-
-
-
-
-
-
-
-        function scrollDates(offset) {
-            document.getElementById('dateSlider').scrollLeft += offset;
-        }
-
-        const isMobile = window.innerWidth <= 640;
-
-        const formatSelect = document.getElementById("formatSelect");
-        const seriesSelect = document.getElementById("seriesSelect");
-        const teamSelect = document.getElementById("teamSelect");
-
-        formatSelect.options[0].text = isMobile ? "Format" : "Select Format";
-        seriesSelect.options[0].text = isMobile ? "Series" : "Select Series";
-        teamSelect.options[0].text = isMobile ? "Team" : "Select Team";
-
-        window.addEventListener("resize", () => {
-            const isMobileNow = window.innerWidth <= 640;
-            formatSelect.options[0].text = isMobileNow ? "Format" : "Select Format";
-            seriesSelect.options[0].text = isMobileNow ? "Series" : "Select Series";
-            teamSelect.options[0].text = isMobileNow ? "Team" : "Select Team";
-        });
-
-
-
-
-
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
+        const titles = document.querySelectorAll('.accordion-title');
+        titles.forEach(title => {
+            title.addEventListener('click', () => {
+                const isActive = title.classList.contains('active');
+                document.querySelectorAll('.accordion-title').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.accordion-content').forEach(c => c.style.display = 'none');
+                if (!isActive) {
+                    title.classList.add('active');
+                    title.nextElementSibling.style.display = 'block';
+                }
+            });
         });
     </script>
+
 </body>
 
 </html>
