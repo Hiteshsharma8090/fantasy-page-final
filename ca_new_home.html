@@ -123,14 +123,14 @@
 
 
 
-<!-- 📱 Bottom Navigation (Mobile Only with Sleek Icons) -->
-<nav
-  class="fixed bottom-0 left-0 right-0 z-40 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-t border-gray-200 dark:border-gray-700 flex justify-around items-center py-2 sm:hidden shadow-t-md text-[11px]">
+<!-- 📱 Bottom Navigation (Mobile Only with Gradient Selected) -->
+<nav id="bottomNav"
+  class="fixed bottom-0 inset-x-0 z-40 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-t border-gray-200 dark:border-gray-700 flex justify-around items-center py-2 sm:hidden text-[11px]">
 
-  <!-- Home -->
+  <!-- Home (default selected) -->
   <a href="#"
-     class="flex flex-col items-center text-[#3E5DA6] hover:text-[#BD3C34] transition">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+     class="nav-link gradient-selected flex flex-col items-center transition">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mb-0.5 gradient-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
         d="M3 9.75L12 3l9 6.75V21a.75.75 0 01-.75.75h-4.5a.75.75 0 01-.75-.75V15a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75v6a.75.75 0 01-.75.75h-4.5A.75.75 0 013 21V9.75z" />
     </svg>
@@ -139,7 +139,7 @@
 
   <!-- Live -->
   <a href="#"
-     class="flex flex-col items-center text-gray-600 dark:text-gray-300 hover:text-[#3E5DA6] transition">
+     class="nav-link flex flex-col items-center text-gray-600 dark:text-gray-300 hover:text-[#3E5DA6] transition">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
         d="M12 6v6l4 2m6-2a10 10 0 11-20 0 10 10 0 0120 0z" />
@@ -149,7 +149,7 @@
 
   <!-- News -->
   <a href="#"
-     class="flex flex-col items-center text-gray-600 dark:text-gray-300 hover:text-[#BD3C34] transition">
+     class="nav-link flex flex-col items-center text-gray-600 dark:text-gray-300 hover:text-[#BD3C34] transition">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
         d="M19 20H5a2 2 0 01-2-2V7a2 2 0 012-2h10l6 6v7a2 2 0 01-2 2z" />
@@ -159,7 +159,7 @@
 
   <!-- Fantasy -->
   <a href="#"
-     class="flex flex-col items-center text-gray-600 dark:text-gray-300 hover:text-[#3E5DA6] transition">
+     class="nav-link flex flex-col items-center text-gray-600 dark:text-gray-300 hover:text-[#3E5DA6] transition">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
         d="M3 7l8.485 8.485a2.121 2.121 0 003 0L21 9m-9-6a9 9 0 100 18 9 9 0 000-18z" />
@@ -169,7 +169,7 @@
 
   <!-- Profile -->
   <a href="#"
-     class="flex flex-col items-center text-gray-600 dark:text-gray-300 hover:text-[#BD3C34] transition">
+     class="nav-link flex flex-col items-center text-gray-600 dark:text-gray-300 hover:text-[#BD3C34] transition">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
         d="M5.121 17.804A9.003 9.003 0 0112 15a9.003 9.003 0 016.879 2.804M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
