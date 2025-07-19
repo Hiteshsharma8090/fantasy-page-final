@@ -35,7 +35,7 @@
     <!-- ✅ Fixed Live Ticker with White Text -->
     <div
         class="bg-gradient-to-r from-[#3E5DA6] to-[#2B4162] text-white text-sm py-1 overflow-x-auto whitespace-nowrap no-scrollbar">
-        <div class="max-w-[1320px] mx-auto px-4 flex gap-6 animate-pulse font-semibold text-white">
+        <div class="max-w-[1320px] mx-auto px-2 sm:px-4 flex gap-6 animate-pulse font-semibold text-white">
             <span>🔴 IND vs AUS - 178/4 (17.2)</span>
             <span>🕗 PAK vs ENG - Starts at 7:30 PM</span>
             <span>✅ SA vs NZ - NZ won by 5 wickets</span>
@@ -45,7 +45,7 @@
 
     <!-- ✅ Header -->
     <header class="sticky top-0 z-50 backdrop-blur-xl bg-white/30 dark:bg-gray-900/30 shadow-md">
-        <div class="max-w-[1320px] mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="max-w-[1320px] mx-auto px-2 sm:px-4 py-3 flex justify-between items-center">
             <!-- Logo -->
             <a href="/" class="text-2xl sm:text-3xl font-extrabold text-[#BD3C34] flex items-center gap-2">
                 <img src="Icons/CA_logo.svg" alt="Logo" class="" />
@@ -463,16 +463,16 @@
 
     <div class="max-w-[1320px] mx-auto sm:px-4 ">
         <section
-            class="bg-white sm:bg-white/30 dark:bg-gray-800 sm:dark:bg-gray-800/30 backdrop-blur-sm rounded-xl shadow-md sm:shadow-lg px-2 sm:px-4 py-3 sm:py-6">
+            class="bg-white sm:bg-white/30 dark:bg-gray-800 sm:dark:bg-gray-800/30 backdrop-blur-sm sm:rounded-xl shadow-md sm:shadow-lg pb-0  sm:px-4 py-3 sm:py-6">
 
             <!-- 🏷️ Label -->
-            <div class="flex items-center gap-2 mb-2">
+            <div class="flex items-center gap-2 mb-2 px-2 sm:px-0">
                 <div class="w-2 h-2 rounded-full bg-[#BD3C34] animate-pulse shadow-md"></div>
                 <span class="uppercase text-xs font-bold tracking-widest text-[#BD3C34]">Editor's Pick</span>
             </div>
 
 
-            <div class="flex items-center gap-2 mb-4">
+            <div class="flex items-center gap-2 mb-4 px-2 sm:px-0">
 
                 <h2
                     class="text-base sm:text-lg md:text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34]">
@@ -482,10 +482,10 @@
             </div>
 
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 sm:gap-4">
 
                 <!-- 🔷 Featured News -->
-                <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4 px-2 sm:px-0">
 
                     <!-- Article 1 -->
                     <div
@@ -540,7 +540,7 @@
 
                 <!-- 🔶 Sidebar Top Stories -->
                 <aside
-                    class="lg:col-span-4 bg-white dark:bg-gray-900 sm:bg-white/20 dark:sm:bg-gray-800/40 border border-[#E2E8F0] dark:border-[#2D3748] rounded-xl shadow-md p-4 space-y-4">
+                    class="lg:col-span-4 bg-white dark:bg-gray-900 sm:bg-white/20 dark:sm:bg-gray-800/40 border border-[#E2E8F0] dark:border-[#2D3748] sm:rounded-xl  py-4 px-2 sm-px-4 space-y-4">
                     <h4 class="text-sm sm:text-base font-bold text-[#BD3C34] mb-1">Top Stories</h4>
 
                     <!-- Item 1 -->
@@ -611,12 +611,12 @@
 
 
 
-    <div class="max-w-[1320px] mx-auto sm:px-4 mt-8">
+    <div class="max-w-[1320px] mx-auto sm:px-4 mt-4 sm:mt-8">
         <section
-            class="bg-white sm:bg-white/30 dark:bg-gray-800 sm:dark:bg-gray-800/30 backdrop-blur-sm rounded-xl shadow-md sm:shadow-lg px-2 sm:px-4 py-3 sm:py-6">
+            class="bg-white sm:bg-white/30 dark:bg-gray-800 sm:dark:bg-gray-800/30 backdrop-blur-sm rounded-xl shadow-md sm:shadow-lg  sm:px-4 py-3 sm:py-6">
 
             <!-- Header -->
-            <div class="flex items-center gap-2 mb-4">
+            <div class="flex items-center gap-2 mb-4 px-2 sm:px-0">
                 <div class="w-2 h-2 bg-[#BD3C34] rounded-full animate-pulse shadow-md "></div>
                 <h2
                     class="text-base sm:text-lg md:text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34]">
@@ -629,7 +629,7 @@
 
 
                 <div
-                    class="lg:col-span-8 glass border border-[#E2E8F0] dark:border-[#2D3748] rounded-2xl p-4 shadow-md space-y-4 overflow-hidden transition-all duration-300">
+                    class="lg:col-span-8 glass border border-[#E2E8F0] dark:border-[#2D3748] sm:rounded-2xl p-2  sm:p-4 shadow-sm sm:shadow-md space-y-4 overflow-hidden transition-all duration-300">
 
                     <!-- Header -->
                     <div class="flex items-center justify-between mb-2">
@@ -667,7 +667,7 @@
 
                 <!-- 🎯 Fantasy Dream Picks – Full Section with Highlight Card -->
                 <div
-                    class="lg:col-span-4 glass border border-[#E2E8F0] dark:border-[#2D3748] rounded-xl p-4 shadow-md space-y-4 overflow-hidden">
+                    class="lg:col-span-4 glass border border-[#E2E8F0] dark:border-[#2D3748] sm:rounded-xl p-2 sm:p-4 shadow-sm sm:shadow-md space-y-4 overflow-hidden">
 
                     <!-- Header -->
                     <div class="flex items-center justify-between">
