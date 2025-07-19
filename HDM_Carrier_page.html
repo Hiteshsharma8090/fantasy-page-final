@@ -19,6 +19,9 @@
     </script>
 
     <style>
+
+
+
         @keyframes fadeInUp {
             0% {
                 opacity: 0;
@@ -1504,13 +1507,23 @@
         <!-- Newsletter -->
         <h4 class="font-semibold text-white mb-2">Join Our Newsletter</h4>
         <form class="flex flex-col sm:flex-row items-center gap-3">
-          <input type="email" placeholder="Your Email" required
-            class="px-4 py-2 rounded-full w-full sm:w-auto flex-1 text-sm text-[#0A0F2C] outline-none" />
-          <button type="submit"
-            class="bg-[#17C3B2] hover:bg-[#0aa196] text-white font-semibold px-5 py-2 rounded-full text-sm transition-all">
-            Subscribe
-          </button>
-        </form>
+            <!-- Email Input -->
+            <input
+              type="email"
+              placeholder="Your Email"
+              required
+              class="px-4 py-2 rounded-full w-full sm:w-auto flex-1 text-sm text-[#0A0F2C] outline-none"
+            />
+          
+            <!-- Subscribe Button aligned left on mobile -->
+            <button
+              type="submit"
+              class="self-start sm:self-auto bg-[#17C3B2] hover:bg-[#0aa196] text-white font-semibold px-5 py-2 rounded-full text-sm transition-all"
+            >
+              Subscribe
+            </button>
+          </form>
+          
       </div>
   
       <!-- Links: User Menu -->
@@ -1564,7 +1577,33 @@
   </footer>
 
 
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- FOR TESTING -->
+<button id="backToTopBtn"
+  class="fixed bottom-5 right-5 z-50 bg-[#17C3B2] text-white p-3 rounded-full shadow-lg hover:bg-[#0aa196] transition-all text-xl">
+  ↑
+</button>
+
+
+
+
+  
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous">
+
+
+
+    </script>
+    <script>
+        document.getElementById("backToTopBtn").addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+    </script>
 
 </body>
 
