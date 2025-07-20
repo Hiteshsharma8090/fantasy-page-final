@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Final Responsive Header</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <script>
+        function toggleNav() {
+            document.getElementById("mobile-nav").classList.toggle("hidden");
+        }
+        function toggleMobileDropdown(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle("hidden");
+        }
+    </script>
+
+
+    </style>
+</head>
+
+<body class="bg-[#FAFAFA] text-[#0A0F2C] font-sans">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-lg bg-white/90 shadow-md border-b border-gray-200">
+        <!-- Top bar -->
+        <div class="flex flex-col md:flex-row justify-between items-center text-xs md:text-sm px-4 md:px-6 py-2 
+        bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] text-white font-medium transition-all duration-500">
+
+            <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+                <a href="#">News & Events</a>
+                <a href="#">Career</a>
+                <a href="#">New Launch</a>
+                <a href="#">HSN Code</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="flex items-center gap-2 mt-2 md:mt-0">
+                <!-- Language -->
+                <div class="relative group">
+                    <button class="flex items-center gap-1">
+                        🌐 English
+                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.18l3.71-3.95a.75.75 0 111.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute hidden group-hover:block bg-white text-black rounded mt-2 py-1 w-24 text-sm shadow-lg z-50">
+                        <a href="#" class="block px-3 py-1 hover:bg-gray-100">Hindi</a>
+                        <a href="#" class="block px-3 py-1 hover:bg-gray-100">French</a>
+                    </div>
+                </div>
+
+                <!-- Divider + Location -->
+                <div class="relative group border-l border-white pl-2">
+                    <button class="flex items-center gap-1">
+                        📍 India
+                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.18l3.71-3.95a.75.75 0 111.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute hidden group-hover:block bg-white text-black rounded mt-2 py-1 w-24 text-sm shadow-lg z-50">
+                        <a href="#" class="block px-3 py-1 hover:bg-gray-100">USA</a>
+                        <a href="#" class="block px-3 py-1 hover:bg-gray-100">UK</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Main Navbar -->
+        <div class="max-w-[1320px] mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <a href="/" class="flex items-center gap-3">
+                    <img src="https://www.hmdhealthcare.com/assets/images/hmdlogo.png" class="h-10 w-auto" alt="Logo">
+                    <div class="text-[10px] md:text-xs text-gray-600 leading-4">
+                        From the House of<br><span class="text-[#D72638] font-bold">DISPO VAN®</span>
+                    </div>
+                </a>
+            </div>
+
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex gap-6 font-semibold text-sm relative">
+                <!-- Dropdown: About HMD -->
+                <div class="group relative">
+                    <button class="hover:text-[#D72638] flex items-center gap-1">
+                        About HMD <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.18l3.71-3.95a.75.75 0 111.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-md rounded w-48 z-50 py-2">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Overview</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Leadership</a>
+                    </div>
+                </div>
+
+                <!-- Dropdown: Our Offerings -->
+                <div class="group relative">
+                    <button class="hover:text-[#D72638] flex items-center gap-1">
+                        Our Offerings <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.18l3.71-3.95a.75.75 0 111.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-md rounded w-48 z-50 py-2">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Syringes</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Needles</a>
+                    </div>
+                </div>
+
+                <!-- Dropdown: IFU -->
+                <div class="group relative">
+                    <button class="hover:text-[#D72638] flex items-center gap-1">
+                        IFU <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.18l3.71-3.95a.75.75 0 111.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-md rounded w-48 z-50 py-2">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">User Manuals</a>
+                    </div>
+                </div>
+
+                <!-- Dropdown: CSR -->
+                <div class="group relative">
+                    <button class="hover:text-[#D72638] flex items-center gap-1">
+                        CSR <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.18l3.71-3.95a.75.75 0 111.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-md rounded w-48 z-50 py-2">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Initiatives</a>
+                    </div>
+                </div>
+
+                <a href="#" class="hover:text-[#D72638]">Certification</a>
+                <a href="#" class="hover:text-[#D72638]">Blogs</a>
+                <a href="#" class="hover:text-[#D72638]">Contact</a>
+            </nav>
+
+            <!-- CTA & Mobile -->
+            <div class="flex items-center gap-3">
+                <a href="#"
+                    class="hidden md:inline-block px-5 py-2 bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] text-white rounded-full text-xs font-semibold hover:opacity-90 transition duration-300 shadow-md">
+                    DISTRIBUTOR ONBOARD
+                </a>
+
+                <button class="md:hidden" onclick="toggleNav()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav -->
+        <div id="mobile-nav" class="md:hidden hidden px-4 pb-4 bg-white border-t border-gray-200">
+            <nav class="flex flex-col gap-2 font-medium text-sm">
+                <div>
+                    <button class="w-full text-left font-semibold" onclick="toggleMobileDropdown('m-about')">+ About
+                        HMD</button>
+                    <div id="m-about" class="hidden ml-4 mt-1">
+                        <a href="#" class="block py-1">Overview</a>
+                        <a href="#" class="block py-1">Leadership</a>
+                    </div>
+                </div>
+                <div>
+                    <button class="w-full text-left font-semibold" onclick="toggleMobileDropdown('m-offerings')">+ Our
+                        Offerings</button>
+                    <div id="m-offerings" class="hidden ml-4 mt-1">
+                        <a href="#" class="block py-1">Syringes</a>
+                        <a href="#" class="block py-1">Needles</a>
+                    </div>
+                </div>
+                <div>
+                    <button class="w-full text-left font-semibold" onclick="toggleMobileDropdown('m-ifu')">+
+                        IFU</button>
+                    <div id="m-ifu" class="hidden ml-4 mt-1">
+                        <a href="#" class="block py-1">User Manuals</a>
+                    </div>
+                </div>
+                <div>
+                    <button class="w-full text-left font-semibold" onclick="toggleMobileDropdown('m-csr')">+
+                        CSR</button>
+                    <div id="m-csr" class="hidden ml-4 mt-1">
+                        <a href="#" class="block py-1">Initiatives</a>
+                    </div>
+                </div>
+                <a href="#">Certification</a>
+                <a href="#">Blogs</a>
+                <a href="#">Contact</a>
+                <a href="#" class="mt-3 text-center bg-[#17C3B2] text-white py-2 rounded-full font-bold">DISTRIBUTOR
+                    ONBOARD</a>
+            </nav>
+        </div>
+    </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Search Bar + Filters Section -->
+    <section class="bg-gradient-to-r from-[#F0F7FF] via-[#E6F0FF] to-[#F9FEFF] py-16 px-4 md:px-10">
+        <div class="max-w-5xl mx-auto text-center animate-fade-up">
+
+            <!-- Heading -->
+            <h2 class="text-2xl md:text-3xl font-extrabold text-[#0A0F2C] mb-6">
+                Find Your <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB]">Next
+                    Opportunity</span>
+            </h2>
+
+            <!-- Search and Filters -->
+            <div class="flex flex-col gap-4 md:flex-row md:items-center md:gap-4 justify-center relative">
+
+                <!-- 🔍 Search Bar -->
+                <input type="text" placeholder="Search jobs by title/keywords"
+                    class="w-full md:w-[260px] px-4 py-2 rounded-full border border-gray-300 text-sm outline-none focus:ring-2 focus:ring-[#0B4DA1]" />
+
+                <!-- 📍 Location Filter -->
+                <div class="relative w-full md:w-[180px]">
+                    <select
+                        class="appearance-none w-full px-4 py-2 rounded-full border border-gray-300 text-sm outline-none focus:ring-2 focus:ring-[#0B4DA1]">
+                        <option selected disabled>Filter by Location</option>
+                        <option>Delhi</option>
+                        <option>Mumbai</option>
+                        <option>Remote</option>
+                        <option>Chandigarh</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-[#0B4DA1]">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- 🧩 Department Filter -->
+                <div class="relative w-full md:w-[200px]">
+                    <select
+                        class="appearance-none w-full px-4 py-2 rounded-full border border-gray-300 text-sm outline-none focus:ring-2 focus:ring-[#0B4DA1]">
+                        <option selected disabled>Filter by Department</option>
+                        <option>Production</option>
+                        <option>Sales & Marketing</option>
+                        <option>R&D</option>
+                        <option>Quality Control</option>
+                        <option>IT & Support</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-[#0B4DA1]">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- ⏳ Experience Filter -->
+                <div class="relative w-full md:w-[150px]">
+                    <select
+                        class="appearance-none w-full px-4 py-2 rounded-full border border-gray-300 text-sm outline-none focus:ring-2 focus:ring-[#0B4DA1]">
+                        <option selected disabled>Experience</option>
+                        <option>0-1 Years</option>
+                        <option>1-3 Years</option>
+                        <option>3-5 Years</option>
+                        <option>5+ Years</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-[#0B4DA1]">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Buttons -->
+            <div class="mt-6 flex flex-col sm:flex-row gap-4 justify-center animate-fade-up delay-100">
+                <button
+                    class="bg-white text-[#0B4DA1] border border-[#0B4DA1] px-5 py-2 rounded-full text-sm font-semibold hover:bg-[#0B4DA1] hover:text-white transition-all">
+                    Clear All
+                </button>
+                <button
+                    class="bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] text-white px-6 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition-all">
+                    Search
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Breadcrumb + Result Count -->
+    <section class="bg-white px-4 md:px-10 py-6 border-b border-gray-200 animate-fade-up">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+
+            <!-- Breadcrumb -->
+            <nav class="text-sm font-medium text-gray-500 space-x-1 flex items-center flex-wrap">
+                <a href="#" class="hover:text-[#0B4DA1] transition">Home</a>
+                <span>&gt;</span>
+                <a href="#" class="hover:text-[#0B4DA1] transition">Careers</a>
+                <span>&gt;</span>
+                <span class="text-[#0B4DA1] font-semibold">Search Results</span>
+            </nav>
+
+            <!-- Result Count -->
+            <div class="text-sm text-gray-700 font-medium flex items-center gap-2 mt-1 sm:mt-0">
+                <span class="text-[#0B4DA1] text-base">🔢</span>
+                Showing <span class="font-semibold text-[#0B4DA1]">12</span> jobs
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Job Grid/List View Section -->
+    <section class="bg-[#F8FAFC] px-4 md:px-10 py-16">
+        <div class="max-w-7xl mx-auto">
+
+            <!-- Sort Bar -->
+            <div
+                class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 animate-fade-up">
+                <h2 class="text-xl font-bold text-[#0A0F2C]">Available Opportunities</h2>
+
+                <div class="flex items-center gap-2 text-sm">
+                    <span class="text-gray-600 font-medium">Sort by:</span>
+                    <button
+                        class="px-3 py-1 rounded-full bg-white border border-gray-300 text-[#0B4DA1] font-semibold hover:bg-[#0B4DA1] hover:text-white transition">
+                        Relevance
+                    </button>
+                    <button
+                        class="px-3 py-1 rounded-full bg-white border border-gray-300 text-[#0B4DA1] font-semibold hover:bg-[#0B4DA1] hover:text-white transition">
+                        Date
+                    </button>
+                </div>
+            </div>
+
+            <!-- Job Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-up delay-100">
+
+                <!-- Job Card -->
+                <div
+                    class="bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-[#F9FEFF] p-6 rounded-xl shadow-lg border-l-4 border-[#0B4DA1]">
+                    <a href="#" class="text-lg font-bold text-[#0B4DA1] hover:underline">🧪 R&D Scientist</a>
+                    <p class="text-sm text-gray-700 mt-1">🏢 Research & Development</p>
+                    <p class="text-sm text-gray-700">📍 Mumbai</p>
+                    <p class="text-sm text-gray-500 mb-2">📅 Posted on: Jan 8, 2025</p>
+                    <p class="text-sm text-gray-700 line-clamp-2 mb-4">
+                        Work with a cutting-edge team developing new medical technologies in diagnostics and healthcare
+                        solutions.
+                    </p>
+                    <a href="#"
+                        class="inline-block bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] text-white px-5 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition-all">
+                        Apply Now
+                    </a>
+                </div>
+
+                <!-- Repeat Job Cards as needed... -->
+                <div
+                    class="bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-[#F9FEFF] p-6 rounded-xl shadow-lg border-l-4 border-[#0B4DA1]">
+                    <a href="#" class="text-lg font-bold text-[#0B4DA1] hover:underline">🧪 Production Supervisor</a>
+                    <p class="text-sm text-gray-700 mt-1">🏢 Manufacturing</p>
+                    <p class="text-sm text-gray-700">📍 Delhi</p>
+                    <p class="text-sm text-gray-500 mb-2">📅 Posted on: Jan 3, 2025</p>
+                    <p class="text-sm text-gray-700 line-clamp-2 mb-4">
+                        Oversee production line activities and ensure compliance with safety and quality standards.
+                    </p>
+                    <a href="#"
+                        class="inline-block bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] text-white px-5 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition-all">
+                        Apply Now
+                    </a>
+                </div>
+
+                <div
+                    class="bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-[#F9FEFF] p-6 rounded-xl shadow-lg border-l-4 border-[#0B4DA1]">
+                    <a href="#" class="text-lg font-bold text-[#0B4DA1] hover:underline">📈 Marketing Executive</a>
+                    <p class="text-sm text-gray-700 mt-1">🏢 Sales & Marketing</p>
+                    <p class="text-sm text-gray-700">📍 Remote</p>
+                    <p class="text-sm text-gray-500 mb-2">📅 Posted on: Jan 5, 2025</p>
+                    <p class="text-sm text-gray-700 line-clamp-2 mb-4">
+                        Drive awareness and campaigns for innovative healthcare solutions across India.
+                    </p>
+                    <a href="#"
+                        class="inline-block bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] text-white px-5 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition-all">
+                        Apply Now
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Pagination -->
+            <div class="flex justify-center mt-12 animate-fade-up delay-200">
+                <button
+                    class="mx-1 px-4 py-2 rounded-full text-sm border border-gray-300 text-gray-700 hover:bg-[#0B4DA1] hover:text-white transition">
+                    Prev
+                </button>
+                <button
+                    class="mx-1 px-4 py-2 rounded-full text-sm bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] text-white font-semibold shadow-md">
+                    1
+                </button>
+                <button
+                    class="mx-1 px-4 py-2 rounded-full text-sm border border-gray-300 text-gray-700 hover:bg-[#0B4DA1] hover:text-white transition">
+                    2
+                </button>
+                <button
+                    class="mx-1 px-4 py-2 rounded-full text-sm border border-gray-300 text-gray-700 hover:bg-[#0B4DA1] hover:text-white transition">
+                    Next
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Filter Sidebar Section -->
+    <section class="bg-white px-4 md:px-10 py-10">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-8">
+
+            <!-- Sidebar Filters (with mobile toggle) -->
+            <div class="block md:hidden mb-4 w-3/4 mx-auto">
+                <button onclick="toggleFilterSidebar()"
+                    class="w-full bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] text-white px-4 py-2 rounded-full font-semibold text-sm shadow-md flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2H3V4zm0 6h18v2H3v-2zm0 6h18v2H3v-2z" />
+                    </svg>
+                    Toggle Filters
+                </button>
+            </div>
+
+            <aside id="jobFilterSidebar"
+                class="w-full md:w-1/3 lg:w-1/4 animate-fade-up hidden md:block md:sticky top-28 space-y-6 p-5 bg-[#F8FAFC] border border-gray-200 rounded-xl shadow-md">
+
+                <!-- Heading -->
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-[#0A0F2C]">Filter Jobs</h3>
+                    <button onclick="toggleFilterSidebar()"
+                        class="block md:hidden text-sm text-[#0B4DA1] underline">Close</button>
+                </div>
+
+                <!-- ✅ Job Type -->
+                <div>
+                    <h4 class="text-sm font-semibold text-[#0B4DA1] mb-2">Job Type</h4>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                        <li><label><input type="checkbox" class="accent-[#0B4DA1] mr-2">Full-time</label></li>
+                        <li><label><input type="checkbox" class="accent-[#0B4DA1] mr-2">Internship</label></li>
+                        <li><label><input type="checkbox" class="accent-[#0B4DA1] mr-2">Contract</label></li>
+                    </ul>
+                </div>
+
+                <!-- ✅ Location -->
+                <div>
+                    <h4 class="text-sm font-semibold text-[#0B4DA1] mb-2">Location</h4>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                        <li><label><input type="checkbox" class="accent-[#0B4DA1] mr-2">Mumbai</label></li>
+                        <li><label><input type="checkbox" class="accent-[#0B4DA1] mr-2">Gurgaon</label></li>
+                        <li><label><input type="checkbox" class="accent-[#0B4DA1] mr-2">Chandigarh</label></li>
+                        <li><label><input type="checkbox" class="accent-[#0B4DA1] mr-2">Remote</label></li>
+                    </ul>
+                </div>
+
+                <!-- ✅ Department -->
+                <div>
+                    <h4 class="text-sm font-semibold text-[#0B4DA1] mb-2">Department</h4>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                        <li><label><input type="checkbox" class="accent-[#0B4DA1] mr-2">R&D</label></li>
+                        <li><label><input type="checkbox" class="accent-[#0B4DA1] mr-2">Manufacturing</label></li>
+                        <li><label><input type="checkbox" class="accent-[#0B4DA1] mr-2">Sales & Marketing</label></li>
+                        <li><label><input type="checkbox" class="accent-[#0B4DA1] mr-2">IT & Support</label></li>
+                    </ul>
+                </div>
+
+                <!-- ✅ Posted Date -->
+                <div>
+                    <h4 class="text-sm font-semibold text-[#0B4DA1] mb-2">Posted Date</h4>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                        <li><label><input type="radio" name="posted" class="accent-[#0B4DA1] mr-2">Last 24 hours</label>
+                        </li>
+                        <li><label><input type="radio" name="posted" class="accent-[#0B4DA1] mr-2">Last 7 days</label>
+                        </li>
+                        <li><label><input type="radio" name="posted" class="accent-[#0B4DA1] mr-2">Last 30 days</label>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Buttons -->
+                <div class="flex gap-3 pt-4">
+                    <button
+                        class="w-full text-sm font-semibold px-4 py-2 rounded-full border border-[#0B4DA1] text-[#0B4DA1] hover:bg-[#0B4DA1] hover:text-white transition">
+                        Reset
+                    </button>
+                    <button
+                        class="w-full text-sm font-semibold px-4 py-2 rounded-full bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] text-white hover:opacity-90 transition">
+                        Apply
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Placeholder: You can insert job results list/grid here -->
+            <div class="w-full md:w-2/3 lg:w-3/4">
+                <!-- Insert job cards section here -->
+                <div class="text-gray-500 text-center text-sm">[Your job results will appear here]</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Sticky CTA / Quick Apply Drawer (Mobile) -->
+    <div id="mobileApplyBar"
+        class="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white shadow-t-lg border-t border-gray-200 animate-slide-up">
+        <div class="flex justify-between items-center px-4 py-3">
+            <div>
+                <h4 class="text-sm font-semibold text-[#0A0F2C]">💼 Apply for:</h4>
+                <p class="text-sm text-gray-600 line-clamp-1">R&D Scientist – Mumbai</p>
+            </div>
+            <a href="#"
+                class="bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] text-white text-sm font-semibold px-5 py-2 rounded-full shadow-md hover:opacity-90 transition-all">
+                Apply Now
+            </a>
+        </div>
+    </div>
+
+    <!-- 6. No Results Message -->
+    <section class="bg-[#F8FAFC] py-20 px-4 md:px-10 animate-fade-up">
+        <div class="max-w-xl mx-auto text-center">
+            <div class="text-5xl mb-4 text-[#0B4DA1]">😔</div>
+            <h2 class="text-xl md:text-2xl font-bold text-[#0A0F2C] mb-2">No jobs match your filters</h2>
+            <p class="text-sm md:text-base text-gray-600 mb-6">
+                Try adjusting your filters or let us know you're interested by submitting your resume.
+            </p>
+            <a href="#"
+                class="inline-block bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] text-white px-6 py-2 rounded-full text-sm font-semibold shadow-md hover:opacity-90 transition-all">
+                Submit Resume
+            </a>
+        </div>
+    </section>
+
+    <!-- 7. SEO Section -->
+    <section class="bg-white py-16 px-4 md:px-10 animate-fade-up">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-[#0A0F2C] mb-4">
+                Careers at <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB]">HMD
+                    Healthcare</span>
+            </h2>
+            <p class="text-sm md:text-base text-gray-600 max-w-3xl mx-auto mb-8">
+                We’re growing across India and looking for passionate people to join us in transforming healthcare.
+                Whether you're
+                in <strong class="text-[#0B4DA1]">Delhi, Mumbai, Bangalore, or anywhere remote</strong>, we want to hear
+                from you!
+            </p>
+            <div class="flex flex-wrap justify-center gap-3 text-sm font-semibold">
+                <span class="bg-[#F0F7FF] text-[#0B4DA1] px-4 py-2 rounded-full shadow-sm">Working at HMD</span>
+                <span class="bg-[#F0F7FF] text-[#0B4DA1] px-4 py-2 rounded-full shadow-sm">Hiring Across India</span>
+                <span class="bg-[#F0F7FF] text-[#0B4DA1] px-4 py-2 rounded-full shadow-sm">Jobs in Delhi</span>
+                <span class="bg-[#F0F7FF] text-[#0B4DA1] px-4 py-2 rounded-full shadow-sm">Jobs in Mumbai</span>
+                <span class="bg-[#F0F7FF] text-[#0B4DA1] px-4 py-2 rounded-full shadow-sm">Jobs in Bangalore</span>
+                <span class="bg-[#F0F7FF] text-[#0B4DA1] px-4 py-2 rounded-full shadow-sm">Remote Healthcare Jobs</span>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Unique Footer -->
+    <footer class="bg-[#0A1E3F] text-white pt-16 pb-10 px-6 md:px-10">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-5 gap-8 animate-fade-up">
+
+            <!-- Branding / Newsletter -->
+            <div class="md:col-span-2">
+                <h2 class="text-2xl font-extrabold text-transparent bg-clip-text bg-[#5B9BEB] mb-2">
+                    HMD Healthcare
+                </h2>
+                <p class="text-sm text-gray-300 mb-4">
+                    Innovating healthcare with passion and precision.
+                </p>
+
+                <!-- Newsletter -->
+                <h4 class="font-semibold text-white mb-2">Join Our Newsletter</h4>
+                <form class="flex flex-col sm:flex-row items-center gap-3">
+                    <input type="email" placeholder="Your Email" required
+                        class="px-4 py-2 rounded-full w-full sm:w-auto flex-1 text-sm text-[#0A0F2C] outline-none" />
+                    <button type="submit"
+                        class="self-start sm:self-auto bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] hover:opacity-90 text-white font-semibold px-5 py-2 rounded-full text-sm transition-all duration-300">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+
+            <!-- User Menu -->
+            <div>
+                <h3 class="text-lg font-bold mb-3 text-transparent bg-clip-text bg-[#5B9BEB]">
+                    User Menu
+                </h3>
+                <ul class="space-y-2 text-sm text-gray-300">
+                    <li><a href="#" class="hover:text-white">Home</a></li>
+                    <li><a href="#" class="hover:text-white">News & Events</a></li>
+                    <li><a href="#" class="hover:text-white">Career</a></li>
+                    <li><a href="#" class="hover:text-white">New Launch</a></li>
+                    <li><a href="#" class="hover:text-white">FAQ</a></li>
+                </ul>
+            </div>
+
+            <!-- Main Menu -->
+            <div>
+                <h3 class="text-lg font-bold mb-3 text-transparent bg-clip-text bg-[#5B9BEB]">
+                    Main Menu
+                </h3>
+                <ul class="space-y-2 text-sm text-gray-300">
+                    <li><a href="#" class="hover:text-white">Products</a></li>
+                    <li><a href="#" class="hover:text-white">CSR</a></li>
+                    <li><a href="#" class="hover:text-white">Contact Us</a></li>
+                    <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-white">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <!-- About HMD -->
+            <div>
+                <h3 class="text-lg font-bold mb-3 text-transparent bg-clip-text bg-[#5B9BEB]">
+                    About HMD
+                </h3>
+                <ul class="space-y-2 text-sm text-gray-300">
+                    <li><a href="#" class="hover:text-white">About Us</a></li>
+                    <li><a href="#" class="hover:text-white">Our Infrastructure</a></li>
+                    <li><a href="#" class="hover:text-white">Milestones</a></li>
+                    <li><a href="#" class="hover:text-white">Quality Assurance</a></li>
+                    <li><a href="#" class="hover:text-white">Leadership Team</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Divider & Bottom -->
+        <div class="border-t border-gray-600 mt-12 pt-6 text-center text-sm text-gray-400 animate-fade-up delay-200">
+            <p>© 2025 Hindustan Syringes & Medical Devices Ltd. All rights reserved.</p>
+            <div class="mt-4 flex justify-center gap-4 text-lg">
+                <a href="#" class="hover:text-[#5B9BEB] transition-all duration-300"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-[#5B9BEB] transition-all duration-300"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-[#5B9BEB] transition-all duration-300"><i
+                        class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="hover:text-[#5B9BEB] transition-all duration-300"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="hover:text-[#5B9BEB] transition-all duration-300"><i
+                        class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" class="fixed bottom-20 sm:bottom-5 right-5 z-50 text-white p-3 rounded-full shadow-lg text-xl transition-all duration-300
+         bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] hover:opacity-90">
+        ↑
+    </button>
+
+
+
+
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous">
+
+
+
+    </script>
+    <script>
+        document.getElementById("backToTopBtn").addEventListener("click", function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
+
+
+
+
+
+
+        function toggleFilterSidebar() {
+            const sidebar = document.getElementById('jobFilterSidebar');
+            sidebar.classList.toggle('hidden');
+        }
+    </script>
+
+</body>
+
+</html>
