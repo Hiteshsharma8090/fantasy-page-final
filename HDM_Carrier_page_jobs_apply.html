@@ -19,8 +19,9 @@
     </script>
 
     <style>
-
-
+        .input-style {
+            @apply w-full border border-gray-300 rounded px-4 py-2 text-sm;
+        }
     </style>
 </head>
 
@@ -272,96 +273,187 @@
 
 
 
-    <!-- Application Form Section -->
-    <section class="bg-[#F8FAFC] py-16 px-4 md:px-10">
-        <div class="max-w-3xl mx-auto bg-white p-6 rounded-2xl shadow-xl animate-fade-up">
+    <section class="bg-white py-16 px-4 md:px-10 text-[#0A0F2C]">
+        <div class="max-w-4xl mx-auto animate-fade-up">
+            <h2 class="text-2xl md:text-4xl font-extrabold text-center mb-6">
+                Choose <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-[#0B4DA1] to-[#5B9BEB]">Application
+                    Method</span>
+            </h2>
 
-            <!-- Heading -->
-            <div class="text-center mb-8">
-                <h2 class="text-2xl md:text-3xl font-extrabold text-[#0A0F2C]">
-                    Submit Your Application
-                </h2>
-                <p class="text-sm text-gray-600 mt-1">We’re excited to learn more about you.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-10 text-sm font-semibold">
+                <button id="btn-resume" onclick="showMethod('resume')"
+                class="method-btn bg-gradient-to-r from-[#0B4DA1] to-[#5B9BEB] text-white px-6 py-2 rounded-full shadow transition-all duration-300">
+                🔵 Autofill with Resume
+              </button>
+                <button id="btn-manual" onclick="showMethod('manual')"
+                    class="method-btn bg-white text-[#0B4DA1] border border-[#0B4DA1] px-6 py-2 rounded-full shadow transition-all duration-300">
+                    ✍️ Apply Manually
+                </button>
+                <button id="btn-last" onclick="showMethod('last')"
+                    class="method-btn bg-white text-[#0B4DA1] border border-[#0B4DA1] px-6 py-2 rounded-full shadow transition-all duration-300">
+                    🔁 Use My Last Application
+                </button>
             </div>
+            
+            <!-- Autofill Resume Method -->
+            <div id="resumeMethod" class="animate-fade-up space-y-6">
 
-            <form id="applicationForm" class="space-y-5">
-
-                <!-- Full Name -->
-                <div>
-                    <label class="block text-sm font-medium text-[#0A0F2C] mb-1">📝 Full Name <span
-                            class="text-red-500">*</span></label>
-                    <input type="text" required name="name" placeholder="Enter your full name"
-                        class="w-full rounded-full border border-gray-300 px-5 py-2 text-sm outline-none focus:ring-2 focus:ring-[#0B4DA1]" />
-                </div>
-
-                <!-- Email -->
-                <div>
-                    <label class="block text-sm font-medium text-[#0A0F2C] mb-1">📧 Email Address <span
-                            class="text-red-500">*</span></label>
-                    <input type="email" required name="email" placeholder="you@example.com"
-                        class="w-full rounded-full border border-gray-300 px-5 py-2 text-sm outline-none focus:ring-2 focus:ring-[#0B4DA1]" />
-                </div>
-
-                <!-- Phone (optional) -->
-                <div>
-                    <label class="block text-sm font-medium text-[#0A0F2C] mb-1">📱 Phone Number (optional)</label>
-                    <input type="tel" name="phone" placeholder="123-456-7890"
-                        class="w-full rounded-full border border-gray-300 px-5 py-2 text-sm outline-none focus:ring-2 focus:ring-[#0B4DA1]" />
-                </div>
-
-                <!-- LinkedIn (optional) -->
-                <div>
-                    <label class="block text-sm font-medium text-[#0A0F2C] mb-1">🔗 LinkedIn Profile (optional)</label>
-                    <input type="url" name="linkedin" placeholder="https://linkedin.com/in/yourname"
-                        class="w-full rounded-full border border-gray-300 px-5 py-2 text-sm outline-none focus:ring-2 focus:ring-[#0B4DA1]" />
-                </div>
 
                 <!-- Upload Resume -->
-                <div>
-                    <label class="block text-sm font-medium text-[#0A0F2C] mb-1">📎 Upload Resume (PDF/DOC) <span
-                            class="text-red-500">*</span></label>
-                    <input type="file" required name="resume" accept=".pdf,.doc,.docx"
-                        class="w-full rounded-full border border-gray-300 px-5 py-2 text-sm bg-white cursor-pointer file:mr-4 file:py-1 file:px-3 file:rounded-full file:border-0 file:bg-[#0B4DA1] file:text-white file:font-semibold" />
-                </div>
-
-                <!-- Upload Cover Letter -->
-                <div>
-                    <label class="block text-sm font-medium text-[#0A0F2C] mb-1">📎 Upload Cover Letter
-                        (optional)</label>
-                    <input type="file" name="coverletter" accept=".pdf,.doc,.docx"
-                        class="w-full rounded-full border border-gray-300 px-5 py-2 text-sm bg-white cursor-pointer file:mr-4 file:py-1 file:px-3 file:rounded-full file:border-0 file:bg-[#0B4DA1] file:text-white file:font-semibold" />
-                </div>
-
-                <!-- Message -->
-                <div>
-                    <label class="block text-sm font-medium text-[#0A0F2C] mb-1">✉️ Why do you want to join us?</label>
-                    <textarea rows="4" name="message" placeholder="Tell us briefly..."
-                        class="w-full rounded-xl border border-gray-300 px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-[#0B4DA1]"></textarea>
-                </div>
-
-                <!-- Agreements -->
-                <div class="space-y-3">
-                    <label class="flex items-start gap-3 text-sm text-gray-700">
-                        <input type="checkbox" required class="accent-[#0B4DA1] mt-1" />
-                        I agree to the <a href="#" class="text-[#0B4DA1] underline ml-1">Terms & Privacy Policy</a>.
+                <div
+                    class="bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-[#F9FEFF] p-6 rounded-xl shadow-md border-l-4 border-[#0B4DA1]">
+                    <label class="block font-semibold text-[#0A0F2C] mb-2 text-sm flex items-center gap-2">
+                        📎 Upload Resume (PDF, DOCX)
                     </label>
-                    <label class="flex items-start gap-3 text-sm text-gray-700">
-                        <input type="checkbox" class="accent-[#0B4DA1] mt-1" />
-                        Notify me about similar job opportunities
-                    </label>
+                    <input type="file" accept=".pdf,.doc,.docx"
+                        class="w-full text-sm px-4 py-2 rounded-full border border-gray-300 bg-white focus:ring-2 focus:ring-[#0B4DA1] outline-none cursor-pointer transition duration-300" />
+                    <p class="text-xs text-gray-500 mt-2 animate-pulse">Parsing your resume... 🔄</p>
                 </div>
 
-                <!-- Submit Button -->
-                <div class="pt-6 text-center">
-                    <button type="submit" id="submitBtn"
-                        class="bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] text-white px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 shadow-md">
-                        <span id="btnText">Submit Application</span>
-                    </button>
-                    <p id="successMessage" class="text-green-600 mt-4 hidden">✅ Application submitted successfully! Our
-                        team will get back to you.</p>
+                <!-- Auto-filled Fields -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="flex flex-col gap-1">
+                        <label class="text-sm font-medium text-[#0B4DA1]">📝 Full Name</label>
+                        <input type="text" placeholder="Your full name"
+                            class="rounded-full border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:ring-[#0B4DA1] outline-none" />
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <label class="text-sm font-medium text-[#0B4DA1]">📧 Email Address</label>
+                        <input type="email" placeholder="you@example.com"
+                            class="rounded-full border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:ring-[#0B4DA1] outline-none" />
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <label class="text-sm font-medium text-[#0B4DA1]">📞 Phone Number</label>
+                        <input type="text" placeholder="+91 9876543210"
+                            class="rounded-full border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:ring-[#0B4DA1] outline-none" />
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <label class="text-sm font-medium text-[#0B4DA1]">🔗 LinkedIn Profile (Optional)</label>
+                        <input type="text" placeholder="linkedin.com/in/username"
+                            class="rounded-full border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:ring-[#0B4DA1] outline-none" />
+                    </div>
                 </div>
+            </div>
 
-            </form>
+
+          <!-- Manual Method -->
+<div id="manualMethod" class="hidden animate-fade-up space-y-8">
+
+    <!-- Grid Fields -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      
+      <!-- Full Name -->
+      <div class="flex flex-col gap-1">
+        <label class="text-sm font-medium text-[#0B4DA1]">📝 Full Name</label>
+        <input type="text" placeholder="Your full name"
+          class="rounded-full border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:ring-[#0B4DA1] outline-none" />
+      </div>
+  
+      <!-- Email -->
+      <div class="flex flex-col gap-1">
+        <label class="text-sm font-medium text-[#0B4DA1]">📧 Email Address</label>
+        <input type="email" placeholder="you@example.com"
+          class="rounded-full border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:ring-[#0B4DA1] outline-none" />
+      </div>
+  
+      <!-- Phone -->
+      <div class="flex flex-col gap-1">
+        <label class="text-sm font-medium text-[#0B4DA1]">📞 Phone Number</label>
+        <input type="text" placeholder="+91 9876543210"
+          class="rounded-full border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:ring-[#0B4DA1] outline-none" />
+      </div>
+  
+      <!-- LinkedIn -->
+      <div class="flex flex-col gap-1">
+        <label class="text-sm font-medium text-[#0B4DA1]">🔗 LinkedIn Profile (Optional)</label>
+        <input type="text" placeholder="linkedin.com/in/username"
+          class="rounded-full border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:ring-[#0B4DA1] outline-none" />
+      </div>
+    </div>
+  
+    <!-- Resume Upload -->
+    <div class="flex flex-col gap-1">
+      <label class="text-sm font-medium text-[#0B4DA1]">📎 Upload Resume (PDF/DOC)</label>
+      <input type="file"
+        class="w-full border border-gray-300 rounded-full px-4 py-2 text-sm bg-white cursor-pointer file:mr-3 file:py-1 file:px-4 file:rounded-full file:border-0 file:bg-[#0B4DA1] file:text-white file:font-semibold" />
+    </div>
+  
+    <!-- Cover Letter Upload -->
+    <div class="flex flex-col gap-1">
+      <label class="text-sm font-medium text-[#0B4DA1]">📄 Upload Cover Letter (Optional)</label>
+      <input type="file"
+        class="w-full border border-gray-300 rounded-full px-4 py-2 text-sm bg-white cursor-pointer file:mr-3 file:py-1 file:px-4 file:rounded-full file:border-0 file:bg-[#0B4DA1] file:text-white file:font-semibold" />
+    </div>
+  
+    <!-- Why Hire You -->
+    <div class="flex flex-col gap-1">
+      <label class="text-sm font-medium text-[#0B4DA1]">💬 Why should we hire you?</label>
+      <textarea placeholder="Your motivation or message..."
+        class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm h-28 focus:ring-2 focus:ring-[#0B4DA1] outline-none resize-none"></textarea>
+    </div>
+  
+  </div>
+  
+
+           <!-- Last Application Method -->
+<div id="lastMethod" class="hidden animate-fade-up space-y-6">
+
+    <div class="bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-[#F0FDFA] p-6 rounded-2xl border-l-4 border-[#0B4DA1] shadow-lg">
+      
+      <!-- Previous Info -->
+      <div class="flex items-start gap-3 mb-4">
+        <div class="text-2xl text-[#0B4DA1]">🔄</div>
+        <div>
+          <p class="text-sm text-gray-700">
+            <strong class="text-[#0B4DA1]">Last Applied:</strong> <br />
+            <span class="font-medium">R&D Engineer</span> <br />
+            <span class="text-xs text-gray-500">on July 10, 2025</span>
+          </p>
+        </div>
+      </div>
+  
+      <!-- Preview Tags -->
+      <div class="flex flex-wrap gap-2 mb-4 text-sm">
+        <span class="px-3 py-1 bg-[#0B4DA1] text-white rounded-full">Name: Neha Sharma</span>
+        <span class="px-3 py-1 bg-[#0B4DA1] text-white rounded-full">Email: neha@example.com</span>
+        <span class="px-3 py-1 bg-[#0B4DA1] text-white rounded-full">Location: Chandigarh</span>
+      </div>
+  
+      <!-- CTA -->
+      <button
+        class="bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] hover:opacity-90 text-white font-semibold px-6 py-2 rounded-full text-sm transition duration-300">
+        ✅ Submit Again
+      </button>
+    </div>
+  
+  </div>
+  
+
+            <!-- Agreements -->
+            <div class="mt-6 space-y-3 animate-fade-up delay-100">
+                <label class="text-sm block"><input type="checkbox" class="mr-2 accent-[#0B4DA1]" required> I agree to
+                    the <a href="#" class="underline text-[#0B4DA1]">Terms & Privacy Policy</a></label>
+                <label class="text-sm block"><input type="checkbox" class="mr-2 accent-[#0B4DA1]"> Notify me about
+                    similar jobs in future</label>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center mt-8 animate-fade-up delay-200">
+                <button onclick="submitApp()"
+                    class="bg-gradient-to-r from-[#0B4DA1] to-[#5B9BEB] text-white font-semibold px-8 py-3 rounded-full text-sm">
+                    Submit Application
+                </button>
+            </div>
+
+            <!-- Success Message -->
+            <div id="successMessage" class="hidden mt-6 text-center text-green-600 font-semibold animate-fade-up">
+                ✅ Your application was submitted successfully.<br />📨 Confirmation sent to your email.<br />
+                <button class="mt-4 text-[#0B4DA1] underline" onclick="location.reload()">Apply to Another Job</button>
+            </div>
         </div>
     </section>
 
@@ -377,38 +469,6 @@
 
 
 
-    <!-- Contact HR Section -->
-    <section class="bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] text-white py-16 px-4 md:px-10">
-        <div class="max-w-4xl mx-auto text-center animate-fade-up">
-
-            <!-- Icon + Heading -->
-            <div class="flex flex-col items-center gap-2">
-                <div class="text-4xl">🧑‍💼</div>
-                <h2 class="text-2xl md:text-3xl font-extrabold">
-                    Need Help with Your Application?
-                </h2>
-                <p class="text-sm md:text-base mt-2 text-blue-100">
-                    Don’t worry. Our recruitment team is here to assist you.
-                </p>
-            </div>
-
-            <!-- Contact Info -->
-            <div class="mt-6 flex flex-col sm:flex-row justify-center items-center gap-4 animate-fade-up delay-100">
-
-                <!-- Email -->
-                <a href="mailto:careers@hmdhealthcare.com"
-                    class="bg-white text-[#0B4DA1] px-6 py-2 rounded-full font-semibold text-sm shadow hover:bg-blue-50 transition">
-                    ✉️ Email Us
-                </a>
-
-                <!-- WhatsApp -->
-                <a href="https://wa.me/919999999999" target="_blank"
-                    class="bg-white text-[#0B4DA1] px-6 py-2 rounded-full font-semibold text-sm shadow hover:bg-blue-50 transition">
-                    💬 WhatsApp Recruiter
-                </a>
-            </div>
-        </div>
-    </section>
 
 
 
@@ -419,100 +479,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-    <!-- FAQ Section -->
-    <section class="bg-[#F8FAFC] py-16 px-4 md:px-10">
-        <div class="max-w-3xl mx-auto">
-
-            <!-- Heading -->
-            <div class="text-center animate-fade-up">
-                <h2 class="text-2xl md:text-4xl font-extrabold text-[#0A0F2C]">
-                    Frequently Asked
-                    <span
-                        class="text-transparent bg-clip-text bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB]">
-                        Questions
-                    </span>
-                </h2>
-                <p class="text-sm md:text-base text-gray-600 mt-2">
-                    Have queries? We've answered the most common ones below.
-                </p>
-            </div>
-
-            <!-- FAQ List -->
-            <div class="mt-10 space-y-4 animate-fade-up delay-100">
-
-                <!-- Q1 -->
-                <details class="group bg-white rounded-xl shadow-md p-4 transition">
-                    <summary class="flex justify-between items-center cursor-pointer text-[#0A0F2C] font-semibold">
-                        <span>Do I need a pharma background to apply?</span>
-                        <svg class="w-5 h-5 text-[#0B4DA1] group-open:rotate-180 transition-transform duration-300"
-                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </summary>
-                    <p class="mt-2 text-sm text-gray-700">
-                        Not necessarily. While a background in healthcare is preferred for some roles, we welcome talent
-                        from diverse industries who bring transferable skills and fresh perspectives.
-                    </p>
-                </details>
-
-                <!-- Q2 -->
-                <details class="group bg-white rounded-xl shadow-md p-4 transition">
-                    <summary class="flex justify-between items-center cursor-pointer text-[#0A0F2C] font-semibold">
-                        <span>What’s the timeline for application feedback?</span>
-                        <svg class="w-5 h-5 text-[#0B4DA1] group-open:rotate-180 transition-transform duration-300"
-                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </summary>
-                    <p class="mt-2 text-sm text-gray-700">
-                        Typically, our team responds within 7–10 business days after reviewing your application. If
-                        shortlisted, you’ll be contacted for the next steps.
-                    </p>
-                </details>
-
-                <!-- Q3 -->
-                <details class="group bg-white rounded-xl shadow-md p-4 transition">
-                    <summary class="flex justify-between items-center cursor-pointer text-[#0A0F2C] font-semibold">
-                        <span>Can I apply for multiple roles?</span>
-                        <svg class="w-5 h-5 text-[#0B4DA1] group-open:rotate-180 transition-transform duration-300"
-                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </summary>
-                    <p class="mt-2 text-sm text-gray-700">
-                        Yes! If you're qualified for multiple roles, feel free to apply. Just ensure each application is
-                        tailored to the respective role.
-                    </p>
-                </details>
-
-                <!-- Q4 -->
-                <details class="group bg-white rounded-xl shadow-md p-4 transition">
-                    <summary class="flex justify-between items-center cursor-pointer text-[#0A0F2C] font-semibold">
-                        <span>Do you charge fees during hiring?</span>
-                        <svg class="w-5 h-5 text-[#0B4DA1] group-open:rotate-180 transition-transform duration-300"
-                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </summary>
-                    <p class="mt-2 text-sm text-gray-700">
-                        Absolutely not. Like Mankind Pharma, we maintain strict ethics and never ask for money at any
-                        stage of recruitment.
-                    </p>
-                </details>
-
-            </div>
-        </div>
-    </section>
 
 
 
@@ -689,19 +655,29 @@
 
 
 
-        document.getElementById('applicationForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const btn = document.getElementById('submitBtn');
-            const text = document.getElementById('btnText');
-            const success = document.getElementById('successMessage');
+        function showMethod(method) {
+    // Hide all methods
+    document.getElementById("resumeMethod").classList.add("hidden");
+    document.getElementById("manualMethod").classList.add("hidden");
+    document.getElementById("lastMethod").classList.add("hidden");
 
-            text.innerHTML = '<svg class="animate-spin inline w-5 h-5 mr-1 text-white" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="white" stroke-width="4" fill="none"/><path class="opacity-75" fill="white" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"/></svg> Submitting...';
+    // Show selected
+    if (method === 'resume') document.getElementById("resumeMethod").classList.remove("hidden");
+    if (method === 'manual') document.getElementById("manualMethod").classList.remove("hidden");
+    if (method === 'last') document.getElementById("lastMethod").classList.remove("hidden");
 
-            setTimeout(() => {
-                text.innerText = 'Submit Application';
-                success.classList.remove('hidden');
-            }, 2000);
-        });
+    // Reset all buttons
+    const buttons = document.querySelectorAll(".method-btn");
+    buttons.forEach(btn => {
+      btn.classList.remove("bg-gradient-to-r", "from-[#0B4DA1]", "to-[#5B9BEB]", "text-white");
+      btn.classList.add("bg-white", "text-[#0B4DA1]", "border", "border-[#0B4DA1]");
+    });
+
+    // Activate current
+    const activeBtn = document.getElementById(`btn-${method}`);
+    activeBtn.classList.remove("bg-white", "text-[#0B4DA1]", "border", "border-[#0B4DA1]");
+    activeBtn.classList.add("bg-gradient-to-r", "from-[#0B4DA1]", "to-[#5B9BEB]", "text-white");
+  }
     </script>
 
 </body>
