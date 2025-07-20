@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Final Responsive Header</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <script>
+        function toggleNav() {
+            document.getElementById("mobile-nav").classList.toggle("hidden");
+        }
+        function toggleMobileDropdown(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle("hidden");
+        }
+    </script>
+
+    <style>
+
+
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-hero-enter {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .animate-fade-in-delay {
+            animation: fadeInUp 1s ease-out forwards;
+            animation-delay: 0.3s;
+        }
+
+        .animate-fade-in-delay2 {
+            animation: fadeInUp 1s ease-out forwards;
+            animation-delay: 0.6s;
+        }
+
+        .animate-fade-in-delay3 {
+            animation: fadeInUp 1s ease-out forwards;
+            animation-delay: 0.9s;
+        }
+
+
+
+
+
+
+
+        @keyframes fadeInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-fade-left {
+            animation: fadeInLeft 1s ease-out forwards;
+        }
+
+        .animate-fade-right {
+            animation: fadeInRight 1s ease-out forwards;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .animate-fade-left {
+            animation: fadeInLeft 1s ease-out forwards;
+        }
+
+        .animate-fade-right {
+            animation: fadeInRight 1s ease-out forwards;
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .animate-fade-left {
+            animation: fadeInLeft 1s ease-out forwards;
+        }
+
+        .animate-fade-right {
+            animation: fadeInRight 1s ease-out forwards;
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .animate-fade-left {
+            animation: fadeInLeft 1s ease-out forwards;
+        }
+
+        .animate-fade-right {
+            animation: fadeInRight 1s ease-out forwards;
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .animate-fade-left {
+            animation: fadeInLeft 1s ease-out forwards;
+        }
+
+        .animate-fade-right {
+            animation: fadeInRight 1s ease-out forwards;
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-500 {
+            animation-delay: 0.5s;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+    </style>
+</head>
+
+<body class="bg-[#FAFAFA] text-[#0A0F2C] font-sans">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-lg bg-white/90 shadow-md border-b border-gray-200">
+        <!-- Top bar -->
+        <div class="flex flex-col md:flex-row justify-between items-center text-xs md:text-sm px-4 md:px-6 py-2 
+        bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] text-white font-medium transition-all duration-500">
+      
+            <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+                <a href="#">News & Events</a>
+                <a href="#">Career</a>
+                <a href="#">New Launch</a>
+                <a href="#">HSN Code</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="flex items-center gap-2 mt-2 md:mt-0">
+                <!-- Language -->
+                <div class="relative group">
+                    <button class="flex items-center gap-1">
+                        🌐 English
+                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.18l3.71-3.95a.75.75 0 111.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute hidden group-hover:block bg-white text-black rounded mt-2 py-1 w-24 text-sm shadow-lg z-50">
+                        <a href="#" class="block px-3 py-1 hover:bg-gray-100">Hindi</a>
+                        <a href="#" class="block px-3 py-1 hover:bg-gray-100">French</a>
+                    </div>
+                </div>
+
+                <!-- Divider + Location -->
+                <div class="relative group border-l border-white pl-2">
+                    <button class="flex items-center gap-1">
+                        📍 India
+                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.18l3.71-3.95a.75.75 0 111.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute hidden group-hover:block bg-white text-black rounded mt-2 py-1 w-24 text-sm shadow-lg z-50">
+                        <a href="#" class="block px-3 py-1 hover:bg-gray-100">USA</a>
+                        <a href="#" class="block px-3 py-1 hover:bg-gray-100">UK</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Main Navbar -->
+        <div class="max-w-[1320px] mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <a href="/" class="flex items-center gap-3">
+                    <img src="https://www.hmdhealthcare.com/assets/images/hmdlogo.png" class="h-10 w-auto" alt="Logo">
+                    <div class="text-[10px] md:text-xs text-gray-600 leading-4">
+                        From the House of<br><span class="text-[#D72638] font-bold">DISPO VAN®</span>
+                    </div>
+                </a>
+            </div>
+
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex gap-6 font-semibold text-sm relative">
+                <!-- Dropdown: About HMD -->
+                <div class="group relative">
+                    <button class="hover:text-[#D72638] flex items-center gap-1">
+                        About HMD <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.18l3.71-3.95a.75.75 0 111.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-md rounded w-48 z-50 py-2">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Overview</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Leadership</a>
+                    </div>
+                </div>
+
+                <!-- Dropdown: Our Offerings -->
+                <div class="group relative">
+                    <button class="hover:text-[#D72638] flex items-center gap-1">
+                        Our Offerings <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.18l3.71-3.95a.75.75 0 111.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-md rounded w-48 z-50 py-2">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Syringes</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Needles</a>
+                    </div>
+                </div>
+
+                <!-- Dropdown: IFU -->
+                <div class="group relative">
+                    <button class="hover:text-[#D72638] flex items-center gap-1">
+                        IFU <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.18l3.71-3.95a.75.75 0 111.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-md rounded w-48 z-50 py-2">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">User Manuals</a>
+                    </div>
+                </div>
+
+                <!-- Dropdown: CSR -->
+                <div class="group relative">
+                    <button class="hover:text-[#D72638] flex items-center gap-1">
+                        CSR <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.18l3.71-3.95a.75.75 0 111.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-md rounded w-48 z-50 py-2">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Initiatives</a>
+                    </div>
+                </div>
+
+                <a href="#" class="hover:text-[#D72638]">Certification</a>
+                <a href="#" class="hover:text-[#D72638]">Blogs</a>
+                <a href="#" class="hover:text-[#D72638]">Contact</a>
+            </nav>
+
+            <!-- CTA & Mobile -->
+            <div class="flex items-center gap-3">
+                <a href="#"
+   class="hidden md:inline-block px-5 py-2 bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] text-white rounded-full text-xs font-semibold hover:opacity-90 transition duration-300 shadow-md">
+   DISTRIBUTOR ONBOARD
+</a>
+
+                <button class="md:hidden" onclick="toggleNav()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav -->
+        <div id="mobile-nav" class="md:hidden hidden px-4 pb-4 bg-white border-t border-gray-200">
+            <nav class="flex flex-col gap-2 font-medium text-sm">
+                <div>
+                    <button class="w-full text-left font-semibold" onclick="toggleMobileDropdown('m-about')">+ About
+                        HMD</button>
+                    <div id="m-about" class="hidden ml-4 mt-1">
+                        <a href="#" class="block py-1">Overview</a>
+                        <a href="#" class="block py-1">Leadership</a>
+                    </div>
+                </div>
+                <div>
+                    <button class="w-full text-left font-semibold" onclick="toggleMobileDropdown('m-offerings')">+ Our
+                        Offerings</button>
+                    <div id="m-offerings" class="hidden ml-4 mt-1">
+                        <a href="#" class="block py-1">Syringes</a>
+                        <a href="#" class="block py-1">Needles</a>
+                    </div>
+                </div>
+                <div>
+                    <button class="w-full text-left font-semibold" onclick="toggleMobileDropdown('m-ifu')">+
+                        IFU</button>
+                    <div id="m-ifu" class="hidden ml-4 mt-1">
+                        <a href="#" class="block py-1">User Manuals</a>
+                    </div>
+                </div>
+                <div>
+                    <button class="w-full text-left font-semibold" onclick="toggleMobileDropdown('m-csr')">+
+                        CSR</button>
+                    <div id="m-csr" class="hidden ml-4 mt-1">
+                        <a href="#" class="block py-1">Initiatives</a>
+                    </div>
+                </div>
+                <a href="#">Certification</a>
+                <a href="#">Blogs</a>
+                <a href="#">Contact</a>
+                <a href="#" class="mt-3 text-center bg-[#17C3B2] text-white py-2 rounded-full font-bold">DISTRIBUTOR
+                    ONBOARD</a>
+            </nav>
+        </div>
+    </header>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Hero Banner -->
+    <section class="relative h-[60vh] md:h-[75vh] w-full bg-cover bg-center flex items-center justify-center"
+        style="background-image: url('images/Banner.avif');">
+
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+
+      <!-- Hero Content Section -->
+<div class="relative z-10 text-center px-4 md:px-8 text-white animate-hero-enter">
+    <!-- Heading -->
+    <h1 class="text-2xl md:text-4xl font-extrabold leading-snug max-w-2xl mx-auto animate-fade-in-delay">
+      Join us in transforming healthcare, <br class="hidden md:block" />
+      <span class="text-transparent bg-clip-text bg-[#5B9BEB]">
+        one innovation at a time.
+      </span>
+    </h1>
+  
+    <!-- Subheading -->
+    <p class="mt-4 text-sm md:text-base max-w-xl mx-auto text-gray-200 animate-fade-in-delay2">
+      A future built on compassion, precision, and purpose. Be part of our journey.
+    </p>
+  
+    <!-- CTA Buttons -->
+    <div class="mt-6 flex justify-center gap-4 flex-wrap animate-fade-in-delay3">
+      <!-- View Openings (Gradient Button) -->
+      <a href="#"
+        class="bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] hover:opacity-90 text-white px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 shadow-md hover:scale-105">
+        View Openings
+      </a>
+  
+      <!-- Apply Now (White Outline Button) -->
+      <a href="#"
+        class="border border-white hover:bg-white hover:text-[#0B4DA1] text-white px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 shadow-md hover:scale-105">
+        Apply Now
+      </a>
+    </div>
+  </div>
+  
+    </section>
+
+
+
+
+    <!-- Life at HMD Healthcare -->
+<section class="bg-[#F8FAFC] py-16 px-4 md:px-10">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+  
+      <!-- Left: Content -->
+      <div class="animate-fade-left">
+        <h2 class="text-2xl md:text-4xl font-extrabold text-[#0A0F2C] mb-2">
+          Life at <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB]">HMD Healthcare</span>
+        </h2>
+        <p class="text-[#6B7280] italic mb-6 text-sm md:text-base">“Where passion meets purpose.”</p>
+  
+        <!-- Mission -->
+        <div class="mb-6">
+          <h3 class="text-lg font-semibold text-[#0A0F2C] mb-1">🚀 Mission & Vision</h3>
+          <p class="text-gray-700 text-sm md:text-base">
+            To deliver high-quality medical solutions with care, innovation, and responsibility.
+          </p>
+        </div>
+  
+        <!-- Core Values -->
+        <div>
+          <h3 class="text-lg font-semibold text-[#0A0F2C] mb-2">💡 Core Values</h3>
+          <ul class="list-disc ml-5 text-gray-700 text-sm md:text-base space-y-1">
+            <li><strong class="text-[#0B4DA1]">Integrity</strong> – We do the right thing, always.</li>
+            <li><strong class="text-[#0B4DA1]">Innovation</strong> – Driven to improve and evolve.</li>
+            <li><strong class="text-[#0B4DA1]">Care</strong> – Compassion is at our core.</li>
+            <li><strong class="text-[#0B4DA1]">Growth</strong> – Empowering people & progress.</li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Right: Image -->
+      <div class="animate-fade-right">
+        <div class="rounded-xl overflow-hidden shadow-xl border border-[#E5E7EB]">
+          <img src="images/banner2.avif" alt="Life at HMD" class="w-full h-64 object-cover">
+        </div>
+      </div>
+  
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Why Work With Us Section -->
+<section class="bg-white py-16 px-4 md:px-10">
+    <div class="max-w-7xl mx-auto text-center">
+      <!-- Heading -->
+      <h2 class="text-2xl md:text-4xl font-extrabold text-[#0A0F2C] mb-2 animate-fade-up">
+        Why <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB]">Work With Us</span>
+      </h2>
+      <p class="text-gray-600 text-sm md:text-base mb-10 animate-fade-up delay-100">
+        Explore the values and advantages that make HMD Healthcare a place to thrive.
+      </p>
+  
+     <!-- Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-6">
+
+    <!-- Box 1 -->
+    <div class="bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-[#F0FDFA] p-6 rounded-xl shadow-md animate-fade-left border-l-4 border-[#0B4DA1]">
+      <h3 class="text-lg font-semibold text-[#0A0F2C] mb-2">📈 Career Growth & Training</h3>
+      <p class="text-gray-700 text-sm">
+        We empower employees with leadership training, mentorship, and continuous learning.
+      </p>
+    </div>
+  
+    <!-- Box 2 -->
+    <div class="bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-[#F0FDFA] p-6 rounded-xl shadow-md animate-fade-right border-l-4 border-[#0B4DA1]">
+      <h3 class="text-lg font-semibold text-[#0A0F2C] mb-2">⚖️ Work-Life Balance</h3>
+      <p class="text-gray-700 text-sm">
+        Flexible policies and supportive culture help you balance professional and personal life.
+      </p>
+    </div>
+  
+    <!-- Box 3 -->
+    <div class="bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-[#F0FDFA] p-6 rounded-xl shadow-md animate-fade-left border-l-4 border-[#0B4DA1]">
+      <h3 class="text-lg font-semibold text-[#0A0F2C] mb-2">💚 Wellness Programs</h3>
+      <p class="text-gray-700 text-sm">
+        Access to health initiatives, stress care, and wellness support systems for employees.
+      </p>
+    </div>
+  
+    <!-- Box 4 -->
+    <div class="bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-[#F0FDFA] p-6 rounded-xl shadow-md animate-fade-right border-l-4 border-[#0B4DA1]">
+      <h3 class="text-lg font-semibold text-[#0A0F2C] mb-2">🌍 Global & Internal Promotions</h3>
+      <p class="text-gray-700 text-sm">
+        We recognize performance with internal mobility, cross-functional exposure, and global roles.
+      </p>
+    </div>
+  
+  </div>
+  
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- Departments You Can Join -->
+<section class="bg-[#F8FAFC] py-16 px-4 md:px-10">
+    <div class="max-w-7xl mx-auto text-center">
+      <h2 class="text-2xl md:text-4xl font-extrabold text-[#0A0F2C] mb-4 animate-fade-up">
+        Departments <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB]">You Can Join</span>
+      </h2>
+      <p class="text-gray-600 text-sm md:text-base mb-10 animate-fade-up delay-100">
+        Explore the exciting teams shaping the future of healthcare at HMD.
+      </p>
+  
+      <!-- Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-10">
+  
+        <!-- Card 1 -->
+        <div class="bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-[#F0FDFA] p-6 rounded-xl shadow-md border-l-4 border-[#0B4DA1] animate-fade-left">
+          <div class="text-4xl mb-4 text-[#0B4DA1]">🏭</div>
+          <h3 class="text-lg font-semibold text-[#0A0F2C] mb-2">Production & Manufacturing</h3>
+          <p class="text-gray-700 text-sm">
+            Building world-class medical products with precision, safety, and scale.
+          </p>
+        </div>
+  
+        <!-- Card 2 -->
+        <div class="bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-[#F0FDFA] p-6 rounded-xl shadow-md border-l-4 border-[#0B4DA1] animate-fade-up">
+          <div class="text-4xl mb-4 text-[#0B4DA1]">📈</div>
+          <h3 class="text-lg font-semibold text-[#0A0F2C] mb-2">Sales & Marketing</h3>
+          <p class="text-gray-700 text-sm">
+            Taking our innovations to the world through strategy and outreach.
+          </p>
+        </div>
+  
+        <!-- Card 3 -->
+        <div class="bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-[#F0FDFA] p-6 rounded-xl shadow-md border-l-4 border-[#0B4DA1] animate-fade-right">
+          <div class="text-4xl mb-4 text-[#0B4DA1]">🔬</div>
+          <h3 class="text-lg font-semibold text-[#0A0F2C] mb-2">Research & Development</h3>
+          <p class="text-gray-700 text-sm">
+            Innovating the next generation of medical technology and care.
+          </p>
+        </div>
+  
+        <!-- Card 4 -->
+        <div class="bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-[#F0FDFA] p-6 rounded-xl shadow-md border-l-4 border-[#0B4DA1] animate-fade-left">
+          <div class="text-4xl mb-4 text-[#0B4DA1]">🧪</div>
+          <h3 class="text-lg font-semibold text-[#0A0F2C] mb-2">Quality Control</h3>
+          <p class="text-gray-700 text-sm">
+            Ensuring safety, standards, and excellence across every unit we deliver.
+          </p>
+        </div>
+  
+        <!-- Card 5 -->
+        <div class="bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-[#F0FDFA] p-6 rounded-xl shadow-md border-l-4 border-[#0B4DA1] animate-fade-up">
+          <div class="text-4xl mb-4 text-[#0B4DA1]">💻</div>
+          <h3 class="text-lg font-semibold text-[#0A0F2C] mb-2">IT & Support</h3>
+          <p class="text-gray-700 text-sm">
+            Powering our people and systems with reliable technology and tools.
+          </p>
+        </div>
+  
+        <!-- Card 6 -->
+        <div class="bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-[#F0FDFA] p-6 rounded-xl shadow-md border-l-4 border-[#0B4DA1] animate-fade-right">
+          <div class="text-4xl mb-4 text-[#0B4DA1]">🌍</div>
+          <h3 class="text-lg font-semibold text-[#0A0F2C] mb-2">Global Opportunities</h3>
+          <p class="text-gray-700 text-sm">
+            Work across borders and collaborate globally as we grow together.
+          </p>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Current Job Openings Section -->
+<section class="bg-white py-16 px-4 md:px-10">
+    <div class="max-w-7xl mx-auto">
+  
+      <!-- Heading -->
+      <div class="text-center mb-10">
+        <h2 class="text-2xl md:text-4xl font-extrabold text-[#0A0F2C] animate-fade-up">
+          Current <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB]">Job Openings</span>
+        </h2>
+        <p class="text-gray-600 text-sm md:text-base mt-2 animate-fade-up delay-100">
+          Discover exciting career opportunities at HMD Healthcare.
+        </p>
+      </div>
+  
+      <!-- Filter Bar -->
+      <div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-12 animate-fade-up delay-200">
+        <!-- Department Filter -->
+        <div class="relative w-[48%] sm:w-[180px] md:w-[220px]">
+          <select class="appearance-none w-full rounded-full border border-gray-300 px-4 py-2 text-xs sm:text-sm text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0B4DA1]">
+            <option selected disabled>Filter by Department</option>
+            <option>Production</option>
+            <option>Sales & Marketing</option>
+            <option>R&D</option>
+            <option>Quality</option>
+            <option>IT & Support</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+  
+        <!-- Role Filter -->
+        <div class="relative w-[48%] sm:w-[150px] md:w-[180px]">
+          <select class="appearance-none w-full rounded-full border border-gray-300 px-4 py-2 text-xs sm:text-sm text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0B4DA1]">
+            <option selected disabled>Filter by Role</option>
+            <option>Executive</option>
+            <option>Manager</option>
+            <option>Engineer</option>
+            <option>Intern</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+  
+        <!-- Location Filter -->
+        <div class="relative w-[100%] sm:w-[220px] md:w-[220px] mt-2 sm:mt-0">
+          <select class="appearance-none w-full rounded-full border border-gray-300 px-4 py-2 text-xs sm:text-sm text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0B4DA1]">
+            <option selected disabled>Filter by Location</option>
+            <option>Delhi</option>
+            <option>Chandigarh</option>
+            <option>Remote</option>
+            <option>Mumbai</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Job Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  
+        <!-- Job Card 1 -->
+        <div class="bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-[#F9FEFF] p-6 rounded-xl shadow-lg border-l-4 border-[#0B4DA1] animate-fade-left">
+          <h3 class="text-xl font-semibold text-[#0A0F2C] mb-2">Production Manager</h3>
+          <p class="text-sm text-gray-700 mb-1">📍 Delhi</p>
+          <p class="text-sm text-gray-700 mb-4">🏢 Production & Manufacturing</p>
+          <a href="#"
+            class="inline-block px-5 py-2 rounded-full bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] text-white text-sm font-semibold hover:opacity-90 transition-all duration-300">
+            Apply Now
+          </a>
+        </div>
+  
+        <!-- Job Card 2 -->
+        <div class="bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-[#F9FEFF] p-6 rounded-xl shadow-lg border-l-4 border-[#0B4DA1] animate-fade-up">
+          <h3 class="text-xl font-semibold text-[#0A0F2C] mb-2">R&D Engineer</h3>
+          <p class="text-sm text-gray-700 mb-1">📍 Chandigarh</p>
+          <p class="text-sm text-gray-700 mb-4">🏢 Research & Development</p>
+          <a href="#"
+            class="inline-block px-5 py-2 rounded-full bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] text-white text-sm font-semibold hover:opacity-90 transition-all duration-300">
+            Apply Now
+          </a>
+        </div>
+  
+        <!-- Job Card 3 -->
+        <div class="bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-[#F9FEFF] p-6 rounded-xl shadow-lg border-l-4 border-[#0B4DA1] animate-fade-right">
+          <h3 class="text-xl font-semibold text-[#0A0F2C] mb-2">Marketing Executive</h3>
+          <p class="text-sm text-gray-700 mb-1">📍 Remote</p>
+          <p class="text-sm text-gray-700 mb-4">🏢 Sales & Marketing</p>
+          <a href="#"
+            class="inline-block px-5 py-2 rounded-full bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] text-white text-sm font-semibold hover:opacity-90 transition-all duration-300">
+            Apply Now
+          </a>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Success Stories / Testimonials -->
+<section class="bg-[#F8FAFC] py-16 px-4 md:px-10">
+    <div class="max-w-7xl mx-auto text-center">
+      
+      <!-- Heading -->
+      <h2 class="text-2xl md:text-4xl font-extrabold text-[#0A0F2C] animate-fade-up">
+        Hear From <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB]">Our Team</span>
+      </h2>
+      <p class="text-gray-600 text-sm md:text-base mt-2 mb-10 animate-fade-up delay-100">
+        Real voices. Real stories. Real impact.
+      </p>
+  
+      <!-- Testimonial Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+  
+        <!-- Card 1 -->
+        <div class="bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-white p-6 rounded-xl shadow-lg animate-fade-left border-t-4 border-[#0B4DA1]">
+          <div class="flex items-center gap-4 mb-4">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Employee"
+              class="w-12 h-12 rounded-full object-cover border-2 border-[#0B4DA1]">
+            <div class="text-left">
+              <h4 class="text-sm font-semibold text-[#0A0F2C]">Neha Sharma</h4>
+              <p class="text-xs text-gray-500">Senior R&D Engineer</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-700 leading-relaxed">
+            “At HMD, I've grown more in 2 years than I did in 5 elsewhere. The innovation culture and support from leadership are unmatched.”
+          </p>
+        </div>
+  
+        <!-- Card 2 -->
+        <div class="bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-white p-6 rounded-xl shadow-lg animate-fade-up border-t-4 border-[#0B4DA1]">
+          <div class="flex items-center gap-4 mb-4">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Employee"
+              class="w-12 h-12 rounded-full object-cover border-2 border-[#0B4DA1]">
+            <div class="text-left">
+              <h4 class="text-sm font-semibold text-[#0A0F2C]">Rajat Verma</h4>
+              <p class="text-xs text-gray-500">Production Supervisor</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-700 leading-relaxed">
+            “I love the hands-on training and career path clarity. HMD doesn’t just hire you, it builds you.”
+          </p>
+        </div>
+  
+        <!-- Card 3 -->
+        <div class="bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-white p-6 rounded-xl shadow-lg animate-fade-right border-t-4 border-[#0B4DA1]">
+          <div class="flex items-center gap-4 mb-4">
+            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Employee"
+              class="w-12 h-12 rounded-full object-cover border-2 border-[#0B4DA1]">
+            <div class="text-left">
+              <h4 class="text-sm font-semibold text-[#0A0F2C]">Anjali Mehta</h4>
+              <p class="text-xs text-gray-500">Marketing Associate</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-700 leading-relaxed">
+            “HMD's work-life balance and wellness programs truly helped me thrive. It feels like family here.”
+          </p>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Recruitment Process -->
+<section class="bg-[#F8FAFC] py-16 px-4 md:px-10">
+    <div class="max-w-6xl mx-auto text-center">
+  
+      <!-- Heading -->
+      <h2 class="text-2xl md:text-4xl font-extrabold text-[#0A0F2C] animate-fade-up">
+        Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB]">Recruitment Process</span>
+      </h2>
+      <p class="text-gray-600 text-sm md:text-base mt-2 mb-12 animate-fade-up delay-100">
+        A transparent and structured journey from application to onboarding.
+      </p>
+  
+      <!-- Process Timeline -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 text-center">
+  
+        <!-- Step 1 -->
+        <div class="animate-fade-up">
+          <div
+            class="w-16 h-16 mx-auto rounded-full bg-white border-4 border-transparent bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-white shadow-lg flex items-center justify-center text-2xl text-[#0B4DA1] border-[#0B4DA1]">
+            📝
+          </div>
+          <h4 class="mt-4 font-semibold text-[#0A0F2C]">Application</h4>
+          <p class="text-sm text-gray-600 mt-1">Submit your resume online.</p>
+        </div>
+  
+        <!-- Step 2 -->
+        <div class="animate-fade-up delay-200">
+          <div
+            class="w-16 h-16 mx-auto rounded-full bg-white border-4 border-transparent bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-white shadow-lg flex items-center justify-center text-2xl text-[#0B4DA1] border-[#0B4DA1]">
+            🔍
+          </div>
+          <h4 class="mt-4 font-semibold text-[#0A0F2C]">Screening</h4>
+          <p class="text-sm text-gray-600 mt-1">We evaluate your profile.</p>
+        </div>
+  
+        <!-- Step 3 -->
+        <div class="animate-fade-up delay-300">
+          <div
+            class="w-16 h-16 mx-auto rounded-full bg-white border-4 border-transparent bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-white shadow-lg flex items-center justify-center text-2xl text-[#0B4DA1] border-[#0B4DA1]">
+            💬
+          </div>
+          <h4 class="mt-4 font-semibold text-[#0A0F2C]">Interview</h4>
+          <p class="text-sm text-gray-600 mt-1">Meet our team and showcase your skills.</p>
+        </div>
+  
+        <!-- Step 4 -->
+        <div class="animate-fade-up delay-400">
+          <div
+            class="w-16 h-16 mx-auto rounded-full bg-white border-4 border-transparent bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-white shadow-lg flex items-center justify-center text-2xl text-[#0B4DA1] border-[#0B4DA1]">
+            📄
+          </div>
+          <h4 class="mt-4 font-semibold text-[#0A0F2C]">Offer</h4>
+          <p class="text-sm text-gray-600 mt-1">We share the offer details with you.</p>
+        </div>
+  
+        <!-- Step 5 -->
+        <div class="animate-fade-up delay-500">
+          <div
+            class="w-16 h-16 mx-auto rounded-full bg-white border-4 border-transparent bg-gradient-to-br from-[#F0F7FF] via-[#E6F0FF] to-white shadow-lg flex items-center justify-center text-2xl text-[#0B4DA1] border-[#0B4DA1]">
+            🚀
+          </div>
+          <h4 class="mt-4 font-semibold text-[#0A0F2C]">Onboarding</h4>
+          <p class="text-sm text-gray-600 mt-1">Welcome to HMD! Let’s get started.</p>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- Resume Submission -->
+<section class="bg-[#F0F7FF] py-16 px-4 md:px-10">
+    <div class="max-w-xl mx-auto text-center">
+  
+      <!-- Heading -->
+      <h2 class="text-2xl md:text-4xl font-extrabold text-[#0A0F2C] animate-fade-up">
+        Didn't Find Your Role?
+      </h2>
+      <p class="text-sm md:text-base text-gray-600 mt-2 mb-8 animate-fade-up delay-100">
+        Submit your resume and we'll reach out when something matches your profile.
+      </p>
+  
+      <!-- Form Starts -->
+      <form action="#" method="POST" enctype="multipart/form-data"
+        class="space-y-5 text-left animate-fade-up delay-200">
+  
+        <!-- Name -->
+        <div>
+          <label class="block text-sm font-medium text-[#0A0F2C] mb-1">Full Name</label>
+          <input type="text" name="name" required placeholder="Your name"
+            class="w-full rounded-full border border-gray-300 px-5 py-2 text-sm focus:ring-2 focus:ring-[#0B4DA1] outline-none" />
+        </div>
+  
+        <!-- Email -->
+        <div>
+          <label class="block text-sm font-medium text-[#0A0F2C] mb-1">Email Address</label>
+          <input type="email" name="email" required placeholder="you@example.com"
+            class="w-full rounded-full border border-gray-300 px-5 py-2 text-sm focus:ring-2 focus:ring-[#0B4DA1] outline-none" />
+        </div>
+  
+        <!-- Role of Interest -->
+        <div>
+          <label class="block text-sm font-medium text-[#0A0F2C] mb-1">Role of Interest</label>
+          <input type="text" name="role" required placeholder="e.g. Marketing, R&D, IT"
+            class="w-full rounded-full border border-gray-300 px-5 py-2 text-sm focus:ring-2 focus:ring-[#0B4DA1] outline-none" />
+        </div>
+  
+        <!-- Resume Upload -->
+        <div>
+          <label class="block text-sm font-medium text-[#0A0F2C] mb-1">Upload Resume (PDF)</label>
+          <input type="file" name="resume" accept=".pdf"
+            class="w-full rounded-full border border-gray-300 px-5 py-2 text-sm bg-white cursor-pointer
+                   file:mr-4 file:py-1 file:px-3 file:rounded-full file:border-0 
+                   file:bg-gradient-to-r file:from-[#0B4DA1] file:to-[#256DCA] 
+                   file:text-white file:font-semibold" />
+        </div>
+  
+        <!-- Submit -->
+        <div class="text-center pt-4">
+          <button type="submit"
+            class="bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] hover:opacity-90 
+                   text-white px-6 py-2 rounded-full text-sm font-semibold shadow-md transition-all duration-300">
+            Submit Application
+          </button>
+        </div>
+  
+      </form>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Beware of Job Frauds -->
+<section class="bg-white py-16 px-4 md:px-10 border-t border-gray-200">
+    <div class="max-w-5xl mx-auto text-center animate-fade-up">
+  
+      <!-- Alert Icon -->
+      <div class="flex justify-center mb-6">
+        <div
+          class="w-14 h-14 rounded-full bg-[#E0F2FE] flex items-center justify-center text-[#0B4DA1] text-2xl shadow-md">
+          ⚠️
+        </div>
+      </div>
+  
+      <!-- Heading -->
+      <h2 class="text-2xl md:text-3xl font-extrabold text-[#0A0F2C]">
+        Beware of <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB]">Job Frauds</span>
+      </h2>
+  
+      <!-- Description -->
+      <p class="text-sm md:text-base text-gray-700 max-w-2xl mx-auto mt-4 mb-6 leading-relaxed">
+        We have noticed some unauthorized individuals or companies posing as HMD Healthcare recruiters. Please
+        be informed that we <strong class="text-[#DC2626]">do not ask for any fees or payments</strong> at any
+        stage of the hiring process.
+      </p>
+  
+      <!-- List -->
+      <ul class="text-left max-w-xl mx-auto text-sm text-gray-700 space-y-3">
+        <li class="flex items-start gap-2">
+          <span class="text-[#0B4DA1] text-lg">✔️</span>
+          Hiring is done <strong>only via official channels</strong> (hmdhealthcare.com domain).
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-[#0B4DA1] text-lg">✔️</span>
+          We never ask for payments, processing fees, or deposits.
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-[#0B4DA1] text-lg">✔️</span>
+          Report suspicious activity immediately to our HR team.
+        </li>
+      </ul>
+  
+      <!-- Note -->
+      <div class="mt-6 text-sm text-gray-500 italic">
+        Example (like Mankind Pharma): “We do not ask for money at any hiring stage.”
+      </div>
+    </div>
+  </section>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- FAQ Section -->
+<section class="bg-[#F8FAFC] py-16 px-4 md:px-10">
+    <div class="max-w-3xl mx-auto">
+  
+      <!-- Heading -->
+      <div class="text-center animate-fade-up">
+        <h2 class="text-2xl md:text-4xl font-extrabold text-[#0A0F2C]">
+          Frequently Asked 
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB]">
+            Questions
+          </span>
+        </h2>
+        <p class="text-sm md:text-base text-gray-600 mt-2">
+          Have queries? We've answered the most common ones below.
+        </p>
+      </div>
+  
+      <!-- FAQ List -->
+      <div class="mt-10 space-y-4 animate-fade-up delay-100">
+  
+        <!-- Q1 -->
+        <details class="group bg-white rounded-xl shadow-md p-4 transition">
+          <summary class="flex justify-between items-center cursor-pointer text-[#0A0F2C] font-semibold">
+            <span>Do I need a pharma background to apply?</span>
+            <svg class="w-5 h-5 text-[#0B4DA1] group-open:rotate-180 transition-transform duration-300"
+                 fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <p class="mt-2 text-sm text-gray-700">
+            Not necessarily. While a background in healthcare is preferred for some roles, we welcome talent from diverse industries who bring transferable skills and fresh perspectives.
+          </p>
+        </details>
+  
+        <!-- Q2 -->
+        <details class="group bg-white rounded-xl shadow-md p-4 transition">
+          <summary class="flex justify-between items-center cursor-pointer text-[#0A0F2C] font-semibold">
+            <span>What’s the timeline for application feedback?</span>
+            <svg class="w-5 h-5 text-[#0B4DA1] group-open:rotate-180 transition-transform duration-300"
+                 fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <p class="mt-2 text-sm text-gray-700">
+            Typically, our team responds within 7–10 business days after reviewing your application. If shortlisted, you’ll be contacted for the next steps.
+          </p>
+        </details>
+  
+        <!-- Q3 -->
+        <details class="group bg-white rounded-xl shadow-md p-4 transition">
+          <summary class="flex justify-between items-center cursor-pointer text-[#0A0F2C] font-semibold">
+            <span>Can I apply for multiple roles?</span>
+            <svg class="w-5 h-5 text-[#0B4DA1] group-open:rotate-180 transition-transform duration-300"
+                 fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <p class="mt-2 text-sm text-gray-700">
+            Yes! If you're qualified for multiple roles, feel free to apply. Just ensure each application is tailored to the respective role.
+          </p>
+        </details>
+  
+        <!-- Q4 -->
+        <details class="group bg-white rounded-xl shadow-md p-4 transition">
+          <summary class="flex justify-between items-center cursor-pointer text-[#0A0F2C] font-semibold">
+            <span>Do you charge fees during hiring?</span>
+            <svg class="w-5 h-5 text-[#0B4DA1] group-open:rotate-180 transition-transform duration-300"
+                 fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <p class="mt-2 text-sm text-gray-700">
+            Absolutely not. Like Mankind Pharma, we maintain strict ethics and never ask for money at any stage of recruitment.
+          </p>
+        </details>
+  
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Unique Footer -->
+<footer class="bg-[#0A1E3F] text-white pt-16 pb-10 px-6 md:px-10">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-5 gap-8 animate-fade-up">
+  
+      <!-- Branding / Newsletter -->
+      <div class="md:col-span-2">
+        <h2 class="text-2xl font-extrabold text-transparent bg-clip-text bg-[#5B9BEB] mb-2">
+          HMD Healthcare
+        </h2>
+        <p class="text-sm text-gray-300 mb-4">
+          Innovating healthcare with passion and precision.
+        </p>
+  
+        <!-- Newsletter -->
+        <h4 class="font-semibold text-white mb-2">Join Our Newsletter</h4>
+        <form class="flex flex-col sm:flex-row items-center gap-3">
+          <input type="email" placeholder="Your Email" required
+            class="px-4 py-2 rounded-full w-full sm:w-auto flex-1 text-sm text-[#0A0F2C] outline-none" />
+          <button type="submit"
+            class="self-start sm:self-auto bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] hover:opacity-90 text-white font-semibold px-5 py-2 rounded-full text-sm transition-all duration-300">
+            Subscribe
+          </button>
+        </form>
+      </div>
+  
+      <!-- User Menu -->
+      <div>
+        <h3 class="text-lg font-bold mb-3 text-transparent bg-clip-text bg-[#5B9BEB]">
+          User Menu
+        </h3>
+        <ul class="space-y-2 text-sm text-gray-300">
+          <li><a href="#" class="hover:text-white">Home</a></li>
+          <li><a href="#" class="hover:text-white">News & Events</a></li>
+          <li><a href="#" class="hover:text-white">Career</a></li>
+          <li><a href="#" class="hover:text-white">New Launch</a></li>
+          <li><a href="#" class="hover:text-white">FAQ</a></li>
+        </ul>
+      </div>
+  
+      <!-- Main Menu -->
+      <div>
+        <h3 class="text-lg font-bold mb-3 text-transparent bg-clip-text bg-[#5B9BEB]">
+          Main Menu
+        </h3>
+        <ul class="space-y-2 text-sm text-gray-300">
+          <li><a href="#" class="hover:text-white">Products</a></li>
+          <li><a href="#" class="hover:text-white">CSR</a></li>
+          <li><a href="#" class="hover:text-white">Contact Us</a></li>
+          <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-white">Terms & Conditions</a></li>
+        </ul>
+      </div>
+  
+      <!-- About HMD -->
+      <div>
+        <h3 class="text-lg font-bold mb-3 text-transparent bg-clip-text bg-[#5B9BEB]">
+          About HMD
+        </h3>
+        <ul class="space-y-2 text-sm text-gray-300">
+          <li><a href="#" class="hover:text-white">About Us</a></li>
+          <li><a href="#" class="hover:text-white">Our Infrastructure</a></li>
+          <li><a href="#" class="hover:text-white">Milestones</a></li>
+          <li><a href="#" class="hover:text-white">Quality Assurance</a></li>
+          <li><a href="#" class="hover:text-white">Leadership Team</a></li>
+        </ul>
+      </div>
+    </div>
+  
+    <!-- Divider & Bottom -->
+    <div class="border-t border-gray-600 mt-12 pt-6 text-center text-sm text-gray-400 animate-fade-up delay-200">
+      <p>© 2025 Hindustan Syringes & Medical Devices Ltd. All rights reserved.</p>
+      <div class="mt-4 flex justify-center gap-4 text-lg">
+        <a href="#" class="hover:text-[#5B9BEB] transition-all duration-300"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="hover:text-[#5B9BEB] transition-all duration-300"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="hover:text-[#5B9BEB] transition-all duration-300"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="hover:text-[#5B9BEB] transition-all duration-300"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="hover:text-[#5B9BEB] transition-all duration-300"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+
+
+<!-- Back to Top Button -->
+<button id="backToTopBtn"
+  class="fixed bottom-5 right-5 z-50 text-white p-3 rounded-full shadow-lg text-xl transition-all duration-300
+         bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] hover:opacity-90">
+  ↑
+</button>
+
+
+
+
+  
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous">
+
+
+
+    </script>
+    <script>
+        document.getElementById("backToTopBtn").addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+    </script>
+
+</body>
+
+</html>
