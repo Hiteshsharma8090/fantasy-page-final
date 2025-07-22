@@ -58,7 +58,7 @@
 
 
     <!-- ✅ Header -->
-    <header class="sticky top-0 z-50 backdrop-blur-xl bg-white/30 dark:bg-gray-900/30 shadow-md">
+    <header class="sticky top-0 z-50 backdrop-blur-xl bg-white/30  shadow-md">
         <div class="max-w-[1320px] mx-auto px-2 sm:px-4 py-3 flex justify-between items-center">
             <!-- Logo -->
             <a href="/" class="text-2xl sm:text-3xl font-extrabold text-[#BD3C34] flex items-center gap-2">
@@ -70,26 +70,23 @@
                 <!-- Dropdowns -->
                 <div class="relative group">
                     <button class="hover:text-[#3E5DA6] transition">Live Scores</button>
-                    <div
-                        class="absolute hidden group-hover:block bg-white dark:bg-gray-800 shadow-xl mt-2 rounded-md w-44 z-50">
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Live Now</a>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Recent Matches</a>
+                    <div class="absolute hidden group-hover:block bg-white  shadow-xl mt-2 rounded-md w-44 z-50">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Live Now</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Recent Matches</a>
                     </div>
                 </div>
                 <div class="relative group">
                     <button class="hover:text-[#3E5DA6] transition">Series</button>
-                    <div
-                        class="absolute hidden group-hover:block bg-white dark:bg-gray-800 shadow-xl mt-2 rounded-md w-44 z-50">
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">World Cup</a>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">IPL</a>
+                    <div class="absolute hidden group-hover:block bg-white  shadow-xl mt-2 rounded-md w-44 z-50">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">World Cup</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">IPL</a>
                     </div>
                 </div>
                 <div class="relative group">
                     <button class="hover:text-[#3E5DA6] transition">Teams</button>
-                    <div
-                        class="absolute hidden group-hover:block bg-white dark:bg-gray-800 shadow-xl mt-2 rounded-md w-44 z-50">
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">India</a>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Australia</a>
+                    <div class="absolute hidden group-hover:block bg-white  shadow-xl mt-2 rounded-md w-44 z-50">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">India</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Australia</a>
                     </div>
                 </div>
                 <a href="#" class="hover:text-[#3E5DA6] transition">News</a>
@@ -99,13 +96,13 @@
                 <!-- Search -->
                 <div class="relative hidden lg:block">
                     <input type="text" placeholder="Search players or teams..."
-                        class="pl-4 pr-10 py-1.5 text-sm rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-[#3E5DA6] transition" />
+                        class="pl-4 pr-10 py-1.5 text-sm rounded-full border border-gray-300 bg-white focus:ring-2 focus:ring-[#3E5DA6] transition" />
                     <span class="absolute right-3 top-1.5 text-gray-400">🔍</span>
                 </div>
 
                 <!-- Theme & Language -->
                 <button id="themeToggle" class="text-xl hover:text-yellow-400 transition">🌓</button>
-                <select class="bg-gray-100 dark:bg-gray-800 text-sm rounded px-2 py-1">
+                <select class="bg-gray-100 text-sm rounded px-2 py-1">
                     <option>EN</option>
                     <option>हिंदी</option>
                 </select>
@@ -161,7 +158,7 @@
 
     <!-- 📱 Bottom Navigation (Mobile Only with Proper Gradient Selection) -->
     <nav id="bottomNav"
-        class="fixed bottom-0 inset-x-0 z-40 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-t border-gray-200 dark:border-gray-700 flex justify-around items-center py-2 sm:hidden text-[11px]">
+        class="fixed bottom-0 inset-x-0 z-40 bg-white/90  backdrop-blur-md border-t border-gray-200  flex justify-around items-center py-2 sm:hidden text-[11px]">
 
         <!-- Home (default selected) -->
         <a href="#" class="nav-link flex flex-col items-center transition">
@@ -186,8 +183,7 @@
 
 
         <!-- Live -->
-        <a href="#"
-            class="nav-link flex flex-col items-center text-gray-600 dark:text-gray-300 hover:text-[#3E5DA6] transition">
+        <a href="#" class="nav-link flex flex-col items-center text-gray-600  hover:text-[#3E5DA6] transition">
             <svg class="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round"
                     d="M12 6v6l4 2m6-2a10 10 0 11-20 0 10 10 0 0120 0z" />
@@ -196,8 +192,7 @@
         </a>
 
         <!-- News -->
-        <a href="#"
-            class="nav-link flex flex-col items-center text-gray-600 dark:text-gray-300 hover:text-[#BD3C34] transition">
+        <a href="#" class="nav-link flex flex-col items-center text-gray-600  hover:text-[#BD3C34] transition">
             <svg class="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round"
                     d="M19 20H5a2 2 0 01-2-2V7a2 2 0 012-2h10l6 6v7a2 2 0 01-2 2z" />
@@ -206,8 +201,7 @@
         </a>
 
         <!-- Fantasy -->
-        <a href="#"
-            class="nav-link flex flex-col items-center text-gray-600 dark:text-gray-300 hover:text-[#3E5DA6] transition">
+        <a href="#" class="nav-link flex flex-col items-center text-gray-600  hover:text-[#3E5DA6] transition">
             <svg class="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round"
                     d="M3 7l8.485 8.485a2.121 2.121 0 003 0L21 9m-9-6a9 9 0 100 18 9 9 0 000-18z" />
@@ -216,8 +210,7 @@
         </a>
 
         <!-- Profile -->
-        <a href="#"
-            class="nav-link flex flex-col items-center text-gray-600 dark:text-gray-300 hover:text-[#BD3C34] transition">
+        <a href="#" class="nav-link flex flex-col items-center text-gray-600  hover:text-[#BD3C34] transition">
             <svg class="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round"
                     d="M5.121 17.804A9.003 9.003 0 0112 15a9.003 9.003 0 016.879 2.804M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -232,7 +225,7 @@
 
 
     <!-- ✅ Ultra-Compact Secondary Nav for Mobile -->
-    <div class="backdrop-blur-md bg-white/80 dark:bg-gray-800/40 border-y border-gray-200 dark:border-gray-700">
+    <div class="backdrop-blur-md bg-white/80 border-y border-gray-200 ">
         <div class="max-w-[1320px] mx-auto px-2 py-2 flex overflow-x-auto no-scrollbar gap-2 text-[12px] font-medium">
 
             <a href="#"
@@ -246,22 +239,22 @@
             </a>
 
             <a href="#"
-                class="flex-shrink-0 px-2.5 py-1 rounded-full bg-white text-gray-700 dark:text-gray-200 border border-gray-300 shadow-sm hover:shadow-md transition hover:bg-gray-100 dark:hover:bg-gray-800">
+                class="flex-shrink-0 px-2.5 py-1 rounded-full bg-white text-gray-700  border border-gray-300 shadow-sm hover:shadow-md transition hover:bg-gray-100 ">
                 🎤 Interviews
             </a>
 
             <a href="#"
-                class="flex-shrink-0 px-2.5 py-1 rounded-full bg-white text-gray-700 dark:text-gray-200 border border-gray-300 shadow-sm hover:shadow-md transition hover:bg-gray-100 dark:hover:bg-gray-800">
+                class="flex-shrink-0 px-2.5 py-1 rounded-full bg-white text-gray-700  border border-gray-300 shadow-sm hover:shadow-md transition hover:bg-gray-100 ">
                 📊 Analysis
             </a>
 
             <a href="#"
-                class="flex-shrink-0 px-2.5 py-1 rounded-full bg-white text-gray-700 dark:text-gray-200 border border-gray-300 shadow-sm hover:shadow-md transition hover:bg-gray-100 dark:hover:bg-gray-800">
+                class="flex-shrink-0 px-2.5 py-1 rounded-full bg-white text-gray-700  border border-gray-300 shadow-sm hover:shadow-md transition hover:bg-gray-100 ">
                 📈 Stats
             </a>
 
             <a href="#"
-                class="flex-shrink-0 px-2.5 py-1 rounded-full bg-white text-gray-700 dark:text-gray-200 border border-gray-300 shadow-sm hover:shadow-md transition hover:bg-gray-100 dark:hover:bg-gray-800">
+                class="flex-shrink-0 px-2.5 py-1 rounded-full bg-white text-gray-700  border border-gray-300 shadow-sm hover:shadow-md transition hover:bg-gray-100 0">
                 🏆 Rank
             </a>
 
@@ -276,12 +269,12 @@
             </a>
 
             <a href="#"
-                class="flex-shrink-0 px-2.5 py-1 rounded-full bg-white text-gray-700 dark:text-gray-200 border border-gray-300 shadow-sm hover:shadow-md transition hover:bg-gray-100 dark:hover:bg-gray-800">
+                class="flex-shrink-0 px-2.5 py-1 rounded-full bg-white text-gray-700  border border-gray-300 shadow-sm hover:shadow-md transition hover:bg-gray-100 ">
                 📷 Photos
             </a>
 
             <a href="#"
-                class="flex-shrink-0 px-2.5 py-1 rounded-full bg-white text-gray-700 dark:text-gray-200 border border-gray-300 shadow-sm hover:shadow-md transition hover:bg-gray-100 dark:hover:bg-gray-800">
+                class="flex-shrink-0 px-2.5 py-1 rounded-full bg-white text-gray-700 border border-gray-300 shadow-sm hover:shadow-md transition hover:bg-gray-100">
                 🎥 Videos
             </a>
 
@@ -296,7 +289,7 @@
             </a>
 
             <a href="#"
-                class="flex-shrink-0 px-2.5 py-1 rounded-full bg-white text-gray-700 dark:text-gray-200 border border-gray-300 shadow-sm hover:shadow-md transition hover:bg-gray-100 dark:hover:bg-gray-800">
+                class="flex-shrink-0 px-2.5 py-1 rounded-full bg-white text-gray-700 border border-gray-300 shadow-sm hover:shadow-md transition hover:bg-gray-100 ">
                 🚑 Injuries
             </a>
 
@@ -306,8 +299,7 @@
 
 
     <!-- Mobile Menu -->
-    <div id="mobileMenu"
-        class="hidden md:hidden bg-white dark:bg-gray-900 px-4 py-5 space-y-3 transition-all duration-300">
+    <div id="mobileMenu" class="hidden md:hidden bg-white  px-4 py-5 space-y-3 transition-all duration-300">
         <a href="#" class="block">Live Scores</a>
         <a href="#" class="block">Series</a>
         <a href="#" class="block">Teams</a>
@@ -315,9 +307,9 @@
         <a href="#" class="block">Rankings</a>
         <a href="#" class="block">Fantasy</a>
         <input type="text" placeholder="Search..."
-            class="w-full px-3 py-2 rounded-full text-sm border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-800" />
+            class="w-full px-3 py-2 rounded-full text-sm border border-gray-300  bg-gray-100 " />
         <div class="flex justify-between items-center">
-            <select class="bg-gray-100 dark:bg-gray-800 text-sm rounded px-2 py-1">
+            <select class="bg-gray-100  text-sm rounded px-2 py-1">
                 <option>EN</option>
                 <option>हिंदी</option>
             </select>
@@ -437,9 +429,9 @@
     <!-- 🏏 Match Center Section - Fully Mobile Optimized -->
     <section class="max-w-[1320px] mx-auto px-2 sm:px-4 py-3 sm:py-6 
     bg-gradient-to-br from-white via-blue-50 to-white 
-    dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 
+    
     rounded-xl shadow-sm
-    sm:bg-none sm:dark:bg-none sm:rounded-none sm:shadow-none">
+    sm:bg-none  sm:rounded-none sm:shadow-none">
         <!-- Heading -->
         <div class="flex items-center gap-2 mb-4">
             <div class="w-2 h-2 bg-[#BD3C34] rounded-full animate-pulse shadow-md"></div>
@@ -485,9 +477,9 @@
         <!-- Scroll Buttons -->
         <div class="relative">
             <button onclick="scrollLeft()"
-                class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/30 dark:bg-gray-700/30 backdrop-blur-md p-2 rounded-full hidden md:block shadow-lg hover:scale-110 transition">&#8592;</button>
+                class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/30  backdrop-blur-md p-2 rounded-full hidden md:block shadow-lg hover:scale-110 transition">&#8592;</button>
             <button onclick="scrollRight()"
-                class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/30 dark:bg-gray-700/30 backdrop-blur-md p-2 rounded-full hidden md:block shadow-lg hover:scale-110 transition">&#8594;</button>
+                class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/30 backdrop-blur-md p-2 rounded-full hidden md:block shadow-lg hover:scale-110 transition">&#8594;</button>
 
             <div class="relative">
                 <div id="matchContainer"
@@ -495,8 +487,8 @@
 
                     <!-- 🔴 LIVE -->
                     <div data-type="live" class="match-card snap-start min-w-[260px] sm:min-w-[280px] md:min-w-[300px]
-                  bg-white sm:bg-white/30 dark:bg-gray-800/30
-                  backdrop-blur-xl rounded-xl border border-[#E2E8F0] dark:border-[#2D3748]
+                  bg-white sm:bg-white/30 
+                  backdrop-blur-xl rounded-xl border border-[#E2E8F0] 
                   shadow-md p-3 sm:p-4 flex-shrink-0 flex flex-col justify-between
                   hover:scale-[1.01] transition">
 
@@ -517,7 +509,7 @@
                         </div>
 
                         <p class="text-xs text-gray-600 mt-1">Ov: 17.2 · RR: 10.3</p>
-                        <p class="text-xs italic text-gray-700 dark:text-gray-300 truncate">"Hardik smashes a six!"</p>
+                        <p class="text-xs italic text-gray-700 0 truncate">"Hardik smashes a six!"</p>
                         <p class="text-xs text-[#3E5DA6] mt-1">Win%: <b>IND 65%</b></p>
 
                         <a href="#"
@@ -528,8 +520,8 @@
 
                     <!-- 🟡 UPCOMING -->
                     <div data-type="upcoming" class="match-card snap-start min-w-[260px] sm:min-w-[280px] md:min-w-[300px]
-                  bg-white sm:bg-white/30 dark:bg-gray-800/30
-                  backdrop-blur-xl rounded-xl border border-[#E2E8F0] dark:border-[#2D3748]
+                  bg-white sm:bg-white/30 
+                  backdrop-blur-xl rounded-xl border border-[#E2E8F0] 
                   shadow-md p-3 sm:p-4 flex-shrink-0 flex flex-col justify-between
                   hover:scale-[1.01] transition">
 
@@ -547,7 +539,7 @@
                         </div>
 
                         <p class="text-xs text-gray-600 mt-1">Starts in: 3h 15m</p>
-                        <p class="text-xs italic text-gray-700 dark:text-gray-300 truncate">"Babar to lead the side"</p>
+                        <p class="text-xs italic text-gray-700  truncate">"Babar to lead the side"</p>
 
                         <a href="#"
                             class="mt-2 text-xs py-1 rounded bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white text-center hover:brightness-110 transition">
@@ -557,8 +549,8 @@
 
                     <!-- ✅ COMPLETED 1 -->
                     <div data-type="completed" class="match-card snap-start min-w-[260px] sm:min-w-[280px] md:min-w-[300px]
-                  bg-white sm:bg-white/30 dark:bg-gray-800/30
-                  backdrop-blur-xl rounded-xl border border-[#E2E8F0] dark:border-[#2D3748]
+                  bg-white sm:bg-white/30 
+                  backdrop-blur-xl rounded-xl border border-[#E2E8F0] 
                   shadow-md p-3 sm:p-4 flex-shrink-0 flex flex-col justify-between
                   hover:scale-[1.01] transition">
 
@@ -579,7 +571,7 @@
                         </div>
 
                         <p class="text-xs text-gray-600 mt-1">Result: ENG won by 58 runs</p>
-                        <p class="text-xs italic text-gray-700 dark:text-gray-300 truncate">"Root bags Player of the
+                        <p class="text-xs italic text-gray-700  truncate">"Root bags Player of the
                             Match"</p>
 
                         <a href="#"
@@ -590,8 +582,8 @@
 
                     <!-- ✅ COMPLETED 2 -->
                     <div data-type="completed" class="match-card snap-start min-w-[260px] sm:min-w-[280px] md:min-w-[300px]
-                  bg-white sm:bg-white/30 dark:bg-gray-800/30
-                  backdrop-blur-xl rounded-xl border border-[#E2E8F0] dark:border-[#2D3748]
+                  bg-white sm:bg-white/30 
+                  backdrop-blur-xl rounded-xl border border-[#E2E8F0] 
                   shadow-md p-3 sm:p-4 flex-shrink-0 flex flex-col justify-between
                   hover:scale-[1.01] transition">
 
@@ -612,7 +604,7 @@
                         </div>
 
                         <p class="text-xs text-gray-600 mt-1">Result: IND won by 12 runs</p>
-                        <p class="text-xs italic text-gray-700 dark:text-gray-300 truncate">"Suryakumar shines under
+                        <p class="text-xs italic text-gray-700  truncate">"Suryakumar shines under
                             pressure"</p>
 
                         <a href="#"
@@ -623,8 +615,8 @@
 
                     <!-- ✅ COMPLETED 3 -->
                     <div data-type="completed" class="match-card snap-start min-w-[260px] sm:min-w-[280px] md:min-w-[300px]
-                  bg-white sm:bg-white/30 dark:bg-gray-800/30
-                  backdrop-blur-xl rounded-xl border border-[#E2E8F0] dark:border-[#2D3748]
+                  bg-white sm:bg-white/30 
+                  backdrop-blur-xl rounded-xl border border-[#E2E8F0] 
                   shadow-md p-3 sm:p-4 flex-shrink-0 flex flex-col justify-between
                   hover:scale-[1.01] transition">
 
@@ -645,7 +637,7 @@
                         </div>
 
                         <p class="text-xs text-gray-600 mt-1">Result: AFG won by 3 wickets</p>
-                        <p class="text-xs italic text-gray-700 dark:text-gray-300 truncate">"Nabi anchors the chase"</p>
+                        <p class="text-xs italic text-gray-700  truncate">"Nabi anchors the chase"</p>
 
                         <a href="#"
                             class="mt-2 text-xs py-1 rounded bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white text-center hover:brightness-110 transition">
@@ -680,7 +672,7 @@
 
     <div class="max-w-[1320px] mx-auto sm:px-4  ">
         <section
-            class="bg-white sm:bg-white/30 dark:bg-gray-800 sm:dark:bg-gray-800/30 backdrop-blur-sm sm:rounded-xl shadow-md sm:shadow-lg px-2 sm:px-4 py-3 ">
+            class="bg-white sm:bg-white/30  backdrop-blur-sm sm:rounded-xl shadow-md sm:shadow-lg px-2 sm:px-4 py-3 ">
             <!-- Outer Card Background -->
             <div class="">
                 <!-- Section Header -->
@@ -790,7 +782,7 @@
 
     <div class="max-w-[1320px] mx-auto sm:px-4 mt-4 sm:mt-8 ">
         <section
-            class="bg-white sm:bg-white/30 dark:bg-gray-800 sm:dark:bg-gray-800/30 backdrop-blur-sm sm:rounded-xl shadow-md sm:shadow-lg pb-0  sm:px-4 py-3 sm:py-6">
+            class="bg-white sm:bg-white/30  backdrop-blur-sm sm:rounded-xl shadow-md sm:shadow-lg pb-0  sm:px-4 py-3 sm:py-6">
 
             <!-- 🏷️ Label -->
             <div class="flex items-center gap-2 mb-2 px-2 sm:px-0">
@@ -816,19 +808,18 @@
 
                     <!-- Article 1 -->
                     <div
-                        class="bg-white dark:bg-gray-900 sm:bg-white/20 dark:sm:bg-gray-800/40 border border-[#E2E8F0] dark:border-[#2D3748] rounded-xl shadow-md hover:shadow-lg transition hover:scale-[1.01] overflow-hidden">
+                        class="bg-white  border border-[#E2E8F0]  rounded-xl shadow-md hover:shadow-lg transition hover:scale-[1.01] overflow-hidden">
                         <img src="images/breaking-news-reporters-reporting-on-coronavirus-from-china.webp"
                             class="w-full h-40 sm:h-48 object-cover rounded-t-xl" alt="News">
                         <div class="p-4 space-y-1">
-                            <span
-                                class="text-xs bg-blue-100 text-blue-700 dark:bg-blue-800 dark:text-blue-100 px-2 py-0.5 rounded-full inline-block">🧠
+                            <span class="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full inline-block">🧠
                                 Analysis</span>
                             <h3 class="text-sm sm:text-base font-bold text-[#3E5DA6] leading-tight">India’s Middle Order
                                 Masterclass Secures Another Thriller</h3>
-                            <p class="text-xs text-gray-600 dark:text-gray-300">India clinched a final-over win against
+                            <p class="text-xs text-gray-600 ">India clinched a final-over win against
                                 Australia. Here's how the middle order held its nerve...</p>
-                            <div class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">
-                                By <span class="font-semibold text-gray-800 dark:text-white">Rahul Joshi</span> • 2 hrs
+                            <div class="text-[11px] text-gray-500 mt-1">
+                                By <span class="font-semibold text-gray-800 ">Rahul Joshi</span> • 2 hrs
                                 ago
                             </div>
                         </div>
@@ -836,19 +827,18 @@
 
                     <!-- Article 2 -->
                     <div
-                        class="bg-white dark:bg-gray-900 sm:bg-white/20 dark:sm:bg-gray-800/40 border border-[#E2E8F0] dark:border-[#2D3748] rounded-xl shadow-md hover:shadow-lg transition hover:scale-[1.01] overflow-hidden">
+                        class="bg-white  sm:bg-white/20  border border-[#E2E8F0]  rounded-xl shadow-md hover:shadow-lg transition hover:scale-[1.01] overflow-hidden">
                         <img src="images/u-s-deputy-secretary-of-state-in-tokyo.webp"
                             class="w-full h-40 sm:h-48 object-cover rounded-t-xl" alt="News">
                         <div class="p-4 space-y-1">
-                            <span
-                                class="text-xs bg-red-100 text-red-700 dark:bg-red-800 dark:text-red-100 px-2 py-0.5 rounded-full inline-block">❗
+                            <span class="text-xs bg-red-100 text-red-700  px-2 py-0.5 rounded-full inline-block">❗
                                 Injury</span>
                             <h3 class="text-sm sm:text-base font-bold text-[#3E5DA6] leading-tight">Jasprit Bumrah ruled
                                 out of T20 World Cup</h3>
-                            <p class="text-xs text-gray-600 dark:text-gray-300">India suffer a blow as ace pacer Bumrah
+                            <p class="text-xs text-gray-600 ">India suffer a blow as ace pacer Bumrah
                                 is declared unfit for the upcoming mega tournament.</p>
-                            <div class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">
-                                By <span class="font-semibold text-gray-800 dark:text-white">Meera Patel</span> • 5 hrs
+                            <div class="text-[11px] text-gray-500  mt-1">
+                                By <span class="font-semibold text-gray-800 ">Meera Patel</span> • 5 hrs
                                 ago
                             </div>
                         </div>
@@ -867,7 +857,7 @@
 
                 <!-- 🔶 Sidebar Top Stories -->
                 <aside
-                    class="lg:col-span-4 bg-white dark:bg-gray-900 sm:bg-white/20 dark:sm:bg-gray-800/40 shadow-sm sm:shadow-md border border-[#E2E8F0] dark:border-[#2D3748] sm:rounded-xl  py-4 px-2 sm-px-4 space-y-4">
+                    class="lg:col-span-4 bg-white sm:bg-white/20 shadow-sm sm:shadow-md border border-[#E2E8F0]  sm:rounded-xl  py-4 px-2 sm-px-4 space-y-4">
                     <h4 class="text-sm sm:text-base font-bold text-[#BD3C34] mb-1">Top Stories</h4>
 
                     <!-- Item 1 -->
@@ -940,7 +930,7 @@
 
     <div class="max-w-[1320px] mx-auto sm:px-4 mt-4 sm:mt-8">
         <section
-            class="bg-white sm:bg-white/30 dark:bg-gray-800 sm:dark:bg-gray-800/30 backdrop-blur-sm sm:rounded-xl shadow-md sm:shadow-lg  sm:px-4 py-3 sm:py-6">
+            class="bg-white sm:bg-white/30  backdrop-blur-sm sm:rounded-xl shadow-md sm:shadow-lg  sm:px-4 py-3 sm:py-6">
 
             <!-- Header -->
             <div class="flex items-center gap-2 mb-4 px-2 sm:px-0">
@@ -956,7 +946,7 @@
 
 
                 <div
-                    class="lg:col-span-8 glass border border-[#E2E8F0] dark:border-[#2D3748] sm:rounded-2xl p-2  sm:p-4 shadow-sm sm:shadow-md space-y-4 overflow-hidden transition-all duration-300">
+                    class="lg:col-span-8 glass border border-[#E2E8F0]  sm:rounded-2xl p-2  sm:p-4 shadow-sm sm:shadow-md space-y-4 overflow-hidden transition-all duration-300">
 
                     <!-- Header -->
                     <div class="flex items-center justify-between mb-2">
@@ -983,8 +973,7 @@
                                     <th class="p-2 text-center">Status</th>
                                 </tr>
                             </thead>
-                            <tbody id="points-table-body"
-                                class="divide-y divide-gray-100 dark:divide-gray-700 text-gray-700 dark:text-gray-200">
+                            <tbody id="points-table-body" class="divide-y divide-gray-100  text-gray-700 ">
                                 <!-- Rows will be inserted by JS -->
                             </tbody>
                         </table>
@@ -994,7 +983,7 @@
 
                 <!-- 🎯 Fantasy Dream Picks – Full Section with Highlight Card -->
                 <div
-                    class="lg:col-span-4 glass border border-[#E2E8F0] dark:border-[#2D3748] sm:rounded-xl p-2 sm:p-4 shadow-sm sm:shadow-md space-y-4 overflow-hidden">
+                    class="lg:col-span-4 glass border border-[#E2E8F0]  sm:rounded-xl p-2 sm:p-4 shadow-sm sm:shadow-md space-y-4 overflow-hidden">
 
                     <!-- Header -->
                     <div class="flex items-center justify-between">
@@ -1006,8 +995,7 @@
                     <!-- Two-Column Cards Grid -->
                     <div class="grid grid-cols-2 gap-3 text-sm">
                         <!-- Captain -->
-                        <div
-                            class="rounded-xl border border-gray-200 dark:border-gray-700 p-3 shadow-sm bg-white dark:bg-gray-800">
+                        <div class="rounded-xl border border-gray-200  p-3 shadow-sm bg-white ">
                             <div class="flex items-center justify-between mb-1">
                                 <span class="text-yellow-500 text-xl">👑</span>
                                 <span
@@ -1016,12 +1004,11 @@
                                 </span>
                             </div>
                             <div class="font-semibold">Rohit Sharma</div>
-                            <div class="text-xs text-gray-600 dark:text-gray-400">Top form, lethal in powerplays</div>
+                            <div class="text-xs text-gray-600 ">Top form, lethal in powerplays</div>
                         </div>
 
                         <!-- Vice Captain -->
-                        <div
-                            class="rounded-xl border border-gray-200 dark:border-gray-700 p-3 shadow-sm bg-white dark:bg-gray-800">
+                        <div class="rounded-xl border border-gray-200  p-3 shadow-sm bg-white ">
                             <div class="flex items-center justify-between mb-1">
                                 <span class="text-blue-500 text-xl">⭐</span>
                                 <span
@@ -1030,12 +1017,11 @@
                                 </span>
                             </div>
                             <div class="font-semibold">Travis Head</div>
-                            <div class="text-xs text-gray-600 dark:text-gray-400">180+ SR in last 5 games</div>
+                            <div class="text-xs text-gray-600 ">180+ SR in last 5 games</div>
                         </div>
 
                         <!-- X-Factor -->
-                        <div
-                            class="rounded-xl border border-gray-200 dark:border-gray-700 p-3 shadow-sm bg-white dark:bg-gray-800">
+                        <div class="rounded-xl border border-gray-200  p-3 shadow-sm bg-white ">
                             <div class="flex items-center justify-between mb-1">
                                 <span class="text-green-600 text-xl">💥</span>
                                 <span
@@ -1044,12 +1030,11 @@
                                 </span>
                             </div>
                             <div class="font-semibold">Kuldeep Yadav</div>
-                            <div class="text-xs text-gray-600 dark:text-gray-400">Ideal spinner on dry pitch</div>
+                            <div class="text-xs text-gray-600 ">Ideal spinner on dry pitch</div>
                         </div>
 
                         <!-- Budget Pick -->
-                        <div
-                            class="rounded-xl border border-gray-200 dark:border-gray-700 p-3 shadow-sm bg-white dark:bg-gray-800">
+                        <div class="rounded-xl border border-gray-200  p-3 shadow-sm bg-white ">
                             <div class="flex items-center justify-between mb-1">
                                 <span class="text-purple-600 text-xl">🎯</span>
                                 <span
@@ -1058,12 +1043,11 @@
                                 </span>
                             </div>
                             <div class="font-semibold">Tilak Varma</div>
-                            <div class="text-xs text-gray-600 dark:text-gray-400">Aggressive middle-order gem</div>
+                            <div class="text-xs text-gray-600 ">Aggressive middle-order gem</div>
                         </div>
 
                         <!-- Avoid -->
-                        <div
-                            class="rounded-xl border border-gray-200 dark:border-gray-700 p-3 shadow-sm bg-white dark:bg-gray-800 col-span-2">
+                        <div class="rounded-xl border border-gray-200  p-3 shadow-sm bg-white  col-span-2">
                             <div class="flex items-center justify-between mb-1">
                                 <span class="text-red-500 text-xl">🚫</span>
                                 <span
@@ -1072,7 +1056,7 @@
                                 </span>
                             </div>
                             <div class="font-semibold">Jasprit Bumrah (injured)</div>
-                            <div class="text-xs text-gray-600 dark:text-gray-400">Ruled out of squad</div>
+                            <div class="text-xs text-gray-600 ">Ruled out of squad</div>
                         </div>
                     </div>
 
@@ -1097,7 +1081,7 @@
 
     <div class="max-w-[1320px] mx-auto sm:px-4 mt-4 sm:mt-8 ">
         <section
-            class="bg-white sm:bg-white/30 dark:bg-gray-800 sm:dark:bg-gray-800/30 backdrop-blur-sm sm:rounded-xl shadow-md sm:shadow-lg sm:px-4 py-3 sm:py-6">
+            class="bg-white sm:bg-white/30  backdrop-blur-sm sm:rounded-xl shadow-md sm:shadow-lg sm:px-4 py-3 sm:py-6">
             <!-- Outer Card Background -->
             <div class="bg-white sm:shadow-sm sm:rounded-2xl p-2 sm:p-4">
 
@@ -1119,49 +1103,45 @@
 
                     <!-- Card -->
                     <div
-                        class="min-w-[180px] snap-start bg-white dark:bg-gray-800 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700 p-4 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105">
+                        class="min-w-[180px] snap-start bg-white  rounded-2xl shadow-md border border-gray-200  p-4 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105">
                         <img src="images/Profile1.png" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full shadow mb-3"
                             alt="Player Avatar">
-                        <h3
-                            class="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-100 text-center leading-tight">
+                        <h3 class="text-sm sm:text-base font-semibold text-gray-800  text-center leading-tight">
                             Virat Kohli</h3>
-                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-300 mt-0.5">Most Runs</p>
+                        <p class="text-xs sm:text-sm text-gray-500  mt-0.5">Most Runs</p>
                         <span class="text-xl sm:text-2xl font-bold text-[#3E5DA6] mt-1">745</span>
                     </div>
 
                     <!-- Card -->
                     <div
-                        class="min-w-[180px] snap-start bg-white dark:bg-gray-800 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700 p-4 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105">
+                        class="min-w-[180px] snap-start bg-white rounded-2xl shadow-md border border-gray-200  p-4 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105">
                         <img src="images/Profile1.png" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full shadow mb-3"
                             alt="Player Avatar">
-                        <h3
-                            class="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-100 text-center leading-tight">
+                        <h3 class="text-sm sm:text-base font-semibold text-gray-800  text-center leading-tight">
                             Jasprit Bumrah</h3>
-                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-300 mt-0.5">Most Wickets</p>
+                        <p class="text-xs sm:text-sm text-gray-500  mt-0.5">Most Wickets</p>
                         <span class="text-xl sm:text-2xl font-bold text-[#BD3C34] mt-1">21</span>
                     </div>
 
                     <!-- Card 3 -->
                     <div
-                        class="min-w-[180px] snap-start bg-white dark:bg-gray-800 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700 p-4 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105">
+                        class="min-w-[180px] snap-start bg-white  rounded-2xl shadow-md border border-gray-200  p-4 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105">
                         <img src="images/Profile1.png" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full shadow mb-3"
                             alt="Suryakumar Yadav">
-                        <h3
-                            class="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-100 text-center leading-tight">
+                        <h3 class="text-sm sm:text-base font-semibold text-gray-800  text-center leading-tight">
                             Suryakumar Yadav</h3>
-                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-300">Best Strike Rate</p>
+                        <p class="text-xs sm:text-sm text-gray-500 ">Best Strike Rate</p>
                         <span class="text-xl sm:text-2xl font-bold text-[#3E5DA6] mt-1">184.7</span>
                     </div>
 
                     <!-- Card 4 -->
                     <div
-                        class="min-w-[180px] snap-start bg-white dark:bg-gray-800 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700 p-4 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105">
+                        class="min-w-[180px] snap-start bg-white  rounded-2xl shadow-md border border-gray-200  p-4 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105">
                         <img src="images/Profile1.png" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full shadow mb-3"
                             alt="Kuldeep Yadav">
-                        <h3
-                            class="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-100 text-center leading-tight">
+                        <h3 class="text-sm sm:text-base font-semibold text-gray-800  text-center leading-tight">
                             Kuldeep Yadav</h3>
-                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-300">Best Economy</p>
+                        <p class="text-xs sm:text-sm text-gray-500 ">Best Economy</p>
                         <span class="text-xl sm:text-2xl font-bold text-[#BD3C34] mt-1">5.2</span>
                     </div>
 
@@ -1219,7 +1199,7 @@
 
     <div class="max-w-[1320px] mx-auto sm:px-4 mt-4 sm:mt-8 ">
         <section
-            class="bg-white sm:bg-white/30 dark:bg-gray-800 sm:dark:bg-gray-800/30 backdrop-blur-sm sm:rounded-xl shadow-md sm:shadow-lg sm:px-4 py-3 sm:py-6">
+            class="bg-white sm:bg-white/30 : backdrop-blur-sm sm:rounded-xl shadow-md sm:shadow-lg sm:px-4 py-3 sm:py-6">
 
 
             <div class="bg-white sm:shadow-sm sm:rounded-2xl p-2 sm:p-4">
@@ -1238,12 +1218,12 @@
 
                 <!-- Tabs -->
                 <button onclick="scrollVideos('left')"
-                    class="absolute left-4 top-52 -translate-y-1/2 z-10 bg-white/30 dark:bg-gray-700/30 backdrop-blur-md p-2 rounded-full hidden md:block shadow-lg hover:scale-110 transition">
+                    class="absolute left-4 top-52 -translate-y-1/2 z-10 bg-white/30  backdrop-blur-md p-2 rounded-full hidden md:block shadow-lg hover:scale-110 transition">
                     &#8592;
                 </button>
 
                 <button onclick="scrollVideos('right')"
-                    class="absolute right-4 top-52 -translate-y-1/2 z-10 bg-white/30 dark:bg-gray-700/30 backdrop-blur-md p-2 rounded-full hidden md:block shadow-lg hover:scale-110 transition">
+                    class="absolute right-4 top-52 -translate-y-1/2 z-10 bg-white/30  backdrop-blur-md p-2 rounded-full hidden md:block shadow-lg hover:scale-110 transition">
                     &#8594;
                 </button>
 
@@ -1555,18 +1535,18 @@
           </button>
         </td>
       </tr>
-      <tr id="expand-${team.id}" class="hidden bg-gray-50 dark:bg-gray-900">
+      <tr id="expand-${team.id}" class="hidden bg-gray-50 ">
         <td colspan="6" class="p-3">
-          <div class="grid gap-2 text-xs text-gray-700 dark:text-gray-300">
-            <a href="#" class="flex justify-between items-center p-2 rounded-md border border-gray-200 dark:border-gray-700 hover:bg-[#f0f4ff] dark:hover:bg-gray-800 transition">
+          <div class="grid gap-2 text-xs text-gray-700 ">
+            <a href="#" class="flex justify-between items-center p-2 rounded-md border border-gray-200  hover:bg-[#f0f4ff]  transition">
               <span>🇮🇳 vs 🇦🇺 <span class="text-gray-500">182/6 (20)</span></span>
               <span class="text-green-600 font-semibold">✅ Won by 10 runs</span>
             </a>
-            <a href="#" class="flex justify-between items-center p-2 rounded-md border border-gray-200 dark:border-gray-700 hover:bg-[#f0f4ff] dark:hover:bg-gray-800 transition">
+            <a href="#" class="flex justify-between items-center p-2 rounded-md border border-gray-200  hover:bg-[#f0f4ff] 0 transition">
               <span>🇮🇳 vs 🇵🇰 <span class="text-gray-500">175/8 (19.4)</span></span>
               <span class="text-green-600 font-semibold">✅ Won by 2 wickets</span>
             </a>
-            <a href="#" class="flex justify-between items-center p-2 rounded-md border border-gray-200 dark:border-gray-700 hover:bg-[#f0f4ff] dark:hover:bg-gray-800 transition">
+            <a href="#" class="flex justify-between items-center p-2 rounded-md border border-gray-200 0 hover:bg-[#f0f4ff] 0 transition">
               <span>🇮🇳 vs 🇬🇧 <span class="text-gray-500">144/9 (20)</span></span>
               <span class="text-red-600 font-semibold">❌ Lost by 4 wickets</span>
             </a>
