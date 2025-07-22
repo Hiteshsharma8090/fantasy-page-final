@@ -1451,6 +1451,346 @@
 
 
 
+    <div class="max-w-[1320px] mx-auto sm:px-4 mt-4 sm:mt-8">
+        <section
+            class="bg-white sm:bg-white/30 dark:bg-gray-800 sm:dark:bg-gray-800/30 backdrop-blur-sm sm:rounded-xl shadow-md sm:shadow-lg  sm:px-4 py-3 sm:py-6">
+
+            <!-- Header -->
+            <div class="flex items-center gap-2 mb-4 px-2 sm:px-0">
+                <div class="w-2 h-2 bg-[#BD3C34] rounded-full animate-pulse shadow-md "></div>
+                <h2
+                    class="text-base sm:text-lg md:text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34]">
+                    IPL Teams & Cap Leaderboard
+                </h2>
+            </div>
+
+            <!-- Main Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+
+
+                <div
+                    class="lg:col-span-8 glass border border-[#E2E8F0] dark:border-[#2D3748] sm:rounded-2xl p-2  sm:p-4 shadow-sm sm:shadow-md space-y-4 overflow-hidden transition-all duration-300">
+
+                    <!-- Header with Tabs -->
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-0 mb-4">
+                        <h3
+                            class="text-base sm:text-lg font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] flex items-center gap-2">
+                            Teams
+                        </h3>
+
+                        <!-- Tabs -->
+                        <div class="flex gap-2 sm:gap-3 text-xs sm:text-sm">
+                            <button onclick="switchTournament('ipl')" id="tab-ipl"
+                                class="tab-btn w-full sm:w-auto px-4 py-1.5 rounded-full bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white shadow-md tab-active">
+                                IPL
+                            </button>
+                            <button onclick="switchTournament('t20')" id="tab-t20" class="tab-btn w-full sm:w-auto px-4 py-1.5 rounded-full
+                                bg-white sm:bg-transparent
+                                border border-[#3E5DA6] text-[#3E5DA6] hover:bg-[#3E5DA6]/10">
+                                Men's
+                            </button>
+                            <button onclick="switchTournament('odi')" id="tab-odi" class="tab-btn w-full sm:w-auto px-4 py-1.5 rounded-full
+                                bg-white sm:bg-transparent
+                                border border-[#3E5DA6] text-[#3E5DA6] hover:bg-[#3E5DA6]/10">
+                                Women;s
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-2 space-y-4 animate-fade-in">
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            <!-- Mumbai Indians -->
+                            <div class="bg-white shadow rounded-xl p-4 flex flex-col items-center text-center">
+                                <img src="images/MI_team.svg"
+                                    class="w-12 h-12 mb-2" alt="MI">
+                                <h4 class="text-sm font-bold text-gray-800">Mumbai Indians</h4>
+                                <p class="text-xs text-gray-500">MI • Captain: Hardik Pandya</p>
+                                <p class="text-xs text-gray-500">Wankhede • Titles: 5</p>
+                                <a href="#"
+                                    class="mt-2 text-xs text-white font-semibold px-3 py-1 rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] hover:opacity-90 transition">View
+                                    Squad</a>
+                            </div>
+
+                            <!-- Chennai Super Kings -->
+                            <div class="bg-white shadow rounded-xl p-4 flex flex-col items-center text-center">
+                                <img src="images/CSk_team.svg"
+                                    class="w-12 h-12 mb-2" alt="CSK">
+                                <h4 class="text-sm font-bold text-gray-800">Chennai Super Kings</h4>
+                                <p class="text-xs text-gray-500">CSK • Captain: Ruturaj Gaikwad</p>
+                                <p class="text-xs text-gray-500">Chepauk • Titles: 5</p>
+                                <a href="#"
+                                    class="mt-2 text-xs text-white font-semibold px-3 py-1 rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] hover:opacity-90 transition">View
+                                    Squad</a>
+                            </div>
+
+                            <!-- Royal Challengers Bangalore -->
+                            <div class="bg-white shadow rounded-xl p-4 flex flex-col items-center text-center">
+                                <img src="images/RCB_team.svg"
+                                    class="w-12 h-12 mb-2" alt="RCB">
+                                <h4 class="text-sm font-bold text-gray-800">Royal Challengers Bangalore</h4>
+                                <p class="text-xs text-gray-500">RCB • Captain: Faf du Plessis</p>
+                                <p class="text-xs text-gray-500">Chinnaswamy • Titles: 0</p>
+                                <a href="#"
+                                    class="mt-2 text-xs text-white font-semibold px-3 py-1 rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] hover:opacity-90 transition">View
+                                    Squad</a>
+                            </div>
+
+                            <!-- Kolkata Knight Riders -->
+                            <div class="bg-white shadow rounded-xl p-4 flex flex-col items-center text-center">
+                                <img src="images/kkr_team.svg"
+                                    class="w-12 h-12 mb-2" alt="KKR">
+                                <h4 class="text-sm font-bold text-gray-800">Kolkata Knight Riders</h4>
+                                <p class="text-xs text-gray-500">KKR • Captain: Shreyas Iyer</p>
+                                <p class="text-xs text-gray-500">Eden Gardens • Titles: 2</p>
+                                <a href="#"
+                                    class="mt-2 text-xs text-white font-semibold px-3 py-1 rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] hover:opacity-90 transition">View
+                                    Squad</a>
+                            </div>
+
+                            <!-- Rajasthan Royals -->
+                            <div class="bg-white shadow rounded-xl p-4 flex flex-col items-center text-center">
+                                <img src="images/RR_team.svg"
+                                    class="w-12 h-12 mb-2" alt="RR">
+                                <h4 class="text-sm font-bold text-gray-800">Rajasthan Royals</h4>
+                                <p class="text-xs text-gray-500">RR • Captain: Sanju Samson</p>
+                                <p class="text-xs text-gray-500">Sawai Mansingh • Titles: 1</p>
+                                <a href="#"
+                                    class="mt-2 text-xs text-white font-semibold px-3 py-1 rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] hover:opacity-90 transition">View
+                                    Squad</a>
+                            </div>
+
+                            <!-- Sunrisers Hyderabad -->
+                            <div class="bg-white shadow rounded-xl p-4 flex flex-col items-center text-center">
+                                <img src="images/GT_team.svg"
+                                    class="w-12 h-12 mb-2" alt="SRH">
+                                <h4 class="text-sm font-bold text-gray-800">Sunrisers Hyderabad</h4>
+                                <p class="text-xs text-gray-500">SRH • Captain: Pat Cummins</p>
+                                <p class="text-xs text-gray-500">Rajiv Gandhi • Titles: 1</p>
+                                <a href="#"
+                                    class="mt-2 text-xs text-white font-semibold px-3 py-1 rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] hover:opacity-90 transition">View
+                                    Squad</a>
+                            </div>
+
+                            <!-- Delhi Capitals -->
+                            <div class="bg-white shadow rounded-xl p-4 flex flex-col items-center text-center">
+                                <img src="images/DC_team.svg"
+                                    class="w-12 h-12 mb-2" alt="DC">
+                                <h4 class="text-sm font-bold text-gray-800">Delhi Capitals</h4>
+                                <p class="text-xs text-gray-500">DC • Captain: Rishabh Pant</p>
+                                <p class="text-xs text-gray-500">Arun Jaitley • Titles: 0</p>
+                                <a href="#"
+                                    class="mt-2 text-xs text-white font-semibold px-3 py-1 rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] hover:opacity-90 transition">View
+                                    Squad</a>
+                            </div>
+
+                            <!-- Gujarat Titans -->
+                            <div class="bg-white shadow rounded-xl p-4 flex flex-col items-center text-center">
+                                <img src="images/GT_team.svg"
+                                    class="w-12 h-12 mb-2" alt="GT">
+                                <h4 class="text-sm font-bold text-gray-800">Gujarat Titans</h4>
+                                <p class="text-xs text-gray-500">GT • Captain: Shubman Gill</p>
+                                <p class="text-xs text-gray-500">Narendra Modi Stadium • Titles: 1</p>
+                                <a href="#"
+                                    class="mt-2 text-xs text-white font-semibold px-3 py-1 rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] hover:opacity-90 transition">View
+                                    Squad</a>
+                            </div>
+
+                            <!-- Lucknow Super Giants -->
+                            <div class="bg-white shadow rounded-xl p-4 flex flex-col items-center text-center">
+                                <img src="images/LSG_team.svg"
+                                    class="w-12 h-12 mb-2" alt="LSG">
+                                <h4 class="text-sm font-bold text-gray-800">Lucknow Super Giants</h4>
+                                <p class="text-xs text-gray-500">LSG • Captain: KL Rahul</p>
+                                <p class="text-xs text-gray-500">BRSABV Ekana • Titles: 0</p>
+                                <a href="#"
+                                    class="mt-2 text-xs text-white font-semibold px-3 py-1 rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] hover:opacity-90 transition">View
+                                    Squad</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 🎯 Fantasy Dream Picks – Full Section with Highlight Card -->
+                <div
+                    class="lg:col-span-4 glass border border-[#E2E8F0] dark:border-[#2D3748] sm:rounded-xl p-2 sm:p-4 shadow-sm sm:shadow-md space-y-4 overflow-hidden">
+
+                    <!-- Header -->
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-[#BD3C34] font-bold text-base sm:text-lg">Caps</h3>
+                        <a href="#" class="text-xs text-[#BD3C34] underline hover:text-[#3E5DA6] transition">View
+                            All</a>
+                    </div>
+
+
+                    <div class="space-y-4 animate-fade-in">
+                        <!-- Tabs -->
+                        <div class="flex gap-2">
+                            <button onclick="switchCap('orange')" id="tab-orange"
+                                class="px-3 py-1 rounded-full bg-gradient-to-r from-orange-400 to-yellow-500 text-white text-xs font-semibold shadow">
+                                🟠 Orange Cap
+                            </button>
+                            <button onclick="switchCap('purple')" id="tab-purple"
+                                class="px-3 py-1 rounded-full border border-purple-500 text-purple-700 text-xs font-semibold hover:bg-purple-50">
+                                🟣 Purple Cap
+                            </button>
+                        </div>
+
+                        <!-- Orange Cap -->
+                        <div id="cap-orange" class="space-y-3">
+                            <!-- Player 1 -->
+                            <div class="bg-white rounded-xl shadow p-3 flex items-center gap-3">
+                                <img src="images/Profile1.png" class="w-12 h-12 rounded-full object-cover border">
+                                <div>
+                                    <h4 class="text-sm font-bold text-gray-800">Virat Kohli</h4>
+                                    <p class="text-xs text-gray-500">RCB • 587 Runs</p>
+                                    <p class="text-xs text-gray-600">Matches: 12 • SR: 148.2 • Rank: 1</p>
+                                </div>
+                            </div>
+
+                            <!-- Player 2 -->
+                            <div class="bg-white rounded-xl shadow p-3 flex items-center gap-3">
+                                <img src="images/Profile1.png" class="w-12 h-12 rounded-full object-cover border">
+                                <div>
+                                    <h4 class="text-sm font-bold text-gray-800">Shubman Gill</h4>
+                                    <p class="text-xs text-gray-500">GT • 524 Runs</p>
+                                    <p class="text-xs text-gray-600">Matches: 11 • SR: 144.9 • Rank: 2</p>
+                                </div>
+                            </div>
+
+                            <!-- Player 3 -->
+                            <div class="bg-white rounded-xl shadow p-3 flex items-center gap-3">
+                                <img src="images/Profile1.png" class="w-12 h-12 rounded-full object-cover border">
+                                <div>
+                                    <h4 class="text-sm font-bold text-gray-800">Ruturaj Gaikwad</h4>
+                                    <p class="text-xs text-gray-500">CSK • 489 Runs</p>
+                                    <p class="text-xs text-gray-600">Matches: 12 • SR: 139.6 • Rank: 3</p>
+                                </div>
+                            </div>
+
+                            <!-- Player 4 -->
+                            <div class="bg-white rounded-xl shadow p-3 flex items-center gap-3">
+                                <img src="images/Profile1.png" class="w-12 h-12 rounded-full object-cover border">
+                                <div>
+                                    <h4 class="text-sm font-bold text-gray-800">David Warner</h4>
+                                    <p class="text-xs text-gray-500">DC • 472 Runs</p>
+                                    <p class="text-xs text-gray-600">Matches: 11 • SR: 135.1 • Rank: 4</p>
+                                </div>
+                            </div>
+
+                            <!-- Player 5 -->
+                            <div class="bg-white rounded-xl shadow p-3 flex items-center gap-3">
+                                <img src="images/Profile1.png" class="w-12 h-12 rounded-full object-cover border">
+                                <div>
+                                    <h4 class="text-sm font-bold text-gray-800">Faf du Plessis</h4>
+                                    <p class="text-xs text-gray-500">RCB • 458 Runs</p>
+                                    <p class="text-xs text-gray-600">Matches: 11 • SR: 142.6 • Rank: 5</p>
+                                </div>
+                            </div>
+
+                            <!-- Player 6 -->
+                            <div class="bg-white rounded-xl shadow p-3 flex items-center gap-3">
+                                <img src="images/Profile1.png" class="w-12 h-12 rounded-full object-cover border">
+                                <div>
+                                    <h4 class="text-sm font-bold text-gray-800">Jos Buttler</h4>
+                                    <p class="text-xs text-gray-500">RR • 446 Runs</p>
+                                    <p class="text-xs text-gray-600">Matches: 12 • SR: 137.5 • Rank: 6</p>
+                                </div>
+                            </div>
+
+
+
+
+                            <!-- Purple Cap -->
+                            <div id="cap-purple" class="space-y-3 hidden">
+                                <div class="bg-white rounded-xl shadow p-3 flex items-center gap-3">
+                                    <img src="https://i.imgur.com/dlsrBhv.png"
+                                        class="w-12 h-12 rounded-full object-cover border">
+                                    <div>
+                                        <h4 class="text-sm font-bold text-gray-800">Mohammed Shami</h4>
+                                        <p class="text-xs text-gray-500">GT • 23 Wickets</p>
+                                        <p class="text-xs text-gray-600">Matches: 11 • Eco: 7.2 • Rank: 1</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-xl shadow p-3 flex items-center gap-3">
+                                    <img src="https://i.imgur.com/bhX54O7.png"
+                                        class="w-12 h-12 rounded-full object-cover border">
+                                    <div>
+                                        <h4 class="text-sm font-bold text-gray-800">Yuzvendra Chahal</h4>
+                                        <p class="text-xs text-gray-500">RR • 20 Wickets</p>
+                                        <p class="text-xs text-gray-600">Matches: 12 • Eco: 7.8 • Rank: 2</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+                </div>
+        </section>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <div class="max-w-[1320px] mx-auto sm:px-4 mt-4 sm:mt-8 ">
         <section
