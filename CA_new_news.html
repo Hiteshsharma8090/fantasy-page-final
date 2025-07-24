@@ -1030,140 +1030,217 @@
 
 
 
+    <section class="bg-white sm:py-4 sm:py-8 sm:px-4 sm:px-6 mb-4 lg:px-8">
+        <div
+            class="max-w-4xl  mx-auto bg-white sm:bg-white/30 dark:bg-gray-800 sm:dark:bg-gray-800/30 backdrop-blur-sm sm:rounded-xl shadow-md sm:shadow-lg sm:px-4 py-3 sm:py-6">
+            <!-- reduced width from 1320px -->
+            <h2 class="text-lg sm:text-3xl font-bold text-center text-[#3E5DA6] mb-8">
+                Frequently Asked Questions
+            </h2>
 
+            <div class="space-y-4">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <footer class="bg-[#F8F9FC] text-sm text-gray-800 font-sans mb-10 sm:mb-0">
-        <div class="max-w-[1320px] mx-auto px-2 sm:px-4 sm:px-6 lg:px-8 py-10">
-
-            <!-- Branding and Language -->
-            <div
-                class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-gray-300 pb-6 mb-10">
-
-                <img class="mb-4" src="Icons/CA_logo.svg" alt="">
-                <div class="mt-3 sm:mt-0">
+                <!-- FAQ Item -->
+                <div class="border border-gray-200 sm:rounded-lg">
                     <button
-                        class="px-4 py-1 text-sm rounded-full border border-[#3E5DA6] text-[#3E5DA6] hover:bg-[#ebf1fc] transition">English</button>
+                        class="w-full flex justify-between items-center px-2 sm:px-4 py-3 text-left text-[#3E5DA6] font-semibold"
+                        onclick="toggleFaq(0)">
+                        What is Cricket Addictor known for?
+                        <span id="icon-0" class="text-[#BD3C34] font-bold text-xl">+</span>
+                    </button>
+                    <div id="faq-0" class="px-4 pb-3 hidden text-sm text-gray-700">
+                        Cricket Addictor provides real-time cricket news, fantasy tips, match analysis, and live updates
+                        for fans worldwide.
+                    </div>
+                </div>
+
+                <div class="border border-gray-200 sm:rounded-lg">
                     <button
-                        class="px-4 py-1 text-sm rounded-full border border-[#BD3C34] text-[#BD3C34] hover:bg-[#fdf1f1] transition ml-2">हिन्दी</button>
-                </div>
-            </div>
-
-            <!-- Footer Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 text-[13px] leading-relaxed">
-
-                <!-- Quick Links -->
-                <div>
-                    <h3 class="text-[#3E5DA6] font-semibold mb-2">Quick Links</h3>
-                    <ul class="space-y-1">
-                        <li><a href="#">Live Score</a></li>
-                        <li><a href="#">Upcoming Matches</a></li>
-                        <li><a href="#">Match Predictions</a></li>
-                        <li><a href="#">Fantasy Tips</a></li>
-                        <li><a href="#">News</a></li>
-                        <li><a href="#">Videos</a></li>
-                        <li><a href="#">Photos</a></li>
-                    </ul>
+                        class="w-full flex justify-between items-center px-2 sm:px-4 py-3 text-left text-[#3E5DA6] font-semibold"
+                        onclick="toggleFaq(1)">
+                        Can I get IPL Fantasy Tips here?
+                        <span id="icon-1" class="text-[#BD3C34] font-bold text-xl">+</span>
+                    </button>
+                    <div id="faq-1" class="px-4 pb-3 hidden text-sm text-gray-700">
+                        Yes, our Fantasy Tips section is updated before each IPL match to help you create winning dream
+                        teams.
+                    </div>
                 </div>
 
-                <!-- IPL Teams -->
-                <div>
-                    <h3 class="text-[#3E5DA6] font-semibold mb-2">Top IPL Teams</h3>
-                    <ul class="space-y-1">
-                        <li>MI</li>
-                        <li>CSK</li>
-                        <li>RCB</li>
-                        <li>GT</li>
-                        <li>KKR</li>
-                        <li>LSG</li>
-                        <li>DC</li>
-                    </ul>
+                <div class="border border-gray-200 sm:rounded-lg">
+                    <button
+                        class="w-full flex justify-between items-center px-2 sm:px-4 py-3 text-left text-[#3E5DA6] font-semibold"
+                        onclick="toggleFaq(2)">
+                        How often is live score updated?
+                        <span id="icon-2" class="text-[#BD3C34] font-bold text-xl">+</span>
+                    </button>
+                    <div id="faq-2" class="px-4 pb-3 hidden text-sm text-gray-700">
+                        Live scores update every ball with commentary, stats, and match insights.
+                    </div>
                 </div>
 
-                <!-- Players -->
-                <div>
-                    <h3 class="text-[#3E5DA6] font-semibold mb-2">Top Players</h3>
-                    <ul class="space-y-1">
-                        <li>Virat Kohli</li>
-                        <li>MS Dhoni</li>
-                        <li>Rohit Sharma</li>
-                        <li>KL Rahul</li>
-                        <li>Jadeja</li>
-                        <li>Bumrah</li>
-                        <li>Surya</li>
-                    </ul>
+                <div class="border border-gray-200 sm:rounded-lg">
+                    <button
+                        class="w-full flex justify-between items-center px-2 sm:px-4 py-3 text-left text-[#3E5DA6] font-semibold"
+                        onclick="toggleFaq(3)">
+                        Is there a mobile app for Cricket Addictor?
+                        <span id="icon-3" class="text-[#BD3C34] font-bold text-xl">+</span>
+                    </button>
+                    <div id="faq-3" class="px-4 pb-3 hidden text-sm text-gray-700">
+                        We’re working on it! Meanwhile, enjoy a seamless experience on our mobile-optimized site.
+                    </div>
                 </div>
 
-                <!-- Series -->
-                <div>
-                    <h3 class="text-[#3E5DA6] font-semibold mb-2">Series</h3>
-                    <ul class="space-y-1">
-                        <li>IND vs AUS</li>
-                        <li>IND vs ENG</li>
-                        <li>IND vs PAK</li>
-                        <li>WC 2025</li>
-                        <li>Asia Cup</li>
-                    </ul>
-                </div>
-
-                <!-- Leagues -->
-                <div>
-                    <h3 class="text-[#3E5DA6] font-semibold mb-2">Top Leagues</h3>
-                    <ul class="space-y-1">
-                        <li>IPL 2025</li>
-                        <li>BBL 2025</li>
-                        <li>CPL 2025</li>
-                        <li>WPL 2025</li>
-                        <li>SA20 2025</li>
-                    </ul>
-                </div>
-
-                <!-- Newsletter -->
-                <div>
-                    <h3 class="text-[#3E5DA6] font-semibold mb-2">Stay Updated</h3>
-                    <p class="text-xs mb-2">Get cricket news & fantasy tips</p>
-                    <form class="flex flex-col gap-2 sm:flex-row sm:items-center">
-                        <input type="email" placeholder="Enter email"
-                            class="w-full border border-gray-300 px-3 py-2 rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-[#3E5DA6]">
-                        <button
-                            class="bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white px-4 py-2 rounded-md hover:bg-[#a33029] transition">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Divider -->
-            <div class="border-t border-gray-300 my-8"></div>
-
-            <!-- Bottom Row -->
-            <div class="flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500 gap-3">
-                <p>© <span id="year"></span> CricketAddictor Media. All rights reserved.</p>
-                <div class="flex flex-wrap gap-3 justify-center sm:justify-start text-center text-[12px]">
-                    <a href="#">About Us</a>
-                    <a href="#">Contact</a>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Disclaimer</a>
-                    <a href="#">Correction Policy</a>
-                    <a href="#">Code of Ethics</a>
-                </div>
             </div>
         </div>
-    </footer>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer class="bg-gradient-to-b from-[#E4ECF7] to-[#FDF5F5] text-sm text-gray-800 font-sans mt-10">
+        <div class="max-w-7xl mx-auto px-4 py-10">
+          
+          <!-- Header Section -->
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-gray-300 pb-6 mb-8">
+            <img src="Icons/CA_logo.svg" class="" alt="Cricket Addictor Logo">
+            <div>
+              <button class="px-4 py-1 text-sm font-medium rounded-full border border-[#3E5DA6] text-[#3E5DA6] bg-white hover:bg-[#edf3ff] transition">English</button>
+              <button class="px-4 py-1 text-sm font-medium rounded-full border border-[#BD3C34] text-[#BD3C34] bg-white hover:bg-[#fff1f1] ml-2 transition">हिन्दी</button>
+            </div>
+          </div>
+      
+          <!-- Colorful Footer Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 text-[13px] leading-relaxed">
+      
+            <!-- Quick Links -->
+            <div>
+              <h3 class="text-[#BD3C34] font-bold mb-3">Quick Links</h3>
+              <ul class="space-y-1">
+                <li><a href="#" class="hover:text-[#3E5DA6]">Live Score</a></li>
+                <li><a href="#" class="hover:text-[#3E5DA6]">Upcoming Matches</a></li>
+                <li><a href="#" class="hover:text-[#3E5DA6]">Match Predictions</a></li>
+                <li><a href="#" class="hover:text-[#3E5DA6]">Fantasy Tips</a></li>
+                <li><a href="#" class="hover:text-[#3E5DA6]">News</a></li>
+                <li><a href="#" class="hover:text-[#3E5DA6]">Videos</a></li>
+                <li><a href="#" class="hover:text-[#3E5DA6]">Photos</a></li>
+              </ul>
+            </div>
+      
+            <!-- IPL Teams -->
+            <div>
+              <h3 class="text-[#3E5DA6] font-bold mb-3">Top IPL Teams</h3>
+              <ul class="space-y-1">
+                <li>MI</li>
+                <li>CSK</li>
+                <li>RCB</li>
+                <li>GT</li>
+                <li>KKR</li>
+                <li>LSG</li>
+                <li>DC</li>
+              </ul>
+            </div>
+      
+            <!-- Top Players -->
+            <div>
+              <h3 class="text-[#BD3C34] font-bold mb-3">Top Players</h3>
+              <ul class="space-y-1">
+                <li>Virat Kohli</li>
+                <li>MS Dhoni</li>
+                <li>Rohit Sharma</li>
+                <li>KL Rahul</li>
+                <li>Jadeja</li>
+                <li>Bumrah</li>
+                <li>Surya</li>
+              </ul>
+            </div>
+      
+            <!-- Series -->
+            <div>
+              <h3 class="text-[#3E5DA6] font-bold mb-3">Series</h3>
+              <ul class="space-y-1">
+                <li>IND vs AUS</li>
+                <li>IND vs ENG</li>
+                <li>IND vs PAK</li>
+                <li>WC 2025</li>
+                <li>Asia Cup</li>
+              </ul>
+            </div>
+      
+            <!-- Leagues -->
+            <div>
+              <h3 class="text-[#BD3C34] font-bold mb-3">Top Leagues</h3>
+              <ul class="space-y-1">
+                <li>IPL 2025</li>
+                <li>BBL 2025</li>
+                <li>CPL 2025</li>
+                <li>WPL 2025</li>
+                <li>SA20 2025</li>
+              </ul>
+            </div>
+      
+            <!-- Newsletter -->
+            <div>
+              <h3 class="text-[#3E5DA6] font-bold mb-3">Stay Updated</h3>
+              <p class="text-xs mb-2">Get cricket news & fantasy tips</p>
+              <form class="flex flex-col gap-2 sm:flex-row sm:items-center">
+                <input type="email" placeholder="Your email"
+                  class="w-full border border-gray-300 px-3 py-2 rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-[#3E5DA6]">
+                <button type="submit"
+                  class="bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white px-4 py-2 rounded-md font-semibold hover:opacity-90 transition">Subscribe</button>
+              </form>
+            </div>
+          </div>
+      
+          <!-- Divider -->
+          <div class="border-t border-gray-300 my-8"></div>
+      
+          <!-- Bottom Row -->
+          <div class="flex flex-col sm:flex-row justify-between items-center text-xs text-gray-600 gap-3">
+            <p>© 2025 <strong>CricketAddictor Media</strong>. All rights reserved.</p>
+            <div class="flex flex-wrap gap-3 text-center sm:text-left">
+              <a href="#" class="hover:text-[#3E5DA6]">About Us</a>
+              <a href="#" class="hover:text-[#3E5DA6]">Contact</a>
+              <a href="#" class="hover:text-[#3E5DA6]">Privacy Policy</a>
+              <a href="#" class="hover:text-[#3E5DA6]">Disclaimer</a>
+              <a href="#" class="hover:text-[#3E5DA6]">Correction Policy</a>
+              <a href="#" class="hover:text-[#3E5DA6]">Code of Ethics</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+      
+      
 
 
 
