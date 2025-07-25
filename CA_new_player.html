@@ -405,12 +405,12 @@
                 </nav>
                 <!-- 🔴 Title -->
                 <h2
-                    class="text-lg sm:text-xl font-extrabold bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] bg-clip-text text-transparent mb-4">
+                    class="hidden sm:flex text-lg sm:text-xl font-extrabold bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] bg-clip-text text-transparent mb-4">
                     Player Filters
                 </h2>
 
                 <!-- 🔤 A-Z Alphabet Filter (Responsive Scroll on Mobile, Grid on Desktop) -->
-                <div class="overflow-x-auto sm:overflow-x-hidden no-scrollbar mb-4">
+                <div class="hidden sm:flex overflow-x-auto sm:overflow-x-hidden no-scrollbar mb-4">
                     <div class="flex  gap-2 w-max sm:w-full">
                         <!-- A-Z Buttons -->
                         <button
@@ -470,20 +470,6 @@
                 </div>
 
 
-                <!-- 📱 Mobile Filter Toggle Icon Button -->
-                <div class="sm:hidden flex justify-end mb-2">
-                    <button onclick="toggleFilters()"
-                        class="px-3 py-1 flex gap-2 items-center rounded-full text-white bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] hover:opacity-90 transition">
-                        <!-- Filter Icon -->
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L15 13.414V19a1 1 0 01-1.447.894l-4-2A1 1 0 019 17v-3.586L3.293 6.707A1 1 0 013 6V4z">
-                            </path>
-                        </svg>
-                        <p class="text-xs font-semibold">Filter</p>
-                    </button>
-                </div>
 
 
 
@@ -563,6 +549,99 @@
 
             </div>
         </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- 📱 Mobile Bottom Filter Modal -->
+        <div id="mobileBottomFilter"
+            class="fixed bottom-0 left-0 right-0 z-50 bg-white rounded-t-2xl p-4 shadow-lg transform translate-y-full transition-transform duration-300 sm:hidden max-h-[50vh] overflow-y-auto border-t-2 border-[#3E5DA6]">
+            <div class="flex justify-between items-center mb-3">
+                <h3 class="text-sm font-bold text-[#3E5DA6]">Filters</h3>
+                <button onclick="toggleBottomFilter()" class="text-sm text-[#BD3C34] font-semibold">Close ✕</button>
+            </div>
+
+            <!-- 👇 Place your filters here (copy from your existing filter block if needed) -->
+            <!-- Gender -->
+            <div class="flex gap-2 mb-3">
+                <button class="px-4 py-1 text-xs font-bold rounded-full bg-[#3E5DA6] text-white">MEN'S</button>
+                <button
+                    class="px-4 py-1 text-xs font-bold rounded-full border border-[#3E5DA6] text-[#3E5DA6]">WOMEN'S</button>
+            </div>
+
+            <!-- Roles -->
+            <div class="flex gap-2 flex-wrap mb-3">
+                <button
+                    class="px-3 py-1 text-xs font-bold rounded-full bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white">ALL</button>
+                <button
+                    class="px-3 py-1 text-xs font-bold rounded-full border border-[#BD3C34] text-[#BD3C34]">BAT</button>
+                <button
+                    class="px-3 py-1 text-xs font-bold rounded-full border border-[#BD3C34] text-[#BD3C34]">BOWL</button>
+                <button
+                    class="px-3 py-1 text-xs font-bold rounded-full border border-[#BD3C34] text-[#BD3C34]">AR</button>
+                <button
+                    class="px-3 py-1 text-xs font-bold rounded-full border border-[#BD3C34] text-[#BD3C34]">WKS</button>
+            </div>
+
+            <!-- Team & Search -->
+            <div class="grid grid-cols-2 gap-3">
+                <div class="relative">
+                    <select
+                        class="w-full px-3 py-1.5 text-xs rounded-full border border-[#3E5DA6] text-[#3E5DA6] bg-white">
+                        <option disabled selected>Select Team</option>
+                        <option>India</option>
+                        <option>RCB</option>
+                        <option>MI</option>
+                        <option>GT</option>
+                    </select>
+                </div>
+
+                <div class="relative">
+                    <input type="text" placeholder="Search"
+                        class="w-full px-3 pl-8 py-1.5 text-xs rounded-full border border-[#BD3C34] text-[#BD3C34]" />
+                    <svg class="absolute left-2.5 top-1/2 -translate-y-1/2 w-[14px] h-[14px] text-[#BD3C34]" fill="none"
+                        stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 📱 Fixed Bottom Filter Button (Mobile Only) -->
+        <div class="sm:hidden fixed bottom-16 left-1/2 -translate-x-1/2 z-40">
+            <button onclick="toggleBottomFilter()"
+                class="px-4 py-2 flex gap-2 items-center rounded-full text-white text-sm font-semibold shadow-lg bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] hover:opacity-90 transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L15 13.414V19a1 1 0 01-1.447.894l-4-2A1 1 0 019 17v-3.586L3.293 6.707A1 1 0 013 6V4z" />
+                </svg>
+                Filter
+            </button>
+        </div>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1358,9 +1437,9 @@
     <script>
 
 
-        function toggleFilters() {
-            const filters = document.getElementById('mobile-filters');
-            filters.classList.toggle('hidden');
+        function toggleBottomFilter() {
+            const modal = document.getElementById('mobileBottomFilter');
+            modal.classList.toggle('translate-y-full');
         }
 
 
