@@ -363,7 +363,7 @@
     <div class="max-w-[1320px] mx-auto sm:px-3 py-4 bg-white shadow-md rounded-xl">
 
         <section class=" mb-4">
-            <div class=" py-4 bg-white sm:rounded-2xl p-3  shadow-sm border ">
+            <div class="py-2 sm:py-4 bg-white sm:rounded-2xl p-3  shadow-sm border ">
                 <!-- 🔗 Breadcrumb -->
                 <nav class="text-sm text-gray-600 mb-2 sm:mb-4" aria-label="Breadcrumb">
                     <ol class="list-reset flex flex-wrap items-center space-x-1 sm:space-x-2">
@@ -410,13 +410,13 @@
                 </h2>
 
                 <!-- 🔤 A-Z Alphabet Filter (Responsive Scroll on Mobile, Grid on Desktop) -->
-                <div class="overflow-x-auto sm:overflow-x-hidden no-scrollbar mb-6">
+                <div class="overflow-x-auto sm:overflow-x-hidden no-scrollbar mb-4">
                     <div class="flex  gap-2 w-max sm:w-full">
                         <!-- A-Z Buttons -->
                         <button
                             class="w-8 h-8 text-xs font-bold rounded-md border border-[#3E5DA6] text-[#3E5DA6] hover:bg-[#E2E8F0] transition">A</button>
                         <button
-                            class="w-8 h-8 text-xs font-bold rounded-md border border-[#3E5DA6] text-[#3E5DA6] hover:bg-[#E2E8F0] transition">B</button>
+                            class="w-8 h-8 text-xs font-bold rounded-md bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white shadow-sm">B</button>
                         <button
                             class="w-8 h-8 text-xs font-bold rounded-md border border-[#3E5DA6] text-[#3E5DA6] hover:bg-[#E2E8F0] transition">C</button>
                         <button
@@ -434,7 +434,7 @@
                         <button
                             class="w-8 h-8 text-xs font-bold rounded-md border border-[#3E5DA6] text-[#3E5DA6] hover:bg-[#E2E8F0] transition">J</button>
                         <button
-                            class="w-8 h-8 text-xs font-bold rounded-md bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white shadow-sm">K</button>
+                            class="w-8 h-8 text-xs font-bold rounded-md border border-[#3E5DA6] text-[#3E5DA6] hover:bg-[#E2E8F0] transition">K</button>
                         <!-- Example active -->
                         <button
                             class="w-8 h-8 text-xs font-bold rounded-md border border-[#3E5DA6] text-[#3E5DA6] hover:bg-[#E2E8F0] transition">L</button>
@@ -470,10 +470,28 @@
                 </div>
 
 
+                <!-- 📱 Mobile Filter Toggle Icon Button -->
+                <div class="sm:hidden flex justify-center mb-2">
+                    <button onclick="toggleFilters()"
+                        class="px-3 py-1 flex gap-2 items-center rounded-full text-white bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] hover:opacity-90 transition">
+                        <!-- Filter Icon -->
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L15 13.414V19a1 1 0 01-1.447.894l-4-2A1 1 0 019 17v-3.586L3.293 6.707A1 1 0 013 6V4z">
+                            </path>
+                        </svg>
+                        <p class="text-xs font-semibold">Filter</p>
+                    </button>
+                </div>
+
+
+
                 <!-- 🔘 Gender + Role Filters -->
-                <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div id="mobile-filters"
+                    class="hidden sm:flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <!-- Left: Gender + Role -->
-                    <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:flex-wrap">
+                    <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:flex-wrap mb-4">
                         <!-- Gender -->
                         <div class="flex gap-2">
                             <button
@@ -514,7 +532,7 @@
                     <!-- Right: Team Dropdown + Search -->
                     <div class="grid grid-cols-2 sm:flex gap-2 sm:gap-3 sm:items-center">
                         <!-- Team Select -->
-                        <div class="relative w-full sm:w-40"> <!-- ⬅️ changed from sm:w-auto to sm:w-56 -->
+                        <div class="relative w-full sm:w-40">
                             <select
                                 class="w-full px-3 py-1.5 text-xs rounded-full border border-[#3E5DA6] text-[#3E5DA6] bg-white shadow-sm focus:outline-none focus:ring focus:ring-[#3E5DA6] appearance-none">
                                 <option disabled selected>Select Team</option>
@@ -529,7 +547,6 @@
                             </svg>
                         </div>
 
-
                         <!-- Search Input -->
                         <div class="relative w-full sm:w-auto">
                             <input type="text" placeholder="Search"
@@ -542,6 +559,7 @@
                         </div>
                     </div>
                 </div>
+
 
             </div>
         </section>
@@ -1341,8 +1359,8 @@
 
 
         function toggleFilters() {
-            const filters = document.getElementById("playerFilters");
-            filters.classList.toggle("hidden");
+            const filters = document.getElementById('mobile-filters');
+            filters.classList.toggle('hidden');
         }
 
 
