@@ -577,30 +577,47 @@
   </div>
   
 
-    <!-- Head-to-Head (H2H) Summary -->
-    <div class="bg-white border border-gray-200 sm:rounded-lg shadow px-2 sm:px-3 py-2 text-[13px]">
+  <!-- Enhanced H2H Summary Card -->
+<div class="bg-gradient-to-b from-white via-gray-50 to-white border border-gray-200 rounded-lg shadow-sm px-3 py-3 text-[13px]">
 
-        <!-- Last 5 Matches -->
-        <h3 class="text-[#3E5DA6] font-semibold text-xs uppercase tracking-wide mb-1">Last 5 Matches 🆚</h3>
-        <ul class="space-y-1 text-gray-800 pl-4 list-disc text-[13px]">
-            <li><span class="font-medium">WI</span> won by <span class="text-green-600 font-semibold">3 runs</span></li>
-            <li><span class="font-medium">AUS</span> won by <span class="text-blue-600 font-semibold">6 wickets</span>
-            </li>
-        </ul>
-
-        <!-- Divider -->
-        <hr class="my-2 border-dashed">
-
-        <!-- Key Stats -->
-        <h3 class="text-[#BD3C34] font-semibold text-xs uppercase tracking-wide mb-1">Key Stats 🧪</h3>
-        <ul class="space-y-1 text-gray-800 pl-4 list-disc text-[13px]">
-            <li>Avg <span class="font-medium text-[#3E5DA6]">WI</span> score: <span class="font-semibold">172</span>
-            </li>
-            <li><span class="font-medium text-[#BD3C34]">AUS</span> win %: <span
-                    class="font-semibold text-green-700">65%</span></li>
-        </ul>
-
+    <!-- H2H Matches Header -->
+    <div class="flex items-center gap-2 text-[#3E5DA6] font-semibold text-xs uppercase tracking-wide mb-2">
+      🤝 Head-to-Head (Last 5)
     </div>
+  
+    <!-- Match History Cards -->
+    <div class="space-y-1 text-[13px]">
+      <div class="flex justify-between items-center bg-[#F0F4FF] px-3 py-[6px] rounded-md">
+        <span><span class="font-semibold text-gray-800">WI</span> won by <span class="text-green-600 font-semibold">3 runs</span></span>
+        <span class="text-[11px] text-gray-500">#1</span>
+      </div>
+      <div class="flex justify-between items-center bg-[#FFF4F3] px-3 py-[6px] rounded-md">
+        <span><span class="font-semibold text-gray-800">AUS</span> won by <span class="text-blue-600 font-semibold">6 wickets</span></span>
+        <span class="text-[11px] text-gray-500">#2</span>
+      </div>
+    </div>
+  
+    <!-- Divider -->
+    <hr class="my-3 border-dashed border-gray-300">
+  
+    <!-- Key Stats -->
+    <div class="space-y-2 text-gray-800">
+  
+      <!-- WI Score Stat -->
+      <div class="flex justify-between items-center bg-[#EFF8F0] px-3 py-[6px] rounded-md">
+        <span>Avg <span class="font-semibold text-[#3E5DA6]">WI</span> Score</span>
+        <span class="font-semibold text-gray-900">172</span>
+      </div>
+  
+      <!-- AUS Win % -->
+      <div class="flex justify-between items-center bg-[#FFF5E5] px-3 py-[6px] rounded-md">
+        <span><span class="font-semibold text-[#BD3C34]">AUS</span> Win %</span>
+        <span class="font-semibold text-green-700">65%</span>
+      </div>
+  
+    </div>
+  </div>
+  
 
     <!-- Smart Match Info Capsule -->
     <div
