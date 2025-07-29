@@ -452,24 +452,32 @@
 
 
 
-    <!-- Best Innings Summary Section -->
-    <div class="bg-white border border-gray-200 sm:rounded-md shadow-sm px-2 sm:px-3 py-2 text-[13px] leading-tight">
+  <!-- Premium Innings Summary Card -->
+<div class="bg-gradient-to-r from-white via-gray-50 to-white border border-gray-200 sm:rounded-md shadow-sm px-3 py-2 text-[13px]">
 
-        <!-- Innings Header -->
-        <div class="flex justify-between items-center mb-1">
-            <h3 class="text-[#3E5DA6] font-semibold text-xs uppercase tracking-wide">Innings 1 - AUS</h3>
-            <span class="text-xs font-bold text-[#BD3C34]">154/4 (16.2)</span>
-        </div>
-
-        <!-- Key Players (Compact) -->
-        <ul class="text-gray-800 space-y-1">
-            <li class="flex justify-between">
-                <span class="truncate">🥇 Warner</span>
-                <span class="text-right text-gray-600 text-xs">c Holder b Joseph</span>
-                <span class="text-right font-semibold ml-2">56 (32)</span>
-            </li>
-        </ul>
+    <!-- Header Row -->
+    <div class="flex items-center justify-between mb-1">
+      <h3 class="text-[#3E5DA6] font-semibold text-xs uppercase tracking-wide">Innings 1 - AUS</h3>
+      <span class="text-[12px] font-bold text-[#BD3C34]">154/4 <span class="text-gray-500">(16.2)</span></span>
     </div>
+  
+    <!-- Divider Line -->
+    <div class="border-t border-dashed border-gray-300 my-1"></div>
+  
+    <!-- Player Highlight -->
+    <div class="flex items-center justify-between gap-2 text-gray-800">
+      <div class="flex items-center gap-2 truncate">
+        <span class="text-[15px]">🥇</span>
+        <div class="leading-tight">
+          <p class="font-semibold truncate">David Warner</p>
+          <p class="text-[11px] text-gray-500 truncate">c Holder b Joseph</p>
+        </div>
+      </div>
+      <span class="text-[13px] font-semibold text-right whitespace-nowrap">56 <span class="text-xs text-gray-500">(32)</span></span>
+    </div>
+  
+  </div>
+  
 
 
 
