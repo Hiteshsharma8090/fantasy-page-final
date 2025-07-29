@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CricketX — 2035</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .glass {
+            backdrop-filter: blur(14px);
+            background: rgba(255, 255, 255, 0.65);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark .glass {
+            background: rgba(17, 24, 39, 0.65);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #BD3C34, #3E5DA6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+
+
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fade-in 0.4s ease-out;
+        }
+
+        .poll-bar {
+            transition: width 1.2s ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-white to-gray-100 text-gray-900">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Compact Premium Glassy Sticky Header -->
+    <div
+        class="sticky top-0 z-50 h-10 flex items-center justify-between px-2 sm:px-3 shadow backdrop-blur-md bg-gradient-to-r from-[#3E5DA6]/90 via-[#4d4189]/90 to-[#BD3C34]/90 text-white">
+
+        <!-- Back Icon -->
+        <button class="p-1 rounded hover:bg-white/10 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
+
+        <!-- Title -->
+        <div class="absolute left-1/2 transform -translate-x-1/2 truncate w-52 text-center font-semibold text-[13px]">
+            WI vs AUS - 5th T20I
+        </div>
+
+        <!-- Options Icon -->
+        <button class="p-1 rounded hover:bg-white/10 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 rotate-90" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 6v.01M12 12v.01M12 18v.01" />
+            </svg>
+        </button>
+    </div>
+
+
+
+    <!-- Soft Live Score Banner (Glassmorphic Look) -->
+    <div
+        class="sticky top-10 z-40 bg-white/80 backdrop-blur-md border border-gray-200 px-3 py-3 rounded-b-xl shadow-md text-gray-800">
+
+        <!-- Teams Row -->
+        <div class="">
+            <div class="flex items-center justify-between">
+                <!-- Team 1 (Batting Now) -->
+                <div class="flex items-center gap-2">
+                    <img src="images/LSG_team.svg" alt="AUS"
+                        class="w-6 h-6 rounded-full bg-white border border-gray-300 shadow-sm" />
+                    <div class="flex flex-col leading-tight">
+                        <span class="font-semibold text-sm text-gray-900">AUS</span>
+                        <span class="text-[13px] text-gray-600 font-medium">154/4 <span
+                                class="text-[12px]">(16.2)</span></span>
+                    </div>
+                </div>
+
+                <!-- VS Divider -->
+                <div class="text-[11px] text-gray-400 font-semibold px-1">vs</div>
+
+                <!-- Team 2 -->
+                <div class="flex items-center gap-2">
+                    <div class="flex flex-col items-end leading-tight">
+                        <span class="font-semibold text-sm text-gray-900">WI</span>
+                        <span class="text-[13px] text-gray-600 font-medium">Target: 175</span>
+                    </div>
+                    <img src="images/DC_team.svg" alt="WI"
+                        class="w-6 h-6 rounded-full bg-white border border-gray-300 shadow-sm" />
+                </div>
+            </div>
+
+            <!-- RR Info Row -->
+            <div class="mt-2 flex justify-between text-[12px] text-gray-700 font-medium">
+                <span>🎯 Target: 175</span>
+                <span></span>
+                <span>Req RR: 10.20</span>
+            </div>
+        </div>
+        <div class="mt-4">
+            <!-- Progress Track -->
+            <div class="h-1 bg-gray-200 rounded-full overflow-hidden">
+                <div class="h-full rounded-full bg-gradient-to-r from-[#3E5DA6] via-[#4d4189] to-[#BD3C34]"
+                    style="width: 57%">
+                </div>
+            </div>
+
+            <!-- Labels -->
+            <div class="text-[11px] text-gray-600 mt-1 flex justify-between">
+                <span>Over: 16 / 20</span>
+                <span>Run Rate: 9.48</span>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <!-- Mobile-First Tab Switcher -->
+    <div
+        class="overflow-x-auto whitespace-nowrap flex gap-4 px-2 sm:px-3 pt-2.5 border-b bg-white text-sm text-gray-500 scrollbar-hide">
+
+        <!-- Active Tab -->
+        <!-- Gradient Tab Button -->
+        <button class="relative pb-2 px-1 font-semibold group">
+            <!-- Gradient Text -->
+            <span
+                class="bg-gradient-to-r from-[#3E5DA6] via-[#4d4189] to-[#BD3C34] bg-clip-text text-transparent text-sm">
+                Live
+            </span>
+
+            <!-- Gradient Underline -->
+            <span
+                class="absolute left-0 bottom-0 w-full h-[2px] bg-gradient-to-r from-[#3E5DA6] via-[#4d4189] to-[#BD3C34] rounded"></span>
+        </button>
+
+
+        <!-- Other Tabs -->
+        <button class="hover:text-[#3E5DA6] px-1 pb-2">Scorecard</button>
+        <button class="hover:text-[#3E5DA6] px-1 pb-2">Commentary</button>
+        <button class="hover:text-[#3E5DA6] px-1 pb-2">Fantasy</button>
+        <button class="hover:text-[#3E5DA6] px-1 pb-2">H2H</button>
+
+
+    </div>
+
+    <!-- Modern Batsmen + Bowler Card -->
+    <div class="bg-white px-3 pt-4 pb-3 rounded-md shadow-sm">
+
+        <!-- Batsmen Section -->
+        <div class="flex justify-between items-center mb-2">
+
+            <!-- Batsman 1 (Striker) -->
+            <div class="flex flex-col text-left">
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <span class="text-[#3E5DA6] font-semibold text-sm">Pooran</span>
+                </div>
+                <span class="text-[12px] text-gray-600 ml-4">45 (30)</span>
+            </div>
+
+            <!-- Neutral Spacer (Dot or Divider) -->
+            <div class="w-px h-6 bg-gray-200 mx-3"></div>
+
+            <!-- Batsman 2 -->
+            <div class="flex flex-col text-right">
+                <div class="flex items-center gap-2 justify-end">
+                    <span class="text-[#3E5DA6] font-semibold text-sm">Holder</span>
+                </div>
+                <span class="text-[12px] text-gray-600">12 (7)</span>
+            </div>
+
+        </div>
+
+        <!-- Bowler Section -->
+        <div class="bg-gray-100 px-3 py-2 rounded flex items-center gap-2 text-[12px] text-gray-800 font-medium">
+            🎯 <span class="text-[#BD3C34] font-semibold">Joseph</span>
+            <span class="ml-auto">3-0-18-1</span>
+        </div>
+    </div>
+
+
+    <!-- Subtle Horizontal Overs Tracker -->
+    <div class="overflow-x-auto px-3 py-2 bg-[#f9fafb] border-t border-gray-100 scrollbar-hide">
+        <div class="flex gap-3 whitespace-nowrap">
+
+            <!-- Single Over -->
+            <div
+                class="bg-white border border-gray-200 text-gray-800 px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm min-w-max">
+                <span class="text-[11px] font-semibold text-[#3E5DA6]">16.0:</span>
+                <span class="bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">6</span>
+                <span class="bg-gray-100 text-gray-800 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">•</span>
+                <span class="bg-red-100 text-red-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">W</span>
+                <span class="bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">4</span>
+                <span class="bg-gray-100 text-gray-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">0</span>
+                <span
+                    class="bg-yellow-100 text-yellow-800 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">2</span>
+                <span class="ml-2 text-[11px] font-semibold text-[#3E5DA6]">=12</span>
+            </div>
+
+            <div
+                class="bg-white border border-gray-200 text-gray-800 px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm min-w-max">
+                <span class="text-[11px] font-semibold text-[#3E5DA6]">15.0:</span>
+                <span class="bg-gray-100 text-gray-800 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">•</span>
+                <span class="bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">4</span>
+                <span class="bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">6</span>
+                <span class="bg-gray-100 text-gray-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">1</span>
+                <span class="bg-gray-100 text-gray-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">1</span>
+                <span class="bg-gray-100 text-gray-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">0</span>
+                <span class="ml-2 text-[11px] font-semibold text-[#3E5DA6]">=12</span>
+            </div>
+
+            <div
+                class="bg-white border border-gray-200 text-gray-800 px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm min-w-max">
+                <span class="text-[11px] font-semibold text-[#3E5DA6]">14.0:</span>
+                <span class="bg-red-100 text-red-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">W</span>
+                <span class="bg-gray-100 text-gray-800 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">•</span>
+                <span
+                    class="bg-yellow-100 text-yellow-800 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">2</span>
+                <span class="bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">4</span>
+                <span class="bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">6</span>
+                <span class="bg-gray-100 text-gray-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">1</span>
+                <span class="ml-2 text-[11px] font-semibold text-[#3E5DA6]">=13</span>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- 🌟 Slim Live Highlights Bar -->
+    <div
+        class="overflow-x-auto bg-gradient-to-r from-[#f8f9fa] via-[#eff2f5] to-[#f8f9fa] px-2 sm:px-3 py-1.5 rounded-md border border-gray-200 shadow-sm scrollbar-hide">
+        <div class="flex gap-2 sm:gap-4 whitespace-nowrap items-center animate-slide-in">
+
+            <!-- Highlight 1 -->
+            <div
+                class="flex items-center gap-1 bg-white px-2.5 py-1 rounded-full shadow-sm border border-gray-200 hover:scale-[1.02] transition-transform duration-200">
+                <span class="text-orange-500 text-xs">🔥</span>
+                <span class="text-gray-800 text-[11.5px] font-medium">Pooran hits fastest fifty!</span>
+            </div>
+
+            <!-- Highlight 2 -->
+            <div
+                class="flex items-center gap-1 bg-white px-2.5 py-1 rounded-full shadow-sm border border-gray-200 hover:scale-[1.02] transition-transform duration-200">
+                <span class="text-indigo-500 text-xs">🧠</span>
+                <span class="text-gray-800 text-[11.5px] font-medium">Maxwell bowls maiden in 5th over</span>
+            </div>
+
+            <!-- Highlight 3 -->
+            <div
+                class="flex items-center gap-1 bg-white px-2.5 py-1 rounded-full shadow-sm border border-gray-200 hover:scale-[1.02] transition-transform duration-200">
+                <span class="text-red-500 text-xs">📊</span>
+                <span class="text-gray-800 text-[11.5px] font-medium">WI need 21 off 6 balls</span>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <!-- Ultra Clean Mobile Commentary -->
+    <div class="bg-white rounded-md shadow-sm px-2 sm:px-4 py-3 border border-gray-200 text-sm">
+
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-2">
+            <h3 class="text-[#3E5DA6] font-semibold text-xs uppercase tracking-wide">Over 15</h3>
+            <button class="text-[#BD3C34] text-xs font-semibold underline">View Full Commentary</button>
+        </div>
+
+        <!-- Commentary List -->
+        <ul class="divide-y divide-gray-100 text-[13px] text-gray-800">
+
+            <li class="py-2 flex items-start gap-3">
+                <span class="text-gray-500 font-semibold w-8 flex-shrink-0 ">15.6</span>
+                <p><span class="text-green-600 font-bold">SIX!</span> Pooran smashes it over long-on — clean strike!</p>
+            </li>
+
+            <li class="py-2 flex items-start gap-3">
+                <span class="text-gray-500 font-semibold w-8 flex-shrink-0 ">15.5</span>
+                <p><span class="text-blue-600 font-bold">FOUR!</span> Driven through extra cover with style.</p>
+            </li>
+
+            <li class="py-2 flex items-start gap-3">
+                <span class="text-gray-500 font-semibold w-8 flex-shrink-0 ">15.4</span>
+                <p>Short delivery, tapped to point. No run.</p>
+            </li>
+
+            <li class="py-2 flex items-start gap-3">
+                <span class="text-gray-500 font-semibold w-8 flex-shrink-0 ">15.3</span>
+                <p><span class="text-green-600 font-bold">SIX!</span> Over deep cover — Pooran is on fire!</p>
+            </li>
+
+            <li class="py-2 flex items-start gap-3">
+                <span class="text-gray-500 font-semibold w-8 flex-shrink-0 ">15.2</span>
+                <p>Angled in, defended solidly. Dot ball.</p>
+            </li>
+
+            <li class="py-2 flex items-start gap-3">
+                <span class="text-gray-500 font-semibold w-8 flex-shrink-0 ">15.1</span>
+                <p>Worked to fine leg, they run a couple.</p>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-2 text-[12px] space-y-2">
+        <!-- Poll Question -->
+        <div class="font-semibold text-gray-800 flex items-center gap-1">
+            🏏 Who will take the next wicket?
+        </div>
+
+        <!-- Poll Options Scrollable -->
+        <div class="flex gap-2 overflow-x-auto scrollbar-hide">
+            <button
+                class="bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] text-white font-medium px-3 py-1 rounded-full shadow-sm text-[11px]">
+                Joseph
+            </button>
+            <button
+                class="bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] text-white font-medium px-3 py-1 rounded-full shadow-sm text-[11px]">
+                Maxwell
+            </button>
+            <button
+                class="bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] text-white font-medium px-3 py-1 rounded-full shadow-sm text-[11px]">
+                Other
+            </button>
+        </div>
+    </div>
+
+
+
+
+    <!-- Best Innings Summary Section -->
+    <div class="bg-white border border-gray-200 rounded-md shadow-sm px-2 sm:px-3 py-2 text-[13px] leading-tight">
+
+        <!-- Innings Header -->
+        <div class="flex justify-between items-center mb-1">
+            <h3 class="text-[#3E5DA6] font-semibold text-xs uppercase tracking-wide">Innings 1 - AUS</h3>
+            <span class="text-xs font-bold text-[#BD3C34]">154/4 (16.2)</span>
+        </div>
+
+        <!-- Key Players (Compact) -->
+        <ul class="text-gray-800 space-y-1">
+            <li class="flex justify-between">
+                <span class="truncate">🥇 Warner</span>
+                <span class="text-right text-gray-600 text-xs">c Holder b Joseph</span>
+                <span class="text-right font-semibold ml-2">56 (32)</span>
+            </li>
+        </ul>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- Optimized Bowling Summary Card -->
+    <div class="bg-white border border-gray-200 rounded-lg shadow px-2 sm:px-3 py-2 text-[13px]">
+
+        <!-- Header -->
+        <h3 class="text-[#3E5DA6] font-semibold text-xs uppercase tracking-wide mb-2">
+            Bowling Summary
+        </h3>
+
+        <!-- Bowler Rows -->
+        <div class="space-y-2">
+
+            <!-- Joseph -->
+            <div class="flex items-center justify-between">
+                <div class="flex flex-col leading-tight">
+                    <span class="font-medium text-gray-800 text-[13px]">Joseph</span>
+                    <span class="text-[11px] text-gray-500">Right-arm fast</span>
+                </div>
+                <span class="text-[13px] font-semibold text-gray-900">4-0-25-2</span>
+            </div>
+
+            <!-- Maxwell -->
+            <div class="flex items-center justify-between">
+                <div class="flex flex-col leading-tight">
+                    <span class="font-medium text-gray-800 text-[13px]">Maxwell</span>
+                    <span class="text-[11px] text-gray-500">Off-spin</span>
+                </div>
+                <span class="text-[13px] font-semibold text-gray-900">3.2-0-18-1</span>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Stylish Top Performers Card -->
+    <div class="bg-white border border-gray-200 rounded-lg shadow px-2 sm:px-3 py-2 text-[13px]">
+
+        <!-- Header -->
+        <h3 class="text-[#BD3C34] font-semibold text-xs uppercase tracking-wide mb-2">
+            Top Performers
+        </h3>
+
+        <!-- Performer Rows -->
+        <div class="space-y-1">
+
+            <!-- Pooran -->
+            <div class="flex justify-between items-center">
+                <span class="font-medium text-gray-800">🥇 Pooran</span>
+                <span class="text-[13px] font-semibold text-green-600">87 pts <span
+                        class="text-xs text-gray-500">(C)</span></span>
+            </div>
+
+            <!-- Joseph -->
+            <div class="flex justify-between items-center">
+                <span class="font-medium text-gray-800">🥈 Joseph</span>
+                <span class="text-[13px] font-semibold text-blue-600">65 pts <span
+                        class="text-xs text-gray-500">(VC)</span></span>
+            </div>
+
+            <!-- Warner -->
+            <div class="flex justify-between items-center">
+                <span class="font-medium text-gray-800">🥉 Warner</span>
+                <span class="text-[13px] font-semibold text-yellow-700">56 pts</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Head-to-Head (H2H) Summary -->
+    <div class="bg-white border border-gray-200 rounded-lg shadow px-2 sm:px-3 py-2 text-[13px]">
+
+        <!-- Last 5 Matches -->
+        <h3 class="text-[#3E5DA6] font-semibold text-xs uppercase tracking-wide mb-1">Last 5 Matches 🆚</h3>
+        <ul class="space-y-1 text-gray-800 pl-4 list-disc text-[13px]">
+            <li><span class="font-medium">WI</span> won by <span class="text-green-600 font-semibold">3 runs</span></li>
+            <li><span class="font-medium">AUS</span> won by <span class="text-blue-600 font-semibold">6 wickets</span>
+            </li>
+        </ul>
+
+        <!-- Divider -->
+        <hr class="my-2 border-dashed">
+
+        <!-- Key Stats -->
+        <h3 class="text-[#BD3C34] font-semibold text-xs uppercase tracking-wide mb-1">Key Stats 🧪</h3>
+        <ul class="space-y-1 text-gray-800 pl-4 list-disc text-[13px]">
+            <li>Avg <span class="font-medium text-[#3E5DA6]">WI</span> score: <span class="font-semibold">172</span>
+            </li>
+            <li><span class="font-medium text-[#BD3C34]">AUS</span> win %: <span
+                    class="font-semibold text-green-700">65%</span></li>
+        </ul>
+
+    </div>
+
+    <!-- Smart Match Info Capsule -->
+    <div
+        class="fixed bottom-10 inset-x-4 bg-gradient-to-br from-[#3E5DA6] to-[#BD3C34] text-white rounded-xl shadow-xl px-4 py-2 text-xs sm:text-sm z-50 font-sans">
+
+
+
+        <!-- 🎲 Toss + 🔔 Live Alert Bar – Sleek & Unified -->
+        <div
+            class="fixed bottom-2  left-3 right-3 z-50 bg-gradient-to-r from-[#3E5DA6] via-[#4d4189] to-[#BD3C34] text-white px-4 py-2 rounded-full shadow-md flex flex-col items-center justify-between text-[12px] sm:text-[13px]">
+            <div class="flex justify-between items-center gap-2 border-b border-white/20 pb-1 mb-1">
+                <div class="flex items-center gap-2">
+                    <span class="text-white/90">📍</span>
+                    <span class="font-semibold">Kensington Oval</span>
+                </div>
+                <div class="flex items-center gap-1">
+                    <span class="text-white/90">🕒</span>
+                    <span class="font-medium">29 Jul, 7:30 PM IST</span>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3 whitespace-nowrap overflow-hidden">
+                <!-- Toss Info + Alert Label Together -->
+                <div class="flex items-center gap-3 whitespace-nowrap overflow-hidden">
+
+                    <span> WI chose to <span class="underline decoration-white/50">bat first</span></span>
+                    <div class="h-4 w-px bg-white/50"></div>
+                    <div class="flex items-center gap-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        </svg>
+                        <span class="font-medium">Live alerts?</span>
+                    </div>
+                </div>
+
+                <!-- Enable Button -->
+                <button
+                    class="bg-white text-[#BD3C34] font-semibold px-3 py-1 text-[11px] rounded-full shadow hover:bg-gray-100 transition-all">
+                    Enable
+                </button>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer class="bg-gradient-to-b from-[#E4ECF7] to-[#FDF5F5] text-sm text-gray-800 font-sans mt-10">
+        <div class="max-w-7xl mx-auto px-4 py-10">
+
+            <!-- Header Section -->
+            <div
+                class="flex flex-col sm:flex-row justify-between gap-4  items-start sm:items-center border-b border-gray-300 pb-6 mb-8">
+                <img src="Icons/CA_logo.svg" class="" alt="Cricket Addictor Logo">
+                <div>
+                    <button
+                        class="px-4 py-1 text-sm font-medium rounded-full border border-[#3E5DA6] text-[#3E5DA6] bg-white hover:bg-[#edf3ff] transition">English</button>
+                    <button
+                        class="px-4 py-1 text-sm font-medium rounded-full border border-[#BD3C34] text-[#BD3C34] bg-white hover:bg-[#fff1f1] ml-2 transition">हिन्दी</button>
+                </div>
+            </div>
+
+            <!-- Colorful Footer Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 text-[13px] leading-relaxed">
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-[#BD3C34] font-bold mb-3">Quick Links</h3>
+                    <ul class="space-y-1">
+                        <li><a href="#" class="hover:text-[#3E5DA6]">Live Score</a></li>
+                        <li><a href="#" class="hover:text-[#3E5DA6]">Upcoming Matches</a></li>
+                        <li><a href="#" class="hover:text-[#3E5DA6]">Match Predictions</a></li>
+                        <li><a href="#" class="hover:text-[#3E5DA6]">Fantasy Tips</a></li>
+                        <li><a href="#" class="hover:text-[#3E5DA6]">News</a></li>
+                        <li><a href="#" class="hover:text-[#3E5DA6]">Videos</a></li>
+                        <li><a href="#" class="hover:text-[#3E5DA6]">Photos</a></li>
+                    </ul>
+                </div>
+
+                <!-- IPL Teams -->
+                <div>
+                    <h3 class="text-[#3E5DA6] font-bold mb-3">Top IPL Teams</h3>
+                    <ul class="space-y-1">
+                        <li>MI</li>
+                        <li>CSK</li>
+                        <li>RCB</li>
+                        <li>GT</li>
+                        <li>KKR</li>
+                        <li>LSG</li>
+                        <li>DC</li>
+                    </ul>
+                </div>
+
+                <!-- Top Players -->
+                <div>
+                    <h3 class="text-[#BD3C34] font-bold mb-3">Top Players</h3>
+                    <ul class="space-y-1">
+                        <li>Virat Kohli</li>
+                        <li>MS Dhoni</li>
+                        <li>Rohit Sharma</li>
+                        <li>KL Rahul</li>
+                        <li>Jadeja</li>
+                        <li>Bumrah</li>
+                        <li>Surya</li>
+                    </ul>
+                </div>
+
+                <!-- Series -->
+                <div>
+                    <h3 class="text-[#3E5DA6] font-bold mb-3">Series</h3>
+                    <ul class="space-y-1">
+                        <li>IND vs AUS</li>
+                        <li>IND vs ENG</li>
+                        <li>IND vs PAK</li>
+                        <li>WC 2025</li>
+                        <li>Asia Cup</li>
+                    </ul>
+                </div>
+
+                <!-- Leagues -->
+                <div>
+                    <h3 class="text-[#BD3C34] font-bold mb-3">Top Leagues</h3>
+                    <ul class="space-y-1">
+                        <li>IPL 2025</li>
+                        <li>BBL 2025</li>
+                        <li>CPL 2025</li>
+                        <li>WPL 2025</li>
+                        <li>SA20 2025</li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h3 class="text-[#3E5DA6] font-bold mb-3">Stay Updated</h3>
+                    <p class="text-xs mb-2">Get cricket news & fantasy tips</p>
+                    <form class="flex flex-col gap-2 sm:flex-row sm:items-center">
+                        <input type="email" placeholder="Your email"
+                            class="w-full border border-gray-300 px-3 py-2 rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-[#3E5DA6]">
+                        <button type="submit"
+                            class="bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white px-4 py-2 rounded-md font-semibold hover:opacity-90 transition">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="border-t border-gray-300 my-8"></div>
+
+            <!-- Bottom Row -->
+            <div class="flex flex-col sm:flex-row justify-between items-center text-xs text-gray-600 gap-3">
+                <p>© 2025 <strong>CricketAddictor Media</strong>. All rights reserved.</p>
+                <div class="flex flex-wrap gap-3 text-center sm:text-left">
+                    <a href="#" class="hover:text-[#3E5DA6]">About Us</a>
+                    <a href="#" class="hover:text-[#3E5DA6]">Contact</a>
+                    <a href="#" class="hover:text-[#3E5DA6]">Privacy Policy</a>
+                    <a href="#" class="hover:text-[#3E5DA6]">Disclaimer</a>
+                    <a href="#" class="hover:text-[#3E5DA6]">Correction Policy</a>
+                    <a href="#" class="hover:text-[#3E5DA6]">Code of Ethics</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- POLL MODAL -->
+    <div id="poll-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
+        <section class="w-full max-w-md sm:max-w-xl bg-white rounded-2xl shadow-xl p-6 relative animate-fade-in">
+
+            <!-- ❌ Close Button -->
+            <button onclick="closePoll()"
+                class="absolute top-3 right-4 text-gray-400 hover:text-gray-700 text-xl font-bold">
+                &times;
+            </button>
+
+            <!-- Header -->
+            <div class="flex items-center gap-2 mb-4">
+                <div class="w-2 h-2 bg-[#BD3C34] rounded-full animate-pulse shadow"></div>
+                <h2
+                    class="text-base sm:text-lg md:text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34]">
+                    Polls / Fan Opinion
+                </h2>
+            </div>
+
+            <!-- Question -->
+            <p class="text-base sm:text-lg font-semibold text-gray-800 mb-4 text-center">
+                Who will win today’s match?
+            </p>
+
+            <!-- Vote Options -->
+            <div id="poll-options" class="space-y-3">
+                <button onclick="submitVote('india')"
+                    class="w-full bg-gray-100 hover:bg-[#3E5DA6] hover:text-white transition rounded-full py-2 px-4 font-semibold text-gray-800 text-center">
+                    🇮🇳 India
+                </button>
+                <button onclick="submitVote('pakistan')"
+                    class="w-full bg-gray-100 hover:bg-[#BD3C34] hover:text-white transition rounded-full py-2 px-4 font-semibold text-gray-800 text-center">
+                    🇵🇰 Pakistan
+                </button>
+                <button onclick="submitVote('draw')"
+                    class="w-full bg-gray-100 hover:bg-gray-800 hover:text-white transition rounded-full py-2 px-4 font-semibold text-gray-800 text-center">
+                    🤝 Draw / No Result
+                </button>
+            </div>
+
+            <!-- Results -->
+            <div id="poll-results" class="hidden mt-6 space-y-4">
+                <div>
+                    <div class="flex justify-between text-sm font-medium text-gray-700 mb-1">
+                        <span>🇮🇳 India</span><span id="result-india">0%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 h-3 rounded-full">
+                        <div id="bar-india" class="h-3 rounded-full bg-[#3E5DA6] poll-bar" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between text-sm font-medium text-gray-700 mb-1">
+                        <span>🇵🇰 Pakistan</span><span id="result-pakistan">0%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 h-3 rounded-full">
+                        <div id="bar-pakistan" class="h-3 rounded-full bg-[#BD3C34] poll-bar" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between text-sm font-medium text-gray-700 mb-1">
+                        <span>🤝 Draw / No Result</span><span id="result-draw">0%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 h-3 rounded-full">
+                        <div id="bar-draw" class="h-3 rounded-full bg-gray-800 poll-bar" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thank You Message -->
+            <div id="poll-thankyou" class="hidden text-center mt-6">
+                <p class="text-lg font-semibold text-[#3E5DA6] animate-fade-in">✅ Thank you for voting!</p>
+            </div>
+        </section>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 🔝 Back to Top Button -->
+    <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' });"
+        class="fixed bottom-5 right-5 z-50 bg-[#3E5DA6] text-white p-3 rounded-full shadow-lg hover:bg-[#2B4162] transition hidden md:block">
+        ↑
+    </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- JavaScript -->
+    <script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
