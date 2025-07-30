@@ -110,377 +110,477 @@
 
 
 
-    <!-- Compact Premium Glassy Sticky Header -->
-    <div
-        class="sticky top-0 z-50 h-10 flex items-center justify-between px-2 sm:px-3 shadow backdrop-blur-md bg-gradient-to-r from-[#3E5DA6]/90 via-[#4d4189]/90 to-[#BD3C34]/90 text-white">
+    <!-- Scroll Hide/Show Header -->
+    <div id="scrollHeader"
+        class=" h-12 sm:h-14 flex items-center justify-between px-3 sm:px-6 shadow-lg backdrop-blur-lg bg-gradient-to-r from-[#3E5DA6]/90 via-[#4d4189]/80 to-[#BD3C34]/90 text-white transition-transform duration-300">
 
         <!-- Back Icon -->
-        <button class="p-1 rounded hover:bg-white/10 transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        <button aria-label="Go back" class="p-2 rounded-full hover:bg-white/20 transition duration-200">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 19l-7-7 7-7" />
             </svg>
         </button>
 
         <!-- Title -->
-        <div class="absolute left-1/2 transform -translate-x-1/2 truncate w-52 text-center font-semibold text-[13px]">
+        <div
+            class="absolute left-1/2 transform -translate-x-1/2 truncate max-w-[70vw] sm:max-w-xs text-center font-semibold text-sm sm:text-base select-none pointer-events-none">
             WI vs AUS - 5th T20I
         </div>
 
         <!-- Options Icon -->
-        <button class="p-1 rounded hover:bg-white/10 transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 rotate-90" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M12 6v.01M12 12v.01M12 18v.01" />
+        <button aria-label="More options" class="p-2 rounded-full hover:bg-white/20 transition duration-200">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6 rotate-90" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M12 6v.01M12 12v.01M12 18v.01" />
             </svg>
         </button>
     </div>
 
 
 
+
+
     <!-- Soft Live Score Banner (Glassmorphic Look) -->
-    <div
-        class="sticky top-10 z-40 bg-white/80 backdrop-blur-md border border-gray-200 px-3 py-3 rounded-b-xl shadow-md text-gray-800">
+    <div id="liveScoreBanner"
+        class="bg-white/80 backdrop-blur-md border border-gray-200 px-4 py-4 rounded-b-xl shadow-lg text-gray-900 mx-2 sm:max-w-full transition-all duration-300 ease-in-out">
 
         <!-- Teams Row -->
-        <div class="">
+        <div>
             <div class="flex items-center justify-between">
                 <!-- Team 1 (Batting Now) -->
-                <div class="flex items-center gap-2">
-                    <img src="images/LSG_team.svg" alt="AUS"
-                        class="w-6 h-6 rounded-full bg-white border border-gray-300 shadow-sm" />
+                <div class="flex items-center gap-3">
+                    <img src="images/LSG_team.svg" alt="Australia Team Logo"
+                        class="w-7 h-7 rounded-full bg-white border border-gray-300 shadow-sm" />
                     <div class="flex flex-col leading-tight">
-                        <span class="font-semibold text-sm text-gray-900">AUS</span>
-                        <span class="text-[13px] text-gray-600 font-medium">154/4 <span
-                                class="text-[12px]">(16.2)</span></span>
+                        <span class="font-semibold text-base text-gray-900">AUS</span>
+                        <span class="text-sm text-gray-600 font-medium">
+                            154/4 <span class="text-xs">(16.2 ov)</span>
+                        </span>
                     </div>
                 </div>
 
                 <!-- VS Divider -->
-                <div class="text-[11px] text-gray-400 font-semibold px-1">vs</div>
+                <div class="text-xs text-gray-500 font-semibold px-2 select-none">vs</div>
 
                 <!-- Team 2 -->
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-3">
                     <div class="flex flex-col items-end leading-tight">
-                        <span class="font-semibold text-sm text-gray-900">WI</span>
-                        <span class="text-[13px] text-gray-600 font-medium">Target: 175</span>
+                        <span class="font-semibold text-base text-gray-900">WI</span>
+                        <span class="text-sm text-gray-600 font-medium">Target: 175</span>
                     </div>
-                    <img src="images/DC_team.svg" alt="WI"
-                        class="w-6 h-6 rounded-full bg-white border border-gray-300 shadow-sm" />
+                    <img src="images/DC_team.svg" alt="West Indies Team Logo"
+                        class="w-7 h-7 rounded-full bg-white border border-gray-300 shadow-sm" />
                 </div>
             </div>
 
             <!-- RR Info Row -->
-            <div class="mt-2 flex justify-between text-[12px] text-gray-700 font-medium">
+            <div class="mt-3 flex justify-between text-xs text-gray-700 font-semibold tracking-wide">
                 <span>🎯 Target: 175</span>
-                <span></span>
-                <span>Req RR: 10.20</span>
+                <span aria-hidden="true"></span> <!-- placeholder for center -->
+                <span>Req RR: <strong>10.20</strong></span>
             </div>
         </div>
-        <div class="mt-4">
+
+        <div class="mt-5">
             <!-- Progress Track -->
-            <div class="h-1 bg-gray-200 rounded-full overflow-hidden">
-                <div class="h-full rounded-full bg-gradient-to-r from-[#3E5DA6] via-[#4d4189] to-[#BD3C34]"
+            <div class="h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                <div class="h-full rounded-full bg-gradient-to-r from-[#3E5DA6] via-[#4d4189] to-[#BD3C34] transition-all duration-1000 ease-out"
                     style="width: 57%">
                 </div>
             </div>
 
             <!-- Labels -->
-            <div class="text-[11px] text-gray-600 mt-1 flex justify-between">
-                <span>Over: 16 / 20</span>
+            <div class="text-xs text-gray-600 mt-2 flex justify-between font-medium tracking-wide select-none">
+                <span>Overs: 16 / 20</span>
                 <span>Run Rate: 9.48</span>
             </div>
         </div>
 
-
     </div>
 
+    <!-- More dummy content for scrolling -->
+    <div class="">
 
 
 
 
+        <!-- Mobile-First Tab Switcher -->
+        <div class="overflow-x-auto whitespace-nowrap flex gap-3 px-3 pt-3 border-b bg-white text-sm text-gray-500 scrollbar-hide"
+            role="tablist" aria-label="Live match tabs">
 
-
-
-
-
-    <!-- Mobile-First Tab Switcher -->
-    <div
-        class="overflow-x-auto whitespace-nowrap flex gap-4 px-2 sm:px-3 pt-2.5 border-b bg-white text-sm text-gray-500 scrollbar-hide">
-
-        <!-- Active Tab -->
-        <!-- Gradient Tab Button -->
-        <button class="relative pb-2 px-1 font-semibold group">
-            <!-- Gradient Text -->
-            <span
-                class="bg-gradient-to-r from-[#3E5DA6] via-[#4d4189] to-[#BD3C34] bg-clip-text text-transparent text-sm">
+            <!-- Active Tab -->
+            <button role="tab" aria-selected="true" tabindex="0"
+                class="relative pb-2 px-3 font-semibold text-transparent bg-gradient-to-r from-[#3E5DA6] via-[#4d4189] to-[#BD3C34] bg-clip-text focus:outline-none focus:ring-2 focus:ring-[#BD3C34] focus:ring-offset-2">
                 Live
-            </span>
-
-            <!-- Gradient Underline -->
-            <span
-                class="absolute left-0 bottom-0 w-full h-[2px] bg-gradient-to-r from-[#3E5DA6] via-[#4d4189] to-[#BD3C34] rounded"></span>
-        </button>
-
-
-        <!-- Other Tabs -->
-        <button class="hover:text-[#3E5DA6] px-1 pb-2">Scorecard</button>
-        <button class="hover:text-[#3E5DA6] px-1 pb-2">Commentary</button>
-        <button class="hover:text-[#3E5DA6] px-1 pb-2">Fantasy</button>
-        <button class="hover:text-[#3E5DA6] px-1 pb-2">H2H</button>
-
-
-    </div>
-
-    <!-- Modern Batsmen + Bowler Card -->
-    <div class="bg-white px-3 pt-4 pb-3 rounded-md shadow-sm">
-
-        <!-- Batsmen Section -->
-        <div class="flex justify-between items-center mb-2">
-
-            <!-- Batsman 1 (Striker) -->
-            <div class="flex flex-col text-left">
-                <div class="flex items-center gap-2">
-                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span class="text-[#3E5DA6] font-semibold text-sm">Pooran</span>
-                </div>
-                <span class="text-[12px] text-gray-600 ml-4">45 (30)</span>
-            </div>
-
-            <!-- Neutral Spacer (Dot or Divider) -->
-            <div class="w-px h-6 bg-gray-200 mx-3"></div>
-
-            <!-- Batsman 2 -->
-            <div class="flex flex-col text-right">
-                <div class="flex items-center gap-2 justify-end">
-                    <span class="text-[#3E5DA6] font-semibold text-sm">Holder</span>
-                </div>
-                <span class="text-[12px] text-gray-600">12 (7)</span>
-            </div>
-
-        </div>
-
-        <!-- Bowler Section -->
-        <div class="bg-gray-100 px-3 py-2 rounded flex items-center gap-2 text-[12px] text-gray-800 font-medium">
-            🎯 <span class="text-[#BD3C34] font-semibold">Joseph</span>
-            <span class="ml-auto">3-0-18-1</span>
-        </div>
-    </div>
-
-
-    <!-- Subtle Horizontal Overs Tracker -->
-    <div class="overflow-x-auto px-3 py-2 bg-[#f9fafb] border-t border-gray-100 no-scrollbar">
-        <div class="flex gap-3 whitespace-nowrap">
-
-            <!-- Single Over -->
-            <div
-                class="bg-white border border-gray-200 text-gray-800 px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm min-w-max">
-                <span class="text-[11px] font-semibold text-[#3E5DA6]">16.0:</span>
-                <span class="bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">6</span>
-                <span class="bg-gray-100 text-gray-800 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">•</span>
-                <span class="bg-red-100 text-red-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">W</span>
-                <span class="bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">4</span>
-                <span class="bg-gray-100 text-gray-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">0</span>
                 <span
-                    class="bg-yellow-100 text-yellow-800 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">2</span>
-                <span class="ml-2 text-[11px] font-semibold text-[#3E5DA6]">=12</span>
-            </div>
+                    class="absolute left-0 bottom-0 w-full h-0.5 bg-gradient-to-r from-[#3E5DA6] via-[#4d4189] to-[#BD3C34] rounded transition-all"
+                    aria-hidden="true"></span>
+            </button>
 
-            <div
-                class="bg-white border border-gray-200 text-gray-800 px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm min-w-max">
-                <span class="text-[11px] font-semibold text-[#3E5DA6]">15.0:</span>
-                <span class="bg-gray-100 text-gray-800 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">•</span>
-                <span class="bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">4</span>
-                <span class="bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">6</span>
-                <span class="bg-gray-100 text-gray-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">1</span>
-                <span class="bg-gray-100 text-gray-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">1</span>
-                <span class="bg-gray-100 text-gray-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">0</span>
-                <span class="ml-2 text-[11px] font-semibold text-[#3E5DA6]">=12</span>
-            </div>
+            <!-- Other Tabs -->
+            <button role="tab" aria-selected="false" tabindex="-1"
+                class="pb-2 px-3 hover:text-[#3E5DA6] focus:outline-none focus:text-[#3E5DA6] transition">
+                Scorecard
+            </button>
 
-            <div
-                class="bg-white border border-gray-200 text-gray-800 px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm min-w-max">
-                <span class="text-[11px] font-semibold text-[#3E5DA6]">14.0:</span>
-                <span class="bg-red-100 text-red-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">W</span>
-                <span class="bg-gray-100 text-gray-800 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">•</span>
-                <span
-                    class="bg-yellow-100 text-yellow-800 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">2</span>
-                <span class="bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">4</span>
-                <span class="bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">6</span>
-                <span class="bg-gray-100 text-gray-700 px-1.5 py-0.5 rounded-full text-[11px] font-semibold">1</span>
-                <span class="ml-2 text-[11px] font-semibold text-[#3E5DA6]">=13</span>
-            </div>
+            <button role="tab" aria-selected="false" tabindex="-1"
+                class="pb-2 px-3 hover:text-[#3E5DA6] focus:outline-none focus:text-[#3E5DA6] transition">
+                Commentary
+            </button>
+
+            <button role="tab" aria-selected="false" tabindex="-1"
+                class="pb-2 px-3 hover:text-[#3E5DA6] focus:outline-none focus:text-[#3E5DA6] transition">
+                Fantasy
+            </button>
+
+            <button role="tab" aria-selected="false" tabindex="-1"
+                class="pb-2 px-3 hover:text-[#3E5DA6] focus:outline-none focus:text-[#3E5DA6] transition">
+                H2H
+            </button>
 
         </div>
-    </div>
 
 
-    <!-- 🌟 Slim Live Highlights Bar -->
-    <div
-        class="overflow-x-auto bg-gradient-to-r from-[#f8f9fa] via-[#eff2f5] to-[#f8f9fa] px-2 sm:px-3 py-1.5 sm:rounded-md border border-gray-200 shadow-sm no-scrollbar">
-        <div class="flex gap-2 sm:gap-4 whitespace-nowrap items-center animate-slide-in">
+        <!-- Modern Batsmen + Bowler Card -->
+        <div class="bg-white px-4 pt-5 pb-4 rounded-lg shadow-md max-w-md mx-auto sm:max-w-full">
 
-            <!-- Highlight 1 -->
+            <!-- Batsmen Section -->
+            <div class="flex justify-between items-center mb-3">
+
+                <!-- Batsman 1 (Striker) -->
+                <div class="flex flex-col text-left max-w-[48%]">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse" aria-label="Striker Indicator"
+                            role="img"></span>
+                        <span class="text-[#3E5DA6] font-semibold text-base select-none">Pooran</span>
+                    </div>
+                    <span class="text-xs text-gray-600 ml-5 select-text">45 <small
+                            class="text-gray-500">(<span>30</span>)</small></span>
+                </div>
+
+                <!-- Divider -->
+                <div class="w-px h-7 bg-gray-300 mx-4"></div>
+
+                <!-- Batsman 2 -->
+                <div class="flex flex-col text-right max-w-[48%]">
+                    <div class="flex items-center justify-end gap-2">
+                        <span class="text-[#3E5DA6] font-semibold text-base select-none">Holder</span>
+                    </div>
+                    <span class="text-xs text-gray-600 select-text">12 <small
+                            class="text-gray-500">(<span>7</span>)</small></span>
+                </div>
+
+            </div>
+
+            <!-- Bowler Section -->
             <div
-                class="flex items-center gap-1 bg-white px-2.5 py-1 rounded-full shadow-sm border border-gray-200 hover:scale-[1.02] transition-transform duration-200">
-                <span class="text-orange-500 text-xs">🔥</span>
-                <span class="text-gray-800 text-[11.5px] font-medium">Pooran hits fastest fifty!</span>
+                class="bg-gray-100 px-4 py-2 rounded-md flex items-center gap-3 text-[13px] text-gray-800 font-semibold select-text hover:bg-gray-200 transition cursor-default">
+                <span aria-label="Bowling icon" role="img">🎯</span>
+                <span class="text-[#BD3C34]">Joseph</span>
+                <span class="ml-auto tracking-wide">3-0-18-1</span>
             </div>
-
-            <!-- Highlight 2 -->
-            <div
-                class="flex items-center gap-1 bg-white px-2.5 py-1 rounded-full shadow-sm border border-gray-200 hover:scale-[1.02] transition-transform duration-200">
-                <span class="text-indigo-500 text-xs">🧠</span>
-                <span class="text-gray-800 text-[11.5px] font-medium">Maxwell bowls maiden in 5th over</span>
-            </div>
-
-            <!-- Highlight 3 -->
-            <div
-                class="flex items-center gap-1 bg-white px-2.5 py-1 rounded-full shadow-sm border border-gray-200 hover:scale-[1.02] transition-transform duration-200">
-                <span class="text-red-500 text-xs">📊</span>
-                <span class="text-gray-800 text-[11.5px] font-medium">WI need 21 off 6 balls</span>
-            </div>
-
-        </div>
-    </div>
-
-
-
-
-
-
-
-    <!-- Ultra Clean Mobile Commentary (2 Overs) -->
-    <div class="bg-white sm:rounded-md shadow-sm px-2 sm:px-4 py-3 border border-gray-200 text-sm space-y-4">
-
-        <!-- Over 15 -->
-        <div>
-            <div class="flex justify-between items-center mb-2">
-                <h3 class="text-[#3E5DA6] font-semibold text-xs uppercase tracking-wide">Over 15</h3>
-                <button class="text-[#BD3C34] text-xs font-semibold underline">View Full Commentary</button>
-            </div>
-
-            <ul class="divide-y divide-gray-100 text-[13px] text-gray-800">
-                <li class="py-2 flex items-start gap-3">
-                    <span class="text-gray-500 font-semibold w-8 flex-shrink-0 ">15.6</span>
-                    <p><span class="text-green-600 font-bold">SIX!</span> Pooran smashes it over long-on — clean strike!
-                    </p>
-                </li>
-                <li class="py-2 flex items-start gap-3">
-                    <span class="text-gray-500 font-semibold w-8 flex-shrink-0 ">15.5</span>
-                    <p><span class="text-blue-600 font-bold">FOUR!</span> Driven through extra cover with style.</p>
-                </li>
-                <li class="py-2 flex items-start gap-3">
-                    <span class="text-gray-500 font-semibold w-8 flex-shrink-0 ">15.4</span>
-                    <p>Short delivery, tapped to point. No run.</p>
-                </li>
-                <li class="py-2 flex items-start gap-3">
-                    <span class="text-gray-500 font-semibold w-8 flex-shrink-0 ">15.3</span>
-                    <p><span class="text-green-600 font-bold">SIX!</span> Over deep cover — Pooran is on fire!</p>
-                </li>
-                <li class="py-2 flex items-start gap-3">
-                    <span class="text-gray-500 font-semibold w-8 flex-shrink-0 ">15.2</span>
-                    <p>Angled in, defended solidly. Dot ball.</p>
-                </li>
-                <li class="py-2 flex items-start gap-3">
-                    <span class="text-gray-500 font-semibold w-8 flex-shrink-0 ">15.1</span>
-                    <p>Worked to fine leg, they run a couple.</p>
-                </li>
-            </ul>
         </div>
 
-        <!-- Over 14 -->
-        <div>
-            <div class="flex justify-between items-center mb-2">
-                <h3 class="text-[#3E5DA6] font-semibold text-xs uppercase tracking-wide">Over 14</h3>
-            </div>
 
-            <ul class="divide-y divide-gray-100 text-[13px] text-gray-800">
-                <li class="py-2 flex items-start gap-3">
-                    <span class="text-gray-500 font-semibold w-8 flex-shrink-0 ">14.6</span>
-                    <p>Quick single to mid-off. Rotation continues.</p>
-                </li>
-                <li class="py-2 flex items-start gap-3">
-                    <span class="text-gray-500 font-semibold w-8 flex-shrink-0 ">14.5</span>
-                    <p><span class="text-red-600 font-bold">OUT!</span> Caught at deep square leg. Big wicket!</p>
-                </li>
-                <li class="py-2 flex items-start gap-3">
-                    <span class="text-gray-500 font-semibold w-8 flex-shrink-0 ">14.4</span>
-                    <p>Slower ball, guided to third man for one.</p>
-                </li>
-                <li class="py-2 flex items-start gap-3">
-                    <span class="text-gray-500 font-semibold w-8 flex-shrink-0 ">14.3</span>
-                    <p><span class="text-blue-600 font-bold">FOUR!</span> Flicked past square leg — beautiful timing.
-                    </p>
-                </li>
-                <li class="py-2 flex items-start gap-3">
-                    <span class="text-gray-500 font-semibold w-8 flex-shrink-0 ">14.2</span>
-                    <p><span class="text-green-600 font-bold">SIX!</span> Picked up and sent into the crowd!</p>
-                </li>
-                <li class="py-2 flex items-start gap-3">
-                    <span class="text-gray-500 font-semibold w-8 flex-shrink-0 ">14.1</span>
-                    <p>Back of a length, punched to cover. Dot.</p>
-                </li>
-            </ul>
+
+        <!-- Over-by-Over Summary -->
+        <div class="overflow-x-auto px-3 py-2 bg-[#f9fafb] border-t border-gray-100 no-scrollbar">
+            <div class="flex gap-4 whitespace-nowrap">
+
+                <!-- Single Over -->
+                <div
+                    class="bg-white border border-gray-200 text-gray-800 px-3 py-1.5 rounded-lg flex items-center gap-2 shadow-sm min-w-max select-none">
+                    <span class="text-xs font-semibold text-[#3E5DA6] min-w-[30px] text-center">16.0:</span>
+                    <span
+                        class="bg-green-100 text-green-700 px-2 py-0.5 rounded-full text-xs font-semibold tracking-wide">6</span>
+                    <span
+                        class="bg-gray-100 text-gray-800 px-2 py-0.5 rounded-full text-xs font-semibold tracking-wide">•</span>
+                    <span
+                        class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full text-xs font-semibold tracking-wide">W</span>
+                    <span
+                        class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full text-xs font-semibold tracking-wide">4</span>
+                    <span
+                        class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full text-xs font-semibold tracking-wide">0</span>
+                    <span
+                        class="bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full text-xs font-semibold tracking-wide">2</span>
+                    <span class="ml-3 text-xs font-semibold text-[#3E5DA6] min-w-[22px] text-center">=12</span>
+                </div>
+
+                <div
+                    class="bg-white border border-gray-200 text-gray-800 px-3 py-1.5 rounded-lg flex items-center gap-2 shadow-sm min-w-max select-none">
+                    <span class="text-xs font-semibold text-[#3E5DA6] min-w-[30px] text-center">15.0:</span>
+                    <span
+                        class="bg-gray-100 text-gray-800 px-2 py-0.5 rounded-full text-xs font-semibold tracking-wide">•</span>
+                    <span
+                        class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full text-xs font-semibold tracking-wide">4</span>
+                    <span
+                        class="bg-green-100 text-green-700 px-2 py-0.5 rounded-full text-xs font-semibold tracking-wide">6</span>
+                    <span
+                        class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full text-xs font-semibold tracking-wide">1</span>
+                    <span
+                        class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full text-xs font-semibold tracking-wide">1</span>
+                    <span
+                        class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full text-xs font-semibold tracking-wide">0</span>
+                    <span class="ml-3 text-xs font-semibold text-[#3E5DA6] min-w-[22px] text-center">=12</span>
+                </div>
+
+                <div
+                    class="bg-white border border-gray-200 text-gray-800 px-3 py-1.5 rounded-lg flex items-center gap-2 shadow-sm min-w-max select-none">
+                    <span class="text-xs font-semibold text-[#3E5DA6] min-w-[30px] text-center">14.0:</span>
+                    <span
+                        class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full text-xs font-semibold tracking-wide">W</span>
+                    <span
+                        class="bg-gray-100 text-gray-800 px-2 py-0.5 rounded-full text-xs font-semibold tracking-wide">•</span>
+                    <span
+                        class="bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full text-xs font-semibold tracking-wide">2</span>
+                    <span
+                        class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full text-xs font-semibold tracking-wide">4</span>
+                    <span
+                        class="bg-green-100 text-green-700 px-2 py-0.5 rounded-full text-xs font-semibold tracking-wide">6</span>
+                    <span
+                        class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full text-xs font-semibold tracking-wide">1</span>
+                    <span class="ml-3 text-xs font-semibold text-[#3E5DA6] min-w-[22px] text-center">=13</span>
+                </div>
+
+            </div>
         </div>
 
-    </div>
 
 
-    <div class="bg-white border border-gray-200 sm:rounded-xl shadow-sm p-2 text-[12px] space-y-2">
+        <!-- 🌟 Slim Live Highlights Bar -->
+        <div class="overflow-x-auto bg-gradient-to-r from-[#f8f9fa] via-[#eff2f5] to-[#f8f9fa] px-3 sm:px-6 py-2 sm:rounded-md border border-gray-200 shadow-sm no-scrollbar"
+            role="region" aria-label="Live Match Highlights">
+            <div class="flex gap-3 whitespace-nowrap items-center animate-slide-in touch-pan-x overflow-x-scroll scroll-smooth"
+                tabindex="0">
+
+                <!-- Highlight 1 -->
+                <div class="flex items-center gap-2 bg-white px-4 py-1.5 rounded-full shadow-sm border border-gray-200 hover:scale-105 focus:scale-105 focus:outline-none focus:ring-2 focus:ring-[#BD3C34] transition-transform duration-200 cursor-pointer"
+                    role="listitem" tabindex="0" aria-label="Highlight: Pooran hits fastest fifty">
+                    <span class="text-orange-500 text-xs select-none" aria-hidden="true">🔥</span>
+                    <span class="text-gray-900 text-sm font-semibold select-text">Pooran hits fastest fifty!</span>
+                </div>
+
+                <!-- Highlight 2 -->
+                <div class="flex items-center gap-2 bg-white px-4 py-1.5 rounded-full shadow-sm border border-gray-200 hover:scale-105 focus:scale-105 focus:outline-none focus:ring-2 focus:ring-[#BD3C34] transition-transform duration-200 cursor-pointer"
+                    role="listitem" tabindex="0" aria-label="Highlight: Maxwell bowls maiden over">
+                    <span class="text-indigo-500 text-xs select-none" aria-hidden="true">🧠</span>
+                    <span class="text-gray-900 text-sm font-semibold select-text">Maxwell bowls maiden in 5th
+                        over</span>
+                </div>
+
+                <!-- Highlight 3 -->
+                <div class="flex items-center gap-2 bg-white px-4 py-1.5 rounded-full shadow-sm border border-gray-200 hover:scale-105 focus:scale-105 focus:outline-none focus:ring-2 focus:ring-[#BD3C34] transition-transform duration-200 cursor-pointer"
+                    role="listitem" tabindex="0" aria-label="Highlight: WI need 21 runs off 6 balls">
+                    <span class="text-red-500 text-xs select-none" aria-hidden="true">📊</span>
+                    <span class="text-gray-900 text-sm font-semibold select-text">WI need 21 off 6 balls</span>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <!-- 🌟 Ultra Clean Mobile Commentary (2 Overs) -->
+        <div class="bg-white sm:rounded-md shadow-md px-3 sm:px-6 py-4 border border-gray-200 text-sm space-y-6 max-w-md mx-auto sm:max-w-full"
+            role="region" aria-label="Live match commentary">
+
+            <!-- Over 15 -->
+            <section>
+                <div class="flex justify-between items-center mb-3">
+                    <h3 class="text-[#3E5DA6] font-semibold text-xs uppercase tracking-wide select-none">Over 15</h3>
+                    <button
+                        class="text-[#BD3C34] text-xs font-semibold underline focus:outline-none focus:ring-2 focus:ring-[#BD3C34] rounded"
+                        aria-label="View full commentary for over 15">
+                        View Full Commentary
+                    </button>
+                </div>
+
+                <ul class="divide-y divide-gray-100 text-[13px] text-gray-800" role="list">
+                    <li class="py-3 flex items-start gap-3 hover:bg-gray-50 rounded transition cursor-default"
+                        role="listitem">
+                        <time class="text-gray-500 font-semibold w-8 flex-shrink-0 select-none"
+                            datetime="2025-07-29T15:36:00">15.6</time>
+                        <p><strong class="text-green-600 font-bold select-text">SIX!</strong> Pooran smashes it over
+                            long-on — clean strike!</p>
+                    </li>
+                    <li class="py-3 flex items-start gap-3 hover:bg-gray-50 rounded transition cursor-default"
+                        role="listitem">
+                        <time class="text-gray-500 font-semibold w-8 flex-shrink-0 select-none"
+                            datetime="2025-07-29T15:35:00">15.5</time>
+                        <p><strong class="text-blue-600 font-bold select-text">FOUR!</strong> Driven through extra cover
+                            with style.</p>
+                    </li>
+                    <li class="py-3 flex items-start gap-3 hover:bg-gray-50 rounded transition cursor-default"
+                        role="listitem">
+                        <time class="text-gray-500 font-semibold w-8 flex-shrink-0 select-none"
+                            datetime="2025-07-29T15:34:00">15.4</time>
+                        <p>Short delivery, tapped to point. No run.</p>
+                    </li>
+                    <li class="py-3 flex items-start gap-3 hover:bg-gray-50 rounded transition cursor-default"
+                        role="listitem">
+                        <time class="text-gray-500 font-semibold w-8 flex-shrink-0 select-none"
+                            datetime="2025-07-29T15:33:00">15.3</time>
+                        <p><strong class="text-green-600 font-bold select-text">SIX!</strong> Over deep cover — Pooran
+                            is on fire!</p>
+                    </li>
+                    <li class="py-3 flex items-start gap-3 hover:bg-gray-50 rounded transition cursor-default"
+                        role="listitem">
+                        <time class="text-gray-500 font-semibold w-8 flex-shrink-0 select-none"
+                            datetime="2025-07-29T15:32:00">15.2</time>
+                        <p>Angled in, defended solidly. Dot ball.</p>
+                    </li>
+                    <li class="py-3 flex items-start gap-3 hover:bg-gray-50 rounded transition cursor-default"
+                        role="listitem">
+                        <time class="text-gray-500 font-semibold w-8 flex-shrink-0 select-none"
+                            datetime="2025-07-29T15:31:00">15.1</time>
+                        <p>Worked to fine leg, they run a couple.</p>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Over 14 -->
+            <section>
+                <div class="flex justify-between items-center mb-3">
+                    <h3 class="text-[#3E5DA6] font-semibold text-xs uppercase tracking-wide select-none">Over 14</h3>
+                </div>
+
+                <ul class="divide-y divide-gray-100 text-[13px] text-gray-800" role="list">
+                    <li class="py-3 flex items-start gap-3 hover:bg-gray-50 rounded transition cursor-default"
+                        role="listitem">
+                        <time class="text-gray-500 font-semibold w-8 flex-shrink-0 select-none"
+                            datetime="2025-07-29T15:26:00">14.6</time>
+                        <p>Quick single to mid-off. Rotation continues.</p>
+                    </li>
+                    <li class="py-3 flex items-start gap-3 hover:bg-gray-50 rounded transition cursor-default"
+                        role="listitem">
+                        <time class="text-gray-500 font-semibold w-8 flex-shrink-0 select-none"
+                            datetime="2025-07-29T15:25:00">14.5</time>
+                        <p><strong class="text-red-600 font-bold select-text">OUT!</strong> Caught at deep square leg.
+                            Big wicket!</p>
+                    </li>
+                    <li class="py-3 flex items-start gap-3 hover:bg-gray-50 rounded transition cursor-default"
+                        role="listitem">
+                        <time class="text-gray-500 font-semibold w-8 flex-shrink-0 select-none"
+                            datetime="2025-07-29T15:24:00">14.4</time>
+                        <p>Slower ball, guided to third man for one.</p>
+                    </li>
+                    <li class="py-3 flex items-start gap-3 hover:bg-gray-50 rounded transition cursor-default"
+                        role="listitem">
+                        <time class="text-gray-500 font-semibold w-8 flex-shrink-0 select-none"
+                            datetime="2025-07-29T15:23:00">14.3</time>
+                        <p><strong class="text-blue-600 font-bold select-text">FOUR!</strong> Flicked past square leg —
+                            beautiful timing.</p>
+                    </li>
+                    <li class="py-3 flex items-start gap-3 hover:bg-gray-50 rounded transition cursor-default"
+                        role="listitem">
+                        <time class="text-gray-500 font-semibold w-8 flex-shrink-0 select-none"
+                            datetime="2025-07-29T15:22:00">14.2</time>
+                        <p><strong class="text-green-600 font-bold select-text">SIX!</strong> Picked up and sent into
+                            the crowd!</p>
+                    </li>
+                    <li class="py-3 flex items-start gap-3 hover:bg-gray-50 rounded transition cursor-default"
+                        role="listitem">
+                        <time class="text-gray-500 font-semibold w-8 flex-shrink-0 select-none"
+                            datetime="2025-07-29T15:21:00">14.1</time>
+                        <p>Back of a length, punched to cover. Dot.</p>
+                    </li>
+                </ul>
+            </section>
+
+        </div>
+
+
+
         <!-- Poll Question -->
-        <div class="font-semibold text-gray-800 flex items-center gap-1">
-            🏏 Who will take the next wicket?
-        </div>
-
-        <!-- Poll Options Scrollable -->
-        <div class="flex gap-2 overflow-x-auto scrollbar-hide">
-            <button
-                class="bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] text-white font-medium px-3 py-1 rounded-full shadow-sm text-[11px]">
-                Joseph
-            </button>
-            <button
-                class="bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] text-white font-medium px-3 py-1 rounded-full shadow-sm text-[11px]">
-                Maxwell
-            </button>
-            <button
-                class="bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] text-white font-medium px-3 py-1 rounded-full shadow-sm text-[11px]">
-                Other
-            </button>
-        </div>
-    </div>
-
-
-
-
-    <!-- Premium Innings Summary Card -->
-    <div
-        class="bg-gradient-to-r from-white via-gray-50 to-white border border-gray-200 sm:rounded-md shadow-sm px-2 sm:px-3 py-2 text-[13px]">
-
-        <!-- Header Row -->
-        <div class="flex items-center justify-between mb-1">
-            <h3 class="text-[#3E5DA6] font-semibold text-xs uppercase tracking-wide">Innings 1 - AUS</h3>
-            <span class="text-[12px] font-bold text-[#BD3C34]">154/4 <span class="text-gray-500">(16.2)</span></span>
-        </div>
-
-        <!-- Divider Line -->
-        <div class="border-t border-dashed border-gray-300 my-1"></div>
-
-        <!-- Player Highlight -->
-        <div class="flex items-center justify-between gap-2 text-gray-800">
-            <div class="flex items-center gap-2 truncate">
-                <span class="text-[15px]">🥇</span>
-                <div class="leading-tight">
-                    <p class="font-semibold truncate">David Warner</p>
-                    <p class="text-[11px] text-gray-500 truncate">c Holder b Joseph</p>
-                </div>
+        <div class="bg-white border border-gray-200 sm:rounded-xl shadow-sm p-3 text-[13px] space-y-3 max-w-md mx-auto sm:max-w-full"
+            role="region" aria-labelledby="poll-question">
+            <!-- Poll Question Text -->
+            <div id="poll-question" class="font-semibold text-gray-900 flex items-center gap-2 select-none"
+                aria-live="polite">
+                <span aria-hidden="true">🏏</span>
+                Who will take the next wicket?
             </div>
-            <span class="text-[13px] font-semibold text-right whitespace-nowrap">56 <span
-                    class="text-xs text-gray-500">(32)</span></span>
+
+            <!-- Poll Options Scrollable -->
+            <div class="flex gap-3 overflow-x-auto scrollbar-hide snap-x snap-mandatory" role="list"
+                aria-label="Poll options">
+                <button role="listitem" type="button"
+                    class="snap-center bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] text-white font-semibold px-4 py-2 rounded-full shadow-md text-[12px] whitespace-nowrap transition hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-[#BD3C34] focus:ring-offset-1"
+                    aria-pressed="false">
+                    Joseph
+                </button>
+                <button role="listitem" type="button"
+                    class="snap-center bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] text-white font-semibold px-4 py-2 rounded-full shadow-md text-[12px] whitespace-nowrap transition hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-[#BD3C34] focus:ring-offset-1"
+                    aria-pressed="false">
+                    Maxwell
+                </button>
+                <button role="listitem" type="button"
+                    class="snap-center bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] text-white font-semibold px-4 py-2 rounded-full shadow-md text-[12px] whitespace-nowrap transition hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-[#BD3C34] focus:ring-offset-1"
+                    aria-pressed="false">
+                    Other
+                </button>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- Premium Innings Summary Card -->
+        <div
+            class="bg-gradient-to-r from-white via-gray-50 to-white border border-gray-200 sm:rounded-md shadow-sm px-4 py-3 text-[14px] max-w-md mx-auto sm:max-w-full">
+
+            <!-- Header Row -->
+            <div class="flex items-center justify-between mb-2">
+                <h3
+                    class="text-[#3E5DA6] font-semibold text-xs uppercase tracking-wide select-none truncate max-w-[60%]">
+                    Innings 1 - AUS
+                </h3>
+                <span class="text-[13px] font-bold text-[#BD3C34] whitespace-nowrap">
+                    154/4 <span class="text-gray-500 text-xs">(16.2 ov)</span>
+                </span>
+            </div>
+
+            <!-- Divider Line -->
+            <div class="border-t border-dashed border-gray-300 my-2"></div>
+
+            <!-- Player Highlight -->
+            <div
+                class="flex items-center justify-between gap-3 text-gray-800 hover:bg-gray-50 rounded transition cursor-default px-2 py-1">
+                <div class="flex items-center gap-3 truncate max-w-[75%]">
+                    <span class="text-[18px]" aria-label="Gold medal emoji" role="img">🥇</span>
+                    <div class="leading-tight truncate">
+                        <p class="font-semibold truncate text-base">David Warner</p>
+                        <p class="text-xs text-gray-500 truncate">c Holder b Joseph</p>
+                    </div>
+                </div>
+                <span class="text-[14px] font-semibold whitespace-nowrap select-text">
+                    56 <span class="text-xs text-gray-500">(32)</span>
+                </span>
+            </div>
         </div>
 
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -492,188 +592,213 @@
 
     <!-- Stylish Bowling Summary Card -->
     <div
-        class="bg-gradient-to-br from-white via-gray-50 to-white border border-gray-200 sm:rounded-lg shadow-sm px-2 sm:px-3 py-2 text-[13px]">
+        class="bg-gradient-to-br from-white via-gray-50 to-white border border-gray-200 sm:rounded-lg shadow-sm px-4 py-3 text-[14px] max-w-md mx-auto sm:max-w-full">
 
         <!-- Header -->
-        <div class="flex items-center justify-between mb-2">
-            <h3 class="text-[#3E5DA6] font-semibold text-xs uppercase tracking-wide">Bowling Summary</h3>
+        <div class="flex items-center justify-between mb-3">
+            <h3 class="text-[#3E5DA6] font-semibold text-xs uppercase tracking-wide select-none">Bowling Summary</h3>
             <span
-                class="bg-[#BD3C34]/10 text-[#BD3C34] text-[10px] font-semibold px-2 py-[2px] rounded-full">T20I</span>
+                class="bg-[#BD3C34]/20 text-[#BD3C34] text-[11px] font-semibold px-3 py-1 rounded-full select-none whitespace-nowrap">
+                T20I
+            </span>
         </div>
 
         <!-- Bowler Entries -->
-        <div class="space-y-2 text-gray-800">
+        <div class="space-y-3 text-gray-800">
 
             <!-- Joseph -->
-            <div class="flex items-center justify-between">
-                <div class="flex flex-col leading-tight">
-                    <span class="font-semibold text-[13px]">Joseph</span>
-                    <span class="text-[11px] text-gray-500">Right-arm fast</span>
+            <div
+                class="flex items-center justify-between hover:bg-gray-50 rounded-md transition cursor-default px-3 py-2">
+                <div class="flex flex-col leading-tight max-w-[60%]">
+                    <span class="font-semibold text-[14px] truncate">Joseph</span>
+                    <span class="text-[11px] text-gray-500 truncate">Right-arm fast</span>
                 </div>
-                <div class="text-right">
-                    <span class="text-[13px] font-semibold">4-0-25-2</span>
-                    <div class="text-[10px] text-gray-500">ER: 6.25</div>
+                <div class="text-right max-w-[40%]">
+                    <span class="text-[14px] font-semibold">4-0-25-2</span>
+                    <div class="text-[11px] text-gray-500">ER: 6.25</div>
                 </div>
             </div>
 
             <!-- Maxwell -->
-            <div class="flex items-center justify-between">
-                <div class="flex flex-col leading-tight">
-                    <span class="font-semibold text-[13px]">Maxwell</span>
-                    <span class="text-[11px] text-gray-500">Off-spin</span>
+            <div
+                class="flex items-center justify-between hover:bg-gray-50 rounded-md transition cursor-default px-3 py-2">
+                <div class="flex flex-col leading-tight max-w-[60%]">
+                    <span class="font-semibold text-[14px] truncate">Maxwell</span>
+                    <span class="text-[11px] text-gray-500 truncate">Off-spin</span>
                 </div>
-                <div class="text-right">
-                    <span class="text-[13px] font-semibold">3.2-0-18-1</span>
-                    <div class="text-[10px] text-gray-500">ER: 5.40</div>
+                <div class="text-right max-w-[40%]">
+                    <span class="text-[14px] font-semibold">3.2-0-18-1</span>
+                    <div class="text-[11px] text-gray-500">ER: 5.40</div>
                 </div>
             </div>
 
         </div>
     </div>
+
 
 
     <!-- Premium Top Performers Card -->
     <div
-        class="bg-gradient-to-b from-white via-gray-50 to-white border border-gray-200 sm:rounded-lg shadow-sm px-2 sm:px-3 py-2 text-[13px]">
+        class="bg-gradient-to-b from-white via-gray-50 to-white border border-gray-200 sm:rounded-lg shadow-sm px-4 py-3 text-[14px] max-w-md mx-auto sm:max-w-full">
 
         <!-- Header -->
-        <div class="flex items-center justify-between mb-2">
+        <div class="flex items-center justify-between mb-3 select-none">
             <h3 class="text-[#BD3C34] font-semibold text-xs uppercase tracking-wide">Top Performers</h3>
-            <span class="text-[11px] text-gray-400 font-medium">Fantasy Points</span>
+            <span class="text-[12px] text-gray-400 font-medium whitespace-nowrap">Fantasy Points</span>
         </div>
 
         <!-- Performer Rows -->
-        <div class="space-y-[6px]">
+        <div class="space-y-2">
 
             <!-- Pooran -->
-            <div class="flex items-center justify-between bg-[#fef6f6] px-3 py-1 rounded-md">
-                <div class="flex items-center gap-2 text-gray-800 font-medium">
-                    <span class="text-sm">🥇</span>
-                    <span>Pooran</span>
+            <div
+                class="flex items-center justify-between bg-[#fef6f6] px-4 py-2 rounded-md hover:bg-[#fce6e6] transition cursor-default">
+                <div class="flex items-center gap-3 text-gray-900 font-semibold truncate max-w-[70%]">
+                    <span class="text-lg select-none" aria-label="Gold medal emoji" role="img">🥇</span>
+                    <span class="truncate">Pooran</span>
                     <span
-                        class="text-[10px] bg-[#BD3C34]/10 text-[#BD3C34] px-2 py-[1px] rounded-full font-semibold">C</span>
+                        class="text-[11px] bg-[#BD3C34]/20 text-[#BD3C34] px-2 py-0.5 rounded-full font-semibold select-none whitespace-nowrap"
+                        aria-label="Captain">
+                        C
+                    </span>
                 </div>
-                <span class="text-green-600 font-semibold">87 pts</span>
+                <span class="text-green-600 font-bold select-text whitespace-nowrap">87 pts</span>
             </div>
 
             <!-- Joseph -->
-            <div class="flex items-center justify-between bg-[#f3f7ff] px-3 py-1 rounded-md">
-                <div class="flex items-center gap-2 text-gray-800 font-medium">
-                    <span class="text-sm">🥈</span>
-                    <span>Joseph</span>
+            <div
+                class="flex items-center justify-between bg-[#f3f7ff] px-4 py-2 rounded-md hover:bg-[#d9e3ff] transition cursor-default">
+                <div class="flex items-center gap-3 text-gray-900 font-semibold truncate max-w-[70%]">
+                    <span class="text-lg select-none" aria-label="Silver medal emoji" role="img">🥈</span>
+                    <span class="truncate">Joseph</span>
                     <span
-                        class="text-[10px] bg-[#3E5DA6]/10 text-[#3E5DA6] px-2 py-[1px] rounded-full font-semibold">VC</span>
+                        class="text-[11px] bg-[#3E5DA6]/20 text-[#3E5DA6] px-2 py-0.5 rounded-full font-semibold select-none whitespace-nowrap"
+                        aria-label="Vice Captain">
+                        VC
+                    </span>
                 </div>
-                <span class="text-blue-600 font-semibold">65 pts</span>
+                <span class="text-blue-600 font-bold select-text whitespace-nowrap">65 pts</span>
             </div>
 
             <!-- Warner -->
-            <div class="flex items-center justify-between bg-[#fff9e8] px-3 py-1 rounded-md">
-                <div class="flex items-center gap-2 text-gray-800 font-medium">
-                    <span class="text-sm">🥉</span>
-                    <span>Warner</span>
+            <div
+                class="flex items-center justify-between bg-[#fff9e8] px-4 py-2 rounded-md hover:bg-[#fff4c3] transition cursor-default">
+                <div class="flex items-center gap-3 text-gray-900 font-semibold truncate max-w-[70%]">
+                    <span class="text-lg select-none" aria-label="Bronze medal emoji" role="img">🥉</span>
+                    <span class="truncate">Warner</span>
                 </div>
-                <span class="text-yellow-700 font-semibold">56 pts</span>
+                <span class="text-yellow-700 font-bold select-text whitespace-nowrap">56 pts</span>
             </div>
 
         </div>
     </div>
+
 
 
     <!-- Enhanced H2H Summary Card -->
-    <div
-        class="bg-gradient-to-b from-white via-gray-50 to-white border border-gray-200 sm:rounded-lg shadow-sm px-2 sm:px-3 py-3 text-[13px]">
+    <div class="bg-gradient-to-b from-white via-gray-50 to-white border border-gray-200 sm:rounded-lg shadow-sm px-4 py-4 text-[14px] max-w-md mx-auto sm:max-w-full"
+        role="region" aria-labelledby="h2h-header">
 
         <!-- H2H Matches Header -->
-        <div class="flex items-center gap-2 text-[#3E5DA6] font-semibold text-xs uppercase tracking-wide mb-2">
-            🤝 Head-to-Head (Last 5)
-        </div>
+        <h2 id="h2h-header"
+            class="flex items-center gap-2 text-[#3E5DA6] font-semibold text-xs uppercase tracking-wide mb-3 select-none">
+            <span aria-hidden="true">🤝</span> Head-to-Head (Last 5)
+        </h2>
 
         <!-- Match History Cards -->
-        <div class="space-y-1 text-[13px]">
-            <div class="flex justify-between items-center bg-[#F0F4FF] px-3 py-[6px] rounded-md">
-                <span><span class="font-semibold text-gray-800">WI</span> won by <span
-                        class="text-green-600 font-semibold">3 runs</span></span>
-                <span class="text-[11px] text-gray-500">#1</span>
-            </div>
-            <div class="flex justify-between items-center bg-[#FFF4F3] px-3 py-[6px] rounded-md">
-                <span><span class="font-semibold text-gray-800">AUS</span> won by <span
-                        class="text-blue-600 font-semibold">6 wickets</span></span>
-                <span class="text-[11px] text-gray-500">#2</span>
-            </div>
-        </div>
+        <ul class="space-y-2 text-[13px]" role="list" aria-label="Head to Head recent matches results">
+            <li class="flex justify-between items-center bg-[#F0F4FF] px-4 py-2 rounded-md hover:bg-[#d9e3ff] transition cursor-default"
+                role="listitem">
+                <span><strong class="text-gray-800 font-semibold">WI</strong> won by <strong
+                        class="text-green-600 font-semibold">3 runs</strong></span>
+                <span class="text-[11px] text-gray-500 select-none">#1</span>
+            </li>
+            <li class="flex justify-between items-center bg-[#FFF4F3] px-4 py-2 rounded-md hover:bg-[#ffe3e0] transition cursor-default"
+                role="listitem">
+                <span><strong class="text-gray-800 font-semibold">AUS</strong> won by <strong
+                        class="text-blue-600 font-semibold">6 wickets</strong></span>
+                <span class="text-[11px] text-gray-500 select-none">#2</span>
+            </li>
+        </ul>
 
         <!-- Divider -->
-        <hr class="my-3 border-dashed border-gray-300">
+        <hr class="my-4 border-dashed border-gray-300">
 
         <!-- Key Stats -->
-        <div class="space-y-2 text-gray-800">
-
-            <!-- WI Score Stat -->
-            <div class="flex justify-between items-center bg-[#EFF8F0] px-3 py-[6px] rounded-md">
-                <span>Avg <span class="font-semibold text-[#3E5DA6]">WI</span> Score</span>
-                <span class="font-semibold text-gray-900">172</span>
+        <section class="space-y-3 text-gray-800" aria-label="Key statistics">
+            <div class="flex justify-between items-center bg-[#EFF8F0] px-4 py-2 rounded-md select-none cursor-default"
+                role="group" aria-labelledby="wi-score-label wi-score-value">
+                <span id="wi-score-label">Avg <strong class="text-[#3E5DA6]">WI</strong> Score</span>
+                <span id="wi-score-value" class="font-semibold text-gray-900">172</span>
             </div>
 
-            <!-- AUS Win % -->
-            <div class="flex justify-between items-center bg-[#FFF5E5] px-3 py-[6px] rounded-md">
-                <span><span class="font-semibold text-[#BD3C34]">AUS</span> Win %</span>
-                <span class="font-semibold text-green-700">65%</span>
+            <div class="flex justify-between items-center bg-[#FFF5E5] px-4 py-2 rounded-md select-none cursor-default"
+                role="group" aria-labelledby="aus-win-label aus-win-value">
+                <span id="aus-win-label"><strong class="text-[#BD3C34]">AUS</strong> Win %</span>
+                <span id="aus-win-value" class="font-semibold text-green-700">65%</span>
             </div>
-
-        </div>
+        </section>
     </div>
 
 
-    <!-- Smart Match Info Capsule -->
-    <div
-        class="fixed bottom-10 inset-x-4 bg-gradient-to-br from-[#3E5DA6] to-[#BD3C34] text-white rounded-xl shadow-xl px-4 py-2 text-xs sm:text-sm z-50 font-sans">
 
+    <!-- Full Info Capsule -->
+    <div id="matchInfoCapsule" class="fixed bottom-2 left-1/2 transform -translate-x-1/2 z-50 font-sans text-white text-xs sm:text-sm
+       bg-gradient-to-r from-[#3E5DA6] via-[#5a4baf] to-[#BD3C34] rounded-xl shadow-lg px-4 py-2 flex flex-col
+       sm:flex-row sm:items-center justify-between gap-2 transition-transform duration-300 ease-in-out">
 
+        <!-- Close Button -->
+        <button id="closeCapsuleBtn" aria-label="Close info capsule"
+            class="absolute top-1 right-2 text-white hover:text-white/70 transition text-2xl font-bold leading-none select-none">
+            &times;
+        </button>
 
-        <!-- 🎲 Toss + 🔔 Live Alert Bar – Sleek & Unified -->
+        <!-- Location + Time -->
+        <div class="flex items-center gap-3 whitespace-nowrap border-b border-white/25 pb-1 sm:pb-0 sm:border-0">
+            <div class="flex items-center gap-1 font-semibold text-white">
+                <span aria-hidden="true" class="text-lg">📍</span>
+                <span>Kensington Oval</span>
+            </div>
+            <div class="flex items-center gap-1 font-medium text-white/90">
+                <span aria-hidden="true" class="text-base">🕒</span>
+                <span>29 Jul, 7:30 PM IST</span>
+            </div>
+        </div>
+
+        <!-- Toss + Live Alerts -->
         <div
-            class="fixed bottom-2  left-3 right-3 z-50 bg-gradient-to-r from-[#3E5DA6] via-[#4d4189] to-[#BD3C34] text-white px-4 py-2 rounded-full shadow-md flex flex-col items-center justify-between text-[12px] sm:text-[13px]">
-            <div class="flex justify-between items-center gap-2 border-b border-white/20 pb-1 mb-1">
-                <div class="flex items-center gap-2">
-                    <span class="text-white/90">📍</span>
-                    <span class="font-semibold">Kensington Oval</span>
-                </div>
-                <div class="flex items-center gap-1">
-                    <span class="text-white/90">🕒</span>
-                    <span class="font-medium">29 Jul, 7:30 PM IST</span>
+            class="flex items-center gap-3 whitespace-nowrap max-w-full overflow-hidden font-semibold text-white sm:max-w-max">
+
+            <div class="flex items-center gap-2 whitespace-nowrap overflow-hidden">
+                <span class="truncate">
+                    WI chose to <span class="underline decoration-white/70">bat first</span>
+                </span>
+                <div class="h-4 w-px bg-white/50 mx-2"></div>
+                <div class="flex items-center gap-1 flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                    </svg>
+                    <span>Live alerts?</span>
                 </div>
             </div>
 
-            <div class="flex items-center gap-3 whitespace-nowrap overflow-hidden">
-                <!-- Toss Info + Alert Label Together -->
-                <div class="flex items-center gap-3 whitespace-nowrap overflow-hidden">
-
-                    <span> WI chose to <span class="underline decoration-white/50">bat first</span></span>
-                    <div class="h-4 w-px bg-white/50"></div>
-                    <div class="flex items-center gap-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                        </svg>
-                        <span class="font-medium">Live alerts?</span>
-                    </div>
-                </div>
-
-                <!-- Enable Button -->
-                <button
-                    class="bg-white text-[#BD3C34] font-semibold px-3 py-1 text-[11px] rounded-full shadow hover:bg-gray-100 transition-all">
-                    Enable
-                </button>
-            </div>
+            <button
+                class="bg-white text-[#BD3C34] font-bold px-4 py-0.5 rounded-full shadow hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#BD3C34] focus:ring-offset-1 transition flex-shrink-0"
+                aria-label="Enable live alerts">
+                Enable
+            </button>
         </div>
-
-
-
-
-
     </div>
+
+    <!-- Minimized Circle Button -->
+    <button id="minimizeBtn" aria-label="Open info capsule" title="Show match info" class="fixed bottom-4 right-3 w-12 h-12 rounded-full bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] 
+          shadow-lg text-white flex items-center justify-center text-2xl cursor-pointer select-none
+          transition-opacity duration-300 opacity-0 pointer-events-none">
+        ℹ️
+    </button>
+
 
 
 
@@ -1012,21 +1137,74 @@
 
 
 
+        (function () {
+            const header = document.getElementById('scrollHeader');
+            let lastScroll = window.pageYOffset || document.documentElement.scrollTop;
+            let ticking = false;
+            const threshold = 10; // minimum scroll px to trigger
+
+            function onScroll() {
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        if (currentScroll > lastScroll + threshold) {
+                            // scrolling down -> hide header
+                            header.style.transform = 'translateY(-100%)';
+                        } else if (currentScroll < lastScroll - threshold || currentScroll <= 0) {
+                            // scrolling up -> show header
+                            header.style.transform = 'translateY(0)';
+                        }
+                        lastScroll = currentScroll <= 0 ? 0 : currentScroll;
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }
+
+            window.addEventListener('scroll', onScroll);
+        })();
 
 
 
 
 
 
+        window.addEventListener('DOMContentLoaded', () => {
+            const banner = document.getElementById('liveScoreBanner');
+            const stickyOffset = banner.offsetTop;
+
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > stickyOffset) {
+                    banner.classList.add('fixed', 'top-0', 'left-0', 'right-0', 'z-40', 'mx-0', 'sm:max-w-full');
+                    banner.style.margin = '0'; // remove side margin for sticky mode
+                } else {
+                    banner.classList.remove('fixed', 'top-0', 'left-0', 'right-0', 'z-40', 'mx-0', 'sm:max-w-full');
+                    banner.style.margin = ''; // restore original margin
+                }
+            });
+        });
 
 
 
 
 
 
+        const capsule = document.getElementById('matchInfoCapsule');
+        const closeBtn = document.getElementById('closeCapsuleBtn');
+        const minimizeBtn = document.getElementById('minimizeBtn');
 
+        closeBtn.addEventListener('click', () => {
+            capsule.classList.add('opacity-0', 'pointer-events-none', 'translate-y-full');
+            capsule.classList.remove('translate-y-0');
+            minimizeBtn.classList.remove('opacity-0', 'pointer-events-none');
+        });
 
-
+        minimizeBtn.addEventListener('click', () => {
+            capsule.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-full');
+            capsule.classList.add('translate-y-0');
+            minimizeBtn.classList.add('opacity-0', 'pointer-events-none');
+        });
 
     </script>
 </body>
