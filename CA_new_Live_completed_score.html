@@ -113,57 +113,50 @@
 
 
 
-    <!-- Match Summary Card -->
-    <div class="bg-white rounded-xl shadow-md p-4  text-gray-800 space-y-3 mb-4 sm:max-w-3xl sm:mx-auto">
-        <!-- Header Section -->
-        <div class="flex items-center justify-between">
-        
+    <!-- Match Summary Card - Completed Match -->
+    <div class="bg-white rounded-xl shadow-md p-4 text-gray-800 space-y-3 mb-4 sm:max-w-3xl sm:mx-auto">
 
-            <!-- Right side -->
-            <div class="text-xs text-blue-600">5th Test • The Oval</div>
+        <!-- RESULT Header -->
+        <div class="text-xs text-gray-500 font-semibold">RESULT</div>
+
+        <!-- Match Info -->
+        <div class="text-sm text-gray-700">
+            3rd T20I (N), Lauderhill, August 03, 2025 •
+            <a href="#" class="text-blue-500 hover:underline">Pakistan tour of West Indies</a>
         </div>
-
-
-        <!-- Date + Series Info -->
-        <div class="text-xs text-gray-400">July 31 - Aug 04, 2025 • <a href="#"
-                class="text-blue-500 hover:underline">India tour of England</a></div>
-
-        <!-- Match Status with Gradient Text -->
-        <div class="text-xs font-semibold bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] bg-clip-text text-transparent">
-            STUMPS • Starts 3:30 PM
-        </div>
-
 
         <!-- Score Section -->
-        <div class="flex flex-col gap-2">
+        <div class="flex flex-col gap-2 mt-2">
+
+            <!-- PAK -->
             <div class="flex items-center justify-between border-b pb-1">
                 <div class="flex items-center gap-2">
-                    <img src="images/India_logo.svg" alt="IND" class="w-5 h-5">
-                    <span class="font-semibold text-gray-800">IND</span>
-                    <span class="text-red-600">•</span>
+                    <img src="images/pak.webp" alt="PAK" class="w-5 h-5" />
+                    <span class="font-semibold text-gray-800">PAK</span>
                 </div>
-                <div class="font-semibold text-black text-base">204/6 <span class="text-xs text-gray-500">(64 ov)</span>
-                </div>
+                <div class="font-bold text-black text-base">189/4</div>
             </div>
 
+            <!-- WI -->
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                    <img src="images/england_logo.svg" alt="ENG" class="w-5 h-5">
-                    <span class="font-semibold text-gray-800">ENG</span>
+                    <img src="images/wi.webp" alt="WI" class="w-5 h-5 opacity-70" />
+                    <span class="font-semibold text-gray-500">WI</span>
                 </div>
-                <span class="text-gray-400 text-sm">Yet to bat</span>
+                <span class="text-gray-500 text-sm">(20 ov, T:190) <span
+                        class="text-black font-semibold">176/6</span></span>
             </div>
         </div>
 
-        <!-- Fielding Decision & Run Rate -->
-        <div class="text-sm text-gray-600">
-            Day 1 - <span class="font-medium text-black">England chose to field</span>.
-        </div>
-        <div class="flex justify-between text-xs text-gray-500 pt-1">
-            <span>CRR: 3.18</span>
-            <span>Last 10 ov: <strong class="text-black">34/0</strong> (3.40)</span>
+        <!-- Result Line -->
+        <div class="text-sm font-medium text-gray-800 mt-2">
+            Pakistan won by 13 runs
         </div>
     </div>
+
+
+
+
 
 
 
@@ -187,6 +180,47 @@
             <button class="px-4 py-2 hover:text-black">Playing11</button>
             <button class="px-4 py-2 hover:text-black">Fantasy</button>
         </div>
+
+
+        <!-- 🏆 Elegant Compact Awards Row -->
+        <div class="bg-white dark:bg-[#1e293b] rounded-xl sm:shadow-md max-w-[1320px] mx-auto sm:px-4 sm:py-3">
+
+            <div
+                class="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-gray-200 dark:divide-gray-700 gap-3 text-sm">
+
+                <!-- Player of the Match -->
+                <div
+                    class="flex items-center gap-3 p-3 border rounded-lg sm:border-none sm:rounded-none shadow-sm sm:shadow-none bg-white dark:bg-[#1e293b]">
+                    <img src="images/Profile1.png" alt="Farhan" class="w-10 h-10 rounded-full object-cover shadow" />
+                    <div class="leading-tight">
+                        <p class="text-[11px] uppercase text-gray-500 dark:text-gray-400">Player of the Match</p>
+                        <p class="font-semibold text-gray-900 dark:text-white">
+                            Sahibzada Farhan <span class="text-gray-500">• PAK</span>
+                        </p>
+                        <p class="text-xs text-gray-600 dark:text-gray-400">74 (53)</p>
+                    </div>
+                </div>
+
+                <!-- Player of the Series -->
+                <div
+                    class="flex items-center gap-3 p-3 border rounded-lg sm:border-l sm:rounded-none shadow-sm sm:shadow-none bg-white dark:bg-[#1e293b]">
+                    <img src="images/Profile1.png" alt="Nawaz" class="w-10 h-10 rounded-full object-cover shadow" />
+                    <div class="leading-tight">
+                        <p class="text-[11px] uppercase text-gray-500 dark:text-gray-400">Player of the Series</p>
+                        <p class="font-semibold text-gray-900 dark:text-white">
+                            Mohammad Nawaz <span class="text-gray-500">• PAK</span>
+                        </p>
+                        <p class="text-xs text-gray-600 dark:text-gray-400">7 wkts</p>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+
 
         <!-- Batter Stats -->
         <div class="space-y-1">
