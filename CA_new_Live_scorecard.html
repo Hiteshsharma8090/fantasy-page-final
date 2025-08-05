@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cricket Addictor Style Layout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Hide scrollbar for tab nav */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body class="bg-white dark:bg-[#0f172a] text-gray-900 dark:text-white font-sans">
+
+
+    <!-- ✅ Live Ticker -->
+    <!-- ✅ Fixed Live Ticker with White Text -->
+    <!-- ✅ Optimized Live Ticker for Mobile -->
+    <div
+        class=" bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white text-xs sm:text-sm py-1 sm:py-1.5 overflow-x-auto whitespace-nowrap no-scrollbar">
+        <div class="max-w-[1320px] mx-auto px-2 sm:px-4 flex gap-4 sm:gap-6 animate-pulse font-semibold">
+            <span class="flex-shrink-0">🔴 IND vs AUS - 178/4 (17.2)</span>
+            <span class="flex-shrink-0">🕗 PAK vs ENG - Starts at 7:30 PM</span>
+            <span class="flex-shrink-0">✅ SA vs NZ - NZ won by 5 wickets</span>
+        </div>
+    </div>
+
+
+
+    <!-- ✅ Header -->
+    <header class=" sticky top-0 z-50 backdrop-blur-xl bg-white/30 shadow-md">
+        <div class="max-w-[1320px] mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="/" class="text-2xl sm:text-3xl font-extrabold text-[#BD3C34] flex items-center gap-2">
+                <img src="Icons/CA_logo.svg" alt="Logo" class="" />
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-5 font-medium text-sm">
+                <!-- Dropdowns -->
+                <div class="relative group">
+                    <button class="hover:text-[#3E5DA6] transition">Live Scores</button>
+                    <div class="absolute hidden group-hover:block bg-white  shadow-xl mt-2 rounded-md w-44 z-50">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Live Now</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Recent Matches</a>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <button class="hover:text-[#3E5DA6] transition">Series</button>
+                    <div class="absolute hidden group-hover:block bg-white  shadow-xl mt-2 rounded-md w-44 z-50">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">World Cup</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">IPL</a>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <button class="hover:text-[#3E5DA6] transition">Teams</button>
+                    <div class="absolute hidden group-hover:block bg-white  shadow-xl mt-2 rounded-md w-44 z-50">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">India</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Australia</a>
+                    </div>
+                </div>
+                <a href="#" class="hover:text-[#3E5DA6] transition">News</a>
+                <a href="#" class="hover:text-[#3E5DA6] transition">Rankings</a>
+                <a href="#" class="hover:text-[#3E5DA6] transition">Fantasy</a>
+
+                <!-- Search -->
+                <div class="relative hidden lg:block">
+                    <input type="text" placeholder="Search players or teams..."
+                        class="pl-4 pr-10 py-1.5 text-sm rounded-full border border-gray-300 bg-white focus:ring-2 focus:ring-[#3E5DA6] transition" />
+                    <span class="absolute right-3 top-1.5 text-gray-400">🔍</span>
+                </div>
+
+                <!-- Theme & Language -->
+                <button id="themeToggle" class="text-xl hover:text-yellow-400 transition">🌓</button>
+                <select class="bg-gray-100 text-sm rounded px-2 py-1">
+                    <option>EN</option>
+                    <option>हिंदी</option>
+                </select>
+
+                <!-- Login -->
+                <a href="#"
+                    class="bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white px-4 py-1.5 rounded-full text-sm transition hover:brightness-110 shadow-md">Login</a>
+            </nav>
+
+            <!-- 📱 Animated Menu Button -->
+            <button id="menuBtn" class="md:hidden flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white
+       shadow-lg hover:shadow-xl hover:bg-[#2B4162] transition-all duration-300
+       animate-slide-in">
+
+                <!-- Text Left -->
+                <!-- <span class="text-sm font-semibold tracking-wide">Menu</span> -->
+
+                <!-- Icon Right -->
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+
+        </div>
+    </header>
+
+
+
+
+
+    <!-- Match Summary Card -->
+    <div class="bg-white rounded-xl shadow-md p-4  text-gray-800 space-y-3 mb-4 sm:max-w-3xl sm:mx-auto">
+        <!-- Header Section -->
+        <div class="flex items-center justify-between">
+
+
+            <!-- Right side -->
+            <div class="text-xs text-blue-600">5th Test • The Oval</div>
+        </div>
+
+
+        <!-- Date + Series Info -->
+        <div class="text-xs text-gray-400">July 31 - Aug 04, 2025 • <a href="#"
+                class="text-blue-500 hover:underline">India tour of England</a></div>
+
+        <!-- Match Status with Gradient Text -->
+        <div class="text-xs font-semibold bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] bg-clip-text text-transparent">
+            STUMPS • Starts 3:30 PM
+        </div>
+
+
+        <!-- Score Section -->
+        <div class="flex flex-col gap-2">
+            <div class="flex items-center justify-between border-b pb-1">
+                <div class="flex items-center gap-2">
+                    <img src="images/India_logo.svg" alt="IND" class="w-5 h-5">
+                    <span class="font-semibold text-gray-800">IND</span>
+                    <span class="text-red-600">•</span>
+                </div>
+                <div class="font-semibold text-black text-base">204/6 <span class="text-xs text-gray-500">(64 ov)</span>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <img src="images/england_logo.svg" alt="ENG" class="w-5 h-5">
+                    <span class="font-semibold text-gray-800">ENG</span>
+                </div>
+                <span class="text-gray-400 text-sm">Yet to bat</span>
+            </div>
+        </div>
+
+        <!-- Fielding Decision & Run Rate -->
+        <div class="text-sm text-gray-600">
+            Day 1 - <span class="font-medium text-black">England chose to field</span>.
+        </div>
+        <div class="flex justify-between text-xs text-gray-500 pt-1">
+            <span>CRR: 3.18</span>
+            <span>Last 10 ov: <strong class="text-black">34/0</strong> (3.40)</span>
+        </div>
+    </div>
+
+
+
+    <!-- Live Tab: Score Breakdown -->
+    <div class="bg-white rounded-xl shadow-md sm:px-4 pb-4 text-gray-800 sm:max-w-3xl sm:mx-auto space-y-4 text-sm">
+
+        <!-- Tabs Navigation -->
+        <div class="flex border-b text-sm text-gray-500  overflow-x-auto whitespace-nowrap no-scrollbar">
+            <button class="px-4 py-2 hover:text-black">
+                Live
+            </button>
+
+            <button
+                class="px-4 py-2 font-semibold bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] bg-clip-text text-transparent border-b-2 border-[#BD3C34]">Scorecard</button>
+            <button class="px-4 py-2 hover:text-black">Commentary</button>
+            <button class="px-4 py-2 hover:text-black">Live Stats</button>
+            <button class="px-4 py-2 hover:text-black">News</button>
+            <button class="px-4 py-2 hover:text-black">Videos</button>
+            <button class="px-4 py-2 hover:text-black">Photos</button>
+            <button class="px-4 py-2 hover:text-black">Match Facts</button>
+            <button class="px-4 py-2 hover:text-black">Playing11</button>
+            <button class="px-4 py-2 hover:text-black">Fantasy</button>
+        </div>
+
+
+
+
+        <!-- Tab Navigation Section (Mobile-First Optimized) -->
+        <div class="sticky top-16 z-30 bg-white dark:bg-[#0e1c2f]  px-4 sm:px-0  overflow-x-auto hide-scrollbar">
+            <div class="flex gap-2 whitespace-nowrap">
+
+                <!-- Active Tab with Gradient Background -->
+                <button
+                    class="bg-gradient-to-r from-[#BD3C34] to-[#3E5DA6] text-white font-semibold text-xs rounded-full px-3 py-1  shadow-md transition-all">
+                    IND 1st
+                </button>
+
+
+                <!-- Inactive Tabs -->
+                <button
+                    class="bg-[#f1f1f1] dark:bg-[#1c2e46] text-gray-800 dark:text-white font-medium text-xs rounded-full px-3 py-1  hover:bg-[#e1e6f6] dark:hover:bg-[#263b58] transition-all">
+                    ENG 1st
+                </button>
+                <button
+                    class="bg-[#f1f1f1] dark:bg-[#1c2e46] text-gray-800 dark:text-white font-medium text-xs rounded-full px-3 py-1  hover:bg-[#e1e6f6] dark:hover:bg-[#263b58] transition-all">
+                    IND 2nd
+                </button>
+                <button
+                    class="bg-[#f1f1f1] dark:bg-[#1c2e46] text-gray-800 dark:text-white font-medium text-xs rounded-full px-3 py-1  hover:bg-[#e1e6f6] dark:hover:bg-[#263b58] transition-all">
+                    ENG 2nd
+                </button>
+
+                <button
+                    class="bg-[#f1f1f1] dark:bg-[#1c2e46] text-gray-800 dark:text-white font-medium text-xs rounded-full px-3 py-1  hover:bg-[#e1e6f6] dark:hover:bg-[#263b58] transition-all">
+                    Info
+                </button>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="max-w-3xl mx-auto mt-4 sm:shadow sm:rounded overflow-hidden text-sm">
+
+            <!-- Heading -->
+            <!-- Toggle Header -->
+            <button onclick="toggleCollapse('england-innings-content', 'england-icon')"
+                class="w-full flex items-center justify-between sm:rounded-t bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] dark:bg-[#132744] text-white font-bold px-4 py-2 tracking-wide">
+                <span>India 1st Innings</span>
+                <svg id="england-icon" class="w-5 h-5 transform transition-transform duration-300 rotate-0" fill="none"
+                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+
+            <!-- Table Header -->
+            <div
+                class="flex items-center justify-between px-4 py-2 bg-[#f1f5f9] dark:bg-[#1a2e46] text-[#3E5DA6] dark:text-[#c9d9f2] font-semibold border-b border-[#E0E6ED] dark:border-[#2f415e] text-sm">
+                <div class="w-1/2">Batting</div>
+                <div class="w-1/2 flex justify-between">
+                    <span class="w-[12%] text-right">R</span>
+                    <span class="w-[12%] text-right">B</span>
+                    <span class="w-[12%] text-right">4s</span>
+                    <span class="w-[12%] text-right">6s</span>
+                    <span class="w-[20%] text-right">SR</span>
+                </div>
+            </div>
+
+
+            <!-- Player Stats -->
+            <div class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-[#0e1c2f]">
+
+                <!-- Player 1 -->
+                <div class="grid">
+                    <div class="flex items-start justify-between px-4 pt-2">
+                        <div class="w-1/2">
+                            <a href="#" class="font-semibold underline text-[#3E5DA6] dark:text-[#6edff6]">Yashasvi
+                                Jaiswal</a>
+                        </div>
+                        <div class="w-1/2 flex justify-between text-right text-gray-800 dark:text-white">
+                            <span class="w-[12%]">2</span>
+                            <span class="w-[12%]">9</span>
+                            <span class="w-[12%]">0</span>
+                            <span class="w-[12%]">0</span>
+                            <span class="w-[20%]">22.22</span>
+                        </div>
+                    </div>
+                    <div class="text-gray-500 text-xs px-4 pb-2 cursor-pointer"
+                        onclick="toggleDescription('dismissal-jaiswal')">
+                        lbw b Atkinson <span class="text-[#BD3C34] font-bold ml-2">[+]</span>
+                    </div>
+                    <div id="dismissal-jaiswal" class="text-sm text-gray-700 dark:text-gray-300 px-4 pb-2 hidden">
+                        2.4 Angled in on off, skids low, Jaiswal tries to work it away, but is struck on the pad —
+                        umpire raises the finger.
+                    </div>
+                </div>
+
+                <!-- Player 2 -->
+                <div class="grid">
+                    <div class="flex items-start justify-between px-4 pt-2">
+                        <div class="w-1/2">
+                            <a href="#" class="font-semibold underline text-[#3E5DA6] dark:text-[#6edff6]">KL Rahul</a>
+                        </div>
+                        <div class="w-1/2 flex justify-between text-right text-gray-800 dark:text-white">
+                            <span class="w-[12%]">14</span>
+                            <span class="w-[12%]">40</span>
+                            <span class="w-[12%]">1</span>
+                            <span class="w-[12%]">0</span>
+                            <span class="w-[20%]">35.00</span>
+                        </div>
+                    </div>
+                    <div class="text-gray-500 text-xs px-4 pb-2 cursor-pointer"
+                        onclick="toggleDescription('dismissal-rahul')">
+                        b Woakes <span class="text-[#BD3C34] font-bold ml-2">[+]</span>
+                    </div>
+                    <div id="dismissal-rahul" class="text-sm text-gray-700 dark:text-gray-300 px-4 pb-2 hidden">
+                        15.1 Chopped on... not for the first time in the series and Rahul departs. Short of a length
+                        outside off, extra bounce, thick inside-edge onto the stumps. 38/2
+                    </div>
+                </div>
+
+                <!-- Player 3 - NOT OUT -->
+                <div class="grid border-l-4 border-[#c7d6e9] bg-[#f4f8fc] dark:bg-[#1a2a3a]">
+                    <div class="flex items-start justify-between px-4 pt-2">
+                        <div class="w-1/2">
+                            <a href="#"
+                                class="font-semibold underline text-[#BD3C34] dark:text-[#ff7777] hover:text-[#E14C3D]">Akash
+                                Deep</a>
+                        </div>
+                        <div class="w-1/2 flex justify-between text-right text-[#BD3C34] dark:text-[#ff7777]">
+                            <span class="w-[12%]">0</span>
+                            <span class="w-[12%]">7</span>
+                            <span class="w-[12%]">0</span>
+                            <span class="w-[12%]">0</span>
+                            <span class="w-[20%]">0.00</span>
+                        </div>
+                    </div>
+                    <div class="text-[#BD3C34] dark:text-[#ff9999] text-xs px-4 pb-2">not out</div>
+                </div>
+
+                <!-- Player 4 -->
+                <div class="grid">
+                    <div class="flex items-start justify-between px-4 pt-2">
+                        <div class="w-1/2">
+                            <a href="#" class="font-semibold underline text-[#3E5DA6] dark:text-[#6edff6]">Shubman
+                                Gill</a>
+                        </div>
+                        <div class="w-1/2 flex justify-between text-right text-gray-800 dark:text-white">
+                            <span class="w-[12%]">10</span>
+                            <span class="w-[12%]">22</span>
+                            <span class="w-[12%]">1</span>
+                            <span class="w-[12%]">0</span>
+                            <span class="w-[20%]">45.45</span>
+                        </div>
+                    </div>
+                    <div class="text-gray-500 text-xs px-4 pb-2 cursor-pointer"
+                        onclick="toggleDescription('dismissal-gill')">
+                        run out (Stokes) <span class="text-[#BD3C34] font-bold ml-2">[+]</span>
+                    </div>
+                    <div id="dismissal-gill" class="text-sm text-gray-700 dark:text-gray-300 px-4 pb-2 hidden">
+                        12.2 Driven to mid-on, hesitation in the middle, Stokes quick to gather and fires in a rocket
+                        throw to the keeper's end — direct hit!
+                    </div>
+                </div>
+
+                <!-- Player 5 -->
+                <div class="grid">
+                    <div class="flex items-start justify-between px-4 pt-2">
+                        <div class="w-1/2">
+                            <a href="#" class="font-semibold underline text-[#3E5DA6] dark:text-[#6edff6]">Virat
+                                Kohli</a>
+                        </div>
+                        <div class="w-1/2 flex justify-between text-right text-gray-800 dark:text-white">
+                            <span class="w-[12%]">45</span>
+                            <span class="w-[12%]">55</span>
+                            <span class="w-[12%]">6</span>
+                            <span class="w-[12%]">1</span>
+                            <span class="w-[20%]">81.81</span>
+                        </div>
+                    </div>
+                    <div class="text-gray-500 text-xs px-4 pb-2 cursor-pointer"
+                        onclick="toggleDescription('dismissal-kohli')">
+                        c Root b Wood <span class="text-[#BD3C34] font-bold ml-2">[+]</span>
+                    </div>
+                    <div id="dismissal-kohli" class="text-sm text-gray-700 dark:text-gray-300 px-4 pb-2 hidden">
+                        20.3 Short and wide, Kohli slashes hard — straight to Root at slip. Soft hands, but brilliant
+                        anticipation by the fielder.
+                    </div>
+                </div>
+
+                <!-- Player 6 - NOT OUT -->
+                <div class="grid border-l-4 border-[#c7d6e9] bg-[#f4f8fc] dark:bg-[#1a2a3a]">
+                    <div class="flex items-start justify-between px-4 pt-2">
+                        <div class="w-1/2">
+                            <a href="#"
+                                class="font-semibold underline text-[#BD3C34] dark:text-[#ff7777] hover:text-[#E14C3D]">Ravindra
+                                Jadeja</a>
+                        </div>
+                        <div class="w-1/2 flex justify-between text-right text-[#BD3C34] dark:text-[#ff7777]">
+                            <span class="w-[12%]">38</span>
+                            <span class="w-[12%]">41</span>
+                            <span class="w-[12%]">4</span>
+                            <span class="w-[12%]">2</span>
+                            <span class="w-[20%]">92.68</span>
+                        </div>
+                    </div>
+                    <div class="text-[#BD3C34] dark:text-[#ff9999] text-xs px-4 pb-2">not out</div>
+                </div>
+
+                <!-- Extras -->
+                <div
+                    class="flex justify-between items-center px-4 py-3 border-t border-gray-200 dark:border-gray-600 font-medium text-gray-800 dark:text-white">
+                    <span>Extras</span>
+                    <span>38 <span class="text-xs text-gray-500 dark:text-gray-400">(b 12, lb 6, nb 4, w
+                            16)</span></span>
+                </div>
+
+
+
+                <section class="bg-white dark:bg-[#0e1c2f] text-gray-800 dark:text-gray-200  max-w-[1280px] mx-auto ">
+
+                    <!-- Total Score Summary -->
+                    <div class="flex flex-row sm:items-center px-4 py-3 justify-between">
+                        <div class="flex gap-3 items-center">
+                            <h2 class="text-md font-bold">Total</h2>
+                            <div class="text-right text-[#BD3C34] text-md  font-extrabold">224</div>
+                        </div>
+
+                        <div class="text-sm text-gray-600 flex items-center dark:text-gray-400 sm:ml-4">69.4 Ov (RR:
+                            3.21)</div>
+                    </div>
+
+                    <!-- Fall of Wickets -->
+                    <div
+                        class="text-sm leading-relaxed text-gray-600 dark:text-gray-300 border-t border-gray-300 dark:border-gray-600 px-4 py-2">
+
+                        <div class="text-sm leading-relaxed text-gray-600 dark:text-gray-300 ">
+                            <strong class="text-[#3E5DA6] dark:text-[#6edff6]">Fall of wickets:</strong>
+                            <div
+                                class="mt-4 flex gap-4 overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar pr-2 pb-2">
+
+                                <!-- 1 -->
+                                <div
+                                    class="flex flex-col items-center text-center w-32 shrink-0 border border-gray-200 dark:border-[#2a415a] bg-white dark:bg-[#102132] rounded-xl p-3 shadow-sm hover:shadow-md transition duration-300 leading-none">
+                                    <span class="text-sm font-bold text-[#BD3C34] dark:text-[#f87171] mb-1">1-10</span>
+                                    <span class="text-[13px] text-gray-800 dark:text-white font-medium mb-0.5">Yashasvi
+                                        Jaiswal</span>
+                                    <span class="text-xs text-gray-400 mt-0">(3.1 ov)</span>
+                                </div>
+
+                                <!-- 2 -->
+                                <div
+                                    class="flex flex-col items-center text-center w-32 shrink-0 border border-gray-200 dark:border-[#2a415a] bg-white dark:bg-[#102132] rounded-xl p-3 shadow-sm hover:shadow-md transition duration-300 leading-none">
+                                    <span class="text-sm font-bold text-[#BD3C34] dark:text-[#f87171] mb-1">2-38</span>
+                                    <span class="text-[13px] text-gray-800 dark:text-white font-medium mb-0.5">KL
+                                        Rahul</span>
+                                    <span class="text-xs text-gray-400 mt-0">(15.1 ov)</span>
+                                </div>
+
+                                <!-- 3 -->
+                                <div
+                                    class="flex flex-col items-center text-center w-32 shrink-0 border border-gray-200 dark:border-[#2a415a] bg-white dark:bg-[#102132] rounded-xl p-3 shadow-sm hover:shadow-md transition duration-300 leading-none">
+                                    <span class="text-sm font-bold text-[#BD3C34] dark:text-[#f87171] mb-1">3-83</span>
+                                    <span class="text-[13px] text-gray-800 dark:text-white font-medium mb-0.5">Shubman
+                                        Gill</span>
+                                    <span class="text-xs text-gray-400 mt-0">(27.2 ov)</span>
+                                </div>
+
+                                <!-- 4 -->
+                                <div
+                                    class="flex flex-col items-center text-center w-32 shrink-0 border border-gray-200 dark:border-[#2a415a] bg-white dark:bg-[#102132] rounded-xl p-3 shadow-sm hover:shadow-md transition duration-300 leading-none">
+                                    <span class="text-sm font-bold text-[#BD3C34] dark:text-[#f87171] mb-1">4-101</span>
+                                    <span class="text-[13px] text-gray-800 dark:text-white font-medium mb-0.5">Sai
+                                        Sudharsan</span>
+                                    <span class="text-xs text-gray-400 mt-0">(35.4 ov)</span>
+                                </div>
+
+                                <!-- 5 -->
+                                <div
+                                    class="flex flex-col items-center text-center w-32 shrink-0 border border-gray-200 dark:border-[#2a415a] bg-white dark:bg-[#102132] rounded-xl p-3 shadow-sm hover:shadow-md transition duration-300 leading-none">
+                                    <span class="text-sm font-bold text-[#BD3C34] dark:text-[#f87171] mb-1">5-123</span>
+                                    <span class="text-[13px] text-gray-800 dark:text-white font-medium mb-0.5">Ravindra
+                                        Jadeja</span>
+                                    <span class="text-xs text-gray-400 mt-0">(39.3 ov)</span>
+                                </div>
+
+                                <!-- 6 -->
+                                <div
+                                    class="flex flex-col items-center text-center w-32 shrink-0 border border-gray-200 dark:border-[#2a415a] bg-white dark:bg-[#102132] rounded-xl p-3 shadow-sm hover:shadow-md transition duration-300 leading-none">
+                                    <span class="text-sm font-bold text-[#BD3C34] dark:text-[#f87171] mb-1">6-153</span>
+                                    <span class="text-[13px] text-gray-800 dark:text-white font-medium mb-0.5">Dhruv
+                                        Jurel</span>
+                                    <span class="text-xs text-gray-400 mt-0">(49.3 ov)</span>
+                                </div>
+
+                                <!-- 7 -->
+                                <div
+                                    class="flex flex-col items-center text-center w-32 shrink-0 border border-gray-200 dark:border-[#2a415a] bg-white dark:bg-[#102132] rounded-xl p-3 shadow-sm hover:shadow-md transition duration-300 leading-none">
+                                    <span class="text-sm font-bold text-[#BD3C34] dark:text-[#f87171] mb-1">7-218</span>
+                                    <span class="text-[13px] text-gray-800 dark:text-white font-medium mb-0.5">Karun
+                                        Nair</span>
+                                    <span class="text-xs text-gray-400 mt-0">(66.5 ov)</span>
+                                </div>
+
+                                <!-- 8 -->
+                                <div
+                                    class="flex flex-col items-center text-center w-32 shrink-0 border border-gray-200 dark:border-[#2a415a] bg-white dark:bg-[#102132] rounded-xl p-3 shadow-sm hover:shadow-md transition duration-300 leading-none">
+                                    <span class="text-sm font-bold text-[#BD3C34] dark:text-[#f87171] mb-1">8-220</span>
+                                    <span
+                                        class="text-[13px] text-gray-800 dark:text-white font-medium mb-0.5">Washington
+                                        Sundar</span>
+                                    <span class="text-xs text-gray-400 mt-0">(67.4 ov)</span>
+                                </div>
+
+                                <!-- 9 -->
+                                <div
+                                    class="flex flex-col items-center text-center w-32 shrink-0 border border-gray-200 dark:border-[#2a415a] bg-white dark:bg-[#102132] rounded-xl p-3 shadow-sm hover:shadow-md transition duration-300 leading-none">
+                                    <span class="text-sm font-bold text-[#BD3C34] dark:text-[#f87171] mb-1">9-224</span>
+                                    <span class="text-[13px] text-gray-800 dark:text-white font-medium mb-0.5">Mohammed
+                                        Siraj</span>
+                                    <span class="text-xs text-gray-400 mt-0">(69.2 ov)</span>
+                                </div>
+
+                                <!-- 10 -->
+                                <div
+                                    class="flex flex-col items-center text-center w-32 shrink-0 border border-gray-200 dark:border-[#2a415a] bg-white dark:bg-[#102132] rounded-xl p-3 shadow-sm hover:shadow-md transition duration-300 leading-none">
+                                    <span
+                                        class="text-sm font-bold text-[#BD3C34] dark:text-[#f87171] mb-1">10-224</span>
+                                    <span class="text-[13px] text-gray-800 dark:text-white font-medium mb-0.5">Prasidh
+                                        Krishna</span>
+                                    <span class="text-xs text-gray-400 mt-0">(69.4 ov)</span>
+                                    <!-- <span
+                                    class="inline-block text-[10px] mt-1 px-2 py-0.5 rounded bg-gray-100 dark:bg-[#1f3347] text-[#3E5DA6] dark:text-[#6edff6]">
+                                    • DRS
+                                  </span> -->
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
+                    <!-- Bowling Stats Table -->
+                    <div class="overflow-x-auto border  my-2">
+                        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm ">
+                            <thead
+                                class="bg-gray-100 bg-[#f1f5f9] dark:bg-[#1a2e46] text-[#3E5DA6] dark:text-[#c9d9f2] font-semibold">
+                                <tr>
+                                    <th class="text-left px-4 py-2">Bowling</th>
+                                    <th class="text-center px-2 py-2">O</th>
+                                    <th class="text-center px-2 py-2">M</th>
+                                    <th class="text-center px-2 py-2">R</th>
+                                    <th class="text-center px-2 py-2">W</th>
+                                    <th class="text-center px-2 py-2">ECON</th>
+                                    <th class="text-center px-2 py-2">WD</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr class="hover:bg-gray-50 dark:hover:bg-[#1e2d3f]">
+                                    <td class="px-4 py-2 font-semibold underline text-[#3E5DA6] dark:text-[#6edff6]">
+                                        Chris Woakes</td>
+                                    <td class="text-center px-2 py-2">14</td>
+                                    <td class="text-center px-2 py-2">1</td>
+                                    <td class="text-center px-2 py-2">46</td>
+                                    <td class="text-center px-2 py-2 text-[#BD3C34] font-semibold">1</td>
+                                    <td class="text-center px-2 py-2">3.28</td>
+                                    <td class="text-center px-2 py-2">0</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-[#1e2d3f]">
+                                    <td class="px-4 py-2 font-semibold underline text-[#3E5DA6] dark:text-[#6edff6]">Gus
+                                        Atkinson</td>
+                                    <td class="text-center px-2 py-2">21.4</td>
+                                    <td class="text-center px-2 py-2">8</td>
+                                    <td class="text-center px-2 py-2">33</td>
+                                    <td class="text-center px-2 py-2 text-[#BD3C34] font-semibold">5</td>
+                                    <td class="text-center px-2 py-2">1.52</td>
+                                    <td class="text-center px-2 py-2">1</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-[#1e2d3f]">
+                                    <td class="px-4 py-2 font-semibold underline text-[#3E5DA6] dark:text-[#6edff6]">
+                                        Josh Tongue</td>
+                                    <td class="text-center px-2 py-2">16</td>
+                                    <td class="text-center px-2 py-2">4</td>
+                                    <td class="text-center px-2 py-2">57</td>
+                                    <td class="text-center px-2 py-2 text-[#BD3C34] font-semibold">3</td>
+                                    <td class="text-center px-2 py-2">3.56</td>
+                                    <td class="text-center px-2 py-2">4</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-[#1e2d3f]">
+                                    <td class="px-4 py-2 font-semibold underline text-[#3E5DA6] dark:text-[#6edff6]">
+                                        Jamie Overton</td>
+                                    <td class="text-center px-2 py-2">16</td>
+                                    <td class="text-center px-2 py-2">0</td>
+                                    <td class="text-center px-2 py-2">66</td>
+                                    <td class="text-center px-2 py-2 text-[#BD3C34] font-semibold">0</td>
+                                    <td class="text-center px-2 py-2">4.12</td>
+                                    <td class="text-center px-2 py-2">2</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-[#1e2d3f]">
+                                    <td class="px-4 py-2 font-semibold underline text-[#3E5DA6] dark:text-[#6edff6]">
+                                        Jacob Bethell</td>
+                                    <td class="text-center px-2 py-2">2</td>
+                                    <td class="text-center px-2 py-2">1</td>
+                                    <td class="text-center px-2 py-2">4</td>
+                                    <td class="text-center px-2 py-2 text-[#BD3C34] font-semibold">0</td>
+                                    <td class="text-center px-2 py-2">2.00</td>
+                                    <td class="text-center px-2 py-2">0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+        <!-- England Innings Dropdown -->
+        <div class="max-w-3xl mx-auto mt-6 text-sm">
+
+            <!-- Toggle Header -->
+            <button onclick="toggleCollapse('england-innings-content', 'england-icon')"
+                class="w-full flex items-center justify-between bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] dark:bg-[#132744] text-white font-bold px-4 py-2 tracking-wide">
+                <span>England 1st Innings</span>
+                <svg id="england-icon" class="w-5 h-5 transform transition-transform duration-300 rotate-0" fill="none"
+                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+
+            <!-- Collapsible Content -->
+            <div id="england-innings-content" class="hidden border sm:rounded-b overflow-hidden">
+
+
+                <!-- England 1st Innings -->
+                <div class="max-w-3xl mx-auto sm:shadow sm:rounded overflow-hidden text-sm">
+
+
+
+                    <!-- Table Header -->
+                    <div
+                        class="flex items-center justify-between px-4 py-2 bg-[#f1f5f9] dark:bg-[#1a2e46] text-[#3E5DA6] dark:text-[#c9d9f2] font-semibold border-b border-[#E0E6ED] dark:border-[#2f415e] text-sm">
+                        <div class="w-1/2">Batting</div>
+                        <div class="w-1/2 flex justify-between">
+                            <span class="w-[12%] text-right">R</span>
+                            <span class="w-[12%] text-right">B</span>
+                            <span class="w-[12%] text-right">4s</span>
+                            <span class="w-[12%] text-right">6s</span>
+                            <span class="w-[20%] text-right">SR</span>
+                        </div>
+                    </div>
+
+                    <!-- Player Stats -->
+                    <div class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-[#0e1c2f]">
+
+                        <!-- Player Example -->
+                        <div class="grid">
+                            <div class="flex items-start justify-between px-4 pt-2">
+                                <div class="w-1/2">
+                                    <a href="#" class="font-semibold underline text-[#3E5DA6] dark:text-[#6edff6]">Zak
+                                        Crawley</a>
+                                </div>
+                                <div class="w-1/2 flex justify-between text-right text-gray-800 dark:text-white">
+                                    <span class="w-[12%]">58</span>
+                                    <span class="w-[12%]">82</span>
+                                    <span class="w-[12%]">7</span>
+                                    <span class="w-[12%]">1</span>
+                                    <span class="w-[20%]">70.73</span>
+                                </div>
+                            </div>
+                            <div class="text-gray-500 text-xs px-4 pb-2 cursor-pointer"
+                                onclick="toggleDescription('dismissal-crawley')">
+                                c Bharat b Siraj <span class="text-[#BD3C34] font-bold ml-2">[+]</span>
+                            </div>
+                            <div id="dismissal-crawley"
+                                class="text-sm text-gray-700 dark:text-gray-300 px-4 pb-2 hidden">
+                                19.4 Full delivery outside off, edged and taken safely by the keeper.
+                            </div>
+                        </div>
+
+                        <!-- Player NOT OUT -->
+                        <div class="grid border-l-4 border-[#c7d6e9] bg-[#f4f8fc] dark:bg-[#1a2a3a]">
+                            <div class="flex items-start justify-between px-4 pt-2">
+                                <div class="w-1/2">
+                                    <a href="#"
+                                        class="font-semibold underline text-[#BD3C34] dark:text-[#ff7777] hover:text-[#E14C3D]">Ben
+                                        Stokes</a>
+                                </div>
+                                <div class="w-1/2 flex justify-between text-right text-[#BD3C34] dark:text-[#ff7777]">
+                                    <span class="w-[12%]">45</span>
+                                    <span class="w-[12%]">59</span>
+                                    <span class="w-[12%]">5</span>
+                                    <span class="w-[12%]">1</span>
+                                    <span class="w-[20%]">76.27</span>
+                                </div>
+                            </div>
+                            <div class="text-[#BD3C34] dark:text-[#ff9999] text-xs px-4 pb-2">not out</div>
+                        </div>
+
+                        <!-- Add more players here using same structure -->
+
+                        <!-- Extras -->
+                        <div
+                            class="flex justify-between items-center px-4 py-3 border-t border-gray-200 dark:border-gray-600 font-medium text-gray-800 dark:text-white">
+                            <span>Extras</span>
+                            <span>26 <span class="text-xs text-gray-500 dark:text-gray-400">(b 8, lb 5, nb 3, w
+                                    10)</span></span>
+                        </div>
+
+                        <!-- Total Score Summary -->
+                        <div class="flex flex-row sm:items-center px-4 py-3 justify-between">
+                            <div class="flex gap-3 items-center">
+                                <h2 class="text-md font-bold">Total</h2>
+                                <div class="text-right text-[#BD3C34] text-md font-extrabold">248</div>
+                            </div>
+                            <div class="text-sm text-gray-600 flex items-center dark:text-gray-400 sm:ml-4">72.0 Ov (RR:
+                                3.44)
+                            </div>
+                        </div>
+
+                        <!-- Fall of Wickets -->
+                        <div
+                            class="text-sm leading-relaxed text-gray-600 dark:text-gray-300 border-t border-gray-300 dark:border-gray-600 px-4 py-2">
+                            <strong class="text-[#3E5DA6] dark:text-[#6edff6]">Fall of wickets:</strong>
+                            <div
+                                class="mt-4 flex gap-4 overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar pr-2 pb-2">
+
+                                <!-- Sample wicket cards -->
+                                <div
+                                    class="flex flex-col items-center text-center w-32 shrink-0 border border-gray-200 dark:border-[#2a415a] bg-white dark:bg-[#102132] rounded-xl p-3 shadow-sm hover:shadow-md transition duration-300 leading-none">
+                                    <span class="text-sm font-bold text-[#BD3C34] dark:text-[#f87171] mb-1">1-28</span>
+                                    <span class="text-[13px] text-gray-800 dark:text-white font-medium mb-0.5">Ben
+                                        Duckett</span>
+                                    <span class="text-xs text-gray-400 mt-0">(5.6 ov)</span>
+                                </div>
+
+                                <div
+                                    class="flex flex-col items-center text-center w-32 shrink-0 border border-gray-200 dark:border-[#2a415a] bg-white dark:bg-[#102132] rounded-xl p-3 shadow-sm hover:shadow-md transition duration-300 leading-none">
+                                    <span class="text-sm font-bold text-[#BD3C34] dark:text-[#f87171] mb-1">2-83</span>
+                                    <span class="text-[13px] text-gray-800 dark:text-white font-medium mb-0.5">Joe
+                                        Root</span>
+                                    <span class="text-xs text-gray-400 mt-0">(17.4 ov)</span>
+                                </div>
+
+                                <!-- Add more wickets as needed -->
+
+                            </div>
+                        </div>
+
+                        <!-- Bowling Table -->
+                        <div class="overflow-x-auto border my-2">
+                            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm ">
+                                <thead
+                                    class="bg-gray-100 bg-[#f1f5f9] dark:bg-[#1a2e46] text-[#3E5DA6] dark:text-[#c9d9f2] font-semibold">
+                                    <tr>
+                                        <th class="text-left px-4 py-2">Bowling</th>
+                                        <th class="text-center px-2 py-2">O</th>
+                                        <th class="text-center px-2 py-2">M</th>
+                                        <th class="text-center px-2 py-2">R</th>
+                                        <th class="text-center px-2 py-2">W</th>
+                                        <th class="text-center px-2 py-2">ECON</th>
+                                        <th class="text-center px-2 py-2">WD</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                    <tr class="hover:bg-gray-50 dark:hover:bg-[#1e2d3f]">
+                                        <td
+                                            class="px-4 py-2 font-semibold underline text-[#3E5DA6] dark:text-[#6edff6]">
+                                            Jasprit
+                                            Bumrah</td>
+                                        <td class="text-center px-2 py-2">18</td>
+                                        <td class="text-center px-2 py-2">4</td>
+                                        <td class="text-center px-2 py-2">42</td>
+                                        <td class="text-center px-2 py-2 text-[#BD3C34] font-semibold">3</td>
+                                        <td class="text-center px-2 py-2">2.33</td>
+                                        <td class="text-center px-2 py-2">1</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50 dark:hover:bg-[#1e2d3f]">
+                                        <td
+                                            class="px-4 py-2 font-semibold underline text-[#3E5DA6] dark:text-[#6edff6]">
+                                            Ravindra Jadeja</td>
+                                        <td class="text-center px-2 py-2">22</td>
+                                        <td class="text-center px-2 py-2">5</td>
+                                        <td class="text-center px-2 py-2">54</td>
+                                        <td class="text-center px-2 py-2 text-[#BD3C34] font-semibold">2</td>
+                                        <td class="text-center px-2 py-2">2.45</td>
+                                        <td class="text-center px-2 py-2">0</td>
+                                    </tr>
+                                    <!-- Add more bowlers -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <!-- Match Details Section -->
+        <section
+            class="bg-white dark:bg-[#0e1c2f] sm:rounded-xl sm:shadow-sm  sm:border sm:border-gray-200  dark:sm:border-gray-700 px-4 md:py-4">
+
+            <!-- Section Heading -->
+            <h2 class="text-sm font-semibold text-[#3E5DA6] border-b border-[#BD3C34] pb-2  pt-4 sm:px-0 sm:pt-0 ">
+                Match Details
+            </h2>
+
+            <!-- Grid Layout for Info -->
+            <div
+                class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-800 dark:text-gray-100 mt-3 pb-3 sm:px-0 py-4 sm:py-0">
+
+                <!-- Venue -->
+                <div>
+                    <p class="text-[#BD3C34] font-semibold text-[13px]">Venue</p>
+                    <p>Riverside Ground, Chester-le-Street</p>
+                </div>
+
+                <!-- Toss -->
+                <div>
+                    <p class="text-[#BD3C34] font-semibold text-[13px]">Toss</p>
+                    <p>Durham won the toss & chose to bat</p>
+                </div>
+
+                <!-- Series -->
+                <div>
+                    <p class="text-[#BD3C34] font-semibold text-[13px]">Series</p>
+                    <p>One-Day Cup</p>
+                </div>
+
+                <!-- Championship -->
+                <div>
+                    <p class="text-[#BD3C34] font-semibold text-[13px]">Championship</p>
+                    <p>ECB Domestic ODI</p>
+                </div>
+
+                <!-- Season -->
+                <div>
+                    <p class="text-[#BD3C34] font-semibold text-[13px]">Season</p>
+                    <p>2025</p>
+                </div>
+
+                <!-- Match Number -->
+                <div>
+                    <p class="text-[#BD3C34] font-semibold text-[13px]">Match No</p>
+                    <p>Match 15</p>
+                </div>
+
+                <!-- Hours of Play -->
+                <div class="sm:col-span-2">
+                    <p class="text-[#BD3C34] font-semibold text-[13px]">Hours of Play</p>
+                    <p>11:00 AM start, Lunch 01:00 PM–01:40 PM, Close by 06:00 PM (approx)</p>
+                </div>
+
+                <!-- Match Day -->
+                <div class="sm:col-span-2 pb-3">
+                    <p class="text-[#BD3C34] font-semibold text-[13px]">Match Day</p>
+                    <p>05 August 2025 (Day – 50-over match)</p>
+                </div>
+            </div>
+
+            <!-- Umpires Section -->
+            <div
+                class="pt-2 sm:pt-4 border-t border-gray-200 dark:border-gray-600 text-sm text-gray-800 dark:text-gray-100 space-y-2  sm:px-0 pb-4 sm:pb-0">
+                <div>
+                    <span class="font-semibold text-[#3E5DA6]">Umpires:</span>
+                    Alex Wharf 🏴, Surendiran Ramasamy 🇮🇳
+                </div>
+                <div>
+                    <span class="font-semibold text-[#3E5DA6]">TV:</span> Paul Pollard 🏴
+                </div>
+                <div>
+                    <span class="font-semibold text-[#3E5DA6]">Reserve:</span> Allan Haggo 🏴
+                </div>
+                <div>
+                    <span class="font-semibold text-[#3E5DA6]">Referee:</span> Chris Broad 🏴
+                </div>
+            </div>
+
+        </section>
+
+
+
+
+
+
+    </div>
+
+
+
+    <script>
+        function toggleDescription(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle("hidden");
+        }
+
+
+
+
+
+        function toggleCollapse(id, iconId) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById(iconId);
+            content.classList.toggle("hidden");
+            icon.classList.toggle("rotate-180");
+        }
+    </script>
+
+
+
+</body>
+
+</html>
