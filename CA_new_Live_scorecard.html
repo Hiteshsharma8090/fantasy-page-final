@@ -430,7 +430,7 @@
                         <div class="text-sm leading-relaxed text-gray-600 dark:text-gray-300 ">
                             <strong class="text-[#3E5DA6] dark:text-[#6edff6]">Fall of wickets:</strong>
                             <div
-                                class="mt-4 flex gap-4 overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar pr-2 pb-2">
+                                class="mt-2 flex gap-4 overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar pr-2 ">
 
                                 <!-- 1 -->
                                 <div
@@ -618,14 +618,12 @@
 
 
 
+        <div class="max-w-3xl mx-auto mt-4 sm:shadow sm:rounded overflow-hidden text-sm">
 
-
-        <!-- England Innings Dropdown -->
-        <div class="max-w-3xl mx-auto mt-6 text-sm">
-
+            <!-- Heading -->
             <!-- Toggle Header -->
             <button onclick="toggleCollapse('england-innings-content', 'england-icon')"
-                class="w-full flex items-center justify-between bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] dark:bg-[#132744] text-white font-bold px-4 py-2 tracking-wide">
+                class="w-full flex items-center justify-between sm:rounded-t bg-gradient-to-r from-[#3E5DA6] to-[#BD3C34] dark:bg-[#132744] text-white font-bold px-4 py-2 tracking-wide">
                 <span>England 1st Innings</span>
                 <svg id="england-icon" class="w-5 h-5 transform transition-transform duration-300 rotate-0" fill="none"
                     stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -633,173 +631,375 @@
                 </svg>
             </button>
 
-            <!-- Collapsible Content -->
-            <div id="england-innings-content" class="hidden border sm:rounded-b overflow-hidden">
+            <!-- Table Header -->
+            <div
+                class="flex items-center justify-between px-4 py-2 bg-[#f1f5f9] dark:bg-[#1a2e46] text-[#3E5DA6] dark:text-[#c9d9f2] font-semibold border-b border-[#E0E6ED] dark:border-[#2f415e] text-sm">
+                <div class="w-1/2">Batting</div>
+                <div class="w-1/2 flex justify-between">
+                    <span class="w-[12%] text-right">R</span>
+                    <span class="w-[12%] text-right">B</span>
+                    <span class="w-[12%] text-right">4s</span>
+                    <span class="w-[12%] text-right">6s</span>
+                    <span class="w-[20%] text-right">SR</span>
+                </div>
+            </div>
 
 
-                <!-- England 1st Innings -->
-                <div class="max-w-3xl mx-auto sm:shadow sm:rounded overflow-hidden text-sm">
+            <!-- Player Stats -->
+            <div class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-[#0e1c2f]">
 
-
-
-                    <!-- Table Header -->
-                    <div
-                        class="flex items-center justify-between px-4 py-2 bg-[#f1f5f9] dark:bg-[#1a2e46] text-[#3E5DA6] dark:text-[#c9d9f2] font-semibold border-b border-[#E0E6ED] dark:border-[#2f415e] text-sm">
-                        <div class="w-1/2">Batting</div>
-                        <div class="w-1/2 flex justify-between">
-                            <span class="w-[12%] text-right">R</span>
-                            <span class="w-[12%] text-right">B</span>
-                            <span class="w-[12%] text-right">4s</span>
-                            <span class="w-[12%] text-right">6s</span>
-                            <span class="w-[20%] text-right">SR</span>
+                <!-- Player 1 -->
+                <div class="grid">
+                    <div class="flex items-start justify-between px-4 pt-2">
+                        <div class="w-1/2">
+                            <a href="#" class="font-semibold underline text-[#3E5DA6] dark:text-[#6edff6]">Yashasvi
+                                Jaiswal</a>
+                        </div>
+                        <div class="w-1/2 flex justify-between text-right text-gray-800 dark:text-white">
+                            <span class="w-[12%]">2</span>
+                            <span class="w-[12%]">9</span>
+                            <span class="w-[12%]">0</span>
+                            <span class="w-[12%]">0</span>
+                            <span class="w-[20%]">22.22</span>
                         </div>
                     </div>
-
-                    <!-- Player Stats -->
-                    <div class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-[#0e1c2f]">
-
-                        <!-- Player Example -->
-                        <div class="grid">
-                            <div class="flex items-start justify-between px-4 pt-2">
-                                <div class="w-1/2">
-                                    <a href="#" class="font-semibold underline text-[#3E5DA6] dark:text-[#6edff6]">Zak
-                                        Crawley</a>
-                                </div>
-                                <div class="w-1/2 flex justify-between text-right text-gray-800 dark:text-white">
-                                    <span class="w-[12%]">58</span>
-                                    <span class="w-[12%]">82</span>
-                                    <span class="w-[12%]">7</span>
-                                    <span class="w-[12%]">1</span>
-                                    <span class="w-[20%]">70.73</span>
-                                </div>
-                            </div>
-                            <div class="text-gray-500 text-xs px-4 pb-2 cursor-pointer"
-                                onclick="toggleDescription('dismissal-crawley')">
-                                c Bharat b Siraj <span class="text-[#BD3C34] font-bold ml-2">[+]</span>
-                            </div>
-                            <div id="dismissal-crawley"
-                                class="text-sm text-gray-700 dark:text-gray-300 px-4 pb-2 hidden">
-                                19.4 Full delivery outside off, edged and taken safely by the keeper.
-                            </div>
-                        </div>
-
-                        <!-- Player NOT OUT -->
-                        <div class="grid border-l-4 border-[#c7d6e9] bg-[#f4f8fc] dark:bg-[#1a2a3a]">
-                            <div class="flex items-start justify-between px-4 pt-2">
-                                <div class="w-1/2">
-                                    <a href="#"
-                                        class="font-semibold underline text-[#BD3C34] dark:text-[#ff7777] hover:text-[#E14C3D]">Ben
-                                        Stokes</a>
-                                </div>
-                                <div class="w-1/2 flex justify-between text-right text-[#BD3C34] dark:text-[#ff7777]">
-                                    <span class="w-[12%]">45</span>
-                                    <span class="w-[12%]">59</span>
-                                    <span class="w-[12%]">5</span>
-                                    <span class="w-[12%]">1</span>
-                                    <span class="w-[20%]">76.27</span>
-                                </div>
-                            </div>
-                            <div class="text-[#BD3C34] dark:text-[#ff9999] text-xs px-4 pb-2">not out</div>
-                        </div>
-
-                        <!-- Add more players here using same structure -->
-
-                        <!-- Extras -->
-                        <div
-                            class="flex justify-between items-center px-4 py-3 border-t border-gray-200 dark:border-gray-600 font-medium text-gray-800 dark:text-white">
-                            <span>Extras</span>
-                            <span>26 <span class="text-xs text-gray-500 dark:text-gray-400">(b 8, lb 5, nb 3, w
-                                    10)</span></span>
-                        </div>
-
-                        <!-- Total Score Summary -->
-                        <div class="flex flex-row sm:items-center px-4 py-3 justify-between">
-                            <div class="flex gap-3 items-center">
-                                <h2 class="text-md font-bold">Total</h2>
-                                <div class="text-right text-[#BD3C34] text-md font-extrabold">248</div>
-                            </div>
-                            <div class="text-sm text-gray-600 flex items-center dark:text-gray-400 sm:ml-4">72.0 Ov (RR:
-                                3.44)
-                            </div>
-                        </div>
-
-                        <!-- Fall of Wickets -->
-                        <div
-                            class="text-sm leading-relaxed text-gray-600 dark:text-gray-300 border-t border-gray-300 dark:border-gray-600 px-4 py-2">
-                            <strong class="text-[#3E5DA6] dark:text-[#6edff6]">Fall of wickets:</strong>
-                            <div
-                                class="mt-4 flex gap-4 overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar pr-2 pb-2">
-
-                                <!-- Sample wicket cards -->
-                                <div
-                                    class="flex flex-col items-center text-center w-32 shrink-0 border border-gray-200 dark:border-[#2a415a] bg-white dark:bg-[#102132] rounded-xl p-3 shadow-sm hover:shadow-md transition duration-300 leading-none">
-                                    <span class="text-sm font-bold text-[#BD3C34] dark:text-[#f87171] mb-1">1-28</span>
-                                    <span class="text-[13px] text-gray-800 dark:text-white font-medium mb-0.5">Ben
-                                        Duckett</span>
-                                    <span class="text-xs text-gray-400 mt-0">(5.6 ov)</span>
-                                </div>
-
-                                <div
-                                    class="flex flex-col items-center text-center w-32 shrink-0 border border-gray-200 dark:border-[#2a415a] bg-white dark:bg-[#102132] rounded-xl p-3 shadow-sm hover:shadow-md transition duration-300 leading-none">
-                                    <span class="text-sm font-bold text-[#BD3C34] dark:text-[#f87171] mb-1">2-83</span>
-                                    <span class="text-[13px] text-gray-800 dark:text-white font-medium mb-0.5">Joe
-                                        Root</span>
-                                    <span class="text-xs text-gray-400 mt-0">(17.4 ov)</span>
-                                </div>
-
-                                <!-- Add more wickets as needed -->
-
-                            </div>
-                        </div>
-
-                        <!-- Bowling Table -->
-                        <div class="overflow-x-auto border my-2">
-                            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm ">
-                                <thead
-                                    class="bg-gray-100 bg-[#f1f5f9] dark:bg-[#1a2e46] text-[#3E5DA6] dark:text-[#c9d9f2] font-semibold">
-                                    <tr>
-                                        <th class="text-left px-4 py-2">Bowling</th>
-                                        <th class="text-center px-2 py-2">O</th>
-                                        <th class="text-center px-2 py-2">M</th>
-                                        <th class="text-center px-2 py-2">R</th>
-                                        <th class="text-center px-2 py-2">W</th>
-                                        <th class="text-center px-2 py-2">ECON</th>
-                                        <th class="text-center px-2 py-2">WD</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                                    <tr class="hover:bg-gray-50 dark:hover:bg-[#1e2d3f]">
-                                        <td
-                                            class="px-4 py-2 font-semibold underline text-[#3E5DA6] dark:text-[#6edff6]">
-                                            Jasprit
-                                            Bumrah</td>
-                                        <td class="text-center px-2 py-2">18</td>
-                                        <td class="text-center px-2 py-2">4</td>
-                                        <td class="text-center px-2 py-2">42</td>
-                                        <td class="text-center px-2 py-2 text-[#BD3C34] font-semibold">3</td>
-                                        <td class="text-center px-2 py-2">2.33</td>
-                                        <td class="text-center px-2 py-2">1</td>
-                                    </tr>
-                                    <tr class="hover:bg-gray-50 dark:hover:bg-[#1e2d3f]">
-                                        <td
-                                            class="px-4 py-2 font-semibold underline text-[#3E5DA6] dark:text-[#6edff6]">
-                                            Ravindra Jadeja</td>
-                                        <td class="text-center px-2 py-2">22</td>
-                                        <td class="text-center px-2 py-2">5</td>
-                                        <td class="text-center px-2 py-2">54</td>
-                                        <td class="text-center px-2 py-2 text-[#BD3C34] font-semibold">2</td>
-                                        <td class="text-center px-2 py-2">2.45</td>
-                                        <td class="text-center px-2 py-2">0</td>
-                                    </tr>
-                                    <!-- Add more bowlers -->
-                                </tbody>
-                            </table>
-                        </div>
+                    <div class="text-gray-500 text-xs px-4 pb-2 cursor-pointer"
+                        onclick="toggleDescription('dismissal-jaiswal')">
+                        lbw b Atkinson <span class="text-[#BD3C34] font-bold ml-2">[+]</span>
+                    </div>
+                    <div id="dismissal-jaiswal" class="text-sm text-gray-700 dark:text-gray-300 px-4 pb-2 hidden">
+                        2.4 Angled in on off, skids low, Jaiswal tries to work it away, but is struck on the pad —
+                        umpire raises the finger.
                     </div>
                 </div>
 
+                <!-- Player 2 -->
+                <div class="grid">
+                    <div class="flex items-start justify-between px-4 pt-2">
+                        <div class="w-1/2">
+                            <a href="#" class="font-semibold underline text-[#3E5DA6] dark:text-[#6edff6]">KL Rahul</a>
+                        </div>
+                        <div class="w-1/2 flex justify-between text-right text-gray-800 dark:text-white">
+                            <span class="w-[12%]">14</span>
+                            <span class="w-[12%]">40</span>
+                            <span class="w-[12%]">1</span>
+                            <span class="w-[12%]">0</span>
+                            <span class="w-[20%]">35.00</span>
+                        </div>
+                    </div>
+                    <div class="text-gray-500 text-xs px-4 pb-2 cursor-pointer"
+                        onclick="toggleDescription('dismissal-rahul')">
+                        b Woakes <span class="text-[#BD3C34] font-bold ml-2">[+]</span>
+                    </div>
+                    <div id="dismissal-rahul" class="text-sm text-gray-700 dark:text-gray-300 px-4 pb-2 hidden">
+                        15.1 Chopped on... not for the first time in the series and Rahul departs. Short of a length
+                        outside off, extra bounce, thick inside-edge onto the stumps. 38/2
+                    </div>
+                </div>
+
+                <!-- Player 3 - NOT OUT -->
+                <div class="grid border-l-4 border-[#c7d6e9] bg-[#f4f8fc] dark:bg-[#1a2a3a]">
+                    <div class="flex items-start justify-between px-4 pt-2">
+                        <div class="w-1/2">
+                            <a href="#"
+                                class="font-semibold underline text-[#BD3C34] dark:text-[#ff7777] hover:text-[#E14C3D]">Akash
+                                Deep</a>
+                        </div>
+                        <div class="w-1/2 flex justify-between text-right text-[#BD3C34] dark:text-[#ff7777]">
+                            <span class="w-[12%]">0</span>
+                            <span class="w-[12%]">7</span>
+                            <span class="w-[12%]">0</span>
+                            <span class="w-[12%]">0</span>
+                            <span class="w-[20%]">0.00</span>
+                        </div>
+                    </div>
+                    <div class="text-[#BD3C34] dark:text-[#ff9999] text-xs px-4 pb-2">not out</div>
+                </div>
+
+                <!-- Player 4 -->
+                <div class="grid">
+                    <div class="flex items-start justify-between px-4 pt-2">
+                        <div class="w-1/2">
+                            <a href="#" class="font-semibold underline text-[#3E5DA6] dark:text-[#6edff6]">Shubman
+                                Gill</a>
+                        </div>
+                        <div class="w-1/2 flex justify-between text-right text-gray-800 dark:text-white">
+                            <span class="w-[12%]">10</span>
+                            <span class="w-[12%]">22</span>
+                            <span class="w-[12%]">1</span>
+                            <span class="w-[12%]">0</span>
+                            <span class="w-[20%]">45.45</span>
+                        </div>
+                    </div>
+                    <div class="text-gray-500 text-xs px-4 pb-2 cursor-pointer"
+                        onclick="toggleDescription('dismissal-gill')">
+                        run out (Stokes) <span class="text-[#BD3C34] font-bold ml-2">[+]</span>
+                    </div>
+                    <div id="dismissal-gill" class="text-sm text-gray-700 dark:text-gray-300 px-4 pb-2 hidden">
+                        12.2 Driven to mid-on, hesitation in the middle, Stokes quick to gather and fires in a rocket
+                        throw to the keeper's end — direct hit!
+                    </div>
+                </div>
+
+                <!-- Player 5 -->
+                <div class="grid">
+                    <div class="flex items-start justify-between px-4 pt-2">
+                        <div class="w-1/2">
+                            <a href="#" class="font-semibold underline text-[#3E5DA6] dark:text-[#6edff6]">Virat
+                                Kohli</a>
+                        </div>
+                        <div class="w-1/2 flex justify-between text-right text-gray-800 dark:text-white">
+                            <span class="w-[12%]">45</span>
+                            <span class="w-[12%]">55</span>
+                            <span class="w-[12%]">6</span>
+                            <span class="w-[12%]">1</span>
+                            <span class="w-[20%]">81.81</span>
+                        </div>
+                    </div>
+                    <div class="text-gray-500 text-xs px-4 pb-2 cursor-pointer"
+                        onclick="toggleDescription('dismissal-kohli')">
+                        c Root b Wood <span class="text-[#BD3C34] font-bold ml-2">[+]</span>
+                    </div>
+                    <div id="dismissal-kohli" class="text-sm text-gray-700 dark:text-gray-300 px-4 pb-2 hidden">
+                        20.3 Short and wide, Kohli slashes hard — straight to Root at slip. Soft hands, but brilliant
+                        anticipation by the fielder.
+                    </div>
+                </div>
+
+                <!-- Player 6 - NOT OUT -->
+                <div class="grid border-l-4 border-[#c7d6e9] bg-[#f4f8fc] dark:bg-[#1a2a3a]">
+                    <div class="flex items-start justify-between px-4 pt-2">
+                        <div class="w-1/2">
+                            <a href="#"
+                                class="font-semibold underline text-[#BD3C34] dark:text-[#ff7777] hover:text-[#E14C3D]">Ravindra
+                                Jadeja</a>
+                        </div>
+                        <div class="w-1/2 flex justify-between text-right text-[#BD3C34] dark:text-[#ff7777]">
+                            <span class="w-[12%]">38</span>
+                            <span class="w-[12%]">41</span>
+                            <span class="w-[12%]">4</span>
+                            <span class="w-[12%]">2</span>
+                            <span class="w-[20%]">92.68</span>
+                        </div>
+                    </div>
+                    <div class="text-[#BD3C34] dark:text-[#ff9999] text-xs px-4 pb-2">not out</div>
+                </div>
+
+                <!-- Extras -->
+                <div
+                    class="flex justify-between items-center px-4 py-3 border-t border-gray-200 dark:border-gray-600 font-medium text-gray-800 dark:text-white">
+                    <span>Extras</span>
+                    <span>38 <span class="text-xs text-gray-500 dark:text-gray-400">(b 12, lb 6, nb 4, w
+                            16)</span></span>
+                </div>
+
+
+
+                <section class="bg-white dark:bg-[#0e1c2f] text-gray-800 dark:text-gray-200  max-w-[1280px] mx-auto ">
+
+                    <!-- Total Score Summary -->
+                    <div class="flex flex-row sm:items-center px-4 py-3 justify-between">
+                        <div class="flex gap-3 items-center">
+                            <h2 class="text-md font-bold">Total</h2>
+                            <div class="text-right text-[#BD3C34] text-md  font-extrabold">224</div>
+                        </div>
+
+                        <div class="text-sm text-gray-600 flex items-center dark:text-gray-400 sm:ml-4">69.4 Ov (RR:
+                            3.21)</div>
+                    </div>
+
+                    <!-- Fall of Wickets -->
+                    <div
+                        class="text-sm leading-relaxed text-gray-600 dark:text-gray-300 border-t border-gray-300 dark:border-gray-600 px-4 py-2">
+
+                        <div class="text-sm leading-relaxed text-gray-600 dark:text-gray-300 ">
+                            <strong class="text-[#3E5DA6] dark:text-[#6edff6]">Fall of wickets:</strong>
+                            <div
+                                class="mt-2 flex gap-4 overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar pr-2 ">
+
+                                <!-- 1 -->
+                                <div
+                                    class="flex flex-col items-center text-center w-32 shrink-0 border border-gray-200 dark:border-[#2a415a] bg-white dark:bg-[#102132] rounded-xl p-3 shadow-sm hover:shadow-md transition duration-300 leading-none">
+                                    <span class="text-sm font-bold text-[#BD3C34] dark:text-[#f87171] mb-1">1-10</span>
+                                    <span class="text-[13px] text-gray-800 dark:text-white font-medium mb-0.5">Yashasvi
+                                        Jaiswal</span>
+                                    <span class="text-xs text-gray-400 mt-0">(3.1 ov)</span>
+                                </div>
+
+                                <!-- 2 -->
+                                <div
+                                    class="flex flex-col items-center text-center w-32 shrink-0 border border-gray-200 dark:border-[#2a415a] bg-white dark:bg-[#102132] rounded-xl p-3 shadow-sm hover:shadow-md transition duration-300 leading-none">
+                                    <span class="text-sm font-bold text-[#BD3C34] dark:text-[#f87171] mb-1">2-38</span>
+                                    <span class="text-[13px] text-gray-800 dark:text-white font-medium mb-0.5">KL
+                                        Rahul</span>
+                                    <span class="text-xs text-gray-400 mt-0">(15.1 ov)</span>
+                                </div>
+
+                                <!-- 3 -->
+                                <div
+                                    class="flex flex-col items-center text-center w-32 shrink-0 border border-gray-200 dark:border-[#2a415a] bg-white dark:bg-[#102132] rounded-xl p-3 shadow-sm hover:shadow-md transition duration-300 leading-none">
+                                    <span class="text-sm font-bold text-[#BD3C34] dark:text-[#f87171] mb-1">3-83</span>
+                                    <span class="text-[13px] text-gray-800 dark:text-white font-medium mb-0.5">Shubman
+                                        Gill</span>
+                                    <span class="text-xs text-gray-400 mt-0">(27.2 ov)</span>
+                                </div>
+
+                                <!-- 4 -->
+                                <div
+                                    class="flex flex-col items-center text-center w-32 shrink-0 border border-gray-200 dark:border-[#2a415a] bg-white dark:bg-[#102132] rounded-xl p-3 shadow-sm hover:shadow-md transition duration-300 leading-none">
+                                    <span class="text-sm font-bold text-[#BD3C34] dark:text-[#f87171] mb-1">4-101</span>
+                                    <span class="text-[13px] text-gray-800 dark:text-white font-medium mb-0.5">Sai
+                                        Sudharsan</span>
+                                    <span class="text-xs text-gray-400 mt-0">(35.4 ov)</span>
+                                </div>
+
+                                <!-- 5 -->
+                                <div
+                                    class="flex flex-col items-center text-center w-32 shrink-0 border border-gray-200 dark:border-[#2a415a] bg-white dark:bg-[#102132] rounded-xl p-3 shadow-sm hover:shadow-md transition duration-300 leading-none">
+                                    <span class="text-sm font-bold text-[#BD3C34] dark:text-[#f87171] mb-1">5-123</span>
+                                    <span class="text-[13px] text-gray-800 dark:text-white font-medium mb-0.5">Ravindra
+                                        Jadeja</span>
+                                    <span class="text-xs text-gray-400 mt-0">(39.3 ov)</span>
+                                </div>
+
+                                <!-- 6 -->
+                                <div
+                                    class="flex flex-col items-center text-center w-32 shrink-0 border border-gray-200 dark:border-[#2a415a] bg-white dark:bg-[#102132] rounded-xl p-3 shadow-sm hover:shadow-md transition duration-300 leading-none">
+                                    <span class="text-sm font-bold text-[#BD3C34] dark:text-[#f87171] mb-1">6-153</span>
+                                    <span class="text-[13px] text-gray-800 dark:text-white font-medium mb-0.5">Dhruv
+                                        Jurel</span>
+                                    <span class="text-xs text-gray-400 mt-0">(49.3 ov)</span>
+                                </div>
+
+                                <!-- 7 -->
+                                <div
+                                    class="flex flex-col items-center text-center w-32 shrink-0 border border-gray-200 dark:border-[#2a415a] bg-white dark:bg-[#102132] rounded-xl p-3 shadow-sm hover:shadow-md transition duration-300 leading-none">
+                                    <span class="text-sm font-bold text-[#BD3C34] dark:text-[#f87171] mb-1">7-218</span>
+                                    <span class="text-[13px] text-gray-800 dark:text-white font-medium mb-0.5">Karun
+                                        Nair</span>
+                                    <span class="text-xs text-gray-400 mt-0">(66.5 ov)</span>
+                                </div>
+
+                                <!-- 8 -->
+                                <div
+                                    class="flex flex-col items-center text-center w-32 shrink-0 border border-gray-200 dark:border-[#2a415a] bg-white dark:bg-[#102132] rounded-xl p-3 shadow-sm hover:shadow-md transition duration-300 leading-none">
+                                    <span class="text-sm font-bold text-[#BD3C34] dark:text-[#f87171] mb-1">8-220</span>
+                                    <span
+                                        class="text-[13px] text-gray-800 dark:text-white font-medium mb-0.5">Washington
+                                        Sundar</span>
+                                    <span class="text-xs text-gray-400 mt-0">(67.4 ov)</span>
+                                </div>
+
+                                <!-- 9 -->
+                                <div
+                                    class="flex flex-col items-center text-center w-32 shrink-0 border border-gray-200 dark:border-[#2a415a] bg-white dark:bg-[#102132] rounded-xl p-3 shadow-sm hover:shadow-md transition duration-300 leading-none">
+                                    <span class="text-sm font-bold text-[#BD3C34] dark:text-[#f87171] mb-1">9-224</span>
+                                    <span class="text-[13px] text-gray-800 dark:text-white font-medium mb-0.5">Mohammed
+                                        Siraj</span>
+                                    <span class="text-xs text-gray-400 mt-0">(69.2 ov)</span>
+                                </div>
+
+                                <!-- 10 -->
+                                <div
+                                    class="flex flex-col items-center text-center w-32 shrink-0 border border-gray-200 dark:border-[#2a415a] bg-white dark:bg-[#102132] rounded-xl p-3 shadow-sm hover:shadow-md transition duration-300 leading-none">
+                                    <span
+                                        class="text-sm font-bold text-[#BD3C34] dark:text-[#f87171] mb-1">10-224</span>
+                                    <span class="text-[13px] text-gray-800 dark:text-white font-medium mb-0.5">Prasidh
+                                        Krishna</span>
+                                    <span class="text-xs text-gray-400 mt-0">(69.4 ov)</span>
+                                    <!-- <span
+                                    class="inline-block text-[10px] mt-1 px-2 py-0.5 rounded bg-gray-100 dark:bg-[#1f3347] text-[#3E5DA6] dark:text-[#6edff6]">
+                                    • DRS
+                                  </span> -->
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
+                    <!-- Bowling Stats Table -->
+                    <div class="overflow-x-auto border  my-2">
+                        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm ">
+                            <thead
+                                class="bg-gray-100 bg-[#f1f5f9] dark:bg-[#1a2e46] text-[#3E5DA6] dark:text-[#c9d9f2] font-semibold">
+                                <tr>
+                                    <th class="text-left px-4 py-2">Bowling</th>
+                                    <th class="text-center px-2 py-2">O</th>
+                                    <th class="text-center px-2 py-2">M</th>
+                                    <th class="text-center px-2 py-2">R</th>
+                                    <th class="text-center px-2 py-2">W</th>
+                                    <th class="text-center px-2 py-2">ECON</th>
+                                    <th class="text-center px-2 py-2">WD</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr class="hover:bg-gray-50 dark:hover:bg-[#1e2d3f]">
+                                    <td class="px-4 py-2 font-semibold underline text-[#3E5DA6] dark:text-[#6edff6]">
+                                        Chris Woakes</td>
+                                    <td class="text-center px-2 py-2">14</td>
+                                    <td class="text-center px-2 py-2">1</td>
+                                    <td class="text-center px-2 py-2">46</td>
+                                    <td class="text-center px-2 py-2 text-[#BD3C34] font-semibold">1</td>
+                                    <td class="text-center px-2 py-2">3.28</td>
+                                    <td class="text-center px-2 py-2">0</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-[#1e2d3f]">
+                                    <td class="px-4 py-2 font-semibold underline text-[#3E5DA6] dark:text-[#6edff6]">Gus
+                                        Atkinson</td>
+                                    <td class="text-center px-2 py-2">21.4</td>
+                                    <td class="text-center px-2 py-2">8</td>
+                                    <td class="text-center px-2 py-2">33</td>
+                                    <td class="text-center px-2 py-2 text-[#BD3C34] font-semibold">5</td>
+                                    <td class="text-center px-2 py-2">1.52</td>
+                                    <td class="text-center px-2 py-2">1</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-[#1e2d3f]">
+                                    <td class="px-4 py-2 font-semibold underline text-[#3E5DA6] dark:text-[#6edff6]">
+                                        Josh Tongue</td>
+                                    <td class="text-center px-2 py-2">16</td>
+                                    <td class="text-center px-2 py-2">4</td>
+                                    <td class="text-center px-2 py-2">57</td>
+                                    <td class="text-center px-2 py-2 text-[#BD3C34] font-semibold">3</td>
+                                    <td class="text-center px-2 py-2">3.56</td>
+                                    <td class="text-center px-2 py-2">4</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-[#1e2d3f]">
+                                    <td class="px-4 py-2 font-semibold underline text-[#3E5DA6] dark:text-[#6edff6]">
+                                        Jamie Overton</td>
+                                    <td class="text-center px-2 py-2">16</td>
+                                    <td class="text-center px-2 py-2">0</td>
+                                    <td class="text-center px-2 py-2">66</td>
+                                    <td class="text-center px-2 py-2 text-[#BD3C34] font-semibold">0</td>
+                                    <td class="text-center px-2 py-2">4.12</td>
+                                    <td class="text-center px-2 py-2">2</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-[#1e2d3f]">
+                                    <td class="px-4 py-2 font-semibold underline text-[#3E5DA6] dark:text-[#6edff6]">
+                                        Jacob Bethell</td>
+                                    <td class="text-center px-2 py-2">2</td>
+                                    <td class="text-center px-2 py-2">1</td>
+                                    <td class="text-center px-2 py-2">4</td>
+                                    <td class="text-center px-2 py-2 text-[#BD3C34] font-semibold">0</td>
+                                    <td class="text-center px-2 py-2">2.00</td>
+                                    <td class="text-center px-2 py-2">0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+
+
             </div>
+
+
+
         </div>
+
 
 
 
