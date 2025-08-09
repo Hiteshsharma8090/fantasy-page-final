@@ -439,6 +439,11 @@
 
 
 
+
+
+
+
+
     <!-- MATCH SUMMARY (brand: #2E4689 / #B24335) -->
     <section class="max-w-[700px] mx-auto px-4 mt-5">
         <div
@@ -571,6 +576,381 @@
     </section>
 
 
+
+    <!-- H2H — Recent Form + Win Streak -->
+    <section class="max-w-[900px] mx-auto px-4 mt-5" id="h2h-form">
+        <div
+            class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm p-3 sm:p-4">
+            <div class="flex flex-col justify-between mb-2">
+                <h3 class="text-sm sm:text-base font-extrabold text-[#2E4689] dark:text-[#8EB8FF]">
+                    Recent Form & Win-Streak (Last 10 H2H)
+                </h3>
+                <span class="text-[11px] font-semibold text-[#B24335]">Auto-updates with data</span>
+            </div>
+
+            <!-- Each team gets: tiny sparkline + streak badge -->
+            <div class="space-y-3">
+                <!-- India row -->
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-2 w-28 shrink-0">
+                        <img src="images/flags/ind.svg" alt="India flag"
+                            class="w-5 h-3.5 rounded ring-1 ring-gray-200 dark:ring-gray-700">
+                        <span class="text-sm font-bold text-gray-900 dark:text-gray-100">India</span>
+                    </div>
+
+                    <!-- Sparkline (inline SVG so no lib needed) -->
+                    <svg id="spark-ind" class="h-9 flex-1" aria-label="India recent form trend" role="img"></svg>
+
+                    <!-- Streak badge -->
+                    <span id="streak-ind" class="shrink-0 rounded-lg px-2.5 py-1 text-[11px] font-bold
+                   bg-[#2E4689]/10 text-[#2E4689] border border-[#2E4689]/20">
+                        —
+                    </span>
+                </div>
+
+                <!-- New Zealand row -->
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-2 w-28 shrink-0">
+                        <img src="images/flags/nz.svg" alt="New Zealand flag"
+                            class="w-5 h-3.5 rounded ring-1 ring-gray-200 dark:ring-gray-700">
+                        <span class="text-sm font-bold text-gray-900 dark:text-gray-100">New Zealand</span>
+                    </div>
+
+                    <svg id="spark-nz" class="h-9 flex-1" aria-label="New Zealand recent form trend" role="img"></svg>
+
+                    <span id="streak-nz" class="shrink-0 rounded-lg px-2.5 py-1 text-[11px] font-bold
+                   bg-[#B24335]/10 text-[#B24335] border border-[#B24335]/20">
+                        —
+                    </span>
+                </div>
+            </div>
+
+            <!-- Legend (what the sparkline means) -->
+            <p class="mt-3 text-[11px] text-gray-600 dark:text-gray-400">
+                ↑ line = win, ↓ line = loss/draw. Badge shows current continuous wins (win-streak).
+            </p>
+        </div>
+    </section>
+
+
+
+    <!-- VENUE ADVANTAGE MATRIX -->
+    <section class="max-w-[900px] mx-auto px-4 mt-5">
+        <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm">
+            <div class="flex items-center justify-between px-4 py-3">
+                <h3 class="text-sm sm:text-base font-extrabold text-[#2E4689] dark:text-[#8EB8FF]">Venue Advantage</h3>
+                <span class="text-[11px] font-semibold text-gray-500">IND vs NZ</span>
+            </div>
+
+            <div id="venueBody" class="px-4 pb-3 space-y-3">
+                <!-- JS injects rows -->
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- TOSS & INNINGS IMPACT -->
+    <section class="max-w-[900px] mx-auto px-4 mt-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <!-- Toss Impact -->
+            <div
+                class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm p-3">
+                <div class="flex items-center justify-between mb-2">
+                    <h4 class="text-sm font-extrabold text-[#2E4689] dark:text-[#8EB8FF]">Toss Impact</h4>
+                    <span class="text-[11px] text-gray-500">H2H</span>
+                </div>
+                <div class="space-y-2">
+                    <div>
+                        <div class="flex items-center justify-between text-[12px]">
+                            <span class="font-semibold text-gray-700 dark:text-gray-200">IND wins after winning
+                                toss</span>
+                            <span id="tossIndPct" class="font-bold text-[#2E4689]">—%</span>
+                        </div>
+                        <div class="h-1.5 rounded bg-gray-200 dark:bg-gray-700 overflow-hidden">
+                            <div id="tossIndBar" class="h-full" style="width:0%; background:#2E4689"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between text-[12px]">
+                            <span class="font-semibold text-gray-700 dark:text-gray-200">NZ wins after winning
+                                toss</span>
+                            <span id="tossNzPct" class="font-bold text-[#B24335]">—%</span>
+                        </div>
+                        <div class="h-1.5 rounded bg-gray-200 dark:bg-gray-700 overflow-hidden">
+                            <div id="tossNzBar" class="h-full" style="width:0%; background:#B24335"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bat/Chase Advantage -->
+            <div
+                class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm p-3">
+                <div class="flex items-center justify-between mb-2">
+                    <h4 class="text-sm font-extrabold text-[#2E4689] dark:text-[#8EB8FF]">Bat/Chase Advantage</h4>
+                    <span class="text-[11px] text-gray-500">H2H</span>
+                </div>
+                <div class="space-y-2">
+                    <div>
+                        <div class="flex items-center justify-between text-[12px]">
+                            <span class="font-semibold text-gray-700 dark:text-gray-200">Bat first win%</span>
+                            <span id="batFirstPct" class="font-bold text-[#2E4689]">—%</span>
+                        </div>
+                        <div class="h-1.5 rounded bg-gray-200 dark:bg-gray-700 overflow-hidden">
+                            <div id="batFirstBar" class="h-full" style="width:0%; background:#2E4689"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between text-[12px]">
+                            <span class="font-semibold text-gray-700 dark:text-gray-200">Chase win%</span>
+                            <span id="chasePct" class="font-bold text-[#B24335]">—%</span>
+                        </div>
+                        <div class="h-1.5 rounded bg-gray-200 dark:bg-gray-700 overflow-hidden">
+                            <div id="chaseBar" class="h-full" style="width:0%; background:#B24335"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="max-w-[900px] mx-auto px-4 mt-5">
+        <div class="flex items-center justify-between mb-2">
+            <h3 class="text-sm sm:text-base font-extrabold text-[#2E4689] dark:text-[#8EB8FF]">Record Highlights</h3>
+            <a href="#" class="text-[11px] font-semibold text-[#B24335] hover:underline">All records</a>
+        </div>
+
+        <div id="recGrid" class="grid grid-cols-1 sm:grid-cols-3 gap-3"></div>
+    </section>
+
+
+
+
+
+
+
+    <!-- H2H — Momentum Graph (Win% Over Time) -->
+    <section class="max-w-[900px] mx-auto px-4 mt-5" id="h2h-momentum">
+        <div
+            class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm p-3 sm:p-4">
+            <div class="flex items-center justify-between mb-2">
+                <h3 class="text-sm sm:text-base font-extrabold text-[#2E4689] dark:text-[#8EB8FF]">Momentum (Win% over
+                    time)</h3>
+                <div class="inline-flex items-center gap-2 text-[11px] font-semibold">
+                    <label class="inline-flex items-center gap-1 cursor-pointer">
+                        <input id="chkIND" type="checkbox" class="accent-[#2E4689]" checked>
+                        <span
+                            class="px-1.5 py-0.5 rounded bg-[#2E4689]/10 text-[#2E4689] border border-[#2E4689]/20">IND</span>
+                    </label>
+                    <label class="inline-flex items-center gap-1 cursor-pointer">
+                        <input id="chkNZ" type="checkbox" class="accent-[#B24335]" checked>
+                        <span
+                            class="px-1.5 py-0.5 rounded bg-[#B24335]/10 text-[#B24335] border border-[#B24335]/20">NZ</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Responsive SVG chart -->
+            <div class="relative">
+                <svg id="momentumSVG" class="w-full h-32 sm:h-40" role="img"
+                    aria-label="Momentum lines for IND and NZ"></svg>
+                <!-- X-axis dates (compact) -->
+                <div id="momentumAxis" class="grid grid-cols-5 text-[10px] text-gray-500 mt-1"></div>
+            </div>
+
+            <p class="mt-2 text-[11px] text-gray-600 dark:text-gray-400">
+                Line shows running win% (wins ÷ matches so far). Tap legend to hide/show a team.
+            </p>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- H2H — Milestone Tracker -->
+    <section class="max-w-[900px] mx-auto px-4 mt-5" id="h2h-milestones">
+        <div
+            class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm p-3 sm:p-4">
+            <div class="flex items-center justify-between mb-2">
+                <h3 class="text-sm sm:text-base font-extrabold text-[#2E4689] dark:text-[#8EB8FF]">Milestone Tracker
+                </h3>
+                <a href="#" class="text-[11px] font-semibold text-[#B24335] hover:underline">All milestones</a>
+            </div>
+
+            <div id="mileGrid" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <!-- JS injects cards -->
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- H2H — Player Duel (1v1) -->
+    <section class="max-w-[900px] mx-auto px-4 mt-5" id="h2h-duel">
+        <div
+            class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm p-3 sm:p-4">
+            <!-- Header + scope pills -->
+            <div class="flex items-center justify-between mb-2">
+                <h3 class="text-sm sm:text-base font-extrabold text-[#2E4689] dark:text-[#8EB8FF]">Player Duel (1v1)
+                </h3>
+                <div
+                    class="inline-flex overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 text-[11px]">
+                    <button id="duelAll" class="px-3 py-1.5 font-semibold bg-[#2E4689] text-white">All-time</button>
+                    <button id="duelL5"
+                        class="px-3 py-1.5 font-semibold text-gray-700 dark:text-gray-200">Last-5</button>
+                </div>
+            </div>
+
+            <!-- Selector row (native <select> under custom shells for speed) -->
+                <div class="flex items-center gap-3 w-full">
+                    <!-- Batter -->
+                    <div class="relative flex-1">
+                        <div
+                            class="flex items-center justify-between gap-2 rounded-xl px-3 h-10 sm:h-11 bg-[#2E4689] text-white w-full">
+                            <span id="duel-batter-label" class="font-bold text-xs sm:text-sm truncate">V Kohli</span>
+                            <span class="w-6 h-6 grid place-items-center rounded bg-white/15">
+                                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9" />
+                                </svg>
+                            </span>
+                        </div>
+                        <select id="duel-batter" class="absolute inset-0 opacity-0 w-full cursor-pointer">
+                            <option selected>V Kohli</option>
+                            <option>R Sharma</option>
+                            <option>S Gill</option>
+                            <option>K Williamson</option>
+                            <option>D Conway</option>
+                        </select>
+                    </div>
+                
+                    <!-- VS coin -->
+                    <div class="flex items-center justify-center flex-none">
+                        <div
+                            class="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full grid place-items-center border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+                            <span
+                                class="absolute inset-0 rounded-full bg-gradient-to-br from-[#B24335]/15 to-[#2E4689]/15"></span>
+                            <span class="relative text-[11px] sm:text-sm font-extrabold">VS</span>
+                        </div>
+                    </div>
+                
+                    <!-- Bowler -->
+                    <div class="relative flex-1">
+                        <div
+                            class="flex items-center justify-between gap-2 rounded-xl px-3 h-10 sm:h-11 bg-[#1f1f1f] text-white w-full">
+                            <span id="duel-bowler-label" class="font-bold text-xs sm:text-sm truncate">T Southee</span>
+                            <span class="w-6 h-6 grid place-items-center rounded bg-white/10">
+                                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9" />
+                                </svg>
+                            </span>
+                        </div>
+                        <select id="duel-bowler" class="absolute inset-0 opacity-0 w-full cursor-pointer">
+                            <option selected>T Southee</option>
+                            <option>T Boult</option>
+                            <option>K Jamieson</option>
+                            <option>M Shami</option>
+                            <option>R Ashwin</option>
+                        </select>
+                    </div>
+                </div>
+                
+
+            <!-- Stats mini grid -->
+            <div id="duelGrid" class="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <!-- JS injects four tiny cards -->
+            </div>
+
+            <!-- Micro bar comparison -->
+            <div class="mt-3 space-y-2">
+                <div>
+                    <div class="flex items-center justify-between text-[11px] font-semibold">
+                        <span class="text-[#2E4689]">Runs vs Bowler</span>
+                        <span id="duelRunsVal" class="text-gray-700 dark:text-gray-200">—</span>
+                    </div>
+                    <div class="h-1.5 rounded bg-gray-200 dark:bg-gray-700 overflow-hidden">
+                        <div id="duelRunsBar" class="h-full bg-[#2E4689]" style="width:0%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between text-[11px] font-semibold">
+                        <span class="text-[#B24335]">Dismissals by Bowler</span>
+                        <span id="duelOutVal" class="text-gray-700 dark:text-gray-200">—</span>
+                    </div>
+                    <div class="h-1.5 rounded bg-gray-200 dark:bg-gray-700 overflow-hidden">
+                        <div id="duelOutBar" class="h-full bg-[#B24335]" style="width:0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="mt-3 text-[11px] text-gray-600 dark:text-gray-400">
+                *SR = (Runs / Balls) × 100 · Last-5 restricts to most recent five H2H meetings.*
+            </p>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- H2H — Clutch & Chases -->
+<section class="max-w-[900px] mx-auto px-4 mt-5" id="h2h-clutch">
+    <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm p-3 sm:p-4">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="text-sm sm:text-base font-extrabold text-[#2E4689] dark:text-[#8EB8FF]">Clutch & Chases</h3>
+        <span class="text-[11px] text-gray-500">H2H only</span>
+      </div>
+  
+      <!-- KPI Row -->
+      <div id="clutchKpis" class="grid grid-cols-2 sm:grid-cols-4 gap-2"></div>
+  
+      <!-- Close finishes (horizontal capsules) -->
+      <div class="mt-3 no-scrollbar overflow-x-auto flex gap-3 snap-x snap-mandatory pb-1" id="closeRow"></div>
+    </div>
+  </section>
+
+
     <script>
         const toggleBtn = document.getElementById("filterToggle");
         const filterContent = document.getElementById("filterContent");
@@ -658,6 +1038,498 @@
         paint(filtered);
         search.addEventListener('input', doSearch);
         sortBtn.addEventListener('click', doSort);
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // last 10 match 
+        /**
+   * DATA MODEL (bind your API here)
+   * last 10 H2H match outcomes (most recent last). winner = 'IND' | 'NZ' | 'DRAW'
+   */
+        const H2H_LAST10 = [
+            { date: '2024-11-21', winner: 'IND' },
+            { date: '2024-03-10', winner: 'NZ' },
+            { date: '2023-12-03', winner: 'IND' },
+            { date: '2023-02-18', winner: 'NZ' },
+            { date: '2022-10-13', winner: 'IND' },
+            { date: '2021-11-21', winner: 'IND' },
+            { date: '2021-01-15', winner: 'DRAW' },
+            { date: '2020-03-01', winner: 'IND' },
+            { date: '2019-11-10', winner: 'NZ' },
+            { date: '2019-06-22', winner: 'IND' },
+        ];
+
+        // --- Helpers ---------------------------------------------------------------
+
+        // Converts last-10 outcomes to a numeric series for a team: Win=1, Draw=0.5, Loss=0
+        function toSeries(matches, teamCode) {
+            return matches.map(m => m.winner === teamCode ? 1 : m.winner === 'DRAW' ? 0.5 : 0);
+        }
+
+        // Current win-streak (consecutive wins from the end). Draw or loss breaks it.
+        function currentWinStreak(matches, teamCode) {
+            let s = 0;
+            for (let i = matches.length - 1; i >= 0; i--) {
+                if (matches[i].winner === teamCode) s++;
+                else break;
+            }
+            return s;
+        }
+
+        // Render a tiny sparkline (no libs). Values should be in [0,1].
+        function renderSparkline(svgId, values, color) {
+            const svg = document.getElementById(svgId);
+            const width = svg.clientWidth || 220;
+            const height = svg.clientHeight || 36;
+            svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+
+            const padX = 4, padY = 4;
+            const W = width - padX * 2, H = height - padY * 2;
+            const step = values.length > 1 ? W / (values.length - 1) : W;
+
+            const y = v => padY + (1 - v) * H;
+            const x = i => padX + i * step;
+
+            // Build path
+            const d = values.map((v, i) => `${i === 0 ? 'M' : 'L'} ${x(i)} ${y(v)}`).join(' ');
+            // Subtle grid baseline
+            svg.innerHTML = `
+      <rect x="0" y="${height - 3}" width="${width}" height="3" rx="1.5" fill="currentColor" opacity="0.08"></rect>
+      <path d="${d}" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="${x(values.length - 1)}" cy="${y(values.at(-1))}" r="3" fill="${color}" />
+    `;
+            svg.style.color = color; // for the faint baseline rect
+        }
+
+        // --- Bind everything -------------------------------------------------------
+
+        const indSeries = toSeries(H2H_LAST10, 'IND'); // e.g., [1,0,1,0,1,1,0.5,1,0,1]
+        const nzSeries = toSeries(H2H_LAST10, 'NZ');  // mirrored for NZ
+
+        renderSparkline('spark-ind', indSeries, '#2E4689');
+        renderSparkline('spark-nz', nzSeries, '#B24335');
+
+        // Streak text
+        const indStreak = currentWinStreak(H2H_LAST10, 'IND');
+        const nzStreak = currentWinStreak(H2H_LAST10, 'NZ');
+        document.getElementById('streak-ind').textContent =
+            indStreak > 0 ? `${indStreak}-Match Winning Streak` : 'No current streak';
+        document.getElementById('streak-nz').textContent =
+            nzStreak > 0 ? `${nzStreak}-Match Winning Streak` : 'No current streak';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // Venue Advantage Matrix
+        const VENUE_SPLIT = [
+            { ctx: 'India (Home)', ind: 68, nz: 22, draw: 10 },
+            { ctx: 'New Zealand (Away for IND)', ind: 34, nz: 54, draw: 12 },
+            { ctx: 'Neutral', ind: 56, nz: 38, draw: 6 },
+        ];
+
+        const vb = document.getElementById('venueBody');
+        function row({ ctx, ind, nz, draw }) {
+            const wrap = document.createElement('div');
+            wrap.innerHTML = `
+      <div class="text-[12px] font-semibold text-gray-700 dark:text-gray-200 mb-1">${ctx}</div>
+      <div class="h-2 rounded bg-gray-200 dark:bg-gray-700 overflow-hidden flex">
+        <div class="h-full" style="width:${ind}%; background:#2E4689" title="IND ${ind}%"></div>
+        <div class="h-full" style="width:${draw}%; background:rgba(0,0,0,.25)" title="Draw ${draw}%"></div>
+        <div class="h-full" style="width:${nz}%; background:#B24335" title="NZ ${nz}%"></div>
+      </div>
+      <div class="mt-1 text-[11px] text-gray-600 dark:text-gray-400 flex justify-between">
+        <span>IND ${ind}%</span><span>Draw ${draw}%</span><span>NZ ${nz}%</span>
+      </div>
+    `;
+            return wrap;
+        }
+        vb.innerHTML = ''; VENUE_SPLIT.forEach(v => vb.appendChild(row(v)));
+
+
+
+
+
+
+        // Replace with your computed H2H metrics
+        const TOSS_IMPACT = { indWinsAfterTossWin: 58, nzWinsAfterTossWin: 47 };
+        const INNINGS_IMPACT = { batFirst: 52, chase: 48 };
+
+        // Paint
+        document.getElementById('tossIndPct').textContent = TOSS_IMPACT.indWinsAfterTossWin + '%';
+        document.getElementById('tossNzPct').textContent = TOSS_IMPACT.nzWinsAfterTossWin + '%';
+        document.getElementById('tossIndBar').style.width = TOSS_IMPACT.indWinsAfterTossWin + '%';
+        document.getElementById('tossNzBar').style.width = TOSS_IMPACT.nzWinsAfterTossWin + '%';
+
+        document.getElementById('batFirstPct').textContent = INNINGS_IMPACT.batFirst + '%';
+        document.getElementById('chasePct').textContent = INNINGS_IMPACT.chase + '%';
+        document.getElementById('batFirstBar').style.width = INNINGS_IMPACT.batFirst + '%';
+        document.getElementById('chaseBar').style.width = INNINGS_IMPACT.chase + '%';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        const RECORDS = [
+            { title: 'Biggest Win (Runs)', value: '372', meta: 'IND vs NZ, Mumbai 2021', tone: 'blue' },
+            { title: 'Highest Total', value: '657/7d', meta: 'IND vs NZ, Kanpur 2016', tone: 'red' },
+            { title: 'Lowest Defended', value: '170', meta: 'NZ vs IND, Wellington 2014', tone: 'blue' },
+        ];
+        const tone = t => t === 'blue'
+            ? ['border-[#dbeafe]', 'dark:border-[#1a334a]', 'bg-[#f0faff]', 'dark:bg-[#10293f]', 'text-[#2E4689]']
+            : ['border-rose-200/70', 'dark:border-[#3c2320]', 'bg-rose-50', 'dark:bg-[#2b1a18]', 'text-[#B24335]'];
+
+        const recGrid = document.getElementById('recGrid');
+        recGrid.innerHTML = '';
+        RECORDS.forEach(r => {
+            const card = document.createElement('article');
+            card.className = 'rounded-2xl border shadow-sm p-3 flex flex-col gap-1';
+            tone(r.tone).forEach(c => card.classList.add(c));
+            card.innerHTML = `
+      <div class="text-[11px] font-semibold opacity-90">${r.title}</div>
+      <div class="text-xl font-black leading-none">${r.value}</div>
+      <div class="text-[11px] text-gray-700 dark:text-gray-300">${r.meta}</div>`;
+            recGrid.appendChild(card);
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // ----- Dummy H2H timeline (oldest -> latest). Replace via API. -----
+        // winner: 'IND' | 'NZ' | 'DRAW'
+        const H2H_TIMELINE = [
+            { date: '2019-02-10', winner: 'IND' },
+            { date: '2019-11-10', winner: 'NZ' },
+            { date: '2020-03-01', winner: 'IND' },
+            { date: '2021-01-15', winner: 'DRAW' },
+            { date: '2021-11-21', winner: 'IND' },
+            { date: '2022-10-13', winner: 'IND' },
+            { date: '2023-02-18', winner: 'NZ' },
+            { date: '2023-12-03', winner: 'IND' },
+            { date: '2024-03-10', winner: 'NZ' },
+            { date: '2024-11-21', winner: 'IND' },
+        ];
+
+        // --- Compute running win% for each team ---
+        function runningWinPct(rows, team) {
+            let wins = 0, played = 0;
+            return rows.map(r => {
+                if (r.winner !== 'DRAW') played++;
+                if (r.winner === team) wins++;
+                return played ? +(wins / played * 100).toFixed(1) : 0;
+            });
+        }
+
+        // --- Render SVG lines (no external lib) ---
+        function renderMomentum() {
+            const svg = document.getElementById('momentumSVG');
+            const showIND = document.getElementById('chkIND').checked;
+            const showNZ = document.getElementById('chkNZ').checked;
+            const w = svg.clientWidth || 320, h = svg.clientHeight || 128;
+
+            svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+
+            // padding
+            const px = 8, py = 8; const W = w - px * 2, H = h - py * 2;
+            const N = H2H_TIMELINE.length;
+            const step = N > 1 ? W / (N - 1) : W;
+
+            // scale: 0..100 -> bottom..top
+            const y = v => py + (1 - v / 100) * H;
+            const x = i => px + i * step;
+
+            // grid lines 0,25,50,75,100
+            const grid = [0, 25, 50, 75, 100].map(g => `<line x1="${px}" y1="${y(g)}" x2="${px + W}" y2="${y(g)}" stroke="currentColor" stroke-width="1" opacity="${g === 50 ? 0.18 : 0.08}" />`).join('');
+
+            // paths
+            const indSeries = runningWinPct(H2H_TIMELINE, 'IND');
+            const nzSeries = runningWinPct(H2H_TIMELINE, 'NZ');
+
+            const pathFor = (vals) => vals.map((v, i) => `${i ? 'L' : 'M'} ${x(i)} ${y(v)}`).join(' ');
+            const lineIND = `<path d="${pathFor(indSeries)}" fill="none" stroke="#2E4689" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />`;
+            const dotIND = `<circle cx="${x(N - 1)}" cy="${y(indSeries.at(-1))}" r="3" fill="#2E4689"/>`;
+            const lineNZ = `<path d="${pathFor(nzSeries)}"  fill="none" stroke="#B24335" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />`;
+            const dotNZ = `<circle cx="${x(N - 1)}" cy="${y(nzSeries.at(-1))}"  r="3" fill="#B24335"/>`;
+
+            svg.innerHTML = `
+      <rect x="0" y="0" width="${w}" height="${h}" fill="transparent"></rect>
+      <g style="color:#00000055">${grid}</g>
+      ${showIND ? lineIND + dotIND : ''}
+      ${showNZ ? lineNZ + dotNZ : ''}
+    `;
+
+            // axis labels (5 ticks)
+            const axis = document.getElementById('momentumAxis');
+            const ticks = 5;
+            axis.innerHTML = '';
+            for (let i = 0; i < ticks; i++) {
+                const idx = Math.round(i * (N - 1) / (ticks - 1));
+                const d = new Date(H2H_TIMELINE[idx].date);
+                const label = d.toLocaleDateString('en-GB', { month: 'short', year: '2-digit' });
+                const span = document.createElement('div');
+                span.textContent = label;
+                axis.appendChild(span);
+            }
+        }
+
+        document.getElementById('chkIND').addEventListener('change', renderMomentum);
+        document.getElementById('chkNZ').addEventListener('change', renderMomentum);
+        window.addEventListener('resize', renderMomentum);
+        renderMomentum();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // Replace with live H2H records
+        const MILESTONES = [
+            { tone: 'blue', title: 'Highest Individual', value: '254', meta: 'IND vs NZ • Pune 2016 • Batter: V Kohli' },
+            { tone: 'red', title: 'Best Bowling', value: '7/59', meta: 'NZ vs IND • Wellington 2014 • Bowler: T Southee' },
+            { tone: 'blue', title: 'Most Sixes in Match', value: '12', meta: 'IND vs NZ • Mumbai 2021' },
+            { tone: 'red', title: 'Fastest 100', value: '75 balls', meta: 'NZ vs IND • Hamilton 2020' },
+            { tone: 'blue', title: 'Highest Partnership', value: '365', meta: 'IND vs NZ • Kanpur 2016' },
+            { tone: 'red', title: 'Best Chase', value: '284/6', meta: 'NZ vs IND • Auckland 2019' },
+        ];
+
+        const mileGrid = document.getElementById('mileGrid');
+        const toneCls = (t) => t === 'blue'
+            ? ['border-[#dbeafe]', 'dark:border-[#1a334a]', 'bg-[#f0faff]', 'dark:bg-[#10293f]', 'text-[#2E4689]']
+            : ['border-rose-200/70', 'dark:border-[#3c2320]', 'bg-rose-50', 'dark:bg-[#2b1a18]', 'text-[#B24335]'];
+
+        function paintMilestones() {
+            mileGrid.innerHTML = '';
+            MILESTONES.forEach(m => {
+                const card = document.createElement('article');
+                card.className = 'relative rounded-2xl border shadow-sm p-3 flex flex-col gap-1 overflow-hidden';
+                toneCls(m.tone).forEach(c => card.classList.add(c));
+
+                // left accent
+                const accent = document.createElement('span');
+                accent.className = `absolute left-0 top-0 h-full w-1 ${m.tone === 'blue' ? 'bg-[#2E4689]' : 'bg-[#B24335]'}`;
+                card.appendChild(accent);
+
+                card.innerHTML += `
+        <div class="text-[11px] font-semibold opacity-90">${m.title}</div>
+        <div class="text-xl font-black leading-tight">${m.value}</div>
+        <div class="text-[11px] text-gray-700 dark:text-gray-300">${m.meta}</div>
+      `;
+                mileGrid.appendChild(card);
+            });
+        }
+        paintMilestones();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // ---------- Dummy duel datasets (swap with API) ----------
+        const DUEL_DATA = {
+            'All-time': {
+                'V Kohli|T Southee': { runs: 198, balls: 320, dismissals: 6, fours: 26, sixes: 3 },
+                'R Sharma|T Southee': { runs: 142, balls: 210, dismissals: 5, fours: 18, sixes: 5 },
+                'S Gill|T Boult': { runs: 88, balls: 101, dismissals: 2, fours: 12, sixes: 2 },
+            },
+            'Last-5': {
+                'V Kohli|T Southee': { runs: 92, balls: 130, dismissals: 2, fours: 10, sixes: 2 },
+                'R Sharma|T Southee': { runs: 61, balls: 80, dismissals: 2, fours: 8, sixes: 2 },
+                'S Gill|T Boult': { runs: 55, balls: 60, dismissals: 1, fours: 7, sixes: 1 },
+            }
+        };
+
+        const scopeBtns = { all: document.getElementById('duelAll'), l5: document.getElementById('duelL5') };
+        let scope = 'All-time';
+
+        function sr(runs, balls) { return balls ? ((runs / balls) * 100).toFixed(1) : '0.0'; }
+        function pct(n, max) { return max ? Math.min(100, Math.round((n / max) * 100)) : 0; }
+
+        function pickKey() {
+            const bat = document.getElementById('duel-batter').value;
+            const bowl = document.getElementById('duel-bowler').value;
+            return `${bat}|${bowl}`;
+        }
+
+        function paintDuel() {
+            // active pills
+            const activeAll = (scope === 'All-time');
+            scopeBtns.all.classList.toggle('bg-[#2E4689]', activeAll);
+            scopeBtns.all.classList.toggle('text-white', activeAll);
+            scopeBtns.l5.classList.toggle('bg-[#2E4689]', !activeAll);
+            scopeBtns.l5.classList.toggle('text-white', !activeAll);
+
+            // labels
+            document.getElementById('duel-batter-label').textContent = document.getElementById('duel-batter').value;
+            document.getElementById('duel-bowler-label').textContent = document.getElementById('duel-bowler').value;
+
+            const key = pickKey();
+            const data = DUEL_DATA[scope][key] || { runs: 0, balls: 0, dismissals: 0, fours: 0, sixes: 0 };
+
+            // tiny cards
+            const cards = [
+                { title: 'Runs', val: data.runs, tone: 'blue' },
+                { title: 'Balls', val: data.balls, tone: 'gray' },
+                { title: 'SR', val: sr(data.runs, data.balls), tone: 'blue' },
+                { title: 'Dismissals', val: data.dismissals, tone: 'red' },
+            ];
+            const duelGrid = document.getElementById('duelGrid');
+            duelGrid.innerHTML = '';
+            cards.forEach(c => {
+                const card = document.createElement('div');
+                card.className = 'rounded-xl border p-2 text-center';
+                const tone = c.tone === 'blue' ? ['border-[#dbeafe]', 'dark:border-[#1a334a]', 'bg-[#f0faff]', 'dark:bg-[#10293f]', 'text-[#2E4689]']
+                    : c.tone === 'red' ? ['border-rose-200/70', 'dark:border-[#3c2320]', 'bg-rose-50', 'dark:bg-[#2b1a18]', 'text-[#B24335]']
+                        : ['border-gray-200', 'dark:border-gray-700', 'bg-gray-50', 'dark:bg-gray-800', 'text-gray-800', 'dark:text-gray-100'];
+                tone.forEach(t => card.classList.add(t));
+                card.innerHTML = `<div class="text-[11px] font-semibold opacity-90">${c.title}</div>
+                        <div class="text-lg font-black leading-none">${c.val}</div>`;
+                duelGrid.appendChild(card);
+            });
+
+            // bars
+            document.getElementById('duelRunsVal').textContent = `${data.runs} runs`;
+            document.getElementById('duelOutVal').textContent = `${data.dismissals} times`;
+            const maxRuns = 250, maxOut = 8; // visual scale caps
+            document.getElementById('duelRunsBar').style.width = pct(data.runs, maxRuns) + '%';
+            document.getElementById('duelOutBar').style.width = pct(data.dismissals, maxOut) + '%';
+        }
+
+        // wire events
+        document.getElementById('duel-batter').addEventListener('change', paintDuel);
+        document.getElementById('duel-bowler').addEventListener('change', paintDuel);
+        scopeBtns.all.addEventListener('click', () => { scope = 'All-time'; paintDuel(); });
+        scopeBtns.l5.addEventListener('click', () => { scope = 'Last-5'; paintDuel(); });
+
+        paintDuel();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ---------- Dummy aggregates (swap with API) ----------
+const CHASE_SPLIT = { batFirstWin: 52, chaseWin: 48 }; // %
+  const CLOSE_FINISHES = [
+    { date:'2024-03-10', format:'ODI', venue:'Auckland', winner:'IND', margin:'3 runs' },
+    { date:'2023-12-03', format:'TEST', venue:'Wellington', winner:'NZ',  margin:'2 wkts' },
+    { date:'2022-10-13', format:'T20I', venue:'Ranchi',    winner:'IND', margin:'4 wkts' },
+    { date:'2021-11-21', format:'ODI', venue:'Mumbai',     winner:'NZ',  margin:'5 runs' },
+  ];
+
+  // ---------- KPIs ----------
+  const kpiList = [
+    { label:'Bat 1st Win %', val: CHASE_SPLIT.batFirstWin, tone:'blue' },
+    { label:'Chase Win %',   val: CHASE_SPLIT.chaseWin,    tone:'red'  },
+    { label:'Close Finishes (≤25r/≤3w)', val: CLOSE_FINISHES.length, tone:'gray' },
+    { label:'IND edge in close', val: CLOSE_FINISHES.filter(x=>x.winner==='IND').length, tone:'blue' },
+  ];
+
+  const clutchKpis = document.getElementById('clutchKpis');
+  clutchKpis.innerHTML = '';
+  kpiList.forEach(k=>{
+    const box = document.createElement('div');
+    const tone = k.tone==='blue' ? ['border-[#dbeafe]','dark:border-[#1a334a]','bg-[#f0faff]','dark:bg-[#10293f]','text-[#2E4689]']
+               : k.tone==='red'  ? ['border-rose-200/70','dark:border-[#3c2320]','bg-rose-50','dark:bg-[#2b1a18]','text-[#B24335]']
+               : ['border-gray-200','dark:border-gray-700','bg-gray-50','dark:bg-gray-800','text-gray-800','dark:text-gray-100'];
+    box.className = 'rounded-xl border p-2';
+    tone.forEach(t=>box.classList.add(t));
+    box.innerHTML = `
+      <div class="text-[11px] font-semibold opacity-90">${k.label}</div>
+      <div class="text-lg font-black leading-none">${k.val}${/Win/.test(k.label)?'%':''}</div>
+      <div class="mt-1 h-1.5 rounded bg-gray-200 dark:bg-gray-700 overflow-hidden">
+        <div class="h-full ${k.tone==='blue'?'bg-[#2E4689]':k.tone==='red'?'bg-[#B24335]':'bg-gray-500'}" style="width:${Math.min(100, Number(k.val))}%"></div>
+      </div>`;
+    clutchKpis.appendChild(box);
+  });
+
+  // ---------- Close Finishes Row ----------
+  const closeRow = document.getElementById('closeRow');
+  CLOSE_FINISHES.forEach(m=>{
+    const pill = document.createElement('article');
+    pill.className = 'snap-start shrink-0 w-[240px] rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-3';
+    const tone = m.winner==='IND'
+      ? 'bg-[#2E4689]/10 text-[#2E4689] border-[#2E4689]/20'
+      : 'bg-[#B24335]/10 text-[#B24335] border-[#B24335]/20';
+    pill.innerHTML = `
+      <div class="text-[11px] text-gray-500 mb-1">${m.format} • ${new Date(m.date).toLocaleDateString()}</div>
+      <div class="text-sm font-bold text-gray-900 dark:text-gray-100">${m.venue}</div>
+      <div class="mt-2 text-[11px] font-semibold px-2 py-1 rounded-lg border ${tone}">
+        Winner: ${m.winner} • ${m.margin}
+      </div>`;
+    closeRow.appendChild(pill);
+  });
+
     </script>
 
 
