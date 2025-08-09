@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CricketAddictor Header & Nav</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="theme-color" content="#B84636" />
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="/path-to-icon.png" />
+    <style>
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+    </style>
+</head>
+
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans">
+
+    <header class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
+        <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Top bar -->
+            <div class="flex items-center justify-between h-14">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <img src="Icons/CA_logo.svg" alt="Logo" class="" />
+                </div>
+
+                <!-- Icons -->
+                <div class="flex items-center gap-1">
+                    <!-- Dark Mode Toggle -->
+                    <button id="dark-mode-toggle" aria-label="Toggle Dark Mode"
+                        class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                        <!-- Sun / Moon icon -->
+                        <svg id="icon-sun" class="w-6 h-6 text-yellow-500 hidden" fill="none" stroke="currentColor"
+                            stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5" />
+                            <path
+                                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M16.36 16.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M16.36 7.64l1.42-1.42" />
+                        </svg>
+                        <svg id="icon-moon" class="w-6 h-6 text-gray-700 dark:text-gray-300" fill="none"
+                            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+                        </svg>
+                    </button>
+                    <!-- Search icon -->
+                    <button aria-label="Search"
+                        class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                        <svg class="w-6 h-6 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor"
+                            stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="7" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg>
+                    </button>
+
+                    <!-- Hamburger menu -->
+                    <button aria-label="Toggle Menu" id="menu-btn"
+                        class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition md:hidden">
+                        <svg id="menu-open" class="w-7 h-7 text-gray-700 dark:text-gray-300" fill="none"
+                            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M3 12h18M3 6h18M3 18h18" />
+                        </svg>
+                        <svg id="menu-close" class="w-7 h-7 text-gray-700 dark:text-gray-300 hidden" fill="none"
+                            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Navigation Tabs -->
+            <nav id="nav-menu"
+                class="mt-2 border-t border-gray-200 dark:border-gray-700 md:flex md:items-center md:justify-start md:space-x-8 hidden md:block">
+                <a href="#"
+                    class="block py-3 px-1 font-semibold text-sm text-[#6DA544] border-b-2 border-[#6DA544] rounded-t-md">Home</a>
+                <a href="#"
+                    class="block py-3 px-1 text-gray-800 dark:text-gray-300 hover:text-[#6DA544] hover:border-b-2 hover:border-[#6DA544] rounded-t-md">Cricket</a>
+                <a href="#"
+                    class="block py-3 px-1 text-gray-800 dark:text-gray-300 hover:text-[#6DA544] hover:border-b-2 hover:border-[#6DA544] rounded-t-md">Football</a>
+                <a href="#"
+                    class="block py-3 px-1 text-gray-800 dark:text-gray-300 hover:text-[#6DA544] hover:border-b-2 hover:border-[#6DA544] rounded-t-md">Tennis</a>
+                <a href="#"
+                    class="block py-3 px-1 text-gray-800 dark:text-gray-300 hover:text-[#6DA544] hover:border-b-2 hover:border-[#6DA544] rounded-t-md">Basketball</a>
+            </nav>
+
+            <!-- Cricket Scrollable Submenu with logo theme colors -->
+            <nav aria-label="Cricket submenu"
+                class="mt-1 border-t border-b border-gray-200 dark:border-gray-700 overflow-x-auto no-scrollbar md:hidden scroll-smooth snap-x snap-mandatory flex gap-6 px-4 py-2 bg-white dark:bg-gray-900">
+                <a href="#"
+                    class="snap-start whitespace-nowrap text-sm font-semibold text-[#B24335] hover:text-[#7B2E25]">
+                    Home
+                </a>
+                <a href="#"
+                    class="snap-start whitespace-nowrap text-sm text-[#2E4689] dark:text-gray-300 hover:text-[#B24335]">
+                    IPL 2025
+                </a>
+                <a href="#"
+                    class="snap-start whitespace-nowrap text-sm text-[#2E4689] dark:text-gray-300 hover:text-[#B24335]">
+                    Teams
+                </a>
+                <a href="#"
+                    class="snap-start whitespace-nowrap text-sm text-[#2E4689] dark:text-gray-300 hover:text-[#B24335]">
+                    Points Table
+                </a>
+                <a href="#"
+                    class="snap-start whitespace-nowrap text-sm text-[#2E4689] dark:text-gray-300 hover:text-[#B24335]">
+                    Schedule
+                </a>
+                <a href="#"
+                    class="snap-start whitespace-nowrap text-sm text-[#2E4689] dark:text-gray-300 hover:text-[#B24335]">
+                    Stats
+                </a>
+                <a href="#"
+                    class="snap-start whitespace-nowrap text-sm text-[#2E4689] dark:text-gray-300 hover:text-[#B24335]">
+                    News
+                </a>
+                <a href="#"
+                    class="snap-start whitespace-nowrap text-sm text-[#2E4689] dark:text-gray-300 hover:text-[#B24335]">
+                    Dream11 Prediction
+                </a>
+                <a href="#"
+                    class="snap-start whitespace-nowrap text-sm text-[#2E4689] dark:text-gray-300 hover:text-[#B24335]">
+                    Match Prediction
+                </a>
+                <a href="#"
+                    class="snap-start whitespace-nowrap text-sm text-[#2E4689] dark:text-gray-300 hover:text-[#B24335]">
+                    Fantasy Tips
+                </a>
+            </nav>
+
+            <!-- Cricket Submenu Desktop with logo theme colors -->
+            <nav aria-label="Cricket submenu desktop"
+                class="mt-1 border-t border-b border-gray-200 dark:border-gray-700 hidden md:flex md:gap-8 md:px-0 md:py-3">
+                <a href="#" class="text-sm font-semibold text-[#B24335] hover:text-[#7B2E25]">
+                    Home
+                </a>
+                <a href="#" class="text-sm text-[#2E4689] dark:text-gray-300 hover:text-[#B24335]">
+                    IPL 2025
+                </a>
+                <a href="#" class="text-sm text-[#2E4689] dark:text-gray-300 hover:text-[#B24335]">
+                    Teams
+                </a>
+                <a href="#" class="text-sm text-[#2E4689] dark:text-gray-300 hover:text-[#B24335]">
+                    Points Table
+                </a>
+                <a href="#" class="text-sm text-[#2E4689] dark:text-gray-300 hover:text-[#B24335]">
+                    Schedule
+                </a>
+                <a href="#" class="text-sm text-[#2E4689] dark:text-gray-300 hover:text-[#B24335]">
+                    Stats
+                </a>
+                <a href="#" class="text-sm text-[#2E4689] dark:text-gray-300 hover:text-[#B24335]">
+                    News
+                </a>
+                <a href="#" class="text-sm text-[#2E4689] dark:text-gray-300 hover:text-[#B24335]">
+                    Dream11 Prediction
+                </a>
+                <a href="#" class="text-sm text-[#2E4689] dark:text-gray-300 hover:text-[#B24335]">
+                    Match Prediction
+                </a>
+                <a href="#" class="text-sm text-[#2E4689] dark:text-gray-300 hover:text-[#B24335]">
+                    Fantasy Tips
+                </a>
+            </nav>
+
+
+        </div>
+    </header>
+
+
+
+    <section
+        class="max-w-[600px] mx-auto px-4 py-5 bg-white dark:bg-gray-900 rounded-md border border-gray-200 dark:border-gray-700 shadow-sm">
+
+        <!-- Back link -->
+        <a href="#"
+            class="inline-flex items-center text-[#2E4689] dark:text-[#8EB8FF] hover:text-[#B24335] dark:hover:text-[#FF7F50] transition-colors text-xs font-medium mb-3 select-none">
+            <svg class="w-4 h-4 mr-1 stroke-current" fill="none" stroke-width="2" viewBox="0 0 24 24"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 18l-6-6 6-6" />
+            </svg>
+            Back to Head To Head Records In TEST
+        </a>
+
+        <!-- Title -->
+        <h1 class="text-xl font-bold text-[#B24335] dark:text-[#FF6F52] leading-snug mb-4 select-text truncate">
+            India vs New Zealand Head to Head <span class="text-[#2E4689] dark:text-[#8EB8FF]">In TEST</span>
+        </h1>
+
+        <!-- Description -->
+        <p class="text-gray-900 dark:text-gray-300 text-sm sm:text-base leading-relaxed select-text"
+            id="headToHeadText">
+            India and New Zealand have faced each other in
+            <span class="font-semibold text-[#2E4689] dark:text-[#8EB8FF]">65 matches</span> in Test. Out of these,
+            India won
+            <span class="font-semibold text-[#B24335] dark:text-[#FF7F50]">22</span>, New Zealand won
+            <span class="font-semibold text-[#B24335] dark:text-[#FF7F50]">16</span>, and
+            <span class="italic text-gray-600 dark:text-gray-500">27 matches ended in a draw.</span>
+
+            <span id="extraContent" class="hidden">
+                These matches have produced thrilling moments, with both teams showing remarkable skills and spirit. The
+                rivalry continues to be one of the most exciting in Test cricket history.
+            </span>
+
+            <button id="toggleReadMore"
+                class="inline-flex items-center text-[#B24335] dark:text-[#FF7F50] hover:text-[#7A2A23] dark:hover:text-[#FF9671] font-semibold text-sm focus:outline-none select-none">
+                <span id="toggleText">Read More</span>
+                <svg id="toggleIconPlus" class="w-4 h-4 ml-1 stroke-current transition-opacity duration-300" fill="none"
+                    stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                <!-- Minus icon hidden initially -->
+                <svg id="toggleIconMinus" class="w-4 h-4 ml-1 stroke-current transition-opacity duration-300 hidden"
+                    fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+            </button>
+        </p>
+    </section>
+
+
+    <!-- DuoSelect Pro — Team vs Team (Brand strict) -->
+    <section class="max-w-[900px] mx-auto px-4 mt-5">
+        <!-- Selector Row (compact mobile-first) -->
+        <div class="flex items-center gap-4 sm:gap-3">
+            <!-- Team A -->
+            <div class="relative group flex-1">
+                <div
+                    class="flex items-center justify-between gap-1.5 rounded-lg sm:rounded-xl px-2.5 sm:px-3 h-10 sm:h-12 bg-[#2E4689] text-white shadow w-full">
+                    <div class="flex items-center gap-1.5 min-w-0">
+                        <img id="flagA" src="images/ind.webp" alt=""
+                            class="w-5 h-3.5 sm:w-6 sm:h-4 rounded-[2px] ring-1 ring-white/40">
+                        <span id="labelA" class="font-bold text-xs sm:text-sm truncate">IND</span>
+                    </div>
+                    <span class="w-6 h-6 sm:w-7 sm:h-7 grid place-items-center rounded-full bg-white/15">
+                        <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 opacity-90" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </span>
+                </div>
+                <select id="teamA" class="absolute inset-0 opacity-0 cursor-pointer w-full">
+                    <option data-flag="images/flags/ind.svg" selected>India</option>
+                    <option data-flag="images/flags/aus.svg">Australia</option>
+                    <option data-flag="images/flags/eng.svg">England</option>
+                    <option data-flag="images/flags/nz.svg">New Zealand</option>
+                    <option data-flag="images/flags/pak.svg">Pakistan</option>
+                    <option data-flag="images/flags/sa.svg">South Africa</option>
+                    <option data-flag="images/flags/sl.svg">Sri Lanka</option>
+                    <option data-flag="images/flags/wi.svg">West Indies</option>
+                    <option data-flag="images/flags/ban.svg">Bangladesh</option>
+                </select>
+            </div>
+
+            <!-- VS + Swap -->
+            <div class="flex items-center justify-center gap-1.5 sm:gap-2">
+                <div
+                    class="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full grid place-items-center border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow">
+                    <span
+                        class="absolute inset-0 rounded-full bg-gradient-to-br from-[#B24335]/15 to-[#2E4689]/15"></span>
+                    <span
+                        class="relative text-[11px] sm:text-sm font-extrabold text-gray-800 dark:text-gray-100">VS</span>
+                </div>
+                <button id="swapBtn"
+                    class="hidden md:inline-flex items-center justify-center w-8 h-8 rounded-full border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition"
+                    aria-label="Swap teams">⇄</button>
+            </div>
+
+            <!-- Team B -->
+            <div class="relative group flex-1">
+                <div
+                    class="flex items-center justify-between gap-1.5 rounded-lg sm:rounded-xl px-2.5 sm:px-3 h-10 sm:h-12 bg-[#1f1f1f] text-white shadow w-full">
+                    <div class="flex items-center gap-1.5 min-w-0">
+                        <img id="flagB" src="images/nz_logo.svg" alt=""
+                            class="w-5 h-3.5 sm:w-6 sm:h-4 rounded-[2px] ring-1 ring-white/40">
+                        <span id="labelB" class="font-bold text-xs sm:text-sm truncate">NZ</span>
+                    </div>
+                    <span class="w-6 h-6 sm:w-7 sm:h-7 grid place-items-center rounded-full bg-white/10">
+                        <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 opacity-90" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </span>
+                </div>
+                <select id="teamB" class="absolute inset-0 opacity-0 cursor-pointer w-full">
+                    <option data-flag="images/flags/nz.svg" selected>New Zealand</option>
+                    <option data-flag="images/flags/ind.svg">India</option>
+                    <option data-flag="images/flags/aus.svg">Australia</option>
+                    <option data-flag="images/flags/eng.svg">England</option>
+                    <option data-flag="images/flags/pak.svg">Pakistan</option>
+                    <option data-flag="images/flags/sa.svg">South Africa</option>
+                    <option data-flag="images/flags/sl.svg">Sri Lanka</option>
+                    <option data-flag="images/flags/wi.svg">West Indies</option>
+                    <option data-flag="images/flags/ban.svg">Bangladesh</option>
+                </select>
+            </div>
+        </div>
+
+
+    </section>
+
+
+
+
+    <!-- FULL-WIDTH THEME TABS -->
+    <section class="max-w-[800px] mx-auto px-4 mt-2">
+        <div class="border-b border-gray-200 dark:border-gray-700">
+            <div id="h2hTabs" class="flex w-full text-center select-none" role="tablist" aria-label="Formats">
+
+                <!-- TAB -->
+                <button class="tab-btn relative flex-1 py-3 text-sm font-extrabold tracking-wide
+                           text-[#B24335] dark:text-[#8EB8FF]" data-tab="TEST" aria-selected="true" role="tab">
+                    TEST
+                    <span class="tab-underline absolute left-0 right-0 -bottom-[1px] h-0.5
+                           bg-[#B24335]"></span>
+                </button>
+
+                <button class="tab-btn relative flex-1 py-3 text-sm font-semibold tracking-wide
+                           text-gray-600 dark:text-gray-300 hover:text-[#B24335]" data-tab="ODI" aria-selected="false"
+                    role="tab">
+                    ODI
+                    <span class="tab-underline absolute left-0 right-0 -bottom-[1px] h-0.5 hidden
+                           bg-[#B24335]"></span>
+                </button>
+
+                <button class="tab-btn relative flex-1 py-3 text-sm font-semibold tracking-wide
+                           text-gray-600 dark:text-gray-300 hover:text-[#B24335]" data-tab="T20" aria-selected="false"
+                    role="tab">
+                    T20
+                    <span class="tab-underline absolute left-0 right-0 -bottom-[1px] h-0.5 hidden
+                           bg-[#B24335]"></span>
+                </button>
+
+                <button class="tab-btn relative flex-1 py-3 text-sm font-semibold tracking-wide
+                           text-gray-600 dark:text-gray-300 hover:text-[#B24335]" data-tab="ICCCT"
+                    aria-selected="false" role="tab">
+                    ICC CT
+                    <span class="tab-underline absolute left-0 right-0 -bottom-[1px] h-0.5 hidden
+                           bg-[#B24335]"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="max-w-[800px] mx-auto px-4 mt-4">
+        <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm">
+            <!-- Compact Filter Toggle -->
+            <button id="filterToggle" aria-expanded="false" class="w-full h-11 px-3 flex items-center gap-3 text-left rounded-t-xl
+       bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700
+       hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                <!-- Left accent -->
+                <span class="w-1 h-5 rounded bg-gradient-to-b from-[#B24335] to-[#2E4689]"></span>
+
+                <!-- Title + summary (truncates, saves space) -->
+                <div class="min-w-0 flex-1">
+                    <div class="text-[13px] font-semibold text-gray-900 dark:text-gray-100 leading-none">
+                        Test Matches Filter
+                    </div>
+                    <div id="filterSummary" class="text-[11px] text-gray-500 dark:text-gray-400 truncate leading-tight">
+                        India vs <All Countries> • New Zealand • TEST • 1877–2025
+                    </div>
+                </div>
+
+                <!-- Chevron -->
+                <span id="filterChevron" class="shrink-0 inline-flex items-center justify-center w-7 h-7 rounded-full
+             border border-gray-200 dark:border-gray-700 text-gray-500
+             transition-transform duration-300">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                </span>
+            </button>
+
+
+            <!-- Filter Form (Collapsible) -->
+            <div id="filterContent" class="overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
+                <form id="matchFilter" class="p-4 space-y-4">
+                    <!-- Teams row -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+
+
+
+
+                        <!-- Venue -->
+                        <div>
+                            <span class="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">Venue</span>
+                            <input id="venue" type="text" placeholder="Anywhere"
+                                class="w-full rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2E4689]" />
+                        </div>
+
+                        <!-- Year range -->
+                        <div class="grid grid-cols-2 gap-3">
+                            <label>
+                                <span
+                                    class="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">From</span>
+                                <input id="yearFrom" type="number" min="1877" max="2025" value="1877"
+                                    class="w-full rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2E4689]" />
+                            </label>
+                            <label>
+                                <span
+                                    class="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">To</span>
+                                <input id="yearTo" type="number" min="1877" max="2025" value="2025"
+                                    class="w-full rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#B24335]" />
+                            </label>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="flex gap-2">
+                            <button type="button" id="resetBtn"
+                                class="flex-1 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800">
+                                Reset
+                            </button>
+                            <button type="submit"
+                                class="flex-1 px-4 py-2 rounded-lg text-sm font-bold text-white bg-[#B24335] shadow hover:opacity-95 active:scale-[.99]">
+                                Submit
+                            </button>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- MATCH SUMMARY (brand: #2E4689 / #B24335) -->
+    <section class="max-w-[700px] mx-auto px-4 mt-5">
+        <div
+            class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm overflow-hidden">
+
+            <!-- Top: flags + title + total -->
+            <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-2 px-4 pt-4">
+                <div class="flex items-center gap-2">
+                    <img id="sum-flagA" src="images/ind.webp" alt="India"
+                        class="w-7 h-5 rounded ring-1 ring-gray-200 dark:ring-gray-700">
+                    <span id="sum-teamA"
+                        class="text-sm font-semibold text-gray-800 dark:text-gray-100 truncate">IND</span>
+                </div>
+
+                <div class="text-center">
+                    <div class="text-[10px] font-extrabold tracking-wider text-[#2E4689] dark:text-[#8EB8FF]">MATCHES
+                    </div>
+                    <div id="sum-total" class="text-3xl font-black leading-tight text-[#B24335]">65</div>
+                </div>
+
+                <div class="flex items-center justify-end gap-2">
+                    <span id="sum-teamB" class="text-sm font-semibold text-gray-800 dark:text-gray-100 truncate">NZ
+                    </span>
+                    <img id="sum-flagB" src="images/nz_logo.svg" alt="New Zealand"
+                        class="w-7 h-5 rounded ring-1 ring-gray-200 dark:ring-gray-700">
+                </div>
+            </div>
+
+            <!-- Rows -->
+            <div class="mt-2 divide-y divide-gray-200 dark:divide-gray-800 text-sm">
+                <!-- row template -->
+                <div class="flex items-center justify-between px-4 py-3">
+                    <span id="r-won-a" class="w-10 text-left font-bold text-[#2E4689]">22</span>
+                    <span class="text-gray-700 dark:text-gray-300 font-semibold">Won</span>
+                    <span id="r-won-b" class="w-10 text-right font-bold text-[#2E4689]">16</span>
+                </div>
+                <div class="flex items-center justify-between px-4 py-3">
+                    <span id="r-lost-a" class="w-10 text-left font-bold text-gray-700 dark:text-gray-200">16</span>
+                    <span class="text-gray-700 dark:text-gray-300">Lost</span>
+                    <span id="r-lost-b" class="w-10 text-right font-bold text-gray-700 dark:text-gray-200">22</span>
+                </div>
+                <div class="flex items-center justify-between px-4 py-3">
+                    <span id="r-drawn-a" class="w-10 text-left font-bold text-gray-700 dark:text-gray-200">27</span>
+                    <span class="text-gray-700 dark:text-gray-300">Drawn</span>
+                    <span id="r-drawn-b" class="w-10 text-right font-bold text-gray-700 dark:text-gray-200">27</span>
+                </div>
+                <div class="flex items-center justify-between px-4 py-3">
+                    <span id="r-tied-a" class="w-10 text-left font-bold text-gray-700 dark:text-gray-200">0</span>
+                    <span class="text-gray-700 dark:text-gray-300">Tied</span>
+                    <span id="r-tied-b" class="w-10 text-right font-bold text-gray-700 dark:text-gray-200">0</span>
+                </div>
+                <div class="flex items-center justify-between px-4 py-3">
+                    <span id="r-home-a" class="w-10 text-left font-bold text-[#2E4689]">17</span>
+                    <span class="text-gray-700 dark:text-gray-300">Home Won</span>
+                    <span id="r-home-b" class="w-10 text-right font-bold text-[#2E4689]">10</span>
+                </div>
+                <div class="flex items-center justify-between px-4 py-3">
+                    <span id="r-away-a" class="w-10 text-left font-bold text-gray-700 dark:text-gray-200">5</span>
+                    <span class="text-gray-700 dark:text-gray-300">Away Won</span>
+                    <span id="r-away-b" class="w-10 text-right font-bold text-gray-700 dark:text-gray-200">5</span>
+                </div>
+                <div class="flex items-center justify-between px-4 py-3">
+                    <span id="r-neutral-a" class="w-10 text-left font-bold text-gray-700 dark:text-gray-200">0</span>
+                    <span class="text-gray-700 dark:text-gray-300">Neutral Won</span>
+                    <span id="r-neutral-b" class="w-10 text-right font-bold text-gray-700 dark:text-gray-200">1</span>
+                </div>
+            </div>
+
+            <!-- subtle progress bars (optional, compact) -->
+            <div class="px-4 py-3 grid grid-cols-2 gap-3 bg-gray-50 dark:bg-gray-800/50">
+                <div>
+                    <div class="text-[10px] font-semibold text-gray-600 dark:text-gray-400 mb-1">India share</div>
+                    <div class="h-1.5 rounded bg-gray-200 dark:bg-gray-700 overflow-hidden">
+                        <div id="bar-a" class="h-full bg-[#2E4689]" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-[10px] font-semibold text-gray-600 dark:text-gray-400 mb-1">New Zealand share</div>
+                    <div class="h-1.5 rounded bg-gray-200 dark:bg-gray-700 overflow-hidden">
+                        <div id="bar-b" class="h-full bg-[#B24335]" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERIES TIMELINE (brand strict) -->
+    <section class="max-w-[900px] mx-auto px-4 mt-5">
+        <!-- Header row -->
+        <div class="mb-2 flex items-center justify-between gap-2">
+            <h3 class="text-sm sm:text-base font-extrabold text-[#2E4689] dark:text-[#8EB8FF]">Series Timeline</h3>
+            <label class="relative w-40 sm:w-56">
+                <input id="seriesSearch" type="text" placeholder="Search series or team"
+                    class="w-full rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-8 py-2 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#2E4689]" />
+                <svg class="pointer-events-none absolute left-2 top-2.5 h-4 w-4 text-gray-500" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="7" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+            </label>
+        </div>
+
+        <!-- Table card -->
+        <div
+            class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm overflow-hidden">
+            <!-- sticky header -->
+            <div
+                class="grid grid-cols-[110px_1fr] sm:grid-cols-[140px_1fr] items-center bg-[#2E4689]/5 dark:bg-gray-800 px-3 sm:px-4 py-2 text-[12px] sm:text-xs font-bold text-[#2E4689] dark:text-[#8EB8FF] sticky top-0">
+                <button id="sortDate" class="inline-flex items-center gap-1">Date
+                    <svg class="w-3 h-3 opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <polyline points="6 15 12 9 18 15" />
+                    </svg>
+                </button>
+                <span>Series</span>
+            </div>
+
+            <!-- rows -->
+            <div id="seriesBody" class="divide-y divide-gray-200 dark:divide-gray-800 text-sm">
+                <!-- JS injects rows -->
+            </div>
+
+            <!-- footer -->
+            <div class="flex items-center justify-between px-3 sm:px-4 py-2 bg-gray-50 dark:bg-gray-800/60">
+                <span id="seriesCount" class="text-[12px] font-semibold text-gray-700 dark:text-gray-300">No. of Matches
+                    = 0</span>
+                <a href="#" class="text-[12px] font-bold text-[#B24335] hover:underline">Full schedule</a>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        const toggleBtn = document.getElementById("filterToggle");
+        const filterContent = document.getElementById("filterContent");
+        const icon = document.getElementById("filterIcon");
+
+        toggleBtn.addEventListener("click", () => {
+            const isOpen = filterContent.classList.contains("max-h-[2000px]");
+            if (isOpen) {
+                filterContent.classList.remove("max-h-[2000px]");
+                filterContent.classList.add("max-h-0");
+                icon.style.transform = "rotate(0deg)";
+            } else {
+                filterContent.classList.remove("max-h-0");
+                filterContent.classList.add("max-h-[2000px]"); // big enough to fit
+                icon.style.transform = "rotate(180deg)";
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // Sample data — swap with API feed
+        const SERIES = [
+            { date: '2018-06-14', series: '2017-2018 India v. Afghanistan' },
+            { date: '2019-03-15', series: '2018-2019 Afghanistan v. Ireland' },
+            { date: '2019-09-05', series: '2019-2020 Bangladesh v. Afghanistan' },
+            { date: '2019-11-27', series: '2019-2020 Afghanistan v. West Indies' },
+            { date: '2021-03-02', series: '2020-2021 Afghanistan v. Zimbabwe' },
+            { date: '2021-03-10', series: '2020-2021 Afghanistan v. Zimbabwe' },
+            { date: '2023-06-14', series: '2023 Bangladesh v. Afghanistan' },
+            { date: '2024-02-02', series: '2023-2024 Sri Lanka v. Afghanistan' },
+            { date: '2024-02-28', series: '2023-2024 Afghanistan v. Ireland' },
+            { date: '2024-12-26', series: '2024-2025 Zimbabwe v. Afghanistan' },
+            { date: '2025-01-02', series: '2024-2025 Zimbabwe v. Afghanistan' },
+        ];
+
+        const body = document.getElementById('seriesBody');
+        const count = document.getElementById('seriesCount');
+        const search = document.getElementById('seriesSearch');
+        const sortBtn = document.getElementById('sortDate');
+        let asc = true, filtered = [...SERIES];
+
+        function fmt(d) { const x = new Date(d); return x.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }); }
+
+        function paint(list) {
+            body.innerHTML = '';
+            list.forEach((row, i) => {
+                const el = document.createElement('div');
+                el.className = `grid grid-cols-[110px_1fr] sm:grid-cols-[140px_1fr] items-center px-3 sm:px-4 py-2 ${i % 2 ? 'bg-gray-50/60 dark:bg-gray-800/40' : ''}`;
+                el.innerHTML = `
+        <div class="text-[13px] sm:text-sm font-semibold text-gray-800 dark:text-gray-100">${fmt(row.date)}</div>
+        <a href="#" class="block text-[13px] sm:text-sm font-semibold text-gray-800 dark:text-gray-100 underline decoration-[#2E4689]/40 hover:text-[#2E4689] dark:hover:text-[#8EB8FF]">
+          ${row.series}
+        </a>`;
+                body.appendChild(el);
+            });
+            count.textContent = 'No. of Matches = ' + list.length;
+        }
+
+        function doSearch() {
+            const q = search.value.trim().toLowerCase();
+            filtered = SERIES.filter(r => r.series.toLowerCase().includes(q));
+            paint(filtered);
+        }
+
+        function doSort() {
+            asc = !asc;
+            filtered.sort((a, b) => asc ? a.date.localeCompare(b.date) : b.date.localeCompare(a.date));
+            paint(filtered);
+            // rotate chevron subtly
+            sortBtn.querySelector('svg').style.transform = asc ? 'rotate(0deg)' : 'rotate(180deg)';
+            sortBtn.querySelector('svg').style.transition = 'transform .2s ease';
+        }
+
+        // init
+        paint(filtered);
+        search.addEventListener('input', doSearch);
+        sortBtn.addEventListener('click', doSort);
+    </script>
+
+
+</body>
+
+</html>
