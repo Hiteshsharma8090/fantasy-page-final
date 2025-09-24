@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Final Responsive Header</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <script>
+        function toggleNav() {
+            document.getElementById("mobile-nav").classList.toggle("hidden");
+        }
+        function toggleMobileDropdown(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle("hidden");
+        }
+    </script>
+
+    <style>
+
+
+    </style>
+</head>
+
+<body class="bg-[#FAFAFA] text-[#0A0F2C] font-sans">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-lg bg-white/90 shadow-md border-b border-gray-200">
+        <!-- Top bar -->
+        <div class="flex flex-col md:flex-row justify-between items-center text-xs md:text-sm px-4 md:px-6 py-2 
+    bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] text-white font-medium transition-all duration-500">
+
+            <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+                <a href="#">News & Events</a>
+                <a href="#">Career</a>
+                <a href="#">New Launch</a>
+                <a href="#">HSN Code</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="flex items-center gap-2 mt-2 md:mt-0">
+                <!-- Language -->
+                <div class="relative group">
+                    <button class="flex items-center gap-1">
+                        🌐 English
+                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.18l3.71-3.95a.75.75 0 111.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute hidden group-hover:block bg-white text-black rounded mt-2 py-1 w-24 text-sm shadow-lg z-50">
+                        <a href="#" class="block px-3 py-1 hover:bg-gray-100">Hindi</a>
+                        <a href="#" class="block px-3 py-1 hover:bg-gray-100">French</a>
+                    </div>
+                </div>
+
+                <!-- Divider + Location -->
+                <div class="relative group border-l border-white pl-2">
+                    <button class="flex items-center gap-1">
+                        📍 India
+                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.18l3.71-3.95a.75.75 0 111.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute hidden group-hover:block bg-white text-black rounded mt-2 py-1 w-24 text-sm shadow-lg z-50">
+                        <a href="#" class="block px-3 py-1 hover:bg-gray-100">USA</a>
+                        <a href="#" class="block px-3 py-1 hover:bg-gray-100">UK</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Main Navbar -->
+        <div class="max-w-[1320px] mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <a href="/" class="flex items-center gap-3">
+                    <img src="https://www.hmdhealthcare.com/assets/images/hmdlogo.png" class="h-10 w-auto" alt="Logo">
+                    <div class="text-[10px] md:text-xs text-gray-600 leading-4">
+                        From the House of<br><span class="text-[#D72638] font-bold">DISPO VAN®</span>
+                    </div>
+                </a>
+            </div>
+
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex gap-6 font-semibold text-sm relative">
+                <!-- Dropdown: About HMD -->
+                <div class="group relative">
+                    <button class="hover:text-[#D72638] flex items-center gap-1">
+                        About HMD <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.18l3.71-3.95a.75.75 0 111.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-md rounded w-48 z-50 py-2">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Overview</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Leadership</a>
+                    </div>
+                </div>
+
+                <!-- Dropdown: Our Offerings -->
+                <div class="group relative">
+                    <button class="hover:text-[#D72638] flex items-center gap-1">
+                        Our Offerings <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.18l3.71-3.95a.75.75 0 111.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-md rounded w-48 z-50 py-2">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Syringes</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Needles</a>
+                    </div>
+                </div>
+
+                <!-- Dropdown: IFU -->
+                <div class="group relative">
+                    <button class="hover:text-[#D72638] flex items-center gap-1">
+                        IFU <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.18l3.71-3.95a.75.75 0 111.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-md rounded w-48 z-50 py-2">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">User Manuals</a>
+                    </div>
+                </div>
+
+                <!-- Dropdown: CSR -->
+                <div class="group relative">
+                    <button class="hover:text-[#D72638] flex items-center gap-1">
+                        CSR <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.18l3.71-3.95a.75.75 0 111.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-md rounded w-48 z-50 py-2">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Initiatives</a>
+                    </div>
+                </div>
+
+                <a href="#" class="hover:text-[#D72638]">Certification</a>
+                <a href="#" class="hover:text-[#D72638]">Blogs</a>
+                <a href="#" class="hover:text-[#D72638]">Contact</a>
+            </nav>
+
+            <!-- CTA & Mobile -->
+            <div class="flex items-center gap-3 md:hidden">
+                <!-- <a href="#"
+                class="hidden md:inline-block px-5 py-2 bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] text-white rounded-full text-xs font-semibold hover:opacity-90 transition duration-300 shadow-md">
+                DISTRIBUTOR ONBOARD
+            </a> -->
+
+                <button class="md:hidden" onclick="toggleNav()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav -->
+        <div id="mobile-nav" class="md:hidden hidden px-4 pb-4 bg-white border-t border-gray-200">
+            <nav class="flex flex-col gap-2 font-medium text-sm">
+                <div>
+                    <button class="w-full text-left font-semibold" onclick="toggleMobileDropdown('m-about')">+ About
+                        HMD</button>
+                    <div id="m-about" class="hidden ml-4 mt-1">
+                        <a href="#" class="block py-1">Overview</a>
+                        <a href="#" class="block py-1">Leadership</a>
+                    </div>
+                </div>
+                <div>
+                    <button class="w-full text-left font-semibold" onclick="toggleMobileDropdown('m-offerings')">+ Our
+                        Offerings</button>
+                    <div id="m-offerings" class="hidden ml-4 mt-1">
+                        <a href="#" class="block py-1">Syringes</a>
+                        <a href="#" class="block py-1">Needles</a>
+                    </div>
+                </div>
+                <div>
+                    <button class="w-full text-left font-semibold" onclick="toggleMobileDropdown('m-ifu')">+
+                        IFU</button>
+                    <div id="m-ifu" class="hidden ml-4 mt-1">
+                        <a href="#" class="block py-1">User Manuals</a>
+                    </div>
+                </div>
+                <div>
+                    <button class="w-full text-left font-semibold" onclick="toggleMobileDropdown('m-csr')">+
+                        CSR</button>
+                    <div id="m-csr" class="hidden ml-4 mt-1">
+                        <a href="#" class="block py-1">Initiatives</a>
+                    </div>
+                </div>
+                <a href="#">Certification</a>
+                <a href="#">Blogs</a>
+                <a href="#">Contact</a>
+                <a href="#" class="mt-3 text-center bg-[#17C3B2] text-white py-2 rounded-full font-bold">DISTRIBUTOR
+                    ONBOARD</a>
+            </nav>
+        </div>
+    </header>
+
+
+
+
+
+
+
+
+
+    <main id="job-main" class="bg-white">
+        <section class="py-5 sm:py-10  px-4 md:px-10">
+            <div class="max-w-6xl mx-auto">
+                <!-- Breadcrumb -->
+                <nav class="text-xs text-gray-500 mb-4" aria-label="Breadcrumb">
+                    <ol class="flex flex-wrap items-center gap-1">
+                        <li><a href="/career" class="hover:underline">Careers</a></li>
+                        <li>›</li>
+                        <li><a href="/career/jobs" class="hover:underline">All Openings</a></li>
+                        <li>›</li>
+                        <li class="text-[#0B4DA1] font-semibold">Node.js Developer — Backend (Delhi)</li>
+                    </ol>
+                </nav>
+
+                <!-- Header band -->
+                <header
+                    class="rounded-2xl p-6 md:p-8 bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] text-white shadow-lg">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        <div>
+                            <h1 class="text-2xl md:text-3xl font-extrabold leading-tight">Node.js Developer — Backend
+                                (Healthcare)</h1>
+                            <p class="mt-1 text-white/90 text-sm md:text-base">
+                                Build secure, scalable APIs that power HMD Healthcare products & partner platforms.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-3 py-1 rounded-full text-[11px] bg-white/15 border border-white/20">Full-time</span>
+                            <span
+                                class="px-3 py-1 rounded-full text-[11px] bg-white/15 border border-white/20">Mid–Senior</span>
+                            <span class="px-3 py-1 rounded-full text-[11px] bg-white/15 border border-white/20">On-site
+                                / Hybrid</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
+                        <div class="bg-white/10 rounded-lg p-3">
+                            <div class="text-white/70">Location</div>
+                            <div class="font-semibold">Delhi-NCR</div>
+                        </div>
+                        <div class="bg-white/10 rounded-lg p-3">
+                            <div class="text-white/70">Department</div>
+                            <div class="font-semibold">IT & Product Eng.</div>
+                        </div>
+                        <div class="bg-white/10 rounded-lg p-3">
+                            <div class="text-white/70">Posted</div>
+                            <div class="font-semibold">Sep 24, 2025</div>
+                        </div>
+                        <div class="bg-white/10 rounded-lg p-3">
+                            <div class="text-white/70">Job ID</div>
+                            <div class="font-semibold">HMD-BE-NDJS-0925</div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex flex-wrap gap-2">
+                        <span
+                            class="text-[11px] bg-white text-[#0B4DA1] font-semibold px-3 py-1 rounded-full">Node.js</span>
+                        <span
+                            class="text-[11px] bg-white text-[#0B4DA1] font-semibold px-3 py-1 rounded-full">TypeScript</span>
+                        <span
+                            class="text-[11px] bg-white text-[#0B4DA1] font-semibold px-3 py-1 rounded-full">Express/NestJS</span>
+                        <span
+                            class="text-[11px] bg-white text-[#0B4DA1] font-semibold px-3 py-1 rounded-full">PostgreSQL/MySQL</span>
+                        <span
+                            class="text-[11px] bg-white text-[#0B4DA1] font-semibold px-3 py-1 rounded-full">Redis/Queues</span>
+                        <span
+                            class="text-[11px] bg-white text-[#0B4DA1] font-semibold px-3 py-1 rounded-full">AWS/Docker</span>
+                        <span
+                            class="text-[11px] bg-white text-[#0B4DA1] font-semibold px-3 py-1 rounded-full">OpenTelemetry</span>
+                    </div>
+
+                    <div class="mt-6 flex flex-wrap gap-3">
+                        <a href="#apply-form"
+                            class="inline-block bg-white text-[#0B4DA1] font-bold px-5 py-2 rounded-full text-sm hover:opacity-90 shadow">Apply
+                            Now</a>
+                        <button id="copy-link"
+                            class="inline-block border border-white text-white font-semibold px-5 py-2 rounded-full text-sm hover:bg-white/10">Copy
+                            Job Link</button>
+                        <button id="save-job"
+                            class="inline-block border border-white text-white font-semibold px-5 py-2 rounded-full text-sm hover:bg-white/10">Save
+                            Job</button>
+                        <button id="print-job"
+                            class="inline-block border border-white text-white font-semibold px-5 py-2 rounded-full text-sm hover:bg-white/10">Print</button>
+                    </div>
+                </header>
+
+                <!-- Sticky mini apply (desktop only) -->
+                <div
+                    class="hidden lg:flex justify-between items-center mt-4 p-3 rounded-xl border border-[#E5E7EB] bg-white shadow-sm">
+                    <div class="text-sm text-gray-700">
+                        <span class="font-semibold text-[#0A0F2C]">Quick Apply:</span> Upload your resume & get a
+                        callback within 48 hrs.
+                    </div>
+                    <a href="#apply-form"
+                        class="bg-[#0B4DA1] text-white px-4 py-2 rounded-full text-sm font-semibold hover:opacity-90">Apply
+                        Now</a>
+                </div>
+
+
+
+                <div class="mt-6 grid lg:grid-cols-[1fr_320px] gap-8">
+                    <!-- LEFT: Tabbed content -->
+                    <div class="space-y-8">
+                        <!-- TAB: Overview -->
+                        <section data-panel="overview" class="tab-panel space-y-8">
+                            <!-- Role overview -->
+                            <div class="rounded-xl border border-[#E5E7EB] bg-[#F8FAFC] p-6 shadow-sm">
+                                <h2 class="text-xl font-bold text-[#0A0F2C]">Role Overview</h2>
+                                <p class="mt-2 text-sm text-gray-700">
+                                    Own design & development of secure REST/GraphQL services in Node.js (TypeScript),
+                                    integrating manufacturing,
+                                    partner, and public systems. Deliver resilient, observable services aligned with
+                                    healthcare-grade security & privacy.
+                                </p>
+                            </div>
+
+                            <!-- Responsibilities (grouped) -->
+                            <div class="rounded-xl border border-[#E5E7EB] bg-white p-6 shadow-sm">
+                                <h3 class="text-lg font-semibold text-[#0A0F2C]">Key Responsibilities</h3>
+                                <div class="mt-3 grid md:grid-cols-2 gap-4 text-sm text-gray-700">
+                                    <ul class="space-y-2 list-disc list-inside">
+                                        <li>Architect modular APIs (Express/NestJS), clean architecture.</li>
+                                        <li>Relational modeling & queries (Prisma/Sequelize).</li>
+                                        <li>Async jobs: BullMQ/RabbitMQ; retries & DLQs.</li>
+                                        <li>AuthN/AuthZ (JWT/OAuth2), validation, rate-limits.</li>
+                                        <li>Observability: logs, metrics (Prom), traces (OTel).</li>
+                                    </ul>
+                                    <ul class="space-y-2 list-disc list-inside">
+                                        <li>Security: OWASP Top-10, secrets, PII handling.</li>
+                                        <li>CI/CD (GitHub Actions), zero-downtime deploys.</li>
+                                        <li>Perf: p95 latency, throughput & caching.</li>
+                                        <li>Docs, code reviews, mentoring.</li>
+                                        <li>Cross-team collab with Product, QA, DevOps.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- KPIs -->
+                            <div class="rounded-xl border border-[#E5E7EB] bg-white p-6 shadow-sm">
+                                <h3 class="text-lg font-semibold text-[#0A0F2C]">Impact & Success Metrics</h3>
+                                <div class="mt-3 grid sm:grid-cols-3 gap-3 text-sm">
+                                    <div class="bg-[#F0F7FF] border border-[#dbeafe] rounded-lg p-4">
+                                        <div class="text-[#0C4E8B] font-semibold">p95 Latency</div>
+                                        <div class="text-gray-600">↓ 30% in 90 days</div>
+                                    </div>
+                                    <div class="bg-[#F0F7FF] border border-[#dbeafe] rounded-lg p-4">
+                                        <div class="text-[#0C4E8B] font-semibold">Uptime SLO</div>
+                                        <div class="text-gray-600">≥ 99.9%</div>
+                                    </div>
+                                    <div class="bg-[#F0F7FF] border border-[#dbeafe] rounded-lg p-4">
+                                        <div class="text-[#0C4E8B] font-semibold">Delivery</div>
+                                        <div class="text-gray-600">2+ prod deploys/week</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Day in life -->
+                            <div class="rounded-xl border border-[#E5E7EB] bg-white p-6 shadow-sm">
+                                <h3 class="text-lg font-semibold text-[#0A0F2C]">A Day in the Life</h3>
+                                <ul class="mt-3 text-sm text-gray-700 space-y-2">
+                                    <li><strong>10:00</strong> — Stand-up: priorities & blockers</li>
+                                    <li><strong>10:30</strong> — Design inventory API; short tech spec</li>
+                                    <li><strong>12:00</strong> — Review PR; query performance</li>
+                                    <li><strong>14:30</strong> — Implement queue worker for notifications</li>
+                                    <li><strong>16:00</strong> — Add metrics & tracing; debug staging</li>
+                                    <li><strong>17:30</strong> — Canary deploy; verify dashboards</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <!-- TAB: Projects -->
+                        <section data-panel="projects" class="tab-panel hidden space-y-8">
+                            <div class="rounded-xl border border-[#E5E7EB] bg-white p-6 shadow-sm">
+                                <h3 class="text-lg font-semibold text-[#0A0F2C]">You Might Work On</h3>
+                                <div class="mt-4 grid md:grid-cols-2 gap-4">
+                                    <div class="rounded-lg border border-[#E5E7EB] p-4 bg-[#F8FAFC]">
+                                        <h4 class="font-semibold text-[#0A0F2C]">Partner APIs</h4>
+                                        <p class="text-sm text-gray-700 mt-1">Orders, inventory, shipment tracking, SLA
+                                            dashboards.</p>
+                                    </div>
+                                    <div class="rounded-lg border border-[#E5E7EB] p-4 bg-[#F8FAFC]">
+                                        <h4 class="font-semibold text-[#0A0F2C]">Event-driven ETL</h4>
+                                        <p class="text-sm text-gray-700 mt-1">Manufacturing → analytics lake with
+                                            streaming & retries.</p>
+                                    </div>
+                                    <div class="rounded-lg border border-[#E5E7EB] p-4 bg-[#F8FAFC]">
+                                        <h4 class="font-semibold text-[#0A0F2C]">Notification Service</h4>
+                                        <p class="text-sm text-gray-700 mt-1">Email/SMS/WhatsApp with DLQs and
+                                            rate-control.</p>
+                                    </div>
+                                    <div class="rounded-lg border border-[#E5E7EB] p-4 bg-[#F8FAFC]">
+                                        <h4 class="font-semibold text-[#0A0F2C]">Observability Suite</h4>
+                                        <p class="text-sm text-gray-700 mt-1">Grafana dashboards, alerts, distributed
+                                            tracing.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Career path -->
+                            <div class="rounded-xl border border-[#E5E7EB] bg-white p-6 shadow-sm">
+                                <h3 class="text-lg font-semibold text-[#0A0F2C]">Career Path & Growth</h3>
+                                <div class="mt-4 grid sm:grid-cols-3 gap-3 text-sm">
+                                    <div class="p-4 rounded-lg border bg-[#F0F7FF] border-[#dbeafe]">
+                                        <div class="font-semibold text-[#0C4E8B]">Year 1</div>
+                                        <div class="text-gray-700">Service ownership, on-call readiness</div>
+                                    </div>
+                                    <div class="p-4 rounded-lg border bg-[#F0F7FF] border-[#dbeafe]">
+                                        <div class="font-semibold text-[#0C4E8B]">Year 2</div>
+                                        <div class="text-gray-700">System design lead, mentoring</div>
+                                    </div>
+                                    <div class="p-4 rounded-lg border bg-[#F0F7FF] border-[#dbeafe]">
+                                        <div class="font-semibold text-[#0C4E8B]">Year 3+</div>
+                                        <div class="text-gray-700">Tech leadership / Staff track</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- TAB: Skills Matrix -->
+                        <section data-panel="skills" class="tab-panel hidden space-y-8">
+                            <!-- Requirements -->
+                            <div class="rounded-xl border border-[#E5E7EB] bg-white p-6 shadow-sm">
+                                <h3 class="text-lg font-semibold text-[#0A0F2C]">Requirements</h3>
+                                <div class="mt-3 grid sm:grid-cols-2 gap-4">
+                                    <ul class="text-sm text-gray-700 space-y-2 list-disc list-inside">
+                                        <li>3–6 years Node.js & TypeScript (backend).</li>
+                                        <li>API design (REST/GraphQL), pagination, error contracts.</li>
+                                        <li>SQL design, transactions, performance tuning.</li>
+                                        <li>Testing: unit/integration/E2E (Jest/Vitest).</li>
+                                    </ul>
+                                    <ul class="text-sm text-gray-700 space-y-2 list-disc list-inside">
+                                        <li>Docker; AWS basics (ECS/Lambda/S3/CloudWatch).</li>
+                                        <li>Security, caching (Redis), CDN, rate-limits.</li>
+                                        <li>Git, PR reviews, design docs, agile.</li>
+                                        <li>Clear communication & ownership.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Skill matrix table -->
+                            <div class="rounded-xl border border-[#E5E7EB] bg-[#F8FAFC] p-6 shadow-sm overflow-x-auto">
+                                <h4 class="font-semibold text-[#0A0F2C] mb-3">Skill Matrix (Expected Proficiency)</h4>
+                                <table class="min-w-full text-sm">
+                                    <thead>
+                                        <tr class="text-left text-gray-600">
+                                            <th class="py-2 pr-4">Area</th>
+                                            <th class="py-2 pr-4">Core</th>
+                                            <th class="py-2 pr-4">Good to Have</th>
+                                            <th class="py-2">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="align-top">
+                                        <tr class="border-t">
+                                            <td class="py-2 pr-4 font-medium">Backend</td>
+                                            <td class="py-2 pr-4">Node.js, TypeScript, Express/NestJS</td>
+                                            <td class="py-2 pr-4">GraphQL (Apollo), gRPC</td>
+                                            <td class="py-2">Clean architecture, SOLID</td>
+                                        </tr>
+                                        <tr class="border-t">
+                                            <td class="py-2 pr-4 font-medium">Data</td>
+                                            <td class="py-2 pr-4">PostgreSQL/MySQL, Prisma/Sequelize</td>
+                                            <td class="py-2 pr-4">Kafka, Streams</td>
+                                            <td class="py-2">Indexing, EXPLAIN plans</td>
+                                        </tr>
+                                        <tr class="border-t">
+                                            <td class="py-2 pr-4 font-medium">Infra</td>
+                                            <td class="py-2 pr-4">Docker, CI/CD (GH Actions)</td>
+                                            <td class="py-2 pr-4">Terraform/CDK</td>
+                                            <td class="py-2">Zero-downtime deploys</td>
+                                        </tr>
+                                        <tr class="border-t">
+                                            <td class="py-2 pr-4 font-medium">Reliability</td>
+                                            <td class="py-2 pr-4">Retry/timeout, health checks</td>
+                                            <td class="py-2 pr-4">SLOs, SLI dashboards</td>
+                                            <td class="py-2">OpenTelemetry, Prometheus</td>
+                                        </tr>
+                                        <tr class="border-t">
+                                            <td class="py-2 pr-4 font-medium">Security</td>
+                                            <td class="py-2 pr-4">JWT/OAuth2, OWASP</td>
+                                            <td class="py-2 pr-4">mTLS, Secrets Mgmt</td>
+                                            <td class="py-2">PII masking, audit logs</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Portfolio checklist -->
+                            <div class="rounded-xl border border-[#E5E7EB] bg-white p-6 shadow-sm">
+                                <h4 class="font-semibold text-[#0A0F2C] mb-2">Portfolio Checklist (Boost Your
+                                    Application)</h4>
+                                <ul class="text-sm text-gray-700 space-y-2 list-disc list-inside">
+                                    <li>1–2 public repos (API + tests + CI). </li>
+                                    <li>Short system design write-up or tech spec.</li>
+                                    <li>Sample dashboard screenshot (metrics/traces).</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <!-- TAB: Interview Process -->
+                        <section data-panel="process" class="tab-panel hidden space-y-8">
+                            <div class="rounded-xl border border-[#E5E7EB] bg-white p-6 shadow-sm">
+                                <h3 class="text-lg font-semibold text-[#0A0F2C]">Interview Steps & Timeline</h3>
+                                <ol class="mt-3 text-sm text-gray-700 space-y-2 list-decimal list-inside">
+                                    <li>Recruiter screen (20–30 min)</li>
+                                    <li>Technical I (60 min): Node/TS & API design</li>
+                                    <li>Technical II (75 min): Systems design & DB</li>
+                                    <li>Culture & HM (30–45 min)</li>
+                                </ol>
+                                <div class="mt-4 grid sm:grid-cols-4 gap-3 text-xs">
+                                    <div class="p-3 rounded-lg border bg-[#F0F7FF] border-[#dbeafe] text-center">
+                                        <div class="font-semibold text-[#0C4E8B]">Day 0</div>
+                                        <div>Apply</div>
+                                    </div>
+                                    <div class="p-3 rounded-lg border bg-[#F0F7FF] border-[#dbeafe] text-center">
+                                        <div class="font-semibold text-[#0C4E8B]">Day 2–3</div>
+                                        <div>Screen</div>
+                                    </div>
+                                    <div class="p-3 rounded-lg border bg-[#F0F7FF] border-[#dbeafe] text-center">
+                                        <div class="font-semibold text-[#0C4E8B]">Day 5–7</div>
+                                        <div>Tech Rounds</div>
+                                    </div>
+                                    <div class="p-3 rounded-lg border bg-[#F0F7FF] border-[#dbeafe] text-center">
+                                        <div class="font-semibold text-[#0C4E8B]">Day 8–10</div>
+                                        <div>Decision</div>
+                                    </div>
+                                </div>
+                                <p class="mt-3 text-xs text-gray-500">We aim to complete within 1–2 weeks.</p>
+                            </div>
+
+                            <!-- Recruiter card -->
+                            <div class="rounded-xl border border-[#E5E7EB] bg-[#F8FAFC] p-6 shadow-sm">
+                                <div class="flex items-center gap-4">
+                                    <img src="https://randomuser.me/api/portraits/men/31.jpg"
+                                        class="w-12 h-12 rounded-full border" alt="Recruiter">
+                                    <div>
+                                        <div class="text-sm font-semibold text-[#0A0F2C]">Rahul Mehra</div>
+                                        <div class="text-xs text-gray-500">Senior Talent Partner</div>
+                                    </div>
+                                </div>
+                                <div class="mt-3 text-sm text-gray-700">
+                                    Queries? <a href="mailto:careers@hmdhealthcare.com"
+                                        class="text-[#0B4DA1] underline">careers@hmdhealthcare.com</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- TAB: FAQs -->
+                        <section data-panel="faq" class="tab-panel hidden space-y-4">
+                            <div class="rounded-xl border border-[#E5E7EB] bg-white p-2 shadow-sm divide-y">
+                                <!-- FAQ item -->
+                                <details class="group p-4">
+                                    <summary class="flex items-center justify-between cursor-pointer list-none">
+                                        <span class="font-semibold text-[#0A0F2C]">What’s the work setup?</span>
+                                        <span class="text-gray-400 group-open:rotate-180 transition">&#9660;</span>
+                                    </summary>
+                                    <p class="mt-2 text-sm text-gray-700">On-site Delhi-NCR with hybrid flexibility
+                                        depending on team.</p>
+                                </details>
+                                <details class="group p-4">
+                                    <summary class="flex items-center justify-between cursor-pointer list-none">
+                                        <span class="font-semibold text-[#0A0F2C]">Do you sponsor relocation?</span>
+                                        <span class="text-gray-400 group-open:rotate-180 transition">&#9660;</span>
+                                    </summary>
+                                    <p class="mt-2 text-sm text-gray-700">Yes, for eligible candidates based on role
+                                        seniority.</p>
+                                </details>
+                                <details class="group p-4">
+                                    <summary class="flex items-center justify-between cursor-pointer list-none">
+                                        <span class="font-semibold text-[#0A0F2C]">Is healthcare domain experience
+                                            required?</span>
+                                        <span class="text-gray-400 group-open:rotate-180 transition">&#9660;</span>
+                                    </summary>
+                                    <p class="mt-2 text-sm text-gray-700">Not mandatory, but regulated-data exposure is
+                                        a plus.</p>
+                                </details>
+                            </div>
+                        </section>
+
+                        <!-- APPLY -->
+                        <section id="apply-form" class="rounded-2xl border border-[#E5E7EB] bg-white p-6 shadow-sm">
+                            <h3 class="text-lg font-semibold text-[#0A0F2C]">Compensation, Benefits & Apply</h3>
+                            <ul class="mt-3 text-sm text-gray-700 space-y-2 list-disc list-inside">
+                                <li><strong>Compensation:</strong> Competitive with performance bonus.</li>
+                                <li><strong>Benefits:</strong> Health cover, wellness, learning stipend, paid leaves,
+                                    team offsites.</li>
+                                <li><strong>Work Setup:</strong> On-site Delhi-NCR (hybrid depending on team).</li>
+                            </ul>
+                            <form class="mt-4 grid sm:grid-cols-2 gap-4"
+                                onsubmit="event.preventDefault(); alert('Application submitted!');">
+                                <input type="text" placeholder="Full Name" required
+                                    class="w-full rounded-full border border-gray-300 px-5 py-2 text-sm focus:ring-2 focus:ring-[#0B4DA1] outline-none" />
+                                <input type="email" placeholder="Email" required
+                                    class="w-full rounded-full border border-gray-300 px-5 py-2 text-sm focus:ring-2 focus:ring-[#0B4DA1] outline-none" />
+                                <input type="text" placeholder="LinkedIn / Portfolio (optional)"
+                                    class="sm:col-span-2 w-full rounded-full border border-gray-300 px-5 py-2 text-sm focus:ring-2 focus:ring-[#0B4DA1] outline-none" />
+                                <label class="sm:col-span-2 block">
+                                    <span class="block text-sm font-medium text-[#0A0F2C] mb-1">Upload Resume
+                                        (PDF)</span>
+                                    <input type="file" accept=".pdf"
+                                        class="w-full rounded-full border border-gray-300 px-5 py-2 text-sm bg-white cursor-pointer file:mr-4 file:py-1 file:px-3 file:rounded-full file:border-0 file:bg-gradient-to-r file:from-[#0B4DA1] file:to-[#256DCA] file:text-white file:font-semibold" />
+                                </label>
+                                <div class="sm:col-span-2 flex flex-wrap gap-2">
+                                    <button type="submit"
+                                        class="bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] hover:opacity-90 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-md">Submit
+                                        Application</button>
+                                    <a href="mailto:careers@hmdhealthcare.com?subject=Application%20Node.js%20Developer%20(HMD-BE-NDJS-0925)"
+                                        class="border border-[#0B4DA1] text-[#0B4DA1] px-5 py-2 rounded-full text-sm font-semibold hover:bg-[#F0F7FF]">Email
+                                        Your CV</a>
+                                </div>
+                            </form>
+                            <p class="mt-4 text-xs text-gray-500">We never ask for money at any hiring stage. Only
+                                emails from <strong>@hmdhealthcare.com</strong> are official.</p>
+                        </section>
+                    </div>
+
+                    <!-- RIGHT: sticky rail -->
+                    <aside class="lg:sticky lg:top-28 space-y-6 h-fit">
+                        <!-- Quick facts -->
+                        <div class="rounded-xl border border-[#E5E7EB] bg-white p-5 shadow-sm">
+                            <h4 class="font-semibold text-[#0A0F2C]">Quick Facts</h4>
+                            <ul class="mt-2 text-sm text-gray-700 space-y-2">
+                                <li>Reports to: Eng. Manager (Backend)</li>
+                                <li>Team: 6–8 Eng + QA + DevOps</li>
+                                <li>Tools: Jira, GitHub, Postman, Grafana</li>
+                            </ul>
+                            <a href="#apply-form"
+                                class="mt-4 inline-block w-full text-center bg-[#0B4DA1] text-white px-4 py-2 rounded-full text-sm font-semibold hover:opacity-90">Apply
+                                Now</a>
+                        </div>
+
+                        <!-- Share -->
+                        <div class="rounded-xl border border-[#E5E7EB] bg-[#F8FAFC] p-5 shadow-sm">
+                            <h4 class="font-semibold text-[#0A0F2C]">Share This Job</h4>
+                            <div class="mt-3 grid grid-cols-3 gap-2 text-sm">
+                                <button class="share-btn rounded-lg border bg-white px-3 py-2"
+                                    data-platform="x">X</button>
+                                <button class="share-btn rounded-lg border bg-white px-3 py-2"
+                                    data-platform="linkedin">LinkedIn</button>
+                                <button class="share-btn rounded-lg border bg-white px-3 py-2"
+                                    data-platform="whatsapp">WhatsApp</button>
+                            </div>
+                        </div>
+
+                        <!-- Fraud -->
+                        <div class="rounded-xl border border-[#E5E7EB] bg-white p-5 shadow-sm">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-[#E0F2FE] grid place-items-center text-[#0B4DA1]">⚠️
+                                </div>
+                                <h4 class="font-semibold text-[#0A0F2C]">Beware of Job Frauds</h4>
+                            </div>
+                            <p class="mt-2 text-xs text-gray-600">We do not ask for any fee. Report suspicious activity
+                                to HR.</p>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Unique Footer -->
+    <footer class="bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] text-white pt-16 pb-10 px-6 md:px-10">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-5 gap-8 animate-fade-up">
+
+            <!-- Branding / Newsletter -->
+            <div class="md:col-span-2">
+                <h2 class="text-2xl font-extrabold text-white mb-2">
+                    HMD Healthcare
+                </h2>
+                <p class="text-sm text-white/80 mb-4">
+                    Innovating healthcare with passion and precision.
+                </p>
+
+                <!-- Newsletter -->
+                <h4 class="font-semibold text-white mb-2">Join Our Newsletter</h4>
+                <form class="flex flex-col sm:flex-row items-center gap-3">
+                    <input type="email" placeholder="Your Email" required
+                        class="px-4 py-2 rounded-full w-full sm:w-auto flex-1 text-sm text-[#0A0F2C] outline-none" />
+                    <button type="submit"
+                        class="self-start sm:self-auto bg-white text-[#0B4DA1] font-semibold px-5 py-2 rounded-full text-sm transition-all duration-300 hover:opacity-90">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+
+            <!-- User Menu -->
+            <div>
+                <h3 class="text-lg font-bold mb-3 text-white">User Menu</h3>
+                <ul class="space-y-2 text-sm text-white/80">
+                    <li><a href="#" class="hover:text-white">Home</a></li>
+                    <li><a href="#" class="hover:text-white">News & Events</a></li>
+                    <li><a href="#" class="hover:text-white">Career</a></li>
+                    <li><a href="#" class="hover:text-white">New Launch</a></li>
+                    <li><a href="#" class="hover:text-white">FAQ</a></li>
+                </ul>
+            </div>
+
+            <!-- Main Menu -->
+            <div>
+                <h3 class="text-lg font-bold mb-3 text-white">Main Menu</h3>
+                <ul class="space-y-2 text-sm text-white/80">
+                    <li><a href="#" class="hover:text-white">Products</a></li>
+                    <li><a href="#" class="hover:text-white">CSR</a></li>
+                    <li><a href="#" class="hover:text-white">Contact Us</a></li>
+                    <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-white">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <!-- About HMD -->
+            <div>
+                <h3 class="text-lg font-bold mb-3 text-white">About HMD</h3>
+                <ul class="space-y-2 text-sm text-white/80">
+                    <li><a href="#" class="hover:text-white">About Us</a></li>
+                    <li><a href="#" class="hover:text-white">Our Infrastructure</a></li>
+                    <li><a href="#" class="hover:text-white">Milestones</a></li>
+                    <li><a href="#" class="hover:text-white">Quality Assurance</a></li>
+                    <li><a href="#" class="hover:text-white">Leadership Team</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Divider & Bottom -->
+        <div class="border-t border-white/30 mt-12 pt-6 text-center text-sm text-white/70 animate-fade-up delay-200">
+            <p>© 2025 Hindustan Syringes & Medical Devices Ltd. All rights reserved.</p>
+            <div class="mt-4 flex justify-center gap-4 text-lg">
+                <a href="#" class="hover:text-white transition-all duration-300"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-white transition-all duration-300"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-white transition-all duration-300"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="hover:text-white transition-all duration-300"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="hover:text-white transition-all duration-300"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" class="fixed bottom-5 right-5 z-50 text-white p-3 rounded-full shadow-lg text-xl transition-all duration-300
+         bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] hover:opacity-90">
+        ↑
+    </button>
+
+
+
+
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous">
+
+
+
+    </script>
+    <script>
+        document.getElementById("backToTopBtn").addEventListener("click", function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
+
+
+
+
+
+        (function () {
+    // Tabs
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+    function activateTab(name) {
+      tabBtns.forEach(b => {
+        const on = b.dataset.tab === name;
+        b.classList.toggle('bg-[#F0F7FF]', on);
+        b.classList.toggle('text-[#0B4DA1]', on);
+        b.classList.toggle('border-[#dbeafe]', on);
+        b.classList.toggle('bg-gray-100', !on);
+        b.classList.toggle('text-gray-700', !on);
+        b.classList.toggle('border-gray-200', !on);
+      });
+      tabPanels.forEach(p => p.classList.toggle('hidden', p.dataset.panel !== name));
+    }
+    tabBtns.forEach(b => b.addEventListener('click', () => activateTab(b.dataset.tab)));
+    activateTab('overview');
+
+    // Copy link
+    const copyBtn = document.getElementById('copy-link');
+    copyBtn?.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(window.location.href);
+        copyBtn.textContent = 'Link Copied ✓'; setTimeout(()=>copyBtn.textContent='Copy Job Link', 1800);
+      } catch { alert('Copy failed. Please copy from the address bar.'); }
+    });
+
+    // Save job (localStorage)
+    const saveBtn = document.getElementById('save-job');
+    const JOB_KEY = 'hmd_saved_jobs';
+    const JOB_ID = 'HMD-BE-NDJS-0925';
+    function isSaved() {
+      const list = JSON.parse(localStorage.getItem(JOB_KEY) || '[]');
+      return list.includes(JOB_ID);
+    }
+    function setSavedUI() { saveBtn && (saveBtn.textContent = isSaved() ? 'Saved ★' : 'Save Job'); }
+    saveBtn?.addEventListener('click', () => {
+      const list = JSON.parse(localStorage.getItem(JOB_KEY) || '[]');
+      if (isSaved()) localStorage.setItem(JOB_KEY, JSON.stringify(list.filter(id => id !== JOB_ID)));
+      else localStorage.setItem(JOB_KEY, JSON.stringify([...new Set([...list, JOB_ID])]));
+      setSavedUI();
+    });
+    setSavedUI();
+
+    // Print
+    const printBtn = document.getElementById('print-job');
+    printBtn?.addEventListener('click', () => window.print());
+
+    // Share
+    const shareButtons = document.querySelectorAll('.share-btn');
+    shareButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const url = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent(document.title);
+        const p = btn.dataset.platform;
+        let shareUrl = '#';
+        if (p === 'x') shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+        if (p === 'linkedin') shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}`;
+        if (p === 'whatsapp') shareUrl = `https://api.whatsapp.com/send?text=${title}%20${url}`;
+        window.open(shareUrl, '_blank','noopener,noreferrer');
+      });
+    });
+
+    // Smooth scroll for internal anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) { e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); history.pushState(null,'','#'+id); }
+      });
+    });
+  })();
+    </script>
+
+</body>
+
+</html>

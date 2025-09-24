@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Final Responsive Header</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <script>
+        function toggleNav() {
+            document.getElementById("mobile-nav").classList.toggle("hidden");
+        }
+        function toggleMobileDropdown(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle("hidden");
+        }
+    </script>
+
+    <style>
+
+
+    </style>
+</head>
+
+<body class="bg-[#FAFAFA] text-[#0A0F2C] font-sans">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-lg bg-white/90 shadow-md border-b border-gray-200">
+        <!-- Top bar -->
+        <div class="flex flex-col md:flex-row justify-between items-center text-xs md:text-sm px-4 md:px-6 py-2 
+    bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] text-white font-medium transition-all duration-500">
+
+            <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+                <a href="#">News & Events</a>
+                <a href="#">Career</a>
+                <a href="#">New Launch</a>
+                <a href="#">HSN Code</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="flex items-center gap-2 mt-2 md:mt-0">
+                <!-- Language -->
+                <div class="relative group">
+                    <button class="flex items-center gap-1">
+                        🌐 English
+                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.18l3.71-3.95a.75.75 0 111.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute hidden group-hover:block bg-white text-black rounded mt-2 py-1 w-24 text-sm shadow-lg z-50">
+                        <a href="#" class="block px-3 py-1 hover:bg-gray-100">Hindi</a>
+                        <a href="#" class="block px-3 py-1 hover:bg-gray-100">French</a>
+                    </div>
+                </div>
+
+                <!-- Divider + Location -->
+                <div class="relative group border-l border-white pl-2">
+                    <button class="flex items-center gap-1">
+                        📍 India
+                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.18l3.71-3.95a.75.75 0 111.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute hidden group-hover:block bg-white text-black rounded mt-2 py-1 w-24 text-sm shadow-lg z-50">
+                        <a href="#" class="block px-3 py-1 hover:bg-gray-100">USA</a>
+                        <a href="#" class="block px-3 py-1 hover:bg-gray-100">UK</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Main Navbar -->
+        <div class="max-w-[1320px] mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <a href="/" class="flex items-center gap-3">
+                    <img src="https://www.hmdhealthcare.com/assets/images/hmdlogo.png" class="h-10 w-auto" alt="Logo">
+                    <div class="text-[10px] md:text-xs text-gray-600 leading-4">
+                        From the House of<br><span class="text-[#D72638] font-bold">DISPO VAN®</span>
+                    </div>
+                </a>
+            </div>
+
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex gap-6 font-semibold text-sm relative">
+                <!-- Dropdown: About HMD -->
+                <div class="group relative">
+                    <button class="hover:text-[#D72638] flex items-center gap-1">
+                        About HMD <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.18l3.71-3.95a.75.75 0 111.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-md rounded w-48 z-50 py-2">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Overview</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Leadership</a>
+                    </div>
+                </div>
+
+                <!-- Dropdown: Our Offerings -->
+                <div class="group relative">
+                    <button class="hover:text-[#D72638] flex items-center gap-1">
+                        Our Offerings <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.18l3.71-3.95a.75.75 0 111.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-md rounded w-48 z-50 py-2">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Syringes</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Needles</a>
+                    </div>
+                </div>
+
+                <!-- Dropdown: IFU -->
+                <div class="group relative">
+                    <button class="hover:text-[#D72638] flex items-center gap-1">
+                        IFU <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.18l3.71-3.95a.75.75 0 111.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-md rounded w-48 z-50 py-2">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">User Manuals</a>
+                    </div>
+                </div>
+
+                <!-- Dropdown: CSR -->
+                <div class="group relative">
+                    <button class="hover:text-[#D72638] flex items-center gap-1">
+                        CSR <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.18l3.71-3.95a.75.75 0 111.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-md rounded w-48 z-50 py-2">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Initiatives</a>
+                    </div>
+                </div>
+
+                <a href="#" class="hover:text-[#D72638]">Certification</a>
+                <a href="#" class="hover:text-[#D72638]">Blogs</a>
+                <a href="#" class="hover:text-[#D72638]">Contact</a>
+            </nav>
+
+            <!-- CTA & Mobile -->
+            <div class="flex items-center gap-3 md:hidden">
+                <!-- <a href="#"
+                class="hidden md:inline-block px-5 py-2 bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] text-white rounded-full text-xs font-semibold hover:opacity-90 transition duration-300 shadow-md">
+                DISTRIBUTOR ONBOARD
+            </a> -->
+
+                <button class="md:hidden" onclick="toggleNav()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav -->
+        <div id="mobile-nav" class="md:hidden hidden px-4 pb-4 bg-white border-t border-gray-200">
+            <nav class="flex flex-col gap-2 font-medium text-sm">
+                <div>
+                    <button class="w-full text-left font-semibold" onclick="toggleMobileDropdown('m-about')">+ About
+                        HMD</button>
+                    <div id="m-about" class="hidden ml-4 mt-1">
+                        <a href="#" class="block py-1">Overview</a>
+                        <a href="#" class="block py-1">Leadership</a>
+                    </div>
+                </div>
+                <div>
+                    <button class="w-full text-left font-semibold" onclick="toggleMobileDropdown('m-offerings')">+ Our
+                        Offerings</button>
+                    <div id="m-offerings" class="hidden ml-4 mt-1">
+                        <a href="#" class="block py-1">Syringes</a>
+                        <a href="#" class="block py-1">Needles</a>
+                    </div>
+                </div>
+                <div>
+                    <button class="w-full text-left font-semibold" onclick="toggleMobileDropdown('m-ifu')">+
+                        IFU</button>
+                    <div id="m-ifu" class="hidden ml-4 mt-1">
+                        <a href="#" class="block py-1">User Manuals</a>
+                    </div>
+                </div>
+                <div>
+                    <button class="w-full text-left font-semibold" onclick="toggleMobileDropdown('m-csr')">+
+                        CSR</button>
+                    <div id="m-csr" class="hidden ml-4 mt-1">
+                        <a href="#" class="block py-1">Initiatives</a>
+                    </div>
+                </div>
+                <a href="#">Certification</a>
+                <a href="#">Blogs</a>
+                <a href="#">Contact</a>
+                <a href="#" class="mt-3 text-center bg-[#17C3B2] text-white py-2 rounded-full font-bold">DISTRIBUTOR
+                    ONBOARD</a>
+            </nav>
+        </div>
+    </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <main id="thankyou-main" class="bg-white">
+        <section class="py-5 sm:py-12 px-4 md:px-10">
+            <div class="max-w-6xl mx-auto">
+
+                <!-- Success Banner -->
+                <div class="relative overflow-hidden rounded-2xl p-6 md:p-10 text-white shadow-lg
+                        bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB]">
+                    <!-- confetti canvas -->
+                    <canvas id="confetti" class="absolute inset-0 pointer-events-none"></canvas>
+
+                    <div class="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                        <div>
+                            <h1 class="text-2xl md:text-3xl font-extrabold leading-tight">Thank you, <span
+                                    id="ty-name">Applicant</span>! 🎉</h1>
+                            <p class="mt-2 text-white/90 text-sm md:text-base">
+                                Your application for <span id="ty-role" class="font-semibold">the role</span> has been
+                                received.
+                                We’ve sent a confirmation to <span id="ty-email"
+                                    class="underline decoration-white/60">your email</span>.
+                            </p>
+                        </div>
+                        <div class="bg-white/15 border border-white/25 rounded-xl p-4 text-sm">
+                            <div class="text-white/80">Application ID</div>
+                            <div id="ty-ref" class="font-semibold tracking-wide">HMD-APP-000000</div>
+                        </div>
+                    </div>
+
+                    <div class="relative z-10 mt-6 flex flex-wrap gap-3">
+                        <a href="/career/jobs"
+                            class="bg-white text-[#0B4DA1] font-bold px-5 py-2 rounded-full text-sm hover:opacity-90 shadow">
+                            Back to Openings
+                        </a>
+                        <button id="print-receipt"
+                            class="border border-white text-white font-semibold px-5 py-2 rounded-full text-sm hover:bg-white/10">
+                            Print Receipt
+                        </button>
+                        <button id="add-calendar"
+                            class="border border-white text-white font-semibold px-5 py-2 rounded-full text-sm hover:bg-white/10">
+                            Add Reminder
+                        </button>
+                        <button id="share-whatsapp"
+                            class="border border-white text-white font-semibold px-5 py-2 rounded-full text-sm hover:bg-white/10">
+                            Share via WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Next Steps + Summary -->
+                <div class="mt-8 grid md:grid-cols-2 gap-6">
+                    <!-- Next Steps -->
+                    <section class="rounded-xl border border-[#E5E7EB] bg-white p-6 shadow-sm">
+                        <h2 class="text-lg font-semibold text-[#0A0F2C]">What happens next?</h2>
+                        <ol class="mt-3 text-sm text-gray-700 space-y-3 list-decimal list-inside">
+                            <li><strong>Screening:</strong> Our Talent team reviews your profile within 2–3 business
+                                days.</li>
+                            <li><strong>Invite:</strong> If shortlisted, you’ll get a call/mail to schedule the first
+                                round.</li>
+                            <li><strong>Track status:</strong> Watch your inbox for updates—remember to check spam.</li>
+                        </ol>
+                        <p class="mt-3 text-xs text-gray-500">
+                            We never ask for money at any hiring stage. Only emails from
+                            <strong>@hmdhealthcare.com</strong> are official.
+                        </p>
+                    </section>
+
+                    <!-- Application Summary -->
+                    <section class="rounded-xl border border-[#E5E7EB] bg-[#F8FAFC] p-6 shadow-sm">
+                        <h2 class="text-lg font-semibold text-[#0A0F2C]">Application Summary</h2>
+                        <div class="mt-3 text-sm text-gray-700 grid grid-cols-1 gap-2">
+                            <div class="flex justify-between"><span class="text-gray-600">Name</span><span id="sm-name"
+                                    class="font-medium">—</span></div>
+                            <div class="flex justify-between"><span class="text-gray-600">Email</span><span
+                                    id="sm-email" class="font-medium break-all">—</span></div>
+                            <div class="flex justify-between"><span class="text-gray-600">Role</span><span id="sm-role"
+                                    class="font-medium">—</span></div>
+                            <div class="flex justify-between"><span class="text-gray-600">Location</span><span
+                                    id="sm-location" class="font-medium">—</span></div>
+                            <div class="flex justify-between"><span class="text-gray-600">Submitted</span><span
+                                    id="sm-date" class="font-medium">—</span></div>
+                            <div class="flex justify-between"><span class="text-gray-600">Application ID</span><span
+                                    id="sm-ref" class="font-medium">—</span></div>
+                        </div>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <a id="download-pdf" href="#"
+                                class="text-xs bg-[#0B4DA1] text-white px-4 py-2 rounded-full font-semibold hover:opacity-90">Download
+                                PDF</a>
+                            <a href="/career"
+                                class="text-xs border border-[#0B4DA1] text-[#0B4DA1] px-4 py-2 rounded-full font-semibold hover:bg-[#F0F7FF]">Explore
+                                Careers</a>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Help + Fraud + Contact -->
+                <div class="mt-8 grid md:grid-cols-3 gap-6">
+                    <div class="rounded-xl border border-[#E5E7EB] bg-white p-6 shadow-sm">
+                        <h3 class="font-semibold text-[#0A0F2C]">Need Help?</h3>
+                        <p class="mt-2 text-sm text-gray-700">Reply to the confirmation email or write to us.</p>
+                        <a href="mailto:careers@hmdhealthcare.com"
+                            class="mt-3 inline-block text-sm bg-[#0B4DA1] text-white px-4 py-2 rounded-full font-semibold hover:opacity-90">
+                            Contact HR
+                        </a>
+                    </div>
+                    <div class="rounded-xl border border-[#E5E7EB] bg-[#F8FAFC] p-6 shadow-sm">
+                        <h3 class="font-semibold text-[#0A0F2C]">Beware of Job Frauds</h3>
+                        <p class="mt-2 text-sm text-gray-700">We do not ask for money at any stage. Only
+                            <strong>@hmdhealthcare.com</strong> emails are official.</p>
+                    </div>
+                    <div class="rounded-xl border border-[#E5E7EB] bg-white p-6 shadow-sm">
+                        <h3 class="font-semibold text-[#0A0F2C]">Follow Us</h3>
+                        <div class="mt-3 grid grid-cols-3 gap-2 text-sm">
+                            <a target="_blank" rel="noopener"
+                                class="rounded-lg border bg-[#F8FAFC] px-3 py-2 text-center hover:bg-white">LinkedIn</a>
+                            <a target="_blank" rel="noopener"
+                                class="rounded-lg border bg-[#F8FAFC] px-3 py-2 text-center hover:bg-white">X</a>
+                            <a target="_blank" rel="noopener"
+                                class="rounded-lg border bg-[#F8FAFC] px-3 py-2 text-center hover:bg-white">YouTube</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Unique Footer -->
+    <footer class="bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] text-white pt-16 pb-10 px-6 md:px-10">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-5 gap-8 animate-fade-up">
+
+            <!-- Branding / Newsletter -->
+            <div class="md:col-span-2">
+                <h2 class="text-2xl font-extrabold text-white mb-2">
+                    HMD Healthcare
+                </h2>
+                <p class="text-sm text-white/80 mb-4">
+                    Innovating healthcare with passion and precision.
+                </p>
+
+                <!-- Newsletter -->
+                <h4 class="font-semibold text-white mb-2">Join Our Newsletter</h4>
+                <form class="flex flex-col sm:flex-row items-center gap-3">
+                    <input type="email" placeholder="Your Email" required
+                        class="px-4 py-2 rounded-full w-full sm:w-auto flex-1 text-sm text-[#0A0F2C] outline-none" />
+                    <button type="submit"
+                        class="self-start sm:self-auto bg-white text-[#0B4DA1] font-semibold px-5 py-2 rounded-full text-sm transition-all duration-300 hover:opacity-90">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+
+            <!-- User Menu -->
+            <div>
+                <h3 class="text-lg font-bold mb-3 text-white">User Menu</h3>
+                <ul class="space-y-2 text-sm text-white/80">
+                    <li><a href="#" class="hover:text-white">Home</a></li>
+                    <li><a href="#" class="hover:text-white">News & Events</a></li>
+                    <li><a href="#" class="hover:text-white">Career</a></li>
+                    <li><a href="#" class="hover:text-white">New Launch</a></li>
+                    <li><a href="#" class="hover:text-white">FAQ</a></li>
+                </ul>
+            </div>
+
+            <!-- Main Menu -->
+            <div>
+                <h3 class="text-lg font-bold mb-3 text-white">Main Menu</h3>
+                <ul class="space-y-2 text-sm text-white/80">
+                    <li><a href="#" class="hover:text-white">Products</a></li>
+                    <li><a href="#" class="hover:text-white">CSR</a></li>
+                    <li><a href="#" class="hover:text-white">Contact Us</a></li>
+                    <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-white">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <!-- About HMD -->
+            <div>
+                <h3 class="text-lg font-bold mb-3 text-white">About HMD</h3>
+                <ul class="space-y-2 text-sm text-white/80">
+                    <li><a href="#" class="hover:text-white">About Us</a></li>
+                    <li><a href="#" class="hover:text-white">Our Infrastructure</a></li>
+                    <li><a href="#" class="hover:text-white">Milestones</a></li>
+                    <li><a href="#" class="hover:text-white">Quality Assurance</a></li>
+                    <li><a href="#" class="hover:text-white">Leadership Team</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Divider & Bottom -->
+        <div class="border-t border-white/30 mt-12 pt-6 text-center text-sm text-white/70 animate-fade-up delay-200">
+            <p>© 2025 Hindustan Syringes & Medical Devices Ltd. All rights reserved.</p>
+            <div class="mt-4 flex justify-center gap-4 text-lg">
+                <a href="#" class="hover:text-white transition-all duration-300"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-white transition-all duration-300"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-white transition-all duration-300"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="hover:text-white transition-all duration-300"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="hover:text-white transition-all duration-300"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" class="fixed bottom-5 right-5 z-50 text-white p-3 rounded-full shadow-lg text-xl transition-all duration-300
+         bg-gradient-to-r from-[#0B4DA1] via-[#256DCA] to-[#5B9BEB] hover:opacity-90">
+        ↑
+    </button>
+
+
+
+
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous">
+
+
+
+    </script>
+    <script>
+        document.getElementById("backToTopBtn").addEventListener("click", function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
+
+
+
+
+
+        (function () {
+            // Read URL params: ?name=&email=&role=&location=&ref=
+            const q = new URLSearchParams(window.location.search);
+            const name = q.get('name') || 'Applicant';
+            const email = q.get('email') || 'your.email@example.com';
+            const role = q.get('role') || 'Node.js Developer — Backend (Delhi)';
+            const location = q.get('location') || 'Delhi-NCR';
+            const ref = q.get('ref') || ('HMD-APP-' + ('' + Math.floor(100000 + Math.random() * 900000)));
+
+            // Fill content
+            const now = new Date();
+            const dateStr = now.toLocaleString(undefined, { year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+            const setText = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+
+            setText('ty-name', name);
+            setText('ty-role', role);
+            setText('ty-email', email);
+            setText('ty-ref', ref);
+            setText('sm-name', name);
+            setText('sm-email', email);
+            setText('sm-role', role);
+            setText('sm-location', location);
+            setText('sm-date', dateStr);
+            setText('sm-ref', ref);
+
+            // Print receipt
+            document.getElementById('print-receipt')?.addEventListener('click', () => window.print());
+
+            // WhatsApp share
+            document.getElementById('share-whatsapp')?.addEventListener('click', () => {
+                const txt = encodeURIComponent(`I applied for ${role} at HMD Healthcare. Application ID: ${ref}`);
+                const url = encodeURIComponent(window.location.href);
+                window.open(`https://api.whatsapp.com/send?text=${txt}%20${url}`, '_blank', 'noopener');
+            });
+
+            // Add calendar reminder (ICS download) — 3 days from now follow-up
+            document.getElementById('add-calendar')?.addEventListener('click', () => {
+                const start = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000);
+                const end = new Date(start.getTime() + 30 * 60 * 1000);
+                function toICS(dt) {
+                    const pad = n => String(n).padStart(2, '0');
+                    return dt.getUTCFullYear() + pad(dt.getUTCMonth() + 1) + pad(dt.getUTCDate()) + 'T' +
+                        pad(dt.getUTCHours()) + pad(dt.getUTCMinutes()) + '00Z';
+                }
+                const ics = [
+                    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//HMD//Careers//EN', 'BEGIN:VEVENT',
+                    'UID:' + ref + '@hmdhealthcare.com',
+                    'DTSTAMP:' + toICS(new Date()),
+                    'DTSTART:' + toICS(start),
+                    'DTEND:' + toICS(end),
+                    'SUMMARY:Follow up: ' + role,
+                    'DESCRIPTION:Application ID ' + ref + ' — check email for updates.',
+                    'END:VEVENT', 'END:VCALENDAR'
+                ].join('\r\n');
+                const blob = new Blob([ics], { type: 'text/calendar' });
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = `HMD-${ref}-reminder.ics`;
+                document.body.appendChild(a); a.click(); a.remove();
+            });
+
+            // Download simple PDF (fallback to print-to-pdf if needed)
+            document.getElementById('download-pdf')?.addEventListener('click', (e) => {
+                e.preventDefault();
+                const text = `HMD Healthcare - Application Receipt%0A%0AApplicant: ${name}%0AEmail: ${email}%0ARole: ${role}%0ALocation: ${location}%0AApplication ID: ${ref}%0ASubmitted: ${dateStr}%0A%0AWe will contact you soon.`;
+                // Try using print dialog for consistent branding
+                window.print();
+                // Or redirect to mailto with prefilled receipt text (backup UX)
+                // window.location.href = 'data:text/plain;charset=utf-8,' + text;
+            });
+
+            // Confetti (lightweight)
+            const canvas = document.getElementById('confetti');
+            if (canvas && canvas.getContext) {
+                const ctx = canvas.getContext('2d');
+                let w, h, pieces = [];
+                function resize() { w = canvas.width = canvas.offsetWidth; h = canvas.height = 220; }
+                function rand(n) { return Math.random() * n }
+                function reset(p) {
+                    p.x = rand(w); p.y = -10 - rand(40);
+                    p.size = 3 + rand(4); p.speed = 1 + rand(2);
+                    p.angle = rand(Math.PI * 2); p.spin = -0.1 + rand(0.2);
+                    p.color = ['#ffffff', '#E3F2FD', '#BBDEFB', '#90CAF9'][Math.floor(rand(4))];
+                }
+                function init() {
+                    resize();
+                    pieces = Array.from({ length: 80 }, () => ({}));
+                    pieces.forEach(reset);
+                    draw(); setTimeout(() => cancelAnimationFrame(anim), 2500); // run briefly
+                }
+                window.addEventListener('resize', resize);
+                let anim;
+                function draw() {
+                    anim = requestAnimationFrame(draw);
+                    ctx.clearRect(0, 0, w, h);
+                    pieces.forEach(p => {
+                        p.y += p.speed; p.angle += p.spin;
+                        if (p.y > h + 10) reset(p);
+                        ctx.save();
+                        ctx.translate(p.x, p.y);
+                        ctx.rotate(p.angle);
+                        ctx.fillStyle = p.color;
+                        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+                        ctx.restore();
+                    });
+                }
+                init();
+            }
+        })();
+    </script>
+
+</body>
+
+</html>
