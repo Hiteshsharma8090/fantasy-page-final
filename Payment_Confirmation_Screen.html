@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PhonePe – Payment Confirmation</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              500: '#7c3aed',
+              600: '#6d28d9',
+              700: '#5b21b6',
+            },
+          },
+          boxShadow: {
+            soft: '0 12px 32px rgba(15,23,42,0.25)',
+          }
+        }
+      }
+    };
+
+    // DEFAULT = dark
+    const storedTheme = localStorage.getItem('pp-theme');
+    if (storedTheme === 'light') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+</head>
+
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50">
+  <div class="mx-auto max-w-sm min-h-screen flex flex-col relative">
+
+    <!-- TOP BAR -->
+    <header class="px-4 pt-4 pb-3 flex items-center justify-between border-b border-slate-200/80 dark:border-slate-800/80 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur z-20">
+      <button class="h-9 w-9 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-sm">
+        ←
+      </button>
+
+      <div class="text-center">
+        <p class="text-[11px] text-slate-500 dark:text-slate-400 uppercase tracking-[0.18em]">
+          Confirm payment
+        </p>
+        <p class="text-[11px] text-slate-400 dark:text-slate-500">
+          Check details before you pay
+        </p>
+      </div>
+
+      <button class="h-9 w-9 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-xs">
+        ✎
+      </button>
+    </header>
+
+    <!-- MAIN -->
+    <main class="flex-1 overflow-y-auto pb-24 space-y-4 bg-gradient-to-b from-slate-900 via-slate-950 to-black text-slate-50">
+
+      <!-- AMOUNT + BASIC SUMMARY -->
+      <section class="px-4 pt-4 space-y-3">
+        <div class="rounded-3xl bg-slate-950/90 border border-slate-800 shadow-soft px-4 py-4 space-y-3">
+          <div class="flex items-center justify-between">
+            <p class="text-[11px] text-slate-400 uppercase tracking-[0.16em]">
+              You are paying
+            </p>
+            <span class="inline-flex items-center gap-1 text-[10px] text-emerald-400">
+              <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+              UPI • Instant
+            </span>
+          </div>
+
+          <!-- Amount -->
+          <div class="flex items-baseline gap-1 mt-1">
+            <span class="text-2xl">₹</span>
+            <p id="amountText" class="text-3xl font-semibold tracking-wide">
+              6,500
+            </p>
+          </div>
+
+          <!-- To -->
+          <div class="mt-2 rounded-2xl bg-slate-900/80 border border-slate-800 px-3 py-2.5 flex items-center gap-3">
+            <div class="h-9 w-9 rounded-full bg-gradient-to-tr from-primary-600 to-primary-500 flex items-center justify-center text-xs font-semibold">
+              RV
+            </div>
+            <div class="flex-1 text-[11px]">
+              <p class="text-slate-100 font-medium">
+                Rohit Verma
+              </p>
+              <p class="text-[10px] text-slate-400">
+                98765 43••• • rohit@upi
+              </p>
+              <p class="mt-1 text-[10px] text-slate-400">
+                Note: <span id="noteText" class="text-slate-200">Room rent – March</span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Using / From rows -->
+          <div class="space-y-1.5 text-[11px] mt-1">
+            <div class="flex items-center justify-between">
+              <p class="text-slate-400">Paying via</p>
+              <p class="text-slate-100 font-medium flex items-center gap-1">
+                UPI • PhonePe
+                <span class="text-[9px] px-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-400/30">
+                  Recommended
+                </span>
+              </p>
+            </div>
+            <div class="flex items-center justify-between">
+              <p class="text-slate-400">From</p>
+              <p class="text-slate-100 font-medium">
+                State Bank •••• 7728
+              </p>
+            </div>
+          </div>
+
+          <!-- Charges -->
+          <div class="mt-2 rounded-2xl bg-slate-900/70 border border-slate-800 px-3 py-2 text-[11px] flex items-center justify-between">
+            <div>
+              <p class="text-slate-200 font-medium">Charges</p>
+              <p class="text-[10px] text-slate-400">
+                UPI transfers are free
+              </p>
+            </div>
+            <p class="text-emerald-400 font-semibold">
+              ₹0
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- DETAIL TOGGLE + SECURITY INFO -->
+      <section class="px-4 space-y-3">
+        <!-- Expandable details -->
+        <div class="rounded-2xl bg-slate-950/90 border border-slate-800 px-3.5 py-3.5 text-[11px]">
+          <button
+            id="detailsToggle"
+            type="button"
+            class="w-full flex items-center justify-between"
+          >
+            <span class="inline-flex items-center gap-2 text-slate-200">
+              <span class="h-5 w-5 rounded-full bg-slate-800 flex items-center justify-center text-xs">
+                ⓘ
+              </span>
+              View full payment details
+            </span>
+            <span id="detailsArrow" class="text-[10px] text-slate-400">
+              ▾
+            </span>
+          </button>
+
+          <div id="detailsBox" class="mt-3 space-y-2 border-t border-slate-800 pt-2 hidden">
+            <div class="flex items-center justify-between">
+              <p class="text-slate-400">UPI ID</p>
+              <p class="text-slate-100 font-medium text-[10px]">
+                rohit@upi
+              </p>
+            </div>
+            <div class="flex items-center justify-between">
+              <p class="text-slate-400">Bank account</p>
+              <p class="text-slate-100 font-medium text-[10px]">
+                SBI •••• 2211
+              </p>
+            </div>
+            <div class="flex items-center justify-between">
+              <p class="text-slate-400">Txn mode</p>
+              <p class="text-slate-100 font-medium text-[10px]">
+                UPI • P2P
+              </p>
+            </div>
+            <div class="flex items-center justify-between">
+              <p class="text-slate-400">Approx. credit time</p>
+              <p class="text-slate-100 font-medium text-[10px]">
+                Instant
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Security strip -->
+        <div class="rounded-2xl bg-slate-950/90 border border-slate-800 px-3.5 py-3 flex items-center gap-3 text-[11px]">
+          <div class="h-7 w-7 rounded-full bg-emerald-500/15 border border-emerald-400/40 flex items-center justify-center text-sm">
+            🔒
+          </div>
+          <div class="flex-1">
+            <p class="text-slate-100 font-medium">
+              Your UPI PIN is entered on bank’s secure page.
+            </p>
+            <p class="text-[10px] text-slate-400 mt-0.5">
+              PhonePe will never ask for your PIN / OTP in chats, calls or SMS.
+            </p>
+          </div>
+        </div>
+
+        <!-- Optional reward hint -->
+        <div class="rounded-2xl bg-gradient-to-r from-amber-500/20 via-purple-500/20 to-sky-500/20 border border-amber-400/40 px-3.5 py-3 flex items-center justify-between text-[11px]">
+          <div>
+            <p class="text-amber-100 font-medium flex items-center gap-1">
+              🎁 You may win a scratch card
+            </p>
+            <p class="text-[10px] text-amber-100/80">
+              On payments above ₹100. T&amp;C apply.
+            </p>
+          </div>
+          <span class="text-xl">✨</span>
+        </div>
+      </section>
+    </main>
+
+    <!-- BOTTOM SLIDE / CONFIRM BAR -->
+    <nav class="fixed bottom-0 inset-x-0 z-30">
+      <div class="mx-auto max-w-sm px-4 pb-3">
+        <div class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white/95 dark:bg-slate-950/95 backdrop-blur shadow-soft px-3 py-2.5 space-y-2">
+          <!-- small summary -->
+          <div class="flex items-center justify-between text-[10px] text-slate-500 dark:text-slate-400">
+            <p id="bottomSummary" class="truncate">
+              Paying ₹6,500 to Rohit Verma via State Bank •••• 7728
+            </p>
+            <span class="text-[10px] text-emerald-500">
+              No extra charges
+            </span>
+          </div>
+
+          <!-- Fake slide to pay -->
+          <div class="relative h-10 rounded-full bg-slate-900/90 overflow-hidden border border-slate-800 flex items-center px-2 text-[11px] text-slate-300">
+            <div
+              id="sliderKnob"
+              class="relative z-10 h-7 w-7 rounded-full bg-gradient-to-tr from-primary-600 to-primary-400 flex items-center justify-center text-xs font-semibold shadow-soft select-none cursor-pointer"
+            >
+              ▶
+            </div>
+            <p id="sliderText" class="absolute inset-0 flex items-center justify-center pointer-events-none text-[11px] text-slate-400">
+              Slide to confirm &amp; pay
+            </p>
+          </div>
+
+          <!-- fake "processing" text -->
+          <p id="processingText" class="text-[10px] text-emerald-500 text-center mt-0.5 hidden">
+            Processing securely… contacting your bank
+          </p>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+
+  <script>
+    // DETAILS TOGGLE
+    const detailsToggle = document.getElementById('detailsToggle');
+    const detailsBox = document.getElementById('detailsBox');
+    const detailsArrow = document.getElementById('detailsArrow');
+
+    if (detailsToggle) {
+      detailsToggle.addEventListener('click', () => {
+        if (!detailsBox) return;
+        const isHidden = detailsBox.classList.contains('hidden');
+        if (isHidden) {
+          detailsBox.classList.remove('hidden');
+          detailsArrow.textContent = '▴';
+        } else {
+          detailsBox.classList.add('hidden');
+          detailsArrow.textContent = '▾';
+        }
+      });
+    }
+
+    // SLIDE TO PAY – simple fake animation (no real payment)
+    const sliderKnob = document.getElementById('sliderKnob');
+    const sliderText = document.getElementById('sliderText');
+    const processingText = document.getElementById('processingText');
+
+    if (sliderKnob) {
+      let done = false;
+
+      sliderKnob.addEventListener('click', () => {
+        if (done) return;
+        done = true;
+
+        sliderText.textContent = 'Confirming…';
+        processingText.classList.remove('hidden');
+
+        // small fake delay to show UX flow
+        setTimeout(() => {
+          sliderText.textContent = 'Paid (demo only)';
+          sliderKnob.textContent = '✓';
+        }, 1200);
+      });
+    }
+
+    // (Optional) yaha tum amount / name dynamic set kar sakte ho agar previous screen se data pass karo
+    // document.getElementById('amountText').textContent = '200';
+    // document.getElementById('bottomSummary').textContent = 'Paying ₹200 to ...';
+  </script>
+</body>
+</html>
