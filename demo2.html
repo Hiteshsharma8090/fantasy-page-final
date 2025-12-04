@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PhonePe – Scan & Pay</title>
+  <title>PhonePe – Scan & Pay (Light)</title>
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
           colors: {
@@ -23,54 +22,45 @@
             },
           },
           boxShadow: {
-            soft: '0 12px 32px rgba(15,23,42,0.25)',
+            soft: '0 12px 32px rgba(15,23,42,0.15)',
           }
         }
       }
     };
-
-    // DEFAULT = dark (first time) + remember last choice
-    const storedTheme = localStorage.getItem('pp-theme');
-    if (storedTheme === 'light') {
-      document.documentElement.classList.remove('dark');
-    } else {
-      document.documentElement.classList.add('dark');
-    }
   </script>
 </head>
 
-<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50">
+<body class="bg-slate-50 text-slate-900">
   <div class="mx-auto max-w-sm min-h-screen flex flex-col relative">
 
     <!-- TOP BAR -->
     <header
       class="px-4 pt-4 pb-3 flex items-center justify-between
-             border-b border-slate-200/80 dark:border-slate-800/80
-             bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur z-20"
+             border-b border-slate-200/80
+             bg-slate-50/80 backdrop-blur z-20"
     >
       <button
-        class="h-9 w-9 rounded-full border border-slate-200 dark:border-slate-700
+        class="h-9 w-9 rounded-full border border-slate-200
                flex items-center justify-center text-sm"
       >
         ←
       </button>
 
       <div class="text-center">
-        <p class="text-[11px] text-slate-500 dark:text-slate-400 uppercase tracking-[0.18em]">
+        <p class="text-[11px] text-slate-500 uppercase tracking-[0.18em]">
           Scan &amp; Pay
         </p>
-        <p class="text-[11px] text-slate-400 dark:text-slate-500">
+        <p class="text-[11px] text-slate-400">
           Pay via UPI / QR
         </p>
       </div>
 
-      <!-- THEME TOGGLE BUTTON -->
+      <!-- Right icon -->
       <button
-        id="themeToggle"
-        class="h-9 w-9 rounded-full border border-slate-200 dark:border-slate-700
+        class="h-9 w-9 rounded-full border border-slate-200
                flex items-center justify-center text-base"
       >
-        🌙
+        ⚡
       </button>
     </header>
 
@@ -78,26 +68,24 @@
     <main
       class="flex-1 overflow-y-auto pb-20 space-y-4
              bg-gradient-to-b from-slate-100 via-slate-50 to-slate-100
-             dark:from-slate-900 dark:via-slate-950 dark:to-black
-             text-slate-900 dark:text-slate-50"
+             text-slate-900"
     >
 
       <!-- CAMERA AREA -->
       <section class="px-4 pt-4">
         <div
           class="rounded-3xl border border-indigo-500/40
-                 bg-gradient-to-br from-slate-100 via-slate-50 to-slate-200
-                 dark:from-slate-900/60 dark:via-slate-900/80 dark:to-slate-950/90
+                 bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200
                  shadow-soft px-3.5 py-4 relative overflow-hidden"
         >
 
           <!-- Fake status row -->
           <div class="flex items-center justify-between text-[10px] mb-2">
-            <span class="inline-flex items-center gap-1 text-slate-600 dark:text-slate-300">
+            <span class="inline-flex items-center gap-1 text-slate-700">
               <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
               Camera active
             </span>
-            <span class="text-[10px] text-slate-500 dark:text-slate-400">
+            <span class="text-[10px] text-slate-500">
               Auto focus • Auto detect
             </span>
           </div>
@@ -107,8 +95,7 @@
             <div
               class="aspect-[4/4.3] rounded-3xl
                      bg-gradient-to-br from-slate-50 via-slate-100 to-slate-50
-                     dark:from-slate-900 dark:via-slate-950 dark:to-slate-900
-                     border border-slate-200/80 dark:border-slate-800/80
+                     border border-slate-200
                      flex items-center justify-center overflow-hidden"
             >
               <!-- Fake video bg -->
@@ -120,7 +107,7 @@
               <!-- Scan box -->
               <div
                 class="relative h-[70%] w-[70%] rounded-[32px]
-                       border border-slate-300 dark:border-slate-100/70
+                       border border-slate-300
                        flex items-center justify-center"
               >
                 <!-- corner accents -->
@@ -136,41 +123,41 @@
                          animate-ping-slow"
                 ></div>
 
-                <p class="relative text-[11px] text-slate-700 dark:text-slate-100/85">
+                <p class="relative text-[11px] text-slate-800">
                   Align QR inside the box
                 </p>
               </div>
             </div>
           </div>
 
-          <p class="text-center text-[10px] text-slate-600 dark:text-slate-300">
+          <p class="text-center text-[10px] text-slate-600">
             Works with any UPI / Bharat QR.
-            <span class="text-slate-800 dark:text-slate-200">Auto-detects amount if present.</span>
+            <span class="text-slate-800">Auto-detects amount if present.</span>
           </p>
 
           <!-- Actions under camera -->
           <div class="mt-3 flex items-center justify-between text-[11px]">
-            <button class="flex flex-col items-center gap-1 text-slate-700 dark:text-slate-200">
+            <button class="flex flex-col items-center gap-1 text-slate-700">
               <span
-                class="h-7 w-7 rounded-full border border-slate-300 dark:border-slate-500/70
+                class="h-7 w-7 rounded-full border border-slate-300
                        flex items-center justify-center text-xs"
               >
                 🖼️
               </span>
               <span class="text-[10px]">Scan from gallery</span>
             </button>
-            <button class="flex flex-col items-center gap-1 text-slate-700 dark:text-slate-200">
+            <button class="flex flex-col items-center gap-1 text-slate-700">
               <span
-                class="h-7 w-7 rounded-full border border-slate-300 dark:border-slate-500/70
+                class="h-7 w-7 rounded-full border border-slate-300
                        flex items-center justify-center text-xs"
               >
                 🔦
               </span>
               <span class="text-[10px]">Toggle torch</span>
             </button>
-            <button class="flex flex-col items-center gap-1 text-slate-700 dark:text-slate-200">
+            <button class="flex flex-col items-center gap-1 text-slate-700">
               <span
-                class="h-7 w-7 rounded-full border border-slate-300 dark:border-slate-500/70
+                class="h-7 w-7 rounded-full border border-slate-300
                        flex items-center justify-center text-xs"
               >
                 🔁
@@ -186,22 +173,22 @@
         <!-- Manual entry -->
         <div
           class="rounded-2xl
-                 bg-white/95 dark:bg-slate-950/80
-                 border border-slate-200 dark:border-slate-800
+                 bg-white
+                 border border-slate-200
                  px-3 py-3 space-y-2"
         >
-          <p class="text-[11px] text-slate-700 dark:text-slate-300 mb-1">
-            Or pay using <span class="font-semibold text-slate-900 dark:text-slate-100">Mobile / UPI ID</span>
+          <p class="text-[11px] text-slate-700 mb-1">
+            Or pay using <span class="font-semibold text-slate-900">Mobile / UPI ID</span>
           </p>
           <div class="flex items-center gap-2">
             <input
               type="text"
               placeholder="Enter mobile number or UPI ID"
               class="flex-1 rounded-xl
-                     bg-slate-100 dark:bg-slate-900/80
-                     border border-slate-300 dark:border-slate-700
+                     bg-slate-50
+                     border border-slate-300
                      px-3 py-2 text-[11px] outline-none
-                     placeholder:text-slate-400 dark:placeholder:text-slate-500
+                     placeholder:text-slate-400
                      focus:border-primary-500"
             />
             <button
@@ -215,10 +202,10 @@
         <!-- Recent contacts chips -->
         <div class="space-y-2">
           <div class="flex items-center justify-between">
-            <p class="text-[11px] text-slate-600 dark:text-slate-300 uppercase tracking-[0.16em]">
+            <p class="text-[11px] text-slate-600 uppercase tracking-[0.16em]">
               Recent people
             </p>
-            <button class="text-[10px] text-slate-500 dark:text-slate-400">
+            <button class="text-[10px] text-slate-500">
               View all
             </button>
           </div>
@@ -226,8 +213,7 @@
           <div class="flex gap-2 overflow-x-auto no-scrollbar">
             <button
               class="flex items-center gap-2 px-3 py-1.5 rounded-full
-                     bg-slate-100 border border-slate-200 text-[11px] text-slate-800
-                     dark:bg-slate-900/80 dark:border-slate-700 dark:text-slate-50"
+                     bg-slate-50 border border-slate-200 text-[11px] text-slate-800"
             >
               <span
                 class="h-6 w-6 rounded-full bg-primary-600 text-white flex items-center justify-center text-[11px]"
@@ -238,8 +224,7 @@
             </button>
             <button
               class="flex items-center gap-2 px-3 py-1.5 rounded-full
-                     bg-slate-100 border border-slate-200 text-[11px] text-slate-800
-                     dark:bg-slate-900/80 dark:border-slate-700 dark:text-slate-50"
+                     bg-slate-50 border border-slate-200 text-[11px] text-slate-800"
             >
               <span
                 class="h-6 w-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[11px]"
@@ -250,8 +235,7 @@
             </button>
             <button
               class="flex items-center gap-2 px-3 py-1.5 rounded-full
-                     bg-slate-100 border border-slate-200 text-[11px] text-slate-800
-                     dark:bg-slate-900/80 dark:border-slate-700 dark:text-slate-50"
+                     bg-slate-50 border border-slate-200 text-[11px] text-slate-800"
             >
               <span
                 class="h-6 w-6 rounded-full bg-sky-500 text-white flex items-center justify-center text-[11px]"
@@ -262,8 +246,7 @@
             </button>
             <button
               class="flex items-center gap-2 px-3 py-1.5 rounded-full
-                     bg-slate-100 border border-slate-200 text-[11px] text-slate-800
-                     dark:bg-slate-900/80 dark:border-slate-700 dark:text-slate-50"
+                     bg-slate-50 border border-slate-200 text-[11px] text-slate-800"
             >
               <span
                 class="h-6 w-6 rounded-full bg-amber-500 text-white flex items-center justify-center text-[11px]"
@@ -278,37 +261,37 @@
         <!-- Recent transactions list -->
         <div class="space-y-2">
           <div class="flex items-center justify-between">
-            <p class="text-[11px] text-slate-600 dark:text-slate-300 uppercase tracking-[0.16em]">
+            <p class="text-[11px] text-slate-600 uppercase tracking-[0.16em]">
               Recent payments
             </p>
-            <button class="text-[10px] text-slate-500 dark:text-slate-400">
+            <button class="text-[10px] text-slate-500">
               History
             </button>
           </div>
 
           <div
             class="rounded-2xl
-                   bg-white/95 dark:bg-slate-950/80
-                   border border-slate-200 dark:border-slate-800
-                   divide-y divide-slate-200 dark:divide-slate-800
+                   bg-white
+                   border border-slate-200
+                   divide-y divide-slate-200
                    text-[11px]"
           >
             <button class="w-full flex items-center justify-between px-3 py-2.5">
               <div class="flex items-center gap-2">
                 <div
-                  class="h-7 w-7 rounded-full bg-slate-100 dark:bg-slate-800
-                         flex items-center justify-center text-xs text-slate-800 dark:text-slate-50"
+                  class="h-7 w-7 rounded-full bg-slate-100
+                         flex items-center justify-center text-xs text-slate-800"
                 >
                   🏠
                 </div>
                 <div class="text-left">
-                  <p class="font-medium text-slate-900 dark:text-slate-100">Room Rent</p>
-                  <p class="text-[10px] text-slate-500 dark:text-slate-400">
+                  <p class="font-medium text-slate-900">Room Rent</p>
+                  <p class="text-[10px] text-slate-500">
                     UPI • yesterday • 9:14 PM
                   </p>
                 </div>
               </div>
-              <p class="text-[11px] font-semibold text-slate-900 dark:text-slate-100">
+              <p class="text-[11px] font-semibold text-slate-900">
                 ₹6,500
               </p>
             </button>
@@ -316,19 +299,19 @@
             <button class="w-full flex items-center justify-between px-3 py-2.5">
               <div class="flex items-center gap-2">
                 <div
-                  class="h-7 w-7 rounded-full bg-slate-100 dark:bg-slate-800
-                         flex items-center justify-center text-xs text-slate-800 dark:text-slate-50"
+                  class="h-7 w-7 rounded-full bg-slate-100
+                         flex items-center justify-center text-xs text-slate-800"
                 >
                   ☕
                 </div>
                 <div class="text-left">
-                  <p class="font-medium text-slate-900 dark:text-slate-100">Chai & Snacks</p>
-                  <p class="text-[10px] text-slate-500 dark:text-slate-400">
+                  <p class="font-medium text-slate-900">Chai & Snacks</p>
+                  <p class="text-[10px] text-slate-500">
                     QR • 2 days ago
                   </p>
                 </div>
               </div>
-              <p class="text-[11px] font-semibold text-slate-900 dark:text-slate-100">
+              <p class="text-[11px] font-semibold text-slate-900">
                 ₹180
               </p>
             </button>
@@ -336,21 +319,21 @@
             <button class="w-full flex items-center justify-between px-3 py-2.5">
               <div class="flex items-center gap-2">
                 <div
-                  class="h-7 w-7 rounded-full bg-slate-100 dark:bg-slate-800
-                         flex items-center justify-center text-xs text-slate-800 dark:text-slate-50"
+                  class="h-7 w-7 rounded-full bg-slate-100
+                         flex items-center justify-center text-xs text-slate-800"
                 >
                   🛒
                 </div>
                 <div class="text-left">
-                  <p class="font-medium text-slate-900 dark:text-slate-100">
+                  <p class="font-medium text-slate-900">
                     Groceries – Local store
                   </p>
-                  <p class="text-[10px] text-slate-500 dark:text-slate-400">
+                  <p class="text-[10px] text-slate-500">
                     QR • 3 days ago
                   </p>
                 </div>
               </div>
-              <p class="text-[11px] font-semibold text-slate-900 dark:text-slate-100">
+              <p class="text-[11px] font-semibold text-slate-900">
                 ₹1,349
               </p>
             </button>
@@ -359,17 +342,17 @@
       </section>
     </main>
 
-    <!-- BOTTOM NAV – same style -->
+    <!-- BOTTOM NAV – light only -->
     <nav class="fixed bottom-0 inset-x-0 z-30">
       <div class="mx-auto max-w-sm px-4 pb-3">
         <div
           class="flex items-center justify-between rounded-2xl
-                 border border-slate-200/80 dark:border-slate-800/80
-                 bg-white/95 dark:bg-slate-950/95
-                 backdrop-blur shadow-soft px-4 py-2.5 text-[11px]"
+                 border border-slate-200/80
+                 bg-white/95 backdrop-blur shadow-soft
+                 px-4 py-2.5 text-[11px]"
         >
           <!-- HOME -->
-          <button class="flex flex-col items-center gap-0.5 text-slate-500 dark:text-slate-400">
+          <button class="flex flex-col items-center gap-0.5 text-slate-500">
             <span class="h-8 w-8 rounded-full flex items-center justify-center text-base">
               🏠
             </span>
@@ -377,7 +360,7 @@
           </button>
 
           <!-- SEARCH -->
-          <button class="flex flex-col items-center gap-0.5 text-slate-500 dark:text-slate-400">
+          <button class="flex flex-col items-center gap-0.5 text-slate-500">
             <span class="h-8 w-8 rounded-full flex items-center justify-center text-base">
               🔍
             </span>
@@ -391,17 +374,17 @@
             >
               🔲
             </button>
-            <span class="text-[11px] text-primary-600 dark:text-primary-300 font-medium">
+            <span class="text-[11px] text-primary-600 font-medium">
               Scan
             </span>
             <span
               class="mt-0.5 h-0.5 w-5 rounded-full
-                     bg-primary-500/80 dark:bg-primary-300/90"
+                     bg-primary-500/80"
             ></span>
           </div>
 
           <!-- ALERTS -->
-          <button class="flex flex-col items-center gap-0.5 text-slate-500 dark:text-slate-400">
+          <button class="flex flex-col items-center gap-0.5 text-slate-500">
             <span class="h-8 w-8 rounded-full flex items-center justify-center text-base">
               🔔
             </span>
@@ -409,7 +392,7 @@
           </button>
 
           <!-- HISTORY -->
-          <button class="flex flex-col items-center gap-0.5 text-slate-500 dark:text-slate-400">
+          <button class="flex flex-col items-center gap-0.5 text-slate-500">
             <span class="h-8 w-8 rounded-full flex items-center justify-center text-base">
               🕒
             </span>
@@ -432,24 +415,5 @@
       animation: ping-slow 2s ease-in-out infinite;
     }
   </style>
-
-  <script>
-    // THEME TOGGLE
-    const themeToggle = document.getElementById('themeToggle');
-    if (themeToggle) {
-      const setIcon = () => {
-        themeToggle.textContent =
-          document.documentElement.classList.contains('dark') ? '🌙' : '☀️';
-      };
-      setIcon();
-
-      themeToggle.addEventListener('click', () => {
-        const root = document.documentElement;
-        const isDark = root.classList.toggle('dark');
-        localStorage.setItem('pp-theme', isDark ? 'dark' : 'light');
-        setIcon();
-      });
-    }
-  </script>
 </body>
 </html>
