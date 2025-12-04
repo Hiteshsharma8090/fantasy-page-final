@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PhonePe – New Home (Light Only)</title>
+  <title>PhonePe – Scan & Pay</title>
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <script>
-    // Tailwind config (no dark mode)
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           colors: {
@@ -28,911 +28,267 @@
         }
       }
     };
+
+    // DEFAULT = dark
+    const storedTheme = localStorage.getItem('pp-theme');
+    if (storedTheme === 'light') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
   </script>
 </head>
 
-<body class="bg-slate-50 text-slate-900">
-
-  <!-- FULL SCREEN RECEIVE QR OVERLAY -->
-  <div
-    id="receiveOverlay"
-    class="fixed inset-0 hidden z-50 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950/95 backdrop-blur flex flex-col"
-  >
-    <!-- Header -->
-    <header class="px-4 pt-4 pb-3 flex items-center justify-between text-slate-50">
-      <button
-        type="button"
-        data-close-receive
-        class="h-9 w-9 rounded-full border border-slate-600 flex items-center justify-center text-sm"
-      >
-        ✕
-      </button>
-      <p class="text-xs font-semibold tracking-wide">
-        Receive money
-      </p>
-      <span class="w-9"></span>
-    </header>
-
-    <!-- QR VIEW (SCROLLABLE AREA) -->
-    <div
-      class="flex-1 overflow-y-auto flex flex-col items-center gap-4 px-6 pb-8 pt-2"
-    >
-      <!-- QR card -->
-      <div class="mt-2 rounded-3xl bg-white p-3 shadow-xl">
-        <img
-          id="receiveQrImage"
-          src=""
-          alt="QR Code"
-          class="w-60 h-60 rounded-2xl border-8 border-slate-100"
-        />
-      </div>
-
-      <!-- Bank + UPI -->
-      <div class="text-center text-slate-100 space-y-0.5">
-        <p class="text-sm font-semibold" id="overlayBankName"></p>
-        <p class="text-[11px] text-slate-300" id="overlayUpiId"></p>
-      </div>
-
-      <!-- EXTRA CONTROLS: amount + note + helpers -->
-      <div class="w-full max-w-xs space-y-3 text-[11px] text-slate-100">
-        <div>
-          <label for="qrAmount" class="block mb-1">
-            Amount <span class="opacity-70">(optional)</span>
-          </label>
-          <input
-            id="qrAmount"
-            type="number"
-            min="1"
-            step="1"
-            placeholder="e.g. 500"
-            class="w-full rounded-2xl border border-slate-700 bg-slate-900/70 px-3 py-2 text-[11px] outline-none focus:border-primary-400"
-          />
-
-          <!-- Quick amount chips -->
-          <div class="flex gap-2 mt-2">
-            <button
-              type="button"
-              class="js-quick-amount px-3 py-1 rounded-full border border-slate-700 bg-slate-900/80 text-[10px]"
-              data-value="100"
-            >
-              ₹100
-            </button>
-            <button
-              type="button"
-              class="js-quick-amount px-3 py-1 rounded-full border border-slate-700 bg-slate-900/80 text-[10px]"
-              data-value="200"
-            >
-              ₹200
-            </button>
-            <button
-              type="button"
-              class="js-quick-amount px-3 py-1 rounded-full border border-slate-700 bg-slate-900/80 text-[10px]"
-              data-value="500"
-            >
-              ₹500
-            </button>
-          </div>
-        </div>
-
-        <div>
-          <label for="qrNote" class="block mb-1">
-            Note / Message <span class="opacity-70">(optional)</span>
-          </label>
-          <input
-            id="qrNote"
-            type="text"
-            maxlength="40"
-            placeholder="e.g. Room rent, Snacks, Cab share"
-            class="w-full rounded-2xl border border-slate-700 bg-slate-900/70 px-3 py-2 text-[11px] outline-none focus:border-primary-400"
-          />
-        </div>
-
-        <!-- Use last saved state -->
-        <button
-          id="useLastBtn"
-          type="button"
-          class="mt-1 w-full rounded-full border border-slate-700 bg-slate-900/80 text-[10px] py-1.5 hidden"
-        >
-          Use last saved amount & note
-        </button>
-        <p id="lastSummary" class="mt-1 text-[10px] text-slate-400 hidden"></p>
-
-        <button
-          id="updateQrBtn"
-          type="button"
-          class="mt-1 w-full rounded-full bg-primary-600 text-white text-[11px] font-semibold py-2.5 shadow-soft"
-        >
-          Update QR with amount / note
-        </button>
-
-        <!-- Smart helper: Split bill -->
-        <div class="mt-3 rounded-3xl border border-slate-800 bg-slate-950/80 px-3 py-3.5 space-y-2">
-          <p class="text-[10px] font-semibold text-slate-100 flex items-center gap-1">
-            <span>💡</span> Smart Split Helper
-          </p>
-          <div class="flex gap-2">
-            <div class="flex-1">
-              <label for="splitTotal" class="block mb-1 text-[10px]">Total bill</label>
-              <input
-                id="splitTotal"
-                type="number"
-                min="1"
-                step="1"
-                placeholder="e.g. 1349"
-                class="w-full rounded-2xl border border-slate-800 bg-slate-900/80 px-2.5 py-1.5 text-[10px] outline-none focus:border-primary-400"
-              />
-            </div>
-            <div class="w-20">
-              <label for="splitPeople" class="block mb-1 text-[10px]">People</label>
-              <input
-                id="splitPeople"
-                type="number"
-                min="2"
-                step="1"
-                placeholder="3"
-                class="w-full rounded-2xl border border-slate-800 bg-slate-900/80 px-2.5 py-1.5 text-[10px] outline-none focus:border-primary-400"
-              />
-            </div>
-          </div>
-          <button
-            id="splitBtn"
-            type="button"
-            class="w-full mt-2 rounded-full bg-slate-100 text-slate-900 text-[10px] font-medium py-1.5"
-          >
-            Set my share & update QR
-          </button>
-        </div>
-      </div>
-
-      <!-- ACTION BUTTONS -->
-      <div class="flex items-center gap-3 mt-4 mb-4">
-        <button
-          type="button"
-          id="copyUpiBtn"
-          class="px-4 py-2 rounded-full bg-slate-800 text-slate-100 text-[11px] font-medium flex items-center gap-1"
-        >
-          <span>📋</span> Copy UPI ID
-        </button>
-
-        <button
-          type="button"
-          data-close-receive
-          class="px-4 py-2 rounded-full bg-slate-100 text-slate-900 text-[11px] font-medium"
-        >
-          Close
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Toast for copy / updates -->
-  <div
-    id="toast"
-    class="fixed bottom-20 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-full bg-slate-900 text-slate-50 text-[11px] shadow-soft opacity-0 pointer-events-none transition-opacity duration-200 z-50"
-  >
-    Copied!
-  </div>
-
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50">
   <div class="mx-auto max-w-sm min-h-screen flex flex-col relative">
 
     <!-- TOP BAR -->
-    <header class="px-4 pt-4 pb-3 flex items-center justify-between border-b border-slate-200/80 bg-slate-50/80 backdrop-blur z-20">
-      <div class="flex items-center gap-3">
-        <div class="h-9 w-9 rounded-full bg-gradient-to-tr from-primary-600 to-primary-500 flex items-center justify-center text-xs font-semibold text-white">
-          HI
-        </div>
-        <div class="leading-tight">
-          <p class="text-[11px] text-slate-500">Good evening</p>
-          <p class="text-sm font-semibold">Hitesh</p>
-          <p class="text-[11px] text-slate-500">UPI: hitesh708090@ybl</p>
-        </div>
+    <header class="px-4 pt-4 pb-3 flex items-center justify-between border-b border-slate-200/80 dark:border-slate-800/80 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur z-20">
+      <button class="h-9 w-9 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-sm">
+        ←
+      </button>
+
+      <div class="text-center">
+        <p class="text-[11px] text-slate-500 dark:text-slate-400 uppercase tracking-[0.18em]">
+          Scan &amp; Pay
+        </p>
+        <p class="text-[11px] text-slate-400 dark:text-slate-500">
+          Pay via UPI / QR
+        </p>
       </div>
 
-      <div class="flex items-center gap-2">
-        <!-- simple icon only, no theme toggle -->
-        <button
-          class="h-9 w-9 rounded-full border border-slate-200 flex items-center justify-center text-sm"
-        >
-          ⚙️
-        </button>
-        <button class="h-9 w-9 rounded-full border border-slate-200 flex items-center justify-center text-lg">
-          ?
-        </button>
-      </div>
+      <button class="h-9 w-9 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-base">
+        ⚡
+      </button>
     </header>
 
-    <!-- SEARCH -->
-    <div class="px-4 pt-3 pb-2 bg-slate-50 sticky top-[0px] z-10">
-      <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-white border border-slate-200 text-xs text-slate-500">
-        <span class="text-base">🔍</span>
-        <input
-          class="bg-transparent flex-1 outline-none placeholder:text-slate-400 text-xs"
-          placeholder="Search people, bills, merchants & more" />
-      </div>
-    </div>
+    <!-- MAIN -->
+    <main class="flex-1 overflow-y-auto pb-20 space-y-4 bg-gradient-to-b from-slate-900 via-slate-950 to-black text-slate-50">
 
-    <!-- MAIN CONTENT -->
-    <main class="flex-1 overflow-y-auto pb-20 space-y-4">
+      <!-- CAMERA AREA -->
+      <section class="px-4 pt-4">
+        <div class="rounded-3xl border border-indigo-500/40 bg-gradient-to-br from-slate-900/60 via-slate-900/80 to-slate-950/90 shadow-soft px-3.5 py-4 relative overflow-hidden">
 
-      <!-- MULTI-ACCOUNT QR CARDS – swipe horizontally -->
-      <section class="px-4 mt-1 space-y-2">
-        <div class="flex items-center justify-between">
-          <div>
-            <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">
-              Receive money
-            </p>
-            <p class="text-[10px] text-slate-400">
-              Choose which bank should receive your money
-            </p>
+          <!-- Fake status row -->
+          <div class="flex items-center justify-between text-[10px] text-slate-300 mb-2">
+            <span class="inline-flex items-center gap-1">
+              <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+              Camera active
+            </span>
+            <span class="text-[10px] text-slate-400">Auto focus • Auto detect</span>
           </div>
-          <span class="text-[11px] text-slate-400">← swipe →</span>
+
+          <!-- Viewfinder -->
+          <div class="relative mt-1 mb-3">
+            <div class="aspect-[4/4.3] rounded-3xl bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 border border-slate-800/80 flex items-center justify-center overflow-hidden">
+              
+              <!-- Fake video bg -->
+              <div class="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_top,_#4f46e5_0,_transparent_55%),radial-gradient(circle_at_bottom,_#22c55e_0,_transparent_55%)]"></div>
+
+              <!-- Scan box -->
+              <div class="relative h-[70%] w-[70%] rounded-[32px] border border-slate-100/70 flex items-center justify-center">
+                <!-- corner accents -->
+                <div class="pointer-events-none absolute -left-2 -top-2 h-6 w-6 border-l-2 border-t-2 border-emerald-400/90 rounded-tl-2xl"></div>
+                <div class="pointer-events-none absolute -right-2 -top-2 h-6 w-6 border-r-2 border-t-2 border-emerald-400/90 rounded-tr-2xl"></div>
+                <div class="pointer-events-none absolute -left-2 -bottom-2 h-6 w-6 border-l-2 border-b-2 border-emerald-400/90 rounded-bl-2xl"></div>
+                <div class="pointer-events-none absolute -right-2 -bottom-2 h-6 w-6 border-r-2 border-b-2 border-emerald-400/90 rounded-br-2xl"></div>
+
+                <!-- animated line -->
+                <div class="absolute inset-x-5 h-[1.5px] bg-gradient-to-r from-transparent via-emerald-300 to-transparent animate-ping-slow"></div>
+
+                <p class="relative text-[11px] text-slate-100/85">
+                  Align QR inside the box
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-center text-[10px] text-slate-300">
+            Works with any UPI / Bharat QR.  
+            <span class="text-slate-200">Auto-detects amount if present.</span>
+          </p>
+
+          <!-- Actions under camera -->
+          <div class="mt-3 flex items-center justify-between text-[11px]">
+            <button class="flex flex-col items-center gap-1 text-slate-200">
+              <span class="h-7 w-7 rounded-full border border-slate-500/70 flex items-center justify-center text-xs">
+                🖼️
+              </span>
+              <span class="text-[10px]">Scan from gallery</span>
+            </button>
+            <button class="flex flex-col items-center gap-1 text-slate-200">
+              <span class="h-7 w-7 rounded-full border border-slate-500/70 flex items-center justify-center text-xs">
+                🔦
+              </span>
+              <span class="text-[10px]">Toggle torch</span>
+            </button>
+            <button class="flex flex-col items-center gap-1 text-slate-200">
+              <span class="h-7 w-7 rounded-full border border-slate-500/70 flex items-center justify-center text-xs">
+                🔁
+              </span>
+              <span class="text-[10px]">Switch camera</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- MANUAL INPUT + RECENT SHORTCUTS -->
+      <section class="px-4 space-y-3 -mt-1">
+        <!-- Manual entry -->
+        <div class="rounded-2xl bg-slate-950/80 border border-slate-800 px-3 py-3 space-y-2">
+          <p class="text-[11px] text-slate-300 mb-1">
+            Or pay using <span class="font-semibold text-slate-100">Mobile / UPI ID</span>
+          </p>
+          <div class="flex items-center gap-2">
+            <input
+              type="text"
+              placeholder="Enter mobile number or UPI ID"
+              class="flex-1 rounded-xl bg-slate-900/80 border border-slate-700 px-3 py-2 text-[11px] outline-none placeholder:text-slate-500 focus:border-primary-500"
+            />
+            <button class="px-3 py-2 rounded-xl bg-primary-600 text-[11px] font-semibold">
+              Proceed
+            </button>
+          </div>
         </div>
 
-        <div class="flex gap-3 overflow-x-auto snap-x snap-mandatory no-scrollbar py-1 pl-1">
-          <!-- CARD 1 – SBI -->
-          <article
-            class="js-bank-card snap-center min-w-[90%] rounded-[26px] bg-gradient-to-br from-[#8b5cf6] via-[#7c3aed] to-[#6366f1] text-white p-4 shadow-soft"
-            data-account-id="sbi"
-            data-account-name="State Bank"
-            data-account-last4="7728"
-            data-upi-id="hitesh708090@ybl">
-            <!-- Top row -->
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <div>
-                <p class="text-[11px] tracking-[0.16em] uppercase text-violet-100/90">
-                  Receive money
-                </p>
-                <p class="mt-1 text-[15px] font-semibold">
-                  State Bank •••• <span class="font-bold">7728</span>
-                </p>
-              </div>
-
-              <div class="flex flex-col items-end gap-1">
-                <button
-                  class="px-3.5 py-1.5 rounded-full bg-white/10 border border-white/35 backdrop-blur text-[11px] font-medium whitespace-nowrap">
-                  View UPI details
-                </button>
-
-                <button
-                  type="button"
-                  class="js-set-default text-[10px] px-2 py-0.5 rounded-full border border-white/60 bg-white/10 font-semibold">
-                  Set as default
-                </button>
-                <span
-                  class="js-default-pill hidden text-[10px] px-2 py-0.5 rounded-full bg-emerald-100/95 text-emerald-700 font-semibold shadow-sm">
-                  Receiving here
-                </span>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-[115px,minmax(0,1fr)] gap-3 items-stretch">
-              <!-- LEFT: QR -->
-              <div class="js-open-scanner cursor-pointer rounded-2xl bg-white/95 flex flex-col items-center justify-between py-3 px-3">
-                <div
-                  class="w-full aspect-square rounded-xl border border-slate-200 overflow-hidden flex items-center justify-center">
-                  <div
-                    class="h-[86%] w-[86%] bg-[radial-gradient(circle,_#000_1px,_#fff_1px)] [background-size:6px_6px] flex items-center justify-center text-xs font-semibold">
-                    पे
-                  </div>
-                </div>
-                <p class="mt-2 text-[10px] font-medium tracking-wide text-slate-600">
-                  Show QR to receive
-                </p>
-              </div>
-
-              <!-- RIGHT: Actions -->
-              <div class="flex flex-col gap-2">
-                <!-- Scan & Pay -->
-                <button
-                  class="h-11 rounded-[20px] bg-white/10 border border-white/50 px-3 flex items-center justify-between">
-                  <span class="flex items-center gap-2 text-[12px] font-medium">
-                    <span
-                      class="h-7 w-7 rounded-full bg-white/20 flex items-center justify-center text-sm">
-                      📷
-                    </span>
-                    Scan &amp; Pay
-                  </span>
-                  <span class="text-base">›</span>
-                </button>
-
-                <!-- 2 x 2 grid – round buttons -->
-                <div class="grid grid-cols-2 gap-3 text-[11px]">
-                  <button
-                    class="h-16 w-16 rounded-full border border-white/60 bg-white/10 flex flex-col items-center justify-center gap-1 mx-auto text-center backdrop-blur">
-                    <span class="text-lg leading-none">👤</span>
-                    <span class="text-[10px] leading-tight">To Mobile<br>/ UPI</span>
-                  </button>
-
-                  <button
-                    class="h-16 w-16 rounded-full border border-white/60 bg-white/10 flex flex-col items-center justify-center gap-1 mx-auto text-center backdrop-blur">
-                    <span class="text-lg leading-none">🏦</span>
-                    <span class="text-[10px] leading-tight">To Bank<br>A/c</span>
-                  </button>
-
-                  <button
-                    class="h-16 w-16 rounded-full border border-white/60 bg-white/10 flex flex-col items-center justify-center gap-1 mx-auto text-center backdrop-blur">
-                    <span class="text-lg leading-none">₹</span>
-                    <span class="text-[10px] leading-tight">Check<br>Balance</span>
-                  </button>
-
-                  <button
-                    class="h-16 w-16 rounded-full border border-white/60 bg-white/10 flex flex-col items-center justify-center gap-1 mx-auto text-center backdrop-blur">
-                    <span class="text-lg leading-none">↗️</span>
-                    <span class="text-[10px] leading-tight">Request<br>/ Split</span>
-                  </button>
-                </div>
-
-              </div>
-            </div>
-          </article>
-
-          <!-- CARD 2 – Axis -->
-          <article
-            class="js-bank-card snap-center min-w-[90%] rounded-[26px] bg-gradient-to-br from-[#4ade80] via-[#22c55e] to-[#14b8a6] text-white p-4 shadow-soft"
-            data-account-id="axis"
-            data-account-name="Axis Bank"
-            data-account-last4="0123"
-            data-upi-id="hitesh.axis@ybl">
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <div>
-                <p class="text-[11px] tracking-[0.16em] uppercase text-emerald-100/90">
-                  Receive money
-                </p>
-                <p class="mt-1 text-[15px] font-semibold">
-                  Axis Bank •••• <span class="font-bold">0123</span>
-                </p>
-              </div>
-              <div class="flex flex-col items-end gap-1">
-                <button
-                  class="px-3.5 py-1.5 rounded-full bg-white/10 border border-white/35 backdrop-blur text-[11px] font-medium whitespace-nowrap">
-                  View UPI details
-                </button>
-                <button
-                  type="button"
-                  class="js-set-default text-[10px] px-2 py-0.5 rounded-full border border-white/60 bg-white/10 font-semibold">
-                  Set as default
-                </button>
-                <span
-                  class="js-default-pill hidden text-[10px] px-2 py-0.5 rounded-full bg-emerald-100/95 text-emerald-700 font-semibold shadow-sm">
-                  Receiving here
-                </span>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-[115px,minmax(0,1fr)] gap-3 items-stretch">
-              <div class="js-open-scanner cursor-pointer rounded-2xl bg-white/95 flex flex-col items-center justify-between py-3 px-3">
-                <div
-                  class="w-full aspect-square rounded-xl border border-slate-200 overflow-hidden flex items-center justify-center">
-                  <div
-                    class="h-[86%] w-[86%] bg-[radial-gradient(circle,_#000_1px,_#fff_1px)] [background-size:6px_6px] flex items-center justify-center text-xs font-semibold">
-                    पे
-                  </div>
-                </div>
-                <p class="mt-2 text-[10px] font-medium tracking-wide text-slate-600">
-                  Show QR to receive
-                </p>
-              </div>
-
-              <div class="flex flex-col gap-2">
-                <button
-                  class="h-11 rounded-[20px] bg-white/10 border border-white/50 px-3 flex items-center justify-between">
-                  <span class="flex items-center gap-2 text-[12px] font-medium">
-                    <span class="h-7 w-7 rounded-full bg-white/20 flex items-center justify-center text-sm">
-                      📷
-                    </span>
-                    Scan &amp; Pay
-                  </span>
-                  <span class="text-base">›</span>
-                </button>
-
-                <div class="grid grid-cols-2 gap-3 text-[11px]">
-                  <button
-                    class="h-16 w-16 rounded-full border border-white/60 bg-white/10 flex flex-col items-center justify-center gap-1 mx-auto text-center backdrop-blur">
-                    <span class="text-lg leading-none">👤</span>
-                    <span class="text-[10px] leading-tight">To Mobile<br>/ UPI</span>
-                  </button>
-
-                  <button
-                    class="h-16 w-16 rounded-full border border-white/60 bg-white/10 flex flex-col items-center justify-center gap-1 mx-auto text-center backdrop-blur">
-                    <span class="text-lg leading-none">🏦</span>
-                    <span class="text-[10px] leading-tight">To Bank<br>A/c</span>
-                  </button>
-
-                  <button
-                    class="h-16 w-16 rounded-full border border-white/60 bg-white/10 flex flex-col items-center justify-center gap-1 mx-auto text-center backdrop-blur">
-                    <span class="text-lg leading-none">₹</span>
-                    <span class="text-[10px] leading-tight">Check<br>Balance</span>
-                  </button>
-
-                  <button
-                    class="h-16 w-16 rounded-full border border-white/60 bg-white/10 flex flex-col items-center justify-center gap-1 mx-auto text-center backdrop-blur">
-                    <span class="text-lg leading-none">↗️</span>
-                    <span class="text-[10px] leading-tight">Request<br>/ Split</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- CARD 3 – HDFC -->
-          <article
-            class="js-bank-card snap-center min-w-[90%] rounded-[26px] bg-gradient-to-br from-[#0ea5e9] via-[#6366f1] to-[#a855f7] text-white p-4 shadow-soft"
-            data-account-id="hdfc"
-            data-account-name="HDFC Bank"
-            data-account-last4="4456"
-            data-upi-id="hitesh.hdfc@ybl">
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <div>
-                <p class="text-[11px] tracking-[0.16em] uppercase text-sky-100/90">
-                  Receive money
-                </p>
-                <p class="mt-1 text-[15px] font-semibold">
-                  HDFC Bank •••• <span class="font-bold">4456</span>
-                </p>
-              </div>
-              <div class="flex flex-col items-end gap-1">
-                <button
-                  class="px-3.5 py-1.5 rounded-full bg-white/10 border border-white/35 backdrop-blur text-[11px] font-medium whitespace-nowrap">
-                  View UPI details
-                </button>
-                <button
-                  type="button"
-                  class="js-set-default text-[10px] px-2 py-0.5 rounded-full border border-white/60 bg-white/10 font-semibold">
-                  Set as default
-                </button>
-                <span
-                  class="js-default-pill hidden text-[10px] px-2 py-0.5 rounded-full bg-emerald-100/95 text-emerald-700 font-semibold shadow-sm">
-                  Receiving here
-                </span>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-[115px,minmax(0,1fr)] gap-3 items-stretch">
-              <div class="js-open-scanner cursor-pointer rounded-2xl bg-white/95 flex flex-col items-center justify-between py-3 px-3">
-                <div
-                  class="w-full aspect-square rounded-xl border border-slate-200 overflow-hidden flex items-center justify-center">
-                  <div
-                    class="h-[86%] w-[86%] bg-[radial-gradient(circle,_#000_1px,_#fff_1px)] [background-size:6px_6px] flex items-center justify-center text-xs font-semibold">
-                    पे
-                  </div>
-                </div>
-                <p class="mt-2 text-[10px] font-medium tracking-wide text-slate-600">
-                  Show QR to receive
-                </p>
-              </div>
-
-              <div class="flex flex-col gap-2">
-                <button
-                  class="h-11 rounded-[20px] bg-white/10 border border-white/50 px-3 flex items-center justify-between">
-                  <span class="flex items-center gap-2 text-[12px] font-medium">
-                    <span class="h-7 w-7 rounded-full bg-white/20 flex items-center justify-center text-sm">
-                      📷
-                    </span>
-                    Scan &amp; Pay
-                  </span>
-                  <span class="text-base">›</span>
-                </button>
-
-                <div class="grid grid-cols-2 gap-3 text-[11px]">
-                  <button
-                    class="h-16 w-16 rounded-full border border-white/60 bg-white/10 flex flex-col items-center justify-center gap-1 mx-auto text-center backdrop-blur">
-                    <span class="text-lg leading-none">👤</span>
-                    <span class="text-[10px] leading-tight">To Mobile<br>/ UPI</span>
-                  </button>
-
-                  <button
-                    class="h-16 w-16 rounded-full border border-white/60 bg-white/10 flex flex-col items-center justify-center gap-1 mx-auto text-center backdrop-blur">
-                    <span class="text-lg leading-none">🏦</span>
-                    <span class="text-[10px] leading-tight">To Bank<br>A/c</span>
-                  </button>
-
-                  <button
-                    class="h-16 w-16 rounded-full border border-white/60 bg-white/10 flex flex-col items-center justify-center gap-1 mx-auto text-center backdrop-blur">
-                    <span class="text-lg leading-none">₹</span>
-                    <span class="text-[10px] leading-tight">Check<br>Balance</span>
-                  </button>
-
-                  <button
-                    class="h-16 w-16 rounded-full border border-white/60 bg-white/10 flex flex-col items-center justify-center gap-1 mx-auto text-center backdrop-blur">
-                    <span class="text-lg leading-none">↗️</span>
-                    <span class="text-[10px] leading-tight">Request<br>/ Split</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- CARD 4 – ICICI -->
-          <article
-            class="js-bank-card snap-center min-w-[90%] rounded-[26px] bg-gradient-to-br from-[#f97316] via-[#fb7185] to-[#ec4899] text-white p-4 shadow-soft"
-            data-account-id="icici"
-            data-account-name="ICICI Bank"
-            data-account-last4="8899"
-            data-upi-id="hitesh.icici@ybl">
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <div>
-                <p class="text-[11px] tracking-[0.16em] uppercase text-orange-100/90">
-                  Receive money
-                </p>
-                <p class="mt-1 text-[15px] font-semibold">
-                  ICICI Bank •••• <span class="font-bold">8899</span>
-                </p>
-              </div>
-              <div class="flex flex-col items-end gap-1">
-                <button
-                  class="px-3.5 py-1.5 rounded-full bg-white/10 border border-white/35 backdrop-blur text-[11px] font-medium whitespace-nowrap">
-                  View UPI details
-                </button>
-                <button
-                  type="button"
-                  class="js-set-default text-[10px] px-2 py-0.5 rounded-full border border-white/60 bg-white/10 font-semibold">
-                  Set as default
-                </button>
-                <span
-                  class="js-default-pill hidden text-[10px] px-2 py-0.5 rounded-full bg-emerald-100/95 text-emerald-700 font-semibold shadow-sm">
-                  Receiving here
-                </span>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-[115px,minmax(0,1fr)] gap-3 items-stretch">
-              <div class="js-open-scanner cursor-pointer rounded-2xl bg-white/95 flex flex-col items-center justify-between py-3 px-3">
-                <div
-                  class="w-full aspect-square rounded-xl border border-slate-200 overflow-hidden flex items-center justify-center">
-                  <div
-                    class="h-[86%] w-[86%] bg-[radial-gradient(circle,_#000_1px,_#fff_1px)] [background-size:6px_6px] flex items-center justify-center text-xs font-semibold">
-                    पे
-                  </div>
-                </div>
-                <p class="mt-2 text-[10px] font-medium tracking-wide text-slate-600">
-                  Show QR to receive
-                </p>
-              </div>
-
-              <div class="flex flex-col gap-2">
-                <button
-                  class="h-11 rounded-[20px] bg-white/10 border border-white/50 px-3 flex items-center justify-between">
-                  <span class="flex items-center gap-2 text-[12px] font-medium">
-                    <span class="h-7 w-7 rounded-full bg-white/20 flex items-center justify-center text-sm">
-                      📷
-                    </span>
-                    Scan &amp; Pay
-                  </span>
-                  <span class="text-base">›</span>
-                </button>
-
-                <div class="grid grid-cols-2 gap-3 text-[11px]">
-                  <button
-                    class="h-16 w-16 rounded-full border border-white/60 bg-white/10 flex flex-col items-center justify-center gap-1 mx-auto text-center backdrop-blur">
-                    <span class="text-lg leading-none">👤</span>
-                    <span class="text-[10px] leading-tight">To Mobile<br>/ UPI</span>
-                  </button>
-
-                  <button
-                    class="h-16 w-16 rounded-full border border-white/60 bg-white/10 flex flex-col items-center justify-center gap-1 mx-auto text-center backdrop-blur">
-                    <span class="text-lg leading-none">🏦</span>
-                    <span class="text-[10px] leading-tight">To Bank<br>A/c</span>
-                  </button>
-
-                  <button
-                    class="h-16 w-16 rounded-full border border-white/60 bg-white/10 flex flex-col items-center justify-center gap-1 mx-auto text-center backdrop-blur">
-                    <span class="text-lg leading-none">₹</span>
-                    <span class="text-[10px] leading-tight">Check<br>Balance</span>
-                  </button>
-
-                  <button
-                    class="h-16 w-16 rounded-full border border-white/60 bg-white/10 flex flex-col items-center justify-center gap-1 mx-auto text-center backdrop-blur">
-                    <span class="text-lg leading-none">↗️</span>
-                    <span class="text-[10px] leading-tight">Request<br>/ Split</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- Add more account row -->
-        <div class="flex items-center justify-between pt-1">
-          <div class="space-y-0.5">
-            <p class="text-[11px] text-slate-500">
-              4 accounts linked
+        <!-- Recent contacts chips -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <p class="text-[11px] text-slate-300 uppercase tracking-[0.16em]">
+              Recent people
             </p>
-            <p id="activeAccountText" class="text-[11px] text-slate-500">
-              Default receiving account: State Bank •••• 7728
+            <button class="text-[10px] text-slate-400">
+              View all
+            </button>
+          </div>
+
+          <div class="flex gap-2 overflow-x-auto no-scrollbar">
+            <button class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700 text-[11px]">
+              <span class="h-6 w-6 rounded-full bg-primary-600 text-white flex items-center justify-center text-[11px]">
+                M
+              </span>
+              Mom – Rent
+            </button>
+            <button class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700 text-[11px]">
+              <span class="h-6 w-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[11px]">
+                C
+              </span>
+              Cab – Office
+            </button>
+            <button class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700 text-[11px]">
+              <span class="h-6 w-6 rounded-full bg-sky-500 text-white flex items-center justify-center text-[11px]">
+                N
+              </span>
+              Netflix share
+            </button>
+            <button class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700 text-[11px]">
+              <span class="h-6 w-6 rounded-full bg-amber-500 text-white flex items-center justify-center text-[11px]">
+                R
+              </span>
+              Roommate
+            </button>
+          </div>
+        </div>
+
+        <!-- Recent transactions list -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <p class="text-[11px] text-slate-300 uppercase tracking-[0.16em]">
+              Recent payments
             </p>
+            <button class="text-[10px] text-slate-400">
+              History
+            </button>
           </div>
-          <button
-            class="inline-flex items-center gap-1.5 rounded-full border border-dashed border-slate-300 bg-white/70 px-3 py-1 text-[11px] font-medium text-primary-600 shadow-sm">
-            <span
-              class="h-4 w-4 rounded-full border border-primary-500/60 flex items-center justify-center text-[11px]">
-              +
-            </span>
-            Add bank account
-          </button>
-        </div>
-      </section>
 
-      <!-- QUICK SHORTCUTS -->
-      <section class="px-4 space-y-2">
-        <div class="flex items-center justify-between">
-          <h2 class="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
-            Quick shortcuts
-          </h2>
-          <button class="text-[11px] text-primary-400 font-medium">
-            Edit
-          </button>
-        </div>
+          <div class="rounded-2xl bg-slate-950/80 border border-slate-800 divide-y divide-slate-800 text-[11px]">
+            <button class="w-full flex items-center justify-between px-3 py-2.5">
+              <div class="flex items-center gap-2">
+                <div class="h-7 w-7 rounded-full bg-slate-800 flex items-center justify-center text-xs">
+                  🏠
+                </div>
+                <div class="text-left">
+                  <p class="font-medium text-slate-100">Room Rent</p>
+                  <p class="text-[10px] text-slate-400">UPI • yesterday • 9:14 PM</p>
+                </div>
+              </div>
+              <p class="text-[11px] font-semibold text-slate-100">₹6,500</p>
+            </button>
 
-        <div class="flex gap-2 overflow-x-auto no-scrollbar">
-          <button
-            class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 text-[11px]">
-            <span
-              class="h-6 w-6 rounded-full bg-primary-600 text-white flex items-center justify-center text-[11px]">
-              H
-            </span>
-            <span class="whitespace-nowrap">Hitesh’s Mom</span>
-          </button>
+            <button class="w-full flex items-center justify-between px-3 py-2.5">
+              <div class="flex items-center gap-2">
+                <div class="h-7 w-7 rounded-full bg-slate-800 flex items-center justify-center text-xs">
+                  ☕
+                </div>
+                <div class="text-left">
+                  <p class="font-medium text-slate-100">Chai & Snacks</p>
+                  <p class="text-[10px] text-slate-400">QR • 2 days ago</p>
+                </div>
+              </div>
+              <p class="text-[11px] font-semibold text-slate-100">₹180</p>
+            </button>
 
-          <button
-            class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 text-[11px]">
-            <span
-              class="h-6 w-6 rounded-full bg-slate-900 text-white flex items-center justify-center text-[11px]">
-              🏠
-            </span>
-            <span class="whitespace-nowrap">Room Rent</span>
-          </button>
-
-          <button
-            class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 text-[11px]">
-            <span
-              class="h-6 w-6 rounded-full bg-amber-500 text-white flex items-center justify-center text-[11px]">
-              💡
-            </span>
-            <span class="whitespace-nowrap">Electricity Bill</span>
-          </button>
-
-          <button
-            class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 text-[11px]">
-            <span
-              class="h-6 w-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[11px]">
-              📱
-            </span>
-            <span class="whitespace-nowrap">Jio Recharge</span>
-          </button>
-
-          <button
-            class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 text-[11px]">
-            <span
-              class="h-6 w-6 rounded-full bg-sky-500 text-white flex items-center justify-center text-[11px]">
-              🛒
-            </span>
-            <span class="whitespace-nowrap">Groceries</span>
-          </button>
-        </div>
-      </section>
-
-      <!-- MONEY ACCOUNTS -->
-      <section class="px-4 space-y-2">
-        <div class="flex items-center justify-between">
-          <h2 class="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
-            Money accounts
-          </h2>
-          <button class="text-[11px] text-primary-400 font-medium">Manage</button>
-        </div>
-
-        <div class="grid grid-cols-3 gap-2 text-[11px]">
-          <button
-            class="rounded-xl border border-slate-200 bg-white px-2.5 py-2 text-left">
-            <p class="font-semibold mb-0.5 flex items-center gap-1 text-xs">Wallet <span>🪪</span></p>
-            <p class="text-[10px] text-slate-500">Add &amp; spend</p>
-          </button>
-          <button
-            class="rounded-xl border border-slate-200 bg-white px-2.5 py-2 text-left">
-            <p class="font-semibold mb-0.5 flex items-center gap-1 text-xs">UPI Lite <span>⚡</span></p>
-            <p class="text-[10px] text-slate-500">Tap for small pays</p>
-          </button>
-          <button
-            class="rounded-xl border border-slate-200 bg-white px-2.5 py-2 text-left">
-            <div class="flex items-center gap-1 mb-0.5">
-              <p class="font-semibold text-xs">PP Cards</p>
-              <span class="text-[9px] px-1 rounded-full bg-emerald-100 text-emerald-700">Free</span>
-            </div>
-            <p class="text-[10px] text-slate-500">Virtual + physical</p>
-          </button>
-        </div>
-      </section>
-
-      <!-- RECHARGE & BILLS -->
-      <section class="px-4 space-y-3">
-        <div class="flex items-center justify-between">
-          <h2 class="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
-            Recharge &amp; Bills
-          </h2>
-          <button class="text-[11px] text-primary-400 font-medium">View all</button>
-        </div>
-
-        <div
-          class="grid grid-cols-4 gap-2 text-[11px] bg-white border border-slate-200 rounded-2xl px-2.5 py-2.5">
-          <button class="flex flex-col items-center gap-1">
-            <span class="h-7 w-7 rounded-full bg-slate-100 flex items-center justify-center text-xs">📱</span>
-            Mobile
-          </button>
-          <button class="flex flex-col items-center gap-1">
-            <span class="h-7 w-7 rounded-full bg-slate-100 flex items-center justify-center text-xs">💡</span>
-            Power
-          </button>
-          <button class="flex flex-col items-center gap-1">
-            <span class="h-7 w-7 rounded-full bg-slate-100 flex items-center justify-center text-xs">📺</span>
-            DTH
-          </button>
-          <button class="flex flex-col items-center gap-1">
-            <span class="h-7 w-7 rounded-full bg-slate-100 flex items-center justify-center text-xs">💳</span>
-            Card
-          </button>
-        </div>
-
-        <div
-          class="rounded-2xl bg-slate-900 text-slate-50 flex items-center justify-between px-3 py-2.5">
-          <div>
-            <p class="text-xs font-semibold">Check credit score for free</p>
-            <p class="text-[10px] text-slate-300">No impact on score</p>
+            <button class="w-full flex items-center justify-between px-3 py-2.5">
+              <div class="flex items-center gap-2">
+                <div class="h-7 w-7 rounded-full bg-slate-800 flex items-center justify-center text-xs">
+                  🛒
+                </div>
+                <div class="text-left">
+                  <p class="font-medium text-slate-100">Groceries – Local store</p>
+                  <p class="text-[10px] text-slate-400">QR • 3 days ago</p>
+                </div>
+              </div>
+              <p class="text-[11px] font-semibold text-slate-100">₹1,349</p>
+            </button>
           </div>
-          <span class="text-xl">📊</span>
-        </div>
-      </section>
-
-      <!-- FINANCIAL PRODUCTS -->
-      <section class="px-4 grid grid-cols-2 gap-2 text-xs">
-        <button class="rounded-2xl bg-white border border-slate-200 px-3 py-2.5 text-left">
-          <p class="font-semibold mb-1 flex items-center gap-1">Loans <span>📄</span></p>
-          <p class="text-[11px] text-slate-500">Personal, gold &amp; more</p>
-        </button>
-        <button class="rounded-2xl bg-white border border-slate-200 px-3 py-2.5 text-left">
-          <div class="flex items-center gap-1 mb-1">
-            <p class="font-semibold">Insurance</p>
-            <span class="text-[9px] px-1 rounded-full bg-primary-100 text-primary-600">Offer</span>
-          </div>
-          <p class="text-[11px] text-slate-500">Health, car, term</p>
-        </button>
-        <button class="rounded-2xl bg-white border border-slate-200 px-3 py-2.5 text-left">
-          <p class="font-semibold mb-1 flex items-center gap-1">Gold <span>🏅</span></p>
-          <p class="text-[11px] text-slate-500">Start from ₹10 daily</p>
-        </button>
-        <button class="rounded-2xl bg-white border border-slate-200 px-3 py-2.5 text-left">
-          <p class="font-semibold mb-1 flex items-center gap-1">Invest <span>📈</span></p>
-          <p class="text-[11px] text-slate-500">Stocks &amp; mutual funds</p>
-        </button>
-        <button class="rounded-2xl bg-white border border-slate-200 px-3 py-2.5 text-left col-span-2">
-          <p class="font-semibold mb-1 flex items-center gap-1">Travel &amp; Transit <span>✈️</span></p>
-          <p class="text-[11px] text-slate-500">Flights, trains, cabs, metro passes</p>
-        </button>
-      </section>
-
-      <!-- REWARDS -->
-      <section class="px-4 space-y-2">
-        <div class="flex items-center justify-between">
-          <h2 class="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
-            Rewards for you
-          </h2>
-          <button class="text-[11px] text-primary-400 font-medium">View all</button>
-        </div>
-
-        <div class="flex gap-2 overflow-x-auto no-scrollbar">
-          <article class="min-w-[170px] rounded-2xl bg-gradient-to-tr from-pink-600 to-orange-400 text-white px-3 py-3">
-            <p class="text-[11px] uppercase tracking-wide opacity-80 mb-1">Story TV</p>
-            <p class="text-xs font-semibold mb-1">₹1 trial – unlimited shows</p>
-            <p class="text-[10px] opacity-90">Valid for 11 days</p>
-          </article>
-
-          <article class="min-w-[170px] rounded-2xl bg-gradient-to-tr from-slate-900 to-slate-700 text-white px-3 py-3">
-            <p class="text-[11px] uppercase tracking-wide opacity-80 mb-1">Lenskart</p>
-            <p class="text-xs font-semibold mb-1">Free Gold Max membership</p>
-            <p class="text-[10px] opacity-90">Worth ₹600</p>
-          </article>
-
-          <article class="min-w-[170px] rounded-2xl bg-gradient-to-tr from-indigo-500 to-sky-500 text-white px-3 py-3">
-            <p class="text-[11px] uppercase tracking-wide opacity-80 mb-1">Instamart</p>
-            <p class="text-xs font-semibold mb-1">Flat ₹120 off groceries</p>
-            <p class="text-[10px] opacity-90">On orders above ₹699</p>
-          </article>
-        </div>
-      </section>
-
-      <!-- CHATGPT / AI -->
-      <section class="px-4 space-y-2 pb-4">
-        <h2 class="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
-          Explore with ChatGPT
-        </h2>
-
-        <div class="grid grid-cols-4 gap-3 text-[11px] bg-white border border-slate-200 rounded-2xl px-3 py-3">
-          <button class="flex flex-col items-center gap-1 text-center">
-            <span class="h-8 w-8 rounded-full border border-slate-200 flex items-center justify-center text-xs">💡</span>
-            Ask
-          </button>
-          <button class="flex flex-col items-center gap-1 text-center">
-            <span class="h-8 w-8 rounded-full border border-slate-200 flex items-center justify-center text-xs">🖼️</span>
-            Images
-          </button>
-          <button class="flex flex-col items-center gap-1 text-center">
-            <span class="h-8 w-8 rounded-full border border-slate-200 flex items-center justify-center text-xs">📈</span>
-            Career
-          </button>
-          <button class="flex flex-col items-center gap-1 text-center">
-            <span class="h-8 w-8 rounded-full border border-slate-200 flex items-center justify-center text-xs">🥗</span>
-            Recipes
-          </button>
-          <button class="flex flex-col items-center gap-1 text-center">
-            <span class="h-8 w-8 rounded-full border border-slate-200 flex items-center justify-center text-xs">🧮</span>
-            Budget
-          </button>
-          <button class="flex flex-col items-center gap-1 text-center">
-            <span class="h-8 w-8 rounded-full border border-slate-200 flex items-center justify-center text-xs">♈</span>
-            Astro
-          </button>
-          <button class="flex flex-col items-center gap-1 text-center">
-            <span class="h-8 w-8 rounded-full border border-slate-200 flex items-center justify-center text-xs">✍️</span>
-            Write
-          </button>
-          <button class="flex flex-col items-center gap-1 text-center">
-            <span class="h-8 w-8 rounded-full border border-slate-200 flex items-center justify-center text-xs">🏖️</span>
-            Vacation
-          </button>
         </div>
       </section>
     </main>
 
-    <!-- BOTTOM NAV – glass dock style -->
+    <!-- BOTTOM NAV – same style -->
     <nav class="fixed bottom-0 inset-x-0 z-30">
       <div class="mx-auto max-w-sm px-4 pb-3">
         <div
-          class="flex items-center justify-between rounded-2xl border border-slate-200/80 bg-white/95 backdrop-blur shadow-soft px-4 py-2.5 text-[11px]"
+          class="flex items-center justify-between rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white/95 dark:bg-slate-950/95 backdrop-blur shadow-soft px-4 py-2.5 text-[11px]"
         >
-          <!-- HOME (active) -->
-          <button class="flex flex-col items-center gap-0.5 text-primary-600">
-            <span
-              class="h-8 w-8 rounded-full bg-primary-600/10 flex items-center justify-center text-base"
-            >
+          <!-- HOME -->
+          <button class="flex flex-col items-center gap-0.5 text-slate-500 dark:text-slate-400">
+            <span class="h-8 w-8 rounded-full flex items-center justify-center text-base">
               🏠
             </span>
-            <span class="font-medium">Home</span>
-            <span class="mt-0.5 h-0.5 w-5 rounded-full bg-primary-500/80"></span>
+            <span>Home</span>
           </button>
 
           <!-- SEARCH -->
-          <button class="flex flex-col items-center gap-0.5 text-slate-500">
-            <span
-              class="h-8 w-8 rounded-full bg-transparent flex items-center justify-center text-base"
-            >
+          <button class="flex flex-col items-center gap-0.5 text-slate-500 dark:text-slate-400">
+            <span class="h-8 w-8 rounded-full flex items-center justify-center text-base">
               🔍
             </span>
             <span>Search</span>
           </button>
 
-          <!-- SCAN – primary floating action -->
+          <!-- SCAN – active -->
           <div class="flex flex-col items-center gap-1 -mt-6">
             <button
               class="h-12 w-12 rounded-full bg-primary-600 text-white flex items-center justify-center text-xl shadow-soft border border-primary-400/60"
             >
               🔲
             </button>
-            <span class="text-[11px] text-slate-500">Scan</span>
+            <span class="text-[11px] text-primary-600 dark:text-primary-300 font-medium">Scan</span>
+            <span class="mt-0.5 h-0.5 w-5 rounded-full bg-primary-500/80 dark:bg-primary-300/90"></span>
           </div>
 
           <!-- ALERTS -->
-          <button class="flex flex-col items-center gap-0.5 text-slate-500">
-            <span
-              class="h-8 w-8 rounded-full bg-transparent flex items-center justify-center text-base"
-            >
+          <button class="flex flex-col items-center gap-0.5 text-slate-500 dark:text-slate-400">
+            <span class="h-8 w-8 rounded-full flex items-center justify-center text-base">
               🔔
             </span>
             <span>Alerts</span>
           </button>
 
           <!-- HISTORY -->
-          <button class="flex flex-col items-center gap-0.5 text-slate-500">
-            <span
-              class="h-8 w-8 rounded-full bg-transparent flex items-center justify-center text-base"
-            >
+          <button class="flex flex-col items-center gap-0.5 text-slate-500 dark:text-slate-400">
+            <span class="h-8 w-8 rounded-full flex items-center justify-center text-base">
               🕒
             </span>
             <span>History</span>
@@ -940,294 +296,24 @@
         </div>
       </div>
     </nav>
-
   </div>
 
   <style>
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    @keyframes ping-slow {
+      0% { opacity: 0; transform: translateY(-80%); }
+      50% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(80%); }
+    }
+    .animate-ping-slow {
+      animation: ping-slow 2s ease-in-out infinite;
+    }
   </style>
 
   <script>
-    // MULTI-ACCOUNT DEFAULT HANDLING
-    (function () {
-      const cards = document.querySelectorAll('.js-bank-card');
-      const info = document.getElementById('activeAccountText');
-      if (!cards.length || !info) return;
-
-      let activeId = localStorage.getItem('pp-active-account') || 'sbi';
-
-      function updateUI() {
-        cards.forEach(card => {
-          const id = card.dataset.accountId;
-          const pill = card.querySelector('.js-default-pill');
-          const setBtn = card.querySelector('.js-set-default');
-          const isActive = id === activeId;
-
-          if (pill) pill.classList.toggle('hidden', !isActive);
-          if (setBtn) setBtn.classList.toggle('hidden', isActive);
-
-          card.classList.toggle('ring-2', isActive);
-          card.classList.toggle('ring-offset-2', isActive);
-          card.classList.toggle('ring-primary-300', isActive);
-        });
-
-        const activeCard = Array.from(cards).find(c => c.dataset.accountId === activeId);
-        if (activeCard) {
-          const name = activeCard.dataset.accountName || 'Account';
-          const last4 = activeCard.dataset.accountLast4 || '••••';
-          info.textContent = `Default receiving account: ${name} •••• ${last4}`;
-        }
-      }
-
-      cards.forEach(card => {
-        const setBtn = card.querySelector('.js-set-default');
-        if (!setBtn) return;
-
-        setBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          activeId = card.dataset.accountId;
-          localStorage.setItem('pp-active-account', activeId);
-          updateUI();
-        });
-
-        card.addEventListener('click', () => {
-          activeId = card.dataset.accountId;
-          localStorage.setItem('pp-active-account', activeId);
-          updateUI();
-        });
-      });
-
-      updateUI();
-    })();
-
-    // RECEIVE QR OVERLAY + EXTRA FEATURES
-    (function () {
-      const triggers = document.querySelectorAll('.js-open-scanner');
-      const overlay = document.getElementById('receiveOverlay');
-      const img = document.getElementById('receiveQrImage');
-      const nameEl = document.getElementById('overlayBankName');
-      const upiEl = document.getElementById('overlayUpiId');
-      const amountInput = document.getElementById('qrAmount');
-      const noteInput = document.getElementById('qrNote');
-      const updateBtn = document.getElementById('updateQrBtn');
-      const copyBtn = document.getElementById('copyUpiBtn');
-      const toast = document.getElementById('toast');
-
-      const quickAmountBtns = document.querySelectorAll('.js-quick-amount');
-      const splitTotalInput = document.getElementById('splitTotal');
-      const splitPeopleInput = document.getElementById('splitPeople');
-      const splitBtn = document.getElementById('splitBtn');
-
-      const useLastBtn = document.getElementById('useLastBtn');
-      const lastSummary = document.getElementById('lastSummary');
-
-      if (!triggers.length || !overlay || !img) return;
-
-      const closeBtns = overlay.querySelectorAll('[data-close-receive]');
-
-      let currentBank = '';
-      let currentLast4 = '';
-      let currentUpi = '';
-
-      function showToast(message) {
-        if (!toast) return;
-        toast.textContent = message;
-        toast.classList.remove('opacity-0');
-        toast.classList.add('opacity-100');
-        setTimeout(() => {
-          toast.classList.remove('opacity-100');
-          toast.classList.add('opacity-0');
-        }, 1200);
-      }
-
-      function buildUpiUrl(upi, bank, amount, note) {
-        let url = `upi://pay?pa=${encodeURIComponent(upi)}&pn=${encodeURIComponent(bank)}&cu=INR`;
-        if (amount && Number(amount) > 0) {
-          url += `&am=${encodeURIComponent(amount)}`;
-        }
-        if (note && note.trim().length > 0) {
-          url += `&tn=${encodeURIComponent(note.trim())}`;
-        }
-        return url;
-      }
-
-      function getLastKey() {
-        if (!currentUpi) return null;
-        return `pp-last-request-${currentUpi}`;
-      }
-
-      function saveCurrentState() {
-        const key = getLastKey();
-        if (!key) return;
-        const data = {
-          amount: amountInput.value || '',
-          note: noteInput.value || ''
-        };
-        try {
-          localStorage.setItem(key, JSON.stringify(data));
-        } catch (e) {}
-        loadLastSummary();
-      }
-
-      function loadLastSummary() {
-        if (!useLastBtn || !lastSummary) return;
-        const key = getLastKey();
-        if (!key) {
-          useLastBtn.classList.add('hidden');
-          lastSummary.classList.add('hidden');
-          return;
-        }
-        const raw = localStorage.getItem(key);
-        if (!raw) {
-          useLastBtn.classList.add('hidden');
-          lastSummary.classList.add('hidden');
-          return;
-        }
-        try {
-          const data = JSON.parse(raw);
-          const amt = data.amount;
-          const note = data.note;
-          if (!amt && !note) {
-            useLastBtn.classList.add('hidden');
-            lastSummary.classList.add('hidden');
-            return;
-          }
-          let text = 'Last: ';
-          if (amt) text += `₹${amt}`;
-          if (note) text += (amt ? ' – ' : '') + note;
-          lastSummary.textContent = text;
-          useLastBtn.classList.remove('hidden');
-          lastSummary.classList.remove('hidden');
-        } catch (e) {
-          useLastBtn.classList.add('hidden');
-          lastSummary.classList.add('hidden');
-        }
-      }
-
-      function applyLastState() {
-        const key = getLastKey();
-        if (!key) return;
-        const raw = localStorage.getItem(key);
-        if (!raw) return;
-        try {
-          const data = JSON.parse(raw);
-          if (data.amount) amountInput.value = data.amount;
-          if (data.note) noteInput.value = data.note;
-          updateQrImage();
-          showToast('Last amount & note applied');
-        } catch (e) {}
-      }
-
-      function updateQrImage() {
-        const amount = amountInput.value;
-        const note = noteInput.value;
-        const upiUrl = buildUpiUrl(currentUpi, currentBank, amount, note);
-        const dataParam = encodeURIComponent(upiUrl);
-        img.src = `https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=${dataParam}`;
-      }
-
-      function openOverlay(card) {
-        currentBank = card.dataset.accountName || 'Account';
-        currentLast4 = card.dataset.accountLast4 || '••••';
-        currentUpi = card.dataset.upiId || 'hitesh708090@ybl';
-
-        nameEl.textContent = `${currentBank} •••• ${currentLast4}`;
-        upiEl.textContent = currentUpi;
-
-        amountInput.value = '';
-        noteInput.value = '';
-        if (splitTotalInput) splitTotalInput.value = '';
-        if (splitPeopleInput) splitPeopleInput.value = '';
-
-        loadLastSummary();
-        updateQrImage();
-        overlay.classList.remove('hidden');
-      }
-
-      triggers.forEach(el => {
-        const card = el.closest('.js-bank-card');
-        if (!card) return;
-        el.addEventListener('click', (e) => {
-          e.stopPropagation();
-          openOverlay(card);
-        });
-      });
-
-      closeBtns.forEach(btn =>
-        btn.addEventListener('click', () => overlay.classList.add('hidden'))
-      );
-
-      overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) overlay.classList.add('hidden');
-      });
-
-      if (updateBtn) {
-        updateBtn.addEventListener('click', () => {
-          updateQrImage();
-          saveCurrentState();
-          showToast('QR updated');
-        });
-      }
-
-      if (copyBtn) {
-        copyBtn.addEventListener('click', async () => {
-          const upi = (upiEl.textContent || '').trim();
-          if (!upi) return;
-          try {
-            await navigator.clipboard.writeText(upi);
-            showToast('UPI ID copied');
-          } catch (err) {
-            showToast('Unable to copy');
-          }
-        });
-      }
-
-      // Quick amount chips
-      if (quickAmountBtns && quickAmountBtns.length) {
-        quickAmountBtns.forEach(btn => {
-          btn.addEventListener('click', () => {
-            const value = btn.dataset.value;
-            if (!value) return;
-            amountInput.value = value;
-            updateQrImage();
-            saveCurrentState();
-            showToast(`Amount set to ₹${value}`);
-          });
-        });
-      }
-
-      // Split helper
-      if (splitBtn) {
-        splitBtn.addEventListener('click', () => {
-          const total = parseFloat(splitTotalInput.value);
-          const people = parseInt(splitPeopleInput.value, 10);
-          if (!total || !people || people <= 0) {
-            showToast('Enter valid total & people');
-            return;
-          }
-          const share = Math.round((total / people) * 100) / 100;
-          amountInput.value = share;
-          updateQrImage();
-          saveCurrentState();
-          showToast(`Your share set to ₹${share}`);
-        });
-      }
-
-      // Use last saved
-      if (useLastBtn) {
-        useLastBtn.addEventListener('click', () => {
-          applyLastState();
-        });
-      }
-
-      // Esc key to close
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          overlay.classList.add('hidden');
-        }
-      });
-    })();
+    const toggle = document.getElementById('themeToggle');
+    // (Optional) agar same theme button reuse karna ho
   </script>
 </body>
 </html>
