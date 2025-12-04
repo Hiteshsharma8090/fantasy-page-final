@@ -23,58 +23,69 @@
             },
           },
           boxShadow: {
-            soft: '0 12px 32px rgba(15,23,42,0.25)',
+            soft: '0 12px 32px rgba(15,23,42,0.15)',
           }
         }
       }
     };
-
-    // DEFAULT = dark
-    const storedTheme = localStorage.getItem('pp-theme');
-    if (storedTheme === 'light') {
-      document.documentElement.classList.remove('dark');
-    } else {
-      document.documentElement.classList.add('dark');
-    }
   </script>
 </head>
 
-<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50">
+<body class="bg-slate-50 text-slate-900">
   <div class="mx-auto max-w-sm min-h-screen flex flex-col relative">
 
     <!-- TOP BAR -->
-    <header class="px-4 pt-4 pb-3 flex items-center justify-between border-b border-slate-200/80 dark:border-slate-800/80 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur z-20">
-      <button class="h-9 w-9 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-sm">
+    <header
+      class="px-4 pt-4 pb-3 flex items-center justify-between
+             border-b border-slate-200/80
+             bg-slate-50/80 backdrop-blur z-20"
+    >
+      <button
+        class="h-9 w-9 rounded-full border border-slate-200
+               flex items-center justify-center text-sm"
+      >
         ←
       </button>
 
       <div class="text-center">
-        <p class="text-[11px] text-slate-500 dark:text-slate-400 uppercase tracking-[0.18em]">
+        <p class="text-[11px] text-slate-500 uppercase tracking-[0.18em]">
           Pay to
         </p>
-        <p class="text-[11px] text-slate-400 dark:text-slate-500">
+        <p class="text-[11px] text-slate-400">
           Mobile number / UPI ID
         </p>
       </div>
 
-      <button class="h-9 w-9 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-base">
+      <button
+        class="h-9 w-9 rounded-full border border-slate-200
+               flex items-center justify-center text-base"
+      >
         👥
       </button>
     </header>
 
     <!-- MAIN -->
-    <main class="flex-1 overflow-y-auto pb-20 space-y-4 bg-gradient-to-b from-slate-900 via-slate-950 to-black text-slate-50">
+    <main
+      class="flex-1 overflow-y-auto pb-20 space-y-4
+             bg-gradient-to-b from-slate-50 via-slate-100 to-slate-50
+             text-slate-900"
+    >
 
       <!-- PRIMARY FORM -->
       <section class="px-4 pt-4 space-y-3">
         <!-- Mode toggle + input -->
-        <div class="rounded-2xl bg-slate-950/80 border border-slate-800 px-3.5 py-3.5 space-y-3">
+        <div
+          class="rounded-2xl
+                 bg-white/95
+                 border border-slate-200
+                 px-3.5 py-3.5 space-y-3 shadow-sm"
+        >
           <!-- Toggle -->
           <div class="flex items-center justify-between gap-2 text-[11px]">
-            <div class="inline-flex p-0.5 rounded-full bg-slate-900 border border-slate-700">
+            <div class="inline-flex p-0.5 rounded-full bg-slate-100 border border-slate-200">
               <button
                 type="button"
-                class="data-[active=true]:bg-slate-100 data-[active=true]:text-slate-900 data-[active=true]:font-semibold px-3 py-1 rounded-full transition text-slate-300"
+                class="data-[active=true]:bg-slate-900 data-[active=true]:text-slate-50 data-[active=true]:font-semibold px-3 py-1 rounded-full transition text-slate-600"
                 data-mode-btn
                 data-mode="mobile"
                 data-active="true"
@@ -83,7 +94,7 @@
               </button>
               <button
                 type="button"
-                class="data-[active=true]:bg-slate-100 data-[active=true]:text-slate-900 data-[active=true]:font-semibold px-3 py-1 rounded-full transition text-slate-400"
+                class="data-[active=true]:bg-slate-900 data-[active=true]:text-slate-50 data-[active=true]:font-semibold px-3 py-1 rounded-full transition text-slate-500"
                 data-mode-btn
                 data-mode="upi"
                 data-active="false"
@@ -91,7 +102,7 @@
                 UPI ID
               </button>
             </div>
-            <span id="modeHint" class="text-[10px] text-slate-400">
+            <span id="modeHint" class="text-[10px] text-slate-500">
               Linked to UPI automatically
             </span>
           </div>
@@ -99,7 +110,11 @@
           <!-- Input row -->
           <div class="flex items-center gap-2">
             <!-- Country code (for mobile mode) -->
-            <div id="countryCodeWrap" class="flex items-center gap-1 text-[11px] text-slate-300 bg-slate-900/80 border border-slate-700 px-2 py-1.5 rounded-xl">
+            <div
+              id="countryCodeWrap"
+              class="flex items-center gap-1 text-[11px] text-slate-700
+                     bg-slate-100 border border-slate-300 px-2 py-1.5 rounded-xl"
+            >
               <span class="text-[12px]">🇮🇳</span>
               <span class="text-[11px]">+91</span>
             </div>
@@ -108,26 +123,36 @@
               id="payToInput"
               type="text"
               autocomplete="off"
-              class="flex-1 rounded-xl bg-slate-900/80 border border-slate-700 px-3 py-2 text-[11px] outline-none placeholder:text-slate-500 focus:border-primary-500"
+              class="flex-1 rounded-xl
+                     bg-slate-50 border border-slate-300
+                     px-3 py-2 text-[11px] outline-none
+                     placeholder:text-slate-400
+                     focus:border-primary-500"
               placeholder="Enter mobile number"
             />
           </div>
 
           <p class="text-[10px] text-slate-500">
-            Example: <span class="text-slate-300">98765 43210</span> or <span class="text-slate-300">name@upi</span>
+            Example: <span class="text-slate-800">98765 43210</span> or
+            <span class="text-slate-800">name@upi</span>
           </p>
         </div>
 
         <!-- Amount + note + bank selector -->
-        <div class="rounded-2xl bg-slate-950/80 border border-slate-800 px-3.5 py-3.5 space-y-3">
+        <div
+          class="rounded-2xl
+                 bg-white/95
+                 border border-slate-200
+                 px-3.5 py-3.5 space-y-3 shadow-sm"
+        >
           <!-- Amount big -->
           <div>
             <div class="flex items-center justify-between">
-              <p class="text-[11px] text-slate-300">Amount</p>
-              <p class="text-[10px] text-slate-500">Min ₹1</p>
+              <p class="text-[11px] text-slate-600">Amount</p>
+              <p class="text-[10px] text-slate-400">Min ₹1</p>
             </div>
             <div class="mt-1 flex items-baseline gap-1">
-              <span class="text-lg text-slate-300">₹</span>
+              <span class="text-lg text-slate-800">₹</span>
               <input
                 id="amountInput"
                 type="number"
@@ -135,7 +160,9 @@
                 step="1"
                 inputmode="numeric"
                 placeholder="0"
-                class="bg-transparent border-none outline-none text-2xl font-semibold tracking-wide w-full placeholder:text-slate-600"
+                class="bg-transparent border-none outline-none
+                       text-2xl font-semibold tracking-wide w-full
+                       placeholder:text-slate-300"
               />
             </div>
 
@@ -143,21 +170,27 @@
             <div class="flex gap-2 mt-2">
               <button
                 type="button"
-                class="js-quick-amount px-2.5 py-1.5 rounded-full border border-slate-700 bg-slate-900/80 text-[10px] text-slate-100"
+                class="js-quick-amount px-2.5 py-1.5 rounded-full
+                       border border-slate-300 bg-slate-100
+                       text-[10px] text-slate-800"
                 data-value="200"
               >
                 ₹200
               </button>
               <button
                 type="button"
-                class="js-quick-amount px-2.5 py-1.5 rounded-full border border-slate-700 bg-slate-900/80 text-[10px] text-slate-100"
+                class="js-quick-amount px-2.5 py-1.5 rounded-full
+                       border border-slate-300 bg-slate-100
+                       text-[10px] text-slate-800"
                 data-value="500"
               >
                 ₹500
               </button>
               <button
                 type="button"
-                class="js-quick-amount px-2.5 py-1.5 rounded-full border border-slate-700 bg-slate-900/80 text-[10px] text-slate-100"
+                class="js-quick-amount px-2.5 py-1.5 rounded-full
+                       border border-slate-300 bg-slate-100
+                       text-[10px] text-slate-800"
                 data-value="1000"
               >
                 ₹1000
@@ -167,41 +200,51 @@
 
           <!-- Note -->
           <div>
-            <label for="noteInput" class="block text-[11px] text-slate-300 mb-1">
-              Note / Message <span class="text-slate-500">(optional)</span>
+            <label for="noteInput" class="block text-[11px] text-slate-600 mb-1">
+              Note / Message <span class="text-slate-400">(optional)</span>
             </label>
             <input
               id="noteInput"
               type="text"
               maxlength="40"
               placeholder="e.g. Room rent, Food, Petrol"
-              class="w-full rounded-xl bg-slate-900/80 border border-slate-700 px-3 py-2 text-[11px] outline-none placeholder:text-slate-500 focus:border-primary-500"
+              class="w-full rounded-xl
+                     bg-slate-50 border border-slate-300
+                     px-3 py-2 text-[11px] outline-none
+                     placeholder:text-slate-400
+                     focus:border-primary-500"
             />
           </div>
 
           <!-- Bank selector -->
           <div class="space-y-2">
-            <p class="text-[11px] text-slate-300">
+            <p class="text-[11px] text-slate-600">
               Pay using
             </p>
             <div class="flex flex-wrap gap-1.5 text-[10px]">
               <button
                 type="button"
-                class="js-bank-pill rounded-full px-3 py-1.5 border border-primary-400 bg-primary-600/20 text-primary-100 font-medium"
+                class="js-bank-pill rounded-full px-3 py-1.5
+                       border border-primary-400
+                       bg-primary-50 text-primary-700 font-medium"
                 data-bank="State Bank"
               >
                 State Bank •••• 7728
               </button>
               <button
                 type="button"
-                class="js-bank-pill rounded-full px-3 py-1.5 border border-slate-700 bg-slate-900/80 text-slate-100"
+                class="js-bank-pill rounded-full px-3 py-1.5
+                       border border-slate-300
+                       bg-slate-100 text-slate-700"
                 data-bank="Axis Bank"
               >
                 Axis Bank •••• 0123
               </button>
               <button
                 type="button"
-                class="js-bank-pill rounded-full px-3 py-1.5 border border-slate-700 bg-slate-900/80 text-slate-100"
+                class="js-bank-pill rounded-full px-3 py-1.5
+                       border border-slate-300
+                       bg-slate-100 text-slate-700"
                 data-bank="HDFC Bank"
               >
                 HDFC •••• 4456
@@ -216,29 +259,47 @@
         <!-- Chips -->
         <div class="space-y-2">
           <div class="flex items-center justify-between">
-            <p class="text-[11px] text-slate-300 uppercase tracking-[0.16em]">
+            <p class="text-[11px] text-slate-600 uppercase tracking-[0.16em]">
               Frequently paid
             </p>
-            <button class="text-[10px] text-slate-400">
+            <button class="text-[10px] text-slate-500">
               Manage
             </button>
           </div>
 
           <div class="flex gap-2 overflow-x-auto no-scrollbar">
-            <button class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-950/80 border border-slate-800 text-[11px]">
-              <span class="h-6 w-6 rounded-full bg-primary-600 text-white flex items-center justify-center text-[11px]">
+            <button
+              class="flex items-center gap-2 px-3 py-1.5 rounded-full
+                     bg-white border border-slate-200 text-[11px] text-slate-800"
+            >
+              <span
+                class="h-6 w-6 rounded-full bg-primary-600 text-white
+                       flex items-center justify-center text-[11px]"
+              >
                 M
               </span>
               Mom – Rent
             </button>
-            <button class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-950/80 border border-slate-800 text-[11px]">
-              <span class="h-6 w-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[11px]">
+            <button
+              class="flex items-center gap-2 px-3 py-1.5 rounded-full
+                     bg-white border border-slate-200 text-[11px] text-slate-800"
+            >
+              <span
+                class="h-6 w-6 rounded-full bg-emerald-500 text-white
+                       flex items-center justify-center text-[11px]"
+              >
                 R
               </span>
               Roommate – Split
             </button>
-            <button class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-950/80 border border-slate-800 text-[11px]">
-              <span class="h-6 w-6 rounded-full bg-sky-500 text-white flex items-center justify-center text-[11px]">
+            <button
+              class="flex items-center gap-2 px-3 py-1.5 rounded-full
+                     bg-white border border-slate-200 text-[11px] text-slate-800"
+            >
+              <span
+                class="h-6 w-6 rounded-full bg-sky-500 text-white
+                       flex items-center justify-center text-[11px]"
+              >
                 D
               </span>
               D-Mart Groceries
@@ -249,52 +310,73 @@
         <!-- Recent list -->
         <div class="space-y-2">
           <div class="flex items-center justify-between">
-            <p class="text-[11px] text-slate-300 uppercase tracking-[0.16em]">
+            <p class="text-[11px] text-slate-600 uppercase tracking-[0.16em]">
               Recent
             </p>
-            <button class="text-[10px] text-slate-400">
+            <button class="text-[10px] text-slate-500">
               Full history
             </button>
           </div>
 
-          <div class="rounded-2xl bg-slate-950/80 border border-slate-800 divide-y divide-slate-800 text-[11px]">
+          <div
+            class="rounded-2xl
+                   bg-white/95
+                   border border-slate-200
+                   divide-y divide-slate-100
+                   text-[11px] shadow-sm"
+          >
             <button class="w-full flex items-center justify-between px-3 py-2.5">
               <div class="flex items-center gap-2">
-                <div class="h-7 w-7 rounded-full bg-slate-800 flex items-center justify-center text-xs">
+                <div
+                  class="h-7 w-7 rounded-full bg-slate-100
+                         flex items-center justify-center text-xs"
+                >
                   🧑
                 </div>
                 <div class="text-left">
-                  <p class="font-medium text-slate-100">Ankit Sharma</p>
-                  <p class="text-[10px] text-slate-400">+91 98••• 12345 • 2 days ago</p>
+                  <p class="font-medium text-slate-900">Ankit Sharma</p>
+                  <p class="text-[10px] text-slate-500">
+                    +91 98••• 12345 • 2 days ago
+                  </p>
                 </div>
               </div>
-              <p class="text-[11px] font-semibold text-slate-100">₹750</p>
+              <p class="text-[11px] font-semibold text-slate-900">₹750</p>
             </button>
 
             <button class="w-full flex items-center justify-between px-3 py-2.5">
               <div class="flex items-center gap-2">
-                <div class="h-7 w-7 rounded-full bg-slate-800 flex items-center justify-center text-xs">
+                <div
+                  class="h-7 w-7 rounded-full bg-slate-100
+                         flex items-center justify-center text-xs"
+                >
                   🛵
                 </div>
                 <div class="text-left">
-                  <p class="font-medium text-slate-100">Swiggy Delivery</p>
-                  <p class="text-[10px] text-slate-400">upi@sbi • yesterday</p>
+                  <p class="font-medium text-slate-900">Swiggy Delivery</p>
+                  <p class="text-[10px] text-slate-500">
+                    upi@sbi • yesterday
+                  </p>
                 </div>
               </div>
-              <p class="text-[11px] font-semibold text-slate-100">₹489</p>
+              <p class="text-[11px] font-semibold text-slate-900">₹489</p>
             </button>
 
             <button class="w-full flex items-center justify-between px-3 py-2.5">
               <div class="flex items-center gap-2">
-                <div class="h-7 w-7 rounded-full bg-slate-800 flex items-center justify-center text-xs">
+                <div
+                  class="h-7 w-7 rounded-full bg-slate-100
+                         flex items-center justify-center text-xs"
+                >
                   💊
                 </div>
                 <div class="text-left">
-                  <p class="font-medium text-slate-100">Local Medical</p>
-                  <p class="text-[10px] text-slate-400">medicines@upi • 3 days ago</p>
+                  <p class="font-medium text-slate-900">Local Medical</p>
+                  <p class="text-[10px] text-slate-500">
+                    medicines@upi • 3 days ago
+                  </p>
                 </div>
               </div>
-              <p class="text-[11px] font-semibold text-slate-100">₹320</p>
+              <p class="text-[11px] font-semibold text-slate-900">₹320</p>
             </button>
           </div>
         </div>
@@ -304,8 +386,12 @@
     <!-- BOTTOM STICKY PAY BAR -->
     <nav class="fixed bottom-0 inset-x-0 z-30">
       <div class="mx-auto max-w-sm px-4 pb-3">
-        <div class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white/95 dark:bg-slate-950/95 backdrop-blur shadow-soft px-3 py-2.5 flex items-center justify-between gap-3">
-          <div class="text-[10px] text-slate-500 dark:text-slate-400">
+        <div
+          class="rounded-2xl border border-slate-200/80
+                 bg-white/95 backdrop-blur shadow-soft
+                 px-3 py-2.5 flex items-center justify-between gap-3"
+        >
+          <div class="text-[10px] text-slate-500">
             <p id="smallSummary" class="truncate">
               Enter number / UPI &amp; amount
             </p>
@@ -315,7 +401,9 @@
           </div>
           <button
             id="payBtn"
-            class="flex-1 max-w-[140px] rounded-full bg-primary-600 text-white text-[11px] font-semibold py-2 text-center disabled:opacity-50 disabled:cursor-not-allowed"
+            class="flex-1 max-w-[140px] rounded-full
+                   bg-primary-600 text-white text-[11px] font-semibold
+                   py-2 text-center disabled:opacity-50 disabled:cursor-not-allowed"
             disabled
           >
             Pay securely
@@ -401,12 +489,30 @@
     bankPills.forEach(pill => {
       pill.addEventListener('click', () => {
         bankPills.forEach(p => {
-          p.classList.remove('border-primary-400', 'bg-primary-600/20', 'text-primary-100', 'font-medium');
-          p.classList.add('border-slate-700', 'bg-slate-900/80', 'text-slate-100');
+          p.classList.remove(
+            'border-primary-400',
+            'bg-primary-50',
+            'text-primary-700',
+            'font-medium'
+          );
+          p.classList.add(
+            'border-slate-300',
+            'bg-slate-100',
+            'text-slate-700'
+          );
         });
 
-        pill.classList.remove('border-slate-700', 'bg-slate-900/80', 'text-slate-100');
-        pill.classList.add('border-primary-400', 'bg-primary-600/20', 'text-primary-100', 'font-medium');
+        pill.classList.remove(
+          'border-slate-300',
+          'bg-slate-100',
+          'text-slate-700'
+        );
+        pill.classList.add(
+          'border-primary-400',
+          'bg-primary-50',
+          'text-primary-700',
+          'font-medium'
+        );
       });
     });
   </script>
