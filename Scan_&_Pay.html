@@ -29,14 +29,13 @@
       }
     };
 
-  // DEFAULT = light (first time) + remember last choice
-const storedTheme = localStorage.getItem('pp-theme');
-if (storedTheme === 'dark') {
-  document.documentElement.classList.add('dark');
-} else {
-  document.documentElement.classList.remove('dark');
-}
-
+    // DEFAULT = dark (first time) + remember last choice
+    const storedTheme = localStorage.getItem('pp-theme');
+    if (storedTheme === 'light') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
   </script>
 </head>
 
