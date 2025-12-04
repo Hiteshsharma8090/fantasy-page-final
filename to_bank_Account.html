@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PhonePe – To Bank A/c</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              500: '#7c3aed',
+              600: '#6d28d9',
+              700: '#5b21b6',
+            },
+          },
+          boxShadow: {
+            soft: '0 12px 32px rgba(15,23,42,0.25)',
+          }
+        }
+      }
+    };
+
+    // DEFAULT = dark
+    const storedTheme = localStorage.getItem('pp-theme');
+    if (storedTheme === 'light') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+</head>
+
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50">
+  <div class="mx-auto max-w-sm min-h-screen flex flex-col relative">
+
+    <!-- TOP BAR -->
+    <header class="px-4 pt-4 pb-3 flex items-center justify-between border-b border-slate-200/80 dark:border-slate-800/80 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur z-20">
+      <button class="h-9 w-9 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-sm">
+        ←
+      </button>
+
+      <div class="text-center">
+        <p class="text-[11px] text-slate-500 dark:text-slate-400 uppercase tracking-[0.18em]">
+          To bank A/c
+        </p>
+        <p class="text-[11px] text-slate-400 dark:text-slate-500">
+          IMPS / UPI / NEFT
+        </p>
+      </div>
+
+      <button class="h-9 w-9 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-base">
+        🏦
+      </button>
+    </header>
+
+    <!-- MAIN -->
+    <main class="flex-1 overflow-y-auto pb-20 space-y-4 bg-gradient-to-b from-slate-900 via-slate-950 to-black text-slate-50">
+
+      <!-- RECEIVER BANK DETAILS -->
+      <section class="px-4 pt-4 space-y-3">
+        <div class="rounded-2xl bg-slate-950/80 border border-slate-800 px-3.5 py-3.5 space-y-3">
+          <div class="flex items-center justify-between mb-1">
+            <p class="text-[11px] text-slate-300 uppercase tracking-[0.16em]">
+              Receiver bank details
+            </p>
+            <span class="text-[10px] text-emerald-400">
+              UPI enabled
+            </span>
+          </div>
+
+          <!-- Bank choose pills -->
+          <div class="space-y-2">
+            <p class="text-[11px] text-slate-300 mb-1">Select bank</p>
+            <div class="flex flex-wrap gap-1.5 text-[10px]">
+              <button
+                type="button"
+                class="js-bank-select rounded-full px-3 py-1.5 border border-primary-400 bg-primary-600/20 text-primary-100 font-medium"
+                data-bank="State Bank of India"
+              >
+                SBI
+              </button>
+              <button
+                type="button"
+                class="js-bank-select rounded-full px-3 py-1.5 border border-slate-700 bg-slate-900/80 text-slate-100"
+                data-bank="HDFC Bank"
+              >
+                HDFC
+              </button>
+              <button
+                type="button"
+                class="js-bank-select rounded-full px-3 py-1.5 border border-slate-700 bg-slate-900/80 text-slate-100"
+                data-bank="ICICI Bank"
+              >
+                ICICI
+              </button>
+              <button
+                type="button"
+                class="js-bank-select rounded-full px-3 py-1.5 border border-slate-700 bg-slate-900/80 text-slate-100"
+                data-bank="Axis Bank"
+              >
+                Axis
+              </button>
+              <button
+                type="button"
+                class="js-bank-select rounded-full px-3 py-1.5 border border-slate-700 bg-slate-900/80 text-slate-100"
+                data-bank="Other Bank"
+              >
+                Other
+              </button>
+            </div>
+          </div>
+
+          <!-- Account holder -->
+          <div>
+            <label for="holderName" class="block text-[11px] text-slate-300 mb-1">
+              Account holder name
+            </label>
+            <input
+              id="holderName"
+              type="text"
+              placeholder="Full name as per bank"
+              class="w-full rounded-xl bg-slate-900/80 border border-slate-700 px-3 py-2 text-[11px] outline-none placeholder:text-slate-500 focus:border-primary-500"
+            />
+          </div>
+
+          <!-- Account number -->
+          <div class="grid grid-cols-1 gap-2">
+            <div>
+              <label for="accNumber" class="block text-[11px] text-slate-300 mb-1">
+                Account number
+              </label>
+              <input
+                id="accNumber"
+                type="text"
+                inputmode="numeric"
+                placeholder="Enter account number"
+                class="w-full rounded-xl bg-slate-900/80 border border-slate-700 px-3 py-2 text-[11px] outline-none placeholder:text-slate-500 focus:border-primary-500"
+              />
+            </div>
+            <div>
+              <label for="accNumber2" class="block text-[11px] text-slate-300 mb-1">
+                Re-enter account number
+              </label>
+              <input
+                id="accNumber2"
+                type="text"
+                inputmode="numeric"
+                placeholder="Re-type account number"
+                class="w-full rounded-xl bg-slate-900/80 border border-slate-700 px-3 py-2 text-[11px] outline-none placeholder:text-slate-500 focus:border-primary-500"
+              />
+              <p id="accMismatchText" class="mt-1 text-[10px] text-rose-400 hidden">
+                Account numbers don’t match
+              </p>
+            </div>
+          </div>
+
+          <!-- IFSC -->
+          <div>
+            <label for="ifscInput" class="block text-[11px] text-slate-300 mb-1">
+              IFSC code
+            </label>
+            <input
+              id="ifscInput"
+              type="text"
+              placeholder="e.g. SBIN0001234"
+              class="w-full uppercase rounded-xl bg-slate-900/80 border border-slate-700 px-3 py-2 text-[11px] outline-none placeholder:text-slate-500 focus:border-primary-500"
+            />
+            <p class="mt-1 text-[10px] text-slate-500">
+              You’ll see bank & branch after IFSC is verified.
+            </p>
+          </div>
+
+          <!-- Save beneficiary toggle -->
+          <div class="mt-1 flex items-center justify-between">
+            <div class="text-[11px] text-slate-300">
+              <p>Save as beneficiary</p>
+              <p class="text-[10px] text-slate-500">Easy access for next time</p>
+            </div>
+            <button
+              id="saveToggle"
+              type="button"
+              class="relative inline-flex h-5 w-9 items-center rounded-full bg-slate-700 transition"
+              data-on="false"
+            >
+              <span class="inline-block h-4 w-4 rounded-full bg-slate-300 transform translate-x-0.5 transition"></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- AMOUNT + NOTE + FROM ACCOUNT -->
+        <div class="rounded-2xl bg-slate-950/80 border border-slate-800 px-3.5 py-3.5 space-y-3">
+          <!-- Amount -->
+          <div>
+            <div class="flex items-center justify-between">
+              <p class="text-[11px] text-slate-300">Amount</p>
+              <p class="text-[10px] text-slate-500">IMPS / UPI • Min ₹1</p>
+            </div>
+            <div class="mt-1 flex items-baseline gap-1">
+              <span class="text-lg text-slate-300">₹</span>
+              <input
+                id="amountInput"
+                type="number"
+                min="1"
+                step="1"
+                inputmode="numeric"
+                placeholder="0"
+                class="bg-transparent border-none outline-none text-2xl font-semibold tracking-wide w-full placeholder:text-slate-600"
+              />
+            </div>
+
+            <!-- Quick chips -->
+            <div class="flex gap-2 mt-2">
+              <button
+                type="button"
+                class="js-quick-amount px-2.5 py-1.5 rounded-full border border-slate-700 bg-slate-900/80 text-[10px] text-slate-100"
+                data-value="2000"
+              >
+                ₹2,000
+              </button>
+              <button
+                type="button"
+                class="js-quick-amount px-2.5 py-1.5 rounded-full border border-slate-700 bg-slate-900/80 text-[10px] text-slate-100"
+                data-value="5000"
+              >
+                ₹5,000
+              </button>
+              <button
+                type="button"
+                class="js-quick-amount px-2.5 py-1.5 rounded-full border border-slate-700 bg-slate-900/80 text-[10px] text-slate-100"
+                data-value="10000"
+              >
+                ₹10,000
+              </button>
+            </div>
+          </div>
+
+          <!-- Note -->
+          <div>
+            <label for="noteInput" class="block text-[11px] text-slate-300 mb-1">
+              Note / Message <span class="text-slate-500">(optional)</span>
+            </label>
+            <input
+              id="noteInput"
+              type="text"
+              maxlength="40"
+              placeholder="e.g. Rent, Fees, Vendor payment"
+              class="w-full rounded-xl bg-slate-900/80 border border-slate-700 px-3 py-2 text-[11px] outline-none placeholder:text-slate-500 focus:border-primary-500"
+            />
+          </div>
+
+          <!-- From account -->
+          <div class="space-y-2">
+            <p class="text-[11px] text-slate-300">
+              Pay from
+            </p>
+            <div class="flex flex-wrap gap-1.5 text-[10px]">
+              <button
+                type="button"
+                class="js-from-bank-pill rounded-full px-3 py-1.5 border border-primary-400 bg-primary-600/20 text-primary-100 font-medium"
+                data-from="State Bank •••• 7728"
+              >
+                State Bank •••• 7728
+              </button>
+              <button
+                type="button"
+                class="js-from-bank-pill rounded-full px-3 py-1.5 border border-slate-700 bg-slate-900/80 text-slate-100"
+                data-from="HDFC •••• 4456"
+              >
+                HDFC •••• 4456
+              </button>
+              <button
+                type="button"
+                class="js-from-bank-pill rounded-full px-3 py-1.5 border border-slate-700 bg-slate-900/80 text-slate-100"
+                data-from="ICICI •••• 8899"
+              >
+                ICICI •••• 8899
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RECENT BENEFICIARIES -->
+      <section class="px-4 space-y-3 pb-2">
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <p class="text-[11px] text-slate-300 uppercase tracking-[0.16em]">
+              Recent beneficiaries
+            </p>
+            <button class="text-[10px] text-slate-400">
+              Full list
+            </button>
+          </div>
+
+          <div class="rounded-2xl bg-slate-950/80 border border-slate-800 divide-y divide-slate-800 text-[11px]">
+            <button class="w-full flex items-center justify-between px-3 py-2.5">
+              <div class="flex items-center gap-2">
+                <div class="h-7 w-7 rounded-full bg-slate-800 flex items-center justify-center text-xs">
+                  🧑
+                </div>
+                <div class="text-left">
+                  <p class="font-medium text-slate-100">Rohit Verma</p>
+                  <p class="text-[10px] text-slate-400">SBI •••• 2211 • Rent</p>
+                </div>
+              </div>
+              <p class="text-[11px] font-semibold text-slate-100">₹6,500</p>
+            </button>
+
+            <button class="w-full flex items-center justify-between px-3 py-2.5">
+              <div class="flex items-center gap-2">
+                <div class="h-7 w-7 rounded-full bg-slate-800 flex items-center justify-center text-xs">
+                  🏫
+                </div>
+                <div class="text-left">
+                  <p class="font-medium text-slate-100">Tuition Classes</p>
+                  <p class="text-[10px] text-slate-400">HDFC •••• 9012 • Monthly</p>
+                </div>
+              </div>
+              <p class="text-[11px] font-semibold text-slate-100">₹2,000</p>
+            </button>
+
+            <button class="w-full flex items-center justify-between px-3 py-2.5">
+              <div class="flex items-center gap-2">
+                <div class="h-7 w-7 rounded-full bg-slate-800 flex items-center justify-center text-xs">
+                  🧱
+                </div>
+                <div class="text-left">
+                  <p class="font-medium text-slate-100">Mason Contractor</p>
+                  <p class="text-[10px] text-slate-400">ICICI •••• 3344 • Work payment</p>
+                </div>
+              </div>
+              <p class="text-[11px] font-semibold text-slate-100">₹12,500</p>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- BOTTOM STICKY BAR -->
+    <nav class="fixed bottom-0 inset-x-0 z-30">
+      <div class="mx-auto max-w-sm px-4 pb-3">
+        <div class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white/95 dark:bg-slate-950/95 backdrop-blur shadow-soft px-3 py-2.5 flex items-center justify-between gap-3">
+          <div class="text-[10px] text-slate-500 dark:text-slate-400">
+            <p id="smallSummary" class="truncate">
+              Add bank details & amount
+            </p>
+            <p class="text-[9px] text-emerald-500 mt-0.5">
+              IMPS / UPI is instant &amp; secure
+            </p>
+          </div>
+          <button
+            id="proceedBtn"
+            class="flex-1 max-w-[150px] rounded-full bg-primary-600 text-white text-[11px] font-semibold py-2 text-center disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled
+          >
+            Proceed securely
+          </button>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+
+  <script>
+    const holderName = document.getElementById('holderName');
+    const accNumber = document.getElementById('accNumber');
+    const accNumber2 = document.getElementById('accNumber2');
+    const ifscInput = document.getElementById('ifscInput');
+    const amountInput = document.getElementById('amountInput');
+    const smallSummary = document.getElementById('smallSummary');
+    const proceedBtn = document.getElementById('proceedBtn');
+    const accMismatchText = document.getElementById('accMismatchText');
+
+    const quickBtns = document.querySelectorAll('.js-quick-amount');
+    const bankSelectBtns = document.querySelectorAll('.js-bank-select');
+    const fromBankBtns = document.querySelectorAll('.js-from-bank-pill');
+    const saveToggle = document.getElementById('saveToggle');
+
+    let selectedBank = 'State Bank of India';
+    let fromBank = 'State Bank •••• 7728';
+
+    function updateProceedState() {
+      const nameVal = holderName.value.trim();
+      const acc1 = accNumber.value.trim();
+      const acc2 = accNumber2.value.trim();
+      const ifsc = ifscInput.value.trim();
+      const amt = parseFloat(amountInput.value);
+
+      const accMatch = acc1.length > 0 && acc1 === acc2;
+      const validIfsc = ifsc.length >= 8; // simple check
+      const validAmt = amt && amt > 0;
+
+      if (acc2.length > 0 && !accMatch) {
+        accMismatchText.classList.remove('hidden');
+      } else {
+        accMismatchText.classList.add('hidden');
+      }
+
+      const allOk = nameVal && accMatch && validIfsc && validAmt;
+
+      if (allOk) {
+        proceedBtn.disabled = false;
+        proceedBtn.textContent = `Pay ₹${amt}`;
+        smallSummary.textContent = `Ready to pay ₹${amt} to ${selectedBank}`;
+      } else {
+        proceedBtn.disabled = true;
+        proceedBtn.textContent = 'Proceed securely';
+        smallSummary.textContent = 'Add bank details & amount';
+      }
+    }
+
+    // Quick amount buttons
+    quickBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const val = btn.getAttribute('data-value');
+        amountInput.value = val || '';
+        updateProceedState();
+      });
+    });
+
+    [holderName, accNumber, accNumber2, ifscInput, amountInput].forEach(input => {
+      input.addEventListener('input', updateProceedState);
+    });
+
+    // Receiver bank select
+    bankSelectBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        bankSelectBtns.forEach(b => {
+          b.classList.remove('border-primary-400', 'bg-primary-600/20', 'text-primary-100', 'font-medium');
+          b.classList.add('border-slate-700', 'bg-slate-900/80', 'text-slate-100');
+        });
+        btn.classList.remove('border-slate-700', 'bg-slate-900/80', 'text-slate-100');
+        btn.classList.add('border-primary-400', 'bg-primary-600/20', 'text-primary-100', 'font-medium');
+        selectedBank = btn.getAttribute('data-bank') || selectedBank;
+        updateProceedState();
+      });
+    });
+
+    // From bank select
+    fromBankBtns.forEach(pill => {
+      pill.addEventListener('click', () => {
+        fromBankBtns.forEach(p => {
+          p.classList.remove('border-primary-400', 'bg-primary-600/20', 'text-primary-100', 'font-medium');
+          p.classList.add('border-slate-700', 'bg-slate-900/80', 'text-slate-100');
+        });
+        pill.classList.remove('border-slate-700', 'bg-slate-900/80', 'text-slate-100');
+        pill.classList.add('border-primary-400', 'bg-primary-600/20', 'text-primary-100', 'font-medium');
+        fromBank = pill.getAttribute('data-from') || fromBank;
+      });
+    });
+
+    // Save toggle
+    if (saveToggle) {
+      saveToggle.addEventListener('click', () => {
+        const isOn = saveToggle.getAttribute('data-on') === 'true';
+        if (isOn) {
+          saveToggle.setAttribute('data-on', 'false');
+          saveToggle.classList.remove('bg-emerald-500');
+          saveToggle.classList.add('bg-slate-700');
+          saveToggle.firstElementChild.style.transform = 'translateX(2px)';
+        } else {
+          saveToggle.setAttribute('data-on', 'true');
+          saveToggle.classList.remove('bg-slate-700');
+          saveToggle.classList.add('bg-emerald-500');
+          saveToggle.firstElementChild.style.transform = 'translateX(18px)';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
