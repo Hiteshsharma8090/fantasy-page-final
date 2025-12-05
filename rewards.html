@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PhonePe – Rewards & Offers</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              500: '#7c3aed',
+              600: '#6d28d9',
+              700: '#5b21b6',
+            },
+          },
+          boxShadow: {
+            soft: '0 12px 32px rgba(15,23,42,0.25)',
+          },
+        }
+      }
+    };
+
+    // ✅ DEFAULT = DARK MODE
+    const storedTheme = localStorage.getItem('pp-theme');
+    if (storedTheme === 'light') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+</head>
+
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50">
+<div class="mx-auto max-w-sm min-h-screen flex flex-col relative">
+
+  <!-- TOP BAR -->
+  <header class="px-4 pt-4 pb-3 flex items-center justify-between border-b border-slate-200/80 dark:border-slate-800/80 bg-slate-50/90 dark:bg-slate-950/80 backdrop-blur z-20">
+    <button class="h-9 w-9 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-sm">
+      ←
+    </button>
+
+    <div class="text-center">
+      <p class="text-[11px] text-slate-600 dark:text-slate-400 uppercase tracking-[0.18em]">
+        Rewards &amp; Offers
+      </p>
+      <p class="text-[11px] text-slate-500 dark:text-slate-500">
+        Cashback • Scratch cards • Deals
+      </p>
+    </div>
+
+    <button id="themeToggle" class="h-9 w-9 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-sm">
+      🌙
+    </button>
+  </header>
+
+  <!-- MAIN -->
+  <main class="flex-1 overflow-y-auto pb-24 bg-gradient-to-b from-slate-50 via-slate-100 to-slate-50 text-slate-900 dark:from-slate-900 dark:via-slate-950 dark:to-black dark:text-slate-50 space-y-4">
+
+    <!-- TABS + FILTERS -->
+    <section class="px-4 pt-4 space-y-3">
+      <!-- Tabs -->
+      <div class="rounded-full bg-white border border-slate-200 dark:bg-slate-950/70 dark:border-slate-800 p-1 flex text-[11px] shadow-sm dark:shadow-none">
+        <button
+          class="js-tab flex-1 py-1.5 rounded-full bg-primary-600 text-white font-semibold shadow-soft"
+          data-tab="rewards"
+        >
+          Rewards
+        </button>
+        <button
+          class="js-tab flex-1 py-1.5 rounded-full text-slate-500 dark:text-slate-300"
+          data-tab="offers"
+        >
+          Offers
+        </button>
+      </div>
+
+      <!-- Filters (for both tabs) -->
+      <div class="flex gap-2 overflow-x-auto no-scrollbar text-[11px]">
+        <button
+          class="js-filter-chip rounded-full px-3 py-1.5 border border-primary-300 bg-primary-50 text-primary-700 font-medium flex-shrink-0 dark:border-primary-400 dark:bg-primary-600/30 dark:text-primary-100"
+          data-filter="all"
+        >
+          All
+        </button>
+        <button
+          class="js-filter-chip rounded-full px-3 py-1.5 border border-slate-200 bg-white text-slate-600 flex-shrink-0 dark:border-slate-700 dark:bg-slate-950/70 dark:text-slate-200"
+          data-filter="upi"
+        >
+          UPI
+        </button>
+        <button
+          class="js-filter-chip rounded-full px-3 py-1.5 border border-slate-200 bg-white text-slate-600 flex-shrink-0 dark:border-slate-700 dark:bg-slate-950/70 dark:text-slate-200"
+          data-filter="shopping"
+        >
+          Shopping
+        </button>
+        <button
+          class="js-filter-chip rounded-full px-3 py-1.5 border border-slate-200 bg-white text-slate-600 flex-shrink-0 dark:border-slate-700 dark:bg-slate-950/70 dark:text-slate-200"
+          data-filter="food"
+        >
+          Food &amp; grocery
+        </button>
+        <button
+          class="js-filter-chip rounded-full px-3 py-1.5 border border-slate-200 bg-white text-slate-600 flex-shrink-0 dark:border-slate-700 dark:bg-slate-950/70 dark:text-slate-200"
+          data-filter="travel"
+        >
+          Travel
+        </button>
+      </div>
+    </section>
+
+    <!-- REWARDS TAB -->
+    <section id="tabRewards" class="px-4 space-y-4">
+
+      <!-- Summary -->
+      <div class="rounded-3xl bg-white border border-slate-200 dark:bg-slate-950/90 dark:border-slate-800 shadow-soft px-4 py-3 flex items-center justify-between text-[11px]">
+        <div>
+          <p class="text-slate-700 dark:text-slate-300 font-medium">Total rewards earned</p>
+          <p class="text-xl font-semibold text-emerald-500 dark:text-emerald-400 mt-0.5">₹285</p>
+          <p class="text-[10px] text-slate-500 dark:text-slate-500 mt-0.5">
+            From UPI, card &amp; bill payments this month
+          </p>
+        </div>
+        <div class="text-right text-[10px]">
+          <p class="text-slate-500 dark:text-slate-400">Active rewards</p>
+          <p class="text-slate-900 dark:text-slate-100 font-semibold text-base">6</p>
+          <button class="mt-1 px-2 py-1 rounded-full bg-slate-50 border border-slate-200 text-slate-700 dark:bg-slate-900 dark:border-slate-700 dark:text-slate-100">
+            View history
+          </button>
+        </div>
+      </div>
+
+      <!-- Unlocked scratch cards -->
+      <div class="space-y-2">
+        <div class="flex items-center justify-between text-[11px]">
+          <p class="text-slate-600 dark:text-slate-300 uppercase tracking-[0.16em]">Unlocked rewards</p>
+          <p class="text-slate-500 dark:text-slate-400 text-[10px]">Tap to reveal / view</p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 text-[11px]">
+          <!-- Card 1 -->
+          <button
+            class="reward-card rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-400 px-3 py-3 text-left text-white"
+            data-filter-tags="upi food"
+          >
+            <p class="uppercase text-[10px] text-emerald-50/90 tracking-[0.16em]">
+              Scratch card
+            </p>
+            <p class="mt-1 text-sm font-semibold">
+              You won ₹25 cashback
+            </p>
+            <p class="mt-1 text-[10px] text-emerald-100/90">
+              For paying Rohit via UPI
+            </p>
+            <p class="mt-2 text-[9px] text-emerald-50/80">
+              Auto-credited to rewards balance
+            </p>
+          </button>
+
+          <!-- Card 2 -->
+          <button
+            class="reward-card rounded-2xl bg-gradient-to-tr from-purple-500 to-indigo-400 px-3 py-3 text-left text-white"
+            data-filter-tags="upi travel"
+          >
+            <p class="uppercase text-[10px] text-violet-50/90 tracking-[0.16em]">
+              Travel reward
+            </p>
+            <p class="mt-1 text-sm font-semibold">
+              Flat ₹100 off on flights
+            </p>
+            <p class="mt-1 text-[10px] text-violet-100/90">
+              Pay via UPI on partner app
+            </p>
+            <p class="mt-2 text-[9px] text-violet-50/80">
+              Min booking ₹2500 • Valid till 30 Apr
+            </p>
+          </button>
+
+          <!-- Card 3 -->
+          <button
+            class="reward-card rounded-2xl bg-gradient-to-tr from-pink-500 to-rose-500 px-3 py-3 text-left text-white"
+            data-filter-tags="shopping upi"
+          >
+            <p class="uppercase text-[10px] text-pink-50/90 tracking-[0.16em]">
+              Shopping boost
+            </p>
+            <p class="mt-1 text-sm font-semibold">
+              Extra 5% back up to ₹75
+            </p>
+            <p class="mt-1 text-[10px] text-pink-100/90">
+              On Instamart via UPI
+            </p>
+            <p class="mt-2 text-[9px] text-pink-50/80">
+              1 use left • Valid for 3 days
+            </p>
+          </button>
+
+          <!-- Card 4 -->
+          <button
+            class="reward-card rounded-2xl bg-gradient-to-tr from-slate-800 to-slate-700 px-3 py-3 text-left text-white"
+            data-filter-tags="upi"
+          >
+            <p class="uppercase text-[10px] text-slate-100/90 tracking-[0.16em]">
+              Guaranteed cashback
+            </p>
+            <p class="mt-1 text-sm font-semibold">
+              Win ₹5–₹50 on bill pay
+            </p>
+            <p class="mt-1 text-[10px] text-slate-200/80">
+              Pay electricity or DTH via UPI
+            </p>
+            <p class="mt-2 text-[9px] text-slate-100/60">
+              2 rewards pending • T&amp;C apply
+            </p>
+          </button>
+
+          <!-- Card 5 -->
+          <button
+            class="reward-card rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 px-3 py-3 text-left text-white"
+            data-filter-tags="food"
+          >
+            <p class="uppercase text-[10px] text-amber-50/90 tracking-[0.16em]">
+              Food reward
+            </p>
+            <p class="mt-1 text-sm font-semibold">
+              ₹50 back on Swiggy
+            </p>
+            <p class="mt-1 text-[10px] text-amber-100/90">
+              Valid on orders above ₹499
+            </p>
+            <p class="mt-2 text-[9px] text-amber-50/80">
+              1 use • Valid tonight
+            </p>
+          </button>
+
+          <!-- Card 6 -->
+          <button
+            class="reward-card rounded-2xl bg-gradient-to-tr from-sky-500 to-cyan-400 px-3 py-3 text-left text-white"
+            data-filter-tags="shopping travel"
+          >
+            <p class="uppercase text-[10px] text-sky-50/90 tracking-[0.16em]">
+              Super saver
+            </p>
+            <p class="mt-1 text-sm font-semibold">
+              Save up to ₹150
+            </p>
+            <p class="mt-1 text-[10px] text-sky-100/90">
+              On travel or shopping partners
+            </p>
+            <p class="mt-2 text-[9px] text-sky-50/80">
+              Combine with bank offers where applicable
+            </p>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- OFFERS TAB -->
+    <section id="tabOffers" class="px-4 space-y-4 hidden">
+      <!-- Summary strip -->
+      <div class="rounded-3xl bg-white border border-slate-200 dark:bg-slate-950/90 dark:border-slate-800 shadow-soft px-4 py-3 flex items-center justify-between text-[11px]">
+        <div>
+          <p class="text-slate-700 dark:text-slate-300 font-medium">Personalised offers for you</p>
+          <p class="text-[10px] text-slate-500 dark:text-slate-500 mt-0.5">
+            Based on your recent payments &amp; cards
+          </p>
+        </div>
+        <span class="text-2xl">🎯</span>
+      </div>
+
+      <!-- Offers list -->
+      <div class="space-y-3 text-[11px]">
+        <!-- Offer 1 -->
+        <article
+          class="offer-card rounded-2xl bg-gradient-to-r from-indigo-600/90 via-indigo-500/90 to-sky-500/90 border border-indigo-300/60 px-3.5 py-3 text-white"
+          data-filter-tags="shopping upi"
+        >
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <p class="uppercase text-[10px] tracking-[0.16em] text-indigo-100/90">
+                Shopping • Partner
+              </p>
+              <p class="mt-1 text-sm font-semibold">
+                Flat ₹150 off on Myntra
+              </p>
+              <p class="mt-1 text-[10px] text-indigo-50/90">
+                Pay via UPI on Myntra using PhonePe
+              </p>
+            </div>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-black/25 text-indigo-50 border border-indigo-100/40">
+              New
+            </span>
+          </div>
+          <div class="mt-2 flex items-center justify-between text-[10px] text-indigo-50/90">
+            <p>Min cart ₹1,499 • 2 uses</p>
+            <p>Valid till 30 Apr</p>
+          </div>
+        </article>
+
+        <!-- Offer 2 -->
+        <article
+          class="offer-card rounded-2xl bg-gradient-to-r from-emerald-500/90 to-teal-400/90 border border-emerald-200/70 px-3.5 py-3 text-white"
+          data-filter-tags="upi food"
+        >
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <p class="uppercase text-[10px] tracking-[0.16em] text-emerald-50/90">
+                Food &amp; grocery
+              </p>
+              <p class="mt-1 text-sm font-semibold">
+                20% off at Swiggy &amp; Zomato
+              </p>
+              <p class="mt-1 text-[10px] text-emerald-50/90">
+                Pay using UPI or PhonePe Wallet
+              </p>
+            </div>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-black/20 text-emerald-50 border border-emerald-100/50">
+              Limited
+            </span>
+          </div>
+          <div class="mt-2 flex items-center justify-between text-[10px] text-emerald-50/90">
+            <p>Max discount ₹125 • 1 per day</p>
+            <p>Valid all week</p>
+          </div>
+        </article>
+
+        <!-- Offer 3 -->
+        <article
+          class="offer-card rounded-2xl bg-gradient-to-r from-sky-500/90 to-cyan-400/90 border border-sky-200/80 px-3.5 py-3 text-white"
+          data-filter-tags="travel upi"
+        >
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <p class="uppercase text-[10px] tracking-[0.16em] text-sky-50/90">
+                Travel • Flights &amp; trains
+              </p>
+              <p class="mt-1 text-sm font-semibold">
+                Up to ₹300 off on bookings
+              </p>
+              <p class="mt-1 text-[10px] text-sky-50/90">
+                Use PhonePe on partner travel apps
+              </p>
+            </div>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-black/20 text-sky-50 border border-sky-100/60">
+              Popular
+            </span>
+          </div>
+          <div class="mt-2 flex items-center justify-between text-[10px] text-sky-50/90">
+            <p>Min txn ₹999</p>
+            <p>Weekend only</p>
+          </div>
+        </article>
+
+        <!-- Offer 4 -->
+        <article
+          class="offer-card rounded-2xl bg-gradient-to-r from-slate-900/90 to-slate-800/90 border border-slate-600/80 px-3.5 py-3 text-white"
+          data-filter-tags="upi"
+        >
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <p class="uppercase text-[10px] tracking-[0.16em] text-slate-100/90">
+                UPI • Bill payments
+              </p>
+              <p class="mt-1 text-sm font-semibold">
+                Pay 3 bills, get ₹50
+              </p>
+              <p class="mt-1 text-[10px] text-slate-100/80">
+                Electricity, DTH, Broadband or gas
+              </p>
+            </div>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-200/60">
+              Combo
+            </span>
+          </div>
+          <div class="mt-2 flex items-center justify-between text-[10px] text-slate-100/80">
+            <p>Complete within this month</p>
+            <p>Reward via scratch card</p>
+          </div>
+        </article>
+
+        <!-- Offer 5 -->
+        <article
+          class="offer-card rounded-2xl bg-gradient-to-r from-rose-500/90 to-pink-500/90 border border-rose-200/70 px-3.5 py-3 text-white"
+          data-filter-tags="shopping"
+        >
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <p class="uppercase text-[10px] tracking-[0.16em] text-rose-50/90">
+                Fashion &amp; lifestyle
+              </p>
+              <p class="mt-1 text-sm font-semibold">
+                Extra 10% off at Lifestyle
+              </p>
+              <p class="mt-1 text-[10px] text-rose-50/90">
+                Valid on select cards &amp; UPI
+              </p>
+            </div>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-black/20 text-rose-50 border border-rose-100/60">
+              Store-only
+            </span>
+          </div>
+          <div class="mt-2 flex items-center justify-between text-[10px] text-rose-50/90">
+            <p>Weekends • In-store billing</p>
+            <p>Show this offer at counter</p>
+          </div>
+        </article>
+      </div>
+
+      <!-- No-results placeholder -->
+      <p id="noResultsText" class="hidden text-[10px] text-slate-500 text-center mt-2">
+        No rewards or offers match this filter. Try changing filters.
+      </p>
+    </section>
+  </main>
+
+  <!-- BOTTOM SUMMARY BAR -->
+  <nav class="fixed bottom-0 inset-x-0 z-30">
+    <div class="mx-auto max-w-sm px-4 pb-3">
+      <div
+        class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white/95 dark:bg-slate-950/95 backdrop-blur shadow-soft px-3 py-2.5 flex items-center justify-between gap-3 text-[11px]"
+      >
+        <div class="flex-1">
+          <p class="text-slate-800 dark:text-slate-100">
+            Active rewards: 6 • New offers added recently
+          </p>
+          <p class="text-[9px] text-slate-500 dark:text-slate-400 mt-0.5">
+            Use UPI on your favourite apps to unlock more rewards.
+          </p>
+        </div>
+        <button
+          type="button"
+          class="rounded-full bg-primary-600 text-white px-3 py-1.5 text-[11px] font-semibold flex items-center gap-1"
+        >
+          🎁 My rewards
+        </button>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+
+<script>
+  // THEME TOGGLE
+  const themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    const setIcon = () => {
+      themeToggle.textContent =
+        document.documentElement.classList.contains('dark') ? '🌙' : '☀️';
+    };
+    setIcon();
+    themeToggle.addEventListener('click', () => {
+      const root = document.documentElement;
+      const isDark = root.classList.toggle('dark');
+      localStorage.setItem('pp-theme', isDark ? 'dark' : 'light');
+      setIcon();
+    });
+  }
+
+  // TABS
+  const tabButtons = document.querySelectorAll('.js-tab');
+  const tabRewards = document.getElementById('tabRewards');
+  const tabOffers = document.getElementById('tabOffers');
+
+  function setActiveTab(tabName) {
+    tabButtons.forEach(btn => {
+      const t = btn.getAttribute('data-tab');
+      if (t === tabName) {
+        btn.classList.add('bg-primary-600', 'text-white', 'font-semibold', 'shadow-soft');
+        btn.classList.remove('text-slate-500', 'dark:text-slate-300');
+      } else {
+        btn.classList.remove('bg-primary-600', 'text-white', 'font-semibold', 'shadow-soft');
+        btn.classList.add('text-slate-500', 'dark:text-slate-300');
+      }
+    });
+
+    if (tabName === 'rewards') {
+      tabRewards.classList.remove('hidden');
+      tabOffers.classList.add('hidden');
+    } else {
+      tabOffers.classList.remove('hidden');
+      tabRewards.classList.add('hidden');
+    }
+
+    applyFilter();
+  }
+
+  // FILTER CHIPS
+  const filterChips = document.querySelectorAll('.js-filter-chip');
+  const rewardCards = document.querySelectorAll('.reward-card');
+  const offerCards = document.querySelectorAll('.offer-card');
+  const noResultsText = document.getElementById('noResultsText');
+
+  let activeFilter = 'all';
+
+  function applyFilter() {
+    let anyVisible = false;
+
+    function handleCard(card) {
+      const tags = (card.getAttribute('data-filter-tags') || '').toLowerCase().split(/\s+/);
+      let show = true;
+      if (activeFilter !== 'all') {
+        show = tags.includes(activeFilter);
+      }
+      if (show) {
+        card.classList.remove('hidden');
+        anyVisible = true;
+      } else {
+        card.classList.add('hidden');
+      }
+    }
+
+    rewardCards.forEach(handleCard);
+    offerCards.forEach(handleCard);
+
+    if (noResultsText) {
+      const offersVisible = !tabOffers.classList.contains('hidden');
+      if (!anyVisible && offersVisible) {
+        noResultsText.classList.remove('hidden');
+      } else {
+        noResultsText.classList.add('hidden');
+      }
+    }
+  }
+
+  filterChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      filterChips.forEach(c => {
+        c.classList.remove(
+          'border-primary-300',
+          'bg-primary-50',
+          'text-primary-700',
+          'font-medium',
+          'dark:border-primary-400',
+          'dark:bg-primary-600/30',
+          'dark:text-primary-100'
+        );
+        c.classList.add(
+          'border-slate-200',
+          'bg-white',
+          'text-slate-600',
+          'dark:border-slate-700',
+          'dark:bg-slate-950/70',
+          'dark:text-slate-200'
+        );
+      });
+
+      chip.classList.remove(
+        'border-slate-200',
+        'bg-white',
+        'text-slate-600',
+        'dark:border-slate-700',
+        'dark:bg-slate-950/70',
+        'dark:text-slate-200'
+      );
+      chip.classList.add(
+        'border-primary-300',
+        'bg-primary-50',
+        'text-primary-700',
+        'font-medium',
+        'dark:border-primary-400',
+        'dark:bg-primary-600/30',
+        'dark:text-primary-100'
+      );
+
+      activeFilter = chip.getAttribute('data-filter') || 'all';
+      applyFilter();
+    });
+  });
+
+  // INITIAL STATE
+  setActiveTab('rewards');
+</script>
+</body>
+</html>
