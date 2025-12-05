@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PhonePe – UPI Autopay / Mandates</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              500: '#7c3aed',
+              600: '#6d28d9',
+              700: '#5b21b6',
+            },
+          },
+          boxShadow: {
+            soft: '0 12px 32px rgba(15,23,42,0.25)',
+          },
+        }
+      }
+    };
+
+    // DEFAULT = dark
+    const storedTheme = localStorage.getItem('pp-theme');
+    if (storedTheme === 'light') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+</head>
+
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50">
+<div class="mx-auto max-w-sm min-h-screen flex flex-col relative">
+
+  <!-- TOP BAR -->
+  <header class="px-4 pt-4 pb-3 flex items-center justify-between border-b border-slate-200/80 dark:border-slate-800/80 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur z-20">
+    <button class="h-9 w-9 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-sm">
+      ←
+    </button>
+
+    <div class="text-center">
+      <p class="text-[11px] text-slate-500 dark:text-slate-400 uppercase tracking-[0.18em]">
+        UPI Autopay / Mandates
+      </p>
+      <p class="text-[11px] text-slate-400 dark:text-slate-500">
+        Manage subscriptions • EMIs • bills
+      </p>
+    </div>
+
+    <button id="themeToggle" class="h-9 w-9 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-sm">
+      🌙
+    </button>
+  </header>
+
+  <!-- MAIN -->
+  <main
+    class="flex-1 overflow-y-auto pb-24 space-y-4
+           bg-gradient-to-b from-slate-100 via-slate-50 to-slate-100
+           dark:from-slate-900 dark:via-slate-950 dark:to-black
+           text-slate-900 dark:text-slate-50"
+  >
+
+    <!-- SUMMARY + FILTERS -->
+    <section class="px-4 pt-4 space-y-3">
+      <!-- Overview card -->
+      <div class="rounded-3xl bg-white/95 dark:bg-slate-950/95 border border-slate-200 dark:border-slate-800 shadow-soft px-4 py-3 flex items-center justify-between text-[11px]">
+        <div>
+          <p class="text-slate-700 dark:text-slate-300 font-medium">Autopay overview</p>
+          <p class="text-[10px] text-slate-500 dark:text-slate-500 mt-0.5">
+            All your recurring UPI payments in one place
+          </p>
+          <div class="mt-2 flex items-center gap-4">
+            <div>
+              <p class="text-[10px] text-slate-500 dark:text-slate-400">Active mandates</p>
+              <p class="text-base font-semibold text-emerald-500 dark:text-emerald-400">5</p>
+            </div>
+            <div>
+              <p class="text-[10px] text-slate-500 dark:text-slate-400">Next 30 days debits</p>
+              <p class="text-base font-semibold text-slate-900 dark:text-slate-100">₹4,250</p>
+            </div>
+          </div>
+        </div>
+        <div class="text-right text-[10px]">
+          <p class="text-slate-500 dark:text-slate-400">Next due</p>
+          <p class="text-slate-900 dark:text-slate-50 font-semibold">₹799 • 12 Apr</p>
+          <p class="text-[9px] text-slate-500 dark:text-slate-500 mt-0.5">
+            OTT subscription • Monthly
+          </p>
+          <button class="mt-2 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-[10px] text-slate-800 dark:text-slate-200">
+            View calendar
+          </button>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="space-y-2">
+        <!-- Type chips -->
+        <div class="flex gap-2 overflow-x-auto no-scrollbar text-[11px]">
+          <button
+            class="js-type-chip rounded-full px-3 py-1.5 border border-primary-400 bg-primary-100 text-primary-700 dark:bg-primary-600/30 dark:text-primary-100 font-medium flex-shrink-0"
+            data-type="all"
+          >
+            All
+          </button>
+          <button
+            class="js-type-chip rounded-full px-3 py-1.5 border border-slate-300 bg-slate-100 text-slate-700 dark:border-slate-700 dark:bg-slate-950/70 dark:text-slate-200 flex-shrink-0"
+            data-type="subscription"
+          >
+            Subscriptions
+          </button>
+          <button
+            class="js-type-chip rounded-full px-3 py-1.5 border border-slate-300 bg-slate-100 text-slate-700 dark:border-slate-700 dark:bg-slate-950/70 dark:text-slate-200 flex-shrink-0"
+            data-type="bill"
+          >
+            Bills &amp; utilities
+          </button>
+          <button
+            class="js-type-chip rounded-full px-3 py-1.5 border border-slate-300 bg-slate-100 text-slate-700 dark:border-slate-700 dark:bg-slate-950/70 dark:text-slate-200 flex-shrink-0"
+            data-type="loan"
+          >
+            Loans / EMI
+          </button>
+          <button
+            class="js-type-chip rounded-full px-3 py-1.5 border border-slate-300 bg-slate-100 text-slate-700 dark:border-slate-700 dark:bg-slate-950/70 dark:text-slate-200 flex-shrink-0"
+            data-type="education"
+          >
+            Education
+          </button>
+        </div>
+
+        <!-- Status + toggle row -->
+        <div class="flex items-center justify-between gap-2 text-[11px] mt-1">
+          <div class="flex gap-2">
+            <button
+              class="js-status-chip rounded-full px-3 py-1.5 border border-primary-400 bg-primary-100 text-primary-700 dark:bg-primary-600/30 dark:text-primary-100 font-medium"
+              data-status="all"
+            >
+              All statuses
+            </button>
+            <button
+              class="js-status-chip rounded-full px-3 py-1.5 border border-slate-300 bg-slate-100 text-slate-700 dark:border-slate-700 dark:bg-slate-950/70 dark:text-slate-200"
+              data-status="active"
+            >
+              Active only
+            </button>
+            <button
+              class="js-status-chip rounded-full px-3 py-1.5 border border-slate-300 bg-slate-100 text-slate-700 dark:border-slate-700 dark:bg-slate-950/70 dark:text-slate-200 hidden xs:inline-flex"
+              data-status="paused"
+            >
+              Paused
+            </button>
+          </div>
+          <button
+            id="highValueToggle"
+            type="button"
+            class="flex items-center gap-1 rounded-full bg-slate-100 dark:bg-slate-950/60 border border-slate-300 dark:border-slate-800 px-3 py-1.5 text-slate-700 dark:text-slate-300 text-[10px]"
+            data-on="false"
+          >
+            <span class="h-3 w-3 rounded-full border border-amber-400/60 flex items-center justify-center text-[9px] text-amber-400">●</span>
+            High value (&gt; ₹1,000)
+          </button>
+        </div>
+
+        <!-- Search -->
+        <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/95 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 text-[11px] mt-1">
+          <span>🔍</span>
+          <input
+            id="searchInput"
+            class="bg-transparent flex-1 outline-none placeholder:text-slate-400 dark:placeholder:text-slate-500 text-[11px]"
+            placeholder="Search by name, note, amount or frequency"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- UPCOMING DEBITS -->
+    <section class="px-4 space-y-2 text-[11px]">
+      <div class="flex items-center justify-between">
+        <p class="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-[0.16em]">
+          Upcoming debits
+        </p>
+        <p class="text-[10px] text-slate-500 dark:text-slate-500">
+          Next 15 days
+        </p>
+      </div>
+
+      <div class="space-y-2">
+        <!-- Upcoming 1 -->
+        <article
+          class="mandate-row rounded-2xl bg-white/95 dark:bg-slate-950/90 border border-slate-200 dark:border-slate-800 px-3.5 py-3 flex items-center justify-between gap-2"
+          data-type="subscription"
+          data-status="active"
+          data-amount="799"
+          data-text="netflix subscription monthly 799 ott"
+        >
+          <div class="flex items-start gap-2.5">
+            <div class="h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-900 flex items-center justify-center text-xs">
+              🎬
+            </div>
+            <div>
+              <p class="text-slate-900 dark:text-slate-100 font-medium">Netflix Premium</p>
+              <p class="text-[10px] text-slate-600 dark:text-slate-400">
+                Monthly subscription • Auto-debit via UPI
+              </p>
+              <p class="text-[9px] text-slate-500 dark:text-slate-500 mt-0.5">
+                Next debit:
+                <span class="text-slate-900 dark:text-slate-200">12 Apr, 10:00 AM</span>
+                • Limit ₹1,000
+              </p>
+            </div>
+          </div>
+          <div class="text-right">
+            <p class="text-base font-semibold text-slate-900 dark:text-slate-100">₹799</p>
+            <p class="text-[9px] text-emerald-600 dark:text-emerald-400 mt-0.5">
+              Active • UPI Autopay
+            </p>
+            <button class="mt-1 px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-[9px] text-slate-800 dark:text-slate-200">
+              Pause
+            </button>
+          </div>
+        </article>
+
+        <!-- Upcoming 2 -->
+        <article
+          class="mandate-row rounded-2xl bg-white/95 dark:bg-slate-950/90 border border-slate-200 dark:border-slate-800 px-3.5 py-3 flex items-center justify-between gap-2"
+          data-type="bill"
+          data-status="active"
+          data-amount="1450"
+          data-text="electricity bill bescom monthly 1450"
+        >
+          <div class="flex items-start gap-2.5">
+            <div class="h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-900 flex items-center justify-center text-xs">
+              💡
+            </div>
+            <div>
+              <p class="text-slate-900 dark:text-slate-100 font-medium">Electricity – BESCOM</p>
+              <p class="text-[10px] text-slate-600 dark:text-slate-400">
+                Monthly bill • Auto-pay on due date
+              </p>
+              <p class="text-[9px] text-slate-500 dark:text-slate-500 mt-0.5">
+                Next debit:
+                <span class="text-slate-900 dark:text-slate-200">15 Apr</span>
+                • Max ₹2,000
+              </p>
+            </div>
+          </div>
+          <div class="text-right">
+            <p class="text-base font-semibold text-slate-900 dark:text-slate-100">Varies</p>
+            <p class="text-[9px] text-emerald-600 dark:text-emerald-400 mt-0.5">
+              Active • e-Mandate
+            </p>
+            <button class="mt-1 px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-[9px] text-slate-800 dark:text-slate-200">
+              Edit limit
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ALL MANDATES LIST -->
+    <section class="px-4 space-y-3 pb-3 text-[11px]">
+      <div class="flex items-center justify-between">
+        <p class="text-[10px] text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-[0.16em]">
+          All mandates
+        </p>
+        <button class="text-[10px] text-slate-500 dark:text-slate-400">
+          Download list
+        </button>
+      </div>
+
+      <div id="mandateList" class="space-y-2">
+        <!-- Loan EMI -->
+        <article
+          class="mandate-row rounded-2xl bg-white/95 dark:bg-slate-950/90 border border-slate-200 dark:border-slate-800 px-3.5 py-3 flex items-center justify-between gap-2"
+          data-type="loan"
+          data-status="active"
+          data-amount="3200"
+          data-text="personal loan emi monthly 3200 hdfc"
+        >
+          <div class="flex items-start gap-2.5">
+            <div class="h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-900 flex items-center justify-center text-xs">
+              🏦
+            </div>
+            <div>
+              <p class="text-slate-900 dark:text-slate-100 font-medium">HDFC Personal Loan EMI</p>
+              <p class="text-[10px] text-slate-600 dark:text-slate-400">
+                Monthly EMI • Auto-debit from HDFC •••• 4456
+              </p>
+              <p class="text-[9px] text-slate-500 dark:text-slate-500 mt-0.5">
+                Debit on 5th of every month • Limit ₹3,200
+              </p>
+            </div>
+          </div>
+          <div class="text-right">
+            <p class="text-base font-semibold text-slate-900 dark:text-slate-100">₹3,200</p>
+            <p class="text-[9px] text-emerald-600 dark:text-emerald-400 mt-0.5">
+              Active • Mandate
+            </p>
+            <button class="mt-1 px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-[9px] text-slate-800 dark:text-slate-200">
+              View details
+            </button>
+          </div>
+        </article>
+
+        <!-- OTT subscription paused -->
+        <article
+          class="mandate-row rounded-2xl bg-white/95 dark:bg-slate-950/90 border border-slate-200 dark:border-slate-800 px-3.5 py-3 flex items-center justify-between gap-2"
+          data-type="subscription"
+          data-status="paused"
+          data-amount="499"
+          data-text="music subscription spotify 499 paused"
+        >
+          <div class="flex items-start gap-2.5">
+            <div class="h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-900 flex items-center justify-center text-xs">
+              🎵
+            </div>
+            <div>
+              <p class="text-slate-900 dark:text-slate-100 font-medium">Spotify Premium</p>
+              <p class="text-[10px] text-slate-600 dark:text-slate-400">
+                Monthly subscription • Paused by you
+              </p>
+              <p class="text-[9px] text-slate-500 dark:text-slate-500 mt-0.5">
+                Last debit: 01 Mar • No future debits
+              </p>
+            </div>
+          </div>
+          <div class="text-right">
+            <p class="text-base font-semibold text-slate-900 dark:text-slate-100">₹499</p>
+            <p class="text-[9px] text-amber-500 dark:text-amber-300 mt-0.5">
+              Paused
+            </p>
+            <button class="mt-1 px-2 py-0.5 rounded-full bg-amber-50 dark:bg-slate-900 border border-amber-300 dark:border-amber-400/60 text-[9px] text-amber-700 dark:text-amber-100">
+              Resume
+            </button>
+          </div>
+        </article>
+
+        <!-- Education fee -->
+        <article
+          class="mandate-row rounded-2xl bg-white/95 dark:bg-slate-950/90 border border-slate-200 dark:border-slate-800 px-3.5 py-3 flex items-center justify-between gap-2"
+          data-type="education"
+          data-status="active"
+          data-amount="2500"
+          data-text="tuition fees coaching centre quarterly 2500"
+        >
+          <div class="flex items-start gap-2.5">
+            <div class="h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-900 flex items-center justify-center text-xs">
+              🏫
+            </div>
+            <div>
+              <p class="text-slate-900 dark:text-slate-100 font-medium">Coaching Fees</p>
+              <p class="text-[10px] text-slate-600 dark:text-slate-400">
+                Quarterly fee • Auto-debit via UPI
+              </p>
+              <p class="text-[9px] text-slate-500 dark:text-slate-500 mt-0.5">
+                Next debit: 30 Jun • Limit ₹2,500
+              </p>
+            </div>
+          </div>
+          <div class="text-right">
+            <p class="text-base font-semibold text-slate-900 dark:text-slate-100">₹2,500</p>
+            <p class="text-[9px] text-emerald-600 dark:text-emerald-400 mt-0.5">
+              Active • UPI Autopay
+            </p>
+            <button class="mt-1 px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-[9px] text-slate-800 dark:text-slate-200">
+              Change date
+            </button>
+          </div>
+        </article>
+
+        <!-- Cancelled mandate -->
+        <article
+          class="mandate-row rounded-2xl bg-white/95 dark:bg-slate-950/90 border border-slate-200 dark:border-slate-800 px-3.5 py-3 flex items-center justify-between gap-2"
+          data-type="bill"
+          data-status="cancelled"
+          data-amount="599"
+          data-text="postpaid mobile bill airtel 599 cancelled"
+        >
+          <div class="flex items-start gap-2.5">
+            <div class="h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-900 flex items-center justify-center text-xs">
+              📱
+            </div>
+            <div>
+              <p class="text-slate-900 dark:text-slate-100 font-medium">Airtel Postpaid</p>
+              <p class="text-[10px] text-slate-600 dark:text-slate-400">
+                Mobile bill • Mandate cancelled
+              </p>
+              <p class="text-[9px] text-slate-500 dark:text-slate-500 mt-0.5">
+                Cancelled on 10 Feb • No further debits
+              </p>
+            </div>
+          </div>
+          <div class="text-right">
+            <p class="text-base font-semibold text-slate-900 dark:text-slate-100">₹599</p>
+            <p class="text-[9px] text-rose-500 dark:text-rose-400 mt-0.5">
+              Cancelled
+            </p>
+            <button class="mt-1 px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-[9px] text-slate-800 dark:text-slate-200">
+              Set up again
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <!-- No-results placeholder -->
+      <p id="noResultsText" class="hidden text-[10px] text-slate-500 text-center mt-2">
+        No mandates match this filter. Try changing filters or search.
+      </p>
+
+      <!-- Safety info -->
+      <div class="mt-3 rounded-2xl bg-slate-100 dark:bg-slate-950/90 border border-slate-200 dark:border-slate-800 px-3.5 py-3 flex items-center gap-3 text-[10px]">
+        <div class="h-7 w-7 rounded-full bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-400/40 flex items-center justify-center text-sm">
+          🔒
+        </div>
+        <div>
+          <p class="text-slate-800 dark:text-slate-100 font-medium">
+            You can pause or cancel UPI mandates anytime.
+          </p>
+          <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">
+            Changes may take a few minutes to reflect with the merchant / biller.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- BOTTOM BAR -->
+  <nav class="fixed bottom-0 inset-x-0 z-30">
+    <div class="mx-auto max-w-sm px-4 pb-3">
+      <div class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white/95 dark:bg-slate-950/95 backdrop-blur shadow-soft px-3 py-2.5 flex items-center justify-between gap-3 text-[11px]">
+        <div class="flex-1">
+          <p class="text-slate-800 dark:text-slate-100">
+            Control all your recurring UPI payments from here.
+          </p>
+          <p class="text-[9px] text-slate-500 dark:text-slate-400 mt-0.5">
+            Set up autopay for subscriptions, EMIs, bills &amp; more.
+          </p>
+        </div>
+        <button
+          type="button"
+          class="rounded-full bg-primary-600 text-white px-3 py-1.5 text-[11px] font-semibold flex items-center gap-1"
+        >
+          ➕ New autopay
+        </button>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+
+<script>
+  // THEME TOGGLE
+  const themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    const setIcon = () => {
+      themeToggle.textContent =
+        document.documentElement.classList.contains('dark') ? '🌙' : '☀️';
+    };
+    setIcon();
+    themeToggle.addEventListener('click', () => {
+      const root = document.documentElement;
+      const isDark = root.classList.toggle('dark');
+      localStorage.setItem('pp-theme', isDark ? 'dark' : 'light');
+      setIcon();
+    });
+  }
+
+  const typeChips = document.querySelectorAll('.js-type-chip');
+  const statusChips = document.querySelectorAll('.js-status-chip');
+  const highValueToggle = document.getElementById('highValueToggle');
+  const searchInput = document.getElementById('searchInput');
+  const mandateRows = document.querySelectorAll('.mandate-row');
+  const noResultsText = document.getElementById('noResultsText');
+
+  let activeType = 'all';
+  let activeStatus = 'all';
+  let highValueOnly = false;
+
+  function applyFilters() {
+    const query = (searchInput?.value || '').toLowerCase().trim();
+    let anyVisible = false;
+
+    mandateRows.forEach(row => {
+      const rowType = row.getAttribute('data-type') || 'all';
+      const rowStatus = row.getAttribute('data-status') || 'active';
+      const rowAmount = parseFloat(row.getAttribute('data-amount') || '0');
+      const text = (row.getAttribute('data-text') || '').toLowerCase();
+
+      let visible = true;
+
+      if (activeType !== 'all' && rowType !== activeType) {
+        visible = false;
+      }
+
+      if (activeStatus !== 'all' && rowStatus !== activeStatus) {
+        visible = false;
+      }
+
+      if (highValueOnly && (!rowAmount || rowAmount <= 1000)) {
+        visible = false;
+      }
+
+      if (query && !text.includes(query)) {
+        visible = false;
+      }
+
+      if (visible) {
+        row.classList.remove('hidden');
+        anyVisible = true;
+      } else {
+        row.classList.add('hidden');
+      }
+    });
+
+    if (noResultsText) {
+      if (!anyVisible) {
+        noResultsText.classList.remove('hidden');
+      } else {
+        noResultsText.classList.add('hidden');
+      }
+    }
+  }
+
+  // Type filter buttons
+  typeChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      typeChips.forEach(c => {
+        c.classList.remove(
+          'border-primary-400',
+          'bg-primary-600/30',
+          'bg-primary-100',
+          'text-primary-100',
+          'text-primary-700',
+          'font-medium'
+        );
+        c.classList.add('border-slate-700', 'bg-slate-950/70', 'text-slate-200');
+      });
+
+      chip.classList.remove('border-slate-700', 'bg-slate-950/70', 'text-slate-200');
+      chip.classList.add(
+        'border-primary-400',
+        'bg-primary-600/30',
+        'text-primary-100',
+        'font-medium'
+      );
+
+      activeType = chip.getAttribute('data-type') || 'all';
+      applyFilters();
+    });
+  });
+
+  // Status filter buttons
+  statusChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      statusChips.forEach(c => {
+        c.classList.remove(
+          'border-primary-400',
+          'bg-primary-600/30',
+          'bg-primary-100',
+          'text-primary-100',
+          'text-primary-700',
+          'font-medium'
+        );
+        c.classList.add('border-slate-700', 'bg-slate-950/70', 'text-slate-200');
+      });
+
+      chip.classList.remove('border-slate-700', 'bg-slate-950/70', 'text-slate-200');
+      chip.classList.add(
+        'border-primary-400',
+        'bg-primary-600/30',
+        'text-primary-100',
+        'font-medium'
+      );
+
+      activeStatus = chip.getAttribute('data-status') || 'all';
+      applyFilters();
+    });
+  });
+
+  // High value toggle
+  if (highValueToggle) {
+    highValueToggle.addEventListener('click', () => {
+      const isOn = highValueToggle.getAttribute('data-on') === 'true';
+      if (isOn) {
+        highValueOnly = false;
+        highValueToggle.setAttribute('data-on', 'false');
+        highValueToggle.classList.remove('bg-amber-500/20', 'border-amber-400', 'text-amber-100');
+        highValueToggle.classList.add('bg-slate-100', 'dark:bg-slate-950/60', 'border-slate-300', 'dark:border-slate-800', 'text-slate-700', 'dark:text-slate-300');
+      } else {
+        highValueOnly = true;
+        highValueToggle.setAttribute('data-on', 'true');
+        highValueToggle.classList.remove('bg-slate-100', 'dark:bg-slate-950/60', 'border-slate-300', 'dark:border-slate-800', 'text-slate-700', 'dark:text-slate-300');
+        highValueToggle.classList.add('bg-amber-500/20', 'border-amber-400', 'text-amber-100');
+      }
+      applyFilters();
+    });
+  }
+
+  // Search
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      applyFilters();
+    });
+  }
+
+  // Initial
+  applyFilters();
+</script>
+</body>
+</html>
