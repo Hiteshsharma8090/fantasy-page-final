@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PhonePe – History</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              500: '#7c3aed',
+              600: '#6d28d9',
+              700: '#5b21b6',
+            },
+          },
+          boxShadow: {
+            soft: '0 12px 32px rgba(15,23,42,0.25)',
+          }
+        }
+      }
+    };
+
+    const storedTheme = localStorage.getItem('pp-theme');
+    if (storedTheme === 'light') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+</head>
+
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50">
+  <div class="mx-auto max-w-sm min-h-screen flex flex-col relative">
+
+    <!-- TOP BAR -->
+    <header
+      class="px-4 pt-4 pb-3 flex items-center justify-between border-b border-slate-200/80 dark:border-slate-800/80 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur z-20"
+    >
+      <button
+        class="h-9 w-9 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-sm"
+      >
+        ←
+      </button>
+
+      <div class="text-center">
+        <p class="text-[11px] text-slate-500 dark:text-slate-400 uppercase tracking-[0.18em]">
+          History / Transactions
+        </p>
+        <p class="text-[11px] text-slate-400 dark:text-slate-500">
+          UPI • Cards • Wallet
+        </p>
+      </div>
+
+      <button
+        class="h-9 px-3 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center gap-1 text-[11px]"
+      >
+        <span>🗓️</span>
+        <span class="hidden xs:inline">This month</span>
+      </button>
+    </header>
+
+    <!-- MAIN -->
+    <main
+      class="flex-1 overflow-y-auto pb-24 space-y-4 bg-gradient-to-b from-slate-900 via-slate-950 to-black text-slate-50"
+    >
+      <!-- FILTERS + SEARCH -->
+      <section class="px-4 pt-4 space-y-3">
+        <!-- Date range + debits only -->
+        <div class="flex items-center justify-between gap-2 text-[11px]">
+          <button
+            class="flex items-center gap-1 rounded-full bg-slate-950/80 border border-slate-700 px-3 py-1.5"
+          >
+            <span>📆</span>
+            <span>This month</span>
+          </button>
+          <button
+            id="debitsToggle"
+            type="button"
+            class="flex items-center gap-1 rounded-full bg-slate-950/60 border border-slate-800 px-3 py-1.5 text-slate-300 text-[10px]"
+            data-on="false"
+          >
+            <span class="h-3 w-3 rounded-full border border-rose-400/60 flex items-center justify-center text-[9px] text-rose-300">●</span>
+            Debits only
+          </button>
+        </div>
+
+        <!-- Filter chips -->
+        <div class="flex gap-2 overflow-x-auto no-scrollbar text-[11px]">
+          <button
+            class="js-type-filter rounded-full px-3 py-1.5 border border-primary-400 bg-primary-600/30 text-primary-100 font-medium flex-shrink-0"
+            data-type="all"
+          >
+            All
+          </button>
+          <button
+            class="js-type-filter rounded-full px-3 py-1.5 border border-slate-700 bg-slate-950/70 text-slate-200 flex-shrink-0"
+            data-type="upi"
+          >
+            UPI
+          </button>
+          <button
+            class="js-type-filter rounded-full px-3 py-1.5 border border-slate-700 bg-slate-950/70 text-slate-200 flex-shrink-0"
+            data-type="bank"
+          >
+            Bank transfers
+          </button>
+          <button
+            class="js-type-filter rounded-full px-3 py-1.5 border border-slate-700 bg-slate-950/70 text-slate-200 flex-shrink-0"
+            data-type="card"
+          >
+            Cards
+          </button>
+          <button
+            class="js-type-filter rounded-full px-3 py-1.5 border border-slate-700 bg-slate-950/70 text-slate-200 flex-shrink-0"
+            data-type="reward"
+          >
+            Rewards
+          </button>
+        </div>
+
+        <!-- Search -->
+        <div
+          class="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-950/80 border border-slate-800 text-[11px]"
+        >
+          <span>🔍</span>
+          <input
+            id="searchInput"
+            class="bg-transparent flex-1 outline-none placeholder:text-slate-500 text-[11px]"
+            placeholder="Search name, UPI ID, note or amount"
+          />
+        </div>
+      </section>
+
+      <!-- TRANSACTION LIST -->
+      <section class="px-4 space-y-4 pb-3 text-[11px]">
+        <!-- Today -->
+        <div>
+          <p class="text-[10px] text-slate-400 mb-1.5 uppercase tracking-[0.16em]">
+            Today
+          </p>
+          <div
+            class="rounded-2xl bg-slate-950/90 border border-slate-800 divide-y divide-slate-800"
+          >
+            <!-- TXN ITEM -->
+            <button
+              class="txn-row w-full px-3 py-2.5 flex items-center justify-between gap-2"
+              data-type="upi"
+              data-direction="debit"
+              data-text="rohit verma room rent upi rohit@upi 6500"
+            >
+              <div class="flex items-center gap-2.5">
+                <div
+                  class="h-8 w-8 rounded-full bg-slate-900 flex items-center justify-center text-xs"
+                >
+                  🧑
+                </div>
+                <div class="text-left">
+                  <p class="text-slate-100 font-medium">Rohit Verma</p>
+                  <p class="text-[10px] text-slate-400">
+                    UPI • rohit@upi • Room rent
+                  </p>
+                  <p class="text-[9px] text-slate-500 mt-0.5">
+                    10:42 PM • SBI •••• 7728
+                  </p>
+                </div>
+              </div>
+              <div class="text-right">
+                <p class="text-rose-400 font-semibold">- ₹6,500</p>
+                <p class="text-[9px] text-slate-500">Success</p>
+              </div>
+            </button>
+
+            <button
+              class="txn-row w-full px-3 py-2.5 flex items-center justify-between gap-2"
+              data-type="reward"
+              data-direction="credit"
+              data-text="reward scratch card cashback 25"
+            >
+              <div class="flex items-center gap-2.5">
+                <div
+                  class="h-8 w-8 rounded-full bg-gradient-to-tr from-amber-500 to-pink-500 flex items-center justify-center text-xs"
+                >
+                  🎁
+                </div>
+                <div class="text-left">
+                  <p class="text-slate-100 font-medium">Scratch card reward</p>
+                  <p class="text-[10px] text-slate-400">
+                    Cashback for UPI payment
+                  </p>
+                  <p class="text-[9px] text-slate-500 mt-0.5">
+                    10:45 PM • PhonePe Cashback
+                  </p>
+                </div>
+              </div>
+              <div class="text-right">
+                <p class="text-emerald-400 font-semibold">+ ₹25</p>
+                <p class="text-[9px] text-emerald-500">Received</p>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- This week -->
+        <div>
+          <p class="text-[10px] text-slate-400 mb-1.5 uppercase tracking-[0.16em]">
+            This week
+          </p>
+          <div
+            class="rounded-2xl bg-slate-950/90 border border-slate-800 divide-y divide-slate-800"
+          >
+            <button
+              class="txn-row w-full px-3 py-2.5 flex items-center justify-between gap-2"
+              data-type="card"
+              data-direction="debit"
+              data-text="swiggy instamart groceries card 899"
+            >
+              <div class="flex items-center gap-2.5">
+                <div
+                  class="h-8 w-8 rounded-full bg-slate-900 flex items-center justify-center text-xs"
+                >
+                  🛒
+                </div>
+                <div class="text-left">
+                  <p class="text-slate-100 font-medium">Instamart</p>
+                  <p class="text-[10px] text-slate-400">
+                    Card • Groceries
+                  </p>
+                  <p class="text-[9px] text-slate-500 mt-0.5">
+                    Tue • 8:13 PM • HDFC Credit
+                  </p>
+                </div>
+              </div>
+              <div class="text-right">
+                <p class="text-rose-400 font-semibold">- ₹899</p>
+                <p class="text-[9px] text-slate-500">Success</p>
+              </div>
+            </button>
+
+            <button
+              class="txn-row w-full px-3 py-2.5 flex items-center justify-between gap-2"
+              data-type="upi"
+              data-direction="debit"
+              data-text="electricity bill power upi bescom 1450"
+            >
+              <div class="flex items-center gap-2.5">
+                <div
+                  class="h-8 w-8 rounded-full bg-slate-900 flex items-center justify-center text-xs"
+                >
+                  💡
+                </div>
+                <div class="text-left">
+                  <p class="text-slate-100 font-medium">Electricity Bill</p>
+                  <p class="text-[10px] text-slate-400">
+                    UPI • BESCOM
+                  </p>
+                  <p class="text-[9px] text-slate-500 mt-0.5">
+                    Mon • 5:02 PM • ICICI •••• 8899
+                  </p>
+                </div>
+              </div>
+              <div class="text-right">
+                <p class="text-rose-400 font-semibold">- ₹1,450</p>
+                <p class="text-[9px] text-slate-500">Success</p>
+              </div>
+            </button>
+
+            <button
+              class="txn-row w-full px-3 py-2.5 flex items-center justify-between gap-2"
+              data-type="bank"
+              data-direction="debit"
+              data-text="rent transfer bank account mahesh landlord 8000 failed"
+            >
+              <div class="flex items-center gap-2.5">
+                <div
+                  class="h-8 w-8 rounded-full bg-slate-900 flex items-center justify-center text-xs"
+                >
+                  🏠
+                </div>
+                <div class="text-left">
+                  <p class="text-slate-100 font-medium">Mahesh Landlord</p>
+                  <p class="text-[10px] text-slate-400">
+                    Bank transfer • Rent
+                  </p>
+                  <p class="text-[9px] text-slate-500 mt-0.5">
+                    Sun • 9:32 AM • SBI •••• 7728
+                  </p>
+                </div>
+              </div>
+              <div class="text-right">
+                <p class="text-slate-400 font-semibold">₹8,000</p>
+                <p class="inline-flex items-center gap-1 text-[9px] text-rose-400">
+                  <span
+                    class="px-1.5 py-0.5 rounded-full border border-rose-500/50 bg-rose-500/10"
+                  >
+                    Failed
+                  </span>
+                </p>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Earlier -->
+        <div>
+          <p class="text-[10px] text-slate-400 mb-1.5 uppercase tracking-[0.16em]">
+            Earlier
+          </p>
+          <div
+            class="rounded-2xl bg-slate-950/90 border border-slate-800 divide-y divide-slate-800"
+          >
+            <button
+              class="txn-row w-full px-3 py-2.5 flex items-center justify-between gap-2"
+              data-type="upi"
+              data-direction="credit"
+              data-text="salary credit upi employer 25000"
+            >
+              <div class="flex items-center gap-2.5">
+                <div
+                  class="h-8 w-8 rounded-full bg-slate-900 flex items-center justify-center text-xs"
+                >
+                  🧾
+                </div>
+                <div class="text-left">
+                  <p class="text-slate-100 font-medium">Salary Credit</p>
+                  <p class="text-[10px] text-slate-400">
+                    UPI • Employer Pvt Ltd
+                  </p>
+                  <p class="text-[9px] text-slate-500 mt-0.5">
+                    1 Apr • HDFC •••• 4456
+                  </p>
+                </div>
+              </div>
+              <div class="text-right">
+                <p class="text-emerald-400 font-semibold">+ ₹25,000</p>
+                <p class="text-[9px] text-emerald-500">Received</p>
+              </div>
+            </button>
+
+            <button
+              class="txn-row w-full px-3 py-2.5 flex items-center justify-between gap-2"
+              data-type="card"
+              data-direction="debit"
+              data-text="netflix subscription card 499"
+            >
+              <div class="flex items-center gap-2.5">
+                <div
+                  class="h-8 w-8 rounded-full bg-slate-900 flex items-center justify-center text-xs"
+                >
+                  🎬
+                </div>
+                <div class="text-left">
+                  <p class="text-slate-100 font-medium">Netflix</p>
+                  <p class="text-[10px] text-slate-400">
+                    Card • Subscription
+                  </p>
+                  <p class="text-[9px] text-slate-500 mt-0.5">
+                    28 Mar • HDFC Credit
+                  </p>
+                </div>
+              </div>
+              <div class="text-right">
+                <p class="text-rose-400 font-semibold">- ₹499</p>
+                <p class="text-[9px] text-slate-500">Success</p>
+              </div>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- BOTTOM SUMMARY BAR -->
+    <nav class="fixed bottom-0 inset-x-0 z-30">
+      <div class="mx-auto max-w-sm px-4 pb-3">
+        <div
+          class="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white/95 dark:bg-slate-950/95 backdrop-blur shadow-soft px-3 py-2.5 flex items-center justify-between gap-3 text-[11px]"
+        >
+          <div class="flex-1">
+            <p id="todaySummary" class="text-slate-800 dark:text-slate-100">
+              Today: Spent ₹7,399 • Received ₹25
+            </p>
+            <p class="text-[9px] text-slate-500 dark:text-slate-400 mt-0.5">
+              Filter by category or search to narrow results.
+            </p>
+          </div>
+          <button
+            type="button"
+            class="rounded-full bg-primary-600 text-white px-3 py-1.5 text-[11px] font-semibold flex items-center gap-1"
+          >
+            ⬇️ Export
+          </button>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+
+  <script>
+    const typeButtons = document.querySelectorAll('.js-type-filter');
+    const txnRows = document.querySelectorAll('.txn-row');
+    const searchInput = document.getElementById('searchInput');
+    const debitsToggle = document.getElementById('debitsToggle');
+
+    let activeType = 'all';
+    let debitsOnly = false;
+
+    function applyFilters() {
+      const query = (searchInput?.value || '').toLowerCase().trim();
+
+      txnRows.forEach(row => {
+        const rowType = row.getAttribute('data-type') || 'all';
+        const direction = row.getAttribute('data-direction') || 'debit';
+        const text = (row.getAttribute('data-text') || '').toLowerCase();
+
+        let visible = true;
+
+        // type filter
+        if (activeType !== 'all' && rowType !== activeType) {
+          visible = false;
+        }
+
+        // debits-only filter
+        if (debitsOnly && direction !== 'debit') {
+          visible = false;
+        }
+
+        // search filter
+        if (query && !text.includes(query)) {
+          visible = false;
+        }
+
+        if (visible) {
+          row.classList.remove('hidden');
+        } else {
+          row.classList.add('hidden');
+        }
+      });
+    }
+
+    // Type filter buttons
+    typeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        typeButtons.forEach(b => {
+          b.classList.remove(
+            'border-primary-400',
+            'bg-primary-600/30',
+            'text-primary-100',
+            'font-medium'
+          );
+          b.classList.add('border-slate-700', 'bg-slate-950/70', 'text-slate-200');
+        });
+
+        btn.classList.remove('border-slate-700', 'bg-slate-950/70', 'text-slate-200');
+        btn.classList.add(
+          'border-primary-400',
+          'bg-primary-600/30',
+          'text-primary-100',
+          'font-medium'
+        );
+
+        activeType = btn.getAttribute('data-type') || 'all';
+        applyFilters();
+      });
+    });
+
+    // Search
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        applyFilters();
+      });
+    }
+
+    // Debits-only toggle
+    if (debitsToggle) {
+      debitsToggle.addEventListener('click', () => {
+        const isOn = debitsToggle.getAttribute('data-on') === 'true';
+        if (isOn) {
+          debitsOnly = false;
+          debitsToggle.setAttribute('data-on', 'false');
+          debitsToggle.classList.remove('bg-rose-500/20', 'border-rose-400', 'text-rose-100');
+          debitsToggle.classList.add('bg-slate-950/60', 'border-slate-800', 'text-slate-300');
+        } else {
+          debitsOnly = true;
+          debitsToggle.setAttribute('data-on', 'true');
+          debitsToggle.classList.remove('bg-slate-950/60', 'border-slate-800', 'text-slate-300');
+          debitsToggle.classList.add('bg-rose-500/20', 'border-rose-400', 'text-rose-100');
+        }
+        applyFilters();
+      });
+    }
+
+    // Initial filter
+    applyFilters();
+  </script>
+</body>
+</html>
