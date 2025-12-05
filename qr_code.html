@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PhonePe – Receive Money</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              500: '#7c3aed',
+              600: '#6d28d9',
+              700: '#5b21b6',
+            },
+          },
+          boxShadow: {
+            soft: '0 12px 32px rgba(15,23,42,0.15)',
+          }
+        }
+      }
+    };
+  </script>
+</head>
+
+<body class="bg-slate-50 text-slate-900">
+  <div class="mx-auto max-w-sm min-h-screen flex flex-col relative">
+
+    <!-- TOP BAR -->
+    <header
+      class="px-4 pt-4 pb-3 flex items-center justify-between
+             border-b border-slate-200/80
+             bg-slate-50/90 backdrop-blur z-20"
+    >
+      <button
+        type="button"
+        onclick="history.back()"
+        class="h-9 w-9 rounded-full border border-slate-200
+               flex items-center justify-center text-sm"
+      >
+        ←
+      </button>
+
+      <div class="text-center">
+        <p class="text-[11px] text-slate-500 uppercase tracking-[0.16em]">
+          Receive money
+        </p>
+        <p class="text-[11px] text-slate-400">
+          Show QR or share UPI
+        </p>
+      </div>
+
+      <span class="w-9"></span>
+    </header>
+
+    <!-- MAIN -->
+    <main
+      class="flex-1 overflow-y-auto px-6 pt-4 pb-8
+             bg-gradient-to-b from-slate-50 via-slate-100 to-slate-50"
+    >
+      <!-- QR card -->
+      <section class="flex flex-col items-center gap-4">
+        <div
+          class="mt-2 rounded-3xl bg-white p-3 shadow-soft border border-slate-200"
+        >
+          <img
+            id="receiveQrImage"
+            src=""
+            alt="QR Code"
+            class="w-60 h-60 rounded-2xl border-8 border-slate-50"
+          />
+        </div>
+
+        <!-- Bank + UPI -->
+        <div class="text-center text-slate-800 space-y-0.5">
+          <p id="overlayBankName" class="text-sm font-semibold">
+            <!-- Filled by JS -->
+          </p>
+          <p id="overlayUpiId" class="text-[11px] text-slate-500">
+            <!-- Filled by JS -->
+          </p>
+        </div>
+
+        <!-- EXTRA CONTROLS -->
+        <div class="w-full max-w-xs space-y-3 text-[11px] text-slate-800 mt-2">
+          <!-- Amount -->
+          <div>
+            <label for="qrAmount" class="block mb-1 text-slate-700">
+              Amount <span class="text-slate-400">(optional)</span>
+            </label>
+            <input
+              id="qrAmount"
+              type="number"
+              min="1"
+              step="1"
+              placeholder="e.g. 500"
+              class="w-full rounded-2xl border border-slate-300 bg-slate-50 px-3 py-2 text-[11px] outline-none focus:border-primary-500"
+            />
+
+            <!-- Quick amount chips -->
+            <div class="flex gap-2 mt-2">
+              <button
+                type="button"
+                class="js-quick-amount px-3 py-1 rounded-full border border-slate-300 bg-white text-[10px] text-slate-700"
+                data-value="100"
+              >
+                ₹100
+              </button>
+              <button
+                type="button"
+                class="js-quick-amount px-3 py-1 rounded-full border border-slate-300 bg-white text-[10px] text-slate-700"
+                data-value="200"
+              >
+                ₹200
+              </button>
+              <button
+                type="button"
+                class="js-quick-amount px-3 py-1 rounded-full border border-slate-300 bg-white text-[10px] text-slate-700"
+                data-value="500"
+              >
+                ₹500
+              </button>
+            </div>
+          </div>
+
+          <!-- Note -->
+          <div>
+            <label for="qrNote" class="block mb-1 text-slate-700">
+              Note / Message <span class="text-slate-400">(optional)</span>
+            </label>
+            <input
+              id="qrNote"
+              type="text"
+              maxlength="40"
+              placeholder="e.g. Room rent, Snacks, Cab share"
+              class="w-full rounded-2xl border border-slate-300 bg-slate-50 px-3 py-2 text-[11px] outline-none focus:border-primary-500"
+            />
+          </div>
+
+          <!-- Last saved state -->
+          <button
+            id="useLastBtn"
+            type="button"
+            class="mt-1 w-full rounded-full border border-slate-300 bg-white text-[10px] py-1.5 hidden"
+          >
+            Use last saved amount & note
+          </button>
+          <p
+            id="lastSummary"
+            class="mt-1 text-[10px] text-slate-500 hidden"
+          ></p>
+
+          <button
+            id="updateQrBtn"
+            type="button"
+            class="mt-1 w-full rounded-full bg-primary-600 text-white text-[11px] font-semibold py-2.5 shadow-soft"
+          >
+            Update QR with amount / note
+          </button>
+
+          <!-- Smart Split Helper -->
+          <div
+            class="mt-3 rounded-3xl border border-slate-200 bg-white px-3 py-3.5 space-y-2"
+          >
+            <p
+              class="text-[10px] font-semibold text-slate-800 flex items-center gap-1"
+            >
+              <span>💡</span> Smart Split Helper
+            </p>
+            <div class="flex gap-2">
+              <div class="flex-1">
+                <label
+                  for="splitTotal"
+                  class="block mb-1 text-[10px] text-slate-600"
+                  >Total bill</label
+                >
+                <input
+                  id="splitTotal"
+                  type="number"
+                  min="1"
+                  step="1"
+                  placeholder="e.g. 1349"
+                  class="w-full rounded-2xl border border-slate-300 bg-slate-50 px-2.5 py-1.5 text-[10px] outline-none focus:border-primary-500"
+                />
+              </div>
+              <div class="w-20">
+                <label
+                  for="splitPeople"
+                  class="block mb-1 text-[10px] text-slate-600"
+                  >People</label
+                >
+                <input
+                  id="splitPeople"
+                  type="number"
+                  min="2"
+                  step="1"
+                  placeholder="3"
+                  class="w-full rounded-2xl border border-slate-300 bg-slate-50 px-2.5 py-1.5 text-[10px] outline-none focus:border-primary-500"
+                />
+              </div>
+            </div>
+            <button
+              id="splitBtn"
+              type="button"
+              class="w-full mt-2 rounded-full bg-slate-900 text-slate-50 text-[10px] font-medium py-1.5"
+            >
+              Set my share & update QR
+            </button>
+          </div>
+        </div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="flex items-center gap-3 mt-4 mb-4">
+          <button
+            type="button"
+            id="copyUpiBtn"
+            class="px-4 py-2 rounded-full bg-slate-900 text-slate-50 text-[11px] font-medium flex items-center gap-1 shadow-soft"
+          >
+            <span>📋</span> Copy UPI ID
+          </button>
+
+          <button
+            type="button"
+            onclick="history.back()"
+            class="px-4 py-2 rounded-full bg-slate-100 text-slate-900 text-[11px] font-medium border border-slate-200"
+          >
+            Done
+          </button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Toast -->
+  <div
+    id="toast"
+    class="fixed bottom-20 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-full bg-slate-900 text-slate-50 text-[11px] shadow-soft opacity-0 pointer-events-none transition-opacity duration-200 z-50"
+  >
+    Copied!
+  </div>
+
+  <style>
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+
+  <script>
+    // ------- CONFIG: yahan se bank / UPI change kar sakte ho -------
+    const RECEIVE_CONFIG = {
+      bankName: 'State Bank',
+      last4: '7728',
+      upiId: 'hitesh708090@ybl', // yahan apna UPI id daal sakte ho
+    };
+
+    const bankNameEl = document.getElementById('overlayBankName');
+    const upiEl = document.getElementById('overlayUpiId');
+    const qrImg = document.getElementById('receiveQrImage');
+    const amountInput = document.getElementById('qrAmount');
+    const noteInput = document.getElementById('qrNote');
+    const toast = document.getElementById('toast');
+
+    const quickAmountBtns = document.querySelectorAll('.js-quick-amount');
+    const splitTotalInput = document.getElementById('splitTotal');
+    const splitPeopleInput = document.getElementById('splitPeople');
+    const splitBtn = document.getElementById('splitBtn');
+
+    const updateBtn = document.getElementById('updateQrBtn');
+    const copyBtn = document.getElementById('copyUpiBtn');
+
+    const useLastBtn = document.getElementById('useLastBtn');
+    const lastSummary = document.getElementById('lastSummary');
+
+    // ----- Helper functions -----
+    function showToast(message) {
+      if (!toast) return;
+      toast.textContent = message;
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+      }, 1200);
+    }
+
+    function buildUpiUrl(upi, bank, amount, note) {
+      let url =
+        'upi://pay?pa=' +
+        encodeURIComponent(upi) +
+        '&pn=' +
+        encodeURIComponent(bank) +
+        '&cu=INR';
+      if (amount && Number(amount) > 0) {
+        url += '&am=' + encodeURIComponent(amount);
+      }
+      if (note && note.trim().length > 0) {
+        url += '&tn=' + encodeURIComponent(note.trim());
+      }
+      return url;
+    }
+
+    function getLastKey() {
+      if (!RECEIVE_CONFIG.upiId) return null;
+      return 'pp-last-request-' + RECEIVE_CONFIG.upiId;
+    }
+
+    function saveCurrentState() {
+      const key = getLastKey();
+      if (!key) return;
+      const data = {
+        amount: amountInput.value || '',
+        note: noteInput.value || '',
+      };
+      try {
+        localStorage.setItem(key, JSON.stringify(data));
+      } catch (e) {}
+      loadLastSummary();
+    }
+
+    function loadLastSummary() {
+      if (!useLastBtn || !lastSummary) return;
+      const key = getLastKey();
+      if (!key) {
+        useLastBtn.classList.add('hidden');
+        lastSummary.classList.add('hidden');
+        return;
+      }
+      const raw = localStorage.getItem(key);
+      if (!raw) {
+        useLastBtn.classList.add('hidden');
+        lastSummary.classList.add('hidden');
+        return;
+      }
+      try {
+        const data = JSON.parse(raw);
+        const amt = data.amount;
+        const note = data.note;
+        if (!amt && !note) {
+          useLastBtn.classList.add('hidden');
+          lastSummary.classList.add('hidden');
+          return;
+        }
+        let text = 'Last: ';
+        if (amt) text += '₹' + amt;
+        if (note) text += (amt ? ' – ' : '') + note;
+        lastSummary.textContent = text;
+        useLastBtn.classList.remove('hidden');
+        lastSummary.classList.remove('hidden');
+      } catch (e) {
+        useLastBtn.classList.add('hidden');
+        lastSummary.classList.add('hidden');
+      }
+    }
+
+    function applyLastState() {
+      const key = getLastKey();
+      if (!key) return;
+      const raw = localStorage.getItem(key);
+      if (!raw) return;
+      try {
+        const data = JSON.parse(raw);
+        if (data.amount) amountInput.value = data.amount;
+        if (data.note) noteInput.value = data.note;
+        updateQrImage();
+        showToast('Last amount & note applied');
+      } catch (e) {}
+    }
+
+    function updateQrImage() {
+      const amount = amountInput.value;
+      const note = noteInput.value;
+      const upiUrl = buildUpiUrl(
+        RECEIVE_CONFIG.upiId,
+        RECEIVE_CONFIG.bankName,
+        amount,
+        note
+      );
+      const dataParam = encodeURIComponent(upiUrl);
+      qrImg.src =
+        'https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=' +
+        dataParam;
+    }
+
+    // ----- Init UI -----
+    function initReceivePage() {
+      if (bankNameEl) {
+        bankNameEl.textContent =
+          RECEIVE_CONFIG.bankName + ' •••• ' + RECEIVE_CONFIG.last4;
+      }
+      if (upiEl) {
+        upiEl.textContent = RECEIVE_CONFIG.upiId;
+      }
+      amountInput.value = '';
+      noteInput.value = '';
+      if (splitTotalInput) splitTotalInput.value = '';
+      if (splitPeopleInput) splitPeopleInput.value = '';
+
+      loadLastSummary();
+      updateQrImage();
+    }
+
+    // Quick amount chips
+    if (quickAmountBtns && quickAmountBtns.length) {
+      quickAmountBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const value = btn.dataset.value;
+          if (!value) return;
+          amountInput.value = value;
+          updateQrImage();
+          saveCurrentState();
+          showToast(`Amount set to ₹${value}`);
+        });
+      });
+    }
+
+    // Split helper
+    if (splitBtn) {
+      splitBtn.addEventListener('click', () => {
+        const total = parseFloat(splitTotalInput.value);
+        const people = parseInt(splitPeopleInput.value, 10);
+        if (!total || !people || people <= 0) {
+          showToast('Enter valid total & people');
+          return;
+        }
+        const share = Math.round((total / people) * 100) / 100;
+        amountInput.value = share;
+        updateQrImage();
+        saveCurrentState();
+        showToast(`Your share set to ₹${share}`);
+      });
+    }
+
+    // Update button
+    if (updateBtn) {
+      updateBtn.addEventListener('click', () => {
+        updateQrImage();
+        saveCurrentState();
+        showToast('QR updated');
+      });
+    }
+
+    // Copy UPI
+    if (copyBtn) {
+      copyBtn.addEventListener('click', async () => {
+        const upi = (upiEl.textContent || '').trim();
+        if (!upi) return;
+        try {
+          await navigator.clipboard.writeText(upi);
+          showToast('UPI ID copied');
+        } catch (err) {
+          showToast('Unable to copy');
+        }
+      });
+    }
+
+    // Use last saved
+    if (useLastBtn) {
+      useLastBtn.addEventListener('click', () => {
+        applyLastState();
+      });
+    }
+
+    // Run on load
+    initReceivePage();
+  </script>
+</body>
+</html>
