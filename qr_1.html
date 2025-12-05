@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,45 +23,39 @@
             },
           },
           boxShadow: {
-            soft: '0 12px 32px rgba(15,23,42,0.15)',
+            soft: '0 12px 32px rgba(15,23,42,0.25)',
           }
         }
       }
     };
-
-    // DEFAULT = light (first time) + remember last choice
-    const storedTheme = localStorage.getItem('pp-theme');
-    if (storedTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    // Yahan hum hamesha dark mode enforce kar rahe hain
+    document.documentElement.classList.add('dark');
   </script>
 </head>
 
-<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50">
+<body class="bg-slate-950 text-slate-50">
   <div class="mx-auto max-w-sm min-h-screen flex flex-col relative">
 
     <!-- TOP BAR -->
     <header
       class="px-4 pt-4 pb-3 flex items-center justify-between
-             border-b border-slate-200/80 dark:border-slate-800/80
-             bg-slate-50/90 dark:bg-slate-950/90 backdrop-blur z-20"
+             border-b border-slate-800/80
+             bg-slate-950/95 backdrop-blur z-20"
     >
       <button
         type="button"
         onclick="history.back()"
-        class="h-9 w-9 rounded-full border border-slate-200 dark:border-slate-700
+        class="h-9 w-9 rounded-full border border-slate-700
                flex items-center justify-center text-sm"
       >
         ←
       </button>
 
       <div class="text-center">
-        <p class="text-[11px] text-slate-500 dark:text-slate-400 uppercase tracking-[0.16em]">
+        <p class="text-[11px] text-slate-400 uppercase tracking-[0.16em]">
           Receive money
         </p>
-        <p class="text-[11px] text-slate-400 dark:text-slate-500">
+        <p class="text-[11px] text-slate-500">
           Show QR or share UPI
         </p>
       </div>
@@ -72,39 +66,38 @@
     <!-- MAIN -->
     <main
       class="flex-1 overflow-y-auto px-6 pt-4 pb-8
-             bg-gradient-to-b from-slate-50 via-slate-100 to-slate-50
-             dark:from-slate-900 dark:via-slate-950 dark:to-slate-950"
+             bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950"
     >
       <!-- QR card -->
       <section class="flex flex-col items-center gap-4">
         <div
-          class="mt-2 rounded-3xl bg-white dark:bg-slate-900
-                 p-3 shadow-soft border border-slate-200 dark:border-slate-800"
+          class="mt-2 rounded-3xl bg-slate-900
+                 p-3 shadow-soft border border-slate-800"
         >
           <img
             id="receiveQrImage"
             src=""
             alt="QR Code"
-            class="w-60 h-60 rounded-2xl border-8 border-slate-50 dark:border-slate-900"
+            class="w-60 h-60 rounded-2xl border-8 border-slate-950"
           />
         </div>
 
         <!-- Bank + UPI -->
-        <div class="text-center text-slate-800 dark:text-slate-100 space-y-0.5">
+        <div class="text-center text-slate-100 space-y-0.5">
           <p id="overlayBankName" class="text-sm font-semibold">
             <!-- Filled by JS -->
           </p>
-          <p id="overlayUpiId" class="text-[11px] text-slate-500 dark:text-slate-400">
+          <p id="overlayUpiId" class="text-[11px] text-slate-400">
             <!-- Filled by JS -->
           </p>
         </div>
 
         <!-- EXTRA CONTROLS -->
-        <div class="w-full max-w-xs space-y-3 text-[11px] text-slate-800 dark:text-slate-100 mt-2">
+        <div class="w-full max-w-xs space-y-3 text-[11px] text-slate-100 mt-2">
           <!-- Amount -->
           <div>
-            <label for="qrAmount" class="block mb-1 text-slate-700 dark:text-slate-200">
-              Amount <span class="text-slate-400 dark:text-slate-500">(optional)</span>
+            <label for="qrAmount" class="block mb-1 text-slate-200">
+              Amount <span class="text-slate-500">(optional)</span>
             </label>
             <input
               id="qrAmount"
@@ -112,10 +105,10 @@
               min="1"
               step="1"
               placeholder="e.g. 500"
-              class="w-full rounded-2xl border border-slate-300 dark:border-slate-700
-                     bg-slate-50 dark:bg-slate-900 px-3 py-2 text-[11px]
+              class="w-full rounded-2xl border border-slate-700
+                     bg-slate-900 px-3 py-2 text-[11px]
                      outline-none focus:border-primary-500
-                     placeholder:text-slate-400 dark:placeholder:text-slate-500"
+                     placeholder:text-slate-500"
             />
 
             <!-- Quick amount chips -->
@@ -123,9 +116,9 @@
               <button
                 type="button"
                 class="js-quick-amount px-3 py-1 rounded-full
-                       border border-slate-300 dark:border-slate-700
-                       bg-white dark:bg-slate-900
-                       text-[10px] text-slate-700 dark:text-slate-100"
+                       border border-slate-700
+                       bg-slate-900
+                       text-[10px] text-slate-100"
                 data-value="100"
               >
                 ₹100
@@ -133,9 +126,9 @@
               <button
                 type="button"
                 class="js-quick-amount px-3 py-1 rounded-full
-                       border border-slate-300 dark:border-slate-700
-                       bg-white dark:bg-slate-900
-                       text-[10px] text-slate-700 dark:text-slate-100"
+                       border border-slate-700
+                       bg-slate-900
+                       text-[10px] text-slate-100"
                 data-value="200"
               >
                 ₹200
@@ -143,9 +136,9 @@
               <button
                 type="button"
                 class="js-quick-amount px-3 py-1 rounded-full
-                       border border-slate-300 dark:border-slate-700
-                       bg-white dark:bg-slate-900
-                       text-[10px] text-slate-700 dark:text-slate-100"
+                       border border-slate-700
+                       bg-slate-900
+                       text-[10px] text-slate-100"
                 data-value="500"
               >
                 ₹500
@@ -155,18 +148,18 @@
 
           <!-- Note -->
           <div>
-            <label for="qrNote" class="block mb-1 text-slate-700 dark:text-slate-200">
-              Note / Message <span class="text-slate-400 dark:text-slate-500">(optional)</span>
+            <label for="qrNote" class="block mb-1 text-slate-200">
+              Note / Message <span class="text-slate-500">(optional)</span>
             </label>
             <input
               id="qrNote"
               type="text"
               maxlength="40"
               placeholder="e.g. Room rent, Snacks, Cab share"
-              class="w-full rounded-2xl border border-slate-300 dark:border-slate-700
-                     bg-slate-50 dark:bg-slate-900 px-3 py-2 text-[11px]
+              class="w-full rounded-2xl border border-slate-700
+                     bg-slate-900 px-3 py-2 text-[11px]
                      outline-none focus:border-primary-500
-                     placeholder:text-slate-400 dark:placeholder:text-slate-500"
+                     placeholder:text-slate-500"
             />
           </div>
 
@@ -174,14 +167,14 @@
           <button
             id="useLastBtn"
             type="button"
-            class="mt-1 w-full rounded-full border border-slate-300 dark:border-slate-700
-                   bg-white dark:bg-slate-900 text-[10px] py-1.5 hidden"
+            class="mt-1 w-full rounded-full border border-slate-700
+                   bg-slate-900 text-[10px] py-1.5 hidden"
           >
             Use last saved amount &amp; note
           </button>
           <p
             id="lastSummary"
-            class="mt-1 text-[10px] text-slate-500 dark:text-slate-400 hidden"
+            class="mt-1 text-[10px] text-slate-400 hidden"
           ></p>
 
           <button
@@ -195,11 +188,11 @@
 
           <!-- Smart Split Helper -->
           <div
-            class="mt-3 rounded-3xl border border-slate-200 dark:border-slate-800
-                   bg-white dark:bg-slate-900 px-3 py-3.5 space-y-2"
+            class="mt-3 rounded-3xl border border-slate-800
+                   bg-slate-950 px-3 py-3.5 space-y-2"
           >
             <p
-              class="text-[10px] font-semibold text-slate-800 dark:text-slate-100
+              class="text-[10px] font-semibold text-slate-100
                      flex items-center gap-1"
             >
               <span>💡</span> Smart Split Helper
@@ -208,7 +201,7 @@
               <div class="flex-1">
                 <label
                   for="splitTotal"
-                  class="block mb-1 text-[10px] text-slate-600 dark:text-slate-300"
+                  class="block mb-1 text-[10px] text-slate-300"
                   >Total bill</label
                 >
                 <input
@@ -217,16 +210,16 @@
                   min="1"
                   step="1"
                   placeholder="e.g. 1349"
-                  class="w-full rounded-2xl border border-slate-300 dark:border-slate-700
-                         bg-slate-50 dark:bg-slate-900 px-2.5 py-1.5 text-[10px]
+                  class="w-full rounded-2xl border border-slate-800
+                         bg-slate-900 px-2.5 py-1.5 text-[10px]
                          outline-none focus:border-primary-500
-                         placeholder:text-slate-400 dark:placeholder:text-slate-500"
+                         placeholder:text-slate-500"
                 />
               </div>
               <div class="w-20">
                 <label
                   for="splitPeople"
-                  class="block mb-1 text-[10px] text-slate-600 dark:text-slate-300"
+                  class="block mb-1 text-[10px] text-slate-300"
                   >People</label
                 >
                 <input
@@ -235,17 +228,17 @@
                   min="2"
                   step="1"
                   placeholder="3"
-                  class="w-full rounded-2xl border border-slate-300 dark:border-slate-700
-                         bg-slate-50 dark:bg-slate-900 px-2.5 py-1.5 text-[10px]
+                  class="w-full rounded-2xl border border-slate-800
+                         bg-slate-900 px-2.5 py-1.5 text-[10px]
                          outline-none focus:border-primary-500
-                         placeholder:text-slate-400 dark:placeholder:text-slate-500"
+                         placeholder:text-slate-500"
                 />
               </div>
             </div>
             <button
               id="splitBtn"
               type="button"
-              class="w-full mt-2 rounded-full bg-slate-900 text-slate-50
+              class="w-full mt-2 rounded-full bg-slate-100 text-slate-900
                      text-[10px] font-medium py-1.5"
             >
               Set my share &amp; update QR
@@ -258,7 +251,7 @@
           <button
             type="button"
             id="copyUpiBtn"
-            class="px-4 py-2 rounded-full bg-slate-900 text-slate-50
+            class="px-4 py-2 rounded-full bg-slate-100 text-slate-900
                    text-[11px] font-medium flex items-center gap-1 shadow-soft"
           >
             <span>📋</span> Copy UPI ID
@@ -267,9 +260,9 @@
           <button
             type="button"
             onclick="history.back()"
-            class="px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-900
-                   text-slate-900 dark:text-slate-50 text-[11px] font-medium
-                   border border-slate-200 dark:border-slate-700"
+            class="px-4 py-2 rounded-full bg-slate-900
+                   text-slate-50 text-[11px] font-medium
+                   border border-slate-700"
           >
             Done
           </button>
