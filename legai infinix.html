@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Legal Infinix - Business Registration & Compliance</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* ---------- 3D / Depth Helpers ---------- */
+    .card-3d {
+      border-radius: 1rem;
+      background: linear-gradient(145deg, #ffffff, #f3f4f6);
+      box-shadow:
+        0 18px 40px rgba(15, 23, 42, 0.10),
+        0 0 0 1px rgba(148, 163, 184, 0.20);
+    }
+    .card-3d-soft {
+      border-radius: 1rem;
+      background: #ffffff;
+      box-shadow:
+        0 14px 30px rgba(15, 23, 42, 0.08),
+        0 0 0 1px rgba(148, 163, 184, 0.18);
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(18px);
+    }
+    .floating {
+      animation: float 7s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 antialiased">
+
+ <!-- TOP BAR -->
+<div class="w-full bg-slate-900 text-slate-100 text-[11px] sm:text-xs">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+      <!-- Contact row -->
+      <div class="flex flex-wrap items-center justify-center sm:justify-start gap-x-4 gap-y-1">
+        <span class="flex items-center gap-1">
+          <span>📞</span>
+          <span>+91-87973 42XXX</span>
+        </span>
+        <span class="flex items-center gap-1">
+          <span>📧</span>
+          <span>info@legalinfinix.com</span>
+        </span>
+        <span class="hidden md:inline text-slate-300">Mon–Sat, 9:30 AM – 7:00 PM</span>
+      </div>
+  
+      <!-- Top links (Blogs / About / Contact / CTA) -->
+      <div class="flex flex-wrap items-center justify-center sm:justify-end gap-3 text-xs">
+        <a href="#" class="hover:text-amber-300 duration-150">Blogs</a>
+        <a href="#" class="hover:text-amber-300 duration-150">About</a>
+        <a href="#" class="hover:text-amber-300 duration-150">Contact</a>
+        <button
+          class="px-3 py-1 rounded-full bg-amber-400 text-slate-900 font-semibold text-[11px] hover:bg-amber-300 duration-150">
+          Talk to Expert
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- NAVBAR / LOGO SECTION -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 py-3">
+        <!-- Row 1: Logo + nav / hamburger -->
+        <div class="flex items-center justify-between">
+          <!-- Logo -->
+          <div class="flex items-center gap-3">
+            <div
+              class="w-10 h-10 rounded-2xl bg-gradient-to-br from-amber-400 via-orange-500 to-rose-500 flex items-center justify-center shadow-md shadow-amber-200/70">
+              <span class="font-extrabold text-slate-900 text-xl">LI</span>
+            </div>
+            <div class="leading-tight">
+              <p class="font-bold tracking-tight text-base sm:text-lg">Legal Infinix</p>
+              <p class="text-[10px] sm:text-[11px] text-slate-500">
+                Business Registration • Compliance • Tax
+              </p>
+            </div>
+          </div>
+      
+          <!-- RIGHT SIDE: desktop nav + buttons + mobile hamburger -->
+          <div class="flex items-center gap-3">
+            <!-- DESKTOP NAV + BUTTONS -->
+            <div class="hidden lg:flex items-center gap-6">
+              <nav class="flex items-center gap-6 text-sm">
+                <a href="#services" class="hover:text-amber-500 duration-150">Services</a>
+                <a href="#sectors" class="hover:text-amber-500 duration-150">Business Sectors</a>
+                <a href="#process" class="hover:text-amber-500 duration-150">How it Works</a>
+                <a href="#pricing" class="hover:text-amber-500 duration-150">Plans</a>
+                <a href="#blogs" class="hover:text-amber-500 duration-150">Resources</a>
+              </nav>
+              <button
+                class="px-4 py-1.5 rounded-full border border-slate-300 text-xs hover:border-amber-400 hover:text-amber-500 duration-150">
+                Login
+              </button>
+              <button
+                class="px-5 py-2 rounded-full bg-slate-900 text-slate-50 text-sm font-semibold shadow-md shadow-slate-300 hover:bg-slate-800 duration-150">
+                Start Registration
+              </button>
+            </div>
+      
+            <!-- MOBILE: sirf hamburger (right side fixed in row) -->
+            <button id="mobileMenuBtn"
+            class="lg:hidden w-11 h-11 rounded-full border border-slate-300 bg-white flex items-center justify-center shadow-md active:scale-95 transition">
+            <span id="hamburgerIcon"
+              class="flex items-center justify-center w-full h-full text-[23px] text-slate-700 leading-none -mt-0.5">
+              ☰
+            </span>
+          </button>
+          
+          
+          </div>
+        </div>
+      </div>
+      
+  
+    <!-- MOBILE DROPDOWN NAV (yahi ke andar Start Registration hoga) -->
+    <nav id="mobileNav"
+      class="lg:hidden hidden border-t border-slate-200 bg-white/95 backdrop-blur text-sm">
+      <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-3">
+        <a href="#services" class="py-1 hover:text-amber-500 duration-150">Services</a>
+        <a href="#sectors" class="py-1 hover:text-amber-500 duration-150">Business Sectors</a>
+        <a href="#process" class="py-1 hover:text-amber-500 duration-150">How it Works</a>
+        <a href="#pricing" class="py-1 hover:text-amber-500 duration-150">Plans</a>
+        <a href="#blogs" class="py-1 hover:text-amber-500 duration-150">Resources</a>
+  
+        <!-- ✅ Start Registration yahan move kiya hai (mobile menu ke andar) -->
+        <button
+          class="mt-2 w-full py-2 rounded-full bg-slate-900 text-slate-50 text-[13px] font-semibold shadow-md shadow-slate-400/60">
+          Start Registration
+        </button>
+      </div>
+    </nav>
+  </header>
+  
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <!-- bg blobs -->
+    <div class="pointer-events-none absolute inset-0">
+      <div class="absolute -top-24 -left-40 w-96 h-96 bg-amber-300/40 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-32 right-[-4rem] w-[26rem] h-[26rem] bg-sky-300/30 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 pt-10 pb-16 relative z-10">
+      <div class="grid lg:grid-cols-[1.1fr,0.9fr] gap-12 items-center">
+        <!-- Left: text -->
+        <div class="space-y-7">
+          <span class="inline-flex items-center gap-2 rounded-full bg-green-50 border border-emerald-300 px-3 py-1 text-[11px] sm:text-xs font-medium text-emerald-700">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+            Register your business in just <strong class="ml-1">7 working days*</strong>
+          </span>
+
+          <h1 class="text-3xl sm:text-4xl xl:text-5xl font-extrabold leading-tight text-slate-900">
+            Professional Online
+            <span class="bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 bg-clip-text text-transparent">
+              Business Registration & Compliance
+            </span>
+            Platform.
+          </h1>
+
+          <p class="text-slate-600 text-sm sm:text-base max-w-2xl">
+            Legal Infinix is a technology-driven legal platform offering company incorporation,
+            licenses, taxation and complete compliance management for startups and enterprises across India.
+          </p>
+
+          <!-- stats -->
+          <div class="flex flex-wrap gap-5 text-xs sm:text-sm text-slate-700">
+            <div class="flex items-center gap-2">
+              <span class="text-amber-500 text-lg">★</span>
+              <span>Rated 4.9/5 by 40,000+ businesses</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-emerald-500 text-lg">✔</span>
+              <span>MCA • GST • Income Tax Experts</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-sky-500 text-lg">⚡</span>
+              <span>End-to-end digital workflow</span>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-4">
+            <button class="px-5 py-2 rounded-full bg-amber-400 text-slate-900 font-semibold text-sm shadow-md shadow-amber-200 hover:bg-amber-300 duration-150">
+              Get Free Consultation
+            </button>
+            <button class="px-5 py-2 rounded-full border border-slate-300 text-sm text-slate-700 hover:border-amber-400 hover:text-amber-500 duration-150">
+              Download Compliance Checklist
+            </button>
+          </div>
+
+          <p class="text-[11px] sm:text-xs text-slate-500">
+            Trusted by 5000+ startups, MSMEs and professionals • Registered with MCA, Startup India & MSME.
+          </p>
+        </div>
+
+        <!-- Right: 3D form card -->
+        <div class="relative">
+          <!-- floating background piece -->
+          <div class="absolute -top-6 -right-4 w-32 h-32 rounded-3xl bg-gradient-to-br from-sky-400 to-emerald-400 shadow-xl shadow-sky-200/60 opacity-60 rotate-6 blur-sm"></div>
+          <div class="absolute -bottom-10 -left-8 w-40 h-40 rounded-[2rem] bg-gradient-to-br from-amber-300 to-rose-300 shadow-xl shadow-amber-200/70 opacity-70 -rotate-6 blur-sm"></div>
+
+          <div class="floating card-3d glass relative p-6 sm:p-7">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h3 class="font-semibold text-lg text-slate-900">Start Your Registration</h3>
+                <p class="text-[11px] text-slate-500">Fill basic details. Our expert will call you in 15 minutes.</p>
+              </div>
+              <div class="text-right text-xs text-slate-500">
+                <p>Avg. processing</p>
+                <p class="font-semibold text-amber-500">5–7 days</p>
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-3 text-xs">
+              <div>
+                <label class="block mb-1 text-slate-700">Full Name</label>
+                <input class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent" />
+              </div>
+              <div>
+                <label class="block mb-1 text-slate-700">Mobile Number</label>
+                <input class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent" />
+              </div>
+              <div>
+                <label class="block mb-1 text-slate-700">Email ID</label>
+                <input type="email" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent" />
+              </div>
+              <div>
+                <label class="block mb-1 text-slate-700">Service Required</label>
+                <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent">
+                  <option>Private Limited Company</option>
+                  <option>LLP Registration</option>
+                  <option>Partnership Firm</option>
+                  <option>One Person Company</option>
+                  <option>GST / MSME / Other</option>
+                </select>
+              </div>
+            </div>
+
+            <button class="w-full mt-3 py-2.5 rounded-lg bg-slate-900 text-slate-50 text-sm font-semibold shadow-md shadow-slate-400/60 hover:bg-slate-800 duration-150">
+              Get Free Quote & Timeline
+            </button>
+
+            <p class="text-[10px] text-slate-500 mt-2 text-center">
+              By submitting, you agree to our
+              <a href="#" class="text-amber-500 underline-offset-2 hover:underline">Terms & Conditions</a>
+              and
+              <a href="#" class="text-amber-500 underline-offset-2 hover:underline">Privacy Policy</a>.
+            </p>
+
+            <!-- mini stats -->
+            <div class="grid grid-cols-3 gap-3 mt-4 text-[11px] text-slate-700">
+              <div class="rounded-lg bg-white/80 border border-slate-200 px-3 py-2 text-center">
+                <p class="font-semibold text-sm">42,000+</p>
+                <p>Clients Onboarded</p>
+              </div>
+              <div class="rounded-lg bg-white/80 border border-slate-200 px-3 py-2 text-center">
+                <p class="font-semibold text-sm">PAN India</p>
+                <p>Service Coverage</p>
+              </div>
+              <div class="rounded-lg bg-white/80 border border-slate-200 px-3 py-2 text-center">
+                <p class="font-semibold text-sm">Dedicated</p>
+                <p>Relationship Manager</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- small stat cards -->
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <div class="card-3d-soft px-6 py-4 flex items-center gap-3">
+          <div class="w-11 h-11 rounded-2xl bg-amber-50 flex items-center justify-center text-2xl">🏢</div>
+          <div>
+            <p class="text-xs text-slate-500">Companies Incorporated</p>
+            <p class="font-semibold text-sm">28,000+ across India</p>
+          </div>
+        </div>
+        <div class="card-3d-soft px-6 py-4 flex items-center gap-3">
+          <div class="w-11 h-11 rounded-2xl bg-sky-50 flex items-center justify-center text-2xl">👨‍⚖️</div>
+          <div>
+            <p class="text-xs text-slate-500">In-House Experts</p>
+            <p class="font-semibold text-sm">CA • CS • Lawyers</p>
+          </div>
+        </div>
+        <div class="card-3d-soft px-6 py-4 flex items-center gap-3">
+          <div class="w-11 h-11 rounded-2xl bg-emerald-50 flex items-center justify-center text-2xl">⚙️</div>
+          <div>
+            <p class="text-xs text-slate-500">End-to-End Support</p>
+            <p class="font-semibold text-sm">Incorporation to Annual Filings</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="border-y border-slate-200 bg-white">
+    <div class="max-w-7xl mx-auto px-4 py-12 grid lg:grid-cols-2 gap-10 items-center">
+      <div class="space-y-5">
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">
+          Why Businesses Choose <span class="text-amber-500">Legal Infinix?</span>
+        </h2>
+        <p class="text-sm text-slate-600 max-w-xl">
+          We combine expert professionals, standardized processes and intuitive technology
+          to deliver efficient, transparent and reliable legal services for every stage of your business.
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
+          <div class="card-3d-soft p-4">
+            <p class="text-emerald-500 text-lg">✔</p>
+            <p class="font-semibold mt-1">Transparent Pricing</p>
+            <p class="text-xs text-slate-500 mt-1">Clear breakup of government & professional fee. No hidden charges.</p>
+          </div>
+          <div class="card-3d-soft p-4">
+            <p class="text-emerald-500 text-lg">✔</p>
+            <p class="font-semibold mt-1">Dedicated Manager</p>
+            <p class="text-xs text-slate-500 mt-1">Single point of contact for queries, documentation and tracking.</p>
+          </div>
+          <div class="card-3d-soft p-4">
+            <p class="text-emerald-500 text-lg">✔</p>
+            <p class="font-semibold mt-1">Compliance First</p>
+            <p class="text-xs text-slate-500 mt-1">Proactive reminders and guidance for ROC, GST & Income Tax.</p>
+          </div>
+          <div class="card-3d-soft p-4">
+            <p class="text-emerald-500 text-lg">✔</p>
+            <p class="font-semibold mt-1">PAN India Coverage</p>
+            <p class="text-xs text-slate-500 mt-1">Serving clients from metros to tier-3 cities with equal priority.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <div class="card-3d p-6">
+          <p class="font-semibold mb-3 text-sm text-slate-900">Recognised & Associated With</p>
+          <div class="flex flex-wrap gap-3 text-xs text-slate-700">
+            <span class="px-3 py-1 rounded-full bg-slate-50 border border-slate-200">MCA</span>
+            <span class="px-3 py-1 rounded-full bg-slate-50 border border-slate-200">Startup India</span>
+            <span class="px-3 py-1 rounded-full bg-slate-50 border border-slate-200">MSME</span>
+            <span class="px-3 py-1 rounded-full bg-slate-50 border border-slate-200">GSTN</span>
+          </div>
+
+          <div class="mt-6 grid grid-cols-3 gap-4 text-center text-xs">
+            <div class="rounded-xl bg-white border border-emerald-200 px-3 py-3">
+              <div class="text-xl mb-1">🔒</div>
+              <p class="font-semibold">Secure</p>
+              <p class="text-[11px] text-slate-500 mt-1">Bank-grade data protection.</p>
+            </div>
+            <div class="rounded-xl bg-white border border-sky-200 px-3 py-3">
+              <div class="text-xl mb-1">⏱</div>
+              <p class="font-semibold">On-Time</p>
+              <p class="text-[11px] text-slate-500 mt-1">SLA-based delivery.</p>
+            </div>
+            <div class="rounded-xl bg-white border border-amber-200 px-3 py-3">
+              <div class="text-xl mb-1">💬</div>
+              <p class="font-semibold">Support</p>
+              <p class="text-[11px] text-slate-500 mt-1">Phone, WhatsApp & Mail.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="max-w-7xl mx-auto px-4 py-12">
+    <div class="text-center mb-10">
+      <p class="text-xs uppercase tracking-[0.25em] text-amber-500">Smart Solutions</p>
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">
+        Legal & Compliance Services for <span class="text-amber-500">Modern Businesses</span>
+      </h2>
+      <p class="mt-3 text-sm text-slate-600 max-w-3xl mx-auto">
+        From choosing the right structure to managing annual filings, Legal Infinix
+        takes care of end-to-end legal, taxation and secretarial needs.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-7">
+      <article class="card-3d-soft p-6 hover:-translate-y-1 hover:-rotate-[0.3deg] duration-200">
+        <div class="flex items-center justify-between">
+          <p class="text-xs uppercase tracking-wide text-emerald-600">Registrations</p>
+          <span class="text-2xl">📑</span>
+        </div>
+        <h3 class="font-semibold mt-4 text-lg text-slate-900">Private Limited Company Registration</h3>
+        <p class="text-sm text-slate-600 mt-2">
+          Incorporate a scalable, investor-friendly company with all statutory documentation.
+        </p>
+        <ul class="mt-3 text-xs text-slate-500 space-y-1">
+          <li>• Name approval (RUN)</li>
+          <li>• MOA & AOA drafting & filing</li>
+          <li>• COI, PAN, TAN, ESIC & EPF (as applicable)</li>
+        </ul>
+        <button class="mt-4 text-xs font-semibold text-amber-500 hover:text-amber-600">
+          Know more →
+        </button>
+      </article>
+
+      <article class="card-3d-soft p-6 hover:-translate-y-1 hover:-rotate-[0.3deg] duration-200">
+        <div class="flex items-center justify-between">
+          <p class="text-xs uppercase tracking-wide text-emerald-600">Registrations</p>
+          <span class="text-2xl">🤝</span>
+        </div>
+        <h3 class="font-semibold mt-4 text-lg text-slate-900">LLP Registration</h3>
+        <p class="text-sm text-slate-600 mt-2">
+          Flexible partnership structure with limited liability, ideal for professionals & SMEs.
+        </p>
+        <ul class="mt-3 text-xs text-slate-500 space-y-1">
+          <li>• LLP Agreement drafting</li>
+          <li>• DPIN & DSC of partners</li>
+          <li>• PAN, TAN & GST registration (optional)</li>
+        </ul>
+        <button class="mt-4 text-xs font-semibold text-amber-500 hover:text-amber-600">
+          Know more →
+        </button>
+      </article>
+
+      <article class="card-3d-soft p-6 hover:-translate-y-1 hover:-rotate-[0.3deg] duration-200">
+        <div class="flex items-center justify-between">
+          <p class="text-xs uppercase tracking-wide text-emerald-600">Registrations</p>
+          <span class="text-2xl">👨‍👩‍👦</span>
+        </div>
+        <h3 class="font-semibold mt-4 text-lg text-slate-900">Partnership Firm Registration</h3>
+        <p class="text-sm text-slate-600 mt-2">
+          Simple & cost-effective structure to launch your business with partners.
+        </p>
+        <ul class="mt-3 text-xs text-slate-500 space-y-1">
+          <li>• Partnership Deed drafting</li>
+          <li>• Registration with Registrar of Firms</li>
+          <li>• Assistance for PAN, GST & Shop Act</li>
+        </ul>
+        <button class="mt-4 text-xs font-semibold text-amber-500 hover:text-amber-600">
+          Know more →
+        </button>
+      </article>
+    </div>
+
+    <div class="mt-8 flex flex-wrap gap-2 text-[11px] justify-center">
+      <span class="px-3 py-1 rounded-full bg-slate-100 border border-slate-200">Compliance</span>
+      <span class="px-3 py-1 rounded-full bg-slate-100 border border-slate-200">Taxation</span>
+      <span class="px-3 py-1 rounded-full bg-slate-100 border border-slate-200">IPR & Trademarks</span>
+      <span class="px-3 py-1 rounded-full bg-slate-100 border border-slate-200">Consultation</span>
+      <span class="px-3 py-1 rounded-full bg-slate-100 border border-slate-200">Environmental</span>
+    </div>
+  </section>
+
+  <!-- CTA BAR -->
+  <section class="bg-gradient-to-r from-sky-100 via-slate-50 to-emerald-100 border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div>
+        <h3 class="text-lg font-semibold text-slate-900">Have Questions? Talk to Our Experts.</h3>
+        <p class="text-xs sm:text-sm text-slate-600 mt-1">
+          Get one-to-one consultation on choosing the right structure & licenses for your business.
+        </p>
+      </div>
+      <button class="px-6 py-2 rounded-full bg-slate-900 text-slate-50 font-semibold text-sm shadow-md hover:bg-slate-800 duration-150">
+        Call Us Now
+      </button>
+    </div>
+  </section>
+
+  <!-- SECTORS -->
+  <section id="sectors" class="max-w-7xl mx-auto px-4 py-12">
+    <div class="text-center mb-10">
+      <p class="text-xs uppercase tracking-[0.25em] text-sky-500">Sector Focus</p>
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">
+        Discover Tailored Solutions for Your <span class="text-amber-500">Business Sector</span>
+      </h2>
+      <p class="mt-3 text-sm text-slate-600 max-w-3xl mx-auto">
+        Every industry has unique regulatory needs. Our teams build sector-specific
+        checklists so you stay compliant without hassle.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="card-3d-soft p-5 text-center hover:-translate-y-1 duration-200">
+        <div class="text-3xl mb-3">🍽</div>
+        <h3 class="font-semibold text-sm text-slate-900">Restaurants & Cloud Kitchens</h3>
+        <p class="text-[11px] text-slate-500 mt-2">
+          FSSAI, GST, Shop Act, trade licence, fire NOC and more.
+        </p>
+      </div>
+      <div class="card-3d-soft p-5 text-center hover:-translate-y-1 duration-200">
+        <div class="text-3xl mb-3">💊</div>
+        <h3 class="font-semibold text-sm text-slate-900">Pharma & Healthcare</h3>
+        <p class="text-[11px] text-slate-500 mt-2">
+          Drug licence, wholesale/retail, clinic & hospital compliances.
+        </p>
+      </div>
+      <div class="card-3d-soft p-5 text-center hover:-translate-y-1 duration-200">
+        <div class="text-3xl mb-3">💻</div>
+        <h3 class="font-semibold text-sm text-slate-900">IT, SaaS & Consultants</h3>
+        <p class="text-[11px] text-slate-500 mt-2">
+          Cross-border invoicing, GST on services, agreements & NDAs.
+        </p>
+      </div>
+      <div class="card-3d-soft p-5 text-center hover:-translate-y-1 duration-200">
+        <div class="text-3xl mb-3">🏢</div>
+        <h3 class="font-semibold text-sm text-slate-900">Real Estate & Construction</h3>
+        <p class="text-[11px] text-slate-500 mt-2">
+          RERA registration, labour compliance and contractor documentation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="process" class="bg-slate-50 border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 py-12">
+      <div class="text-center mb-8">
+        <p class="text-xs uppercase tracking-[0.25em] text-emerald-600">How It Works</p>
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">Simple 3-Step Process</h2>
+        <p class="mt-3 text-sm text-slate-600 max-w-3xl mx-auto">
+          Our structured approach ensures fast, accurate and compliant registration
+          with full transparency at each stage.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card-3d-soft p-6 text-center">
+          <div class="text-3xl mb-3">💬</div>
+          <h3 class="font-semibold">Free Consultation</h3>
+          <p class="text-xs text-slate-600 mt-2">
+            Understand your business model, compare options and choose the right structure.
+          </p>
+        </div>
+        <div class="card-3d-soft p-6 text-center">
+          <div class="text-3xl mb-3">📄</div>
+          <h3 class="font-semibold">Documentation & Filing</h3>
+          <p class="text-xs text-slate-600 mt-2">
+            Share documents online, we draft agreements and file all forms on the right portals.
+          </p>
+        </div>
+        <div class="card-3d-soft p-6 text-center">
+          <div class="text-3xl mb-3">📦</div>
+          <h3 class="font-semibold">Approval & Delivery</h3>
+          <p class="text-xs text-slate-600 mt-2">
+            Track status and receive registration certificates directly over email & WhatsApp.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <div class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">
+        Find The Best Online Legal Solutions For You
+      </h2>
+      <p class="mt-3 text-sm text-slate-600 max-w-3xl mx-auto">
+        Compare how Legal Infinix simplifies your registration journey compared to
+        traditional offline consultants and generic portals.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-6">
+      <div class="card-3d p-6">
+        <h3 class="font-semibold mb-3 text-lg text-slate-900">Legal Infinix</h3>
+        <ul class="space-y-2 text-sm text-slate-700">
+          <li>✅ One-time, fixed pricing with detailed breakup.</li>
+          <li>✅ Dedicated relationship manager & expert team.</li>
+          <li>✅ 100% online process with digital documentation.</li>
+          <li>✅ Smart reminders & dashboards for compliances.</li>
+          <li>✅ Multi-channel support: call, WhatsApp, email.</li>
+        </ul>
+      </div>
+
+      <div class="card-3d-soft p-6 border border-rose-200">
+        <h3 class="font-semibold mb-3 text-lg text-slate-900">Traditional Consultants / Generic Portals</h3>
+        <ul class="space-y-2 text-sm text-slate-700">
+          <li>❌ Hidden charges & unclear scope of work.</li>
+          <li>❌ No dedicated point of contact.</li>
+          <li>❌ Manual paperwork & physical visits.</li>
+          <li>❌ Limited or no reminders for future compliances.</li>
+          <li>❌ Slow support & delayed responses.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKING PROCESS ICON STRIP -->
+  <section class="bg-slate-50 border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 py-12">
+      <h2 class="text-center text-2xl sm:text-3xl font-bold text-slate-900 mb-8">Our Working Process</h2>
+      <div class="grid md:grid-cols-4 gap-6 text-center">
+        <div class="card-3d-soft p-5">
+          <div class="text-3xl mb-2">📝</div>
+          <h3 class="font-semibold text-sm text-slate-900">Fill Application Form</h3>
+          <p class="mt-1 text-[11px] text-slate-600">
+            Share your basic business details online in a few minutes.
+          </p>
+        </div>
+        <div class="card-3d-soft p-5">
+          <div class="text-3xl mb-2">💳</div>
+          <h3 class="font-semibold text-sm text-slate-900">Make Secure Payment</h3>
+          <p class="mt-1 text-[11px] text-slate-600">
+            Pay via UPI, netbanking or card and get instant invoice.
+          </p>
+        </div>
+        <div class="card-3d-soft p-5">
+          <div class="text-3xl mb-2">👩‍💻</div>
+          <h3 class="font-semibold text-sm text-slate-900">Executive Processes</h3>
+          <p class="mt-1 text-[11px] text-slate-600">
+            Our expert prepares documents & files your application.
+          </p>
+        </div>
+        <div class="card-3d-soft p-5">
+          <div class="text-3xl mb-2">📩</div>
+          <h3 class="font-semibold text-sm text-slate-900">Get Confirmation</h3>
+          <p class="mt-1 text-[11px] text-slate-600">
+            Receive certificates & complete documentation kit over email.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAR 2 -->
+  <section class="bg-gradient-to-r from-sky-100 via-slate-50 to-emerald-100 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div>
+        <h3 class="text-lg font-semibold text-slate-900">Need personalised advice for your business?</h3>
+        <p class="text-xs sm:text-sm text-slate-600 mt-1">
+          Share your query and our compliance team will connect with you shortly.
+        </p>
+      </div>
+      <button class="px-6 py-2 rounded-full bg-slate-900 text-slate-50 font-semibold text-sm shadow-md hover:bg-slate-800 duration-150">
+        Request Free Callback
+      </button>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="max-w-7xl mx-auto px-4 py-12">
+    <div class="text-center mb-10">
+      <p class="text-xs uppercase tracking-[0.25em] text-amber-500">Premium Pricing</p>
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">
+        Flexible Plans that Feel <span class="text-amber-500">Premium</span>
+      </h2>
+      <p class="mt-3 text-sm text-slate-600 max-w-3xl mx-auto">
+        Choose a plan that matches your business stage. Professional fees shown below.
+        Government fees are charged at actuals.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-7">
+      <div class="card-3d-soft p-6 flex flex-col justify-between">
+        <div>
+          <h3 class="font-semibold text-lg text-slate-900">Starter</h3>
+          <p class="text-xs text-slate-500 mt-1">For freelancers & early-stage founders</p>
+          <p class="mt-4 text-2xl font-bold text-amber-500">₹4,999</p>
+          <p class="text-[11px] text-slate-500">+ government fee</p>
+          <ul class="mt-4 text-sm space-y-1 text-slate-700">
+            <li>• Basic company or firm registration</li>
+            <li>• PAN & TAN application</li>
+            <li>• Bank account assistance</li>
+            <li>• 1 month compliance support</li>
+          </ul>
+        </div>
+        <button class="mt-6 py-2 rounded-full bg-slate-900 text-slate-50 font-semibold text-sm hover:bg-slate-800 duration-150">
+          Choose Starter
+        </button>
+      </div>
+
+      <div class="card-3d p-6 flex flex-col justify-between relative overflow-hidden">
+        <span class="absolute top-4 right-4 text-[10px] uppercase tracking-wide bg-amber-500 text-slate-900 px-3 py-1 rounded-full shadow-sm">
+          Most Popular
+        </span>
+        <div>
+          <h3 class="font-semibold text-lg text-slate-900">Growth</h3>
+          <p class="text-xs text-slate-500 mt-1">Best for funded startups & growing SMEs</p>
+          <p class="mt-4 text-2xl font-bold text-slate-900">₹7,999</p>
+          <p class="text-[11px] text-slate-500">+ government fee</p>
+          <ul class="mt-4 text-sm space-y-1 text-slate-700">
+            <li>• Company / LLP incorporation</li>
+            <li>• GST, MSME & Shop Act registrations</li>
+            <li>• 1 year ROC & GST compliance reminders</li>
+            <li>• Dedicated compliance manager</li>
+          </ul>
+        </div>
+        <button class="mt-6 py-2 rounded-full bg-slate-900 text-amber-300 font-semibold text-sm hover:bg-slate-800 duration-150">
+          Get Started
+        </button>
+      </div>
+
+      <div class="card-3d-soft p-6 flex flex-col justify-between">
+        <div>
+          <h3 class="font-semibold text-lg text-slate-900">Enterprise</h3>
+          <p class="text-xs text-slate-500 mt-1">For large corporations & multi-unit setups</p>
+          <p class="mt-4 text-2xl font-bold text-amber-500">Custom</p>
+          <p class="text-[11px] text-slate-500">Tailored quote based on scope</p>
+          <ul class="mt-4 text-sm space-y-1 text-slate-700">
+            <li>• Multi-state registrations & GST</li>
+            <li>• Dedicated CA, CS & legal team</li>
+            <li>• Quarterly review & compliance audit</li>
+            <li>• Priority SLA & premium support</li>
+          </ul>
+        </div>
+        <button class="mt-6 py-2 rounded-full bg-slate-900 text-slate-50 font-semibold text-sm hover:bg-slate-800 duration-150">
+          Talk to Enterprise Team
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="bg-slate-50 border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 py-12">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
+        <div>
+          <p class="text-xs uppercase tracking-[0.25em] text-sky-600">Our Trusted Partners</p>
+          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">Testimonials That Speak for Us</h2>
+          <p class="mt-2 text-sm text-slate-600 max-w-xl">
+            Join thousands of founders and enterprises who rely on Legal Infinix for their registration and compliance needs.
+          </p>
+        </div>
+        <div class="flex gap-2 text-[11px] text-slate-500">
+          <span class="px-3 py-1 rounded-full bg-white border border-slate-200">Slack</span>
+          <span class="px-3 py-1 rounded-full bg-white border border-slate-200">Razorpay</span>
+          <span class="px-3 py-1 rounded-full bg-white border border-slate-200">ICICI Bank</span>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <article class="card-3d-soft p-5">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-amber-400 to-rose-500 flex items-center justify-center text-sm font-bold text-slate-900">JK</div>
+            <div>
+              <p class="font-semibold text-sm text-slate-900">Dr. Jayman Khan</p>
+              <p class="text-[11px] text-slate-500">Healthcare Entrepreneur</p>
+            </div>
+          </div>
+          <p class="mt-3 text-xs text-slate-600">
+            “Legal Infinix handled my hospital incorporation, licences and ongoing compliances end-to-end.
+            Their timelines and processes are very clear.”
+          </p>
+          <p class="mt-3 text-amber-500 text-sm">★★★★☆ 4.8/5</p>
+        </article>
+
+        <article class="card-3d-soft p-5">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-sky-400 to-emerald-400 flex items-center justify-center text-sm font-bold text-slate-900">AI</div>
+            <div>
+              <p class="font-semibold text-sm text-slate-900">Align Infotech Pvt. Ltd.</p>
+              <p class="text-[11px] text-slate-500">IT & SaaS Startup</p>
+            </div>
+          </div>
+          <p class="mt-3 text-xs text-slate-600">
+            “From company registration to ESOP policy, their legal and finance team is responsive and understands startup needs.”
+          </p>
+          <p class="mt-3 text-amber-500 text-sm">★★★★☆ 4.7/5</p>
+        </article>
+
+        <article class="card-3d-soft p-5">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-emerald-400 to-amber-400 flex items-center justify-center text-sm font-bold text-slate-900">SR</div>
+            <div>
+              <p class="font-semibold text-sm text-slate-900">Sesha Reddy Developers</p>
+              <p class="text-[11px] text-slate-500">Real Estate Group</p>
+            </div>
+          </div>
+          <p class="mt-3 text-xs text-slate-600">
+            “Their deep understanding of RERA and construction-related compliances helped us avoid penalties and delays.”
+          </p>
+          <p class="mt-3 text-amber-500 text-sm">★★★★★ 4.9/5</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOGS -->
+  <section id="blogs" class="max-w-7xl mx-auto px-4 py-12">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Latest Blogs</h2>
+      <button class="text-xs px-4 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-amber-500 hover:text-amber-500 duration-150">
+        View All Articles
+      </button>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <article class="card-3d-soft overflow-hidden flex flex-col">
+        <div class="h-32 bg-gradient-to-br from-sky-500/40 to-slate-900/60"></div>
+        <div class="p-5 flex-1 flex flex-col">
+          <p class="text-[11px] text-slate-500 mb-1">November 21, 2024 • Compliance</p>
+          <h3 class="font-semibold text-sm sm:text-base text-slate-900">
+            Government Schemes & Benefits for New Companies in India
+          </h3>
+          <p class="mt-2 text-xs text-slate-600 flex-1">
+            A quick guide to Startup India, MSME, DPIIT recognition and subsidies available for new ventures.
+          </p>
+          <button class="mt-4 text-[11px] font-semibold text-amber-500 hover:text-amber-600">
+            Read more →
+          </button>
+        </div>
+      </article>
+
+      <article class="card-3d-soft overflow-hidden flex flex-col">
+        <div class="h-32 bg-gradient-to-br from-emerald-400/40 to-slate-900/60"></div>
+        <div class="p-5 flex-1 flex flex-col">
+          <p class="text-[11px] text-slate-500 mb-1">November 10, 2024 • Taxation</p>
+          <h3 class="font-semibold text-sm sm:text-base text-slate-900">
+            ROC Annual Filings: Deadlines Every Private Limited Company Must Track
+          </h3>
+          <p class="mt-2 text-xs text-slate-600 flex-1">
+            Understand AOC-4, MGT-7, ADT-1 and other important MCA compliances to avoid penalties.
+          </p>
+          <button class="mt-4 text-[11px] font-semibold text-amber-500 hover:text-amber-600">
+            Read more →
+          </button>
+        </div>
+      </article>
+
+      <article class="card-3d-soft overflow-hidden flex flex-col">
+        <div class="h-32 bg-gradient-to-br from-amber-400/40 to-rose-500/60"></div>
+        <div class="p-5 flex-1 flex flex-col">
+          <p class="text-[11px] text-slate-500 mb-1">October 29, 2024 • Business Law</p>
+          <h3 class="font-semibold text-sm sm:text-base text-slate-900">
+            Choosing Between LLP & Private Limited: A Founder's Checklist
+          </h3>
+          <p class="mt-2 text-xs text-slate-600 flex-1">
+            Control, taxation, investment and compliance – side-by-side comparison of both structures.
+          </p>
+          <button class="mt-4 text-[11px] font-semibold text-amber-500 hover:text-amber-600">
+            Read more →
+          </button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-slate-50 border-y border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 py-12">
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 text-center mb-6">
+        Frequently Asked Questions
+      </h2>
+      <p class="text-sm text-slate-600 text-center mb-8">
+        Have more questions? Talk to our experts over a quick call or WhatsApp chat.
+      </p>
+
+      <div class="space-y-3">
+        <!-- FAQ item -->
+        <div class="card-3d-soft">
+          <button class="w-full flex items-center justify-between px-4 py-3 text-left text-sm faq-toggle">
+            <span>How many days does it take to register a Private Limited Company?</span>
+            <span class="text-xl leading-none">+</span>
+          </button>
+          <div class="px-4 pb-4 hidden text-xs text-slate-600 faq-content">
+            Normally it takes around 5–7 working days after submission of complete documents
+            and name approval. Timelines may vary depending on MCA processing time.
+          </div>
+        </div>
+
+        <div class="card-3d-soft">
+          <button class="w-full flex items-center justify-between px-4 py-3 text-left text-sm faq-toggle">
+            <span>What documents are required for company or LLP registration?</span>
+            <span class="text-xl leading-none">+</span>
+          </button>
+          <div class="px-4 pb-4 hidden text-xs text-slate-600 faq-content">
+            PAN, Aadhaar, address proof of directors/partners, latest bank statement/utility bill,
+            passport size photo and proposed business address proof (rent agreement, electricity bill etc.)
+            are generally required.
+          </div>
+        </div>
+
+        <div class="card-3d-soft">
+          <button class="w-full flex items-center justify-between px-4 py-3 text-left text-sm faq-toggle">
+            <span>Is GST registration mandatory for all new businesses?</span>
+            <span class="text-xl leading-none">+</span>
+          </button>
+          <div class="px-4 pb-4 hidden text-xs text-slate-600 faq-content">
+            GST registration becomes mandatory once your aggregate turnover crosses the prescribed limit
+            (usually ₹20–40 lakhs depending on state and business type) or in some specific cases
+            like inter-state supply, e-commerce etc.
+          </div>
+        </div>
+
+        <div class="card-3d-soft">
+          <button class="w-full flex items-center justify-between px-4 py-3 text-left text-sm faq-toggle">
+            <span>Does Legal Infinix help in post-incorporation compliances?</span>
+            <span class="text-xl leading-none">+</span>
+          </button>
+          <div class="px-4 pb-4 hidden text-xs text-slate-600 faq-content">
+            Yes, we provide end-to-end support including bookkeeping, ROC filings, GST returns,
+            TDS, payroll and yearly tax planning through our expert network.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-200 pt-10 pb-4">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8 pb-8 border-b border-slate-700">
+        <!-- About -->
+        <div>
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-amber-400 via-orange-500 to-rose-500 flex items-center justify-center shadow">
+              <span class="font-extrabold text-slate-900 text-lg">LI</span>
+            </div>
+            <p class="font-semibold text-lg">Legal Infinix</p>
+          </div>
+          <p class="text-xs text-slate-400">
+            One-stop online platform for business registration, licences, taxation and compliance management across India.
+          </p>
+        </div>
+
+        <!-- Popular services -->
+        <div>
+          <h3 class="text-sm font-semibold mb-3">Our Popular Services</h3>
+          <ul class="space-y-1 text-xs text-slate-300">
+            <li><a href="#" class="hover:text-amber-400">Company Formation</a></li>
+            <li><a href="#" class="hover:text-amber-400">LLP Registration</a></li>
+            <li><a href="#" class="hover:text-amber-400">GST Registration</a></li>
+            <li><a href="#" class="hover:text-amber-400">Trademark & IPR</a></li>
+            <li><a href="#" class="hover:text-amber-400">Compliance & Filings</a></li>
+          </ul>
+        </div>
+
+        <!-- Terms & policy -->
+        <div>
+          <h3 class="text-sm font-semibold mb-3">Terms & Policy</h3>
+          <ul class="space-y-1 text-xs text-slate-300">
+            <li><a href="#" class="hover:text-amber-400">Terms & Conditions</a></li>
+            <li><a href="#" class="hover:text-amber-400">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-amber-400">Refund Policy</a></li>
+            <li><a href="#" class="hover:text-amber-400">Confidentiality Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Connect -->
+        <div>
+          <h3 class="text-sm font-semibold mb-3">Connect With Us</h3>
+          <ul class="space-y-1 text-xs text-slate-300">
+            <li><a href="#" class="hover:text-amber-400">Live Chat</a></li>
+            <li><a href="#" class="hover:text-amber-400">Partner with Us</a></li>
+            <li><a href="#" class="hover:text-amber-400">Careers</a></li>
+            <li><a href="#" class="hover:text-amber-400">Feedback & Support</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Offices + bottom bar -->
+      <div class="py-4 text-[11px] text-slate-400 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+        <div>
+          <span class="font-semibold text-slate-200">Our Offices: </span>
+          <span>Delhi • Noida • Mumbai • Hyderabad • Bengaluru • Chennai • Pune • Ahmedabad (Service PAN India)</span>
+        </div>
+        <p>© <span id="yearSpan"></span> Legal Infinix. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+<!-- BOTTOM STICKY QUOTE FORM & CHAT MOCKUP -->
+<div class="fixed bottom-4 left-4 max-w-xs w-[270px] card-3d-soft px-4 py-3 text-xs hidden sm:block z-[9999]">
+    <p class="font-semibold text-slate-900 mb-2">Enter your details to receive a full quote & consultation</p>
+    <div class="space-y-2">
+      <input class="w-full rounded-md border border-slate-300 bg-white px-2 py-1.5" placeholder="Full Name" />
+      <input class="w-full rounded-md border border-slate-300 bg-white px-2 py-1.5" placeholder="Mobile Number" />
+      <input class="w-full rounded-md border border-slate-300 bg-white px-2 py-1.5" placeholder="Email Address" />
+      <button class="w-full mt-1 py-1.5 rounded-md bg-amber-400 text-slate-900 font-semibold hover:bg-amber-300 duration-150">
+        Get a Detailed Quotation
+      </button>
+    </div>
+  </div>
+  
+
+  <div class="fixed bottom-4 right-4 max-w-xs w-[260px] card-3d-soft px-4 py-3 text-xs hidden sm:block z-[9999]">
+    <div class="flex items-center gap-2 mb-2">
+      <div class="w-8 h-8 rounded-full bg-gradient-to-br from-sky-400 to-emerald-400 flex items-center justify-center text-[11px] font-bold text-slate-900">
+        A
+      </div>
+      <div>
+        <p class="font-semibold text-slate-900 text-sm">Ankita • Support</p>
+        <p class="text-[10px] text-emerald-500">Online</p>
+      </div>
+    </div>
+    <div class="rounded-md bg-slate-100 px-3 py-2 text-[11px] text-slate-700 mb-2">
+      Hi 👋 How can I help you today with business registration or compliance?
+    </div>
+    <select class="w-full rounded-md border border-slate-300 bg-white px-2 py-1.5 text-[11px]">
+      <option>Private Limited Registration</option>
+      <option>LLP Registration</option>
+      <option>Partnership Firm Registration</option>
+      <option>One Person Company Registration</option>
+      <option>GST / MSME / Other Services</option>
+    </select>
+  </div>
+
+ <!-- WhatsApp Floating Button -->
+<button
+class="fixed bottom-24 right-4 w-11 h-11 rounded-full bg-emerald-500 text-white shadow-lg flex items-center justify-center active:scale-95 transition z-[9999]">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+     alt="WhatsApp"
+     class="w-6 h-6">
+</button>
+
+
+  <!-- Small JS: FAQ toggle + year -->
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-toggle').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const content = this.parentElement.querySelector('.faq-content');
+        const icon = this.querySelector('span:last-child');
+        if (content.classList.contains('hidden')) {
+          content.classList.remove('hidden');
+          icon.textContent = '−';
+        } else {
+          content.classList.add('hidden');
+          icon.textContent = '+';
+        }
+      });
+    });
+
+    // footer year
+    document.getElementById('yearSpan').textContent = new Date().getFullYear();
+
+    // smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href').slice(1);
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          window.scrollTo({
+            top: targetEl.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+
+
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  const hamburgerIcon = document.getElementById('hamburgerIcon');
+
+  if (mobileMenuBtn && mobileNav && hamburgerIcon) {
+    mobileMenuBtn.addEventListener('click', () => {
+      const isHidden = mobileNav.classList.contains('hidden');
+      mobileNav.classList.toggle('hidden');
+      hamburgerIcon.textContent = isHidden ? '✕' : '☰';
+    });
+  }
+  </script>
+</body>
+</html>
